@@ -13,6 +13,7 @@ test("Financial Ponds workflow uses CI daily runner with water-level fallback", 
     scripts["a-share:daily:ci"],
     "node src/tools/a_share_daily_ci.mjs"
   );
+  assert.match(workflow, /node-version: "22"/);
   assert.match(workflow, /npm run a-share:daily:ci -- --as-of "\$AS_OF"/);
   assert.doesNotMatch(workflow, /npm run a-share:daily\s*$/m);
 });

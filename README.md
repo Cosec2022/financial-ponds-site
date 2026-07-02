@@ -36,12 +36,15 @@ It runs:
 
 ```text
 tools/financial-pond-framework
-→ npm run a-share:daily
+→ npm run a-share:daily:ci
 → npm run cycle
 → npm run export:web-data
 → copy dashboard JSON into this site
 → wrangler deploy
 ```
+
+The workflow uses Node.js 22 because current Wrangler releases require Node.js
+22 or newer for deployment.
 
 Required GitHub Secrets:
 
