@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.9.9
+
+Source package: `0.9.8` plus the first GitHub Actions failure from
+`a_share_water_level_provider`, where AKShare's broad A-share quote endpoint
+closed the remote connection in CI.
+
+Changes:
+
+- Added `src/tools/a_share_daily_ci.mjs`.
+- Added `npm run a-share:daily:ci`.
+- Updated `.github/workflows/daily.yml` to use the CI runner.
+- The CI runner still fails hard if the ETF snapshot, validation, conversion,
+  or Flow Review fails.
+- The CI runner treats only the broad A-share water-level provider as
+  fallback-capable:
+  - first tries real AKShare water-level data;
+  - if the remote endpoint disconnects or errors, writes deterministic fixture
+    water-level data for that date;
+  - prints `fallback_used: true` and `fallback_reason` in the run summary.
+
+Boundary:
+
+- This fallback is for website continuity in GitHub Actions.
+- It does not pretend that fixture water-level data is real market data.
+- Local/manual `npm run a-share:daily` remains strict and still fails on a real
+  water-level provider error.
+
 ## 0.9.8
 
 Source package: local `0.9.7` build plus the decision to stop relying on

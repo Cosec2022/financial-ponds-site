@@ -39,7 +39,7 @@ jobs:
         run: |
           AS_OF="$(date +%F)"
           npm test
-          npm run a-share:daily
+          npm run a-share:daily:ci -- --as-of "$AS_OF"
           npm run cycle -- "$AS_OF"
           npm run export:web-data -- "$AS_OF"
           cp web/data/dashboard.json ../../financial-pond/data/dashboard.json
