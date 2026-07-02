@@ -1,0 +1,14 @@
+{
+  "id": "us_real_rate",
+  "kind": "node",
+  "name": "US Real Rate",
+  "data_type": "hard_data",
+  "category": "discount_rate",
+  "frequency": "daily",
+  "description": "US real rates affect discount rates and opportunity costs. Direction is defined by edges, not by code.",
+  "source": {
+    "provider": "FRED",
+    "series": "DFII10",
+    "status": "planned"
+  }
+}

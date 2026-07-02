@@ -1,0 +1,84 @@
+{
+  "id": "flexible_risk_factors_v0_9_0",
+  "description": "Wide risk factors used by Flow Engine. The model intentionally avoids single-company causal edges. External shocks create pressure or support; domestic trading data must confirm them.",
+  "strength_scale": {
+    "low": 0.15,
+    "medium": 0.3,
+    "high": 0.45
+  },
+  "factor_rules": [
+    "Do not model a single overseas stock as a direct cause of an A-share ETF move.",
+    "Map event news into a wider factor first, then let sector data confirm or reject the pressure.",
+    "External pressure is a modifier, not a buy or sell signal.",
+    "A-share turnover, sector relative strength, ETF flow, and breadth remain separate confirmation channels."
+  ],
+  "factors": [
+    {
+      "id": "global_tech_risk",
+      "name": "Global Technology Risk",
+      "intent": "Captures broad valuation, risk-appetite, and profit-taking pressure in global technology assets.",
+      "example_events": ["global semiconductor selloff", "AI hardware de-rating", "large overseas technology decline"],
+      "pool_impacts": [
+        { "pool_id": "a_share_semiconductor", "strength": "high", "multiplier": 1 },
+        { "pool_id": "a_share_ai_computer", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_communication_electronics", "strength": "medium", "multiplier": 1 }
+      ]
+    },
+    {
+      "id": "global_liquidity_risk",
+      "name": "Global Liquidity Risk",
+      "intent": "Captures dollar liquidity, real-rate, credit-spread, and cross-asset risk pressure.",
+      "example_events": ["US real rates rise", "dollar squeeze", "credit spread widening"],
+      "pool_impacts": [
+        { "pool_id": "a_share_semiconductor", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_ai_computer", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_communication_electronics", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_new_energy_ev", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_brokerage", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_resources_materials", "strength": "low", "multiplier": 1 }
+      ]
+    },
+    {
+      "id": "a_share_risk_appetite",
+      "name": "A-share Risk Appetite",
+      "intent": "Captures domestic willingness to hold higher-beta A-share sectors.",
+      "example_events": ["broad market breadth improves", "turnover expands", "high-beta sectors outperform"],
+      "pool_impacts": [
+        { "pool_id": "a_share_brokerage", "strength": "high", "multiplier": 1 },
+        { "pool_id": "a_share_semiconductor", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_ai_computer", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_communication_electronics", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_new_energy_ev", "strength": "medium", "multiplier": 1 }
+      ]
+    },
+    {
+      "id": "sector_rotation_pressure",
+      "name": "Sector Rotation Pressure",
+      "intent": "Captures pressure caused by capital rotating away from crowded sectors into other pools.",
+      "example_events": ["crowded growth unwind", "defensive sector rotation", "AI trade profit-taking"],
+      "pool_impacts": [
+        { "pool_id": "a_share_semiconductor", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_ai_computer", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_communication_electronics", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_healthcare_pharma", "strength": "low", "multiplier": -1 },
+        { "pool_id": "a_share_consumer", "strength": "low", "multiplier": -1 },
+        { "pool_id": "a_share_bank_insurance", "strength": "low", "multiplier": -1 }
+      ]
+    },
+    {
+      "id": "china_policy_support",
+      "name": "China Policy Support",
+      "intent": "Captures broad domestic support from policy, liquidity, credit, or capital-market reform.",
+      "example_events": ["policy easing", "long-term capital guidance", "credit impulse improvement"],
+      "pool_impacts": [
+        { "pool_id": "a_share_brokerage", "strength": "high", "multiplier": 1 },
+        { "pool_id": "a_share_real_estate_infra", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_bank_insurance", "strength": "medium", "multiplier": 1 },
+        { "pool_id": "a_share_consumer", "strength": "low", "multiplier": 1 },
+        { "pool_id": "a_share_semiconductor", "strength": "low", "multiplier": 1 },
+        { "pool_id": "a_share_ai_computer", "strength": "low", "multiplier": 1 },
+        { "pool_id": "a_share_communication_electronics", "strength": "low", "multiplier": 1 }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "dxy",
+  "kind": "node",
+  "name": "US Dollar Index",
+  "data_type": "hard_data",
+  "category": "fx",
+  "frequency": "daily",
+  "description": "Dollar strength affects global liquidity, commodities, Bitcoin, gold, and non-US risk assets. Direction is edge-specific.",
+  "source": {
+    "provider": "market_data",
+    "ticker": "DXY",
+    "status": "planned"
+  }
+}

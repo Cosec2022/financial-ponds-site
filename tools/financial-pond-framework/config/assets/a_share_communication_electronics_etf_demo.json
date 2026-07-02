@@ -1,0 +1,9 @@
+{
+  "id": "a_share_communication_electronics_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Communication and Electronics ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Communication and Electronics Pool. Typical real products include: 5GETF, 通信ETF, 消费电子ETF, 电子ETF."
+}

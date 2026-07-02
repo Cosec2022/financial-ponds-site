@@ -1,0 +1,14 @@
+{
+  "id": "ipo_refinancing_pressure",
+  "kind": "node",
+  "name": "IPO and Refinancing Pressure",
+  "data_type": "hard_data",
+  "category": "equity_supply",
+  "frequency": "weekly",
+  "description": "Equity financing supply pressure from IPOs, placements, and refinancing. Higher supply can drain the A-share pond, so edges should usually use an inverse transform.",
+  "source": {
+    "provider": "exchange_or_regulator",
+    "status": "planned"
+  }
+}
+

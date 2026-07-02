@@ -1,0 +1,13 @@
+{
+  "id": "communication_electronics_leader_confirmation",
+  "kind": "node",
+  "name": "Communication and Electronics Leader Confirmation",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Confirmation from leading sector constituents. Sector context: Communication and electronics ETFs sit between AI hardware, consumer electronics, telecom infrastructure, and export demand.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

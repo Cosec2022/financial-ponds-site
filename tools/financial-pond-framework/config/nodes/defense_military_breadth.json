@@ -1,0 +1,13 @@
+{
+  "id": "defense_military_breadth",
+  "kind": "node",
+  "name": "Defense and Military Breadth",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Participation breadth inside the sector. Sector context: Defense ETFs are influenced by orders, fiscal defense spending, geopolitics, and state-owned asset restructuring expectations.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

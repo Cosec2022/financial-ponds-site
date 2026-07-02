@@ -1,0 +1,28 @@
+{
+  "id": "normalization_profiles_v0_5",
+  "description": "Generic rules for converting raw data into normalized node scores.",
+  "profiles": {
+    "latest_level_passthrough": {
+      "method": "passthrough",
+      "description": "Use when input value is already a normalized score in [-2, 2]."
+    },
+    "change_zscore": {
+      "method": "change_zscore",
+      "lookback": 60,
+      "clamp": [-2, 2],
+      "description": "Convert latest one-period change into a z-score against recent changes."
+    },
+    "level_zscore": {
+      "method": "level_zscore",
+      "lookback": 252,
+      "clamp": [-2, 2],
+      "description": "Convert latest level into a z-score against recent levels."
+    },
+    "percent_change_zscore": {
+      "method": "percent_change_zscore",
+      "lookback": 60,
+      "clamp": [-2, 2],
+      "description": "Convert latest percent change into a z-score against recent percent changes."
+    }
+  }
+}

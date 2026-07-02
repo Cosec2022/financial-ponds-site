@@ -1,0 +1,13 @@
+{
+  "id": "new_energy_ev_fundamental_proxy",
+  "kind": "node",
+  "name": "New Energy Vehicle Fundamental Proxy",
+  "data_type": "hard_data",
+  "category": "sector_fundamental",
+  "frequency": "weekly",
+  "description": "Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission. Sector context: New energy vehicle ETFs are driven by vehicle sales, battery prices, lithium cycle, inventory, and capacity discipline.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

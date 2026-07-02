@@ -1,0 +1,13 @@
+{
+  "id": "ai_computer_policy_news",
+  "kind": "node",
+  "name": "AI and Computer Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: AI and computer ETFs depend on AI infrastructure spending, software demand, policy procurement, and growth-stock liquidity.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

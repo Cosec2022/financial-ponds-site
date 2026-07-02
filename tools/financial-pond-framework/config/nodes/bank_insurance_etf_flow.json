@@ -1,0 +1,13 @@
+{
+  "id": "bank_insurance_etf_flow",
+  "kind": "node",
+  "name": "Bank and Insurance ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Bank and insurance ETFs are credit-cycle and balance-sheet-sensitive financial pools.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

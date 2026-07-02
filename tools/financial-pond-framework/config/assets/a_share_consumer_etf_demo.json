@@ -1,0 +1,9 @@
+{
+  "id": "a_share_consumer_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Consumer ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Consumer Pool. Typical real products include: 消费ETF, 食品饮料ETF, 酒ETF, 家电ETF."
+}

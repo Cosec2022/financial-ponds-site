@@ -1,0 +1,9 @@
+{
+  "id": "a_share_resources_materials_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Resources and Materials ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Resources and Materials Pool. Typical real products include: 有色ETF, 稀土ETF, 煤炭ETF, 钢铁ETF, 化工ETF."
+}

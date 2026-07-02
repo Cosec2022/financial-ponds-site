@@ -1,0 +1,13 @@
+{
+  "id": "brokerage_policy_news",
+  "kind": "node",
+  "name": "Brokerage Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: Brokerage ETFs are sensitive to market turnover, margin financing, IPO and refinancing policy, and expectations for a stronger equity cycle.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

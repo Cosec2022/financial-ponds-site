@@ -1,0 +1,11 @@
+{
+  "id": "a_share_ai_computer",
+  "kind": "pool",
+  "name": "A-share AI and Computer Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "AI and computer ETFs depend on AI infrastructure spending, software demand, policy procurement, and growth-stock liquidity.",
+  "scoring_profile": "default_pool_v0_1"
+}

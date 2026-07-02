@@ -1,0 +1,39 @@
+{
+  "name": "financial-pond-framework",
+  "version": "0.9.8",
+  "description": "Config-driven financial pond graph framework for cross-asset and sector ETF analysis.",
+  "type": "module",
+  "scripts": {
+    "demo": "node src/index.mjs",
+    "daily": "node src/pipeline/run_daily.mjs",
+    "cycle": "node src/pipeline/run_cycle.mjs",
+    "scheduler": "node src/scheduler/run_twice_daily.mjs",
+    "export:web-data": "node src/web/export_dashboard_data.mjs",
+    "materialize:sectors": "node src/tools/materialize_sector_catalog.mjs",
+    "sources:status": "node src/tools/source_status_report.mjs",
+    "a-share:daily": "npm run provider:akshare && npm run provider:a-share-water && npm run provider:akshare:validate && npm run provider:akshare:inspect && npm run provider:akshare:to-flow && npm run provider:a-share-water:to-observations && npm run flow:review",
+    "scheduler:a-share": "node src/scheduler/run_a_share_daily.mjs",
+    "provider:akshare": "python3 providers/akshare_etf_bridge/export_a_share_etf_daily.py",
+    "provider:akshare:fixture": "python3 providers/akshare_etf_bridge/export_a_share_etf_daily.py --fixture",
+    "provider:akshare:backfill-month": "python3 providers/akshare_etf_bridge/backfill_a_share_etf_history.py",
+    "provider:akshare:backfill-month:fixture": "python3 providers/akshare_etf_bridge/backfill_a_share_etf_history.py --fixture",
+    "provider:akshare:validate": "python3 providers/akshare_etf_bridge/validate_exports.py",
+    "provider:akshare:inspect": "python3 providers/akshare_etf_bridge/inspect_exports.py",
+    "provider:akshare:to-flow": "node src/tools/akshare_flow_observations.mjs",
+    "provider:a-share-water": "python3 providers/a_share_water_level/export_a_share_water_level.py",
+    "provider:a-share-water:fixture": "python3 providers/a_share_water_level/export_a_share_water_level.py --fixture",
+    "provider:a-share-water:to-observations": "node src/tools/a_share_water_observations.mjs",
+    "provider:efinance:probe": "python3 providers/efinance_quote_bridge/probe_a_share_etf_quotes.py",
+    "provider:efinance:probe:fixture": "python3 providers/efinance_quote_bridge/probe_a_share_etf_quotes.py --fixture",
+    "provider:qstock:probe": "python3 providers/qstock_bridge/probe_a_share_structure.py",
+    "provider:qstock:probe:fixture": "python3 providers/qstock_bridge/probe_a_share_structure.py --fixture",
+    "providers:compare:a-share-etf": "python3 providers/provider_comparison/compare_a_share_etf_providers.py",
+    "flow:review": "node src/tools/sector_flow_review.mjs",
+    "flow:review:fixture": "node src/tools/sector_flow_review.mjs --fixture",
+    "web": "node src/web/serve_static.mjs",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

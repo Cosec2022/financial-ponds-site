@@ -1,0 +1,14 @@
+{
+  "id": "btc_price_momentum",
+  "kind": "node",
+  "name": "BTC Price Momentum",
+  "data_type": "hard_data",
+  "category": "market_confirmation",
+  "frequency": "daily",
+  "description": "BTC short-term price momentum proxy. This confirms market action and should not be confused with BTC ETF flow.",
+  "source": {
+    "provider": "crypto_exchange_market_data",
+    "status": "planned"
+  }
+}
+

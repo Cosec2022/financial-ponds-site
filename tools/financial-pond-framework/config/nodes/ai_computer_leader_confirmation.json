@@ -1,0 +1,13 @@
+{
+  "id": "ai_computer_leader_confirmation",
+  "kind": "node",
+  "name": "AI and Computer Leader Confirmation",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Confirmation from leading sector constituents. Sector context: AI and computer ETFs depend on AI infrastructure spending, software demand, policy procurement, and growth-stock liquidity.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "id": "a_share_industry_etf_catalog_v0_6_2",
+  "description": "Human-readable source catalog for A-share industry ETF pools. The materializer converts this catalog into standard node, pool, asset, edge, layer, and report config files.",
+  "parent_pool": "a_share",
+  "pool_prefix": "a_share",
+  "asset_suffix": "etf_demo",
+  "scoring_profile": "default_pool_v0_1",
+  "default_sector_components": {
+    "upstream": 0.20,
+    "inflow": 0.25,
+    "confirmation": 0.25,
+    "fundamental": 0.15,
+    "news_expectation": 0.15,
+    "downstream": 0.00
+  },
+  "node_templates": [
+    {
+      "suffix": "etf_flow",
+      "name_suffix": "ETF Flow",
+      "data_type": "hard_data",
+      "category": "sector_fund_flow",
+      "frequency": "daily",
+      "layer": "inflow",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "suffix": "policy_news",
+      "name_suffix": "Policy News",
+      "data_type": "news",
+      "category": "sector_policy",
+      "frequency": "event",
+      "layer": "news_expectation",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "suffix": "relative_strength",
+      "name_suffix": "Relative Strength",
+      "data_type": "hard_data",
+      "category": "sector_confirmation",
+      "frequency": "daily",
+      "layer": "confirmation",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.20,
+      "transform": "identity",
+      "description": "Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "suffix": "breadth",
+      "name_suffix": "Breadth",
+      "data_type": "hard_data",
+      "category": "sector_confirmation",
+      "frequency": "daily",
+      "layer": "confirmation",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Participation breadth inside the sector."
+    },
+    {
+      "suffix": "leader_confirmation",
+      "name_suffix": "Leader Confirmation",
+      "data_type": "hard_data",
+      "category": "sector_confirmation",
+      "frequency": "daily",
+      "layer": "confirmation",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.10,
+      "transform": "identity",
+      "description": "Confirmation from leading sector constituents."
+    },
+    {
+      "suffix": "fundamental_proxy",
+      "name_suffix": "Fundamental Proxy",
+      "data_type": "hard_data",
+      "category": "sector_fundamental",
+      "frequency": "weekly",
+      "layer": "fundamental",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    }
+  ],
+  "sectors": [
+    {
+      "id": "brokerage",
+      "name": "Brokerage",
+      "display_name": "A-share Brokerage Pool",
+      "priority": 1,
+      "typical_etfs": ["券商ETF", "证券ETF"],
+      "key_drivers": ["A-share turnover", "margin balance", "capital-market reform", "risk appetite"],
+      "description": "Brokerage ETFs are sensitive to market turnover, margin financing, IPO and refinancing policy, and expectations for a stronger equity cycle."
+    },
+    {
+      "id": "bank_insurance",
+      "name": "Bank and Insurance",
+      "display_name": "A-share Bank and Insurance Pool",
+      "priority": 2,
+      "typical_etfs": ["银行ETF", "证券保险ETF", "金融ETF"],
+      "key_drivers": ["credit cycle", "net interest margin", "asset quality", "real estate credit"],
+      "description": "Bank and insurance ETFs are credit-cycle and balance-sheet-sensitive financial pools."
+    },
+    {
+      "id": "semiconductor",
+      "name": "Semiconductor",
+      "display_name": "A-share Semiconductor Pool",
+      "priority": 3,
+      "typical_etfs": ["芯片ETF", "半导体ETF", "科创芯片ETF"],
+      "key_drivers": ["AI cycle", "domestic substitution", "export controls", "equipment orders"],
+      "description": "Semiconductor ETFs combine AI demand, localization, equipment cycles, and policy sensitivity."
+    },
+    {
+      "id": "ai_computer",
+      "name": "AI and Computer",
+      "display_name": "A-share AI and Computer Pool",
+      "priority": 4,
+      "typical_etfs": ["人工智能ETF", "云计算ETF", "软件ETF", "大数据ETF"],
+      "key_drivers": ["AI capex", "software orders", "government IT demand", "risk appetite"],
+      "description": "AI and computer ETFs depend on AI infrastructure spending, software demand, policy procurement, and growth-stock liquidity."
+    },
+    {
+      "id": "communication_electronics",
+      "name": "Communication and Electronics",
+      "display_name": "A-share Communication and Electronics Pool",
+      "priority": 5,
+      "typical_etfs": ["5GETF", "通信ETF", "消费电子ETF", "电子ETF"],
+      "key_drivers": ["device cycle", "AI hardware", "telecom equipment", "exports"],
+      "description": "Communication and electronics ETFs sit between AI hardware, consumer electronics, telecom infrastructure, and export demand."
+    },
+    {
+      "id": "new_energy_ev",
+      "name": "New Energy Vehicle",
+      "display_name": "A-share New Energy Vehicle Pool",
+      "priority": 6,
+      "typical_etfs": ["新能源车ETF", "电池ETF", "锂电ETF"],
+      "key_drivers": ["EV sales", "lithium price", "inventory", "capacity clearing"],
+      "description": "New energy vehicle ETFs are driven by vehicle sales, battery prices, lithium cycle, inventory, and capacity discipline."
+    },
+    {
+      "id": "healthcare_pharma",
+      "name": "Healthcare and Pharma",
+      "display_name": "A-share Healthcare and Pharma Pool",
+      "priority": 7,
+      "typical_etfs": ["医药ETF", "医疗ETF", "创新药ETF", "中药ETF"],
+      "key_drivers": ["centralized procurement", "insurance payment", "drug approval", "license-out news"],
+      "description": "Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve."
+    },
+    {
+      "id": "consumer",
+      "name": "Consumer",
+      "display_name": "A-share Consumer Pool",
+      "priority": 8,
+      "typical_etfs": ["消费ETF", "食品饮料ETF", "酒ETF", "家电ETF"],
+      "key_drivers": ["retail sales", "household income", "CPI", "channel inventory"],
+      "description": "Consumer ETFs depend on household income, retail sales, pricing power, inventory, and confidence."
+    },
+    {
+      "id": "defense_military",
+      "name": "Defense and Military",
+      "display_name": "A-share Defense and Military Pool",
+      "priority": 9,
+      "typical_etfs": ["军工ETF", "国防ETF"],
+      "key_drivers": ["geopolitical risk", "defense budget", "orders", "asset injection"],
+      "description": "Defense ETFs are influenced by orders, fiscal defense spending, geopolitics, and state-owned asset restructuring expectations."
+    },
+    {
+      "id": "resources_materials",
+      "name": "Resources and Materials",
+      "display_name": "A-share Resources and Materials Pool",
+      "priority": 10,
+      "typical_etfs": ["有色ETF", "稀土ETF", "煤炭ETF", "钢铁ETF", "化工ETF"],
+      "key_drivers": ["commodity price", "DXY", "inventory", "global manufacturing cycle"],
+      "description": "Resources and materials ETFs are driven by commodity prices, dollar pressure, inventory, supply discipline, and global manufacturing conditions."
+    },
+    {
+      "id": "real_estate_infra",
+      "name": "Real Estate and Infrastructure",
+      "display_name": "A-share Real Estate and Infrastructure Pool",
+      "priority": 11,
+      "typical_etfs": ["房地产ETF", "基建ETF", "建材ETF"],
+      "key_drivers": ["property sales", "financing policy", "local fiscal expansion", "construction demand"],
+      "description": "Real estate and infrastructure ETFs are credit, policy, and fiscal-cycle-sensitive pools."
+    }
+  ]
+}
+

@@ -1,0 +1,11 @@
+{
+  "id": "gold",
+  "kind": "pool",
+  "name": "Gold Pool",
+  "pool_type": "asset_class",
+  "region": "GLOBAL",
+  "currency": "USD",
+  "parent_pool": null,
+  "description": "Tracks gold as a real-rate, dollar, inflation, central-bank-demand, and risk-off sensitive asset pool.",
+  "scoring_profile": "default_pool_v0_1"
+}

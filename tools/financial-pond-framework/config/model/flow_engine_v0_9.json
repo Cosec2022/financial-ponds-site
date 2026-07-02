@@ -1,0 +1,36 @@
+{
+  "id": "flow_engine_v0_9",
+  "description": "A-share sector ETF flow interpretation model. This model reads observations and flexible risk factors, writes review outputs, and does not modify graph scores.",
+  "score_range": [-1, 1],
+  "component_weights": {
+    "direct_flow": 0.3,
+    "market_confirmation": 0.25,
+    "market_liquidity": 0.15,
+    "policy_sentiment": 0.1,
+    "fundamental_proxy": 0.1,
+    "external_factor_effect": 0.1
+  },
+  "sector_node_suffixes": {
+    "direct_flow": ["etf_flow"],
+    "market_confirmation": ["relative_strength", "breadth", "leader_confirmation"],
+    "policy_sentiment": ["policy_news"],
+    "fundamental_proxy": ["fundamental_proxy"]
+  },
+  "common_nodes": {
+    "market_liquidity": ["a_share_turnover", "a_share_breadth", "margin_balance", "etf_total_flow_a_share"],
+    "policy_sentiment": ["china_policy_news"]
+  },
+  "labels": [
+    { "id": "strong_inflow_bias", "min_score": 0.5, "description": "Strong relative capital-flow bias. Requires review before any portfolio decision." },
+    { "id": "constructive_inflow_bias", "min_score": 0.2, "description": "Constructive flow bias with some confirmation." },
+    { "id": "neutral", "min_score": -0.2, "description": "No clear sector flow edge." },
+    { "id": "outflow_watch", "min_score": -0.5, "description": "Outflow or pressure watch. Needs confirmation from flow and market data." },
+    { "id": "risk_off_pressure", "min_score": -1, "description": "Strong pressure in the current signal set." }
+  ],
+  "rules": [
+    "The engine ranks sector flow pressure; it is not a trading command.",
+    "If ETF share history is missing, direct_flow can only use proxy observations and confidence must stay limited by available inputs.",
+    "External factor effects can reduce or improve sector score, but cannot override domestic market confirmation by themselves.",
+    "A new sector can join the model through config/sector_catalog without changing core engine code."
+  ]
+}

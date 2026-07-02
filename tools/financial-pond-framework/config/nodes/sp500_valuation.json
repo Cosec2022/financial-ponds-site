@@ -1,0 +1,14 @@
+{
+  "id": "sp500_valuation",
+  "kind": "node",
+  "name": "S&P 500 Valuation Pressure",
+  "data_type": "hard_data",
+  "category": "valuation",
+  "frequency": "daily",
+  "description": "Valuation pressure proxy, such as forward P/E relative to history and rates. Higher valuation pressure should usually use an inverse transform.",
+  "source": {
+    "provider": "valuation_data_vendor",
+    "status": "planned"
+  }
+}
+

@@ -1,0 +1,13 @@
+{
+  "id": "usd_liquidity",
+  "kind": "node",
+  "name": "USD Liquidity",
+  "data_type": "hard_data",
+  "category": "global_liquidity",
+  "frequency": "daily_or_weekly",
+  "description": "Proxy for global dollar liquidity. Future versions may combine Fed balance sheet, TGA, RRP, USD M2, and BIS dollar credit.",
+  "source": {
+    "provider": "composite",
+    "status": "planned"
+  }
+}

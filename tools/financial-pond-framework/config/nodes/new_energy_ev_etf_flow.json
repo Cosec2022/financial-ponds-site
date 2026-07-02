@@ -1,0 +1,13 @@
+{
+  "id": "new_energy_ev_etf_flow",
+  "kind": "node",
+  "name": "New Energy Vehicle ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: New energy vehicle ETFs are driven by vehicle sales, battery prices, lithium cycle, inventory, and capacity discipline.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

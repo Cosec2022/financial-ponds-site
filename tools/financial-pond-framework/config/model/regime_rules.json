@@ -1,0 +1,54 @@
+{
+  "id": "regime_rules_v0_6",
+  "description": "Config-driven market regime rules. These rules summarize context and do not mutate core graph scores in v0.6.",
+  "regimes": [
+    {
+      "id": "risk_off",
+      "name": "Risk-Off",
+      "description": "Risk appetite is weak or volatility pressure is high.",
+      "score": 1,
+      "conditions": [
+        { "node_id": "vix", "operator": ">=", "value": 0.6 }
+      ]
+    },
+    {
+      "id": "liquidity_easing",
+      "name": "Liquidity Easing",
+      "description": "Dollar liquidity is supportive while real-rate pressure is not dominant.",
+      "score": 1,
+      "conditions": [
+        { "node_id": "usd_liquidity", "operator": ">=", "value": 0.4 },
+        { "node_id": "us_real_rate", "operator": "<=", "value": 0.5 }
+      ]
+    },
+    {
+      "id": "china_credit_impulse",
+      "name": "China Credit Impulse",
+      "description": "China credit or liquidity conditions are improving enough to matter for China-linked ponds.",
+      "score": 1,
+      "conditions": [
+        { "node_id": "china_social_financing", "operator": ">=", "value": 0.25 }
+      ]
+    },
+    {
+      "id": "crypto_liquidity_expansion",
+      "name": "Crypto Liquidity Expansion",
+      "description": "Stablecoin liquidity and BTC ETF flow are both supportive.",
+      "score": 1,
+      "conditions": [
+        { "node_id": "stablecoin_supply", "operator": ">=", "value": 0.35 },
+        { "node_id": "btc_etf_flow", "operator": ">=", "value": 0.5 }
+      ]
+    },
+    {
+      "id": "gold_defensive_bid",
+      "name": "Gold Defensive Bid",
+      "description": "Geopolitical risk news is strong enough to support defensive demand for gold.",
+      "score": 1,
+      "conditions": [
+        { "node_id": "geopolitical_risk_news", "operator": ">=", "value": 0.5 }
+      ]
+    }
+  ]
+}
+

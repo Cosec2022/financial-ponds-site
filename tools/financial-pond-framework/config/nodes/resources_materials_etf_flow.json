@@ -1,0 +1,13 @@
+{
+  "id": "resources_materials_etf_flow",
+  "kind": "node",
+  "name": "Resources and Materials ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Resources and materials ETFs are driven by commodity prices, dollar pressure, inventory, supply discipline, and global manufacturing conditions.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

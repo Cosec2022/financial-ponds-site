@@ -1,0 +1,11 @@
+{
+  "id": "a_share_communication_electronics",
+  "kind": "pool",
+  "name": "A-share Communication and Electronics Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "Communication and electronics ETFs sit between AI hardware, consumer electronics, telecom infrastructure, and export demand.",
+  "scoring_profile": "default_pool_v0_1"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "new_energy_ev_relative_strength",
+  "kind": "node",
+  "name": "New Energy Vehicle Relative Strength",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: New energy vehicle ETFs are driven by vehicle sales, battery prices, lithium cycle, inventory, and capacity discipline.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

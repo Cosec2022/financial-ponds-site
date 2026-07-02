@@ -1,0 +1,14 @@
+{
+  "id": "mega_cap_earnings",
+  "kind": "node",
+  "name": "US Mega-Cap Earnings Confirmation",
+  "data_type": "hard_data",
+  "category": "earnings_expectation",
+  "frequency": "quarterly",
+  "description": "Earnings confirmation from the largest S&P 500 constituents. Important because cap-weighted S&P 500 ETF exposure is concentrated in mega-cap leaders.",
+  "source": {
+    "provider": "earnings_data_vendor_or_filings",
+    "status": "planned"
+  }
+}
+

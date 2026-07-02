@@ -1,0 +1,14 @@
+{
+  "id": "sp500_breadth",
+  "kind": "node",
+  "name": "S&P 500 Breadth",
+  "data_type": "hard_data",
+  "category": "market_confirmation",
+  "frequency": "daily",
+  "description": "Participation breadth inside the S&P 500, such as percent of members above moving averages or advance-decline metrics.",
+  "source": {
+    "provider": "market_data",
+    "status": "planned"
+  }
+}
+

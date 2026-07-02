@@ -1,0 +1,13 @@
+{
+  "id": "healthcare_pharma_relative_strength",
+  "kind": "node",
+  "name": "Healthcare and Pharma Relative Strength",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "consumer_etf_flow",
+  "kind": "node",
+  "name": "Consumer ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Consumer ETFs depend on household income, retail sales, pricing power, inventory, and confidence.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

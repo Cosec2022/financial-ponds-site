@@ -1,0 +1,13 @@
+{
+  "id": "btc_etf_flow",
+  "kind": "node",
+  "name": "Bitcoin Spot ETF Flow",
+  "data_type": "hard_data",
+  "category": "asset_flow",
+  "frequency": "daily",
+  "description": "Net flow into spot Bitcoin ETFs. This is a key bridge from traditional finance into BTC demand.",
+  "source": {
+    "provider": "etf_flow_data",
+    "status": "planned"
+  }
+}

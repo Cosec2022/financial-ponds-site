@@ -1,0 +1,13 @@
+{
+  "id": "gold_etf_flow",
+  "kind": "node",
+  "name": "Gold ETF Flow",
+  "data_type": "hard_data",
+  "category": "asset_flow",
+  "frequency": "weekly_or_monthly",
+  "description": "Physically-backed gold ETF flows indicate investment demand for gold.",
+  "source": {
+    "provider": "World Gold Council",
+    "status": "planned"
+  }
+}

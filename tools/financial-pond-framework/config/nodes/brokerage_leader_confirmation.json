@@ -1,0 +1,13 @@
+{
+  "id": "brokerage_leader_confirmation",
+  "kind": "node",
+  "name": "Brokerage Leader Confirmation",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Confirmation from leading sector constituents. Sector context: Brokerage ETFs are sensitive to market turnover, margin financing, IPO and refinancing policy, and expectations for a stronger equity cycle.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

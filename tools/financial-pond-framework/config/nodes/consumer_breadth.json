@@ -1,0 +1,13 @@
+{
+  "id": "consumer_breadth",
+  "kind": "node",
+  "name": "Consumer Breadth",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Participation breadth inside the sector. Sector context: Consumer ETFs depend on household income, retail sales, pricing power, inventory, and confidence.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

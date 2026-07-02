@@ -1,0 +1,9 @@
+{
+  "id": "sp500_etf_demo",
+  "kind": "asset",
+  "name": "Demo S&P 500 ETF",
+  "asset_type": "etf",
+  "market": "US",
+  "currency": "USD",
+  "description": "Example S&P 500 ETF asset connected to the S&P 500 pool. Replace or extend with real tickers such as SPY, VOO, or IVV later."
+}

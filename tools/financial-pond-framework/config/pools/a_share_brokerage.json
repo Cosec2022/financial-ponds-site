@@ -1,0 +1,11 @@
+{
+  "id": "a_share_brokerage",
+  "kind": "pool",
+  "name": "A-share Brokerage Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "Brokerage ETFs are sensitive to market turnover, margin financing, IPO and refinancing policy, and expectations for a stronger equity cycle.",
+  "scoring_profile": "default_pool_v0_1"
+}

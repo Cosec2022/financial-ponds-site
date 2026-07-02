@@ -1,0 +1,11 @@
+{
+  "id": "a_share_bank_insurance",
+  "kind": "pool",
+  "name": "A-share Bank and Insurance Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "Bank and insurance ETFs are credit-cycle and balance-sheet-sensitive financial pools.",
+  "scoring_profile": "default_pool_v0_1"
+}

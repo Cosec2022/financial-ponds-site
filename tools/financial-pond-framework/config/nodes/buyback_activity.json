@@ -1,0 +1,14 @@
+{
+  "id": "buyback_activity",
+  "kind": "node",
+  "name": "US Buyback Activity",
+  "data_type": "hard_data",
+  "category": "corporate_demand",
+  "frequency": "weekly",
+  "description": "Corporate repurchase activity proxy. Buybacks can be an important structural source of demand for US equities.",
+  "source": {
+    "provider": "company_filings_or_vendor",
+    "status": "planned"
+  }
+}
+

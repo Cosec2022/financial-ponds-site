@@ -1,0 +1,14 @@
+{
+  "id": "treasury_10y_yield",
+  "kind": "node",
+  "name": "US 10Y Treasury Yield",
+  "data_type": "hard_data",
+  "category": "discount_rate",
+  "frequency": "daily",
+  "description": "US 10-year Treasury yield proxy. Higher yields often pressure equity valuations, especially long-duration growth exposure.",
+  "source": {
+    "provider": "fred_or_market_data",
+    "status": "planned"
+  }
+}
+

@@ -1,0 +1,13 @@
+{
+  "id": "semiconductor_etf_flow",
+  "kind": "node",
+  "name": "Semiconductor ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Semiconductor ETFs combine AI demand, localization, equipment cycles, and policy sensitivity.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

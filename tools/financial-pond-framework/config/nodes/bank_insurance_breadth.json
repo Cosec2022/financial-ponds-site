@@ -1,0 +1,13 @@
+{
+  "id": "bank_insurance_breadth",
+  "kind": "node",
+  "name": "Bank and Insurance Breadth",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Participation breadth inside the sector. Sector context: Bank and insurance ETFs are credit-cycle and balance-sheet-sensitive financial pools.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

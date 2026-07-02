@@ -1,0 +1,1436 @@
+{
+  "id": "graph_v0_1",
+  "description": "Configurable influence graph. Edges define financial relationships. Core code must not add market-specific assumptions.",
+  "edges": [
+    {
+      "id": "a_share_breadth_to_a_share",
+      "from": "a_share_breadth",
+      "to": "a_share",
+      "channel": "market_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Broad participation confirms that the A-share move is not only index-level concentration."
+    },
+    {
+      "id": "a_share_etf_total_flow_to_a_share",
+      "from": "etf_total_flow_a_share",
+      "to": "a_share",
+      "channel": "fund_flow",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "A-share equity ETF flow is direct evidence of capital entering the domestic ETF market."
+    },
+    {
+      "id": "a_share_pool_to_ai_computer_etf_demo",
+      "from": "a_share",
+      "to": "a_share_ai_computer_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_bank_insurance_etf_demo",
+      "from": "a_share",
+      "to": "a_share_bank_insurance_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_brokerage_etf_demo",
+      "from": "a_share",
+      "to": "a_share_brokerage_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_communication_electronics_etf_demo",
+      "from": "a_share",
+      "to": "a_share_communication_electronics_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_consumer_etf_demo",
+      "from": "a_share",
+      "to": "a_share_consumer_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_defense_military_etf_demo",
+      "from": "a_share",
+      "to": "a_share_defense_military_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_healthcare_pharma_etf_demo",
+      "from": "a_share",
+      "to": "a_share_healthcare_pharma_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_new_energy_ev_etf_demo",
+      "from": "a_share",
+      "to": "a_share_new_energy_ev_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_real_estate_infra_etf_demo",
+      "from": "a_share",
+      "to": "a_share_real_estate_infra_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_resources_materials_etf_demo",
+      "from": "a_share",
+      "to": "a_share_resources_materials_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_pool_to_semiconductor_etf_demo",
+      "from": "a_share",
+      "to": "a_share_semiconductor_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Demo ETF also has broad A-share market beta."
+    },
+    {
+      "id": "a_share_to_ai_computer",
+      "from": "a_share",
+      "to": "a_share_ai_computer",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share AI and Computer Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_bank_insurance",
+      "from": "a_share",
+      "to": "a_share_bank_insurance",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Bank and Insurance Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_brokerage",
+      "from": "a_share",
+      "to": "a_share_brokerage",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Brokerage Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_communication_electronics",
+      "from": "a_share",
+      "to": "a_share_communication_electronics",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Communication and Electronics Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_consumer",
+      "from": "a_share",
+      "to": "a_share_consumer",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Consumer Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_defense_military",
+      "from": "a_share",
+      "to": "a_share_defense_military",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Defense and Military Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_healthcare_pharma",
+      "from": "a_share",
+      "to": "a_share_healthcare_pharma",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Healthcare and Pharma Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_new_energy_ev",
+      "from": "a_share",
+      "to": "a_share_new_energy_ev",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share New Energy Vehicle Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_real_estate_infra",
+      "from": "a_share",
+      "to": "a_share_real_estate_infra",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Real Estate and Infrastructure Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_resources_materials",
+      "from": "a_share",
+      "to": "a_share_resources_materials",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Resources and Materials Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_to_semiconductor",
+      "from": "a_share",
+      "to": "a_share_semiconductor",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "A-share Semiconductor Pool inherits broad A-share liquidity and sentiment through the parent market."
+    },
+    {
+      "id": "a_share_turnover_to_a_share",
+      "from": "a_share_turnover",
+      "to": "a_share",
+      "channel": "market_confirmation",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "Turnover confirms that expectations are becoming actual market participation."
+    },
+    {
+      "id": "ai_capex_news_to_sp500",
+      "from": "ai_capex_news",
+      "to": "sp500",
+      "channel": "industry_cycle",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "AI capex news can affect mega-cap technology and semiconductor-heavy index leadership."
+    },
+    {
+      "id": "ai_computer_breadth_to_ai_computer",
+      "from": "ai_computer_breadth",
+      "to": "a_share_ai_computer",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share AI and Computer Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "ai_computer_etf_flow_to_ai_computer",
+      "from": "ai_computer_etf_flow",
+      "to": "a_share_ai_computer",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share AI and Computer Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "ai_computer_fundamental_proxy_to_ai_computer",
+      "from": "ai_computer_fundamental_proxy",
+      "to": "a_share_ai_computer",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share AI and Computer Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "ai_computer_leader_confirmation_to_ai_computer",
+      "from": "ai_computer_leader_confirmation",
+      "to": "a_share_ai_computer",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share AI and Computer Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "ai_computer_policy_news_to_ai_computer",
+      "from": "ai_computer_policy_news",
+      "to": "a_share_ai_computer",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share AI and Computer Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "ai_computer_pool_to_etf_demo",
+      "from": "a_share_ai_computer",
+      "to": "a_share_ai_computer_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share AI and Computer Pool."
+    },
+    {
+      "id": "ai_computer_relative_strength_to_ai_computer",
+      "from": "ai_computer_relative_strength",
+      "to": "a_share_ai_computer",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share AI and Computer Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "bank_insurance_breadth_to_bank_insurance",
+      "from": "bank_insurance_breadth",
+      "to": "a_share_bank_insurance",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Bank and Insurance Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "bank_insurance_etf_flow_to_bank_insurance",
+      "from": "bank_insurance_etf_flow",
+      "to": "a_share_bank_insurance",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Bank and Insurance Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "bank_insurance_fundamental_proxy_to_bank_insurance",
+      "from": "bank_insurance_fundamental_proxy",
+      "to": "a_share_bank_insurance",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Bank and Insurance Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "bank_insurance_leader_confirmation_to_bank_insurance",
+      "from": "bank_insurance_leader_confirmation",
+      "to": "a_share_bank_insurance",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Bank and Insurance Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "bank_insurance_policy_news_to_bank_insurance",
+      "from": "bank_insurance_policy_news",
+      "to": "a_share_bank_insurance",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Bank and Insurance Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "bank_insurance_pool_to_etf_demo",
+      "from": "a_share_bank_insurance",
+      "to": "a_share_bank_insurance_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Bank and Insurance Pool."
+    },
+    {
+      "id": "bank_insurance_relative_strength_to_bank_insurance",
+      "from": "bank_insurance_relative_strength",
+      "to": "a_share_bank_insurance",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Bank and Insurance Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "brokerage_breadth_to_brokerage",
+      "from": "brokerage_breadth",
+      "to": "a_share_brokerage",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Brokerage Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "brokerage_etf_flow_to_brokerage",
+      "from": "brokerage_etf_flow",
+      "to": "a_share_brokerage",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Brokerage Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "brokerage_fundamental_proxy_to_brokerage",
+      "from": "brokerage_fundamental_proxy",
+      "to": "a_share_brokerage",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Brokerage Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "brokerage_leader_confirmation_to_brokerage",
+      "from": "brokerage_leader_confirmation",
+      "to": "a_share_brokerage",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Brokerage Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "brokerage_policy_news_to_brokerage",
+      "from": "brokerage_policy_news",
+      "to": "a_share_brokerage",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Brokerage Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "brokerage_pool_to_etf_demo",
+      "from": "a_share_brokerage",
+      "to": "a_share_brokerage_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Brokerage Pool."
+    },
+    {
+      "id": "brokerage_relative_strength_to_brokerage",
+      "from": "brokerage_relative_strength",
+      "to": "a_share_brokerage",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Brokerage Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "btc_etf_flow_to_btc",
+      "from": "btc_etf_flow",
+      "to": "btc",
+      "channel": "tradfi_inflow",
+      "direction": "positive",
+      "weight": 0.35,
+      "transform": "identity",
+      "description": "Spot ETF inflow is direct institutional demand for BTC."
+    },
+    {
+      "id": "btc_price_momentum_to_btc",
+      "from": "btc_price_momentum",
+      "to": "btc",
+      "channel": "market_confirmation",
+      "direction": "positive",
+      "weight": 0.12,
+      "transform": "identity",
+      "description": "BTC price momentum confirms market action separately from ETF flow and stablecoin liquidity."
+    },
+    {
+      "id": "buyback_activity_to_sp500",
+      "from": "buyback_activity",
+      "to": "sp500",
+      "channel": "corporate_demand",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Buybacks can be a structural source of demand for US equities."
+    },
+    {
+      "id": "china_policy_news_to_a_share",
+      "from": "china_policy_news",
+      "to": "a_share",
+      "channel": "policy_expectation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "China policy news affects expectations, but still enters as a node observation rather than a direct pool override."
+    },
+    {
+      "id": "china_social_financing_to_a_share",
+      "from": "china_social_financing",
+      "to": "a_share",
+      "channel": "cny_credit",
+      "direction": "positive",
+      "weight": 0.35,
+      "transform": "identity",
+      "description": "China credit improvement is upstream liquidity for A-shares."
+    },
+    {
+      "id": "cny_fx_pressure_to_a_share",
+      "from": "cny_fx_pressure",
+      "to": "a_share",
+      "channel": "currency_pressure",
+      "direction": "negative",
+      "weight": 0.1,
+      "transform": "inverse",
+      "description": "RMB depreciation pressure can weaken equity risk appetite and foreign capital willingness."
+    },
+    {
+      "id": "communication_electronics_breadth_to_communication_electronics",
+      "from": "communication_electronics_breadth",
+      "to": "a_share_communication_electronics",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Communication and Electronics Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "communication_electronics_etf_flow_to_communication_electronics",
+      "from": "communication_electronics_etf_flow",
+      "to": "a_share_communication_electronics",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Communication and Electronics Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "communication_electronics_fundamental_proxy_to_communication_electronics",
+      "from": "communication_electronics_fundamental_proxy",
+      "to": "a_share_communication_electronics",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Communication and Electronics Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "communication_electronics_leader_confirmation_to_communication_electronics",
+      "from": "communication_electronics_leader_confirmation",
+      "to": "a_share_communication_electronics",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Communication and Electronics Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "communication_electronics_policy_news_to_communication_electronics",
+      "from": "communication_electronics_policy_news",
+      "to": "a_share_communication_electronics",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Communication and Electronics Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "communication_electronics_pool_to_etf_demo",
+      "from": "a_share_communication_electronics",
+      "to": "a_share_communication_electronics_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Communication and Electronics Pool."
+    },
+    {
+      "id": "communication_electronics_relative_strength_to_communication_electronics",
+      "from": "communication_electronics_relative_strength",
+      "to": "a_share_communication_electronics",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Communication and Electronics Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "consumer_breadth_to_consumer",
+      "from": "consumer_breadth",
+      "to": "a_share_consumer",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Consumer Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "consumer_etf_flow_to_consumer",
+      "from": "consumer_etf_flow",
+      "to": "a_share_consumer",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Consumer Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "consumer_fundamental_proxy_to_consumer",
+      "from": "consumer_fundamental_proxy",
+      "to": "a_share_consumer",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Consumer Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "consumer_leader_confirmation_to_consumer",
+      "from": "consumer_leader_confirmation",
+      "to": "a_share_consumer",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Consumer Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "consumer_policy_news_to_consumer",
+      "from": "consumer_policy_news",
+      "to": "a_share_consumer",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Consumer Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "consumer_pool_to_etf_demo",
+      "from": "a_share_consumer",
+      "to": "a_share_consumer_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Consumer Pool."
+    },
+    {
+      "id": "consumer_relative_strength_to_consumer",
+      "from": "consumer_relative_strength",
+      "to": "a_share_consumer",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Consumer Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "credit_spread_to_sp500",
+      "from": "credit_spread",
+      "to": "sp500",
+      "channel": "risk_appetite",
+      "direction": "negative",
+      "weight": 0.15,
+      "transform": "inverse",
+      "description": "Wider credit spreads signal weaker risk appetite and tighter financing conditions."
+    },
+    {
+      "id": "defense_military_breadth_to_defense_military",
+      "from": "defense_military_breadth",
+      "to": "a_share_defense_military",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Defense and Military Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "defense_military_etf_flow_to_defense_military",
+      "from": "defense_military_etf_flow",
+      "to": "a_share_defense_military",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Defense and Military Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "defense_military_fundamental_proxy_to_defense_military",
+      "from": "defense_military_fundamental_proxy",
+      "to": "a_share_defense_military",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Defense and Military Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "defense_military_leader_confirmation_to_defense_military",
+      "from": "defense_military_leader_confirmation",
+      "to": "a_share_defense_military",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Defense and Military Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "defense_military_policy_news_to_defense_military",
+      "from": "defense_military_policy_news",
+      "to": "a_share_defense_military",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Defense and Military Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "defense_military_pool_to_etf_demo",
+      "from": "a_share_defense_military",
+      "to": "a_share_defense_military_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Defense and Military Pool."
+    },
+    {
+      "id": "defense_military_relative_strength_to_defense_military",
+      "from": "defense_military_relative_strength",
+      "to": "a_share_defense_military",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Defense and Military Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "demo_etf_to_default_portfolio",
+      "from": "a_share_semiconductor_etf_demo",
+      "to": "default_user_portfolio",
+      "channel": "holding_exposure",
+      "direction": "positive",
+      "weight": 1,
+      "transform": "identity",
+      "description": "Portfolio score can inherit from connected holdings. Future uploaded positions should create edges like this."
+    },
+    {
+      "id": "dr007_shibor_to_a_share",
+      "from": "dr007_shibor",
+      "to": "a_share",
+      "channel": "funding_cost",
+      "direction": "negative",
+      "weight": 0.15,
+      "transform": "inverse",
+      "description": "Higher interbank funding cost can reduce A-share liquidity."
+    },
+    {
+      "id": "dxy_to_btc",
+      "from": "dxy",
+      "to": "btc",
+      "channel": "dollar_pressure",
+      "direction": "negative",
+      "weight": 0.15,
+      "transform": "inverse",
+      "description": "A stronger dollar can pressure BTC through tighter global liquidity."
+    },
+    {
+      "id": "dxy_to_gold",
+      "from": "dxy",
+      "to": "gold",
+      "channel": "dollar_price_effect",
+      "direction": "negative",
+      "weight": 0.2,
+      "transform": "inverse",
+      "description": "A stronger dollar often pressures USD-denominated gold prices."
+    },
+    {
+      "id": "equal_weight_vs_cap_weight_to_sp500",
+      "from": "equal_weight_vs_cap_weight",
+      "to": "sp500",
+      "channel": "market_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Equal-weight strength confirms broader participation beyond mega-cap leaders."
+    },
+    {
+      "id": "fed_policy_news_to_sp500",
+      "from": "fed_policy_news",
+      "to": "sp500",
+      "channel": "policy_expectation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Fed policy news affects rate and liquidity expectations; market confirmation is still required."
+    },
+    {
+      "id": "geopolitical_risk_to_gold",
+      "from": "geopolitical_risk_news",
+      "to": "gold",
+      "channel": "risk_event",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Geopolitical risk can increase defensive demand for gold."
+    },
+    {
+      "id": "gold_etf_flow_to_gold",
+      "from": "gold_etf_flow",
+      "to": "gold",
+      "channel": "asset_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "Gold ETF inflow indicates investment demand for gold."
+    },
+    {
+      "id": "healthcare_pharma_breadth_to_healthcare_pharma",
+      "from": "healthcare_pharma_breadth",
+      "to": "a_share_healthcare_pharma",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Healthcare and Pharma Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "healthcare_pharma_etf_flow_to_healthcare_pharma",
+      "from": "healthcare_pharma_etf_flow",
+      "to": "a_share_healthcare_pharma",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Healthcare and Pharma Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "healthcare_pharma_fundamental_proxy_to_healthcare_pharma",
+      "from": "healthcare_pharma_fundamental_proxy",
+      "to": "a_share_healthcare_pharma",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Healthcare and Pharma Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "healthcare_pharma_leader_confirmation_to_healthcare_pharma",
+      "from": "healthcare_pharma_leader_confirmation",
+      "to": "a_share_healthcare_pharma",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Healthcare and Pharma Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "healthcare_pharma_policy_news_to_healthcare_pharma",
+      "from": "healthcare_pharma_policy_news",
+      "to": "a_share_healthcare_pharma",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Healthcare and Pharma Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "healthcare_pharma_pool_to_etf_demo",
+      "from": "a_share_healthcare_pharma",
+      "to": "a_share_healthcare_pharma_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Healthcare and Pharma Pool."
+    },
+    {
+      "id": "healthcare_pharma_relative_strength_to_healthcare_pharma",
+      "from": "healthcare_pharma_relative_strength",
+      "to": "a_share_healthcare_pharma",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Healthcare and Pharma Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "ipo_refinancing_pressure_to_a_share",
+      "from": "ipo_refinancing_pressure",
+      "to": "a_share",
+      "channel": "equity_supply",
+      "direction": "negative",
+      "weight": 0.1,
+      "transform": "inverse",
+      "description": "Equity issuance and refinancing pressure can drain available capital from the A-share pond."
+    },
+    {
+      "id": "m1_m2_gap_to_a_share",
+      "from": "m1_m2_gap",
+      "to": "a_share",
+      "channel": "domestic_transaction_liquidity",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Improving transaction money relative to broad money can support domestic equity participation."
+    },
+    {
+      "id": "margin_balance_to_a_share",
+      "from": "margin_balance",
+      "to": "a_share",
+      "channel": "leverage_flow",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Rising margin financing can confirm risk appetite before extreme overheating logic is added."
+    },
+    {
+      "id": "mega_cap_earnings_to_sp500",
+      "from": "mega_cap_earnings",
+      "to": "sp500",
+      "channel": "earnings_concentration",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Mega-cap earnings matter because S&P 500 ETF exposure is cap-weighted."
+    },
+    {
+      "id": "new_energy_ev_breadth_to_new_energy_ev",
+      "from": "new_energy_ev_breadth",
+      "to": "a_share_new_energy_ev",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share New Energy Vehicle Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "new_energy_ev_etf_flow_to_new_energy_ev",
+      "from": "new_energy_ev_etf_flow",
+      "to": "a_share_new_energy_ev",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share New Energy Vehicle Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "new_energy_ev_fundamental_proxy_to_new_energy_ev",
+      "from": "new_energy_ev_fundamental_proxy",
+      "to": "a_share_new_energy_ev",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share New Energy Vehicle Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "new_energy_ev_leader_confirmation_to_new_energy_ev",
+      "from": "new_energy_ev_leader_confirmation",
+      "to": "a_share_new_energy_ev",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share New Energy Vehicle Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "new_energy_ev_policy_news_to_new_energy_ev",
+      "from": "new_energy_ev_policy_news",
+      "to": "a_share_new_energy_ev",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share New Energy Vehicle Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "new_energy_ev_pool_to_etf_demo",
+      "from": "a_share_new_energy_ev",
+      "to": "a_share_new_energy_ev_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share New Energy Vehicle Pool."
+    },
+    {
+      "id": "new_energy_ev_relative_strength_to_new_energy_ev",
+      "from": "new_energy_ev_relative_strength",
+      "to": "a_share_new_energy_ev",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share New Energy Vehicle Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "real_estate_infra_breadth_to_real_estate_infra",
+      "from": "real_estate_infra_breadth",
+      "to": "a_share_real_estate_infra",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Real Estate and Infrastructure Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "real_estate_infra_etf_flow_to_real_estate_infra",
+      "from": "real_estate_infra_etf_flow",
+      "to": "a_share_real_estate_infra",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Real Estate and Infrastructure Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "real_estate_infra_fundamental_proxy_to_real_estate_infra",
+      "from": "real_estate_infra_fundamental_proxy",
+      "to": "a_share_real_estate_infra",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Real Estate and Infrastructure Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "real_estate_infra_leader_confirmation_to_real_estate_infra",
+      "from": "real_estate_infra_leader_confirmation",
+      "to": "a_share_real_estate_infra",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Real Estate and Infrastructure Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "real_estate_infra_policy_news_to_real_estate_infra",
+      "from": "real_estate_infra_policy_news",
+      "to": "a_share_real_estate_infra",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Real Estate and Infrastructure Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "real_estate_infra_pool_to_etf_demo",
+      "from": "a_share_real_estate_infra",
+      "to": "a_share_real_estate_infra_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Real Estate and Infrastructure Pool."
+    },
+    {
+      "id": "real_estate_infra_relative_strength_to_real_estate_infra",
+      "from": "real_estate_infra_relative_strength",
+      "to": "a_share_real_estate_infra",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Real Estate and Infrastructure Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "real_rate_to_btc",
+      "from": "us_real_rate",
+      "to": "btc",
+      "channel": "opportunity_cost",
+      "direction": "negative",
+      "weight": 0.2,
+      "transform": "inverse",
+      "description": "Higher real rates pressure non-cash-flow assets such as BTC."
+    },
+    {
+      "id": "real_rate_to_gold",
+      "from": "us_real_rate",
+      "to": "gold",
+      "channel": "opportunity_cost",
+      "direction": "negative",
+      "weight": 0.3,
+      "transform": "inverse",
+      "description": "Higher real rates raise the opportunity cost of holding gold."
+    },
+    {
+      "id": "real_rate_to_sp500",
+      "from": "us_real_rate",
+      "to": "sp500",
+      "channel": "discount_rate",
+      "direction": "negative",
+      "weight": 0.15,
+      "transform": "inverse",
+      "description": "Higher real rates raise discount-rate pressure on S&P 500 valuations."
+    },
+    {
+      "id": "real_rate_to_us_equity",
+      "from": "us_real_rate",
+      "to": "us_equity",
+      "channel": "discount_rate",
+      "direction": "negative",
+      "weight": 0.25,
+      "transform": "inverse",
+      "description": "Higher real rates increase discount-rate pressure on long-duration equities."
+    },
+    {
+      "id": "resources_materials_breadth_to_resources_materials",
+      "from": "resources_materials_breadth",
+      "to": "a_share_resources_materials",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Resources and Materials Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "resources_materials_etf_flow_to_resources_materials",
+      "from": "resources_materials_etf_flow",
+      "to": "a_share_resources_materials",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Resources and Materials Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "resources_materials_fundamental_proxy_to_resources_materials",
+      "from": "resources_materials_fundamental_proxy",
+      "to": "a_share_resources_materials",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Resources and Materials Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "resources_materials_leader_confirmation_to_resources_materials",
+      "from": "resources_materials_leader_confirmation",
+      "to": "a_share_resources_materials",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Resources and Materials Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "resources_materials_policy_news_to_resources_materials",
+      "from": "resources_materials_policy_news",
+      "to": "a_share_resources_materials",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Resources and Materials Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "resources_materials_pool_to_etf_demo",
+      "from": "a_share_resources_materials",
+      "to": "a_share_resources_materials_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Resources and Materials Pool."
+    },
+    {
+      "id": "resources_materials_relative_strength_to_resources_materials",
+      "from": "resources_materials_relative_strength",
+      "to": "a_share_resources_materials",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Resources and Materials Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "semiconductor_breadth_to_semiconductor",
+      "from": "semiconductor_breadth",
+      "to": "a_share_semiconductor",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Breadth affects A-share Semiconductor Pool. Participation breadth inside the sector."
+    },
+    {
+      "id": "semiconductor_etf_flow_to_semiconductor",
+      "from": "semiconductor_etf_flow",
+      "to": "a_share_semiconductor",
+      "channel": "sector_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "ETF Flow affects A-share Semiconductor Pool. Direct ETF share, AUM, or estimated net-flow evidence for the sector."
+    },
+    {
+      "id": "semiconductor_fundamental_proxy_to_semiconductor",
+      "from": "semiconductor_fundamental_proxy",
+      "to": "a_share_semiconductor",
+      "channel": "sector_fundamental",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Fundamental Proxy affects A-share Semiconductor Pool. Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission."
+    },
+    {
+      "id": "semiconductor_leader_confirmation_to_semiconductor",
+      "from": "semiconductor_leader_confirmation",
+      "to": "a_share_semiconductor",
+      "channel": "leader_confirmation",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Leader Confirmation affects A-share Semiconductor Pool. Confirmation from leading sector constituents."
+    },
+    {
+      "id": "semiconductor_policy_news_to_semiconductor",
+      "from": "semiconductor_policy_news",
+      "to": "a_share_semiconductor",
+      "channel": "sector_policy",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Policy News affects A-share Semiconductor Pool. Structured policy or regulatory news affecting expectations for the sector."
+    },
+    {
+      "id": "semiconductor_pool_to_etf_demo",
+      "from": "a_share_semiconductor",
+      "to": "a_share_semiconductor_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.85,
+      "transform": "identity",
+      "description": "Demo ETF inherits most of its signal from A-share Semiconductor Pool."
+    },
+    {
+      "id": "semiconductor_relative_strength_to_semiconductor",
+      "from": "semiconductor_relative_strength",
+      "to": "a_share_semiconductor",
+      "channel": "sector_confirmation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Relative Strength affects A-share Semiconductor Pool. Sector performance relative to broad A-shares or CSI 300."
+    },
+    {
+      "id": "sp500_breadth_to_sp500",
+      "from": "sp500_breadth",
+      "to": "sp500",
+      "channel": "market_confirmation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "S&P 500 breadth confirms whether returns are broad or concentrated."
+    },
+    {
+      "id": "sp500_eps_revision_to_sp500",
+      "from": "sp500_eps_revision",
+      "to": "sp500",
+      "channel": "earnings_expectation",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Positive earnings revisions support expected cash-flow growth."
+    },
+    {
+      "id": "sp500_etf_flow_to_sp500",
+      "from": "sp500_etf_flow",
+      "to": "sp500",
+      "channel": "fund_flow",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "S&P 500 ETF flow is direct evidence of capital entering or leaving index exposure."
+    },
+    {
+      "id": "sp500_pool_to_sp500_etf_demo",
+      "from": "sp500",
+      "to": "sp500_etf_demo",
+      "channel": "pool_exposure",
+      "direction": "positive",
+      "weight": 0.9,
+      "transform": "identity",
+      "description": "Demo S&P 500 ETF inherits most of its signal from the S&P 500 pool."
+    },
+    {
+      "id": "sp500_valuation_to_sp500",
+      "from": "sp500_valuation",
+      "to": "sp500",
+      "channel": "valuation_pressure",
+      "direction": "negative",
+      "weight": 0.15,
+      "transform": "inverse",
+      "description": "Higher valuation pressure reduces forward return margin of safety."
+    },
+    {
+      "id": "stablecoin_supply_to_btc",
+      "from": "stablecoin_supply",
+      "to": "btc",
+      "channel": "crypto_native_liquidity",
+      "direction": "positive",
+      "weight": 0.2,
+      "transform": "identity",
+      "description": "Stablecoin expansion indicates crypto-native purchasing power."
+    },
+    {
+      "id": "treasury_10y_yield_to_sp500",
+      "from": "treasury_10y_yield",
+      "to": "sp500",
+      "channel": "discount_rate",
+      "direction": "negative",
+      "weight": 0.1,
+      "transform": "inverse",
+      "description": "Higher 10-year yields can pressure S&P 500 valuation multiples."
+    },
+    {
+      "id": "us_equity_pool_to_sp500_etf_demo",
+      "from": "us_equity",
+      "to": "sp500_etf_demo",
+      "channel": "market_beta",
+      "direction": "positive",
+      "weight": 0.1,
+      "transform": "identity",
+      "description": "Demo S&P 500 ETF also retains broad US equity beta."
+    },
+    {
+      "id": "us_equity_to_sp500",
+      "from": "us_equity",
+      "to": "sp500",
+      "channel": "parent_market",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "The S&P 500 pool inherits broad US equity conditions before adding index-specific evidence."
+    },
+    {
+      "id": "usd_liquidity_to_btc",
+      "from": "usd_liquidity",
+      "to": "btc",
+      "channel": "upstream_liquidity",
+      "direction": "positive",
+      "weight": 0.25,
+      "transform": "identity",
+      "description": "Bitcoin is sensitive to global dollar liquidity and risk-asset liquidity."
+    },
+    {
+      "id": "usd_liquidity_to_gold",
+      "from": "usd_liquidity",
+      "to": "gold",
+      "channel": "monetary_liquidity",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Broad liquidity can support gold when monetary debasement or real-rate pressure is favorable."
+    },
+    {
+      "id": "usd_liquidity_to_sp500",
+      "from": "usd_liquidity",
+      "to": "sp500",
+      "channel": "upstream_liquidity",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "S&P 500 ETFs inherit sensitivity to broad dollar liquidity."
+    },
+    {
+      "id": "usd_liquidity_to_us_equity",
+      "from": "usd_liquidity",
+      "to": "us_equity",
+      "channel": "upstream_liquidity",
+      "direction": "positive",
+      "weight": 0.3,
+      "transform": "identity",
+      "description": "USD liquidity supports US risk assets when other constraints are not dominant."
+    },
+    {
+      "id": "user_holdings_input_to_default_portfolio",
+      "from": "user_holdings_input",
+      "to": "default_user_portfolio",
+      "channel": "portfolio_metadata",
+      "direction": "positive",
+      "weight": 0,
+      "transform": "identity",
+      "description": "Placeholder edge showing that user-uploaded holdings are a pluggable component, not core engine logic."
+    },
+    {
+      "id": "vix_to_gold",
+      "from": "vix",
+      "to": "gold",
+      "channel": "risk_off_rotation",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity",
+      "description": "Risk-off volatility can support gold through defensive rotation."
+    },
+    {
+      "id": "vix_to_sp500",
+      "from": "vix",
+      "to": "sp500",
+      "channel": "risk_appetite",
+      "direction": "negative",
+      "weight": 0.15,
+      "transform": "inverse",
+      "description": "Higher volatility usually reduces S&P 500 ETF risk appetite."
+    },
+    {
+      "id": "vix_to_us_equity",
+      "from": "vix",
+      "to": "us_equity",
+      "channel": "risk_appetite",
+      "direction": "negative",
+      "weight": 0.25,
+      "transform": "inverse",
+      "description": "Rising volatility usually indicates weaker risk appetite for equities."
+    }
+  ]
+}

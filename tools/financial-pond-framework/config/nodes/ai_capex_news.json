@@ -1,0 +1,14 @@
+{
+  "id": "ai_capex_news",
+  "kind": "node",
+  "name": "AI Capex News",
+  "data_type": "news",
+  "category": "industry_cycle",
+  "frequency": "event",
+  "description": "Structured AI capital expenditure and infrastructure demand events. This can affect US mega-cap technology, semiconductors, cloud, and China-linked AI sectors.",
+  "source": {
+    "provider": "official_filings_media_or_ai_classifier",
+    "status": "planned"
+  }
+}
+

@@ -1,0 +1,14 @@
+{
+  "id": "fed_policy_news",
+  "kind": "node",
+  "name": "Fed Policy News",
+  "data_type": "news",
+  "category": "policy_expectation",
+  "frequency": "event",
+  "description": "Structured Fed policy events affecting discount rates, liquidity expectations, and US equity risk appetite.",
+  "source": {
+    "provider": "official_rss_media_or_ai_classifier",
+    "status": "planned"
+  }
+}
+

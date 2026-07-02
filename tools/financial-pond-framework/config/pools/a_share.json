@@ -1,0 +1,11 @@
+{
+  "id": "a_share",
+  "kind": "pool",
+  "name": "A-share Pool",
+  "pool_type": "market",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": null,
+  "description": "Tracks mainland China equities. It receives upstream influence from domestic credit, policy, RMB exchange rate, turnover, margin balance, and ETF flows.",
+  "scoring_profile": "default_pool_v0_1"
+}

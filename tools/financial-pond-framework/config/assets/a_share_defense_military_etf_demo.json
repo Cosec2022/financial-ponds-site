@@ -1,0 +1,9 @@
+{
+  "id": "a_share_defense_military_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Defense and Military ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Defense and Military Pool. Typical real products include: 军工ETF, 国防ETF."
+}

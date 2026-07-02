@@ -1,0 +1,13 @@
+{
+  "id": "resources_materials_breadth",
+  "kind": "node",
+  "name": "Resources and Materials Breadth",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Participation breadth inside the sector. Sector context: Resources and materials ETFs are driven by commodity prices, dollar pressure, inventory, supply discipline, and global manufacturing conditions.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

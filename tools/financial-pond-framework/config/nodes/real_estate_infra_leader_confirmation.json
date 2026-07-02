@@ -1,0 +1,13 @@
+{
+  "id": "real_estate_infra_leader_confirmation",
+  "kind": "node",
+  "name": "Real Estate and Infrastructure Leader Confirmation",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Confirmation from leading sector constituents. Sector context: Real estate and infrastructure ETFs are credit, policy, and fiscal-cycle-sensitive pools.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "bank_insurance_fundamental_proxy",
+  "kind": "node",
+  "name": "Bank and Insurance Fundamental Proxy",
+  "data_type": "hard_data",
+  "category": "sector_fundamental",
+  "frequency": "weekly",
+  "description": "Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission. Sector context: Bank and insurance ETFs are credit-cycle and balance-sheet-sensitive financial pools.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

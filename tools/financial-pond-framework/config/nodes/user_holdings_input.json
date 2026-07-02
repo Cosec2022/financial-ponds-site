@@ -1,0 +1,13 @@
+{
+  "id": "user_holdings_input",
+  "kind": "node",
+  "name": "User Holdings Input",
+  "data_type": "portfolio_input",
+  "category": "user_portfolio",
+  "frequency": "on_demand",
+  "description": "A pluggable input node for user holdings. Future uploads can map positions to pools and assets without changing core code.",
+  "source": {
+    "provider": "user_upload",
+    "status": "planned"
+  }
+}

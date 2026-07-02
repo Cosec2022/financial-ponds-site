@@ -1,0 +1,11 @@
+{
+  "id": "a_share_real_estate_infra",
+  "kind": "pool",
+  "name": "A-share Real Estate and Infrastructure Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "Real estate and infrastructure ETFs are credit, policy, and fiscal-cycle-sensitive pools.",
+  "scoring_profile": "default_pool_v0_1"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "v0_1",
+  "model_version": "0.1.0",
+  "profiles": {
+    "default_pool_v0_1": {
+      "method": "weighted_incoming_edges",
+      "clamp": [-2, 2],
+      "missing_input": "ignore",
+      "description": "Generic pool score calculated from active incoming edges. No market-specific logic is allowed here."
+    },
+    "default_asset_v0_1": {
+      "method": "weighted_incoming_edges",
+      "clamp": [-2, 2],
+      "missing_input": "ignore",
+      "description": "Generic asset score calculated from active incoming edges."
+    },
+    "default_portfolio_v0_1": {
+      "method": "weighted_incoming_edges",
+      "clamp": [-2, 2],
+      "missing_input": "ignore",
+      "description": "Generic portfolio score calculated from holdings and connected pools/assets."
+    }
+  },
+  "supported_transforms": [
+    "identity",
+    "inverse",
+    "half_life_decay"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "id": "a_share_ai_computer_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share AI and Computer ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share AI and Computer Pool. Typical real products include: 人工智能ETF, 云计算ETF, 软件ETF, 大数据ETF."
+}

@@ -1,0 +1,14 @@
+{
+  "id": "equal_weight_vs_cap_weight",
+  "kind": "node",
+  "name": "Equal-Weight vs Cap-Weight S&P 500",
+  "data_type": "hard_data",
+  "category": "market_confirmation",
+  "frequency": "daily",
+  "description": "Relative performance of equal-weight S&P 500 versus cap-weight S&P 500. Improvement suggests healthier breadth beyond mega-cap leaders.",
+  "source": {
+    "provider": "market_data",
+    "status": "planned"
+  }
+}
+

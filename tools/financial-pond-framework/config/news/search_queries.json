@@ -1,0 +1,73 @@
+{
+  "id": "news_search_queries_v0_6",
+  "description": "Search-based news discovery. Queries are disabled by default until deployment source behavior is verified.",
+  "provider_templates": {
+    "google_news_rss": "https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"
+  },
+  "queries": [
+    {
+      "id": "global_macro",
+      "enabled": false,
+      "provider": "google_news_rss",
+      "query": "global macro liquidity real rates dollar index",
+      "source_type": "search_rss",
+      "credibility": 0.45,
+      "description": "Search discovery for global liquidity, real-rate, and dollar-regime stories."
+    },
+    {
+      "id": "fed_policy",
+      "enabled": false,
+      "provider": "google_news_rss",
+      "query": "Federal Reserve policy rates liquidity financial conditions",
+      "source_type": "search_rss",
+      "credibility": 0.5,
+      "description": "Search discovery for Fed policy and US liquidity expectations."
+    },
+    {
+      "id": "china_policy",
+      "enabled": false,
+      "provider": "google_news_rss",
+      "query": "China policy liquidity stock market support credit impulse",
+      "source_type": "search_rss",
+      "credibility": 0.45,
+      "description": "Search discovery for China policy and liquidity support stories."
+    },
+    {
+      "id": "a_share_policy",
+      "enabled": false,
+      "provider": "google_news_rss",
+      "query": "China A-share policy ETF inflows securities regulator",
+      "source_type": "search_rss",
+      "credibility": 0.45,
+      "description": "Search discovery for A-share market policy and fund-flow stories."
+    },
+    {
+      "id": "crypto_regulation",
+      "enabled": false,
+      "provider": "google_news_rss",
+      "query": "Bitcoin ETF flows crypto regulation stablecoin liquidity",
+      "source_type": "search_rss",
+      "credibility": 0.45,
+      "description": "Search discovery for BTC ETF flow, regulation, and stablecoin liquidity stories."
+    },
+    {
+      "id": "gold_geopolitics",
+      "enabled": false,
+      "provider": "google_news_rss",
+      "query": "gold geopolitical risk real rates inflation safe haven",
+      "source_type": "search_rss",
+      "credibility": 0.45,
+      "description": "Search discovery for gold, geopolitics, inflation, and real-rate stories."
+    },
+    {
+      "id": "ai_semiconductor",
+      "enabled": false,
+      "provider": "google_news_rss",
+      "query": "AI semiconductor capex export controls chips foundry demand",
+      "source_type": "search_rss",
+      "credibility": 0.45,
+      "description": "Search discovery for AI and semiconductor industry-cycle stories."
+    }
+  ]
+}
+

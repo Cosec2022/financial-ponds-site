@@ -1,0 +1,11 @@
+{
+  "id": "us_equity",
+  "kind": "pool",
+  "name": "US Equity Pool",
+  "pool_type": "market",
+  "region": "US",
+  "currency": "USD",
+  "parent_pool": null,
+  "description": "Tracks US equities as a major global risk-asset pool. It can receive upstream influence from USD liquidity, real rates, risk appetite, earnings, and ETF flows.",
+  "scoring_profile": "default_pool_v0_1"
+}

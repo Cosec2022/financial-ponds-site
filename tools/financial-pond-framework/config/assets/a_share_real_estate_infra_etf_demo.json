@@ -1,0 +1,9 @@
+{
+  "id": "a_share_real_estate_infra_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Real Estate and Infrastructure ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Real Estate and Infrastructure Pool. Typical real products include: 房地产ETF, 基建ETF, 建材ETF."
+}

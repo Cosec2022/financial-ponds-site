@@ -1,0 +1,123 @@
+{
+  "id": "akshare_etf_bridge_contract_v0_7_2",
+  "provider": "akshare",
+  "purpose": "Export representative A-share industry ETF data to local CSV and raw JSON files. The ETF universe is an initial candidate list and must be reviewed before enabling production scoring.",
+  "default_outputs": {
+    "raw_json": "raw_data/provider/akshare/<as_of>/a_share_etf_daily_raw.json",
+    "row_csv": "data/provider_exports/a_share_etf_daily.csv",
+    "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv",
+    "run_status_json": "model_outputs/provider_runs/akshare_etf_bridge_<as_of>.json"
+  },
+  "row_level_columns": [
+    "date",
+    "sector_id",
+    "sector_node_id",
+    "fund_code",
+    "fund_name",
+    "close",
+    "pct_change",
+    "amount",
+    "turnover",
+    "latest_share",
+    "previous_share",
+    "share_change",
+    "estimated_flow",
+    "source_provider",
+    "source_endpoint",
+    "provider_run_id",
+    "collected_at"
+  ],
+  "sector_flow_columns": [
+    "date",
+    "brokerage_etf_flow",
+    "bank_insurance_etf_flow",
+    "semiconductor_etf_flow",
+    "ai_computer_etf_flow",
+    "communication_electronics_etf_flow",
+    "new_energy_ev_etf_flow",
+    "healthcare_pharma_etf_flow",
+    "consumer_etf_flow",
+    "defense_military_etf_flow",
+    "resources_materials_etf_flow",
+    "real_estate_infra_etf_flow"
+  ],
+  "universe_review_status": "initial_candidates_review_before_enabling",
+  "representative_etfs": [
+    {
+      "sector_id": "brokerage",
+      "sector_node_id": "brokerage_etf_flow",
+      "fund_code": "512000",
+      "fund_name_hint": "Brokerage ETF candidate"
+    },
+    {
+      "sector_id": "bank_insurance",
+      "sector_node_id": "bank_insurance_etf_flow",
+      "fund_code": "512800",
+      "fund_name_hint": "Bank ETF candidate"
+    },
+    {
+      "sector_id": "semiconductor",
+      "sector_node_id": "semiconductor_etf_flow",
+      "fund_code": "512480",
+      "fund_name_hint": "Semiconductor ETF candidate"
+    },
+    {
+      "sector_id": "ai_computer",
+      "sector_node_id": "ai_computer_etf_flow",
+      "fund_code": "159819",
+      "fund_name_hint": "AI ETF candidate"
+    },
+    {
+      "sector_id": "communication_electronics",
+      "sector_node_id": "communication_electronics_etf_flow",
+      "fund_code": "515880",
+      "fund_name_hint": "Communication ETF candidate"
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "sector_node_id": "new_energy_ev_etf_flow",
+      "fund_code": "515030",
+      "fund_name_hint": "New energy vehicle ETF candidate"
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "sector_node_id": "healthcare_pharma_etf_flow",
+      "fund_code": "512010",
+      "fund_name_hint": "Healthcare ETF candidate"
+    },
+    {
+      "sector_id": "consumer",
+      "sector_node_id": "consumer_etf_flow",
+      "fund_code": "159928",
+      "fund_name_hint": "Consumer ETF candidate"
+    },
+    {
+      "sector_id": "defense_military",
+      "sector_node_id": "defense_military_etf_flow",
+      "fund_code": "512660",
+      "fund_name_hint": "Defense ETF candidate"
+    },
+    {
+      "sector_id": "resources_materials",
+      "sector_node_id": "resources_materials_etf_flow",
+      "fund_code": "512400",
+      "fund_name_hint": "Non-ferrous metals ETF candidate"
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "sector_node_id": "real_estate_infra_etf_flow",
+      "fund_code": "512200",
+      "fund_name_hint": "Real estate ETF candidate"
+    }
+  ],
+  "real_mode_endpoints": [
+    "fund_etf_spot_em",
+    "fund_etf_scale_sse",
+    "fund_etf_scale_szse"
+  ],
+  "risk_notes": [
+    "Representative ETF codes are candidates and must be reviewed before source enabling.",
+    "AKShare endpoint schemas may change.",
+    "If schema drift is detected, the bridge should fail closed and write run status instead of producing silent observations."
+  ]
+}

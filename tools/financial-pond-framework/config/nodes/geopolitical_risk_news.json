@@ -1,0 +1,13 @@
+{
+  "id": "geopolitical_risk_news",
+  "kind": "node",
+  "name": "Geopolitical Risk News",
+  "data_type": "news",
+  "category": "risk_event",
+  "frequency": "daily",
+  "description": "Structured news node for geopolitical risk. Future NLP should emit direction, impact, credibility, duration, and confirmation needs.",
+  "source": {
+    "provider": "news_pipeline",
+    "status": "planned"
+  }
+}

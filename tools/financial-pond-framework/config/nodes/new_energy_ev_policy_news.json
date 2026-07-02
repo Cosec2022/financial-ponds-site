@@ -1,0 +1,13 @@
+{
+  "id": "new_energy_ev_policy_news",
+  "kind": "node",
+  "name": "New Energy Vehicle Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: New energy vehicle ETFs are driven by vehicle sales, battery prices, lithium cycle, inventory, and capacity discipline.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

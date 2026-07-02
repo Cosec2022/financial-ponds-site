@@ -1,0 +1,75 @@
+{
+  "purpose": "Example only. This shows how user holdings can be connected without touching core code.",
+  "portfolio": {
+    "id": "ycosec_uploaded_portfolio",
+    "kind": "portfolio",
+    "name": "Uploaded Portfolio",
+    "description": "A portfolio created from a user upload.",
+    "positions": [
+      {
+        "asset": "a500_etf_demo",
+        "weight": 0.6
+      },
+      {
+        "asset": "gold_etf_demo",
+        "weight": 0.4
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "a500_etf_demo",
+      "kind": "asset",
+      "name": "A500 ETF Demo",
+      "asset_type": "etf",
+      "market": "CN",
+      "currency": "CNY"
+    },
+    {
+      "id": "gold_etf_demo",
+      "kind": "asset",
+      "name": "Gold ETF Demo",
+      "asset_type": "etf",
+      "market": "CN",
+      "currency": "CNY"
+    }
+  ],
+  "edges": [
+    {
+      "id": "a_share_to_a500_etf_demo",
+      "from": "a_share",
+      "to": "a500_etf_demo",
+      "channel": "market_exposure",
+      "direction": "positive",
+      "weight": 1.0,
+      "transform": "identity"
+    },
+    {
+      "id": "gold_to_gold_etf_demo",
+      "from": "gold",
+      "to": "gold_etf_demo",
+      "channel": "asset_exposure",
+      "direction": "positive",
+      "weight": 1.0,
+      "transform": "identity"
+    },
+    {
+      "id": "a500_etf_demo_to_uploaded_portfolio",
+      "from": "a500_etf_demo",
+      "to": "ycosec_uploaded_portfolio",
+      "channel": "holding_exposure",
+      "direction": "positive",
+      "weight": 0.6,
+      "transform": "identity"
+    },
+    {
+      "id": "gold_etf_demo_to_uploaded_portfolio",
+      "from": "gold_etf_demo",
+      "to": "ycosec_uploaded_portfolio",
+      "channel": "holding_exposure",
+      "direction": "positive",
+      "weight": 0.4,
+      "transform": "identity"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "id": "news_rules_v0_5",
+  "description": "Rule-based news mapping. Future AI classification should emit the same observation contract.",
+  "rules": [
+    {
+      "id": "geopolitical_gold_risk",
+      "node_id": "geopolitical_risk_news",
+      "channel": "geopolitics",
+      "keywords_any": ["war", "conflict", "sanction", "missile", "geopolitical", "ceasefire"],
+      "score": 0.8,
+      "confidence": 0.55,
+      "duration": "short",
+      "needs_market_confirmation": true,
+      "reason": "Geopolitical risk keywords may raise defensive demand for gold."
+    },
+    {
+      "id": "semiconductor_policy",
+      "node_id": "semiconductor_policy_news",
+      "channel": "industry_cycle",
+      "keywords_any": ["semiconductor", "chip", "export control", "subsidy", "ai chip", "foundry"],
+      "score": 0.7,
+      "confidence": 0.55,
+      "duration": "medium",
+      "needs_market_confirmation": true,
+      "reason": "Semiconductor policy or industry news may affect sector expectations."
+    },
+    {
+      "id": "china_policy_support",
+      "node_id": "china_policy_news",
+      "channel": "policy_liquidity",
+      "keywords_any": ["china policy", "liquidity", "reserve requirement", "stock market support", "csrc", "pboc", "credit support"],
+      "score": 0.7,
+      "confidence": 0.55,
+      "duration": "medium",
+      "needs_market_confirmation": true,
+      "reason": "China policy support keywords may affect domestic liquidity and equity-market expectations."
+    },
+    {
+      "id": "fed_policy_easing",
+      "node_id": "fed_policy_news",
+      "channel": "discount_rate",
+      "keywords_any": ["federal reserve", "fed", "rate cut", "easing", "liquidity", "financial conditions"],
+      "score": 0.6,
+      "confidence": 0.55,
+      "duration": "medium",
+      "needs_market_confirmation": true,
+      "reason": "Fed policy keywords may affect discount-rate and liquidity expectations."
+    },
+    {
+      "id": "ai_capex_cycle",
+      "node_id": "ai_capex_news",
+      "channel": "industry_cycle",
+      "keywords_any": ["ai capex", "artificial intelligence", "data center", "gpu", "cloud capex", "semiconductor demand"],
+      "score": 0.6,
+      "confidence": 0.5,
+      "duration": "medium",
+      "needs_market_confirmation": true,
+      "reason": "AI capex keywords may affect technology, semiconductor, cloud, and index leadership expectations."
+    }
+  ]
+}

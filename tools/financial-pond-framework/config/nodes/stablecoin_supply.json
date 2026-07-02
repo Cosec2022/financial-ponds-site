@@ -1,0 +1,13 @@
+{
+  "id": "stablecoin_supply",
+  "kind": "node",
+  "name": "Stablecoin Supply",
+  "data_type": "hard_data",
+  "category": "crypto_liquidity",
+  "frequency": "daily",
+  "description": "Stablecoin supply is a proxy for crypto-native liquidity available to buy crypto assets.",
+  "source": {
+    "provider": "DeFiLlama_or_equivalent",
+    "status": "planned"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "rss_sources_v0_5",
+  "description": "RSS or XML news sources. Real sources are disabled by default until verified in deployment.",
+  "sources": [
+    {
+      "id": "sec_rss_placeholder",
+      "enabled": false,
+      "source_type": "official",
+      "credibility": 0.95,
+      "url": "https://www.sec.gov/news/pressreleases.rss",
+      "description": "SEC official RSS placeholder for US regulatory events."
+    },
+    {
+      "id": "macro_media_placeholder",
+      "enabled": false,
+      "source_type": "major_media",
+      "credibility": 0.75,
+      "url": "https://example.com/rss",
+      "description": "Replace with a verified macro news RSS feed."
+    }
+  ]
+}

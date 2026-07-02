@@ -1,0 +1,11 @@
+{
+  "id": "btc",
+  "kind": "pool",
+  "name": "Bitcoin Pool",
+  "pool_type": "asset_class",
+  "region": "GLOBAL",
+  "currency": "USD",
+  "parent_pool": null,
+  "description": "Tracks Bitcoin as a global liquidity-sensitive risk asset with ETF inflow, stablecoin liquidity, leverage, and USD-rate sensitivity.",
+  "scoring_profile": "default_pool_v0_1"
+}

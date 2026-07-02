@@ -1,0 +1,14 @@
+{
+  "id": "a_share_breadth",
+  "kind": "node",
+  "name": "A-share Market Breadth",
+  "data_type": "hard_data",
+  "category": "market_confirmation",
+  "frequency": "daily",
+  "description": "Advance-decline and participation proxy for A-shares. Broad participation is stronger confirmation than index-only movement.",
+  "source": {
+    "provider": "exchange_or_market_data",
+    "status": "planned"
+  }
+}
+

@@ -1,0 +1,13 @@
+{
+  "id": "healthcare_pharma_policy_news",
+  "kind": "node",
+  "name": "Healthcare and Pharma Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

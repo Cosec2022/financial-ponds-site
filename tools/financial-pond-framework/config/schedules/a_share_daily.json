@@ -1,0 +1,7 @@
+{
+  "id": "a_share_daily_v0_9_8",
+  "timezone": "Asia/Hong_Kong",
+  "run_times": ["16:30"],
+  "command": "npm run a-share:daily",
+  "description": "Run A-share daily provider snapshot, water-level conversion, and sector-flow review after the A-share close."
+}

@@ -1,0 +1,9 @@
+{
+  "id": "a_share_healthcare_pharma_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Healthcare and Pharma ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Healthcare and Pharma Pool. Typical real products include: 医药ETF, 医疗ETF, 创新药ETF, 中药ETF."
+}

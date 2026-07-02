@@ -1,0 +1,11 @@
+{
+  "id": "a_share_healthcare_pharma",
+  "kind": "pool",
+  "name": "A-share Healthcare and Pharma Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve.",
+  "scoring_profile": "default_pool_v0_1"
+}

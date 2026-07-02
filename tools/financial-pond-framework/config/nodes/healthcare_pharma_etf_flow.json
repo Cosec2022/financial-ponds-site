@@ -1,0 +1,13 @@
+{
+  "id": "healthcare_pharma_etf_flow",
+  "kind": "node",
+  "name": "Healthcare and Pharma ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "default_user_portfolio",
+  "kind": "portfolio",
+  "name": "Default User Portfolio",
+  "description": "Placeholder component for user holdings. Real uploaded holdings should create or update portfolio config and edges, not core code.",
+  "positions": [
+    {
+      "asset": "a_share_semiconductor_etf_demo",
+      "weight": 1.0,
+      "note": "Demo position. Future importer can replace this with real holdings."
+    }
+  ]
+}

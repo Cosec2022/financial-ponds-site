@@ -1,0 +1,11 @@
+{
+  "id": "a_share_semiconductor",
+  "kind": "pool",
+  "name": "A-share Semiconductor Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "Semiconductor ETFs combine AI demand, localization, equipment cycles, and policy sensitivity.",
+  "scoring_profile": "default_pool_v0_1"
+}

@@ -1,0 +1,13 @@
+{
+  "id": "communication_electronics_relative_strength",
+  "kind": "node",
+  "name": "Communication and Electronics Relative Strength",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: Communication and electronics ETFs sit between AI hardware, consumer electronics, telecom infrastructure, and export demand.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

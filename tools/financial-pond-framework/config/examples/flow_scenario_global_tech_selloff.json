@@ -1,0 +1,25 @@
+{
+  "id": "global_tech_selloff_example",
+  "description": "Example scenario for broad technology pressure. A single overseas stock move should be mapped here as wide factor pressure, not as a direct A-share ETF causal edge.",
+  "as_of": "2026-07-03",
+  "signals": [
+    {
+      "factor_id": "global_tech_risk",
+      "score": -0.8,
+      "confidence": 0.8,
+      "reason": "Global technology and semiconductor risk appetite weakened."
+    },
+    {
+      "factor_id": "sector_rotation_pressure",
+      "score": -0.5,
+      "confidence": 0.7,
+      "reason": "Crowded growth and AI-hardware sectors face rotation pressure."
+    },
+    {
+      "factor_id": "a_share_risk_appetite",
+      "score": -0.2,
+      "confidence": 0.5,
+      "reason": "Domestic confirmation is still required; only a mild risk-appetite adjustment is applied."
+    }
+  ]
+}

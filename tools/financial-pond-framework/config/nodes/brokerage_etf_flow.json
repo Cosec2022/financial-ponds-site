@@ -1,0 +1,13 @@
+{
+  "id": "brokerage_etf_flow",
+  "kind": "node",
+  "name": "Brokerage ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Brokerage ETFs are sensitive to market turnover, margin financing, IPO and refinancing policy, and expectations for a stronger equity cycle.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

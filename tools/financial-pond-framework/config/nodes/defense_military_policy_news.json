@@ -1,0 +1,13 @@
+{
+  "id": "defense_military_policy_news",
+  "kind": "node",
+  "name": "Defense and Military Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: Defense ETFs are influenced by orders, fiscal defense spending, geopolitics, and state-owned asset restructuring expectations.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

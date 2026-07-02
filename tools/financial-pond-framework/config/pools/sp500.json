@@ -1,0 +1,12 @@
+{
+  "id": "sp500",
+  "kind": "pool",
+  "name": "S&P 500 Pool",
+  "pool_type": "index",
+  "region": "US",
+  "currency": "USD",
+  "parent_pool": "us_equity",
+  "description": "Index-level pool for S&P 500 ETF exposure. It inherits broad US equity conditions and adds S&P 500 ETF flow, breadth, earnings, valuation, buybacks, mega-cap earnings, and policy/news expectations.",
+  "scoring_profile": "default_pool_v0_1"
+}
+

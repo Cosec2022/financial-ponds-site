@@ -1,0 +1,13 @@
+{
+  "id": "semiconductor_leader_confirmation",
+  "kind": "node",
+  "name": "Semiconductor Leader Confirmation",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Confirmation from leading sector constituents. Sector context: Semiconductor ETFs combine AI demand, localization, equipment cycles, and policy sensitivity.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

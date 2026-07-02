@@ -1,0 +1,14 @@
+{
+  "id": "margin_balance",
+  "kind": "node",
+  "name": "A-share Margin Financing Balance",
+  "data_type": "hard_data",
+  "category": "leverage_flow",
+  "frequency": "daily",
+  "description": "A-share margin financing proxy. Moderate expansion can confirm risk appetite; extreme expansion should later be handled by a nonlinear overheating rule.",
+  "source": {
+    "provider": "exchange_or_market_data",
+    "status": "planned"
+  }
+}
+

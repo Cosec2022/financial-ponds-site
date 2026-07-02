@@ -1,0 +1,9 @@
+{
+  "id": "a_share_bank_insurance_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Bank and Insurance ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Bank and Insurance Pool. Typical real products include: 银行ETF, 证券保险ETF, 金融ETF."
+}

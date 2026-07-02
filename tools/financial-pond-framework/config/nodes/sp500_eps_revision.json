@@ -1,0 +1,14 @@
+{
+  "id": "sp500_eps_revision",
+  "kind": "node",
+  "name": "S&P 500 EPS Revision",
+  "data_type": "hard_data",
+  "category": "earnings_expectation",
+  "frequency": "weekly",
+  "description": "S&P 500 earnings forecast revision proxy. Upward revisions support equity returns through expected cash-flow improvement.",
+  "source": {
+    "provider": "earnings_data_vendor",
+    "status": "planned"
+  }
+}
+

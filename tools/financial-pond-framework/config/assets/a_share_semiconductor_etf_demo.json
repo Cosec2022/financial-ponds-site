@@ -1,0 +1,9 @@
+{
+  "id": "a_share_semiconductor_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Semiconductor ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Semiconductor Pool. Typical real products include: 芯片ETF, 半导体ETF, 科创芯片ETF."
+}

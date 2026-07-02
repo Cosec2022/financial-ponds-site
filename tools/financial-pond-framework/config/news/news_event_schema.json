@@ -1,0 +1,31 @@
+{
+  "id": "news_event_schema_v0_5",
+  "description": "Target shape for structured news events. Rule-based and AI classifiers should emit this shape before converting to node observations.",
+  "required_fields": [
+    "event_id",
+    "title",
+    "source",
+    "published_at",
+    "channel",
+    "direction",
+    "impact",
+    "confidence",
+    "duration",
+    "needs_market_confirmation",
+    "reason"
+  ],
+  "channels": [
+    "liquidity",
+    "interest_rate",
+    "policy_liquidity",
+    "earnings",
+    "regulation",
+    "geopolitics",
+    "risk_appetite",
+    "industry_cycle",
+    "credit",
+    "currency"
+  ],
+  "duration_values": ["intraday", "short", "medium", "long", "structural"],
+  "source_types": ["official", "major_media", "sector_source", "vendor", "social", "market_rumor"]
+}

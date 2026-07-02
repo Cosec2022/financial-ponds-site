@@ -1,0 +1,189 @@
+{
+  "version": "0.8.0",
+  "reviewed_at": "2026-07-02",
+  "purpose": "Open-source provider candidates for A-share industry ETF and S&P 500 ETF data ingestion. Provider adapters must stay outside the core graph engine.",
+  "core_boundary": {
+    "core_must_not_import_providers": true,
+    "provider_output_contract": "raw snapshots plus local CSV or JSON exports that become node observations through collectors",
+    "default_enabled": false
+  },
+  "candidates": [
+    {
+      "id": "akshare",
+      "priority": 1,
+      "role": "primary_a_share_etf_provider",
+      "repo_url": "https://github.com/akfamily/akshare",
+      "docs_url": "https://akshare.akfamily.xyz/data/fund/fund_public.html",
+      "language": "python",
+      "token_required": false,
+      "license_observed": "MIT",
+      "default_status": "bridge_fixture_ready_real_optional_scale_warning_added_disabled",
+      "best_for": [
+        "a_share_etf_spot",
+        "a_share_etf_history",
+        "a_share_etf_share_scale",
+        "china_public_market_reference_data"
+      ],
+      "not_for": [
+        "direct_core_scoring",
+        "unverified_live_trading",
+        "single_source_final_decision"
+      ],
+      "planned_adapter": "providers/akshare_etf_bridge",
+      "validation_command": "npm run provider:akshare:validate",
+      "target_exports": [
+        "data/provider_exports/a_share_etf_daily.csv",
+        "raw_data/provider/akshare/<date>/"
+      ],
+      "important_endpoints": [
+        "fund_etf_spot_em",
+        "fund_etf_hist_em",
+        "fund_etf_scale_sse",
+        "fund_etf_scale_szse",
+        "fund_scale_daily_szse"
+      ],
+      "risk_notes": [
+        "Provider interfaces can change or disappear.",
+        "Raw output must be stored before normalization.",
+        "Schema drift must disable the adapter instead of producing silent scores."
+      ]
+    },
+    {
+      "id": "efinance",
+      "priority": 2,
+      "role": "a_share_quote_fallback",
+      "repo_url": "https://github.com/Micro-sheep/efinance",
+      "docs_url": "https://efinance.readthedocs.io",
+      "language": "python",
+      "token_required": false,
+      "license_observed": "MIT repository; README states non-commercial use",
+      "default_status": "candidate_fallback_disabled",
+      "best_for": [
+        "quote_history",
+        "amount",
+        "pct_change",
+        "turnover_style_quote_fields"
+      ],
+      "not_for": [
+        "confirmed_etf_share_scale",
+        "direct_pool_score_setting",
+        "commercial_use_without_review"
+      ],
+      "planned_adapter": "providers/efinance_quote_bridge",
+      "target_exports": [
+        "data/provider_exports/a_share_etf_quote_fallback.csv",
+        "raw_data/provider/efinance/<date>/"
+      ],
+      "important_endpoints": [
+        "stock.get_quote_history"
+      ],
+      "risk_notes": [
+        "Use mainly as quote fallback unless ETF share fields are verified.",
+        "README states non-commercial use; keep this visible before deployment.",
+        "Must be cross-checked against the primary provider for selected ETFs."
+      ]
+    },
+    {
+      "id": "tushare",
+      "priority": 3,
+      "role": "optional_token_structured_data_provider",
+      "repo_url": "https://github.com/waditu/tushare",
+      "docs_url": "https://tushare.pro",
+      "language": "python",
+      "token_required": true,
+      "license_observed": "BSD-3-Clause",
+      "default_status": "candidate_optional_disabled",
+      "best_for": [
+        "structured_china_market_data_when_token_available",
+        "historical_data",
+        "optional_cross_check"
+      ],
+      "not_for": [
+        "default_standalone_zip_operation",
+        "credential_free_first_run",
+        "hardcoded_token_storage"
+      ],
+      "planned_adapter": "providers/tushare_bridge",
+      "target_exports": [
+        "data/provider_exports/tushare_optional.csv",
+        "raw_data/provider/tushare/<date>/"
+      ],
+      "important_endpoints": [
+        "to_be_selected_after_token_and_endpoint_review"
+      ],
+      "risk_notes": [
+        "Token must be passed by environment variable or local ignored config.",
+        "Adapter must fail closed when credentials are missing.",
+        "Not the default provider for a recoverable zip package."
+      ]
+    },
+    {
+      "id": "mootdx",
+      "priority": 4,
+      "role": "low_priority_tongdaxin_quote_fallback",
+      "repo_url": "https://github.com/mootdx/mootdx",
+      "docs_url": "https://www.mootdx.com",
+      "language": "python",
+      "token_required": false,
+      "license_observed": "MIT",
+      "default_status": "candidate_low_priority_disabled",
+      "best_for": [
+        "tongdaxin_online_quotes",
+        "tongdaxin_offline_data",
+        "emergency_quote_cross_check"
+      ],
+      "not_for": [
+        "primary_etf_flow",
+        "primary_etf_share_scale",
+        "direct_model_score"
+      ],
+      "planned_adapter": "providers/mootdx_quote_bridge",
+      "target_exports": [
+        "data/provider_exports/mootdx_quote_fallback.csv",
+        "raw_data/provider/mootdx/<date>/"
+      ],
+      "important_endpoints": [
+        "Quotes.factory",
+        "Reader.factory"
+      ],
+      "risk_notes": [
+        "Use as low-confidence quote fallback until source stability is tested.",
+        "Not suitable as the only source for ETF share-change calculations.",
+        "May depend on Tongdaxin source availability and environment behavior."
+      ]
+    },
+    {
+      "id": "qlib",
+      "priority": 5,
+      "role": "future_research_and_backtest_platform",
+      "repo_url": "https://github.com/microsoft/qlib",
+      "docs_url": "https://qlib.readthedocs.io",
+      "language": "python",
+      "token_required": false,
+      "license_observed": "MIT",
+      "default_status": "research_reference_disabled",
+      "best_for": [
+        "future_backtesting",
+        "machine_learning_research",
+        "model_evaluation_pipeline_reference"
+      ],
+      "not_for": [
+        "first_a_share_etf_ingestion",
+        "simple_daily_provider_bridge",
+        "core_graph_dependency"
+      ],
+      "planned_adapter": "future_research/qlib_experiments",
+      "target_exports": [
+        "future_research_outputs/"
+      ],
+      "important_endpoints": [
+        "not_applicable_for_v0_7_data_ingestion"
+      ],
+      "risk_notes": [
+        "Treat as research infrastructure, not a daily ETF data source.",
+        "Official dataset availability and preparation steps must be checked before use.",
+        "Do not add as a dependency to the main package."
+      ]
+    }
+  ]
+}

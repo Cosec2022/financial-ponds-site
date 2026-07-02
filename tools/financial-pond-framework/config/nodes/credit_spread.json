@@ -1,0 +1,14 @@
+{
+  "id": "credit_spread",
+  "kind": "node",
+  "name": "US Credit Spread",
+  "data_type": "hard_data",
+  "category": "risk_appetite",
+  "frequency": "daily",
+  "description": "US credit spread proxy. Wider spreads usually indicate weaker risk appetite and tighter funding conditions.",
+  "source": {
+    "provider": "fred_or_market_data",
+    "status": "planned"
+  }
+}
+

@@ -1,0 +1,13 @@
+{
+  "id": "resources_materials_policy_news",
+  "kind": "node",
+  "name": "Resources and Materials Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: Resources and materials ETFs are driven by commodity prices, dollar pressure, inventory, supply discipline, and global manufacturing conditions.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

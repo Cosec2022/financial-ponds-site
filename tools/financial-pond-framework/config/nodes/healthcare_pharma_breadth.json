@@ -1,0 +1,13 @@
+{
+  "id": "healthcare_pharma_breadth",
+  "kind": "node",
+  "name": "Healthcare and Pharma Breadth",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Participation breadth inside the sector. Sector context: Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

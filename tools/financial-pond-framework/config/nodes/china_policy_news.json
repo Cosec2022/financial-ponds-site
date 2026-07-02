@@ -1,0 +1,14 @@
+{
+  "id": "china_policy_news",
+  "kind": "node",
+  "name": "China Policy News",
+  "data_type": "news",
+  "category": "policy_expectation",
+  "frequency": "event",
+  "description": "Structured China policy events affecting liquidity, equity-market support, credit conditions, or sector direction. News remains an observation and does not directly set pool scores.",
+  "source": {
+    "provider": "official_rss_media_or_ai_classifier",
+    "status": "planned"
+  }
+}
+

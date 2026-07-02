@@ -1,0 +1,13 @@
+{
+  "id": "a_share_turnover",
+  "kind": "node",
+  "name": "A-share Turnover",
+  "data_type": "hard_data",
+  "category": "market_flow",
+  "frequency": "daily",
+  "description": "A-share market turnover confirms whether policy expectations are converting into market participation.",
+  "source": {
+    "provider": "exchange_or_market_data",
+    "status": "planned"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "china_social_financing",
+  "kind": "node",
+  "name": "China Social Financing",
+  "data_type": "hard_data",
+  "category": "cny_credit",
+  "frequency": "monthly",
+  "description": "Measures China's broad credit impulse. It is an upstream node for A-shares and China-linked markets.",
+  "source": {
+    "provider": "PBOC",
+    "status": "planned"
+  }
+}

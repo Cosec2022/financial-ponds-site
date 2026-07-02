@@ -1,0 +1,9 @@
+{
+  "id": "a_share_brokerage_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Brokerage ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "description": "Example ETF asset for A-share Brokerage Pool. Typical real products include: 券商ETF, 证券ETF."
+}

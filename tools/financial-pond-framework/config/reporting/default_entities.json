@@ -1,0 +1,25 @@
+{
+  "id": "default_report_entities_v0_6_2",
+  "description": "Entities shown in the default human report. Add or remove entities here instead of editing pipeline code.",
+  "entities": [
+    "us_equity",
+    "sp500",
+    "sp500_etf_demo",
+    "a_share",
+    "a_share_semiconductor",
+    "a_share_semiconductor_etf_demo",
+    "btc",
+    "gold",
+    "default_user_portfolio",
+    "a_share_brokerage",
+    "a_share_bank_insurance",
+    "a_share_ai_computer",
+    "a_share_communication_electronics",
+    "a_share_new_energy_ev",
+    "a_share_healthcare_pharma",
+    "a_share_consumer",
+    "a_share_defense_military",
+    "a_share_resources_materials",
+    "a_share_real_estate_infra"
+  ]
+}

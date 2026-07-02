@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "financial-ponds",
+  "main": "dist/server/index.js",
+  "compatibility_date": "2026-07-02",
+  "routes": [
+    {
+      "pattern": "financial-ponds.coseclab.dev",
+      "custom_domain": true
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

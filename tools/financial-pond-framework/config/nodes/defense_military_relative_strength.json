@@ -1,0 +1,13 @@
+{
+  "id": "defense_military_relative_strength",
+  "kind": "node",
+  "name": "Defense and Military Relative Strength",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: Defense ETFs are influenced by orders, fiscal defense spending, geopolitics, and state-owned asset restructuring expectations.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

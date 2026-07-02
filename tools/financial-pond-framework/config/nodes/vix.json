@@ -1,0 +1,14 @@
+{
+  "id": "vix",
+  "kind": "node",
+  "name": "VIX",
+  "data_type": "hard_data",
+  "category": "risk_appetite",
+  "frequency": "daily",
+  "description": "VIX is a risk-appetite and risk-off proxy. It can affect equities, BTC, gold, and cross-asset rotation through configured edges.",
+  "source": {
+    "provider": "market_data",
+    "ticker": "VIX",
+    "status": "planned"
+  }
+}

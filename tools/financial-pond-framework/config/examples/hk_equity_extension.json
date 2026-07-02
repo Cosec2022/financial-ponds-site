@@ -1,0 +1,72 @@
+{
+  "purpose": "Example only. This shows how to add a Hong Kong equity pool without touching core code.",
+  "pool": {
+    "id": "hk_equity",
+    "kind": "pool",
+    "name": "Hong Kong Equity Pool",
+    "pool_type": "market",
+    "region": "HK",
+    "currency": "HKD",
+    "parent_pool": null,
+    "description": "Tracks Hong Kong equities. It can receive influence from USD liquidity, US equity risk appetite, China policy, RMB/HKD conditions, and southbound flow.",
+    "scoring_profile": "default_pool_v0_1"
+  },
+  "example_nodes": [
+    {
+      "id": "southbound_flow",
+      "kind": "node",
+      "name": "Southbound Flow",
+      "data_type": "hard_data",
+      "category": "market_flow",
+      "frequency": "daily",
+      "description": "Mainland capital flowing into Hong Kong equities."
+    },
+    {
+      "id": "hk_turnover",
+      "kind": "node",
+      "name": "HK Market Turnover",
+      "data_type": "hard_data",
+      "category": "market_confirmation",
+      "frequency": "daily",
+      "description": "Hong Kong market turnover as confirmation of participation."
+    }
+  ],
+  "example_edges": [
+    {
+      "id": "usd_liquidity_to_hk_equity",
+      "from": "usd_liquidity",
+      "to": "hk_equity",
+      "channel": "upstream_liquidity",
+      "direction": "positive",
+      "weight": 0.20,
+      "transform": "identity"
+    },
+    {
+      "id": "us_equity_to_hk_equity",
+      "from": "us_equity",
+      "to": "hk_equity",
+      "channel": "global_risk_appetite",
+      "direction": "positive",
+      "weight": 0.15,
+      "transform": "identity"
+    },
+    {
+      "id": "china_social_financing_to_hk_equity",
+      "from": "china_social_financing",
+      "to": "hk_equity",
+      "channel": "china_credit",
+      "direction": "positive",
+      "weight": 0.20,
+      "transform": "identity"
+    },
+    {
+      "id": "southbound_flow_to_hk_equity",
+      "from": "southbound_flow",
+      "to": "hk_equity",
+      "channel": "market_flow",
+      "direction": "positive",
+      "weight": 0.30,
+      "transform": "identity"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "id": "m1_m2_gap",
+  "kind": "node",
+  "name": "China M1-M2 Gap",
+  "data_type": "hard_data",
+  "category": "china_liquidity",
+  "frequency": "monthly",
+  "description": "Proxy for the strength of transaction money relative to broad money. Improvement may support A-share risk appetite and cyclical rotation.",
+  "source": {
+    "provider": "official_macro_or_vendor",
+    "status": "planned"
+  }
+}
+

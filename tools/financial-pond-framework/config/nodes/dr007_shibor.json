@@ -1,0 +1,14 @@
+{
+  "id": "dr007_shibor",
+  "kind": "node",
+  "name": "DR007 / SHIBOR Funding Cost",
+  "data_type": "hard_data",
+  "category": "china_funding_cost",
+  "frequency": "daily",
+  "description": "China interbank funding-cost proxy. Higher funding cost is usually negative for equity liquidity, so graph edges should generally use an inverse transform.",
+  "source": {
+    "provider": "official_macro_or_vendor",
+    "status": "planned"
+  }
+}
+

@@ -1,0 +1,13 @@
+{
+  "id": "ai_computer_etf_flow",
+  "kind": "node",
+  "name": "AI and Computer ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: AI and computer ETFs depend on AI infrastructure spending, software demand, policy procurement, and growth-stock liquidity.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "a_share_new_energy_ev",
+  "kind": "pool",
+  "name": "A-share New Energy Vehicle Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "New energy vehicle ETFs are driven by vehicle sales, battery prices, lithium cycle, inventory, and capacity discipline.",
+  "scoring_profile": "default_pool_v0_1"
+}

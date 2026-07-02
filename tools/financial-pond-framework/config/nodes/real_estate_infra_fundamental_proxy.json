@@ -1,0 +1,13 @@
+{
+  "id": "real_estate_infra_fundamental_proxy",
+  "kind": "node",
+  "name": "Real Estate and Infrastructure Fundamental Proxy",
+  "data_type": "hard_data",
+  "category": "sector_fundamental",
+  "frequency": "weekly",
+  "description": "Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission. Sector context: Real estate and infrastructure ETFs are credit, policy, and fiscal-cycle-sensitive pools.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

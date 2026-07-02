@@ -1,0 +1,14 @@
+{
+  "id": "etf_total_flow_a_share",
+  "kind": "node",
+  "name": "A-share Equity ETF Total Flow",
+  "data_type": "hard_data",
+  "category": "fund_flow",
+  "frequency": "daily",
+  "description": "Total A-share equity ETF share or estimated net-flow change. This is direct evidence that fund capital is entering or leaving the A-share ETF market.",
+  "source": {
+    "provider": "fund_data_vendor_or_exchange",
+    "status": "planned"
+  }
+}
+

@@ -1,0 +1,133 @@
+{
+  "id": "node_layers_v0_5",
+  "description": "Model-layer classification for observations. This is interpretation metadata; core scoring still uses configured edges.",
+  "layers": {
+    "upstream": {
+      "description": "Water supply conditions before capital enters an asset pool.",
+      "nodes": [
+        "china_social_financing",
+        "cny_fx_pressure",
+        "credit_spread",
+        "dr007_shibor",
+        "dxy",
+        "m1_m2_gap",
+        "stablecoin_supply",
+        "treasury_10y_yield",
+        "us_real_rate",
+        "usd_liquidity"
+      ]
+    },
+    "inflow": {
+      "description": "Direct evidence that money is entering the pool.",
+      "nodes": [
+        "ai_computer_etf_flow",
+        "bank_insurance_etf_flow",
+        "brokerage_etf_flow",
+        "btc_etf_flow",
+        "communication_electronics_etf_flow",
+        "consumer_etf_flow",
+        "defense_military_etf_flow",
+        "etf_total_flow_a_share",
+        "gold_etf_flow",
+        "healthcare_pharma_etf_flow",
+        "new_energy_ev_etf_flow",
+        "real_estate_infra_etf_flow",
+        "resources_materials_etf_flow",
+        "semiconductor_etf_flow",
+        "sp500_etf_flow"
+      ]
+    },
+    "confirmation": {
+      "description": "Price, volume, turnover, breadth, or other evidence that market action confirms the thesis.",
+      "nodes": [
+        "a_share_breadth",
+        "a_share_turnover",
+        "ai_computer_breadth",
+        "ai_computer_leader_confirmation",
+        "ai_computer_relative_strength",
+        "bank_insurance_breadth",
+        "bank_insurance_leader_confirmation",
+        "bank_insurance_relative_strength",
+        "brokerage_breadth",
+        "brokerage_leader_confirmation",
+        "btc_price_momentum",
+        "brokerage_relative_strength",
+        "communication_electronics_breadth",
+        "communication_electronics_leader_confirmation",
+        "communication_electronics_relative_strength",
+        "consumer_breadth",
+        "consumer_leader_confirmation",
+        "consumer_relative_strength",
+        "defense_military_breadth",
+        "defense_military_leader_confirmation",
+        "defense_military_relative_strength",
+        "equal_weight_vs_cap_weight",
+        "healthcare_pharma_breadth",
+        "healthcare_pharma_leader_confirmation",
+        "healthcare_pharma_relative_strength",
+        "margin_balance",
+        "new_energy_ev_breadth",
+        "new_energy_ev_leader_confirmation",
+        "new_energy_ev_relative_strength",
+        "real_estate_infra_breadth",
+        "real_estate_infra_leader_confirmation",
+        "real_estate_infra_relative_strength",
+        "resources_materials_breadth",
+        "resources_materials_leader_confirmation",
+        "resources_materials_relative_strength",
+        "semiconductor_breadth",
+        "semiconductor_leader_confirmation",
+        "semiconductor_relative_strength",
+        "sp500_breadth",
+        "vix"
+      ]
+    },
+    "news_expectation": {
+      "description": "Structured news that changes expectations about future liquidity, cash flow, policy, or risk.",
+      "nodes": [
+        "ai_capex_news",
+        "ai_computer_policy_news",
+        "bank_insurance_policy_news",
+        "brokerage_policy_news",
+        "china_policy_news",
+        "communication_electronics_policy_news",
+        "consumer_policy_news",
+        "defense_military_policy_news",
+        "fed_policy_news",
+        "geopolitical_risk_news",
+        "healthcare_pharma_policy_news",
+        "new_energy_ev_policy_news",
+        "real_estate_infra_policy_news",
+        "resources_materials_policy_news",
+        "semiconductor_policy_news"
+      ]
+    },
+    "fundamental": {
+      "description": "Earnings, valuation, supply, demand, or industry-cycle evidence.",
+      "nodes": [
+        "ai_computer_fundamental_proxy",
+        "bank_insurance_fundamental_proxy",
+        "brokerage_fundamental_proxy",
+        "buyback_activity",
+        "communication_electronics_fundamental_proxy",
+        "consumer_fundamental_proxy",
+        "defense_military_fundamental_proxy",
+        "healthcare_pharma_fundamental_proxy",
+        "ipo_refinancing_pressure",
+        "mega_cap_earnings",
+        "new_energy_ev_fundamental_proxy",
+        "real_estate_infra_fundamental_proxy",
+        "resources_materials_fundamental_proxy",
+        "semiconductor_fundamental_proxy",
+        "sp500_eps_revision",
+        "sp500_valuation"
+      ]
+    },
+    "portfolio": {
+      "description": "User-specific position or holdings inputs.",
+      "nodes": [
+        "user_holdings_input"
+      ]
+    }
+  }
+}

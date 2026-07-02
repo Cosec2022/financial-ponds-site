@@ -1,0 +1,13 @@
+{
+  "id": "resources_materials_relative_strength",
+  "kind": "node",
+  "name": "Resources and Materials Relative Strength",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: Resources and materials ETFs are driven by commodity prices, dollar pressure, inventory, supply discipline, and global manufacturing conditions.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

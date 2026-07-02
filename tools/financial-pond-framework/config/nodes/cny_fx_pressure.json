@@ -1,0 +1,14 @@
+{
+  "id": "cny_fx_pressure",
+  "kind": "node",
+  "name": "CNY FX Pressure",
+  "data_type": "hard_data",
+  "category": "currency_pressure",
+  "frequency": "daily",
+  "description": "Proxy for RMB depreciation pressure and cross-border risk appetite. Higher pressure can reduce A-share and Hong Kong equity inflow.",
+  "source": {
+    "provider": "fx_market_data",
+    "status": "planned"
+  }
+}
+

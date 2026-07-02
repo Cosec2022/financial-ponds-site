@@ -1,0 +1,6 @@
+{
+  "id": "twice_daily_v0_5",
+  "timezone": "Asia/Hong_Kong",
+  "run_times": ["08:30", "20:30"],
+  "description": "Run one collection-analysis-report cycle twice per day: morning and evening."
+}

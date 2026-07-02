@@ -1,0 +1,14 @@
+{
+  "id": "sp500_etf_flow",
+  "kind": "node",
+  "name": "S&P 500 ETF Flow",
+  "data_type": "hard_data",
+  "category": "fund_flow",
+  "frequency": "daily",
+  "description": "Estimated net flow or share change for S&P 500 ETFs such as SPY, VOO, and IVV. This is direct ETF demand evidence.",
+  "source": {
+    "provider": "fund_data_vendor",
+    "status": "planned"
+  }
+}
+

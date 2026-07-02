@@ -1,0 +1,185 @@
+{
+  "id": "pool_internal_models_v0_5",
+  "description": "Each pool can define a closed internal model. This config is intentionally separate from graph edges.",
+  "default_components": {
+    "upstream": 0.25,
+    "inflow": 0.25,
+    "confirmation": 0.2,
+    "news_expectation": 0.15,
+    "downstream": 0.15
+  },
+  "pools": {
+    "us_equity": {
+      "description": "US equities are treated as a global risk-asset pool driven by USD liquidity, discount rates, earnings/flow, risk appetite, and sector diffusion.",
+      "components": {
+        "upstream": 0.3,
+        "inflow": 0.2,
+        "confirmation": 0.25,
+        "news_expectation": 0.1,
+        "downstream": 0.15
+      }
+    },
+    "sp500": {
+      "description": "S&P 500 ETF exposure is treated as a US large-cap index pond driven by dollar liquidity, rates, credit spreads, ETF flow, breadth, earnings revisions, valuation pressure, buybacks, mega-cap earnings, and Fed/AI news.",
+      "components": {
+        "upstream": 0.25,
+        "inflow": 0.15,
+        "confirmation": 0.15,
+        "fundamental": 0.3,
+        "news_expectation": 0.1,
+        "downstream": 0.05
+      }
+    },
+    "a_share": {
+      "description": "A-shares are treated as a domestic policy and credit-sensitive pool. Policy is not enough without turnover, ETF flow, and market confirmation.",
+      "components": {
+        "upstream": 0.3,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "news_expectation": 0.15,
+        "downstream": 0.05
+      }
+    },
+    "btc": {
+      "description": "BTC is treated as a USD-liquidity and crypto-liquidity sensitive pool with ETF inflow and leverage/confirmation risk.",
+      "components": {
+        "upstream": 0.3,
+        "inflow": 0.3,
+        "confirmation": 0.2,
+        "news_expectation": 0.1,
+        "downstream": 0.1
+      }
+    },
+    "gold": {
+      "description": "Gold is treated as a real-rate, dollar, geopolitics, inflation, ETF flow, and central-bank-demand pool.",
+      "components": {
+        "upstream": 0.35,
+        "inflow": 0.2,
+        "confirmation": 0.15,
+        "news_expectation": 0.2,
+        "downstream": 0.1
+      }
+    },
+    "a_share_semiconductor": {
+      "description": "A-share semiconductor inherits the A-share parent pool and adds sector policy, ETF flow, relative strength, valuation, and confirmation.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0.05
+      }
+    },
+    "a_share_brokerage": {
+      "description": "A-share Brokerage Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_bank_insurance": {
+      "description": "A-share Bank and Insurance Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_ai_computer": {
+      "description": "A-share AI and Computer Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_communication_electronics": {
+      "description": "A-share Communication and Electronics Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_new_energy_ev": {
+      "description": "A-share New Energy Vehicle Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_healthcare_pharma": {
+      "description": "A-share Healthcare and Pharma Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_consumer": {
+      "description": "A-share Consumer Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_defense_military": {
+      "description": "A-share Defense and Military Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_resources_materials": {
+      "description": "A-share Resources and Materials Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_real_estate_infra": {
+      "description": "A-share Real Estate and Infrastructure Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    }
+  }
+}

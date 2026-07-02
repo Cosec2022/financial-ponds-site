@@ -1,0 +1,11 @@
+{
+  "id": "a_share_consumer",
+  "kind": "pool",
+  "name": "A-share Consumer Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "Consumer ETFs depend on household income, retail sales, pricing power, inventory, and confidence.",
+  "scoring_profile": "default_pool_v0_1"
+}

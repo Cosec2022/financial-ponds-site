@@ -1,0 +1,11 @@
+{
+  "id": "a_share_defense_military",
+  "kind": "pool",
+  "name": "A-share Defense and Military Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "description": "Defense ETFs are influenced by orders, fiscal defense spending, geopolitics, and state-owned asset restructuring expectations.",
+  "scoring_profile": "default_pool_v0_1"
+}
