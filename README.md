@@ -4,7 +4,8 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 
 ## Current status
 
-- Site root shows a usable clickable A-share sector dashboard.
+- Site root shows a reference-first A-share sector dashboard.
+- The first screen separates hard data, fallback news, and prototype signals.
 - A-share hard-data collection runs in `tools/financial-pond-framework`.
 - News intelligence is an independent module and writes separate review files.
 - Electricity is currently a watchlist/demo pond. It is visible in the graph UI but is not yet connected to a real A-share industry ETF provider.
@@ -70,7 +71,7 @@ CLOUDFLARE_ACCOUNT_ID
 
 News is expectation pressure. It does not prove flow. Market confirmation still comes from price, turnover, breadth, ETF share change, and other hard data.
 
-## v0.10.3 usable scope
+## v0.10.4 reference dashboard scope
 
 This package is usable as a dashboard prototype and daily publishing pipeline:
 
@@ -79,6 +80,8 @@ Working:
 - Cloudflare Worker site
 - GitHub Actions deploy
 - A-share 11-sector ETF flow review
+- top/bottom A-share sector reference panel
+- visible data quality and confirmation input labels
 - A-share broad water-level provider with CI fallback
 - independent news pressure review
 - clickable pond map
@@ -106,7 +109,7 @@ The goal is to avoid permanent assumptions such as treating the power sector onl
 The project architecture and current module status are recorded in:
 
 ```text
-tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_3.md
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_4.md
 ```
 
 Use this file before editing the project. The modules are numbered FP-00 to FP-10 to avoid confusing formed modules with future proposals.

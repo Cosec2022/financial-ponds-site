@@ -167,6 +167,116 @@ function renderHeader() {
   document.getElementById("modelBadge").textContent = state.flow?.model_id ?? state.dashboard.model_version ?? "model";
 }
 
+function componentAvailable(row, componentName) {
+  return Boolean(row?.components?.[componentName]?.available);
+}
+
+function average(values) {
+  const usable = values.filter((value) => typeof value === "number" && Number.isFinite(value));
+  if (!usable.length) return null;
+  return usable.reduce((sum, value) => sum + value, 0) / usable.length;
+}
+
+function dataStatusLabel() {
+  const rows = state.flow?.sector_reviews ?? [];
+  const directFlowCount = rows.filter((row) => componentAvailable(row, "direct_flow")).length;
+  const confirmationCount = rows.filter((row) => componentAvailable(row, "market_confirmation")).length;
+  const newsFallback = Boolean(state.news?.collection?.fallback_used);
+  if (!rows.length) return { label: "无行业数据", className: "negative" };
+  if (directFlowCount && confirmationCount && !newsFallback) return { label: "硬数据可参考", className: "positive" };
+  if (directFlowCount && confirmationCount) return { label: "硬数据可参考，新闻为样例", className: "warm" };
+  return { label: "仅部分可参考", className: "warm" };
+}
+
+function confirmationText(row) {
+  const parts = [];
+  if (componentAvailable(row, "direct_flow")) parts.push("ETF流");
+  if (componentAvailable(row, "market_confirmation")) parts.push("价量");
+  if (componentAvailable(row, "market_liquidity")) parts.push("水位");
+  if (componentAvailable(row, "policy_sentiment")) parts.push("新闻");
+  return parts.length ? parts.join(" + ") : "等待输入";
+}
+
+function renderReferencePanel() {
+  const rows = [...(state.flow?.sector_reviews ?? [])];
+  const panel = document.getElementById("referencePanel");
+  const status = dataStatusLabel();
+  const statusBadge = document.getElementById("referenceStatus");
+  statusBadge.textContent = status.label;
+  statusBadge.className = `pill ${status.className}`;
+
+  if (!rows.length) {
+    panel.innerHTML = `<div class="empty">暂无可参考行业数据。等待 daily workflow 生成 sector_flow_review.json。</div>`;
+    return;
+  }
+
+  const sorted = rows.sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+  const top = sorted.slice(0, 3);
+  const bottom = [...sorted].reverse().slice(0, 3);
+  const directFlowCount = rows.filter((row) => componentAvailable(row, "direct_flow")).length;
+  const confirmationCount = rows.filter((row) => componentAvailable(row, "market_confirmation")).length;
+  const avgConfidence = average(rows.map((row) => row.confidence));
+  const avgCompleteness = average(rows.map((row) => row.data_completeness));
+  const newsFallback = Boolean(state.news?.collection?.fallback_used);
+  const techRows = ["semiconductor", "ai_computer", "communication_electronics"]
+    .map((id) => rows.find((row) => plainSectorId(row) === id))
+    .filter(Boolean);
+  const techAvg = average(techRows.map((row) => row.score));
+  const strongest = top[0];
+  const weakest = bottom[0];
+
+  panel.innerHTML = `
+    <article class="reference-card primary">
+      <span>今天最强</span>
+      <strong>${sectorLabel(strongest)}</strong>
+      <p>模型分 <b class="score ${scoreClass(strongest.score)}">${formatScore(strongest.score)}</b> · ${labelText(strongest.label)} · ${confirmationText(strongest)}</p>
+    </article>
+    <article class="reference-card risk">
+      <span>风险观察</span>
+      <strong>${sectorLabel(weakest)}</strong>
+      <p>模型分 <b class="score ${scoreClass(weakest.score)}">${formatScore(weakest.score)}</b> · ${labelText(weakest.label)} · ${confirmationText(weakest)}</p>
+    </article>
+    <article class="reference-card">
+      <span>科技链合成</span>
+      <strong class="score ${scoreClass(techAvg)}">${formatScore(techAvg)}</strong>
+      <p>半导体 / AI计算机 / 通信电子。用于观察全球科技风险是否被A股价量确认。</p>
+    </article>
+    <article class="reference-card">
+      <span>数据质量</span>
+      <strong>${directFlowCount}/${rows.length}</strong>
+      <p>ETF流输入 ${directFlowCount} 个；价量确认 ${confirmationCount} 个；平均置信度 ${formatScore(avgConfidence)}；完整度 ${formatScore(avgCompleteness)}。</p>
+    </article>
+    <article class="reference-card wide ${newsFallback ? "warning" : ""}">
+      <span>新闻层状态</span>
+      <strong>${newsFallback ? "样例新闻" : "新闻可用"}</strong>
+      <p>${state.news?.headline ?? "暂无新闻层输出"} ${newsFallback ? "因此新闻只用于检查流程，不参与强结论。" : "新闻仍需硬数据确认。"}</p>
+    </article>
+    <article class="reference-card wide">
+      <span>使用边界</span>
+      <strong>可做观察，不做买卖指令</strong>
+      <p>当前最有参考意义的是行业间相对强弱、ETF流/价量确认、数据完整度。Global Liquidity Graph 的旧 mock 分数只保留为技术视图。</p>
+    </article>
+    <div class="reference-list">
+      <h3>强势候选</h3>
+      ${top.map(referenceRowTemplate).join("")}
+    </div>
+    <div class="reference-list">
+      <h3>弱势/流出观察</h3>
+      ${bottom.map(referenceRowTemplate).join("")}
+    </div>
+  `;
+}
+
+function referenceRowTemplate(row) {
+  return `
+    <button class="reference-row" data-pond-id="${plainSectorId(row)}" type="button">
+      <span>${sectorLabel(row)}</span>
+      <b class="score ${scoreClass(row.score)}">${formatScore(row.score)}</b>
+      <small>${labelText(row.label)} · ${confirmationText(row)}</small>
+    </button>
+  `;
+}
+
 function renderPondMap() {
   const container = document.getElementById("pondMap");
   const ponds = state.pondMap?.ponds ?? [];
@@ -552,6 +662,8 @@ function renderSectorTable() {
           <th>分数</th>
           <th>状态</th>
           <th>置信度</th>
+          <th>完整度</th>
+          <th>确认输入</th>
           <th>主要驱动</th>
         </tr>
       </thead>
@@ -577,6 +689,8 @@ function rowTemplate(row, index) {
       <td class="score ${scoreClass(score)}">${formatScore(score)}</td>
       <td>${labelText(row.label)}</td>
       <td>${formatScore(row.confidence)}</td>
+      <td>${formatScore(row.data_completeness)}</td>
+      <td>${confirmationText(row)}</td>
       <td>${drivers}</td>
     </tr>
   `;
@@ -616,6 +730,13 @@ function bindTableLinks() {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   });
+  document.querySelectorAll(".reference-row").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 }
 
 function bindTabs() {
@@ -631,6 +752,7 @@ function bindTabs() {
 
 function renderAll() {
   renderHeader();
+  renderReferencePanel();
   renderPondMap();
   renderSelectedSummary();
   renderFlowDetail();

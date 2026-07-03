@@ -11,7 +11,7 @@
       <div>
         <p class="eyebrow">CosecLab · Financial Ponds</p>
         <h1>资金池塘图谱</h1>
-        <p class="hero-copy">首页看所有池塘的层次、热度和高估/低估；点选池塘后，看上游流入流出、影响系数、新闻关键词权重、半衰期、水花系数、相关行业、日报和周报。电力行业当前是观察池，不参与真实行业ETF排序。</p>
+        <p class="hero-copy">首页先看今天哪些数据可参考，再看A股行业强弱、风险观察和池塘层级。点选池塘后，看上游流入流出、影响系数、新闻关键词权重、半衰期、水花系数、相关行业、日报和周报。电力行业当前是观察池，不参与真实行业ETF排序。</p>
       </div>
       <div class="hero-status">
         <span id="asOfBadge" class="pill">Loading</span>
@@ -20,6 +20,18 @@
     </header>
 
     <main class="layout">
+      <section class="section reference-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Reference View</p>
+            <h2>今日参考面板</h2>
+            <p>只把真实硬数据和明确标注的样例/原型分开显示。这里不是交易指令。</p>
+          </div>
+          <span id="referenceStatus" class="pill muted">Checking</span>
+        </div>
+        <div id="referencePanel" class="reference-grid">Loading reference panel.</div>
+      </section>
+
       <section class="left-pane section">
         <div class="section-head compact">
           <div>

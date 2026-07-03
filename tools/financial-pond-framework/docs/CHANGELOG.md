@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.10.4 - Reference-first dashboard
+
+- Bumped site and framework package versions to `0.10.4`.
+- Added a `今日参考面板` to the page top.
+- The panel summarizes:
+  - strongest sector;
+  - weakest / outflow-watch sector;
+  - technology-chain composite score;
+  - ETF-flow input count;
+  - price/volume confirmation count;
+  - average confidence and completeness;
+  - whether the news layer is real or fixture/fallback.
+- Added `data completeness` and `confirmation input` columns to the sector table.
+- Demoted old global graph scores to technical context by explicitly stating that mock graph scores are not the main reference view.
+
+Boundary:
+
+- No scoring formula change.
+- No new data provider.
+- No GPT integration.
+- No trading recommendation.
+
+Progress registry:
+
+- `docs/handbook/CURRENT_PROGRESS_V0_10_4.md`
+
 ## v0.10.3 - Usable dashboard state and project semantics cleanup
 
 - Bumped site and framework package versions to `0.10.3`.
@@ -23,7 +49,7 @@ Boundary:
 - Added clickable graph feedback UI for local upstream/downstream node edits.
 - Added proposal display for node additions, weight changes, and edge decay.
 - Added patch export from browser localStorage.
-- Added the first numbered progress registry, later superseded by `docs/handbook/CURRENT_PROGRESS_V0_10_3.md`.
+- Added the first numbered progress registry, later superseded by `docs/handbook/CURRENT_PROGRESS_V0_10_4.md`.
 - Numbered formed and planned modules from FP-00 to FP-10.
 - Recorded deployment state, A-share data provider state, news engine boundary, adaptive keyword design, adaptive graph feedback design, frontend UX structure, tests, and next recommended implementation order.
 - Purpose: make future editing safer and prevent confusion between implemented modules, prototypes, and planned modules.
