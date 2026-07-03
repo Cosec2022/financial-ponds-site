@@ -608,3 +608,29 @@ Important boundary:
   mutate graph scores.
 - News search outputs node observations only. It does not directly alter pond
   scores.
+
+## v0.10.0 - Independent news intelligence and readable Financial Ponds UI
+
+- Added independent news intelligence module:
+  - `config/news/news_daily_v1.json`
+  - `src/news/news_intelligence.mjs`
+  - `src/tools/news_daily_review.mjs`
+- Added scripts:
+  - `npm run news:review`
+  - `npm run news:review:fixture`
+  - `npm run news:review:ci`
+- News outputs are written separately from hard-data outputs:
+  - `observations/<date>/news_observations.json`
+  - `model_outputs/<date>/news_review.json`
+  - `model_outputs/<date>/news_review.md`
+- Sector Flow Review can read news observations, but the core graph scores remain unchanged.
+- CI daily runner now collects the news layer before Flow Review.
+- Frontend now prioritizes readable A-share sector ranking, news pressure, and data boundaries instead of the low-level graph view.
+- Boundary remains: news is expectation pressure; hard data confirms or rejects it.
+
+## v0.10.2-progress-registry
+
+- Added `docs/handbook/CURRENT_PROGRESS_V0_10_2.md`.
+- Numbered formed and planned modules from FP-00 to FP-10.
+- Recorded deployment state, A-share data provider state, news engine boundary, adaptive keyword design, adaptive graph feedback design, frontend UX structure, tests, and next recommended implementation order.
+- Purpose: make future editing safer and prevent confusion between implemented modules, prototypes, and planned modules.

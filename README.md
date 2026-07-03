@@ -1,56 +1,87 @@
 # Financial Ponds Site
 
-Standalone Cloudflare Worker site for the Financial Pond model.
+Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 
-Target domain:
+## Current status
 
-```text
-financial-ponds.coseclab.dev
+- Site root shows a readable A-share sector dashboard.
+- A-share hard-data collection runs in `tools/financial-pond-framework`.
+- News intelligence is an independent module and writes separate review files.
+- GitHub Actions runs the CI daily runner, then deploys the Worker with Wrangler.
+
+## Daily automation
+
+Workflow: `.github/workflows/daily.yml`
+
+Main model command used by CI:
+
+```bash
+cd tools/financial-pond-framework
+npm run a-share:daily:ci -- --as-of "$AS_OF"
 ```
 
-## Local Test
+The CI runner collects:
+
+1. A-share sector ETF snapshot.
+2. A-share water-level data, with explicit fixture fallback if upstream is unstable.
+3. Independent news review, with explicit fixture fallback if news search is unavailable.
+4. Sector Flow Review.
+
+Published web JSON:
+
+```text
+financial-pond/data/dashboard.json
+financial-pond/data/sector_flow_review.json
+financial-pond/data/news_review.json
+```
+
+## Local test
 
 ```bash
 npm install
 npm run build
 npm run validate
 npm test
-npm run preview
 ```
 
-Preview URL:
+Model test:
 
-```text
-http://localhost:4174
+```bash
+cd tools/financial-pond-framework
+npm test
+npm run news:review:fixture -- --as-of 2026-07-02
 ```
 
-## Daily Automation
+## Deploy
 
-GitHub Actions file:
-
-```text
-.github/workflows/daily.yml
+```bash
+npm run deploy
 ```
 
-It runs:
-
-```text
-tools/financial-pond-framework
-→ npm run a-share:daily:ci
-→ npm run cycle
-→ npm run export:web-data
-→ copy dashboard JSON into this site
-→ wrangler deploy
-```
-
-The workflow uses Node.js 22 because current Wrangler releases require Node.js
-22 or newer for deployment.
-
-Required GitHub Secrets:
+Required GitHub Secrets for automatic deploy:
 
 ```text
 CLOUDFLARE_API_TOKEN
 CLOUDFLARE_ACCOUNT_ID
 ```
 
-Cloudflare must have the custom domain `financial-ponds.coseclab.dev` available in the same account and zone.
+## Boundary
+
+News is expectation pressure. It does not prove flow. Market confirmation still comes from price, turnover, breadth, ETF share change, and other hard data.
+
+
+## v0.10.2 Adaptive graph feedback
+
+The dashboard now treats upstream/downstream pond nodes as adjustable model parameters. A pond can show proposed node additions, weight reductions, and local manual overrides. Browser-side edits are saved in localStorage and can be exported as a patch JSON before being committed back into model configuration.
+
+The goal is to avoid permanent assumptions such as treating the power sector only as coal power. If news and market confirmation show that grid capex, green power, carbon market, or other nodes have higher explanatory power, the graph can propose node additions or coefficient changes.
+
+## Current progress registry
+
+The project architecture and current module status are recorded in:
+
+```text
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_2.md
+```
+
+Use this file before editing the project. The modules are numbered FP-00 to FP-10 to avoid confusing formed modules with future proposals.
