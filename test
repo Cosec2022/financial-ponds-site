@@ -1,0 +1,8 @@
+[200~cd /Users/cosec/Downloads/financial-ponds-site
+eval "$(ssh-agent -s)"
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519_github
+ssh -T git@github.com
+git push[201~cd /Users/cosec/Downloads/financial-ponds-site
+eval "$(ssh-agent -s)"
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519_github
+ssh -T git@github.com

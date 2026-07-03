@@ -1,5 +1,45 @@
 # Changelog
 
+## v0.10.3 - Usable dashboard state and project semantics cleanup
+
+- Bumped site and framework package versions to `0.10.3`.
+- Added `docs/handbook/CURRENT_PROGRESS_V0_10_3.md`.
+- Added `docs/handbook/DATA_STATUS_MATRIX.md`.
+- Added `docs/handbook/FRONTEND_MODEL_CONTRACT.md`.
+- Clarified that `electric_power` is a watchlist/demo pond, not a real ETF-backed sector in this package.
+- Aligned published frontend JSON dates so the dashboard does not show a future `as_of`.
+- Clarified that runtime folders such as `observations/`, `snapshots/`, `model_outputs/`, and `reports/` are sample state in this package.
+- Changed the site language metadata to Simplified Chinese.
+
+Boundary:
+
+- No scoring formula change.
+- No GPT integration.
+- No automatic graph or keyword writeback.
+- No new real data provider.
+
+## v0.10.2 - Adaptive graph feedback and progress registry
+
+- Added clickable graph feedback UI for local upstream/downstream node edits.
+- Added proposal display for node additions, weight changes, and edge decay.
+- Added patch export from browser localStorage.
+- Added the first numbered progress registry, later superseded by `docs/handbook/CURRENT_PROGRESS_V0_10_3.md`.
+- Numbered formed and planned modules from FP-00 to FP-10.
+- Recorded deployment state, A-share data provider state, news engine boundary, adaptive keyword design, adaptive graph feedback design, frontend UX structure, tests, and next recommended implementation order.
+- Purpose: make future editing safer and prevent confusion between implemented modules, prototypes, and planned modules.
+
+## v0.10.1 - Clickable pond map dashboard
+
+- Added `financial-pond/data/pond_map.json`.
+- Updated frontend to show all ponds by hierarchy.
+- Added pond detail view with upstream/downstream nodes, influence coefficients, keyword groups, weights, half-life, splash coefficient, related sectors, and daily/weekly report placeholders.
+- Added electricity-sector watchlist example to express adaptive upstream/downstream logic.
+
+Boundary:
+
+- Electricity was added as a frontend watchlist/demo pond only.
+- It is not yet connected to real ETF data or the sector flow engine.
+
 ## 0.9.9
 
 Source package: `0.9.8` plus the first GitHub Actions failure from
@@ -627,10 +667,3 @@ Important boundary:
 - CI daily runner now collects the news layer before Flow Review.
 - Frontend now prioritizes readable A-share sector ranking, news pressure, and data boundaries instead of the low-level graph view.
 - Boundary remains: news is expectation pressure; hard data confirms or rejects it.
-
-## v0.10.2-progress-registry
-
-- Added `docs/handbook/CURRENT_PROGRESS_V0_10_2.md`.
-- Numbered formed and planned modules from FP-00 to FP-10.
-- Recorded deployment state, A-share data provider state, news engine boundary, adaptive keyword design, adaptive graph feedback design, frontend UX structure, tests, and next recommended implementation order.
-- Purpose: make future editing safer and prevent confusion between implemented modules, prototypes, and planned modules.

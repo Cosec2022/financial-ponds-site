@@ -1,0 +1,1009 @@
+{
+  "as_of": "2026-07-02",
+  "generated_at": "2026-07-03T00:49:25.400Z",
+  "module_id": "news_daily_v1",
+  "status": "news_available",
+  "headline": "News collector used fallback data; treat today’s news layer as a pipeline check, not live news.",
+  "counts": {
+    "collected_items": 3,
+    "matched_events": 8,
+    "observations": 11,
+    "affected_sectors": 8
+  },
+  "collection": {
+    "mode": "fixture",
+    "fallback_used": true,
+    "fallback_reason": "Fixture news items were requested explicitly.",
+    "errors": []
+  },
+  "summary": {
+    "top_positive_sectors": [
+      {
+        "sector_id": "brokerage",
+        "score": 0.508,
+        "event_count": 5,
+        "top_events": [
+          {
+            "title": "China policy signals continued support for capital markets and liquidity",
+            "bucket": "china_policy_a_share",
+            "channel": "policy_liquidity",
+            "score": 0.193,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "fixture://china-policy-support"
+          },
+          {
+            "title": "China policy signals continued support for capital markets and liquidity",
+            "bucket": "china_policy_a_share",
+            "channel": "liquidity",
+            "score": 0.14,
+            "direction": "positive",
+            "reason": "Easier global liquidity can support equity duration and risk appetite.",
+            "affected_sector_ids": [
+              "brokerage",
+              "semiconductor",
+              "ai_computer",
+              "consumer"
+            ],
+            "link": "fixture://china-policy-support"
+          },
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "regulation",
+            "score": -0.157,
+            "direction": "negative",
+            "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+            "affected_sector_ids": [
+              "brokerage",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          }
+        ]
+      },
+      {
+        "sector_id": "bank_insurance",
+        "score": 0.385,
+        "event_count": 2,
+        "top_events": [
+          {
+            "title": "China policy signals continued support for capital markets and liquidity",
+            "bucket": "china_policy_a_share",
+            "channel": "policy_liquidity",
+            "score": 0.193,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "fixture://china-policy-support"
+          },
+          {
+            "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+            "bucket": "macro_liquidity_fx",
+            "channel": "policy_liquidity",
+            "score": 0.193,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "fixture://macro-liquidity-pressure"
+          }
+        ]
+      },
+      {
+        "sector_id": "real_estate_infra",
+        "score": 0.385,
+        "event_count": 2,
+        "top_events": [
+          {
+            "title": "China policy signals continued support for capital markets and liquidity",
+            "bucket": "china_policy_a_share",
+            "channel": "policy_liquidity",
+            "score": 0.193,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "fixture://china-policy-support"
+          },
+          {
+            "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+            "bucket": "macro_liquidity_fx",
+            "channel": "policy_liquidity",
+            "score": 0.193,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "fixture://macro-liquidity-pressure"
+          }
+        ]
+      }
+    ],
+    "top_negative_sectors": [
+      {
+        "sector_id": "communication_electronics",
+        "score": -0.21,
+        "event_count": 3,
+        "top_events": [
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "regulation",
+            "score": -0.157,
+            "direction": "negative",
+            "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+            "affected_sector_ids": [
+              "brokerage",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          },
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "industry_cycle",
+            "score": 0.175,
+            "direction": "positive",
+            "reason": "Global AI and chip demand news can support domestic technology expectations.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          },
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "external_risk",
+            "score": -0.227,
+            "direction": "negative",
+            "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          }
+        ]
+      },
+      {
+        "sector_id": "new_energy_ev",
+        "score": -0.157,
+        "event_count": 1,
+        "top_events": [
+          {
+            "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+            "bucket": "macro_liquidity_fx",
+            "channel": "liquidity",
+            "score": -0.157,
+            "direction": "negative",
+            "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "new_energy_ev",
+              "consumer"
+            ],
+            "link": "fixture://macro-liquidity-pressure"
+          }
+        ]
+      },
+      {
+        "sector_id": "ai_computer",
+        "score": -0.088,
+        "event_count": 6,
+        "top_events": [
+          {
+            "title": "China policy signals continued support for capital markets and liquidity",
+            "bucket": "china_policy_a_share",
+            "channel": "liquidity",
+            "score": 0.14,
+            "direction": "positive",
+            "reason": "Easier global liquidity can support equity duration and risk appetite.",
+            "affected_sector_ids": [
+              "brokerage",
+              "semiconductor",
+              "ai_computer",
+              "consumer"
+            ],
+            "link": "fixture://china-policy-support"
+          },
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "regulation",
+            "score": -0.157,
+            "direction": "negative",
+            "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+            "affected_sector_ids": [
+              "brokerage",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          },
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "industry_cycle",
+            "score": 0.175,
+            "direction": "positive",
+            "reason": "Global AI and chip demand news can support domestic technology expectations.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          }
+        ]
+      }
+    ],
+    "pressure_buckets": [
+      {
+        "bucket": "china_policy_a_share",
+        "score": 0.333,
+        "event_count": 2,
+        "top_events": [
+          {
+            "title": "China policy signals continued support for capital markets and liquidity",
+            "bucket": "china_policy_a_share",
+            "channel": "policy_liquidity",
+            "score": 0.193,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "fixture://china-policy-support"
+          },
+          {
+            "title": "China policy signals continued support for capital markets and liquidity",
+            "bucket": "china_policy_a_share",
+            "channel": "liquidity",
+            "score": 0.14,
+            "direction": "positive",
+            "reason": "Easier global liquidity can support equity duration and risk appetite.",
+            "affected_sector_ids": [
+              "brokerage",
+              "semiconductor",
+              "ai_computer",
+              "consumer"
+            ],
+            "link": "fixture://china-policy-support"
+          }
+        ]
+      },
+      {
+        "bucket": "global_ai_semiconductor",
+        "score": -0.21,
+        "event_count": 3,
+        "top_events": [
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "regulation",
+            "score": -0.157,
+            "direction": "negative",
+            "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+            "affected_sector_ids": [
+              "brokerage",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          },
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "industry_cycle",
+            "score": 0.175,
+            "direction": "positive",
+            "reason": "Global AI and chip demand news can support domestic technology expectations.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          },
+          {
+            "title": "Global chip shares face selloff after export control and weak demand worries",
+            "bucket": "global_ai_semiconductor",
+            "channel": "external_risk",
+            "score": -0.227,
+            "direction": "negative",
+            "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "fixture://global-tech-risk"
+          }
+        ]
+      },
+      {
+        "bucket": "macro_liquidity_fx",
+        "score": 0.175,
+        "event_count": 3,
+        "top_events": [
+          {
+            "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+            "bucket": "macro_liquidity_fx",
+            "channel": "policy_liquidity",
+            "score": 0.193,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "fixture://macro-liquidity-pressure"
+          },
+          {
+            "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+            "bucket": "macro_liquidity_fx",
+            "channel": "liquidity",
+            "score": 0.14,
+            "direction": "positive",
+            "reason": "Easier global liquidity can support equity duration and risk appetite.",
+            "affected_sector_ids": [
+              "brokerage",
+              "semiconductor",
+              "ai_computer",
+              "consumer"
+            ],
+            "link": "fixture://macro-liquidity-pressure"
+          },
+          {
+            "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+            "bucket": "macro_liquidity_fx",
+            "channel": "liquidity",
+            "score": -0.157,
+            "direction": "negative",
+            "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "new_energy_ev",
+              "consumer"
+            ],
+            "link": "fixture://macro-liquidity-pressure"
+          }
+        ]
+      }
+    ]
+  },
+  "sector_news_pressure": [
+    {
+      "sector_id": "brokerage",
+      "score": 0.508,
+      "event_count": 5,
+      "top_events": [
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "policy_liquidity",
+          "score": 0.193,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "fixture://china-policy-support"
+        },
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "liquidity",
+          "score": 0.14,
+          "direction": "positive",
+          "reason": "Easier global liquidity can support equity duration and risk appetite.",
+          "affected_sector_ids": [
+            "brokerage",
+            "semiconductor",
+            "ai_computer",
+            "consumer"
+          ],
+          "link": "fixture://china-policy-support"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "regulation",
+          "score": -0.157,
+          "direction": "negative",
+          "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+          "affected_sector_ids": [
+            "brokerage",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        }
+      ]
+    },
+    {
+      "sector_id": "bank_insurance",
+      "score": 0.385,
+      "event_count": 2,
+      "top_events": [
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "policy_liquidity",
+          "score": 0.193,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "fixture://china-policy-support"
+        },
+        {
+          "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+          "bucket": "macro_liquidity_fx",
+          "channel": "policy_liquidity",
+          "score": 0.193,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "fixture://macro-liquidity-pressure"
+        }
+      ]
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "score": 0.385,
+      "event_count": 2,
+      "top_events": [
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "policy_liquidity",
+          "score": 0.193,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "fixture://china-policy-support"
+        },
+        {
+          "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+          "bucket": "macro_liquidity_fx",
+          "channel": "policy_liquidity",
+          "score": 0.193,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "fixture://macro-liquidity-pressure"
+        }
+      ]
+    },
+    {
+      "sector_id": "consumer",
+      "score": 0.122,
+      "event_count": 3,
+      "top_events": [
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "liquidity",
+          "score": 0.14,
+          "direction": "positive",
+          "reason": "Easier global liquidity can support equity duration and risk appetite.",
+          "affected_sector_ids": [
+            "brokerage",
+            "semiconductor",
+            "ai_computer",
+            "consumer"
+          ],
+          "link": "fixture://china-policy-support"
+        },
+        {
+          "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+          "bucket": "macro_liquidity_fx",
+          "channel": "liquidity",
+          "score": 0.14,
+          "direction": "positive",
+          "reason": "Easier global liquidity can support equity duration and risk appetite.",
+          "affected_sector_ids": [
+            "brokerage",
+            "semiconductor",
+            "ai_computer",
+            "consumer"
+          ],
+          "link": "fixture://macro-liquidity-pressure"
+        },
+        {
+          "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+          "bucket": "macro_liquidity_fx",
+          "channel": "liquidity",
+          "score": -0.157,
+          "direction": "negative",
+          "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "new_energy_ev",
+            "consumer"
+          ],
+          "link": "fixture://macro-liquidity-pressure"
+        }
+      ]
+    },
+    {
+      "sector_id": "semiconductor",
+      "score": 0.07,
+      "event_count": 5,
+      "top_events": [
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "liquidity",
+          "score": 0.14,
+          "direction": "positive",
+          "reason": "Easier global liquidity can support equity duration and risk appetite.",
+          "affected_sector_ids": [
+            "brokerage",
+            "semiconductor",
+            "ai_computer",
+            "consumer"
+          ],
+          "link": "fixture://china-policy-support"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "industry_cycle",
+          "score": 0.175,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "external_risk",
+          "score": -0.227,
+          "direction": "negative",
+          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        }
+      ]
+    },
+    {
+      "sector_id": "ai_computer",
+      "score": -0.088,
+      "event_count": 6,
+      "top_events": [
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "liquidity",
+          "score": 0.14,
+          "direction": "positive",
+          "reason": "Easier global liquidity can support equity duration and risk appetite.",
+          "affected_sector_ids": [
+            "brokerage",
+            "semiconductor",
+            "ai_computer",
+            "consumer"
+          ],
+          "link": "fixture://china-policy-support"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "regulation",
+          "score": -0.157,
+          "direction": "negative",
+          "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+          "affected_sector_ids": [
+            "brokerage",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "industry_cycle",
+          "score": 0.175,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        }
+      ]
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "score": -0.157,
+      "event_count": 1,
+      "top_events": [
+        {
+          "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+          "bucket": "macro_liquidity_fx",
+          "channel": "liquidity",
+          "score": -0.157,
+          "direction": "negative",
+          "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "new_energy_ev",
+            "consumer"
+          ],
+          "link": "fixture://macro-liquidity-pressure"
+        }
+      ]
+    },
+    {
+      "sector_id": "communication_electronics",
+      "score": -0.21,
+      "event_count": 3,
+      "top_events": [
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "regulation",
+          "score": -0.157,
+          "direction": "negative",
+          "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+          "affected_sector_ids": [
+            "brokerage",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "industry_cycle",
+          "score": 0.175,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "external_risk",
+          "score": -0.227,
+          "direction": "negative",
+          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        }
+      ]
+    }
+  ],
+  "pressure_buckets": [
+    {
+      "bucket": "china_policy_a_share",
+      "score": 0.333,
+      "event_count": 2,
+      "top_events": [
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "policy_liquidity",
+          "score": 0.193,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "fixture://china-policy-support"
+        },
+        {
+          "title": "China policy signals continued support for capital markets and liquidity",
+          "bucket": "china_policy_a_share",
+          "channel": "liquidity",
+          "score": 0.14,
+          "direction": "positive",
+          "reason": "Easier global liquidity can support equity duration and risk appetite.",
+          "affected_sector_ids": [
+            "brokerage",
+            "semiconductor",
+            "ai_computer",
+            "consumer"
+          ],
+          "link": "fixture://china-policy-support"
+        }
+      ]
+    },
+    {
+      "bucket": "global_ai_semiconductor",
+      "score": -0.21,
+      "event_count": 3,
+      "top_events": [
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "regulation",
+          "score": -0.157,
+          "direction": "negative",
+          "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+          "affected_sector_ids": [
+            "brokerage",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "industry_cycle",
+          "score": 0.175,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        },
+        {
+          "title": "Global chip shares face selloff after export control and weak demand worries",
+          "bucket": "global_ai_semiconductor",
+          "channel": "external_risk",
+          "score": -0.227,
+          "direction": "negative",
+          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "fixture://global-tech-risk"
+        }
+      ]
+    },
+    {
+      "bucket": "macro_liquidity_fx",
+      "score": 0.175,
+      "event_count": 3,
+      "top_events": [
+        {
+          "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+          "bucket": "macro_liquidity_fx",
+          "channel": "policy_liquidity",
+          "score": 0.193,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "fixture://macro-liquidity-pressure"
+        },
+        {
+          "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+          "bucket": "macro_liquidity_fx",
+          "channel": "liquidity",
+          "score": 0.14,
+          "direction": "positive",
+          "reason": "Easier global liquidity can support equity duration and risk appetite.",
+          "affected_sector_ids": [
+            "brokerage",
+            "semiconductor",
+            "ai_computer",
+            "consumer"
+          ],
+          "link": "fixture://macro-liquidity-pressure"
+        },
+        {
+          "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+          "bucket": "macro_liquidity_fx",
+          "channel": "liquidity",
+          "score": -0.157,
+          "direction": "negative",
+          "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "new_energy_ev",
+            "consumer"
+          ],
+          "link": "fixture://macro-liquidity-pressure"
+        }
+      ]
+    }
+  ],
+  "top_events": [
+    {
+      "title": "China policy signals continued support for capital markets and liquidity",
+      "bucket": "china_policy_a_share",
+      "channel": "policy_liquidity",
+      "score": 0.193,
+      "direction": "positive",
+      "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+      "affected_sector_ids": [
+        "brokerage",
+        "bank_insurance",
+        "real_estate_infra"
+      ],
+      "link": "fixture://china-policy-support"
+    },
+    {
+      "title": "China policy signals continued support for capital markets and liquidity",
+      "bucket": "china_policy_a_share",
+      "channel": "liquidity",
+      "score": 0.14,
+      "direction": "positive",
+      "reason": "Easier global liquidity can support equity duration and risk appetite.",
+      "affected_sector_ids": [
+        "brokerage",
+        "semiconductor",
+        "ai_computer",
+        "consumer"
+      ],
+      "link": "fixture://china-policy-support"
+    },
+    {
+      "title": "Global chip shares face selloff after export control and weak demand worries",
+      "bucket": "global_ai_semiconductor",
+      "channel": "regulation",
+      "score": -0.157,
+      "direction": "negative",
+      "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data.",
+      "affected_sector_ids": [
+        "brokerage",
+        "ai_computer",
+        "communication_electronics"
+      ],
+      "link": "fixture://global-tech-risk"
+    },
+    {
+      "title": "Global chip shares face selloff after export control and weak demand worries",
+      "bucket": "global_ai_semiconductor",
+      "channel": "industry_cycle",
+      "score": 0.175,
+      "direction": "positive",
+      "reason": "Global AI and chip demand news can support domestic technology expectations.",
+      "affected_sector_ids": [
+        "semiconductor",
+        "ai_computer",
+        "communication_electronics"
+      ],
+      "link": "fixture://global-tech-risk"
+    },
+    {
+      "title": "Global chip shares face selloff after export control and weak demand worries",
+      "bucket": "global_ai_semiconductor",
+      "channel": "external_risk",
+      "score": -0.227,
+      "direction": "negative",
+      "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+      "affected_sector_ids": [
+        "semiconductor",
+        "ai_computer",
+        "communication_electronics"
+      ],
+      "link": "fixture://global-tech-risk"
+    },
+    {
+      "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+      "bucket": "macro_liquidity_fx",
+      "channel": "policy_liquidity",
+      "score": 0.193,
+      "direction": "positive",
+      "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+      "affected_sector_ids": [
+        "brokerage",
+        "bank_insurance",
+        "real_estate_infra"
+      ],
+      "link": "fixture://macro-liquidity-pressure"
+    },
+    {
+      "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+      "bucket": "macro_liquidity_fx",
+      "channel": "liquidity",
+      "score": 0.14,
+      "direction": "positive",
+      "reason": "Easier global liquidity can support equity duration and risk appetite.",
+      "affected_sector_ids": [
+        "brokerage",
+        "semiconductor",
+        "ai_computer",
+        "consumer"
+      ],
+      "link": "fixture://macro-liquidity-pressure"
+    },
+    {
+      "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+      "bucket": "macro_liquidity_fx",
+      "channel": "liquidity",
+      "score": -0.157,
+      "direction": "negative",
+      "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+      "affected_sector_ids": [
+        "semiconductor",
+        "ai_computer",
+        "new_energy_ev",
+        "consumer"
+      ],
+      "link": "fixture://macro-liquidity-pressure"
+    }
+  ],
+  "interpretation_boundary": [
+    "News is expectation pressure, not proof of capital flow.",
+    "Sector news mappings are intentionally broad; they are not precise single-stock causal edges.",
+    "Market confirmation must come from price, turnover, breadth, ETF share change, or other hard data."
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "id": "news_daily_v1",
+  "description": "Independent news intelligence module. News is expectation pressure; market data remains confirmation.",
+  "enabled": true,
+  "max_items_per_query": 8,
+  "provider_templates": {
+    "google_news_rss": "https://news.google.com/rss/search?q={query}&hl=en-US&gl=US&ceid=US:en"
+  },
+  "queries": [
+    {
+      "id": "china_policy_a_share",
+      "enabled": true,
+      "provider": "google_news_rss",
+      "query": "China A-share policy CSRC PBOC liquidity stock market support",
+      "bucket": "China policy",
+      "source_type": "search_rss",
+      "credibility": 0.45
+    },
+    {
+      "id": "a_share_etf_flows",
+      "enabled": true,
+      "provider": "google_news_rss",
+      "query": "China A-share ETF inflows sector rotation brokerage semiconductor",
+      "bucket": "A-share fund flow",
+      "source_type": "search_rss",
+      "credibility": 0.42
+    },
+    {
+      "id": "global_ai_semiconductor",
+      "enabled": true,
+      "provider": "google_news_rss",
+      "query": "AI semiconductor HBM Nvidia SK Hynix TSMC export controls capex",
+      "bucket": "Global technology risk",
+      "source_type": "search_rss",
+      "credibility": 0.45
+    },
+    {
+      "id": "macro_liquidity_fx",
+      "enabled": true,
+      "provider": "google_news_rss",
+      "query": "Federal Reserve dollar yuan treasury yields liquidity risk appetite China equities",
+      "bucket": "Macro liquidity",
+      "source_type": "search_rss",
+      "credibility": 0.45
+    }
+  ],
+  "rules": [
+    {
+      "id": "china_policy_support",
+      "node_id": "china_policy_news",
+      "pressure_id": "china_policy_support",
+      "display_name": "China policy support",
+      "channel": "policy_liquidity",
+      "direction": "positive",
+      "score": 0.55,
+      "keywords_any": ["support", "stimulus", "liquidity", "pboc", "csrc", "reserve requirement", "market support", "buyback"],
+      "affected_sector_ids": ["brokerage", "bank_insurance", "real_estate_infra"],
+      "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required."
+    },
+    {
+      "id": "china_policy_tightening",
+      "node_id": "china_policy_news",
+      "pressure_id": "china_policy_tightening",
+      "display_name": "China policy tightening",
+      "channel": "regulation",
+      "direction": "negative",
+      "score": -0.45,
+      "keywords_any": ["crackdown", "tighten", "regulatory pressure", "restriction", "investigation", "penalty"],
+      "affected_sector_ids": ["brokerage", "ai_computer", "communication_electronics"],
+      "reason": "Regulatory pressure can reduce sector risk appetite until confirmed or rejected by market data."
+    },
+    {
+      "id": "global_tech_positive",
+      "node_id": "ai_capex_news",
+      "pressure_id": "global_tech_positive",
+      "display_name": "Global AI / semiconductor tailwind",
+      "channel": "industry_cycle",
+      "direction": "positive",
+      "score": 0.50,
+      "keywords_any": ["capex", "demand", "orders", "guidance", "gpu", "hbm", "data center", "ai chip"],
+      "affected_sector_ids": ["semiconductor", "ai_computer", "communication_electronics"],
+      "reason": "Global AI and chip demand news can support domestic technology expectations."
+    },
+    {
+      "id": "global_tech_risk",
+      "node_id": "ai_capex_news",
+      "pressure_id": "global_tech_risk",
+      "display_name": "Global technology risk",
+      "channel": "external_risk",
+      "direction": "negative",
+      "score": -0.65,
+      "keywords_any": ["selloff", "plunge", "down", "export control", "restriction", "cut", "weak demand", "inventory", "sanction"],
+      "affected_sector_ids": ["semiconductor", "ai_computer", "communication_electronics"],
+      "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge."
+    },
+    {
+      "id": "macro_liquidity_positive",
+      "node_id": "fed_policy_news",
+      "pressure_id": "macro_liquidity_positive",
+      "display_name": "Macro liquidity support",
+      "channel": "liquidity",
+      "direction": "positive",
+      "score": 0.40,
+      "keywords_any": ["rate cut", "easing", "lower yields", "liquidity", "risk appetite", "soft landing"],
+      "affected_sector_ids": ["brokerage", "semiconductor", "ai_computer", "consumer"],
+      "reason": "Easier global liquidity can support equity duration and risk appetite."
+    },
+    {
+      "id": "macro_liquidity_pressure",
+      "node_id": "fed_policy_news",
+      "pressure_id": "macro_liquidity_pressure",
+      "display_name": "Macro liquidity pressure",
+      "channel": "liquidity",
+      "direction": "negative",
+      "score": -0.45,
+      "keywords_any": ["higher yields", "rate hike", "strong dollar", "tightening", "inflation", "risk off", "yuan pressure"],
+      "affected_sector_ids": ["semiconductor", "ai_computer", "new_energy_ev", "consumer"],
+      "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite."
+    }
+  ],
+  "fixture_items": [
+    {
+      "query_id": "china_policy_a_share",
+      "title": "China policy signals continued support for capital markets and liquidity",
+      "description": "CSRC and PBOC comments mention market support, liquidity and investor confidence.",
+      "link": "fixture://china-policy-support",
+      "published_at": "2026-07-02T08:30:00Z"
+    },
+    {
+      "query_id": "global_ai_semiconductor",
+      "title": "Global chip shares face selloff after export control and weak demand worries",
+      "description": "AI chip, HBM and data center names fall as investors debate demand and restrictions.",
+      "link": "fixture://global-tech-risk",
+      "published_at": "2026-07-02T09:00:00Z"
+    },
+    {
+      "query_id": "macro_liquidity_fx",
+      "title": "Dollar and higher yields weigh on risk appetite as yuan pressure rises",
+      "description": "Markets price tighter liquidity and stronger dollar pressure.",
+      "link": "fixture://macro-liquidity-pressure",
+      "published_at": "2026-07-02T09:10:00Z"
+    }
+  ]
+}

@@ -1,0 +1,596 @@
+{
+  "schema_version": "pond_map_v2_adaptive_graph",
+  "as_of": "2026-07-02",
+  "map_updated_at": "2026-07-03",
+  "description": "Interactive pond hierarchy, adaptive news parameters, and graph feedback layer. Hard market data still comes from sector_flow_review.json. Demo/watchlist ponds are marked explicitly.",
+  "layers": [
+    {
+      "id": "global_liquidity",
+      "name": "全球流动性",
+      "level": 0
+    },
+    {
+      "id": "china_macro",
+      "name": "中国宏观水位",
+      "level": 1
+    },
+    {
+      "id": "a_share",
+      "name": "A股总池",
+      "level": 2
+    },
+    {
+      "id": "a_share_industries",
+      "name": "A股行业池",
+      "level": 3
+    },
+    {
+      "id": "sector_detail",
+      "name": "行业明细",
+      "level": 4
+    }
+  ],
+  "ponds": [
+    {
+      "id": "a_share",
+      "name": "A股总池",
+      "type": "market",
+      "layer": "a_share",
+      "parent_id": "china_macro",
+      "heat": 0.42,
+      "valuation": 0.18,
+      "upstream": [
+        {
+          "id": "china_policy",
+          "name": "政策预期",
+          "flow_type": "expectation",
+          "impact_coefficient": 0.22,
+          "latency_days": 1
+        },
+        {
+          "id": "market_liquidity",
+          "name": "成交额/市场宽度",
+          "flow_type": "hard_data",
+          "impact_coefficient": 0.34,
+          "latency_days": 0
+        },
+        {
+          "id": "macro_liquidity",
+          "name": "美元/美债/人民币",
+          "flow_type": "external",
+          "impact_coefficient": -0.18,
+          "latency_days": 1
+        }
+      ],
+      "downstream": [
+        "brokerage",
+        "bank_insurance",
+        "electric_power",
+        "semiconductor",
+        "ai_computer",
+        "consumer"
+      ],
+      "graph_feedback_summary": "总池上游包括政策、成交、水位和外部流动性，权重应随市场阶段更新。"
+    },
+    {
+      "id": "electric_power",
+      "name": "电力行业",
+      "type": "industry",
+      "layer": "a_share_industries",
+      "parent_id": "a_share",
+      "heat": 0.36,
+      "valuation": -0.12,
+      "pool_id": "a_share_electric_power",
+      "status": "watchlist_demo",
+      "data_status": "watchlist_demo",
+      "real_data_connected": false,
+      "real_data_note": "Frontend demo/watchlist only. Not connected to the real A-share ETF provider or sector flow engine in v0.10.3.",
+      "upstream": [
+        {
+          "id": "coal_price",
+          "name": "煤价/燃料成本",
+          "flow_type": "cost",
+          "impact_coefficient": -0.28,
+          "latency_days": 3,
+          "confidence": 0.52,
+          "half_life_days": 45,
+          "status": "active",
+          "feedback_rule": "若相关新闻被行业ETF价格、成交额或份额确认，权重上升；若多次无确认，权重下降。"
+        },
+        {
+          "id": "power_demand",
+          "name": "用电量/工业生产",
+          "flow_type": "fundamental",
+          "impact_coefficient": 0.31,
+          "latency_days": 7,
+          "confidence": 0.52,
+          "half_life_days": 60,
+          "status": "active",
+          "feedback_rule": "若相关新闻被行业ETF价格、成交额或份额确认，权重上升；若多次无确认，权重下降。"
+        },
+        {
+          "id": "tariff_policy",
+          "name": "电价/容量电价政策",
+          "flow_type": "policy",
+          "impact_coefficient": 0.26,
+          "latency_days": 14,
+          "confidence": 0.52,
+          "half_life_days": 60,
+          "status": "active",
+          "feedback_rule": "若相关新闻被行业ETF价格、成交额或份额确认，权重上升；若多次无确认，权重下降。"
+        },
+        {
+          "id": "dividend_yield",
+          "name": "红利/低估值偏好",
+          "flow_type": "style",
+          "impact_coefficient": 0.21,
+          "latency_days": 2,
+          "confidence": 0.52,
+          "half_life_days": 60,
+          "status": "active",
+          "feedback_rule": "若相关新闻被行业ETF价格、成交额或份额确认，权重上升；若多次无确认，权重下降。"
+        }
+      ],
+      "related_sectors": [
+        "resources_materials",
+        "real_estate_infra",
+        "bank_insurance",
+        "new_energy_ev"
+      ],
+      "downstream": [
+        "resources_materials",
+        "bank_insurance",
+        "real_estate_infra",
+        "new_energy_ev"
+      ],
+      "graph_feedback_summary": "电力行业不能长期固定为煤电逻辑。上游节点要根据新闻主线和市场确认动态调权，必要时加入电网投资、绿电、碳市场等新节点。"
+    },
+    {
+      "id": "brokerage",
+      "name": "券商",
+      "type": "industry",
+      "layer": "a_share_industries",
+      "parent_id": "a_share",
+      "heat": 0.68,
+      "valuation": 0.08,
+      "pool_id": "a_share_brokerage",
+      "upstream": [
+        {
+          "id": "a_share_turnover",
+          "name": "两市成交额",
+          "flow_type": "hard_data",
+          "impact_coefficient": 0.42,
+          "latency_days": 0
+        },
+        {
+          "id": "capital_market_policy",
+          "name": "资本市场政策",
+          "flow_type": "policy",
+          "impact_coefficient": 0.35,
+          "latency_days": 1
+        },
+        {
+          "id": "risk_appetite",
+          "name": "风险偏好",
+          "flow_type": "style",
+          "impact_coefficient": 0.23,
+          "latency_days": 1
+        }
+      ],
+      "related_sectors": [
+        "bank_insurance",
+        "real_estate_infra",
+        "consumer"
+      ]
+    },
+    {
+      "id": "bank_insurance",
+      "name": "银行保险",
+      "type": "industry",
+      "layer": "a_share_industries",
+      "parent_id": "a_share",
+      "heat": 0.51,
+      "valuation": -0.04,
+      "pool_id": "a_share_bank_insurance",
+      "upstream": [
+        {
+          "id": "credit_cycle",
+          "name": "信用周期",
+          "flow_type": "macro",
+          "impact_coefficient": 0.24,
+          "latency_days": 14
+        },
+        {
+          "id": "yield_curve",
+          "name": "利率曲线",
+          "flow_type": "macro",
+          "impact_coefficient": 0.19,
+          "latency_days": 5
+        },
+        {
+          "id": "dividend_style",
+          "name": "红利风格",
+          "flow_type": "style",
+          "impact_coefficient": 0.29,
+          "latency_days": 1
+        }
+      ],
+      "related_sectors": [
+        "brokerage",
+        "real_estate_infra",
+        "electric_power"
+      ]
+    },
+    {
+      "id": "semiconductor",
+      "name": "半导体",
+      "type": "industry",
+      "layer": "a_share_industries",
+      "parent_id": "a_share",
+      "heat": 0.57,
+      "valuation": 0.31,
+      "pool_id": "a_share_semiconductor",
+      "upstream": [
+        {
+          "id": "global_chip_cycle",
+          "name": "全球芯片周期",
+          "flow_type": "external",
+          "impact_coefficient": 0.33,
+          "latency_days": 1
+        },
+        {
+          "id": "ai_capex",
+          "name": "AI资本开支",
+          "flow_type": "industry_cycle",
+          "impact_coefficient": 0.29,
+          "latency_days": 3
+        },
+        {
+          "id": "export_control",
+          "name": "出口管制/制裁",
+          "flow_type": "risk",
+          "impact_coefficient": -0.24,
+          "latency_days": 0
+        }
+      ],
+      "related_sectors": [
+        "ai_computer",
+        "communication_electronics",
+        "new_energy_ev"
+      ]
+    },
+    {
+      "id": "ai_computer",
+      "name": "AI计算机",
+      "type": "industry",
+      "layer": "a_share_industries",
+      "parent_id": "a_share",
+      "heat": 0.49,
+      "valuation": 0.27,
+      "pool_id": "a_share_ai_computer",
+      "upstream": [
+        {
+          "id": "ai_application",
+          "name": "AI应用落地",
+          "flow_type": "industry_cycle",
+          "impact_coefficient": 0.26,
+          "latency_days": 7
+        },
+        {
+          "id": "ai_capex",
+          "name": "AI资本开支",
+          "flow_type": "industry_cycle",
+          "impact_coefficient": 0.25,
+          "latency_days": 3
+        },
+        {
+          "id": "growth_liquidity",
+          "name": "成长股流动性",
+          "flow_type": "macro",
+          "impact_coefficient": 0.21,
+          "latency_days": 1
+        }
+      ],
+      "related_sectors": [
+        "semiconductor",
+        "communication_electronics",
+        "consumer"
+      ]
+    },
+    {
+      "id": "communication_electronics",
+      "name": "通信电子",
+      "type": "industry",
+      "layer": "a_share_industries",
+      "parent_id": "a_share",
+      "heat": 0.44,
+      "valuation": 0.19,
+      "pool_id": "a_share_communication_electronics",
+      "upstream": [
+        {
+          "id": "optical_module",
+          "name": "光模块/算力链",
+          "flow_type": "industry_cycle",
+          "impact_coefficient": 0.29,
+          "latency_days": 2
+        },
+        {
+          "id": "consumer_electronics",
+          "name": "消费电子周期",
+          "flow_type": "fundamental",
+          "impact_coefficient": 0.22,
+          "latency_days": 7
+        },
+        {
+          "id": "export_control",
+          "name": "出口管制",
+          "flow_type": "risk",
+          "impact_coefficient": -0.18,
+          "latency_days": 0
+        }
+      ],
+      "related_sectors": [
+        "semiconductor",
+        "ai_computer",
+        "consumer"
+      ]
+    },
+    {
+      "id": "consumer",
+      "name": "消费",
+      "type": "industry",
+      "layer": "a_share_industries",
+      "parent_id": "a_share",
+      "heat": 0.31,
+      "valuation": -0.22,
+      "pool_id": "a_share_consumer",
+      "upstream": [
+        {
+          "id": "retail_sales",
+          "name": "社零/居民消费",
+          "flow_type": "fundamental",
+          "impact_coefficient": 0.32,
+          "latency_days": 14
+        },
+        {
+          "id": "stimulus",
+          "name": "消费刺激",
+          "flow_type": "policy",
+          "impact_coefficient": 0.26,
+          "latency_days": 7
+        },
+        {
+          "id": "wealth_effect",
+          "name": "财富效应",
+          "flow_type": "macro",
+          "impact_coefficient": 0.18,
+          "latency_days": 14
+        }
+      ],
+      "related_sectors": [
+        "new_energy_ev",
+        "healthcare_pharma",
+        "bank_insurance"
+      ]
+    }
+  ],
+  "keyword_groups": [
+    {
+      "id": "electric_power_cost",
+      "pond_id": "electric_power",
+      "name": "燃料成本压力",
+      "keywords": [
+        "煤价",
+        "动力煤",
+        "电煤",
+        "燃料成本"
+      ],
+      "weight": 0.58,
+      "half_life_days": 45,
+      "splash_coefficient": -0.18,
+      "feedback_rule": "如果煤价新闻出现后电力ETF或电力股相对强度无反应，权重每周下调。"
+    },
+    {
+      "id": "electric_power_demand",
+      "pond_id": "electric_power",
+      "name": "用电需求",
+      "keywords": [
+        "用电量",
+        "全社会用电",
+        "工业用电",
+        "迎峰度夏"
+      ],
+      "weight": 0.64,
+      "half_life_days": 60,
+      "splash_coefficient": 0.22,
+      "feedback_rule": "用电量新闻需要被电力价格强弱或成交额确认。"
+    },
+    {
+      "id": "electric_power_tariff",
+      "pond_id": "electric_power",
+      "name": "电价政策",
+      "keywords": [
+        "容量电价",
+        "电力市场化",
+        "上网电价",
+        "电改"
+      ],
+      "weight": 0.71,
+      "half_life_days": 90,
+      "splash_coefficient": 0.26,
+      "feedback_rule": "政策主题半衰期较长，但若多次无市场确认会进入 cooling。"
+    },
+    {
+      "id": "brokerage_policy",
+      "pond_id": "brokerage",
+      "name": "资本市场政策",
+      "keywords": [
+        "证监会",
+        "活跃资本市场",
+        "并购重组",
+        "券商并购"
+      ],
+      "weight": 0.76,
+      "half_life_days": 30,
+      "splash_coefficient": 0.32,
+      "feedback_rule": "政策新闻后若成交额和券商ETF同步走强，则提高权重。"
+    },
+    {
+      "id": "semiconductor_hbm",
+      "pond_id": "semiconductor",
+      "name": "HBM/海外存储链",
+      "keywords": [
+        "HBM",
+        "SK Hynix",
+        "Micron",
+        "Nvidia",
+        "TSMC"
+      ],
+      "weight": 0.62,
+      "half_life_days": 30,
+      "splash_coefficient": 0.24,
+      "feedback_rule": "如果未来A股半导体不再响应该组新闻，权重自动衰减并转入 cooling。"
+    },
+    {
+      "id": "macro_yield_fx",
+      "pond_id": "a_share",
+      "name": "美元/美债/人民币压力",
+      "keywords": [
+        "美债收益率",
+        "美元指数",
+        "人民币汇率",
+        "Fed",
+        "risk off"
+      ],
+      "weight": 0.67,
+      "half_life_days": 21,
+      "splash_coefficient": -0.21,
+      "feedback_rule": "成长行业对该组新闻反应减弱时，宏观压力系数下降。"
+    }
+  ],
+  "reports": {
+    "daily": [
+      {
+        "title": "今日A股行业水位",
+        "status": "enabled",
+        "target": "sector_flow_review.json"
+      },
+      {
+        "title": "今日新闻压力",
+        "status": "enabled",
+        "target": "news_review.json"
+      }
+    ],
+    "weekly": [
+      {
+        "title": "关键词权重审计",
+        "status": "planned",
+        "target": "keyword_review_proposals.json"
+      },
+      {
+        "title": "行业反馈验证",
+        "status": "planned",
+        "target": "weekly_market_confirmation.json"
+      }
+    ]
+  },
+  "graph_adaptation": {
+    "schema_version": "adaptive_graph_feedback_v1",
+    "principle": "Industry upstream/downstream nodes are model parameters, not permanent truth. News feedback and hard market confirmation can raise, lower, add, or archive nodes.",
+    "update_modes": [
+      {
+        "id": "daily_light",
+        "name": "每日轻量反馈",
+        "description": "不用GPT。用新闻命中、ETF价格/成交/份额和行业相对强弱更新节点 evidence_count、miss_count、confidence 和建议动作。"
+      },
+      {
+        "id": "weekly_llm_review",
+        "name": "每周GPT审计",
+        "description": "只审计节点和关键词是否仍有效，输出 add/adjust/archive proposals；不直接给交易结论。"
+      },
+      {
+        "id": "manual_override",
+        "name": "人工覆盖",
+        "description": "前端可临时调整权重并导出 patch JSON；正式生效应写入 config/graph_overrides。"
+      }
+    ],
+    "proposal_files": [
+      "model_outputs/<date>/graph_feedback_proposals.json",
+      "model_outputs/<week>/weekly_graph_review.json",
+      "config/graph_overrides/manual_overrides.json"
+    ],
+    "pond_proposals": {
+      "electric_power": [
+        {
+          "proposal_id": "ep_add_power_grid_capex",
+          "action": "add_node",
+          "node_id": "power_grid_capex",
+          "name": "电网投资/特高压/配网改造",
+          "flow_type": "industry_cycle",
+          "suggested_impact_coefficient": 0.24,
+          "confidence": 0.54,
+          "reason": "如果新闻主线从煤电利润转向电网投资，电力行业不应只按煤价和火电成本解释。",
+          "evidence": [
+            "特高压",
+            "电网投资",
+            "配网改造",
+            "新型电力系统"
+          ],
+          "review_status": "candidate"
+        },
+        {
+          "proposal_id": "ep_reduce_coal_price",
+          "action": "adjust_weight",
+          "node_id": "coal_price",
+          "name": "煤价/燃料成本",
+          "current_impact_coefficient": -0.28,
+          "suggested_impact_coefficient": -0.16,
+          "confidence": 0.47,
+          "reason": "当水电、核电、绿电或电网资产成为新闻主线时，煤价对整个电力池的解释力可能下降。",
+          "evidence": [
+            "绿电",
+            "水电",
+            "核电",
+            "容量电价"
+          ],
+          "review_status": "needs_market_confirmation"
+        },
+        {
+          "proposal_id": "ep_add_green_power_certificate",
+          "action": "add_node",
+          "node_id": "green_power_certificate",
+          "name": "绿电/绿证/碳市场",
+          "flow_type": "policy",
+          "suggested_impact_coefficient": 0.18,
+          "confidence": 0.43,
+          "reason": "若政策新闻持续指向绿电交易和碳市场，电力行业的上游节点应增加非煤电政策变量。",
+          "evidence": [
+            "绿证",
+            "碳市场",
+            "绿电交易",
+            "可再生能源消纳"
+          ],
+          "review_status": "candidate"
+        }
+      ],
+      "semiconductor": [
+        {
+          "proposal_id": "semi_cool_hynix_if_unconfirmed",
+          "action": "decay_keyword_and_edge",
+          "node_id": "hbm_supply_chain",
+          "name": "HBM/海力士/海外存储链",
+          "current_impact_coefficient": 0.29,
+          "suggested_impact_coefficient": 0.18,
+          "confidence": 0.51,
+          "reason": "若连续数周海力士新闻未被A股半导体ETF成交、价格或份额确认，则降低相关边权。",
+          "evidence": [
+            "SK Hynix",
+            "HBM",
+            "memory cycle"
+          ],
+          "review_status": "conditional"
+        }
+      ]
+    }
+  }
+}

@@ -5,7 +5,7 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.9.8`
+Package version: `0.10.0`
 
 Purpose of this version:
 
@@ -29,6 +29,8 @@ Purpose of this version:
 - add `npm run a-share:daily` as the stable daily A-share workflow
 - add A-share water-level provider and observations for broad market liquidity
 - add a dedicated A-share daily scheduler
+- add an independent news intelligence module that writes separate news observations and review outputs
+- make the Financial Ponds frontend readable for A-share sector review, news pressure, and data boundaries
 
 ## User Objective
 
@@ -845,3 +847,37 @@ These rules have higher priority than style cleanup:
 - Do not let backtests mutate current scoring rules.
 - Do not remove recovery documents when creating a new zip.
 - Do not replace config-driven extension with market-specific branches.
+
+
+## Current v0.10.0 Addition
+
+This version adds the first independent news intelligence layer.
+
+Files:
+
+- `config/news/news_daily_v1.json`
+- `src/news/news_intelligence.mjs`
+- `src/tools/news_daily_review.mjs`
+
+Outputs:
+
+- `observations/<date>/news_observations.json`
+- `model_outputs/<date>/news_review.json`
+- `model_outputs/<date>/news_review.md`
+
+Boundary:
+
+- News is expectation pressure.
+- News does not prove ETF inflow or outflow.
+- Flow Review can read news observations, but the core graph snapshot remains independent.
+- Market confirmation still comes from hard data: price, turnover, breadth, ETF share change, and water-level data.
+
+The Financial Ponds frontend was also simplified so a non-technical reader first sees:
+
+- current model stage
+- A-share sector ranking
+- main drivers
+- news pressure
+- data boundaries
+
+The low-level graph is no longer the primary reading experience.

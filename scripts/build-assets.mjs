@@ -8,6 +8,8 @@ const files = [
   ["app.js", "text/javascript; charset=utf-8"],
   ["data/dashboard.json", "application/json; charset=utf-8"],
   ["data/sector_flow_review.json", "application/json; charset=utf-8"],
+  ["data/news_review.json", "application/json; charset=utf-8"],
+  ["data/pond_map.json", "application/json; charset=utf-8"],
 ];
 
 const assets = {};

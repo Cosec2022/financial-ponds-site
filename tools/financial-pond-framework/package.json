@@ -1,6 +1,6 @@
 {
   "name": "financial-pond-framework",
-  "version": "0.9.9",
+  "version": "0.10.3",
   "description": "Config-driven financial pond graph framework for cross-asset and sector ETF analysis.",
   "type": "module",
   "scripts": {
@@ -11,7 +11,7 @@
     "export:web-data": "node src/web/export_dashboard_data.mjs",
     "materialize:sectors": "node src/tools/materialize_sector_catalog.mjs",
     "sources:status": "node src/tools/source_status_report.mjs",
-    "a-share:daily": "npm run provider:akshare && npm run provider:a-share-water && npm run provider:akshare:validate && npm run provider:akshare:inspect && npm run provider:akshare:to-flow && npm run provider:a-share-water:to-observations && npm run flow:review",
+    "a-share:daily": "npm run provider:akshare && npm run provider:a-share-water && npm run provider:akshare:validate && npm run provider:akshare:inspect && npm run provider:akshare:to-flow && npm run provider:a-share-water:to-observations && npm run news:review && npm run flow:review",
     "a-share:daily:ci": "node src/tools/a_share_daily_ci.mjs",
     "scheduler:a-share": "node src/scheduler/run_a_share_daily.mjs",
     "provider:akshare": "python3 providers/akshare_etf_bridge/export_a_share_etf_daily.py",
@@ -32,7 +32,10 @@
     "flow:review": "node src/tools/sector_flow_review.mjs",
     "flow:review:fixture": "node src/tools/sector_flow_review.mjs --fixture",
     "web": "node src/web/serve_static.mjs",
-    "test": "node --test tests/*.test.mjs"
+    "test": "node --test tests/*.test.mjs",
+    "news:review": "node src/tools/news_daily_review.mjs",
+    "news:review:fixture": "node src/tools/news_daily_review.mjs --fixture",
+    "news:review:ci": "node src/tools/news_daily_review.mjs --ci"
   },
   "engines": {
     "node": ">=20"

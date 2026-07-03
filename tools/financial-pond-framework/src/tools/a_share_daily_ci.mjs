@@ -61,6 +61,13 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "news_intelligence", "node", [
+    "src/tools/news_daily_review.mjs",
+    "--ci",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
   await runStep(summary, "sector_flow_review", "node", [
     "src/tools/sector_flow_review.mjs",
     "--as-of",

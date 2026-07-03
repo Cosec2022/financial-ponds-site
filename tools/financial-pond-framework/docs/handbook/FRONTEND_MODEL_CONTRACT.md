@@ -1,0 +1,130 @@
+# Financial Ponds Frontend Model Contract v0.10.3
+
+Date: 2026-07-03
+
+This contract defines what the dashboard may display and what it must not claim.
+
+## Required frontend data files
+
+```text
+financial-pond/data/dashboard.json
+financial-pond/data/sector_flow_review.json
+financial-pond/data/news_review.json
+financial-pond/data/pond_map.json
+```
+
+## Dashboard responsibilities
+
+The frontend may display:
+
+```text
+- pond hierarchy
+- heat
+- valuation zone
+- model score
+- news pressure
+- upstream/downstream nodes
+- influence coefficients
+- keyword groups
+- keyword weights
+- half-life
+- splash coefficient
+- related sectors
+- daily/weekly report status
+- graph feedback proposals
+- local node/weight edits
+- exported patch JSON
+```
+
+The frontend must make these states clear:
+
+```text
+real data
+fixture fallback
+demo/watchlist
+prototype
+planned
+```
+
+## Scoring boundary
+
+The frontend must not imply that:
+
+```text
+- news is real capital flow
+- a watchlist pond is a real ETF-backed sector
+- localStorage edits have changed backend model configuration
+- GPT review is active when it is only planned
+- any score is a buy/sell instruction
+```
+
+## Electricity-sector rule
+
+The electricity pond currently demonstrates graph adaptability.
+
+Correct wording:
+
+```text
+电力行业当前是观察池，用来展示上下游节点和权重如何随新闻与硬数据反馈而变化。
+```
+
+Do not use wording that claims real ETF-flow coverage for electricity.
+
+```text
+电力行业不能写成已接入真实ETF资金流，直到 framework provider 和 sector flow engine 都有对应配置。
+```
+
+## News display rule
+
+News should be shown as:
+
+```text
+pressure
+catalyst
+risk
+expectation
+```
+
+News should not be shown as:
+
+```text
+confirmed flow
+trade signal
+position instruction
+```
+
+## Graph edit rule
+
+Frontend edits are temporary until written back to source configuration.
+
+Current write path:
+
+```text
+browser localStorage
+export patch JSON
+manual review
+future config update
+```
+
+Not implemented:
+
+```text
+automatic GitHub commit
+automatic config writeback
+automatic score mutation from UI edits
+```
+
+## Future data contract additions
+
+Planned files:
+
+```text
+config/news/keyword_state.json
+config/graph/edge_state.json
+model_outputs/<date>/keyword_feedback.json
+model_outputs/<date>/graph_feedback.json
+model_outputs/<week>/keyword_review_proposals.json
+model_outputs/<week>/graph_update_proposals.json
+```
+
+When these are added, update this contract before changing the frontend.

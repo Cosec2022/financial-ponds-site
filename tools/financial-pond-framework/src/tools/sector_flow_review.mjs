@@ -88,6 +88,7 @@ async function loadObservationFile({ rootDir, asOf }) {
   const filePath = path.join(rootDir, "observations", asOf, "node_observations.json");
   const providerFlowPath = path.join(rootDir, "observations", asOf, "provider_flow_observations.json");
   const aShareWaterPath = path.join(rootDir, "observations", asOf, "a_share_water_observations.json");
+  const newsPath = path.join(rootDir, "observations", asOf, "news_observations.json");
   let baseObservations = [];
   try {
     const payload = JSON.parse(await readFile(filePath, "utf8"));
@@ -112,7 +113,15 @@ async function loadObservationFile({ rootDir, asOf }) {
     aShareWaterObservations = [];
   }
 
-  if (!baseObservations.length && !providerFlowObservations.length && !aShareWaterObservations.length) {
+  let newsObservations = [];
+  try {
+    const payload = JSON.parse(await readFile(newsPath, "utf8"));
+    newsObservations = payload.observations ?? [];
+  } catch (error) {
+    newsObservations = [];
+  }
+
+  if (!baseObservations.length && !providerFlowObservations.length && !aShareWaterObservations.length && !newsObservations.length) {
     throw new Error(
       `No observations found for ${asOf}. Run npm run cycle ${asOf}, run provider conversion, or use npm run flow:review:fixture.`
     );
@@ -121,7 +130,7 @@ async function loadObservationFile({ rootDir, asOf }) {
   // Provider-flow observations are appended after the normal cycle output so
   // reviewed provider data can override same-day mock sector proxies during the
   // flow review. The main graph snapshot remains unchanged.
-  return [...baseObservations, ...providerFlowObservations, ...aShareWaterObservations];
+  return [...baseObservations, ...providerFlowObservations, ...aShareWaterObservations, ...newsObservations];
 }
 
 function buildMarkdown(payload) {

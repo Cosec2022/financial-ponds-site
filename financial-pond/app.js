@@ -1,361 +1,656 @@
-const state = {
-  data: null,
-  flow: null,
-  selectedId: null,
-  filter: "all"
+const sectorNames = {
+  brokerage: "券商",
+  bank_insurance: "银行保险",
+  semiconductor: "半导体",
+  ai_computer: "AI计算机",
+  communication_electronics: "通信电子",
+  new_energy_ev: "新能源车",
+  healthcare_pharma: "医药医疗",
+  consumer: "消费",
+  defense_military: "军工",
+  resources_materials: "资源材料",
+  real_estate_infra: "地产基建",
+  electric_power: "电力行业",
+  a_share: "A股总池"
 };
 
-const majorPoolIds = ["us_equity", "a_share", "btc", "gold"];
+const componentNames = {
+  direct_flow: "ETF份额/资金流",
+  market_confirmation: "价格和成交确认",
+  market_liquidity: "A股总水位",
+  policy_sentiment: "政策/新闻压力",
+  fundamental_proxy: "基本面代理",
+  external_factor_effect: "外部风险因子"
+};
 
-const fallbackData = {
+const state = {
+  dashboard: null,
+  flow: null,
+  news: null,
+  pondMap: null,
+  selectedPondId: "a_share"
+};
+
+const fallbackDashboard = {
   as_of: "not loaded",
   model_version: "unknown",
   entities: {},
   edges: [],
-  groups: { nodes: [], pools: [], assets: [], portfolios: [] },
-  observations: []
+  groups: { nodes: [], pools: [], assets: [], portfolios: [] }
 };
 
-async function loadDashboard() {
+async function readJson(path, fallback) {
   try {
-    const response = await fetch("./data/dashboard.json", { cache: "no-store" });
+    const response = await fetch(path, { cache: "no-store" });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     return await response.json();
   } catch (error) {
-    console.warn("Failed to load dashboard.json", error);
-    return fallbackData;
-  }
-}
-
-async function loadFlowReview() {
-  try {
-    const response = await fetch("./data/sector_flow_review.json", { cache: "no-store" });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    return await response.json();
-  } catch (error) {
-    console.warn("Failed to load sector_flow_review.json", error);
-    return null;
+    console.warn(`Failed to load ${path}`, error);
+    return fallback;
   }
 }
 
 function scoreClass(score) {
   if (typeof score !== "number") return "neutral";
-  if (score > 0.15) return "positive";
-  if (score < -0.15) return "negative";
+  if (score > 0.18) return "positive";
+  if (score < -0.18) return "negative";
   return "neutral";
 }
 
-function formatScore(score) {
-  return typeof score === "number" ? score.toFixed(2) : "n/a";
+function heatClass(value) {
+  if (typeof value !== "number") return "neutral";
+  if (value >= 0.6) return "hot";
+  if (value <= 0.32) return "cold";
+  return "warm";
 }
 
-function scoreColor(score, kind) {
-  if (kind === "node") return "#2e5d7c";
-  if (kind === "asset") return "#9b7428";
-  if (kind === "portfolio") return "#536258";
-  if (typeof score !== "number") return "#849083";
-  if (score > 0.15) return "#1f7a4d";
-  if (score < -0.15) return "#ad3f32";
-  return "#657064";
+function valuationClass(value) {
+  if (typeof value !== "number") return "neutral";
+  if (value >= 0.24) return "expensive";
+  if (value <= -0.12) return "cheap";
+  return "fair";
+}
+
+function formatScore(score) {
+  return typeof score === "number" ? score.toFixed(2) : "--";
+}
+
+function formatPct(score) {
+  return typeof score === "number" ? `${Math.round(score * 100)}%` : "--";
+}
+
+function plainSectorId(row) {
+  return row.sector_id ?? String(row.pool_id ?? "").replace(/^a_share_/, "");
+}
+
+function sectorLabel(row) {
+  const id = plainSectorId(row);
+  return sectorNames[id] ?? row.display_name ?? row.name ?? id;
+}
+
+function getReview(pondId) {
+  const rows = state.flow?.sector_reviews ?? [];
+  if (pondId === "a_share") return null;
+  return rows.find((row) => plainSectorId(row) === pondId || row.pool_id === `a_share_${pondId}`) ?? null;
+}
+
+function getPond(pondId) {
+  return (state.pondMap?.ponds ?? []).find((pond) => pond.id === pondId) ?? null;
+}
+
+function getKeywords(pondId) {
+  return (state.pondMap?.keyword_groups ?? []).filter((group) => group.pond_id === pondId);
+}
+
+function getNewsPressure(pondId) {
+  if (!state.news) return null;
+  return (state.news.sector_news_pressure ?? []).find((row) => row.sector_id === pondId) ?? null;
+}
+
+
+function graphOverrideKey(pondId) {
+  return `financialPonds.graphOverride.${pondId}`;
+}
+
+function readGraphOverride(pondId) {
+  try {
+    return JSON.parse(localStorage.getItem(graphOverrideKey(pondId)) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function writeGraphOverride(pondId, override) {
+  localStorage.setItem(graphOverrideKey(pondId), JSON.stringify(override, null, 2));
+}
+
+function effectiveUpstream(pond) {
+  const base = (pond.upstream ?? []).map((item) => ({ ...item, source: "base" }));
+  const override = readGraphOverride(pond.id);
+  const removed = new Set(override.removed_nodes ?? []);
+  const adjusted = override.adjusted_nodes ?? {};
+  const added = override.added_nodes ?? [];
+  return base
+    .filter((item) => !removed.has(item.id))
+    .map((item) => ({ ...item, ...(adjusted[item.id] ?? {}), source: adjusted[item.id] ? "local_adjusted" : item.source }))
+    .concat(added.map((item) => ({ ...item, source: "local_added" })));
+}
+
+function graphProposals(pondId) {
+  return state.pondMap?.graph_adaptation?.pond_proposals?.[pondId] ?? [];
+}
+
+function actionLabel(action) {
+  const map = {
+    add_node: "建议新增节点",
+    adjust_weight: "建议调整权重",
+    decay_keyword_and_edge: "建议降权/衰减",
+    archive_node: "建议归档节点"
+  };
+  return map[action] ?? action ?? "建议";
+}
+
+function statusLabel(status) {
+  const map = {
+    candidate: "候选",
+    active: "活跃",
+    cooling: "降温",
+    archived: "归档",
+    conditional: "条件触发",
+    needs_market_confirmation: "等待市场确认"
+  };
+  return map[status] ?? status ?? "--";
 }
 
 function renderHeader() {
-  document.getElementById("asOfBadge").textContent = `As of ${state.data.as_of}`;
-  document.getElementById("modelVersion").textContent = `model ${state.data.model_version}`;
+  document.getElementById("asOfBadge").textContent = `数据日期 ${state.flow?.as_of ?? state.dashboard.as_of}`;
+  document.getElementById("modelBadge").textContent = state.flow?.model_id ?? state.dashboard.model_version ?? "model";
 }
 
-function renderPoolCards() {
-  const container = document.getElementById("poolCards");
-  container.innerHTML = "";
-
-  const poolIds = majorPoolIds.filter((id) => state.data.entities[id])
-    .concat(state.data.groups.pools.filter((id) => !majorPoolIds.includes(id)));
-
-  for (const id of poolIds) {
-    const entity = state.data.entities[id];
-    const card = document.createElement("button");
-    card.className = `pool-card ${state.selectedId === id ? "active" : ""}`;
-    card.type = "button";
-    card.dataset.id = id;
-    card.innerHTML = `
-      <div class="pool-card-title">
-        <strong>${entity.name ?? id}</strong>
-        <span class="score ${scoreClass(entity.score)}">${formatScore(entity.score)}</span>
-      </div>
-      <div class="score-bar"><div class="score-fill" style="${scoreFillStyle(entity.score)}"></div></div>
-      <p class="pool-desc">${entity.pool_type ?? entity.kind}${entity.parent_pool ? ` · parent: ${entity.parent_pool}` : ""}</p>
-    `;
-    card.addEventListener("click", () => selectEntity(id));
-    container.appendChild(card);
+function renderPondMap() {
+  const container = document.getElementById("pondMap");
+  const ponds = state.pondMap?.ponds ?? [];
+  if (!ponds.length) {
+    container.innerHTML = `<div class="empty">暂无池塘图谱。</div>`;
+    return;
   }
-}
 
-function scoreFillStyle(score) {
-  if (typeof score !== "number") return "width: 50%; background: #849083;";
-  const width = Math.max(4, Math.min(100, 50 + score * 25));
-  const color = score > 0.15 ? "#1f7a4d" : score < -0.15 ? "#ad3f32" : "#657064";
-  return `width: ${width}%; background: ${color};`;
-}
-
-function entityVisible(entity) {
-  if (state.filter === "all") return true;
-  if (state.filter === "pools") return entity.kind === "pool" || entity.kind === "asset" || entity.kind === "portfolio";
-  if (state.filter === "nodes") return entity.kind === "node" || entity.kind === "pool";
-  return true;
-}
-
-function layoutEntities() {
-  const entities = state.data.entities;
   const columns = [
-    state.data.groups.nodes.filter((id) => entities[id]),
-    state.data.groups.pools.filter((id) => entities[id] && !entities[id].parent_pool),
-    state.data.groups.pools.filter((id) => entities[id]?.parent_pool),
-    state.data.groups.assets.concat(state.data.groups.portfolios).filter((id) => entities[id])
+    { title: "总水位", ids: ["a_share"] },
+    { title: "金融/红利", ids: ["brokerage", "bank_insurance", "electric_power"] },
+    { title: "科技成长", ids: ["semiconductor", "ai_computer", "communication_electronics"] },
+    { title: "顺周期/消费", ids: ["consumer", "real_estate_infra", "resources_materials", "new_energy_ev", "healthcare_pharma", "defense_military"] }
   ];
 
-  const positions = new Map();
-  const width = 920;
-  const height = 560;
-  const xSlots = [120, 360, 590, 790];
+  container.innerHTML = columns.map((column) => `
+    <div class="pond-column">
+      <h3>${column.title}</h3>
+      ${column.ids.map((id) => pondNodeTemplate(resolvePondForColumn(id))).join("")}
+    </div>
+  `).join("");
 
-  columns.forEach((ids, columnIndex) => {
-    const visibleIds = ids.filter((id) => entityVisible(entities[id]));
-    const gap = height / (visibleIds.length + 1 || 2);
-    visibleIds.forEach((id, rowIndex) => {
-      positions.set(id, {
-        x: xSlots[columnIndex],
-        y: gap * (rowIndex + 1)
-      });
+  container.querySelectorAll(".pond-node").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
     });
   });
-
-  return { positions, width, height };
 }
 
-function renderGraph() {
-  const svg = document.getElementById("graphSvg");
-  svg.innerHTML = "";
-
-  const { positions, width, height } = layoutEntities();
-  svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
-
-  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
-  defs.innerHTML = `
-    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a9b3a5"></path>
-    </marker>
-    <marker id="arrowActive" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1f7a4d"></path>
-    </marker>
-  `;
-  svg.appendChild(defs);
-
-  for (const edge of state.data.edges) {
-    if (!positions.has(edge.from) || !positions.has(edge.to)) continue;
-    const from = positions.get(edge.from);
-    const to = positions.get(edge.to);
-    const active = state.selectedId && (edge.from === state.selectedId || edge.to === state.selectedId);
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    const mid = Math.max(40, Math.abs(to.x - from.x) * 0.45);
-    path.setAttribute("d", `M ${from.x} ${from.y} C ${from.x + mid} ${from.y}, ${to.x - mid} ${to.y}, ${to.x} ${to.y}`);
-    path.setAttribute("fill", "none");
-    path.setAttribute("class", `edge ${active ? "active" : ""}`);
-    path.setAttribute("marker-end", active ? "url(#arrowActive)" : "url(#arrow)");
-    svg.appendChild(path);
-  }
-
-  for (const [id, position] of positions.entries()) {
-    const entity = state.data.entities[id];
-    const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
-    group.setAttribute("tabindex", "0");
-    group.setAttribute("role", "button");
-    group.addEventListener("click", () => selectEntity(id));
-    group.addEventListener("keydown", (event) => {
-      if (event.key === "Enter" || event.key === " ") selectEntity(id);
-    });
-
-    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    circle.setAttribute("cx", position.x);
-    circle.setAttribute("cy", position.y);
-    circle.setAttribute("r", state.selectedId === id ? 20 : entity.kind === "pool" ? 18 : 14);
-    circle.setAttribute("fill", scoreColor(entity.score, entity.kind));
-    circle.setAttribute("class", "node-circle");
-    group.appendChild(circle);
-
-    const label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    label.setAttribute("x", position.x);
-    label.setAttribute("y", position.y + 34);
-    label.setAttribute("text-anchor", "middle");
-    label.setAttribute("class", "node-label");
-    label.textContent = shortName(entity.name ?? id);
-    group.appendChild(label);
-
-    const score = document.createElementNS("http://www.w3.org/2000/svg", "text");
-    score.setAttribute("x", position.x);
-    score.setAttribute("y", position.y + 4);
-    score.setAttribute("text-anchor", "middle");
-    score.setAttribute("fill", "#fff");
-    score.setAttribute("font-size", "10");
-    score.setAttribute("font-weight", "800");
-    score.textContent = typeof entity.score === "number" ? entity.score.toFixed(1) : "";
-    group.appendChild(score);
-
-    svg.appendChild(group);
-  }
+function resolvePondForColumn(id) {
+  const pond = getPond(id);
+  if (pond) return pond;
+  const review = getReview(id);
+  return {
+    id,
+    name: sectorNames[id] ?? id,
+    type: "industry",
+    heat: Math.max(0, Math.min(1, (review?.score ?? 0) + 0.45)),
+    valuation: null,
+    parent_id: "a_share",
+    pool_id: review?.pool_id ?? `a_share_${id}`,
+    status: review ? "live_review" : "planned"
+  };
 }
 
-function shortName(name) {
-  return name
-    .replace(" Pool", "")
-    .replace("A-share", "A")
-    .replace("Bitcoin", "BTC")
-    .replace("Default User Portfolio", "Portfolio");
-}
-
-function renderDetails() {
-  const details = document.getElementById("details");
-  const kind = document.getElementById("entityKind");
-  const entity = state.data.entities[state.selectedId];
-
-  if (!entity) {
-    kind.textContent = "None";
-    kind.className = "badge muted-badge";
-    details.className = "details-empty";
-    details.textContent = "Select a pool or node to inspect score drivers.";
-    return;
-  }
-
-  kind.textContent = entity.kind;
-  kind.className = "badge";
-  details.className = "";
-
-  const incoming = state.data.edges.filter((edge) => edge.to === entity.id);
-  const outgoing = state.data.edges.filter((edge) => edge.from === entity.id);
-  const drivers = (entity.contributors ?? []).slice(0, 6);
-
-  details.innerHTML = `
-    <div>
-      <h3>${entity.name ?? entity.id}</h3>
-      <div class="score ${scoreClass(entity.score)}">${formatScore(entity.score)}</div>
-      <p class="details-text">${entity.description ?? "No description provided."}</p>
-    </div>
-    <div class="detail-block">
-      <h3>Top Drivers</h3>
-      <div class="driver-list">
-        ${drivers.length ? drivers.map(driverTemplate).join("") : "<p class=\"details-text\">No active contributors yet.</p>"}
-      </div>
-    </div>
-    <div class="detail-block">
-      <h3>Connections</h3>
-      <p class="details-text">${incoming.length} incoming · ${outgoing.length} outgoing</p>
-    </div>
-    <div class="detail-block">
-      <h3>Explanation</h3>
-      <p class="details-text">${entity.explanation ?? "No explanation available."}</p>
-    </div>
-  `;
-}
-
-function driverTemplate(driver) {
-  const cls = driver.contribution > 0.01 ? "positive" : driver.contribution < -0.01 ? "negative" : "neutral";
+function pondNodeTemplate(pond) {
+  const review = getReview(pond.id);
+  const news = getNewsPressure(pond.id);
+  const active = pond.id === state.selectedPondId ? "active" : "";
+  const statusText = pond.status === "planned" ? "待接入" : pond.status === "watchlist_demo" ? "观察池" : "已接入";
+  const heat = typeof pond.heat === "number" ? pond.heat : Math.max(0, Math.min(1, (review?.score ?? 0) + 0.45));
+  const valuation = typeof pond.valuation === "number" ? pond.valuation : null;
   return `
-    <div class="driver">
-      <div class="driver-main">
-        <span>${driver.from}</span>
-        <span class="score ${cls}">${driver.contribution.toFixed(2)}</span>
+    <button class="pond-node ${active}" data-pond-id="${pond.id}" type="button">
+      <span class="node-title">${pond.name}</span>
+      <span class="node-sub">${statusText}</span>
+      <span class="node-metrics">
+        <span class="metric-chip ${heatClass(heat)}">热 ${formatPct(heat)}</span>
+        <span class="metric-chip ${valuationClass(valuation)}">估 ${formatScore(valuation)}</span>
+        <span class="metric-chip ${scoreClass(review?.score)}">分 ${formatScore(review?.score)}</span>
+        <span class="metric-chip ${scoreClass(news?.score)}">新闻 ${formatScore(news?.score)}</span>
+      </span>
+    </button>
+  `;
+}
+
+function renderSelectedSummary() {
+  const pond = getPond(state.selectedPondId) ?? resolvePondForColumn(state.selectedPondId);
+  const review = getReview(pond.id);
+  const news = getNewsPressure(pond.id);
+  const path = pond.id === "a_share" ? "中国宏观水位 / A股总池" : `A股总池 / ${pond.name}`;
+
+  document.getElementById("selectedPath").textContent = path;
+  document.getElementById("selectedName").textContent = pond.name;
+  document.getElementById("selectedSummary").textContent = buildSummary(pond, review, news);
+  document.getElementById("detailHeat").textContent = formatPct(pond.heat);
+  document.getElementById("detailValuation").textContent = formatScore(pond.valuation);
+  document.getElementById("detailScore").textContent = formatScore(review?.score);
+}
+
+function buildSummary(pond, review, news) {
+  if (pond.id === "a_share") {
+    return "总池用于观察成交额、市场宽度、政策预期和外部流动性。它不是单一行业，而是所有A股行业池的上层水位。";
+  }
+  const live = review ? `当前模型分 ${formatScore(review.score)}，状态 ${labelText(review.label)}。` : "该行业尚未接入真实ETF review，先作为观察池展示参数结构。";
+  const pressure = news ? `新闻压力 ${formatScore(news.score)}。` : "新闻压力暂无实时映射。";
+  return `${live}${pressure} 下方可查看上游变量、影响系数、关键词组、半衰期和相关行业。`;
+}
+
+function renderFlowDetail() {
+  const pond = getPond(state.selectedPondId) ?? resolvePondForColumn(state.selectedPondId);
+  const upstream = effectiveUpstream(pond);
+  document.getElementById("upstreamPanel").innerHTML = upstream.length ? upstream.map((item) => `
+    <article class="metric-row">
+      <div>
+        <strong>${item.name}</strong>
+        <span>${flowTypeLabel(item.flow_type)} · 延迟 ${item.latency_days ?? 0} 天 · ${statusLabel(item.status)} · ${item.source === "local_adjusted" ? "本地调权" : item.source === "local_added" ? "本地新增" : "基础配置"}</span>
       </div>
-      <div class="driver-channel">${driver.channel} · weight ${driver.weight}</div>
+      <b class="score ${scoreClass(item.impact_coefficient)}">${formatScore(item.impact_coefficient)}</b>
+    </article>
+  `).join("") : `<div class="empty">暂无上游配置。</div>`;
+
+  const review = getReview(pond.id);
+  const components = review?.components ?? null;
+  document.getElementById("componentPanel").innerHTML = components ? Object.entries(components).map(([key, component]) => `
+    <article class="component-card ${component.available ? "available" : "missing"}">
+      <span>${componentNames[key] ?? key}</span>
+      <strong class="score ${scoreClass(component.score)}">${formatScore(component.score)}</strong>
+      <p>置信度 ${formatScore(component.confidence)} · ${component.available ? "已有输入" : "等待数据"}</p>
+      <small>${componentNodeText(component)}</small>
+    </article>
+  `).join("") : `<div class="empty">观察池暂无真实模型组件，先显示上游影响系数。</div>`;
+}
+
+function componentNodeText(component) {
+  const nodes = component.nodes ?? [];
+  if (!nodes.length) return "无节点";
+  return nodes.map((node) => typeof node === "string" ? node : node.node_id).slice(0, 4).join(" / ");
+}
+
+function flowTypeLabel(type) {
+  const map = {
+    expectation: "预期流",
+    hard_data: "硬数据",
+    external: "外部水位",
+    cost: "成本流出",
+    fundamental: "基本面流入",
+    policy: "政策水花",
+    style: "风格流入",
+    risk: "风险流出",
+    macro: "宏观变量",
+    industry_cycle: "产业周期"
+  };
+  return map[type] ?? type ?? "变量";
+}
+
+function renderNewsDetail() {
+  const pondId = state.selectedPondId;
+  const keywords = getKeywords(pondId);
+  document.getElementById("keywordPanel").innerHTML = keywords.length ? keywords.map((group) => `
+    <article class="keyword-card">
+      <div class="keyword-head">
+        <strong>${group.name}</strong>
+        <span class="metric-chip ${scoreClass(group.splash_coefficient)}">水花 ${formatScore(group.splash_coefficient)}</span>
+      </div>
+      <p>${group.keywords.join(" / ")}</p>
+      <div class="keyword-bars">
+        <span>权重 ${formatPct(group.weight)}</span>
+        <span>半衰期 ${group.half_life_days} 天</span>
+      </div>
+      <small>${group.feedback_rule}</small>
+    </article>
+  `).join("") : `<div class="empty">该池塘暂无关键词组。下一步由 weekly GPT 审计生成候选关键词。</div>`;
+
+  const pressure = getNewsPressure(pondId);
+  const topEvents = pressure?.top_events ?? state.news?.top_events ?? [];
+  document.getElementById("newsPanel").innerHTML = `
+    <div class="news-headline ${state.news?.collection?.fallback_used ? "warning" : ""}">${state.news?.headline ?? "暂无新闻输出"}</div>
+    <div class="event-list">
+      ${topEvents.slice(0, 5).map((event) => `
+        <article class="event-card">
+          <strong>${event.title}</strong>
+          <p>${event.reason ?? "规则匹配新闻事件。"}</p>
+          <span>${event.bucket ?? "news"} · ${event.direction ?? "neutral"} · ${formatScore(event.score)}</span>
+        </article>
+      `).join("") || `<p class="muted">暂无匹配事件。</p>`}
     </div>
   `;
 }
 
-function renderEdges() {
-  const body = document.getElementById("edgeTable");
-  body.innerHTML = state.data.edges.map((edge) => `
-    <tr>
-      <td>${edge.from}</td>
-      <td>${edge.to}</td>
-      <td>${edge.channel}</td>
-      <td>${edge.weight}</td>
-      <td>${edge.transform ?? "identity"}</td>
-    </tr>
-  `).join("");
-}
-
-function renderFlowReview() {
-  const container = document.getElementById("flowReview");
-  if (!container) return;
-  const rows = state.flow?.sector_reviews ?? state.flow?.reviews ?? [];
-  if (!rows.length) {
-    container.className = "flow-review flow-empty";
-    container.textContent = "No sector flow review data is available yet.";
-    return;
-  }
-
-  const sorted = [...rows].sort((a, b) => (b.flow_score ?? b.score ?? 0) - (a.flow_score ?? a.score ?? 0));
-  container.className = "flow-review";
-  container.innerHTML = sorted.map((row, index) => {
-    const score = row.flow_score ?? row.score ?? 0;
-    const sector = row.pool_id ?? row.sector_id ?? row.id ?? "unknown";
-    const confidence = row.confidence ?? row.data_confidence ?? null;
-    const direction = row.flow_direction ?? row.direction ?? "review";
-    const drivers = (row.top_drivers ?? row.driving_factors ?? row.drivers ?? []).slice(0, 3);
+function renderRelated() {
+  const pond = getPond(state.selectedPondId) ?? resolvePondForColumn(state.selectedPondId);
+  const ids = pond.related_sectors ?? pond.downstream ?? [];
+  document.getElementById("relatedPanel").innerHTML = ids.length ? ids.map((id) => {
+    const review = getReview(id);
+    const relatedPond = getPond(id) ?? resolvePondForColumn(id);
     return `
-      <button class="flow-row" type="button" data-sector="${sector}">
-        <span class="flow-rank">${index + 1}</span>
-        <span class="flow-sector">${sector}</span>
-        <span class="score ${scoreClass(score)}">${formatScore(score)}</span>
-        <span class="flow-meta">${row.label ?? direction}${confidence === null ? "" : ` · conf ${formatScore(confidence)}`}</span>
-        <span class="flow-drivers">${drivers.map((driver) => driver.component ?? driver.factor ?? driver.node_id ?? driver.id ?? driver).join(" · ")}</span>
+      <button class="related-card" data-pond-id="${id}" type="button">
+        <span>${relatedPond.name}</span>
+        <strong class="score ${scoreClass(review?.score)}">${formatScore(review?.score)}</strong>
+        <small>${review ? labelText(review.label) : "待接入"}</small>
       </button>
     `;
-  }).join("");
+  }).join("") : `<div class="empty">暂无相关行业配置。</div>`;
 
-  container.querySelectorAll(".flow-row").forEach((button) => {
+  document.querySelectorAll(".related-card").forEach((button) => {
     button.addEventListener("click", () => {
-      if (state.data.entities[button.dataset.sector]) selectEntity(button.dataset.sector);
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
     });
   });
 }
 
-function selectEntity(id) {
-  state.selectedId = id;
-  renderPoolCards();
-  renderGraph();
-  renderDetails();
+function renderGraphFeedback() {
+  const pond = getPond(state.selectedPondId) ?? resolvePondForColumn(state.selectedPondId);
+  const proposals = graphProposals(pond.id);
+  const adaptation = state.pondMap?.graph_adaptation;
+  const upstream = effectiveUpstream(pond);
+  const panel = document.getElementById("graphFeedbackPanel");
+  const editPanel = document.getElementById("graphEditPanel");
+  if (!panel || !editPanel) return;
+
+  panel.innerHTML = `
+    <article class="feedback-summary">
+      <strong>反馈原则</strong>
+      <p>${pond.graph_feedback_summary ?? adaptation?.principle ?? "上下游节点可随新闻和硬数据反馈调整。"}</p>
+      <small>${(adaptation?.update_modes ?? []).map((mode) => `${mode.name}：${mode.description}`).join(" / ")}</small>
+    </article>
+    <div class="proposal-list">
+      ${proposals.length ? proposals.map((item) => `
+        <article class="proposal-card">
+          <div class="proposal-head">
+            <strong>${item.name}</strong>
+            <span class="metric-chip ${scoreClass(item.suggested_impact_coefficient ?? item.current_impact_coefficient)}">${actionLabel(item.action)}</span>
+          </div>
+          <p>${item.reason}</p>
+          <div class="keyword-bars">
+            <span>当前 ${formatScore(item.current_impact_coefficient)}</span>
+            <span>建议 ${formatScore(item.suggested_impact_coefficient)}</span>
+            <span>置信度 ${formatPct(item.confidence)}</span>
+            <span>${statusLabel(item.review_status)}</span>
+          </div>
+          <small>证据词：${(item.evidence ?? []).join(" / ") || "等待新闻证据"}</small>
+          <div class="proposal-actions">
+            <button class="button small apply-proposal" data-proposal-id="${item.proposal_id}" type="button">应用到本地</button>
+          </div>
+        </article>
+      `).join("") : `<div class="empty">该池塘暂无图谱反馈建议。等待每日新闻与硬数据验证，或每周GPT审计。</div>`}
+    </div>
+  `;
+
+  editPanel.innerHTML = `
+    <div class="edit-list">
+      ${upstream.map((item) => `
+        <article class="edit-row">
+          <div>
+            <strong>${item.name}</strong>
+            <span>${item.id} · ${flowTypeLabel(item.flow_type)} · ${item.source}</span>
+          </div>
+          <label>影响系数 <input class="weight-input" data-node-id="${item.id}" type="number" step="0.01" min="-1" max="1" value="${item.impact_coefficient ?? 0}"></label>
+          <button class="button small remove-node" data-node-id="${item.id}" type="button">本地删除</button>
+        </article>
+      `).join("") || `<div class="empty">暂无可编辑节点。</div>`}
+    </div>
+    <div class="add-node-form">
+      <input id="newNodeName" placeholder="新增节点名称，例如：电网投资/特高压">
+      <input id="newNodeImpact" placeholder="影响系数，例如 0.20" type="number" step="0.01" min="-1" max="1">
+      <button id="addNodeButton" class="button" type="button">新增到本地</button>
+      <button id="exportPatchButton" class="button" type="button">导出 patch</button>
+      <button id="resetPatchButton" class="button" type="button">清空本地修改</button>
+    </div>
+    <pre id="patchPreview" class="patch-preview">${JSON.stringify(readGraphOverride(pond.id), null, 2)}</pre>
+  `;
+
+  bindGraphEditor(pond, proposals);
 }
 
-function bindControls() {
-  document.getElementById("resetView").addEventListener("click", () => {
-    state.selectedId = null;
-    state.filter = "all";
-    document.querySelectorAll(".segment").forEach((button) => {
-      button.classList.toggle("active", button.dataset.filter === "all");
+function bindGraphEditor(pond, proposals) {
+  const override = readGraphOverride(pond.id);
+  document.querySelectorAll(".weight-input").forEach((input) => {
+    input.addEventListener("change", () => {
+      const nodeId = input.dataset.nodeId;
+      override.adjusted_nodes = override.adjusted_nodes ?? {};
+      override.adjusted_nodes[nodeId] = override.adjusted_nodes[nodeId] ?? {};
+      override.adjusted_nodes[nodeId].impact_coefficient = Number(input.value);
+      override.adjusted_nodes[nodeId].manual_reason = "front_end_local_adjustment";
+      writeGraphOverride(pond.id, override);
+      renderAll();
     });
+  });
+
+  document.querySelectorAll(".remove-node").forEach((button) => {
+    button.addEventListener("click", () => {
+      override.removed_nodes = Array.from(new Set([...(override.removed_nodes ?? []), button.dataset.nodeId]));
+      writeGraphOverride(pond.id, override);
+      renderAll();
+    });
+  });
+
+  document.querySelectorAll(".apply-proposal").forEach((button) => {
+    button.addEventListener("click", () => {
+      const proposal = proposals.find((item) => item.proposal_id === button.dataset.proposalId);
+      if (!proposal) return;
+      if (proposal.action === "add_node") {
+        override.added_nodes = override.added_nodes ?? [];
+        if (!override.added_nodes.find((item) => item.id === proposal.node_id)) {
+          override.added_nodes.push({
+            id: proposal.node_id,
+            name: proposal.name,
+            flow_type: proposal.flow_type ?? "adaptive",
+            impact_coefficient: proposal.suggested_impact_coefficient ?? 0,
+            confidence: proposal.confidence,
+            status: "candidate",
+            feedback_rule: proposal.reason
+          });
+        }
+      } else {
+        override.adjusted_nodes = override.adjusted_nodes ?? {};
+        override.adjusted_nodes[proposal.node_id] = {
+          impact_coefficient: proposal.suggested_impact_coefficient ?? proposal.current_impact_coefficient ?? 0,
+          confidence: proposal.confidence,
+          status: proposal.action === "decay_keyword_and_edge" ? "cooling" : "active",
+          feedback_rule: proposal.reason
+        };
+      }
+      writeGraphOverride(pond.id, override);
+      renderAll();
+    });
+  });
+
+  const addButton = document.getElementById("addNodeButton");
+  if (addButton) addButton.addEventListener("click", () => {
+    const name = document.getElementById("newNodeName").value.trim();
+    const impact = Number(document.getElementById("newNodeImpact").value || 0);
+    if (!name) return;
+    override.added_nodes = override.added_nodes ?? [];
+    override.added_nodes.push({
+      id: name.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fa5]+/g, "_").replace(/^_|_$/g, ""),
+      name,
+      flow_type: "manual",
+      impact_coefficient: impact,
+      confidence: 0.3,
+      status: "candidate",
+      feedback_rule: "用户在前端新增，需通过新闻和硬数据验证。"
+    });
+    writeGraphOverride(pond.id, override);
     renderAll();
   });
 
-  document.querySelectorAll(".segment").forEach((button) => {
+  const exportButton = document.getElementById("exportPatchButton");
+  if (exportButton) exportButton.addEventListener("click", async () => {
+    const patch = { pond_id: pond.id, created_at: new Date().toISOString(), override: readGraphOverride(pond.id) };
+    const text = JSON.stringify(patch, null, 2);
+    await navigator.clipboard?.writeText(text).catch(() => {});
+    const preview = document.getElementById("patchPreview");
+    if (preview) preview.textContent = text;
+  });
+
+  const resetButton = document.getElementById("resetPatchButton");
+  if (resetButton) resetButton.addEventListener("click", () => {
+    localStorage.removeItem(graphOverrideKey(pond.id));
+    renderAll();
+  });
+}
+
+function renderReports() {
+  const daily = state.pondMap?.reports?.daily ?? [];
+  const weekly = state.pondMap?.reports?.weekly ?? [];
+  document.getElementById("dailyPanel").innerHTML = daily.map(reportTemplate).join("");
+  document.getElementById("weeklyPanel").innerHTML = weekly.map(reportTemplate).join("") + `
+    <article class="report-card planned">
+      <strong>反馈机制</strong>
+      <p>每日用硬数据验证新闻关键词是否有效；每周由GPT生成关键词新增、降权、归档建议，不直接改交易结论。</p>
+    </article>
+  `;
+}
+
+function reportTemplate(report) {
+  return `
+    <article class="report-card ${report.status}">
+      <strong>${report.title}</strong>
+      <p>${report.target}</p>
+      <span>${report.status === "enabled" ? "已接入" : "计划中"}</span>
+    </article>
+  `;
+}
+
+function renderSectorTable() {
+  const container = document.getElementById("sectorTable");
+  const rows = state.flow?.sector_reviews ?? [];
+  if (!rows.length) {
+    container.innerHTML = `<div class="empty">暂无行业 review。等待下一次 GitHub Actions 或本地 daily cycle。</div>`;
+    return;
+  }
+
+  container.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>排名</th>
+          <th>行业</th>
+          <th>分数</th>
+          <th>状态</th>
+          <th>置信度</th>
+          <th>主要驱动</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${rows.map((row, index) => rowTemplate(row, index)).join("")}
+      </tbody>
+    </table>
+  `;
+}
+
+function rowTemplate(row, index) {
+  const score = row.score ?? row.flow_score ?? 0;
+  const id = plainSectorId(row);
+  const drivers = (row.top_drivers ?? [])
+    .slice(0, 3)
+    .map((driver) => driverLabel(driver))
+    .join(" / ") || "暂无明显驱动";
+
+  return `
+    <tr>
+      <td>${index + 1}</td>
+      <td><button class="text-link" data-pond-id="${id}" type="button"><strong>${sectorLabel(row)}</strong><span class="sub">${id}</span></button></td>
+      <td class="score ${scoreClass(score)}">${formatScore(score)}</td>
+      <td>${labelText(row.label)}</td>
+      <td>${formatScore(row.confidence)}</td>
+      <td>${drivers}</td>
+    </tr>
+  `;
+}
+
+function driverLabel(driver) {
+  const name = componentNames[driver.component] ?? driver.component ?? "driver";
+  return `${name} ${formatScore(driver.contribution)}`;
+}
+
+function labelText(label) {
+  const map = {
+    strong_inflow_bias: "强流入倾向",
+    constructive_inflow_bias: "偏积极",
+    neutral: "中性",
+    outflow_watch: "流出观察",
+    risk_off_pressure: "风险压力"
+  };
+  return map[label] ?? label ?? "--";
+}
+
+function renderTechnical() {
+  const entities = state.dashboard.entities ?? {};
+  const pools = Object.values(entities).filter((item) => item.kind === "pool").slice(0, 20);
+  const nodes = Object.values(entities).filter((item) => item.kind === "node").slice(0, 20);
+  document.getElementById("technicalPanel").innerHTML = `
+    <div><h3>Pools</h3>${pools.map((item) => `<p><b>${item.id}</b> · ${item.name ?? ""}</p>`).join("")}</div>
+    <div><h3>Nodes</h3>${nodes.map((item) => `<p><b>${item.id}</b> · ${item.category ?? item.data_type ?? ""}</p>`).join("")}</div>
+  `;
+}
+
+function bindTableLinks() {
+  document.querySelectorAll(".text-link").forEach((button) => {
     button.addEventListener("click", () => {
-      state.filter = button.dataset.filter;
-      document.querySelectorAll(".segment").forEach((item) => {
-        item.classList.toggle("active", item === button);
-      });
-      renderGraph();
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
+}
+
+function bindTabs() {
+  document.querySelectorAll(".tab-button").forEach((button) => {
+    button.addEventListener("click", () => {
+      document.querySelectorAll(".tab-button").forEach((item) => item.classList.remove("active"));
+      document.querySelectorAll(".tab-panel").forEach((item) => item.classList.remove("active"));
+      button.classList.add("active");
+      document.getElementById(`tab-${button.dataset.tab}`).classList.add("active");
     });
   });
 }
 
 function renderAll() {
   renderHeader();
-  renderPoolCards();
-  renderGraph();
-  renderDetails();
-  renderFlowReview();
-  renderEdges();
+  renderPondMap();
+  renderSelectedSummary();
+  renderFlowDetail();
+  renderNewsDetail();
+  renderRelated();
+  renderGraphFeedback();
+  renderReports();
+  renderSectorTable();
+  renderTechnical();
+  bindTableLinks();
 }
 
-state.data = await loadDashboard();
-state.flow = await loadFlowReview();
-bindControls();
-renderAll();
+async function loadAll() {
+  state.dashboard = await readJson("./data/dashboard.json", fallbackDashboard);
+  state.flow = await readJson("./data/sector_flow_review.json", null);
+  state.news = await readJson("./data/news_review.json", null);
+  state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
+  renderAll();
+}
+
+bindTabs();
+document.getElementById("refreshButton").addEventListener("click", loadAll);
+await loadAll();

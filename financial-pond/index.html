@@ -1,88 +1,106 @@
 <!doctype html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Financial Pond | CosecLab</title>
+    <title>Financial Ponds | CosecLab</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <header class="topbar">
+    <header class="hero">
       <div>
-        <p class="eyebrow">CosecLab Financial Pond</p>
-        <h1>Global Liquidity Graph</h1>
+        <p class="eyebrow">CosecLab · Financial Ponds</p>
+        <h1>资金池塘图谱</h1>
+        <p class="hero-copy">首页看所有池塘的层次、热度和高估/低估；点选池塘后，看上游流入流出、影响系数、新闻关键词权重、半衰期、水花系数、相关行业、日报和周报。电力行业当前是观察池，不参与真实行业ETF排序。</p>
       </div>
-      <div class="topbar-actions">
-        <span id="asOfBadge" class="badge">Loading</span>
-        <button id="resetView" class="button" type="button">Reset View</button>
+      <div class="hero-status">
+        <span id="asOfBadge" class="pill">Loading</span>
+        <span id="modelBadge" class="pill muted">Model</span>
       </div>
     </header>
 
     <main class="layout">
-      <section class="panel pools-panel" aria-label="Pools">
-        <div class="panel-header">
-          <h2>Major Pools</h2>
-          <span id="modelVersion" class="muted"></span>
-        </div>
-        <div id="poolCards" class="pool-grid"></div>
-      </section>
-
-      <section class="graph-panel" aria-label="Graph">
-        <div class="graph-toolbar">
+      <section class="left-pane section">
+        <div class="section-head compact">
           <div>
-            <h2>Connected Water System</h2>
-            <p id="graphSubtitle">Nodes, pools, assets, and portfolio components.</p>
+            <h2>所有池塘</h2>
+            <p>按层级从左到右排列。色块数字显示热度和估值位置。</p>
           </div>
-          <div class="segmented" role="tablist" aria-label="View mode">
-            <button class="segment active" data-filter="all" type="button">All</button>
-            <button class="segment" data-filter="pools" type="button">Pools</button>
-            <button class="segment" data-filter="nodes" type="button">Nodes</button>
-          </div>
+          <button id="refreshButton" class="button" type="button">刷新</button>
         </div>
-        <div class="graph-wrap">
-          <svg id="graphSvg" role="img" aria-label="Financial pond graph"></svg>
-        </div>
+        <div id="pondMap" class="pond-map">Loading pond map.</div>
       </section>
 
-      <aside class="panel details-panel" aria-label="Details">
-        <div class="panel-header">
-          <h2>Selection</h2>
-          <span id="entityKind" class="badge muted-badge">None</span>
-        </div>
-        <div id="details" class="details-empty">
-          Select a pool or node to inspect score drivers.
-        </div>
-      </aside>
+      <section class="right-pane">
+        <section class="section detail-hero">
+          <div>
+            <p id="selectedPath" class="eyebrow">选择池塘</p>
+            <h2 id="selectedName">读取中</h2>
+            <p id="selectedSummary">点击左侧任一池塘查看算法和新闻引擎细节。</p>
+          </div>
+          <div class="score-stack">
+            <div><span>热度</span><strong id="detailHeat">--</strong></div>
+            <div><span>估值</span><strong id="detailValuation">--</strong></div>
+            <div><span>模型分</span><strong id="detailScore">--</strong></div>
+          </div>
+        </section>
+
+        <section class="section tabs">
+          <div class="tab-buttons" role="tablist">
+            <button class="tab-button active" data-tab="flow" type="button">流入流出算法</button>
+            <button class="tab-button" data-tab="news" type="button">新闻搜索引擎</button>
+            <button class="tab-button" data-tab="related" type="button">相关行业</button>
+            <button class="tab-button" data-tab="graph" type="button">节点反馈 / 修改</button>
+            <button class="tab-button" data-tab="reports" type="button">日报 / 周报</button>
+          </div>
+
+          <div id="tab-flow" class="tab-panel active">
+            <h3>上游流入流出</h3>
+            <div id="upstreamPanel" class="metric-list"></div>
+            <h3>当前模型组件</h3>
+            <div id="componentPanel" class="component-grid"></div>
+          </div>
+
+          <div id="tab-news" class="tab-panel">
+            <h3>关键词组、权重、半衰期、水花系数</h3>
+            <div id="keywordPanel" class="keyword-list"></div>
+            <h3>新闻压力</h3>
+            <div id="newsPanel" class="news-panel"></div>
+          </div>
+
+          <div id="tab-related" class="tab-panel">
+            <h3>相关行业数据</h3>
+            <div id="relatedPanel" class="related-grid"></div>
+          </div>
+
+          <div id="tab-graph" class="tab-panel">
+            <h3>上下游节点反馈</h3>
+            <p class="muted">上游和下游不是永久设定。新闻主线和硬数据确认会提出调权、新增、归档建议。这里的修改先保存在浏览器本地，可导出 patch 后再写回模型配置。</p>
+            <div id="graphFeedbackPanel" class="graph-feedback"></div>
+            <h3>本地修改</h3>
+            <div id="graphEditPanel" class="graph-edit"></div>
+          </div>
+
+          <div id="tab-reports" class="tab-panel">
+            <h3>日报</h3>
+            <div id="dailyPanel" class="report-list"></div>
+            <h3>周报 / 反馈机制</h3>
+            <div id="weeklyPanel" class="report-list"></div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>全行业排序</h2>
+          <p>用于从详情页回看整体位置。分数不是交易指令。</p>
+          <div id="sectorTable" class="sector-table">Loading sector review.</div>
+        </section>
+
+        <details class="section technical">
+          <summary>技术视图：原始池子和节点</summary>
+          <div id="technicalPanel" class="technical-grid"></div>
+        </details>
+      </section>
     </main>
-
-    <section class="wide-section">
-      <div class="section-header">
-        <h2>A-share Sector Flow Review</h2>
-        <p>Daily sector ranking from ETF price, amount, available flow, and A-share water-level observations.</p>
-      </div>
-      <div id="flowReview" class="flow-review">Loading sector review.</div>
-    </section>
-
-    <section class="wide-section">
-      <div class="section-header">
-        <h2>Edge Registry</h2>
-        <p>Financial relationships are rendered from config, not hardcoded in the UI.</p>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>From</th>
-              <th>To</th>
-              <th>Channel</th>
-              <th>Weight</th>
-              <th>Transform</th>
-            </tr>
-          </thead>
-          <tbody id="edgeTable"></tbody>
-        </table>
-      </div>
-    </section>
 
     <script src="./app.js" type="module"></script>
   </body>
