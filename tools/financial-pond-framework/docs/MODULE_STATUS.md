@@ -131,6 +131,31 @@ Not yet complete:
 - Component weights are first-pass parameters and need historical testing.
 - No final allocation or risk-sizing layer is connected.
 
+## A-share Sector Rotation History
+
+Status: `working`
+
+Files:
+
+- `src/tools/sector_rotation_history.mjs`
+- `financial-pond/data/sector_rotation_history.json`
+- `tests/sector_rotation_history.test.mjs`
+
+Current capability:
+
+- Stores daily rotation snapshots for leaders, laggards, clusters, evidence,
+  confidence, and data completeness.
+- Compares the latest day with the prior stored day.
+- Publishes `trend_confirmations` for persistent leaders, persistent laggards,
+  strengthening sectors, weakening sectors, and leading/lagging clusters.
+- Requires at least 3 trading-day samples before `trend_confirmed` can appear.
+
+Important boundary:
+
+- Trend confirmation confirms repeated model output, not a buy/sell signal.
+- If the GitHub Action does not persist published JSON, history cannot
+  accumulate.
+
 ## Hard Data Collection
 
 Status: `skeleton`

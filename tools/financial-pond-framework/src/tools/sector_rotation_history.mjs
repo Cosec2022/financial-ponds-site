@@ -38,12 +38,13 @@ export function buildSectorRotationHistory({ rotation, previousHistory = null })
   const latest = history.at(-1) ?? null;
   const previous = history.at(-2) ?? null;
   const changes = latest && previous ? compareDays({ latest, previous }) : [];
-  const trendState = history.length >= minTrendDays ? "history_ready" : "insufficient_history";
+  const trendConfirmations = buildTrendConfirmations({ history, changes });
+  const trendState = classifyTrendState({ history, trendConfirmations });
 
   return {
     as_of: daily.as_of,
     generated_at: new Date().toISOString(),
-    module_id: "sector_rotation_history_v0_10_7",
+    module_id: "sector_rotation_history_v0_10_19",
     status: "history_available",
     sample_days: history.length,
     min_required_days_for_trend: minTrendDays,
@@ -52,6 +53,7 @@ export function buildSectorRotationHistory({ rotation, previousHistory = null })
     latest,
     previous,
     changes,
+    trend_confirmations: trendConfirmations,
     sector_series: sectorSeries,
     history,
     watch_points: buildWatchPoints({ history, changes, trendState }),
@@ -199,6 +201,97 @@ function changeLabel(scoreChange) {
   return "stable";
 }
 
+function buildTrendConfirmations({ history, changes }) {
+  const latest = history.at(-1) ?? null;
+  const latestLeaders = latest?.leaders ?? [];
+  const latestLaggards = latest?.laggards ?? [];
+  const latestClusters = latest?.cluster_reviews ?? [];
+  const persistentLeaders = latestLeaders
+    .map((sector) => ({
+      ...sector,
+      streak_days: sideStreak({ history, sectorId: sector.sector_id, side: "leader" })
+    }))
+    .filter((sector) => sector.streak_days >= minTrendDays);
+  const persistentLaggards = latestLaggards
+    .map((sector) => ({
+      ...sector,
+      streak_days: sideStreak({ history, sectorId: sector.sector_id, side: "laggard" })
+    }))
+    .filter((sector) => sector.streak_days >= minTrendDays);
+  const leadingCluster = latestClusters
+    .filter((cluster) => typeof cluster.score === "number")
+    .sort((a, b) => b.score - a.score)[0] ?? null;
+  const laggingCluster = latestClusters
+    .filter((cluster) => typeof cluster.score === "number")
+    .sort((a, b) => a.score - b.score)[0] ?? null;
+
+  return {
+    confirmed: history.length >= minTrendDays && (persistentLeaders.length > 0 || persistentLaggards.length > 0),
+    persistent_leaders: persistentLeaders.map(trendSectorBrief),
+    persistent_laggards: persistentLaggards.map(trendSectorBrief),
+    strengthening: changes.filter((item) => item.change_label === "strengthening").slice(0, 5),
+    weakening: changes.filter((item) => item.change_label === "weakening").slice(0, 5),
+    leading_cluster: leadingCluster ? trendClusterBrief({ history, cluster: leadingCluster, side: "leading" }) : null,
+    lagging_cluster: laggingCluster ? trendClusterBrief({ history, cluster: laggingCluster, side: "lagging" }) : null
+  };
+}
+
+function sideStreak({ history, sectorId, side }) {
+  let streak = 0;
+  for (let index = history.length - 1; index >= 0; index -= 1) {
+    const day = history[index];
+    const list = side === "leader" ? day.leaders ?? [] : day.laggards ?? [];
+    if (list.some((sector) => sector.sector_id === sectorId)) {
+      streak += 1;
+      continue;
+    }
+    break;
+  }
+  return streak;
+}
+
+function clusterSideStreak({ history, clusterId, side }) {
+  let streak = 0;
+  for (let index = history.length - 1; index >= 0; index -= 1) {
+    const clusters = [...(history[index].cluster_reviews ?? [])]
+      .filter((cluster) => typeof cluster.score === "number")
+      .sort((a, b) => side === "leading" ? b.score - a.score : a.score - b.score);
+    if (clusters[0]?.cluster_id === clusterId) {
+      streak += 1;
+      continue;
+    }
+    break;
+  }
+  return streak;
+}
+
+function trendSectorBrief(sector) {
+  return {
+    sector_id: sector.sector_id,
+    name: sector.name,
+    score: sector.score,
+    rank: sector.rank,
+    label: sector.label,
+    streak_days: sector.streak_days
+  };
+}
+
+function trendClusterBrief({ history, cluster, side }) {
+  return {
+    cluster_id: cluster.cluster_id,
+    name: cluster.name,
+    score: cluster.score,
+    label: cluster.label,
+    streak_days: clusterSideStreak({ history, clusterId: cluster.cluster_id, side })
+  };
+}
+
+function classifyTrendState({ history, trendConfirmations }) {
+  if (history.length < minTrendDays) return "insufficient_history";
+  if (trendConfirmations.confirmed) return "trend_confirmed";
+  return "history_ready";
+}
+
 function buildHeadline({ latest, previous, changes, trendState }) {
   if (!latest) return "暂无轮动历史。";
   if (!previous) return `已记录 ${latest.as_of} 的第一天行业轮动快照，暂不能判断趋势。`;
@@ -206,6 +299,9 @@ function buildHeadline({ latest, previous, changes, trendState }) {
   const weakening = changes.filter((item) => item.change_label === "weakening").map((item) => item.name).slice(0, 3);
   if (trendState === "insufficient_history") {
     return `已有 ${previous.as_of} 到 ${latest.as_of} 的轮动对比，但样本仍不足，趋势暂不确认。`;
+  }
+  if (trendState === "trend_confirmed") {
+    return `趋势确认可读：连续领先/弱势行业已经满足 ${minTrendDays} 个交易日样本。`;
   }
   if (strengthening.length || weakening.length) {
     return `轮动历史可读：增强 ${strengthening.join("、") || "暂无"}；转弱 ${weakening.join("、") || "暂无"}。`;
@@ -218,6 +314,9 @@ function buildWatchPoints({ history, changes, trendState }) {
   points.push(`当前已保存 ${history.length} 个交易日快照。`);
   if (trendState === "insufficient_history") {
     points.push(`至少需要 ${minTrendDays} 个交易日，才升级为趋势确认。`);
+  }
+  if (trendState === "trend_confirmed") {
+    points.push("已有连续样本支持趋势确认，但仍需结合当日ETF流、价量和新闻边界。");
   }
   const strengthening = changes.filter((item) => item.change_label === "strengthening");
   const weakening = changes.filter((item) => item.change_label === "weakening");
@@ -238,6 +337,7 @@ function buildMarkdown(payload) {
     `- as_of: ${payload.as_of}`,
     `- sample_days: ${payload.sample_days}`,
     `- trend_state: ${payload.trend_state}`,
+    `- confirmed: ${payload.trend_confirmations?.confirmed ? "yes" : "no"}`,
     "",
     "## Headline",
     "",
@@ -247,6 +347,14 @@ function buildMarkdown(payload) {
     ""
   ];
   payload.watch_points.forEach((item) => lines.push(`- ${item}`));
+  lines.push("", "## Confirmed Leaders", "");
+  for (const item of payload.trend_confirmations?.persistent_leaders ?? []) {
+    lines.push(`- ${item.name}: ${item.streak_days} days, score ${item.score}`);
+  }
+  lines.push("", "## Confirmed Laggards", "");
+  for (const item of payload.trend_confirmations?.persistent_laggards ?? []) {
+    lines.push(`- ${item.name}: ${item.streak_days} days, score ${item.score}`);
+  }
   lines.push("");
   return lines.join("\n");
 }

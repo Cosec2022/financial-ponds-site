@@ -7,6 +7,7 @@ import { buildSectorRotationHistory, runSectorRotationHistory } from "../src/too
 
 const rotationDay1 = rotation("2026-07-02", 0.28, -0.22);
 const rotationDay2 = rotation("2026-07-03", 0.36, -0.30);
+const rotationDay3 = rotation("2026-07-06", 0.34, -0.28);
 
 test("sector rotation history stores daily snapshots and keeps trend unconfirmed with too few days", () => {
   const result = buildSectorRotationHistory({
@@ -14,9 +15,10 @@ test("sector rotation history stores daily snapshots and keeps trend unconfirmed
     previousHistory: null
   });
 
-  assert.equal(result.module_id, "sector_rotation_history_v0_10_7");
+  assert.equal(result.module_id, "sector_rotation_history_v0_10_19");
   assert.equal(result.sample_days, 1);
   assert.equal(result.trend_state, "insufficient_history");
+  assert.equal(result.trend_confirmations.confirmed, false);
   assert.ok(result.headline.includes("第一天"));
   assert.ok(result.sector_series.real_estate_infra);
 });
@@ -32,6 +34,26 @@ test("sector rotation history compares latest day with previous saved day", () =
   assert.equal(day2.changes.find((item) => item.sector_id === "real_estate_infra").change_label, "strengthening");
   assert.equal(day2.changes.find((item) => item.sector_id === "brokerage").change_label, "weakening");
   assert.ok(day2.headline.includes("样本仍不足"));
+});
+
+test("sector rotation history confirms persistent leaders and laggards after enough days", () => {
+  const day1 = buildSectorRotationHistory({ rotation: rotationDay1 });
+  const day2 = buildSectorRotationHistory({
+    rotation: rotationDay2,
+    previousHistory: day1
+  });
+  const day3 = buildSectorRotationHistory({
+    rotation: rotationDay3,
+    previousHistory: day2
+  });
+
+  assert.equal(day3.sample_days, 3);
+  assert.equal(day3.trend_state, "trend_confirmed");
+  assert.equal(day3.trend_confirmations.confirmed, true);
+  assert.equal(day3.trend_confirmations.persistent_leaders[0].sector_id, "real_estate_infra");
+  assert.equal(day3.trend_confirmations.persistent_leaders[0].streak_days, 3);
+  assert.equal(day3.trend_confirmations.persistent_laggards[0].sector_id, "brokerage");
+  assert.ok(day3.watch_points.some((item) => item.includes("趋势确认")));
 });
 
 test("sector rotation history writes JSON and Markdown outputs", async () => {

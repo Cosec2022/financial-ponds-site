@@ -7,7 +7,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 - Site root shows a reference-first dashboard with general S&P 500 and A-share industry analysis.
 - The first screen includes `FP-GEN-01` general pool analysis for S&P 500, A-share market, and A-share industries.
 - The first screen now includes A-share sector rotation intelligence: leaders, laggards, style clusters, possible switching paths, and watch points.
-- The rotation panel now shows rotation-history sample count and trend-confirmation boundary.
+- The rotation panel now shows rotation-history sample count, trend-confirmation boundary, and persistent leader/laggard summaries when enough samples exist.
 - The first screen separates hard data, fallback news, and prototype signals.
 - The reference panel now shows ETF-flow availability separately from price-volume confirmation, so `0/11` ETF-flow days are clearly marked instead of silently mixed into the score.
 - A-share hard-data collection runs in `tools/financial-pond-framework`.
@@ -108,7 +108,7 @@ tools/financial-pond-framework/docs/UPDATE_PROTOCOL.md
 tools/financial-pond-framework/docs/PROJECT_PLAN.md
 tools/financial-pond-framework/docs/MODULE_PLAN.md
 tools/financial-pond-framework/docs/GITHUB_SYNC_PROTOCOL.md
-tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_18.md
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_19.md
 ```
 
 Before making meaningful changes, read those files first.

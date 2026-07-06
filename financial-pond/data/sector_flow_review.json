@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-06",
-  "generated_at": "2026-07-06T14:38:50.572Z",
+  "as_of": "2026-07-02",
+  "generated_at": "2026-07-06T14:25:09.480Z",
   "model_id": "flow_engine_v0_9",
   "scenario_id": null,
   "counts": {
@@ -17,9 +17,9 @@
       "display_name": "A-share Brokerage Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.32168641509433965,
+      "score": 0.34625000000000006,
       "label": "constructive_inflow_bias",
-      "confidence": 0.6764,
+      "confidence": 0.8333,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
@@ -36,15 +36,15 @@
           ]
         },
         "market_confirmation": {
-          "score": 0.2178,
-          "confidence": 0.7333333333333334,
+          "score": 0.3499999999999999,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "brokerage_relative_strength",
-              "score": 0.0234,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "brokerage_breadth",
@@ -54,28 +54,28 @@
             },
             {
               "node_id": "brokerage_leader_confirmation",
-              "score": 0.33000000000000007,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
+              "score": 0.35,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -92,21 +92,21 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.416475,
-          "confidence": 0.45,
+          "score": 0.42500000000000004,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "brokerage_policy_news",
-              "score": 0.4617,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.45,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -142,96 +142,96 @@
         },
         {
           "component": "market_confirmation",
-          "score": 0.2178,
-          "confidence": 0.7333333333333334,
+          "score": 0.3499999999999999,
+          "confidence": 1,
           "weight": 0.25,
-          "contribution": 0.05445,
+          "contribution": 0.08749999999999998,
           "available": true
         },
         {
           "component": "policy_sentiment",
-          "score": 0.416475,
-          "confidence": 0.45,
+          "score": 0.42500000000000004,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.041647500000000004,
+          "contribution": 0.04250000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
     },
     {
-      "sector_id": "semiconductor",
-      "pool_id": "a_share_semiconductor",
-      "name": "Semiconductor",
-      "display_name": "A-share Semiconductor Pool",
+      "sector_id": "ai_computer",
+      "pool_id": "a_share_ai_computer",
+      "name": "AI and Computer",
+      "display_name": "A-share AI and Computer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.20735308176100625,
+      "score": 0.29625,
       "label": "constructive_inflow_bias",
-      "confidence": 0.6764,
+      "confidence": 0.8333,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
-          "score": 0.3,
+          "score": 0.45,
           "confidence": 1,
           "available": true,
           "nodes": [
             {
-              "node_id": "semiconductor_etf_flow",
-              "score": 0.3,
+              "node_id": "ai_computer_etf_flow",
+              "score": 0.45,
               "confidence": 1,
               "source": "mock_observation_collector"
             }
           ]
         },
         "market_confirmation": {
-          "score": 0.23996666666666666,
-          "confidence": 0.7333333333333334,
+          "score": 0.3,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
-              "node_id": "semiconductor_relative_strength",
-              "score": 0.0299,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
+              "node_id": "ai_computer_relative_strength",
+              "score": 0.35,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
-              "node_id": "semiconductor_breadth",
+              "node_id": "ai_computer_breadth",
               "score": 0.25,
               "confidence": 1,
               "source": "mock_observation_collector"
             },
             {
-              "node_id": "semiconductor_leader_confirmation",
-              "score": 0.44000000000000006,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
+              "node_id": "ai_computer_leader_confirmation",
+              "score": 0.3,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -248,21 +248,177 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.06772499999999998,
-          "confidence": 0.45,
+          "score": 0.35,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "ai_computer_policy_news",
+              "score": 0.3,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "china_policy_news",
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "fundamental_proxy": {
+          "score": 0.25,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "ai_computer_fundamental_proxy",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "external_factor_effect": {
+          "score": 0,
+          "confidence": 0,
+          "available": false,
+          "nodes": [],
+          "factor_contributors": []
+        }
+      },
+      "top_drivers": [
+        {
+          "component": "direct_flow",
+          "score": 0.45,
+          "confidence": 1,
+          "weight": 0.3,
+          "contribution": 0.135,
+          "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "score": 0.3,
+          "confidence": 1,
+          "weight": 0.25,
+          "contribution": 0.075,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.35,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.034999999999999996,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.175,
+          "confidence": 1,
+          "weight": 0.15,
+          "contribution": 0.02625,
+          "available": true
+        }
+      ]
+    },
+    {
+      "sector_id": "semiconductor",
+      "pool_id": "a_share_semiconductor",
+      "name": "Semiconductor",
+      "display_name": "A-share Semiconductor Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "score": 0.2579166666666667,
+      "label": "constructive_inflow_bias",
+      "confidence": 0.8333,
+      "data_completeness": 0.9,
+      "components": {
+        "direct_flow": {
+          "score": 0.3,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "semiconductor_etf_flow",
+              "score": 0.3,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "market_confirmation": {
+          "score": 0.26666666666666666,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "semiconductor_relative_strength",
+              "score": 0.35,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "semiconductor_breadth",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "semiconductor_leader_confirmation",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "market_liquidity": {
+          "score": 0.175,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "a_share_turnover",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "a_share_breadth",
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "margin_balance",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "etf_total_flow_a_share",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "policy_sentiment": {
+          "score": 0.6000000000000001,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "semiconductor_policy_news",
-              "score": -0.2358,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.8,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -298,338 +454,26 @@
         },
         {
           "component": "market_confirmation",
-          "score": 0.23996666666666666,
-          "confidence": 0.7333333333333334,
+          "score": 0.26666666666666666,
+          "confidence": 1,
           "weight": 0.25,
-          "contribution": 0.059991666666666665,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "fundamental_proxy",
-          "score": 0.15,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.015,
-          "available": true
-        }
-      ]
-    },
-    {
-      "sector_id": "ai_computer",
-      "pool_id": "a_share_ai_computer",
-      "name": "AI and Computer",
-      "display_name": "A-share AI and Computer Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "score": 0.20395308176100627,
-      "label": "constructive_inflow_bias",
-      "confidence": 0.6764,
-      "data_completeness": 0.9,
-      "components": {
-        "direct_flow": {
-          "score": 0.45,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "ai_computer_etf_flow",
-              "score": 0.45,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "market_confirmation": {
-          "score": 0.006366666666666669,
-          "confidence": 0.7333333333333334,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "ai_computer_relative_strength",
-              "score": -0.12090000000000001,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
-            },
-            {
-              "node_id": "ai_computer_breadth",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "ai_computer_leader_confirmation",
-              "score": -0.10999999999999999,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "margin_balance",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "etf_total_flow_a_share",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "policy_sentiment": {
-          "score": 0.06772499999999998,
-          "confidence": 0.45,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "ai_computer_policy_news",
-              "score": -0.2358,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
-            },
-            {
-              "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
-            }
-          ]
-        },
-        "fundamental_proxy": {
-          "score": 0.25,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "ai_computer_fundamental_proxy",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "external_factor_effect": {
-          "score": 0,
-          "confidence": 0,
-          "available": false,
-          "nodes": [],
-          "factor_contributors": []
-        }
-      },
-      "top_drivers": [
-        {
-          "component": "direct_flow",
-          "score": 0.45,
-          "confidence": 1,
-          "weight": 0.3,
-          "contribution": 0.135,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "fundamental_proxy",
-          "score": 0.25,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.025,
+          "contribution": 0.06666666666666667,
           "available": true
         },
         {
           "component": "policy_sentiment",
-          "score": 0.06772499999999998,
-          "confidence": 0.45,
+          "score": 0.6000000000000001,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.006772499999999998,
-          "available": true
-        }
-      ]
-    },
-    {
-      "sector_id": "bank_insurance",
-      "pool_id": "a_share_bank_insurance",
-      "name": "Bank and Insurance",
-      "display_name": "A-share Bank and Insurance Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "score": 0.1690639150943396,
-      "label": "neutral",
-      "confidence": 0.6764,
-      "data_completeness": 0.9,
-      "components": {
-        "direct_flow": {
-          "score": 0.2,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "bank_insurance_etf_flow",
-              "score": 0.2,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "market_confirmation": {
-          "score": 0.12539999999999998,
-          "confidence": 0.7333333333333334,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "bank_insurance_relative_strength",
-              "score": 0.22619999999999998,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
-            },
-            {
-              "node_id": "bank_insurance_breadth",
-              "score": 0.15,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "bank_insurance_leader_confirmation",
-              "score": 0,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "margin_balance",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "etf_total_flow_a_share",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "bank_insurance_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
-            },
-            {
-              "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
-            }
-          ]
-        },
-        "fundamental_proxy": {
-          "score": 0.05,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "bank_insurance_fundamental_proxy",
-              "score": 0.05,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "external_factor_effect": {
-          "score": 0,
-          "confidence": 0,
-          "available": false,
-          "nodes": [],
-          "factor_contributors": []
-        }
-      },
-      "top_drivers": [
-        {
-          "component": "direct_flow",
-          "score": 0.2,
-          "confidence": 1,
-          "weight": 0.3,
-          "contribution": 0.06,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.06000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.12539999999999998,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.031349999999999996,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -641,9 +485,9 @@
       "display_name": "A-share Communication and Electronics Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.1650780817610063,
-      "label": "neutral",
-      "confidence": 0.6764,
+      "score": 0.2245833333333333,
+      "label": "constructive_inflow_bias",
+      "confidence": 0.8333,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
@@ -660,15 +504,15 @@
           ]
         },
         "market_confirmation": {
-          "score": 0.06886666666666669,
-          "confidence": 0.7333333333333334,
+          "score": 0.2333333333333333,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "communication_electronics_relative_strength",
-              "score": -0.5434,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "communication_electronics_breadth",
@@ -678,28 +522,28 @@
             },
             {
               "node_id": "communication_electronics_leader_confirmation",
-              "score": 0.55,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -716,21 +560,21 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.022724999999999995,
-          "confidence": 0.45,
+          "score": 0.30000000000000004,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "communication_electronics_policy_news",
-              "score": -0.3258,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -765,183 +609,27 @@
           "available": true
         },
         {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "fundamental_proxy",
-          "score": 0.2,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.020000000000000004,
-          "available": true
-        },
-        {
           "component": "market_confirmation",
-          "score": 0.06886666666666669,
-          "confidence": 0.7333333333333334,
+          "score": 0.2333333333333333,
+          "confidence": 1,
           "weight": 0.25,
-          "contribution": 0.017216666666666672,
-          "available": true
-        }
-      ]
-    },
-    {
-      "sector_id": "healthcare_pharma",
-      "pool_id": "a_share_healthcare_pharma",
-      "name": "Healthcare and Pharma",
-      "display_name": "A-share Healthcare and Pharma Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "score": 0.16356808176100626,
-      "label": "neutral",
-      "confidence": 0.7222,
-      "data_completeness": 0.9,
-      "components": {
-        "direct_flow": {
-          "score": 0.15,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "healthcare_pharma_etf_flow",
-              "score": 0.15,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "market_confirmation": {
-          "score": 0.11766666666666666,
-          "confidence": 0.7333333333333334,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "healthcare_pharma_relative_strength",
-              "score": 0.14300000000000002,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
-            },
-            {
-              "node_id": "healthcare_pharma_breadth",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "healthcare_pharma_leader_confirmation",
-              "score": 0.10999999999999999,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "margin_balance",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "etf_total_flow_a_share",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "policy_sentiment": {
-          "score": 0.285625,
-          "confidence": 0.725,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "healthcare_pharma_policy_news",
-              "score": 0.2,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
-            }
-          ]
-        },
-        "fundamental_proxy": {
-          "score": 0.25,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "healthcare_pharma_fundamental_proxy",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "external_factor_effect": {
-          "score": 0,
-          "confidence": 0,
-          "available": false,
-          "nodes": [],
-          "factor_contributors": []
-        }
-      },
-      "top_drivers": [
-        {
-          "component": "direct_flow",
-          "score": 0.15,
-          "confidence": 1,
-          "weight": 0.3,
-          "contribution": 0.045,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.11766666666666666,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.029416666666666664,
+          "contribution": 0.05833333333333333,
           "available": true
         },
         {
           "component": "policy_sentiment",
-          "score": 0.285625,
-          "confidence": 0.725,
+          "score": 0.30000000000000004,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.028562500000000005,
+          "contribution": 0.030000000000000006,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.175,
+          "confidence": 1,
+          "weight": 0.15,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -953,9 +641,9 @@
       "display_name": "A-share Defense and Military Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.1566264150943396,
-      "label": "neutral",
-      "confidence": 0.7222,
+      "score": 0.21458333333333335,
+      "label": "constructive_inflow_bias",
+      "confidence": 0.8333,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
@@ -972,15 +660,15 @@
           ]
         },
         "market_confirmation": {
-          "score": -0.08009999999999999,
-          "confidence": 0.7333333333333334,
+          "score": 0.18333333333333335,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "defense_military_relative_strength",
-              "score": -0.1703,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "defense_military_breadth",
@@ -990,28 +678,28 @@
             },
             {
               "node_id": "defense_military_leader_confirmation",
-              "score": -0.21999999999999997,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -1028,8 +716,8 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.360625,
-          "confidence": 0.725,
+          "score": 0.375,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
@@ -1040,9 +728,9 @@
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -1077,19 +765,19 @@
           "available": true
         },
         {
-          "component": "policy_sentiment",
-          "score": 0.360625,
-          "confidence": 0.725,
-          "weight": 0.1,
-          "contribution": 0.0360625,
+          "component": "market_confirmation",
+          "score": 0.18333333333333335,
+          "confidence": 1,
+          "weight": 0.25,
+          "contribution": 0.04583333333333334,
           "available": true
         },
         {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "component": "policy_sentiment",
+          "score": 0.375,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.037500000000000006,
           "available": true
         },
         {
@@ -1103,15 +791,15 @@
       ]
     },
     {
-      "sector_id": "resources_materials",
-      "pool_id": "a_share_resources_materials",
-      "name": "Resources and Materials",
-      "display_name": "A-share Resources and Materials Pool",
+      "sector_id": "healthcare_pharma",
+      "pool_id": "a_share_healthcare_pharma",
+      "name": "Healthcare and Pharma",
+      "display_name": "A-share Healthcare and Pharma Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.12865974842767294,
+      "score": 0.14708333333333332,
       "label": "neutral",
-      "confidence": 0.7222,
+      "confidence": 0.8333,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
@@ -1120,7 +808,7 @@
           "available": true,
           "nodes": [
             {
-              "node_id": "resources_materials_etf_flow",
+              "node_id": "healthcare_pharma_etf_flow",
               "score": 0.15,
               "confidence": 1,
               "source": "mock_observation_collector"
@@ -1128,46 +816,46 @@
           ]
         },
         "market_confirmation": {
-          "score": 0.028033333333333337,
-          "confidence": 0.7333333333333334,
+          "score": 0.08333333333333333,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
-              "node_id": "resources_materials_relative_strength",
-              "score": -0.18589999999999998,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
-            },
-            {
-              "node_id": "resources_materials_breadth",
+              "node_id": "healthcare_pharma_relative_strength",
               "score": 0.05,
               "confidence": 1,
               "source": "mock_observation_collector"
             },
             {
-              "node_id": "resources_materials_leader_confirmation",
-              "score": 0.21999999999999997,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
+              "node_id": "healthcare_pharma_breadth",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "healthcare_pharma_leader_confirmation",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -1184,8 +872,320 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.21062499999999998,
-          "confidence": 0.725,
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "healthcare_pharma_policy_news",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "china_policy_news",
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "fundamental_proxy": {
+          "score": 0.25,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "healthcare_pharma_fundamental_proxy",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "external_factor_effect": {
+          "score": 0,
+          "confidence": 0,
+          "available": false,
+          "nodes": [],
+          "factor_contributors": []
+        }
+      },
+      "top_drivers": [
+        {
+          "component": "direct_flow",
+          "score": 0.15,
+          "confidence": 1,
+          "weight": 0.3,
+          "contribution": 0.045,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.030000000000000006,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.175,
+          "confidence": 1,
+          "weight": 0.15,
+          "contribution": 0.02625,
+          "available": true
+        },
+        {
+          "component": "fundamental_proxy",
+          "score": 0.25,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.025,
+          "available": true
+        }
+      ]
+    },
+    {
+      "sector_id": "bank_insurance",
+      "pool_id": "a_share_bank_insurance",
+      "name": "Bank and Insurance",
+      "display_name": "A-share Bank and Insurance Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "score": 0.14541666666666667,
+      "label": "neutral",
+      "confidence": 0.8333,
+      "data_completeness": 0.9,
+      "components": {
+        "direct_flow": {
+          "score": 0.2,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "bank_insurance_etf_flow",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "market_confirmation": {
+          "score": 0.11666666666666665,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "bank_insurance_relative_strength",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "bank_insurance_breadth",
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "bank_insurance_leader_confirmation",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "market_liquidity": {
+          "score": 0.175,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "a_share_turnover",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "a_share_breadth",
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "margin_balance",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "etf_total_flow_a_share",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "policy_sentiment": {
+          "score": 0.25,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "bank_insurance_policy_news",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "china_policy_news",
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "fundamental_proxy": {
+          "score": 0.05,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "bank_insurance_fundamental_proxy",
+              "score": 0.05,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "external_factor_effect": {
+          "score": 0,
+          "confidence": 0,
+          "available": false,
+          "nodes": [],
+          "factor_contributors": []
+        }
+      },
+      "top_drivers": [
+        {
+          "component": "direct_flow",
+          "score": 0.2,
+          "confidence": 1,
+          "weight": 0.3,
+          "contribution": 0.06,
+          "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "score": 0.11666666666666665,
+          "confidence": 1,
+          "weight": 0.25,
+          "contribution": 0.029166666666666664,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.175,
+          "confidence": 1,
+          "weight": 0.15,
+          "contribution": 0.02625,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.25,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.025,
+          "available": true
+        }
+      ]
+    },
+    {
+      "sector_id": "resources_materials",
+      "pool_id": "a_share_resources_materials",
+      "name": "Resources and Materials",
+      "display_name": "A-share Resources and Materials Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "score": 0.13458333333333333,
+      "label": "neutral",
+      "confidence": 0.8333,
+      "data_completeness": 0.9,
+      "components": {
+        "direct_flow": {
+          "score": 0.15,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "resources_materials_etf_flow",
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "market_confirmation": {
+          "score": 0.08333333333333333,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "resources_materials_relative_strength",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "resources_materials_breadth",
+              "score": 0.05,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "resources_materials_leader_confirmation",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "market_liquidity": {
+          "score": 0.175,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "a_share_turnover",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "a_share_breadth",
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "margin_balance",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "etf_total_flow_a_share",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "policy_sentiment": {
+          "score": 0.225,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
@@ -1196,9 +1196,9 @@
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -1234,26 +1234,26 @@
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         },
         {
           "component": "policy_sentiment",
-          "score": 0.21062499999999998,
-          "confidence": 0.725,
+          "score": 0.225,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.021062499999999998,
+          "contribution": 0.022500000000000003,
           "available": true
         },
         {
-          "component": "fundamental_proxy",
-          "score": 0.2,
+          "component": "market_confirmation",
+          "score": 0.08333333333333333,
           "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.020000000000000004,
+          "weight": 0.25,
+          "contribution": 0.020833333333333332,
           "available": true
         }
       ]
@@ -1265,9 +1265,9 @@
       "display_name": "A-share Consumer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.0835930817610063,
+      "score": 0.07625000000000001,
       "label": "neutral",
-      "confidence": 0.6764,
+      "confidence": 0.8333,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
@@ -1284,15 +1284,15 @@
           ]
         },
         "market_confirmation": {
-          "score": -0.02723333333333335,
-          "confidence": 0.7333333333333334,
+          "score": 0,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "consumer_relative_strength",
-              "score": 0.24830000000000002,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
+              "score": -0.05,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "consumer_breadth",
@@ -1302,28 +1302,28 @@
             },
             {
               "node_id": "consumer_leader_confirmation",
-              "score": -0.33000000000000007,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
+              "score": 0.05,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -1340,21 +1340,21 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.298125,
-          "confidence": 0.45,
+          "score": 0.25,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "consumer_policy_news",
-              "score": 0.225,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -1382,18 +1382,18 @@
       "top_drivers": [
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         },
         {
           "component": "policy_sentiment",
-          "score": 0.298125,
-          "confidence": 0.45,
+          "score": 0.25,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.0298125,
+          "contribution": 0.025,
           "available": true
         },
         {
@@ -1421,9 +1421,9 @@
       "display_name": "A-share Agriculture Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -1445,21 +1445,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -1476,15 +1476,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -1507,18 +1507,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -1530,9 +1530,9 @@
       "display_name": "A-share Food and Beverage Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -1554,21 +1554,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -1585,15 +1585,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -1616,18 +1616,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -1639,9 +1639,9 @@
       "display_name": "A-share Home Appliances Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -1663,21 +1663,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -1694,15 +1694,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -1725,18 +1725,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -1748,9 +1748,9 @@
       "display_name": "A-share Textile and Apparel Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -1772,21 +1772,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -1803,15 +1803,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -1834,18 +1834,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -1857,9 +1857,9 @@
       "display_name": "A-share Light Manufacturing Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -1881,21 +1881,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -1912,15 +1912,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -1943,18 +1943,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -1966,9 +1966,9 @@
       "display_name": "A-share Retail Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -1990,21 +1990,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2021,15 +2021,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2052,18 +2052,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2075,9 +2075,9 @@
       "display_name": "A-share Social Services Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2099,21 +2099,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2130,15 +2130,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2161,18 +2161,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2184,9 +2184,9 @@
       "display_name": "A-share Beauty Care Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2208,21 +2208,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2239,15 +2239,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2270,18 +2270,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2293,9 +2293,9 @@
       "display_name": "A-share Transportation Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2317,21 +2317,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2348,15 +2348,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2379,18 +2379,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2402,9 +2402,9 @@
       "display_name": "A-share Utilities Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2426,21 +2426,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2457,15 +2457,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2488,18 +2488,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2511,9 +2511,9 @@
       "display_name": "A-share Environmental Protection Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2535,21 +2535,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2566,15 +2566,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2597,18 +2597,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2620,9 +2620,9 @@
       "display_name": "A-share Petroleum and Petrochemical Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2644,21 +2644,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2675,15 +2675,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2706,18 +2706,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2729,9 +2729,9 @@
       "display_name": "A-share Coal Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2753,21 +2753,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2784,15 +2784,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2815,18 +2815,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2838,9 +2838,9 @@
       "display_name": "A-share Steel Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2862,21 +2862,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -2893,15 +2893,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -2924,18 +2924,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -2947,9 +2947,9 @@
       "display_name": "A-share Nonferrous Metals Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -2971,21 +2971,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -3002,15 +3002,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -3033,18 +3033,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -3056,9 +3056,9 @@
       "display_name": "A-share Basic Chemicals Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -3080,21 +3080,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -3111,15 +3111,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -3142,18 +3142,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -3165,9 +3165,9 @@
       "display_name": "A-share Building Materials Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -3189,21 +3189,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -3220,15 +3220,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -3251,18 +3251,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -3274,9 +3274,9 @@
       "display_name": "A-share Construction Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -3298,21 +3298,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -3329,15 +3329,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -3360,18 +3360,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -3383,9 +3383,9 @@
       "display_name": "A-share Machinery Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -3407,21 +3407,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -3438,15 +3438,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -3469,18 +3469,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -3492,9 +3492,9 @@
       "display_name": "A-share Media Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06625,
       "label": "neutral",
-      "confidence": 0.2208,
+      "confidence": 0.3333,
       "data_completeness": 0.25,
       "components": {
         "direct_flow": {
@@ -3516,21 +3516,21 @@
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -3547,15 +3547,15 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -3578,18 +3578,18 @@
       "top_drivers": [
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.4,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
+          "contribution": 0.04000000000000001,
           "available": true
         },
         {
           "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.02625,
           "available": true
         }
       ]
@@ -3601,9 +3601,9 @@
       "display_name": "A-share New Energy Vehicle Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": -0.07633191823899371,
+      "score": -0.04375000000000001,
       "label": "neutral",
-      "confidence": 0.7222,
+      "confidence": 0.8333,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
@@ -3620,15 +3620,15 @@
           ]
         },
         "market_confirmation": {
-          "score": -0.31193333333333334,
-          "confidence": 0.7333333333333334,
+          "score": -0.15,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "new_energy_ev_relative_strength",
-              "score": -0.34580000000000005,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
+              "score": -0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "new_energy_ev_breadth",
@@ -3638,28 +3638,28 @@
             },
             {
               "node_id": "new_energy_ev_leader_confirmation",
-              "score": -0.44000000000000006,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
+              "score": -0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -3676,8 +3676,8 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.21062499999999998,
-          "confidence": 0.725,
+          "score": 0.225,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
@@ -3688,9 +3688,9 @@
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -3718,18 +3718,10 @@
       "top_drivers": [
         {
           "component": "market_confirmation",
-          "score": -0.31193333333333334,
-          "confidence": 0.7333333333333334,
+          "score": -0.15,
+          "confidence": 1,
           "weight": 0.25,
-          "contribution": -0.07798333333333334,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": -0.0375,
           "available": true
         },
         {
@@ -3738,6 +3730,14 @@
           "confidence": 1,
           "weight": 0.3,
           "contribution": -0.03,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.175,
+          "confidence": 1,
+          "weight": 0.15,
+          "contribution": 0.02625,
           "available": true
         },
         {
@@ -3757,9 +3757,9 @@
       "display_name": "A-share Real Estate and Infrastructure Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": -0.0933944182389937,
+      "score": -0.11625000000000002,
       "label": "neutral",
-      "confidence": 0.6764,
+      "confidence": 0.8333,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
@@ -3776,15 +3776,15 @@
           ]
         },
         "market_confirmation": {
-          "score": -0.22443333333333335,
-          "confidence": 0.7333333333333334,
+          "score": -0.25,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "real_estate_infra_relative_strength",
-              "score": 0.0767,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
+              "score": -0.3,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "real_estate_infra_breadth",
@@ -3794,28 +3794,28 @@
             },
             {
               "node_id": "real_estate_infra_leader_confirmation",
-              "score": -0.55,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
+              "score": -0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
         "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
+          "score": 0.175,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
+              "score": 0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "margin_balance",
@@ -3832,21 +3832,21 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.30000000000000004,
+          "confidence": 1,
           "available": true,
           "nodes": [
             {
               "node_id": "real_estate_infra_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             }
           ]
         },
@@ -3882,26 +3882,26 @@
         },
         {
           "component": "market_confirmation",
-          "score": -0.22443333333333335,
-          "confidence": 0.7333333333333334,
+          "score": -0.25,
+          "confidence": 1,
           "weight": 0.25,
-          "contribution": -0.056108333333333336,
+          "contribution": -0.0625,
+          "available": true
+        },
+        {
+          "component": "fundamental_proxy",
+          "score": -0.35,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": -0.034999999999999996,
           "available": true
         },
         {
           "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
+          "score": 0.30000000000000004,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
+          "contribution": 0.030000000000000006,
           "available": true
         }
       ]
@@ -3911,34 +3911,34 @@
     "top_positive": [
       {
         "pool_id": "a_share_brokerage",
-        "score": 0.32168641509433965,
-        "label": "constructive_inflow_bias"
-      },
-      {
-        "pool_id": "a_share_semiconductor",
-        "score": 0.20735308176100625,
+        "score": 0.34625000000000006,
         "label": "constructive_inflow_bias"
       },
       {
         "pool_id": "a_share_ai_computer",
-        "score": 0.20395308176100627,
+        "score": 0.29625,
+        "label": "constructive_inflow_bias"
+      },
+      {
+        "pool_id": "a_share_semiconductor",
+        "score": 0.2579166666666667,
         "label": "constructive_inflow_bias"
       }
     ],
     "top_negative": [
       {
         "pool_id": "a_share_real_estate_infra",
-        "score": -0.0933944182389937,
+        "score": -0.11625000000000002,
         "label": "neutral"
       },
       {
         "pool_id": "a_share_new_energy_ev",
-        "score": -0.07633191823899371,
+        "score": -0.04375000000000001,
         "label": "neutral"
       },
       {
         "pool_id": "a_share_media",
-        "score": 0.07271391509433961,
+        "score": 0.06625,
         "label": "neutral"
       }
     ]

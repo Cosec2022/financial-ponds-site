@@ -1,7 +1,7 @@
 {
   "as_of": "2026-07-02",
-  "generated_at": "2026-07-06T14:25:10.237Z",
-  "module_id": "sector_rotation_history_v0_10_7",
+  "generated_at": "2026-07-06T14:46:55.385Z",
+  "module_id": "sector_rotation_history_v0_10_19",
   "status": "history_available",
   "sample_days": 1,
   "min_required_days_for_trend": 3,
@@ -10,7 +10,7 @@
   "latest": {
     "as_of": "2026-07-02",
     "rotation_state": "selective_rotation",
-    "evidence_level": "partial_hard_data",
+    "evidence_level": "hard_data_with_news_fixture",
     "confidence": 0.5107,
     "data_completeness": 0.4806,
     "score_spread": 0.4625,
@@ -144,6 +144,27 @@
   },
   "previous": null,
   "changes": [],
+  "trend_confirmations": {
+    "confirmed": false,
+    "persistent_leaders": [],
+    "persistent_laggards": [],
+    "strengthening": [],
+    "weakening": [],
+    "leading_cluster": {
+      "cluster_id": "technology_growth",
+      "name": "科技成长",
+      "score": 0.2596,
+      "label": "cluster_inflow_bias",
+      "streak_days": 1
+    },
+    "lagging_cluster": {
+      "cluster_id": "cyclical_value",
+      "name": "顺周期价值",
+      "score": -0.0085,
+      "label": "cluster_neutral",
+      "streak_days": 1
+    }
+  },
   "sector_series": {
     "brokerage": [
       {
@@ -204,7 +225,7 @@
     {
       "as_of": "2026-07-02",
       "rotation_state": "selective_rotation",
-      "evidence_level": "partial_hard_data",
+      "evidence_level": "hard_data_with_news_fixture",
       "confidence": 0.5107,
       "data_completeness": 0.4806,
       "score_spread": 0.4625,

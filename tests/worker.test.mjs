@@ -47,7 +47,8 @@ test("serves dashboard, general pool analysis, sector review, rotation data, new
   const rotationHistory = await worker.fetch(request("/data/sector_rotation_history.json"), {});
   assert.equal(rotationHistory.status, 200);
   const rotationHistoryJson = await rotationHistory.json();
-  assert.equal(rotationHistoryJson.module_id, "sector_rotation_history_v0_10_7");
+  assert.equal(rotationHistoryJson.module_id, "sector_rotation_history_v0_10_19");
+  assert.ok(rotationHistoryJson.trend_confirmations);
   assert.ok(rotationHistoryJson.sample_days >= 1);
 
   const news = await worker.fetch(request("/data/news_review.json"), {});

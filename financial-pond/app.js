@@ -404,6 +404,7 @@ function renderRotationPanel() {
       <strong>${historyTrendLabel(history?.trend_state)}</strong>
       <p>已保存 ${history?.sample_days ?? 0} 个交易日；趋势确认至少需要 ${history?.min_required_days_for_trend ?? 3} 个交易日。</p>
       <small>${history?.headline ?? "等待 sector_rotation_history.json 生成。"}</small>
+      ${trendConfirmationTemplate(history)}
     </article>
     <article class="rotation-card wide">
       <span>可能的切换路径</span>
@@ -482,10 +483,31 @@ function clusterLabel(label) {
 function historyTrendLabel(stateName) {
   const map = {
     insufficient_history: "样本不足",
+    trend_confirmed: "趋势确认",
     history_ready: "历史可读",
     unavailable: "暂无历史"
   };
   return map[stateName] ?? stateName ?? "暂无历史";
+}
+
+function trendConfirmationTemplate(history) {
+  const trend = history?.trend_confirmations;
+  if (!trend) return "";
+  const leaders = trend.persistent_leaders ?? [];
+  const laggards = trend.persistent_laggards ?? [];
+  const strengthening = trend.strengthening ?? [];
+  const weakening = trend.weakening ?? [];
+  const items = [];
+  if (leaders[0]) items.push(`连续领先：${leaders.slice(0, 2).map((item) => `${item.name} ${item.streak_days}天`).join(" / ")}`);
+  if (laggards[0]) items.push(`连续弱势：${laggards.slice(0, 2).map((item) => `${item.name} ${item.streak_days}天`).join(" / ")}`);
+  if (strengthening[0]) items.push(`增强：${strengthening.slice(0, 2).map((item) => item.name).join(" / ")}`);
+  if (weakening[0]) items.push(`转弱：${weakening.slice(0, 2).map((item) => item.name).join(" / ")}`);
+  if (!items.length) return `<div class="trend-box muted">等待更多连续样本。</div>`;
+  return `
+    <div class="trend-box ${trend.confirmed ? "confirmed" : ""}">
+      ${items.map((item) => `<span>${item}</span>`).join("")}
+    </div>
+  `;
 }
 
 function referenceRowTemplate(row) {

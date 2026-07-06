@@ -12,5 +12,5 @@
   "devDependencies": {
     "wrangler": "4.102.0"
   },
-  "version": "0.10.18"
+  "version": "0.10.19"
 }

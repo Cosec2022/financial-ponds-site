@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.10.19 - Rotation trend confirmation layer
+
+- Bumped site and framework package versions to `0.10.19`.
+- Upgraded `FP-HIST-01` sector rotation history from simple day-to-day comparison to a trend-confirmation layer.
+- Added `trend_confirmations` to `sector_rotation_history.json`.
+- Added persistent leader and persistent laggard detection based on consecutive appearance in the daily leader/laggard lists.
+- Added conservative trend state:
+  - `insufficient_history` before 3 trading-day samples;
+  - `history_ready` after enough samples but without persistent signals;
+  - `trend_confirmed` only when persistent leaders or laggards have enough consecutive samples.
+- Added frontend trend summaries inside the Rotation Intelligence history card.
+- Added tests for 3-day persistent leader/laggard confirmation.
+
+Boundary:
+
+- This update does not change daily sector scores.
+- Trend confirmation is not a trading instruction.
+- The rule confirms continuity of model output, not future price movement.
+
 ## v0.10.18 - Data availability convergence
 
 - Bumped site and framework package versions to `0.10.18`.
