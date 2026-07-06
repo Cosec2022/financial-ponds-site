@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-02",
-  "generated_at": "2026-07-06T14:25:10.237Z",
+  "as_of": "2026-07-06",
+  "generated_at": "2026-07-06T14:38:50.627Z",
   "module_id": "sector_rotation_history_v0_10_7",
   "status": "history_available",
   "sample_days": 2,
@@ -10,7 +10,7 @@
   "latest": {
     "as_of": "2026-07-06",
     "rotation_state": "selective_rotation",
-    "evidence_level": "partial_hard_data",
+    "evidence_level": "hard_data_confirmed",
     "confidence": 0.3884,
     "data_completeness": 0.4806,
     "score_spread": 0.4151,
@@ -576,7 +576,7 @@
     {
       "as_of": "2026-07-06",
       "rotation_state": "selective_rotation",
-      "evidence_level": "partial_hard_data",
+      "evidence_level": "hard_data_confirmed",
       "confidence": 0.3884,
       "data_completeness": 0.4806,
       "score_spread": 0.4151,

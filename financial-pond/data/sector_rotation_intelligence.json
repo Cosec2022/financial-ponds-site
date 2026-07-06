@@ -1,13 +1,13 @@
 {
-  "as_of": "2026-07-02",
-  "generated_at": "2026-07-06T14:25:43.223Z",
+  "as_of": "2026-07-06",
+  "generated_at": "2026-07-06T14:38:50.597Z",
   "module_id": "sector_rotation_intelligence_v0_10_5",
   "status": "rotation_available",
   "headline": "市场呈结构性选择：金融弹性强于顺周期价值。",
   "rotation_state": "selective_rotation",
   "confidence": 0.3884,
   "data_completeness": 0.4806,
-  "evidence_level": "hard_data_with_news_fixture",
+  "evidence_level": "hard_data_confirmed",
   "data_availability": {
     "mode": "etf_flow_ready",
     "headline": "ETF flow and price-volume confirmation are available for 11/11 representative sectors.",
