@@ -35,12 +35,14 @@ test("serves dashboard, general pool analysis, sector review, rotation data, new
   assert.equal(reviewJson.counts.sectors, 31);
   assert.equal(reviewJson.counts.provider_mapped_representative_sectors, 11);
   assert.equal(reviewJson.counts.framework_only_sectors, 20);
+  assert.ok(reviewJson.data_availability?.mode);
 
   const rotation = await worker.fetch(request("/data/sector_rotation_intelligence.json"), {});
   assert.equal(rotation.status, 200);
   const rotationJson = await rotation.json();
   assert.equal(rotationJson.module_id, "sector_rotation_intelligence_v0_10_5");
   assert.ok(rotationJson.leaders.length >= 1);
+  assert.ok(rotationJson.data_availability?.mode);
 
   const rotationHistory = await worker.fetch(request("/data/sector_rotation_history.json"), {});
   assert.equal(rotationHistory.status, 200);

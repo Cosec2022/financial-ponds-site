@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.10.18 - Data availability convergence
+
+- Bumped site and framework package versions to `0.10.18`.
+- Added `data_availability` to `sector_flow_review.json`.
+- Added representative-sector ETF-flow coverage, price-volume coverage, mode, headline, and warnings.
+- Added `data_availability` passthrough to `sector_rotation_intelligence.json`.
+- Added explicit evidence levels for:
+  - `etf_flow_ready`;
+  - `partial_etf_flow`;
+  - `price_volume_only`;
+  - `thin_data`.
+- Updated the reference dashboard to show an ETF-flow status card.
+- Added regression tests for full ETF-flow readiness and price-volume-only fallback days.
+- Regenerated packaged web JSON so the local preview includes the new contract.
+- Recorded the successful SSH/GitHub push and green GitHub Action path in the current progress registry.
+
+Boundary:
+
+- This update does not change scoring weights.
+- Missing ETF share-flow is still not replaced with fake flow.
+- The change makes data availability explicit for users and future maintainers.
+
 ## v0.10.17 - Daily Action without Worker dependency install
 
 - Bumped site and framework package versions to `0.10.17`.

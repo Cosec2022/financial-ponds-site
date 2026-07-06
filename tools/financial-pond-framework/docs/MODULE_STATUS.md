@@ -53,7 +53,9 @@ Files:
 
 Current capability:
 
-- 11 A-share industry ETF pools are generated from a catalog.
+- 31 A-share industry ETF pools are generated from a catalog.
+- 11 sectors are reviewed provider-mapped representative ETF pools.
+- 20 sectors are framework-only slots until their provider mappings are reviewed.
 - Each sector has flow, policy news, relative strength, breadth, leader
   confirmation, and fundamental proxy nodes.
 - The sector catalog can be edited and regenerated with:
@@ -88,6 +90,9 @@ Current capability:
   sector ETF pools.
 - Combines direct-flow proxies, market confirmation, market liquidity, policy
   sentiment, fundamental proxies, and wide external factor effects.
+- Publishes `data_availability` so the frontend and rotation layer can tell
+  `etf_flow_ready`, `partial_etf_flow`, `price_volume_only`, and `thin_data`
+  days apart.
 - Supports fixture review through:
 
 ```bash

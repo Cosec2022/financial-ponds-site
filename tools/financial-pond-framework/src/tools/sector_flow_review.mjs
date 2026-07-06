@@ -32,10 +32,12 @@ export async function runSectorFlowReview({
     flexibleRiskFactors,
     scenario
   });
+  const dataAvailability = buildDataAvailability(review.sector_reviews ?? []);
   const payload = {
     as_of: resolvedAsOf,
     generated_at: new Date().toISOString(),
     ...review,
+    data_availability: dataAvailability,
     safety_boundary: [
       "This is a sector-flow review, not a trading instruction.",
       "The output does not write to core graph scores.",
@@ -133,6 +135,118 @@ async function loadObservationFile({ rootDir, asOf }) {
   return [...baseObservations, ...providerFlowObservations, ...aShareWaterObservations, ...newsObservations];
 }
 
+function buildDataAvailability(rows) {
+  const representativeRows = rows.filter((row) => row.coverage_status === "provider_mapped_representative");
+  const representativeCount = representativeRows.length || rows.length;
+  const directFlowCount = rows.filter((row) => componentAvailable(row, "direct_flow")).length;
+  const representativeDirectFlowCount = representativeRows.filter((row) => componentAvailable(row, "direct_flow")).length;
+  const confirmationCount = rows.filter((row) => componentAvailable(row, "market_confirmation")).length;
+  const representativeConfirmationCount = representativeRows.filter((row) => componentAvailable(row, "market_confirmation")).length;
+  const marketLiquidityCount = rows.filter((row) => componentAvailable(row, "market_liquidity")).length;
+  const newsPressureCount = rows.filter((row) => componentAvailable(row, "policy_sentiment")).length;
+  const fundamentalProxyCount = rows.filter((row) => componentAvailable(row, "fundamental_proxy")).length;
+  const mode = availabilityMode({
+    representativeCount,
+    representativeDirectFlowCount,
+    representativeConfirmationCount
+  });
+
+  return {
+    mode,
+    headline: availabilityHeadline({
+      mode,
+      representativeDirectFlowCount,
+      representativeCount,
+      representativeConfirmationCount
+    }),
+    counts: {
+      sectors: rows.length,
+      representative_sectors: representativeRows.length,
+      direct_flow_inputs: directFlowCount,
+      representative_direct_flow_inputs: representativeDirectFlowCount,
+      price_volume_confirmations: confirmationCount,
+      representative_price_volume_confirmations: representativeConfirmationCount,
+      market_liquidity_inputs: marketLiquidityCount,
+      news_pressure_inputs: newsPressureCount,
+      fundamental_proxy_inputs: fundamentalProxyCount
+    },
+    coverage: {
+      representative_direct_flow: ratio(representativeDirectFlowCount, representativeCount),
+      representative_price_volume: ratio(representativeConfirmationCount, representativeCount),
+      all_sector_direct_flow: ratio(directFlowCount, rows.length),
+      all_sector_price_volume: ratio(confirmationCount, rows.length)
+    },
+    warnings: availabilityWarnings({
+      mode,
+      representativeCount,
+      representativeDirectFlowCount,
+      representativeConfirmationCount
+    })
+  };
+}
+
+function componentAvailable(row, componentName) {
+  return Boolean(row?.components?.[componentName]?.available);
+}
+
+function ratio(numerator, denominator) {
+  if (!denominator) return 0;
+  return Number((numerator / denominator).toFixed(4));
+}
+
+function availabilityMode({
+  representativeCount,
+  representativeDirectFlowCount,
+  representativeConfirmationCount
+}) {
+  if (representativeCount > 0 && representativeDirectFlowCount >= representativeCount && representativeConfirmationCount >= representativeCount) {
+    return "etf_flow_ready";
+  }
+  if (representativeDirectFlowCount > 0) return "partial_etf_flow";
+  if (representativeConfirmationCount > 0) return "price_volume_only";
+  return "thin_data";
+}
+
+function availabilityHeadline({
+  mode,
+  representativeDirectFlowCount,
+  representativeCount,
+  representativeConfirmationCount
+}) {
+  if (mode === "etf_flow_ready") {
+    return `ETF flow and price-volume confirmation are available for ${representativeCount}/${representativeCount} representative sectors.`;
+  }
+  if (mode === "partial_etf_flow") {
+    return `ETF flow is partial: ${representativeDirectFlowCount}/${representativeCount} representative sectors have direct flow inputs.`;
+  }
+  if (mode === "price_volume_only") {
+    return `ETF share-flow is unavailable today; price-volume confirmation is available for ${representativeConfirmationCount}/${representativeCount} representative sectors.`;
+  }
+  return "Sector visibility is thin; wait for provider flow, price-volume, or water-level inputs before reading rotation strongly.";
+}
+
+function availabilityWarnings({
+  mode,
+  representativeCount,
+  representativeDirectFlowCount,
+  representativeConfirmationCount
+}) {
+  const warnings = [];
+  if (mode === "price_volume_only") {
+    warnings.push("Direct ETF share-flow inputs are missing; sector ranking is based on price-volume, water-level, news, and proxy inputs.");
+  }
+  if (mode === "partial_etf_flow") {
+    warnings.push(`Only ${representativeDirectFlowCount}/${representativeCount} representative sectors have direct ETF flow inputs.`);
+  }
+  if (representativeConfirmationCount < representativeCount) {
+    warnings.push(`Only ${representativeConfirmationCount}/${representativeCount} representative sectors have price-volume confirmation.`);
+  }
+  if (mode === "thin_data") {
+    warnings.push("Do not read sector rotation as a market signal until at least price-volume confirmation is available.");
+  }
+  return warnings;
+}
+
 function buildMarkdown(payload) {
   const lines = [
     "# A-share Sector Flow Review",
@@ -147,6 +261,13 @@ function buildMarkdown(payload) {
     "- This review ranks relative sector-flow pressure.",
     "- It does not write to core graph scores.",
     "- External pressure only modifies the review; domestic market data must confirm it.",
+    "",
+    "## Data Availability",
+    "",
+    `- mode: ${payload.data_availability?.mode ?? "unknown"}`,
+    `- headline: ${payload.data_availability?.headline ?? "unknown"}`,
+    `- representative_direct_flow_inputs: ${payload.data_availability?.counts?.representative_direct_flow_inputs ?? 0}/${payload.data_availability?.counts?.representative_sectors ?? 0}`,
+    `- representative_price_volume_confirmations: ${payload.data_availability?.counts?.representative_price_volume_confirmations ?? 0}/${payload.data_availability?.counts?.representative_sectors ?? 0}`,
     "",
     "## Ranking",
     "",

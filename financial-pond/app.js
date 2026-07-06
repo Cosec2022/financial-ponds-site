@@ -210,13 +210,34 @@ function average(values) {
 
 function dataStatusLabel() {
   const rows = state.flow?.sector_reviews ?? [];
+  const dataMode = state.flow?.data_availability?.mode;
   const directFlowCount = rows.filter((row) => componentAvailable(row, "direct_flow")).length;
   const confirmationCount = rows.filter((row) => componentAvailable(row, "market_confirmation")).length;
   const newsFallback = Boolean(state.news?.collection?.fallback_used);
   if (!rows.length) return { label: "无行业数据", className: "negative" };
+  if (dataMode === "price_volume_only") return { label: "价量可参考，ETF流缺失", className: "warm" };
+  if (dataMode === "partial_etf_flow") return { label: "部分ETF流可参考", className: "warm" };
   if (directFlowCount && confirmationCount && !newsFallback) return { label: "硬数据可参考", className: "positive" };
   if (directFlowCount && confirmationCount) return { label: "硬数据可参考，新闻为样例", className: "warm" };
   return { label: "仅部分可参考", className: "warm" };
+}
+
+function availabilityModeLabel(mode) {
+  const map = {
+    etf_flow_ready: "ETF流可用",
+    partial_etf_flow: "ETF流部分可用",
+    price_volume_only: "ETF流缺失",
+    thin_data: "数据较薄"
+  };
+  return map[mode] ?? "等待数据";
+}
+
+function availabilityHeadlineCn(availability) {
+  if (!availability) return "等待 sector_flow_review.json 输出数据可用度。";
+  if (availability.mode === "etf_flow_ready") return "代表行业 ETF 流和价量确认都已进入模型。";
+  if (availability.mode === "partial_etf_flow") return "只有部分代表行业有 ETF 份额/资金流输入，轮动强度需要打折看。";
+  if (availability.mode === "price_volume_only") return "ETF 份额/资金流今天缺失，当前排序主要来自价量、水位和新闻压力。";
+  return "行业输入偏薄，只适合检查流程和观察相对变化。";
 }
 
 function generalLabel(label) {
@@ -261,6 +282,10 @@ function renderReferencePanel() {
   const avgConfidence = average(rows.map((row) => row.confidence));
   const avgCompleteness = average(rows.map((row) => row.data_completeness));
   const newsFallback = Boolean(state.news?.collection?.fallback_used);
+  const availability = state.flow?.data_availability;
+  const representativeCount = availability?.counts?.representative_sectors ?? rows.length;
+  const representativeDirectFlowCount = availability?.counts?.representative_direct_flow_inputs ?? directFlowCount;
+  const representativeConfirmationCount = availability?.counts?.representative_price_volume_confirmations ?? confirmationCount;
   const techRows = ["semiconductor", "ai_computer", "communication_electronics"]
     .map((id) => rows.find((row) => plainSectorId(row) === id))
     .filter(Boolean);
@@ -301,6 +326,11 @@ function renderReferencePanel() {
       <span>数据质量</span>
       <strong>${directFlowCount}/${rows.length}</strong>
       <p>ETF流输入 ${directFlowCount} 个；价量确认 ${confirmationCount} 个；平均置信度 ${formatScore(avgConfidence)}；完整度 ${formatScore(avgCompleteness)}。</p>
+    </article>
+    <article class="reference-card ${availability?.mode === "price_volume_only" ? "warning" : ""}">
+      <span>ETF流状态</span>
+      <strong>${availabilityModeLabel(availability?.mode)}</strong>
+      <p>代表行业 ETF流 ${representativeDirectFlowCount}/${representativeCount}；价量确认 ${representativeConfirmationCount}/${representativeCount}。${availabilityHeadlineCn(availability)}</p>
     </article>
     <article class="reference-card wide ${newsFallback ? "warning" : ""}">
       <span>新闻层状态</span>
@@ -431,6 +461,8 @@ function evidenceLabel(level) {
     hard_data_plus_live_news: "硬数据 + 实时新闻",
     hard_data_with_news_fixture: "硬数据为主，新闻样例",
     hard_data_confirmed: "硬数据确认",
+    partial_etf_flow: "部分ETF流",
+    price_volume_only: "价量确认，ETF流缺失",
     partial_hard_data: "部分硬数据",
     thin_data: "数据较薄",
     none: "无数据"

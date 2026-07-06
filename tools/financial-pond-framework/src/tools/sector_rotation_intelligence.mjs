@@ -101,6 +101,11 @@ export function buildSectorRotationIntelligence({ sectorReview, newsReview = nul
   const availableConfirmationCount = rows.filter((row) => componentAvailable(row, "market_confirmation")).length;
   const avgConfidence = average(rows.map((row) => row.confidence)) ?? 0;
   const avgCompleteness = average(rows.map((row) => row.data_completeness)) ?? 0;
+  const dataAvailability = sectorReview?.data_availability ?? buildFallbackAvailability({
+    rows,
+    availableDirectFlowCount,
+    availableConfirmationCount
+  });
   const clusterReviews = buildClusterReviews(rows);
   const strongestCluster = clusterReviews[0];
   const weakestCluster = clusterReviews.at(-1);
@@ -118,7 +123,8 @@ export function buildSectorRotationIntelligence({ sectorReview, newsReview = nul
     availableConfirmationCount,
     sectorCount: rows.length,
     avgCompleteness,
-    newsFallback
+    newsFallback,
+    dataAvailability
   });
 
   return {
@@ -131,6 +137,7 @@ export function buildSectorRotationIntelligence({ sectorReview, newsReview = nul
     confidence: Number(avgConfidence.toFixed(4)),
     data_completeness: Number(avgCompleteness.toFixed(4)),
     evidence_level: evidenceLevel,
+    data_availability: dataAvailability,
     counts: {
       sectors: rows.length,
       positive_bias_sectors: positiveCount,
@@ -150,7 +157,8 @@ export function buildSectorRotationIntelligence({ sectorReview, newsReview = nul
       laggards,
       clusterReviews,
       newsFallback,
-      avgCompleteness
+      avgCompleteness,
+      dataAvailability
     }),
     interpretation_boundary: boundary()
   };
@@ -228,8 +236,14 @@ function classifyEvidence({
   availableConfirmationCount,
   sectorCount,
   avgCompleteness,
-  newsFallback
+  newsFallback,
+  dataAvailability
 }) {
+  if (dataAvailability?.mode === "etf_flow_ready") {
+    return newsFallback ? "hard_data_with_news_fixture" : "hard_data_confirmed";
+  }
+  if (dataAvailability?.mode === "price_volume_only") return "price_volume_only";
+  if (dataAvailability?.mode === "partial_etf_flow") return "partial_etf_flow";
   if (availableDirectFlowCount === sectorCount && availableConfirmationCount === sectorCount && avgCompleteness >= 0.55 && !newsFallback) {
     return "hard_data_plus_live_news";
   }
@@ -238,6 +252,39 @@ function classifyEvidence({
   }
   if (availableDirectFlowCount > 0 || availableConfirmationCount > 0) return "partial_hard_data";
   return "thin_data";
+}
+
+function buildFallbackAvailability({
+  rows,
+  availableDirectFlowCount,
+  availableConfirmationCount
+}) {
+  const representativeRows = rows.filter((row) => row.coverage_status === "provider_mapped_representative");
+  const representativeCount = representativeRows.length || rows.length;
+  const representativeDirectFlowCount = representativeRows.filter((row) => componentAvailable(row, "direct_flow")).length;
+  const representativeConfirmationCount = representativeRows.filter((row) => componentAvailable(row, "market_confirmation")).length;
+  const mode = representativeDirectFlowCount >= representativeCount && representativeConfirmationCount >= representativeCount
+    ? "etf_flow_ready"
+    : representativeDirectFlowCount > 0
+      ? "partial_etf_flow"
+      : representativeConfirmationCount > 0
+        ? "price_volume_only"
+        : "thin_data";
+  return {
+    mode,
+    headline: mode === "price_volume_only"
+      ? "ETF share-flow is unavailable today; price-volume confirmation remains available."
+      : "Data availability was inferred from sector components.",
+    counts: {
+      sectors: rows.length,
+      representative_sectors: representativeRows.length,
+      direct_flow_inputs: availableDirectFlowCount,
+      representative_direct_flow_inputs: representativeDirectFlowCount,
+      price_volume_confirmations: availableConfirmationCount,
+      representative_price_volume_confirmations: representativeConfirmationCount
+    },
+    warnings: []
+  };
 }
 
 function buildClusterReviews(rows) {
@@ -328,9 +375,13 @@ function buildRotationPairs({ leaders, laggards }) {
   });
 }
 
-function buildWatchPoints({ rows, leaders, laggards, clusterReviews, newsFallback, avgCompleteness }) {
+function buildWatchPoints({ rows, leaders, laggards, clusterReviews, newsFallback, avgCompleteness, dataAvailability }) {
   const points = [];
-  points.push(`优先看${leaders[0]?.name_cn ?? "强势行业"}能否连续保持ETF流和价量确认。`);
+  if (dataAvailability?.mode === "price_volume_only") {
+    points.push("ETF份额/资金流今天没有进入模型，优先把行业排序当作价量和新闻压力快照。");
+  } else {
+    points.push(`优先看${leaders[0]?.name_cn ?? "强势行业"}能否连续保持ETF流和价量确认。`);
+  }
   points.push(`弱势端观察${laggards[0]?.name_cn ?? "弱势行业"}是否从流出观察转为中性。`);
   points.push(`${clusterReviews[0]?.name ?? "强势组"}目前相对领先，${clusterReviews.at(-1)?.name ?? "弱势组"}相对落后。`);
   if (newsFallback) points.push("新闻层当前为样例/回退数据，不能把新闻分数当成真实催化。");
@@ -358,6 +409,7 @@ function buildMarkdown(payload) {
     `- status: ${payload.status}`,
     `- state: ${payload.rotation_state}`,
     `- evidence_level: ${payload.evidence_level}`,
+    `- data_mode: ${payload.data_availability?.mode ?? "unknown"}`,
     "",
     "## Headline",
     "",

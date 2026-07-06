@@ -1,6 +1,6 @@
 # GitHub Sync Protocol
 
-Version: v0.10.17
+Version: v0.10.18
 Status: active
 
 ## Purpose
@@ -95,3 +95,27 @@ Personal Access Token with repo + workflow permissions
 ```
 
 Do not mix several methods during one release.
+
+## Current Confirmed SSH Path
+
+The MacBook Air terminal path was confirmed working after loading the named SSH key:
+
+```bash
+eval "$(ssh-agent -s)"
+ssh-add --apple-use-keychain ~/.ssh/id_ed25519_github
+ssh -T git@github.com
+```
+
+The local repo should use the SSH remote:
+
+```bash
+cd ~/Documents/GitHub/financial-ponds-site
+git remote set-url origin git@github.com:Cosec2022/financial-ponds-site.git
+```
+
+Known-good release confirmation:
+
+```text
+v0.10.17 commit 6cbe3d9 pushed to main.
+Financial Ponds Daily #10 succeeded from commit 6cbe3d9.
+```

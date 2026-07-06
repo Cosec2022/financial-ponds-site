@@ -115,7 +115,55 @@ test("sector flow review merges provider-flow observations after cycle observati
   assert.equal(review.payload.counts.sectors, 31);
   assert.equal(review.payload.counts.provider_mapped_representative_sectors, 11);
   assert.equal(review.payload.counts.framework_only_sectors, 20);
+  assert.equal(review.payload.data_availability.mode, "etf_flow_ready");
+  assert.equal(review.payload.data_availability.counts.representative_direct_flow_inputs, 11);
+  assert.equal(review.payload.data_availability.counts.representative_price_volume_confirmations, 11);
   assert.ok(review.payload.sector_reviews.some((item) => item.pool_id === "a_share_semiconductor"));
+});
+
+test("sector flow review marks price-volume-only days when ETF share flow is absent", async () => {
+  const outputRoot = await prepareTempProject();
+  await mkdir(path.join(outputRoot, "data", "provider_exports"), { recursive: true });
+  const contract = await readJsonFile(path.join(outputRoot, "providers", "akshare_etf_bridge", "provider_contract.json"));
+  const rows = contract.representative_etfs.map((item, index) => ({
+    date: "2026-07-10",
+    sector_id: item.sector_id,
+    sector_node_id: item.sector_node_id,
+    fund_code: item.fund_code,
+    fund_name: item.fund_name_hint,
+    close: String(1 + index / 100),
+    pct_change: String(index - 5),
+    amount: String(100000000 + index * 10000000),
+    turnover: "",
+    latest_share: String(1000000000 + index),
+    previous_share: "",
+    share_change: "",
+    estimated_flow: "",
+    source_provider: "akshare",
+    source_endpoint: "test",
+    provider_run_id: "test",
+    collected_at: "2026-07-10T00:00:00.000Z"
+  }));
+  await writeCsv(
+    path.join(outputRoot, "data", "provider_exports", "a_share_etf_daily.csv"),
+    contract.row_level_columns,
+    rows
+  );
+  await convertAkshareExportToFlowObservations({
+    rootDir: outputRoot,
+    asOf: "2026-07-10"
+  });
+
+  const review = await runSectorFlowReview({
+    rootDir: outputRoot,
+    asOf: "2026-07-10",
+    fixture: false
+  });
+
+  assert.equal(review.payload.data_availability.mode, "price_volume_only");
+  assert.equal(review.payload.data_availability.counts.representative_direct_flow_inputs, 0);
+  assert.equal(review.payload.data_availability.counts.representative_price_volume_confirmations, 11);
+  assert.ok(review.payload.data_availability.warnings.some((item) => item.includes("Direct ETF share-flow")));
 });
 
 test("A-share water-level fixture feeds market-liquidity observations into flow review", async () => {

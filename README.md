@@ -9,6 +9,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 - The first screen now includes A-share sector rotation intelligence: leaders, laggards, style clusters, possible switching paths, and watch points.
 - The rotation panel now shows rotation-history sample count and trend-confirmation boundary.
 - The first screen separates hard data, fallback news, and prototype signals.
+- The reference panel now shows ETF-flow availability separately from price-volume confirmation, so `0/11` ETF-flow days are clearly marked instead of silently mixed into the score.
 - A-share hard-data collection runs in `tools/financial-pond-framework`.
 - News intelligence is an independent module and writes separate review files.
 - Electricity is currently a watchlist/demo pond. It is visible in the graph UI but is not yet connected to a real A-share industry ETF provider.
@@ -107,7 +108,7 @@ tools/financial-pond-framework/docs/UPDATE_PROTOCOL.md
 tools/financial-pond-framework/docs/PROJECT_PLAN.md
 tools/financial-pond-framework/docs/MODULE_PLAN.md
 tools/financial-pond-framework/docs/GITHUB_SYNC_PROTOCOL.md
-tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_17.md
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_18.md
 ```
 
 Before making meaningful changes, read those files first.

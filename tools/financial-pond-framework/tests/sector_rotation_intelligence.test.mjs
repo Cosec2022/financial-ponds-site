@@ -7,6 +7,16 @@ import { buildSectorRotationIntelligence, runSectorRotationIntelligence } from "
 
 const sampleSectorReview = {
   as_of: "2026-07-02",
+  data_availability: {
+    mode: "etf_flow_ready",
+    headline: "ETF flow and price-volume confirmation are available for 11/11 representative sectors.",
+    counts: {
+      representative_sectors: 11,
+      representative_direct_flow_inputs: 11,
+      representative_price_volume_confirmations: 11
+    },
+    warnings: []
+  },
   sector_reviews: [
     sector("real_estate_infra", 0.30, "constructive_inflow_bias"),
     sector("resources_materials", 0.24, "constructive_inflow_bias"),
@@ -37,11 +47,48 @@ test("sector rotation intelligence turns ranked sector review into readable lead
   assert.equal(result.status, "rotation_available");
   assert.equal(result.rotation_state, "clear_rotation");
   assert.equal(result.evidence_level, "hard_data_with_news_fixture");
+  assert.equal(result.data_availability.mode, "etf_flow_ready");
   assert.equal(result.leaders[0].sector_id, "real_estate_infra");
   assert.equal(result.laggards[0].sector_id, "brokerage");
   assert.ok(result.headline.includes("地产基建"));
   assert.ok(result.watch_points.some((item) => item.includes("新闻层当前为样例")));
   assert.ok(result.rotation_pairs[0].reading.includes("券商"));
+});
+
+test("sector rotation intelligence keeps price-volume-only evidence separate from ETF-flow evidence", () => {
+  const result = buildSectorRotationIntelligence({
+    sectorReview: {
+      ...sampleSectorReview,
+      data_availability: {
+        mode: "price_volume_only",
+        headline: "ETF share-flow is unavailable today; price-volume confirmation is available.",
+        counts: {
+          representative_sectors: 11,
+          representative_direct_flow_inputs: 0,
+          representative_price_volume_confirmations: 11
+        },
+        warnings: ["Direct ETF share-flow inputs are missing."]
+      },
+      sector_reviews: sampleSectorReview.sector_reviews.map((row) => ({
+        ...row,
+        components: {
+          ...row.components,
+          direct_flow: {
+            score: 0,
+            confidence: 0,
+            available: false,
+            nodes: [`${row.sector_id}_etf_flow`]
+          }
+        },
+        top_drivers: row.top_drivers.filter((driver) => driver.component !== "direct_flow")
+      }))
+    },
+    newsReview: { collection: { fallback_used: false } }
+  });
+
+  assert.equal(result.evidence_level, "price_volume_only");
+  assert.equal(result.data_availability.mode, "price_volume_only");
+  assert.ok(result.watch_points[0].includes("ETF份额/资金流今天没有进入模型"));
 });
 
 test("sector rotation intelligence writes JSON and Markdown outputs", async () => {
