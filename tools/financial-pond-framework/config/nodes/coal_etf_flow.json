@@ -1,0 +1,15 @@
+{
+  "id": "coal_etf_flow",
+  "kind": "node",
+  "name": "Coal ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Coal pool driven by thermal coal pricing, power demand, and supply discipline.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

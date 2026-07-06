@@ -5,6 +5,8 @@
   "data_type": "hard_data",
   "category": "sector_confirmation",
   "frequency": "daily",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve.",
   "source": {
     "provider": "market_data_or_vendor",

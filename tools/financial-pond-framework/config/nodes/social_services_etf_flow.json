@@ -1,0 +1,15 @@
+{
+  "id": "social_services_etf_flow",
+  "kind": "node",
+  "name": "Social Services ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Social services pool for tourism, hotels, catering, and service consumption.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

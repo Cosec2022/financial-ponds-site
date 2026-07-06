@@ -37,6 +37,8 @@ export function evaluateSectorFlows({
       pool_id: poolId,
       name: sector.name,
       display_name: sector.display_name,
+      coverage_status: sector.coverage_status ?? "framework_only",
+      classification: sector.classification ?? null,
       score,
       label: labelForScore(score, flowConfig.labels ?? []),
       confidence,
@@ -51,6 +53,8 @@ export function evaluateSectorFlows({
     scenario_id: scenario?.id ?? null,
     counts: {
       sectors: sector_reviews.length,
+      provider_mapped_representative_sectors: sectors.filter((sector) => sector.coverage_status === "provider_mapped_representative").length,
+      framework_only_sectors: sectors.filter((sector) => sector.coverage_status === "framework_only").length,
       factor_signals: scenario?.signals?.length ?? 0
     },
     sector_reviews,

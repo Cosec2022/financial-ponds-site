@@ -5,6 +5,8 @@
   "data_type": "hard_data",
   "category": "sector_fundamental",
   "frequency": "weekly",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission. Sector context: Communication and electronics ETFs sit between AI hardware, consumer electronics, telecom infrastructure, and export demand.",
   "source": {
     "provider": "market_data_or_vendor",

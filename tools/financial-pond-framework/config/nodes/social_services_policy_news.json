@@ -1,0 +1,15 @@
+{
+  "id": "social_services_policy_news",
+  "kind": "node",
+  "name": "Social Services Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: Social services pool for tourism, hotels, catering, and service consumption.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

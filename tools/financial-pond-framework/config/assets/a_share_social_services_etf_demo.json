@@ -1,0 +1,11 @@
+{
+  "id": "a_share_social_services_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Social Services ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Example ETF asset for A-share Social Services Pool. Typical real products include: 旅游ETF, 酒店餐饮ETF."
+}

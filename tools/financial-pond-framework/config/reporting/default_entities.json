@@ -20,6 +20,26 @@
     "a_share_consumer",
     "a_share_defense_military",
     "a_share_resources_materials",
-    "a_share_real_estate_infra"
+    "a_share_real_estate_infra",
+    "a_share_agriculture",
+    "a_share_food_beverage",
+    "a_share_home_appliances",
+    "a_share_textile_apparel",
+    "a_share_light_manufacturing",
+    "a_share_retail",
+    "a_share_social_services",
+    "a_share_beauty_care",
+    "a_share_transportation",
+    "a_share_utilities",
+    "a_share_environmental_protection",
+    "a_share_petroleum_petrochemical",
+    "a_share_coal",
+    "a_share_steel",
+    "a_share_nonferrous_metals",
+    "a_share_basic_chemicals",
+    "a_share_building_materials",
+    "a_share_construction",
+    "a_share_machinery",
+    "a_share_media"
   ]
 }

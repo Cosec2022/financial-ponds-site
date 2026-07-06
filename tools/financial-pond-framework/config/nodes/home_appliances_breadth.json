@@ -1,0 +1,15 @@
+{
+  "id": "home_appliances_breadth",
+  "kind": "node",
+  "name": "Home Appliances Breadth",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Participation breadth inside the sector. Sector context: Home appliances pool driven by property completion, exports, and replacement cycles.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

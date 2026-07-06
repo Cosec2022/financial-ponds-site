@@ -5,6 +5,8 @@
   "data_type": "hard_data",
   "category": "sector_confirmation",
   "frequency": "daily",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Confirmation from leading sector constituents. Sector context: Real estate and infrastructure ETFs are credit, policy, and fiscal-cycle-sensitive pools.",
   "source": {
     "provider": "market_data_or_vendor",

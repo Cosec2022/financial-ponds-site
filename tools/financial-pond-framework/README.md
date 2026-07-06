@@ -1,19 +1,30 @@
 # Financial Pond Framework
 
-Current package version: `0.9.4`
+Current package version: `0.10.17`
 
 Start recovery here if chat history is missing:
 
+- `docs/MAINTENANCE_RULES.md`
+- `docs/UPDATE_PROTOCOL.md`
+- `docs/GITHUB_SYNC_PROTOCOL.md`
+- `docs/PROJECT_PLAN.md`
+- `docs/MODULE_PLAN.md`
+- `docs/handbook/CURRENT_PROGRESS_V0_10_17.md`
 - `PROJECT_STATE.md`
 - `docs/PROJECT_MEMORY.md`
 - `docs/MODULE_STATUS.md`
 - `docs/ROADMAP.md`
 - `docs/CHANGELOG.md`
 
-This is a config-driven graph framework for modelling connected financial "ponds":
-US equities, A-shares, Bitcoin, gold, and future pools such as Hong Kong equities.
+This is a config-driven graph framework for modelling connected financial ponds.
 
-The first version intentionally does not predict prices. It builds the structure:
+The final target is an extensible financial analysis network. Any market, sector,
+asset, theme, or user-defined watchlist can be added as a pond. Each pond is
+evaluated through capital-flow signals, graph influence factors, price-volume
+analysis, and news-pressure analysis.
+
+The framework intentionally does not output trading instructions. It builds and
+explains the structure:
 
 - nodes: reusable signals such as real rates, ETF flows, policy news, or portfolio holdings
 - pools: aggregations such as `us_equity`, `a_share`, `btc`, `gold`, or sector pools
@@ -53,6 +64,8 @@ npm run provider:qstock:probe
 npm run providers:compare:a-share-etf
 npm run flow:review:fixture
 npm run flow:review -- --as-of 2026-07-03
+npm run pool:analysis -- --as-of 2026-07-02
+npm run rotation:review -- --as-of 2026-07-02
 npm test
 ```
 
@@ -90,7 +103,10 @@ The scheduler command runs the cycle twice daily using
 - Add a holdings analysis component: create a portfolio config under `config/portfolios/` and connect it to pools/assets.
 - Add a new data API later: implement a collector adapter that emits node observations. The graph engine should not change.
 
-Read `PROJECT_STATE.md` first when resuming from a zip package.
+Read `docs/MAINTENANCE_RULES.md`, `docs/UPDATE_PROTOCOL.md`, `docs/PROJECT_PLAN.md`,
+and `docs/MODULE_PLAN.md` first when resuming from a zip package.
+
+Read `PROJECT_STATE.md` when older version history is needed.
 
 Read `docs/PROJECT_MEMORY.md`, `docs/ROADMAP.md`, and `docs/CHANGELOG.md` when
 conversation history is unavailable.

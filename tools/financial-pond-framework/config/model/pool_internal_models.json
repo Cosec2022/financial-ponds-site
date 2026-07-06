@@ -180,6 +180,226 @@
         "news_expectation": 0.15,
         "downstream": 0
       }
+    },
+    "a_share_agriculture": {
+      "description": "A-share Agriculture Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_food_beverage": {
+      "description": "A-share Food and Beverage Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_home_appliances": {
+      "description": "A-share Home Appliances Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_textile_apparel": {
+      "description": "A-share Textile and Apparel Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_light_manufacturing": {
+      "description": "A-share Light Manufacturing Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_retail": {
+      "description": "A-share Retail Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_social_services": {
+      "description": "A-share Social Services Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_beauty_care": {
+      "description": "A-share Beauty Care Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_transportation": {
+      "description": "A-share Transportation Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_utilities": {
+      "description": "A-share Utilities Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_environmental_protection": {
+      "description": "A-share Environmental Protection Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_petroleum_petrochemical": {
+      "description": "A-share Petroleum and Petrochemical Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_coal": {
+      "description": "A-share Coal Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_steel": {
+      "description": "A-share Steel Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_nonferrous_metals": {
+      "description": "A-share Nonferrous Metals Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_basic_chemicals": {
+      "description": "A-share Basic Chemicals Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_building_materials": {
+      "description": "A-share Building Materials Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_construction": {
+      "description": "A-share Construction Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_machinery": {
+      "description": "A-share Machinery Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
+    },
+    "a_share_media": {
+      "description": "A-share Media Pool uses the standard A-share industry ETF component template.",
+      "components": {
+        "upstream": 0.2,
+        "inflow": 0.25,
+        "confirmation": 0.25,
+        "fundamental": 0.15,
+        "news_expectation": 0.15,
+        "downstream": 0
+      }
     }
   }
 }

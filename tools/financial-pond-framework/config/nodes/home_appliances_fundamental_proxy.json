@@ -1,0 +1,15 @@
+{
+  "id": "home_appliances_fundamental_proxy",
+  "kind": "node",
+  "name": "Home Appliances Fundamental Proxy",
+  "data_type": "hard_data",
+  "category": "sector_fundamental",
+  "frequency": "weekly",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission. Sector context: Home appliances pool driven by property completion, exports, and replacement cycles.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

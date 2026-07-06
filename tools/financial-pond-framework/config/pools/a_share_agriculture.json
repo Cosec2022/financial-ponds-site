@@ -1,0 +1,13 @@
+{
+  "id": "a_share_agriculture",
+  "kind": "pool",
+  "name": "A-share Agriculture Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Agriculture, forestry, animal husbandry, and fishery pool.",
+  "scoring_profile": "default_pool_v0_1"
+}

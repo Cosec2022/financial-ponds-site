@@ -1,5 +1,250 @@
 # Changelog
 
+## v0.10.17 - Daily Action without Worker dependency install
+
+- Bumped site and framework package versions to `0.10.17`.
+- Removed the Worker-stage `npm ci` install from `.github/workflows/daily.yml`.
+- Kept root build, artifact validation, and root tests in the daily Action.
+- Pinned deploy to `npx wrangler@4.102.0 deploy`.
+- Added a workflow guard test so the daily Action does not regress to `npm install` or `npm ci`.
+- Added `docs/GITHUB_SYNC_PROTOCOL.md` to make GitHub the source-of-truth path explicit.
+- Added a current progress registry for this CI stability update.
+
+Boundary:
+
+- This fixes the daily Action install/deploy path only.
+- No model logic, provider logic, frontend behavior, or scoring behavior changed.
+
+## v0.10.16 - Daily Action Worker install hardening
+
+- Bumped site and framework package versions to `0.10.16`.
+- Changed the GitHub Action Worker build step from `npm install` to `npm ci --no-audit --no-fund`.
+- Normalized `package-lock.json` resolved package URLs to the public npm registry so GitHub runners do not depend on an internal workspace registry.
+- Added a workflow guard test to prevent the daily Action from regressing to `npm install`.
+- Added a current progress registry for the CI install failure fix.
+
+Boundary:
+
+- This fixes the CI install path after A-share collection succeeds.
+- No model logic, provider logic, frontend behavior, or scoring behavior changed.
+
+## v0.10.15 - Assistant validation and user action commands
+
+- Bumped site and framework package versions to `0.10.15`.
+- Clarified that the assistant must run validation before delivering an update.
+- Refined terminal-command discipline so user-facing commands default to downloaded-zip preview, deploy, or next manual action instead of repeated validation.
+- Added a current progress registry for this maintenance protocol correction.
+- Updated the maintenance doc guard test.
+
+Boundary:
+
+- This is a maintenance protocol update only.
+- No model logic, provider logic, frontend behavior, or workflow behavior changed.
+
+## v0.10.14 - Downloaded zip terminal command rule
+
+- Bumped site and framework package versions to `0.10.14`.
+- Corrected the terminal-command rule so commands are written for the user's downloaded zip, not the assistant workspace.
+- Updated `docs/MAINTENANCE_RULES.md`.
+- Updated `docs/UPDATE_PROTOCOL.md`.
+- Updated the maintenance doc guard test.
+
+Boundary:
+
+- This is a maintenance protocol update only.
+- No model logic, provider logic, frontend behavior, or workflow behavior changed.
+
+## v0.10.13 - Terminal command requirement
+
+- Bumped site and framework package versions to `0.10.13`.
+- Added a maintenance rule requiring every GPT update to include copyable terminal commands.
+- Added terminal-command discipline to `docs/UPDATE_PROTOCOL.md`.
+- Updated the maintenance doc guard test.
+
+Boundary:
+
+- This is a maintenance protocol update only.
+- No model logic, provider logic, frontend behavior, or workflow behavior changed.
+
+## v0.10.12 - GitHub Action ordering for 31-industry A-share review
+
+- Bumped site and framework package versions to `0.10.12`.
+- Updated `a_share_daily_ci` runner to `a_share_daily_ci_v0_10_12`.
+- Added an explicit `graph_cycle` step before `sector_flow_review`.
+- Removed the duplicate `npm run cycle -- "$AS_OF"` call from `.github/workflows/daily.yml`.
+- Added tests to guard the workflow and runner ordering.
+
+Boundary:
+
+- This update changes CI ordering only.
+- Provider coverage remains `11` reviewed representative ETF mappings and `20` framework-only sectors.
+- The GitHub Action should publish 31-industry outputs after the next scheduled or manual run.
+
+## v0.10.11 - A-share 31-industry framework expansion
+
+- Bumped site and framework package versions to `0.10.11`.
+- Expanded `config/sector_catalog/a_share_industry_etfs.json` from 11 representative sectors to 31 A-share industry framework slots.
+- Materialized new pool, asset, node, edge, layer, and report config files for the 20 new framework-only sectors.
+- Added `coverage_status` and `classification` metadata to materialized pools, assets, and nodes.
+- Added sector-flow counts:
+  - `provider_mapped_representative_sectors: 11`;
+  - `framework_only_sectors: 20`.
+- Updated frontend sector table to show coverage status.
+- Regenerated packaged `dashboard.json`, `sector_flow_review.json`, `sector_rotation_intelligence.json`, `sector_rotation_history.json`, and `general_pool_analysis.json`.
+
+Current result:
+
+- A-share sector-flow framework: `31` sectors.
+- Provider-mapped representative sectors: `11`.
+- Framework-only sectors: `20`.
+- General pool analysis: `33` pools, including S&P 500, A-share market, and 31 A-share industry pools.
+
+Boundary:
+
+- The 20 framework-only sectors can run through the model structure, but they must not be treated as real ETF-flow coverage yet.
+- Provider work remains focused on the 11 reviewed representative ETF mappings until the additional 20 are reviewed.
+
+## v0.10.10 - A-share first priority alignment
+
+- Bumped site and framework package versions to `0.10.10`.
+- Recorded the current A-share availability snapshot.
+- Reordered the project plan to prioritize A-share hard-data depth before S&P 500 provider work.
+- Kept shared improvements synchronized through `FP-GEN-01`.
+
+Current A-share availability:
+
+- General-model configured input coverage: `100%` for A-share market and 11 A-share industries in the packaged sample.
+- Sector-flow review average data completeness: `55%`.
+- Sector-flow review average confidence: `22.5%`.
+- Direct-flow component coverage: `11/11`.
+- Price-volume confirmation coverage: `11/11`.
+- News is still fallback in the packaged sample.
+- Rotation history has `1` trading-day sample, so trend confirmation is still unavailable.
+
+Boundary:
+
+- The `100%` coverage figure means expected configured inputs are present in the sample graph; it is not decision-grade data quality.
+- A-share should be strengthened first. S&P 500 provider ingestion remains next, not abandoned.
+
+## v0.10.9 - Configured general model input contract
+
+- Bumped site and framework package versions to `0.10.9`.
+- Added `config/model/general_pool_input_contract.json`.
+- Moved general model component channels out of `general_pool_analysis.mjs` and into config.
+- Added input profiles for:
+  - `us_large_cap_index`;
+  - `a_share_market`;
+  - `a_share_industry`.
+- Added `input_contract_id`, `input_profile`, and `expected_inputs` coverage to `general_pool_analysis.json`.
+- Updated tests so S&P 500 can have EPS / valuation inputs while A-share industry pools use their own ETF-flow, price-volume, policy-news, and fundamental-proxy inputs.
+
+Boundary:
+
+- The component language is shared, but concrete inputs are pool-specific.
+- Missing inputs lower coverage; they should not be silently replaced by unrelated market inputs.
+- News remains pressure/context, not direct capital flow.
+
+## v0.10.8 - General pool analysis for S&P 500 and A-share industries
+
+- Bumped site and framework package versions to `0.10.8`.
+- Added `FP-GEN-01` general pool analysis.
+- Added `src/tools/general_pool_analysis.mjs`.
+- Added `npm run pool:analysis`.
+- Added `financial-pond/data/general_pool_analysis.json`.
+- The general model now covers:
+  - S&P 500;
+  - A-share total market;
+  - 11 A-share industry pools.
+- The shared output contract uses:
+  - capital-flow signals;
+  - upstream / downstream / peer network influence;
+  - price-volume confirmation;
+  - news-pressure analysis;
+  - fundamental / valuation supplement where configured.
+- Wired GitHub Actions and Worker asset embedding to publish `general_pool_analysis.json`.
+- Added frontend reference cards for the general model and S&P 500 comparison.
+- Added tests for the generator, Worker route, and workflow wiring.
+- Updated project plan, module plan, data matrix, and frontend contract.
+
+Boundary:
+
+- This is a shared explainability layer, not a trading instruction.
+- S&P 500 analysis is currently based on graph snapshot inputs; live S&P 500 provider ingestion is the next data task.
+- A pool may join this model through configuration; core graph code must remain market-agnostic.
+
+## v0.10.7 - Sector rotation history
+
+- Bumped site and framework package versions to `0.10.7`.
+- Added `FP-HIST-01` sector rotation history.
+- Added `src/tools/sector_rotation_history.mjs`.
+- Added `npm run rotation:history`.
+- Added `financial-pond/data/sector_rotation_history.json`.
+- Added a frontend history-confirmation card in the rotation panel.
+- Wired the CI daily runner to generate `sector_rotation_history.json`.
+- Wired GitHub Actions and Worker asset embedding to publish the new history JSON.
+- Updated GitHub Actions permissions and added a post-test data commit step so published data can persist across scheduled runs.
+- Added tests for history generation, Worker route, and workflow wiring.
+- Updated project plan, module plan, data matrix, and frontend contract.
+
+Boundary:
+
+- History storage is not a trading instruction.
+- One or two samples are not enough for trend confirmation.
+- Trend labels should remain tentative until at least the configured minimum sample count is reached.
+- Data persistence depends on the GitHub Actions data commit step or a future external storage backend.
+
+## v0.10.6 - Maintenance convergence and module plan
+
+- Bumped site and framework package versions to `0.10.6`.
+- Added `docs/MAINTENANCE_RULES.md`.
+- Added `docs/UPDATE_PROTOCOL.md`.
+- Added `docs/PROJECT_PLAN.md`.
+- Added `docs/MODULE_PLAN.md`.
+- Added `docs/handbook/CURRENT_PROGRESS_V0_10_6.md`.
+- Consolidated the project goal as an extensible financial pond network:
+  - capital-flow signals;
+  - upstream / downstream / peer influence factors;
+  - price-volume analysis;
+  - news-pressure analysis.
+- Replaced pure numeric module naming with `FP-AREA-Number`.
+- Updated data status and frontend contracts for `FP-ROT-01` and `sector_rotation_intelligence.json`.
+- Added a source marker to `sector_rotation_intelligence.mjs`.
+- Added maintenance documentation guard tests.
+
+Boundary:
+
+- No scoring formula change.
+- No new data provider.
+- No frontend behavior change beyond documentation alignment.
+- Maintenance protocol is now active for future updates.
+
+## v0.10.5 - A-share sector rotation intelligence
+
+- Bumped site and framework package versions to `0.10.5`.
+- Added `src/tools/sector_rotation_intelligence.mjs`.
+- Added `npm run rotation:review`.
+- Added `financial-pond/data/sector_rotation_intelligence.json`.
+- Added a frontend `行业轮动情报` panel.
+- The new panel translates sector-flow ranking into:
+  - leaders;
+  - laggards;
+  - rotation state;
+  - evidence level;
+  - style cluster comparison;
+  - possible weak-to-strong switching paths;
+  - daily watch points.
+- Wired the CI daily runner to generate `sector_rotation_intelligence.json` after `sector_flow_review.json`.
+- Wired GitHub Actions and Worker asset embedding to publish the new JSON.
+- Added tests for the rotation generator, workflow wiring, and Worker JSON route.
+
+Boundary:
+
+- No trading recommendation.
+- No scoring formula change.
+- No new external data provider.
+- News fallback is explicitly surfaced as degraded context.
+- Single-day rotation remains a snapshot until multi-day history is added.
+
 ## v0.10.4 - Reference-first dashboard
 
 - Bumped site and framework package versions to `0.10.4`.

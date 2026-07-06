@@ -1,0 +1,15 @@
+{
+  "id": "environmental_protection_breadth",
+  "kind": "node",
+  "name": "Environmental Protection Breadth",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Participation breadth inside the sector. Sector context: Environmental protection pool for waste treatment, water treatment, and environmental services.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

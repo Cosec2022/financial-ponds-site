@@ -5,5 +5,7 @@
   "asset_type": "etf",
   "market": "CN",
   "currency": "CNY",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Example ETF asset for A-share AI and Computer Pool. Typical real products include: 人工智能ETF, 云计算ETF, 软件ETF, 大数据ETF."
 }

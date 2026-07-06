@@ -1,0 +1,103 @@
+{
+  "id": "general_pool_input_contract_v0_10_9",
+  "description": "Shared input contract for general pool analysis. The component language is common, but each pool profile can declare different concrete inputs.",
+  "components": {
+    "capital_flow": {
+      "name": "流入流出",
+      "model_components": ["inflow"],
+      "channels": ["fund_flow", "sector_flow", "asset_flow", "tradfi_inflow", "leverage_flow", "corporate_demand"],
+      "purpose": "Direct or proxy evidence of capital entering, leaving, or being absorbed by a pool."
+    },
+    "network_influence": {
+      "name": "上下游/左右节点影响",
+      "model_components": ["upstream", "downstream"],
+      "channels": [
+        "parent_market",
+        "upstream_liquidity",
+        "cny_credit",
+        "domestic_transaction_liquidity",
+        "funding_cost",
+        "currency_pressure",
+        "discount_rate",
+        "risk_appetite",
+        "monetary_liquidity",
+        "dollar_pressure",
+        "dollar_price_effect",
+        "equity_supply",
+        "market_beta",
+        "pool_exposure",
+        "holding_exposure",
+        "opportunity_cost",
+        "risk_off_rotation",
+        "crypto_native_liquidity"
+      ],
+      "purpose": "Parent market, upstream, downstream, peer, liquidity, discount-rate, risk-appetite, and supply-pressure effects."
+    },
+    "price_volume": {
+      "name": "量价确认",
+      "model_components": ["confirmation"],
+      "channels": ["market_confirmation", "sector_confirmation", "leader_confirmation"],
+      "purpose": "Price, breadth, relative strength, volume, and leader confirmation."
+    },
+    "news_pressure": {
+      "name": "新闻压力",
+      "model_components": ["news_expectation"],
+      "channels": ["policy_expectation", "sector_policy", "industry_cycle", "risk_event"],
+      "purpose": "Policy, event, expectation, and catalyst pressure. This is not capital flow."
+    },
+    "fundamental_value": {
+      "name": "基本面/估值补充",
+      "model_components": ["fundamental"],
+      "channels": ["earnings_expectation", "earnings_concentration", "sector_fundamental", "valuation_pressure"],
+      "purpose": "Earnings, valuation, quality, and fundamental proxy inputs when a pool has them."
+    }
+  },
+  "target_pool_rules": [
+    { "type": "pool_id", "pool_id": "sp500" },
+    { "type": "pool_id", "pool_id": "a_share" },
+    { "type": "parent_pool", "parent_pool": "a_share" }
+  ],
+  "pool_profiles": [
+    {
+      "id": "us_large_cap_index",
+      "match": { "pool_ids": ["sp500"] },
+      "expected_inputs": {
+        "capital_flow": ["sp500_etf_flow", "buyback_activity"],
+        "network_influence": ["us_equity", "usd_liquidity", "us_real_rate", "treasury_10y_yield", "credit_spread", "vix"],
+        "price_volume": ["sp500_breadth", "equal_weight_vs_cap_weight"],
+        "news_pressure": ["fed_policy_news", "ai_capex_news"],
+        "fundamental_value": ["sp500_eps_revision", "sp500_valuation", "mega_cap_earnings"]
+      }
+    },
+    {
+      "id": "a_share_market",
+      "match": { "pool_ids": ["a_share"] },
+      "expected_inputs": {
+        "capital_flow": ["etf_total_flow_a_share", "margin_balance"],
+        "network_influence": ["china_social_financing", "m1_m2_gap", "dr007_shibor", "cny_fx_pressure", "ipo_refinancing_pressure"],
+        "price_volume": ["a_share_turnover", "a_share_breadth"],
+        "news_pressure": ["china_policy_news"],
+        "fundamental_value": []
+      }
+    },
+    {
+      "id": "a_share_industry",
+      "match": { "parent_pool": "a_share" },
+      "pool_short_prefix_to_strip": "a_share_",
+      "expected_input_templates": {
+        "capital_flow": ["{pool_short}_etf_flow"],
+        "network_influence": ["a_share"],
+        "price_volume": ["{pool_short}_relative_strength", "{pool_short}_breadth", "{pool_short}_leader_confirmation"],
+        "news_pressure": ["{pool_short}_policy_news"],
+        "fundamental_value": ["{pool_short}_fundamental_proxy"]
+      }
+    }
+  ],
+  "rules": [
+    "The component contract is shared across pools.",
+    "Concrete inputs can differ by pool profile.",
+    "A missing component lowers coverage; it must not be silently replaced by an unrelated market input.",
+    "News pressure is not direct capital flow.",
+    "Adding a market should add a pool profile or matching rule instead of adding market-specific code."
+  ]
+}

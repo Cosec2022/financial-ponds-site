@@ -1,0 +1,11 @@
+{
+  "id": "a_share_food_beverage_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Food and Beverage ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Example ETF asset for A-share Food and Beverage Pool. Typical real products include: 食品饮料ETF, 酒ETF."
+}

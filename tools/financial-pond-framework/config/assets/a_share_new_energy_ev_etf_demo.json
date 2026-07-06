@@ -5,5 +5,7 @@
   "asset_type": "etf",
   "market": "CN",
   "currency": "CNY",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Example ETF asset for A-share New Energy Vehicle Pool. Typical real products include: 新能源车ETF, 电池ETF, 锂电ETF."
 }

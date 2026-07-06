@@ -1,0 +1,11 @@
+{
+  "id": "a_share_nonferrous_metals_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Nonferrous Metals ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Example ETF asset for A-share Nonferrous Metals Pool. Typical real products include: 有色金属ETF, 稀土ETF."
+}

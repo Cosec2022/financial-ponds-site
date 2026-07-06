@@ -1,0 +1,15 @@
+{
+  "id": "coal_relative_strength",
+  "kind": "node",
+  "name": "Coal Relative Strength",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: Coal pool driven by thermal coal pricing, power demand, and supply discipline.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

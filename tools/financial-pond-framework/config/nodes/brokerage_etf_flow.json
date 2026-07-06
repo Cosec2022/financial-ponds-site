@@ -5,6 +5,8 @@
   "data_type": "hard_data",
   "category": "sector_fund_flow",
   "frequency": "daily",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Brokerage ETFs are sensitive to market turnover, margin financing, IPO and refinancing policy, and expectations for a stronger equity cycle.",
   "source": {
     "provider": "market_data_or_vendor",

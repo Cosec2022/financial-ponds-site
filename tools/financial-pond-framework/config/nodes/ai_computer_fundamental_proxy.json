@@ -5,6 +5,8 @@
   "data_type": "hard_data",
   "category": "sector_fundamental",
   "frequency": "weekly",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission. Sector context: AI and computer ETFs depend on AI infrastructure spending, software demand, policy procurement, and growth-stock liquidity.",
   "source": {
     "provider": "market_data_or_vendor",

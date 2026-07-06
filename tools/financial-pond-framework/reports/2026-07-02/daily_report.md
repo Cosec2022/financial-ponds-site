@@ -29,6 +29,26 @@ Observations: 97
 | a_share_defense_military | 0.24 | a_share (parent_market: 0.07); defense_military_etf_flow (sector_flow: 0.06); defense_military_policy_news (sector_policy: 0.05) |
 | a_share_resources_materials | 0.14 | a_share (parent_market: 0.07); resources_materials_etf_flow (sector_flow: 0.04); resources_materials_fundamental_proxy (sector_fundamental: 0.03) |
 | a_share_real_estate_infra | -0.10 | a_share (parent_market: 0.07); real_estate_infra_etf_flow (sector_flow: -0.06); real_estate_infra_relative_strength (sector_confirmation: -0.06) |
+| a_share_agriculture | 0.22 | a_share (parent_market: 0.07) |
+| a_share_food_beverage | 0.22 | a_share (parent_market: 0.07) |
+| a_share_home_appliances | 0.22 | a_share (parent_market: 0.07) |
+| a_share_textile_apparel | 0.22 | a_share (parent_market: 0.07) |
+| a_share_light_manufacturing | 0.22 | a_share (parent_market: 0.07) |
+| a_share_retail | 0.22 | a_share (parent_market: 0.07) |
+| a_share_social_services | 0.22 | a_share (parent_market: 0.07) |
+| a_share_beauty_care | 0.22 | a_share (parent_market: 0.07) |
+| a_share_transportation | 0.22 | a_share (parent_market: 0.07) |
+| a_share_utilities | 0.22 | a_share (parent_market: 0.07) |
+| a_share_environmental_protection | 0.22 | a_share (parent_market: 0.07) |
+| a_share_petroleum_petrochemical | 0.22 | a_share (parent_market: 0.07) |
+| a_share_coal | 0.22 | a_share (parent_market: 0.07) |
+| a_share_steel | 0.22 | a_share (parent_market: 0.07) |
+| a_share_nonferrous_metals | 0.22 | a_share (parent_market: 0.07) |
+| a_share_basic_chemicals | 0.22 | a_share (parent_market: 0.07) |
+| a_share_building_materials | 0.22 | a_share (parent_market: 0.07) |
+| a_share_construction | 0.22 | a_share (parent_market: 0.07) |
+| a_share_machinery | 0.22 | a_share (parent_market: 0.07) |
+| a_share_media | 0.22 | a_share (parent_market: 0.07) |
 
 ## Explanations
 
@@ -51,6 +71,26 @@ Observations: 97
 - A-share Defense and Military Pool: score 0.24. Top contributors: a_share via parent_market: 0.07; defense_military_etf_flow via sector_flow: 0.06; defense_military_policy_news via sector_policy: 0.05.
 - A-share Resources and Materials Pool: score 0.14. Top contributors: a_share via parent_market: 0.07; resources_materials_etf_flow via sector_flow: 0.04; resources_materials_fundamental_proxy via sector_fundamental: 0.03.
 - A-share Real Estate and Infrastructure Pool: score -0.10. Top contributors: a_share via parent_market: 0.07; real_estate_infra_etf_flow via sector_flow: -0.06; real_estate_infra_relative_strength via sector_confirmation: -0.06.
+- A-share Agriculture Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Food and Beverage Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Home Appliances Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Textile and Apparel Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Light Manufacturing Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Retail Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Social Services Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Beauty Care Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Transportation Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Utilities Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Environmental Protection Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Petroleum and Petrochemical Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Coal Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Steel Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Nonferrous Metals Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Basic Chemicals Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Building Materials Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Construction Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Machinery Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
+- A-share Media Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.
 
 ## Audit Notes
 

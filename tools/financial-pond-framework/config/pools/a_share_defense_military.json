@@ -6,6 +6,8 @@
   "region": "CN",
   "currency": "CNY",
   "parent_pool": "a_share",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Defense ETFs are influenced by orders, fiscal defense spending, geopolitics, and state-owned asset restructuring expectations.",
   "scoring_profile": "default_pool_v0_1"
 }

@@ -7,7 +7,10 @@ const files = [
   ["styles.css", "text/css; charset=utf-8"],
   ["app.js", "text/javascript; charset=utf-8"],
   ["data/dashboard.json", "application/json; charset=utf-8"],
+  ["data/general_pool_analysis.json", "application/json; charset=utf-8"],
   ["data/sector_flow_review.json", "application/json; charset=utf-8"],
+  ["data/sector_rotation_intelligence.json", "application/json; charset=utf-8"],
+  ["data/sector_rotation_history.json", "application/json; charset=utf-8"],
   ["data/news_review.json", "application/json; charset=utf-8"],
   ["data/pond_map.json", "application/json; charset=utf-8"],
 ];

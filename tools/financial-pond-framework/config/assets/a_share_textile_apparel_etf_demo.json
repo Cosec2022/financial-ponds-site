@@ -1,0 +1,11 @@
+{
+  "id": "a_share_textile_apparel_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Textile and Apparel ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Example ETF asset for A-share Textile and Apparel Pool. Typical real products include: 纺织服装ETF."
+}

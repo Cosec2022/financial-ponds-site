@@ -1,0 +1,15 @@
+{
+  "id": "environmental_protection_relative_strength",
+  "kind": "node",
+  "name": "Environmental Protection Relative Strength",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: Environmental protection pool for waste treatment, water treatment, and environmental services.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

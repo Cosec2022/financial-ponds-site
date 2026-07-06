@@ -1,0 +1,15 @@
+{
+  "id": "construction_policy_news",
+  "kind": "node",
+  "name": "Construction Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: Construction pool driven by infrastructure orders, fiscal expansion, and SOE reform.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

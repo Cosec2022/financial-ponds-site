@@ -1,0 +1,15 @@
+{
+  "id": "home_appliances_etf_flow",
+  "kind": "node",
+  "name": "Home Appliances ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Home appliances pool driven by property completion, exports, and replacement cycles.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

@@ -6,6 +6,8 @@
   "region": "CN",
   "currency": "CNY",
   "parent_pool": "a_share",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Consumer ETFs depend on household income, retail sales, pricing power, inventory, and confidence.",
   "scoring_profile": "default_pool_v0_1"
 }

@@ -40,10 +40,13 @@ jobs:
           AS_OF="$(date +%F)"
           npm test
           npm run a-share:daily:ci -- --as-of "$AS_OF"
-          npm run cycle -- "$AS_OF"
+          npm run pool:analysis -- --as-of "$AS_OF"
           npm run export:web-data -- "$AS_OF"
           cp web/data/dashboard.json ../../financial-pond/data/dashboard.json
+          cp "model_outputs/$AS_OF/general_pool_analysis.json" ../../financial-pond/data/general_pool_analysis.json
           cp "model_outputs/$AS_OF/sector_flow_review.json" ../../financial-pond/data/sector_flow_review.json
+          cp "model_outputs/$AS_OF/sector_rotation_intelligence.json" ../../financial-pond/data/sector_rotation_intelligence.json
+          cp "model_outputs/$AS_OF/sector_rotation_history.json" ../../financial-pond/data/sector_rotation_history.json
           cp "model_outputs/$AS_OF/news_review.json" ../../financial-pond/data/news_review.json
 
       - name: Build and test Worker

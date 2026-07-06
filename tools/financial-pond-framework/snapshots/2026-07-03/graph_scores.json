@@ -1,7 +1,7 @@
 {
   "as_of": "2026-07-03",
   "model_version": "0.1.0",
-  "generated_at": "2026-07-03T01:24:12.537Z",
+  "generated_at": "2026-07-06T13:47:50.809Z",
   "results": [
     {
       "id": "usd_liquidity",
@@ -801,6 +801,25 @@
       ]
     },
     {
+      "id": "a_share_agriculture",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_agriculture",
+          "from": "a_share",
+          "to": "a_share_agriculture",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Agriculture Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
       "id": "a_share_ai_computer",
       "kind": "pool",
       "score": 0.3063348416289593,
@@ -971,6 +990,44 @@
       ]
     },
     {
+      "id": "a_share_basic_chemicals",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_basic_chemicals",
+          "from": "a_share",
+          "to": "a_share_basic_chemicals",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Basic Chemicals Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_beauty_care",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_beauty_care",
+          "from": "a_share",
+          "to": "a_share_beauty_care",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Beauty Care Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
       "id": "a_share_brokerage",
       "kind": "pool",
       "score": 0.3601809954751132,
@@ -1056,6 +1113,44 @@
       ]
     },
     {
+      "id": "a_share_building_materials",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_building_materials",
+          "from": "a_share",
+          "to": "a_share_building_materials",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Building Materials Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_coal",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_coal",
+          "from": "a_share",
+          "to": "a_share_coal",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Coal Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
       "id": "a_share_communication_electronics",
       "kind": "pool",
       "score": 0.23518099547511315,
@@ -1137,6 +1232,25 @@
           "weight": 0.1,
           "contribution": 0.025,
           "description": "Leader Confirmation affects A-share Communication and Electronics Pool. Confirmation from leading sector constituents."
+        }
+      ]
+    },
+    {
+      "id": "a_share_construction",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_construction",
+          "from": "a_share",
+          "to": "a_share_construction",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Construction Pool inherits broad A-share liquidity and sentiment through the parent market."
         }
       ]
     },
@@ -1311,6 +1425,44 @@
       ]
     },
     {
+      "id": "a_share_environmental_protection",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_environmental_protection",
+          "from": "a_share",
+          "to": "a_share_environmental_protection",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Environmental Protection Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_food_beverage",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_food_beverage",
+          "from": "a_share",
+          "to": "a_share_food_beverage",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Food and Beverage Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
       "id": "a_share_healthcare_pharma",
       "kind": "pool",
       "score": 0.15825791855203622,
@@ -1396,6 +1548,82 @@
       ]
     },
     {
+      "id": "a_share_home_appliances",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_home_appliances",
+          "from": "a_share",
+          "to": "a_share_home_appliances",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Home Appliances Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_light_manufacturing",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_light_manufacturing",
+          "from": "a_share",
+          "to": "a_share_light_manufacturing",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Light Manufacturing Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_machinery",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_machinery",
+          "from": "a_share",
+          "to": "a_share_machinery",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Machinery Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_media",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_media",
+          "from": "a_share",
+          "to": "a_share_media",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Media Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
       "id": "a_share_new_energy_ev",
       "kind": "pool",
       "score": -0.04751131221719458,
@@ -1477,6 +1705,44 @@
           "weight": 0.15,
           "contribution": 0.0075,
           "description": "Policy News affects A-share New Energy Vehicle Pool. Structured policy or regulatory news affecting expectations for the sector."
+        }
+      ]
+    },
+    {
+      "id": "a_share_nonferrous_metals",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_nonferrous_metals",
+          "from": "a_share",
+          "to": "a_share_nonferrous_metals",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Nonferrous Metals Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_petroleum_petrochemical",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_petroleum_petrochemical",
+          "from": "a_share",
+          "to": "a_share_petroleum_petrochemical",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Petroleum and Petrochemical Pool inherits broad A-share liquidity and sentiment through the parent market."
         }
       ]
     },
@@ -1651,6 +1917,25 @@
       ]
     },
     {
+      "id": "a_share_retail",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_retail",
+          "from": "a_share",
+          "to": "a_share_retail",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Retail Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
       "id": "a_share_semiconductor",
       "kind": "pool",
       "score": 0.31595022624434393,
@@ -1732,6 +2017,101 @@
           "weight": 0.1,
           "contribution": 0.020000000000000004,
           "description": "Leader Confirmation affects A-share Semiconductor Pool. Confirmation from leading sector constituents."
+        }
+      ]
+    },
+    {
+      "id": "a_share_social_services",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_social_services",
+          "from": "a_share",
+          "to": "a_share_social_services",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Social Services Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_steel",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_steel",
+          "from": "a_share",
+          "to": "a_share_steel",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Steel Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_textile_apparel",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_textile_apparel",
+          "from": "a_share",
+          "to": "a_share_textile_apparel",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Textile and Apparel Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_transportation",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_transportation",
+          "from": "a_share",
+          "to": "a_share_transportation",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Transportation Pool inherits broad A-share liquidity and sentiment through the parent market."
+        }
+      ]
+    },
+    {
+      "id": "a_share_utilities",
+      "kind": "pool",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "a_share_to_utilities",
+          "from": "a_share",
+          "to": "a_share_utilities",
+          "channel": "parent_market",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.3,
+          "contribution": 0.06573529411764706,
+          "description": "A-share Utilities Pool inherits broad A-share liquidity and sentiment through the parent market."
         }
       ]
     },
@@ -1925,6 +2305,36 @@
       ]
     },
     {
+      "id": "a_share_agriculture_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "agriculture_pool_to_etf_demo",
+          "from": "a_share_agriculture",
+          "to": "a_share_agriculture_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Agriculture Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_agriculture_etf_demo",
+          "from": "a_share",
+          "to": "a_share_agriculture_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
       "id": "a_share_ai_computer_etf_demo",
       "kind": "asset",
       "score": 0.29325226244343894,
@@ -1985,6 +2395,66 @@
       ]
     },
     {
+      "id": "a_share_basic_chemicals_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "basic_chemicals_pool_to_etf_demo",
+          "from": "a_share_basic_chemicals",
+          "to": "a_share_basic_chemicals_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Basic Chemicals Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_basic_chemicals_etf_demo",
+          "from": "a_share",
+          "to": "a_share_basic_chemicals_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_beauty_care_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "beauty_care_pool_to_etf_demo",
+          "from": "a_share_beauty_care",
+          "to": "a_share_beauty_care_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Beauty Care Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_beauty_care_etf_demo",
+          "from": "a_share",
+          "to": "a_share_beauty_care_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
       "id": "a_share_brokerage_etf_demo",
       "kind": "asset",
       "score": 0.3390214932126697,
@@ -2015,6 +2485,66 @@
       ]
     },
     {
+      "id": "a_share_building_materials_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "building_materials_pool_to_etf_demo",
+          "from": "a_share_building_materials",
+          "to": "a_share_building_materials_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Building Materials Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_building_materials_etf_demo",
+          "from": "a_share",
+          "to": "a_share_building_materials_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_coal_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "coal_pool_to_etf_demo",
+          "from": "a_share_coal",
+          "to": "a_share_coal_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Coal Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_coal_etf_demo",
+          "from": "a_share",
+          "to": "a_share_coal_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
       "id": "a_share_communication_electronics_etf_demo",
       "kind": "asset",
       "score": 0.2327714932126697,
@@ -2035,6 +2565,36 @@
           "edge_id": "a_share_pool_to_communication_electronics_etf_demo",
           "from": "a_share",
           "to": "a_share_communication_electronics_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_construction_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "construction_pool_to_etf_demo",
+          "from": "a_share_construction",
+          "to": "a_share_construction_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Construction Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_construction_etf_demo",
+          "from": "a_share",
+          "to": "a_share_construction_etf_demo",
           "channel": "market_beta",
           "source_score": 0.21911764705882353,
           "transformed_score": 0.21911764705882353,
@@ -2105,6 +2665,66 @@
       ]
     },
     {
+      "id": "a_share_environmental_protection_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "environmental_protection_pool_to_etf_demo",
+          "from": "a_share_environmental_protection",
+          "to": "a_share_environmental_protection_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Environmental Protection Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_environmental_protection_etf_demo",
+          "from": "a_share",
+          "to": "a_share_environmental_protection_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_food_beverage_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "food_beverage_pool_to_etf_demo",
+          "from": "a_share_food_beverage",
+          "to": "a_share_food_beverage_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Food and Beverage Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_food_beverage_etf_demo",
+          "from": "a_share",
+          "to": "a_share_food_beverage_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
       "id": "a_share_healthcare_pharma_etf_demo",
       "kind": "asset",
       "score": 0.1673868778280543,
@@ -2135,6 +2755,126 @@
       ]
     },
     {
+      "id": "a_share_home_appliances_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "home_appliances_pool_to_etf_demo",
+          "from": "a_share_home_appliances",
+          "to": "a_share_home_appliances_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Home Appliances Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_home_appliances_etf_demo",
+          "from": "a_share",
+          "to": "a_share_home_appliances_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_light_manufacturing_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "light_manufacturing_pool_to_etf_demo",
+          "from": "a_share_light_manufacturing",
+          "to": "a_share_light_manufacturing_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Light Manufacturing Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_light_manufacturing_etf_demo",
+          "from": "a_share",
+          "to": "a_share_light_manufacturing_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_machinery_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "machinery_pool_to_etf_demo",
+          "from": "a_share_machinery",
+          "to": "a_share_machinery_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Machinery Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_machinery_etf_demo",
+          "from": "a_share",
+          "to": "a_share_machinery_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_media_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "media_pool_to_etf_demo",
+          "from": "a_share_media",
+          "to": "a_share_media_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Media Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_media_etf_demo",
+          "from": "a_share",
+          "to": "a_share_media_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
       "id": "a_share_new_energy_ev_etf_demo",
       "kind": "asset",
       "score": -0.007516968325791865,
@@ -2155,6 +2895,66 @@
           "edge_id": "a_share_pool_to_new_energy_ev_etf_demo",
           "from": "a_share",
           "to": "a_share_new_energy_ev_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_nonferrous_metals_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "nonferrous_metals_pool_to_etf_demo",
+          "from": "a_share_nonferrous_metals",
+          "to": "a_share_nonferrous_metals_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Nonferrous Metals Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_nonferrous_metals_etf_demo",
+          "from": "a_share",
+          "to": "a_share_nonferrous_metals_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_petroleum_petrochemical_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "petroleum_petrochemical_pool_to_etf_demo",
+          "from": "a_share_petroleum_petrochemical",
+          "to": "a_share_petroleum_petrochemical_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Petroleum and Petrochemical Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_petroleum_petrochemical_etf_demo",
+          "from": "a_share",
+          "to": "a_share_petroleum_petrochemical_etf_demo",
           "channel": "market_beta",
           "source_score": 0.21911764705882353,
           "transformed_score": 0.21911764705882353,
@@ -2225,6 +3025,36 @@
       ]
     },
     {
+      "id": "a_share_retail_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "retail_pool_to_etf_demo",
+          "from": "a_share_retail",
+          "to": "a_share_retail_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Retail Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_retail_etf_demo",
+          "from": "a_share",
+          "to": "a_share_retail_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
       "id": "a_share_semiconductor_etf_demo",
       "kind": "asset",
       "score": 0.30142533936651583,
@@ -2245,6 +3075,156 @@
           "edge_id": "a_share_pool_to_semiconductor_etf_demo",
           "from": "a_share",
           "to": "a_share_semiconductor_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_social_services_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "social_services_pool_to_etf_demo",
+          "from": "a_share_social_services",
+          "to": "a_share_social_services_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Social Services Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_social_services_etf_demo",
+          "from": "a_share",
+          "to": "a_share_social_services_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_steel_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "steel_pool_to_etf_demo",
+          "from": "a_share_steel",
+          "to": "a_share_steel_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Steel Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_steel_etf_demo",
+          "from": "a_share",
+          "to": "a_share_steel_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_textile_apparel_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "textile_apparel_pool_to_etf_demo",
+          "from": "a_share_textile_apparel",
+          "to": "a_share_textile_apparel_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Textile and Apparel Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_textile_apparel_etf_demo",
+          "from": "a_share",
+          "to": "a_share_textile_apparel_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_transportation_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "transportation_pool_to_etf_demo",
+          "from": "a_share_transportation",
+          "to": "a_share_transportation_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Transportation Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_transportation_etf_demo",
+          "from": "a_share",
+          "to": "a_share_transportation_etf_demo",
+          "channel": "market_beta",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.15,
+          "contribution": 0.03286764705882353,
+          "description": "Demo ETF also has broad A-share market beta."
+        }
+      ]
+    },
+    {
+      "id": "a_share_utilities_etf_demo",
+      "kind": "asset",
+      "score": 0.21911764705882353,
+      "confidence": 1,
+      "contributors": [
+        {
+          "edge_id": "utilities_pool_to_etf_demo",
+          "from": "a_share_utilities",
+          "to": "a_share_utilities_etf_demo",
+          "channel": "pool_exposure",
+          "source_score": 0.21911764705882353,
+          "transformed_score": 0.21911764705882353,
+          "weight": 0.85,
+          "contribution": 0.18625,
+          "description": "Demo ETF inherits most of its signal from A-share Utilities Pool."
+        },
+        {
+          "edge_id": "a_share_pool_to_utilities_etf_demo",
+          "from": "a_share",
+          "to": "a_share_utilities_etf_demo",
           "channel": "market_beta",
           "source_score": 0.21911764705882353,
           "transformed_score": 0.21911764705882353,
@@ -2490,31 +3470,71 @@
   ],
   "explanations": {
     "a_share": "A-share Pool: score 0.22. Top contributors: china_social_financing via cny_credit: 0.10; china_policy_news via policy_expectation: 0.06; etf_total_flow_a_share via fund_flow: 0.05.",
+    "a_share_agriculture": "A-share Agriculture Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "a_share_ai_computer": "A-share AI and Computer Pool: score 0.31. Top contributors: ai_computer_etf_flow via sector_flow: 0.11; ai_computer_relative_strength via sector_confirmation: 0.07; a_share via parent_market: 0.07.",
     "a_share_bank_insurance": "A-share Bank and Insurance Pool: score 0.15. Top contributors: a_share via parent_market: 0.07; bank_insurance_etf_flow via sector_flow: 0.05; bank_insurance_breadth via sector_confirmation: 0.02.",
+    "a_share_basic_chemicals": "A-share Basic Chemicals Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_beauty_care": "A-share Beauty Care Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "a_share_brokerage": "A-share Brokerage Pool: score 0.36. Top contributors: brokerage_etf_flow via sector_flow: 0.14; brokerage_relative_strength via sector_confirmation: 0.08; brokerage_policy_news via sector_policy: 0.07.",
+    "a_share_building_materials": "A-share Building Materials Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_coal": "A-share Coal Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "a_share_communication_electronics": "A-share Communication and Electronics Pool: score 0.24. Top contributors: communication_electronics_etf_flow via sector_flow: 0.07; a_share via parent_market: 0.07; communication_electronics_relative_strength via sector_confirmation: 0.05.",
+    "a_share_construction": "A-share Construction Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "a_share_consumer": "A-share Consumer Pool: score 0.08. Top contributors: a_share via parent_market: 0.07; consumer_fundamental_proxy via sector_fundamental: 0.01; consumer_policy_news via sector_policy: 0.01.",
     "a_share_defense_military": "A-share Defense and Military Pool: score 0.24. Top contributors: a_share via parent_market: 0.07; defense_military_etf_flow via sector_flow: 0.06; defense_military_policy_news via sector_policy: 0.05.",
+    "a_share_environmental_protection": "A-share Environmental Protection Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_food_beverage": "A-share Food and Beverage Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "a_share_healthcare_pharma": "A-share Healthcare and Pharma Pool: score 0.16. Top contributors: a_share via parent_market: 0.07; healthcare_pharma_etf_flow via sector_flow: 0.04; healthcare_pharma_fundamental_proxy via sector_fundamental: 0.04.",
+    "a_share_home_appliances": "A-share Home Appliances Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_light_manufacturing": "A-share Light Manufacturing Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_machinery": "A-share Machinery Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_media": "A-share Media Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "a_share_new_energy_ev": "A-share New Energy Vehicle Pool: score -0.05. Top contributors: a_share via parent_market: 0.07; new_energy_ev_relative_strength via sector_confirmation: -0.04; new_energy_ev_fundamental_proxy via sector_fundamental: -0.04.",
+    "a_share_nonferrous_metals": "A-share Nonferrous Metals Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_petroleum_petrochemical": "A-share Petroleum and Petrochemical Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "a_share_real_estate_infra": "A-share Real Estate and Infrastructure Pool: score -0.10. Top contributors: a_share via parent_market: 0.07; real_estate_infra_etf_flow via sector_flow: -0.06; real_estate_infra_relative_strength via sector_confirmation: -0.06.",
     "a_share_resources_materials": "A-share Resources and Materials Pool: score 0.14. Top contributors: a_share via parent_market: 0.07; resources_materials_etf_flow via sector_flow: 0.04; resources_materials_fundamental_proxy via sector_fundamental: 0.03.",
+    "a_share_retail": "A-share Retail Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "a_share_semiconductor": "A-share Semiconductor Pool: score 0.32. Top contributors: semiconductor_policy_news via sector_policy: 0.12; semiconductor_etf_flow via sector_flow: 0.07; semiconductor_relative_strength via sector_confirmation: 0.07.",
+    "a_share_social_services": "A-share Social Services Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_steel": "A-share Steel Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_textile_apparel": "A-share Textile and Apparel Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_transportation": "A-share Transportation Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
+    "a_share_utilities": "A-share Utilities Pool: score 0.22. Top contributors: a_share via parent_market: 0.07.",
     "btc": "Bitcoin Pool: score 0.42. Top contributors: btc_etf_flow via tradfi_inflow: 0.32; usd_liquidity via upstream_liquidity: 0.15; us_real_rate via opportunity_cost: -0.08.",
     "gold": "Gold Pool: score 0.08. Top contributors: geopolitical_risk_news via risk_event: 0.14; us_real_rate via opportunity_cost: -0.12; usd_liquidity via monetary_liquidity: 0.09.",
     "us_equity": "US Equity Pool: score 0.26. Top contributors: usd_liquidity via upstream_liquidity: 0.18; vix via risk_appetite: 0.13; us_real_rate via discount_rate: -0.10.",
+    "a_share_agriculture_etf_demo": "Demo A-share Agriculture ETF: score 0.22. Top contributors: a_share_agriculture via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "a_share_ai_computer_etf_demo": "Demo A-share AI and Computer ETF: score 0.29. Top contributors: a_share_ai_computer via pool_exposure: 0.26; a_share via market_beta: 0.03.",
     "a_share_bank_insurance_etf_demo": "Demo A-share Bank and Insurance ETF: score 0.16. Top contributors: a_share_bank_insurance via pool_exposure: 0.12; a_share via market_beta: 0.03.",
+    "a_share_basic_chemicals_etf_demo": "Demo A-share Basic Chemicals ETF: score 0.22. Top contributors: a_share_basic_chemicals via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_beauty_care_etf_demo": "Demo A-share Beauty Care ETF: score 0.22. Top contributors: a_share_beauty_care via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "a_share_brokerage_etf_demo": "Demo A-share Brokerage ETF: score 0.34. Top contributors: a_share_brokerage via pool_exposure: 0.31; a_share via market_beta: 0.03.",
+    "a_share_building_materials_etf_demo": "Demo A-share Building Materials ETF: score 0.22. Top contributors: a_share_building_materials via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_coal_etf_demo": "Demo A-share Coal ETF: score 0.22. Top contributors: a_share_coal via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "a_share_communication_electronics_etf_demo": "Demo A-share Communication and Electronics ETF: score 0.23. Top contributors: a_share_communication_electronics via pool_exposure: 0.20; a_share via market_beta: 0.03.",
+    "a_share_construction_etf_demo": "Demo A-share Construction ETF: score 0.22. Top contributors: a_share_construction via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "a_share_consumer_etf_demo": "Demo A-share Consumer ETF: score 0.10. Top contributors: a_share_consumer via pool_exposure: 0.07; a_share via market_beta: 0.03.",
     "a_share_defense_military_etf_demo": "Demo A-share Defense and Military ETF: score 0.23. Top contributors: a_share_defense_military via pool_exposure: 0.20; a_share via market_beta: 0.03.",
+    "a_share_environmental_protection_etf_demo": "Demo A-share Environmental Protection ETF: score 0.22. Top contributors: a_share_environmental_protection via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_food_beverage_etf_demo": "Demo A-share Food and Beverage ETF: score 0.22. Top contributors: a_share_food_beverage via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "a_share_healthcare_pharma_etf_demo": "Demo A-share Healthcare and Pharma ETF: score 0.17. Top contributors: a_share_healthcare_pharma via pool_exposure: 0.13; a_share via market_beta: 0.03.",
+    "a_share_home_appliances_etf_demo": "Demo A-share Home Appliances ETF: score 0.22. Top contributors: a_share_home_appliances via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_light_manufacturing_etf_demo": "Demo A-share Light Manufacturing ETF: score 0.22. Top contributors: a_share_light_manufacturing via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_machinery_etf_demo": "Demo A-share Machinery ETF: score 0.22. Top contributors: a_share_machinery via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_media_etf_demo": "Demo A-share Media ETF: score 0.22. Top contributors: a_share_media via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "a_share_new_energy_ev_etf_demo": "Demo A-share New Energy Vehicle ETF: score -0.01. Top contributors: a_share_new_energy_ev via pool_exposure: -0.04; a_share via market_beta: 0.03.",
+    "a_share_nonferrous_metals_etf_demo": "Demo A-share Nonferrous Metals ETF: score 0.22. Top contributors: a_share_nonferrous_metals via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_petroleum_petrochemical_etf_demo": "Demo A-share Petroleum and Petrochemical ETF: score 0.22. Top contributors: a_share_petroleum_petrochemical via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "a_share_real_estate_infra_etf_demo": "Demo A-share Real Estate and Infrastructure ETF: score -0.05. Top contributors: a_share_real_estate_infra via pool_exposure: -0.09; a_share via market_beta: 0.03.",
     "a_share_resources_materials_etf_demo": "Demo A-share Resources and Materials ETF: score 0.15. Top contributors: a_share_resources_materials via pool_exposure: 0.12; a_share via market_beta: 0.03.",
+    "a_share_retail_etf_demo": "Demo A-share Retail ETF: score 0.22. Top contributors: a_share_retail via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "a_share_semiconductor_etf_demo": "Demo A-share Semiconductor ETF: score 0.30. Top contributors: a_share_semiconductor via pool_exposure: 0.27; a_share via market_beta: 0.03.",
+    "a_share_social_services_etf_demo": "Demo A-share Social Services ETF: score 0.22. Top contributors: a_share_social_services via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_steel_etf_demo": "Demo A-share Steel ETF: score 0.22. Top contributors: a_share_steel via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_textile_apparel_etf_demo": "Demo A-share Textile and Apparel ETF: score 0.22. Top contributors: a_share_textile_apparel via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_transportation_etf_demo": "Demo A-share Transportation ETF: score 0.22. Top contributors: a_share_transportation via pool_exposure: 0.19; a_share via market_beta: 0.03.",
+    "a_share_utilities_etf_demo": "Demo A-share Utilities ETF: score 0.22. Top contributors: a_share_utilities via pool_exposure: 0.19; a_share via market_beta: 0.03.",
     "default_user_portfolio": "Default User Portfolio: score 0.30. Top contributors: a_share_semiconductor_etf_demo via holding_exposure: 0.30; user_holdings_input via portfolio_metadata: 0.00.",
     "sp500": "S&P 500 Pool: score 0.26. Top contributors: sp500_etf_flow via fund_flow: 0.11; usd_liquidity via upstream_liquidity: 0.09; vix via risk_appetite: 0.07.",
     "sp500_etf_demo": "Demo S&P 500 ETF: score 0.26. Top contributors: sp500 via pool_exposure: 0.23; us_equity via market_beta: 0.03."

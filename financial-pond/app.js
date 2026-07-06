@@ -11,7 +11,27 @@ const sectorNames = {
   resources_materials: "资源材料",
   real_estate_infra: "地产基建",
   electric_power: "电力行业",
-  a_share: "A股总池"
+  a_share: "A股总池",
+  agriculture: "农林牧渔",
+  food_beverage: "食品饮料",
+  home_appliances: "家用电器",
+  textile_apparel: "纺织服饰",
+  light_manufacturing: "轻工制造",
+  retail: "商贸零售",
+  social_services: "社会服务",
+  beauty_care: "美容护理",
+  transportation: "交通运输",
+  utilities: "公用事业",
+  environmental_protection: "环保",
+  petroleum_petrochemical: "石油石化",
+  coal: "煤炭",
+  steel: "钢铁",
+  nonferrous_metals: "有色金属",
+  basic_chemicals: "基础化工",
+  building_materials: "建筑材料",
+  construction: "建筑装饰",
+  machinery: "机械设备",
+  media: "传媒"
 };
 
 const componentNames = {
@@ -25,7 +45,10 @@ const componentNames = {
 
 const state = {
   dashboard: null,
+  general: null,
   flow: null,
+  rotation: null,
+  rotationHistory: null,
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -162,6 +185,14 @@ function statusLabel(status) {
   return map[status] ?? status ?? "--";
 }
 
+function coverageStatusLabel(status) {
+  const map = {
+    provider_mapped_representative: "代表ETF",
+    framework_only: "框架位"
+  };
+  return map[status] ?? status ?? "--";
+}
+
 function renderHeader() {
   document.getElementById("asOfBadge").textContent = `数据日期 ${state.flow?.as_of ?? state.dashboard.as_of}`;
   document.getElementById("modelBadge").textContent = state.flow?.model_id ?? state.dashboard.model_version ?? "model";
@@ -186,6 +217,18 @@ function dataStatusLabel() {
   if (directFlowCount && confirmationCount && !newsFallback) return { label: "硬数据可参考", className: "positive" };
   if (directFlowCount && confirmationCount) return { label: "硬数据可参考，新闻为样例", className: "warm" };
   return { label: "仅部分可参考", className: "warm" };
+}
+
+function generalLabel(label) {
+  const map = {
+    constructive: "正向",
+    mild_positive: "温和正向",
+    neutral: "中性",
+    mild_pressure: "温和压力",
+    pressure: "压力",
+    unavailable: "暂无"
+  };
+  return map[label] ?? label ?? "--";
 }
 
 function confirmationText(row) {
@@ -224,8 +267,21 @@ function renderReferencePanel() {
   const techAvg = average(techRows.map((row) => row.score));
   const strongest = top[0];
   const weakest = bottom[0];
+  const general = state.general;
+  const sp500 = general?.group_summary?.sp500;
+  const aShareMarket = general?.group_summary?.a_share_market;
 
   panel.innerHTML = `
+    <article class="reference-card primary">
+      <span>通用模型</span>
+      <strong>${general?.counts?.pools ?? 0} 个池</strong>
+      <p>${general?.headline ?? "等待 general_pool_analysis.json 生成。"} 同一组件契约覆盖标普500与A股行业。</p>
+    </article>
+    <article class="reference-card">
+      <span>标普500对照</span>
+      <strong class="score ${scoreClass(sp500?.score)}">${formatScore(sp500?.score)}</strong>
+      <p>${sp500?.name ?? "S&P 500"} · ${generalLabel(sp500?.label)} · 完整度 ${formatPct(sp500?.data_completeness)}；A股总池 ${formatScore(aShareMarket?.score)}。</p>
+    </article>
     <article class="reference-card primary">
       <span>今天最强</span>
       <strong>${sectorLabel(strongest)}</strong>
@@ -254,7 +310,7 @@ function renderReferencePanel() {
     <article class="reference-card wide">
       <span>使用边界</span>
       <strong>可做观察，不做买卖指令</strong>
-      <p>当前最有参考意义的是行业间相对强弱、ETF流/价量确认、数据完整度。Global Liquidity Graph 的旧 mock 分数只保留为技术视图。</p>
+      <p>当前最有参考意义的是通用池状态、行业间相对强弱、ETF流/价量确认、数据完整度。Global Liquidity Graph 的旧 mock 分数只保留为技术视图。</p>
     </article>
     <div class="reference-list">
       <h3>强势候选</h3>
@@ -265,6 +321,139 @@ function renderReferencePanel() {
       ${bottom.map(referenceRowTemplate).join("")}
     </div>
   `;
+}
+
+function renderRotationPanel() {
+  const panel = document.getElementById("rotationPanel");
+  const statusBadge = document.getElementById("rotationStatus");
+  const rotation = state.rotation;
+
+  if (!panel || !statusBadge) return;
+  if (!rotation || rotation.status !== "rotation_available") {
+    statusBadge.textContent = "等待轮动数据";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无行业轮动情报。等待 sector_rotation_intelligence.json 生成。</div>`;
+    return;
+  }
+
+  const status = rotationStatusLabel(rotation.rotation_state);
+  statusBadge.textContent = status.label;
+  statusBadge.className = `pill ${status.className}`;
+  const leaders = rotation.leaders ?? [];
+  const laggards = rotation.laggards ?? [];
+  const clusters = rotation.cluster_reviews ?? [];
+  const pairs = rotation.rotation_pairs ?? [];
+  const history = state.rotationHistory;
+
+  panel.innerHTML = `
+    <article class="rotation-card headline">
+      <span>当前判断</span>
+      <strong>${rotation.headline}</strong>
+      <p>强弱差 ${formatScore(rotation.score_spread)} · 证据层级 ${evidenceLabel(rotation.evidence_level)} · 置信度 ${formatScore(rotation.confidence)} · 完整度 ${formatScore(rotation.data_completeness)}</p>
+    </article>
+    <article class="rotation-card">
+      <span>领先行业</span>
+      ${leaders.map(rotationSectorTemplate).join("")}
+    </article>
+    <article class="rotation-card">
+      <span>弱势观察</span>
+      ${laggards.map(rotationSectorTemplate).join("")}
+    </article>
+    <article class="rotation-card">
+      <span>风格分组</span>
+      ${clusters.map((cluster) => `
+        <button class="rotation-row" data-pond-id="${cluster.strongest_sector?.sector_id ?? ""}" type="button">
+          <span>${cluster.name}</span>
+          <b class="score ${scoreClass(cluster.score)}">${formatScore(cluster.score)}</b>
+          <small>${clusterLabel(cluster.label)} · 组内最强 ${cluster.strongest_sector?.name ?? "--"}</small>
+        </button>
+      `).join("")}
+    </article>
+    <article class="rotation-card">
+      <span>历史确认</span>
+      <strong>${historyTrendLabel(history?.trend_state)}</strong>
+      <p>已保存 ${history?.sample_days ?? 0} 个交易日；趋势确认至少需要 ${history?.min_required_days_for_trend ?? 3} 个交易日。</p>
+      <small>${history?.headline ?? "等待 sector_rotation_history.json 生成。"}</small>
+    </article>
+    <article class="rotation-card wide">
+      <span>可能的切换路径</span>
+      ${pairs.map((pair) => `
+        <button class="rotation-pair" data-pond-id="${pair.to_sector?.sector_id ?? ""}" type="button">
+          <strong>${pair.from_sector?.name ?? "--"} → ${pair.to_sector?.name ?? "--"}</strong>
+          <b class="score ${scoreClass(pair.score_gap)}">${formatScore(pair.score_gap)}</b>
+          <small>${pair.reading}</small>
+        </button>
+      `).join("")}
+    </article>
+    <article class="rotation-card wide">
+      <span>今天要盯的点</span>
+      <ul class="watch-list">
+        ${(rotation.watch_points ?? []).map((point) => `<li>${point}</li>`).join("")}
+      </ul>
+    </article>
+  `;
+
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const pondId = button.dataset.pondId;
+      if (!pondId) return;
+      state.selectedPondId = pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function rotationSectorTemplate(sector) {
+  return `
+    <button class="rotation-row" data-pond-id="${sector.sector_id}" type="button">
+      <span>${sector.name}</span>
+      <b class="score ${scoreClass(sector.score)}">${formatScore(sector.score)}</b>
+      <small>${labelText(sector.label)} · ${(sector.confirmation_inputs ?? []).join(" + ") || "等待输入"}</small>
+    </button>
+  `;
+}
+
+function rotationStatusLabel(stateName) {
+  const map = {
+    clear_rotation: { label: "轮动清晰", className: "positive" },
+    early_rotation: { label: "早期轮动", className: "warm" },
+    selective_rotation: { label: "结构分化", className: "warm" },
+    risk_off_diffusion: { label: "风险扩散", className: "negative" },
+    no_clear_rotation: { label: "轮动不明显", className: "muted" },
+    low_visibility: { label: "可见度偏低", className: "warm" }
+  };
+  return map[stateName] ?? { label: stateName ?? "未知", className: "muted" };
+}
+
+function evidenceLabel(level) {
+  const map = {
+    hard_data_plus_live_news: "硬数据 + 实时新闻",
+    hard_data_with_news_fixture: "硬数据为主，新闻样例",
+    hard_data_confirmed: "硬数据确认",
+    partial_hard_data: "部分硬数据",
+    thin_data: "数据较薄",
+    none: "无数据"
+  };
+  return map[level] ?? level ?? "--";
+}
+
+function clusterLabel(label) {
+  const map = {
+    cluster_inflow_bias: "组内偏强",
+    cluster_outflow_watch: "组内偏弱",
+    cluster_neutral: "组内中性"
+  };
+  return map[label] ?? label ?? "--";
+}
+
+function historyTrendLabel(stateName) {
+  const map = {
+    insufficient_history: "样本不足",
+    history_ready: "历史可读",
+    unavailable: "暂无历史"
+  };
+  return map[stateName] ?? stateName ?? "暂无历史";
 }
 
 function referenceRowTemplate(row) {
@@ -661,6 +850,7 @@ function renderSectorTable() {
           <th>行业</th>
           <th>分数</th>
           <th>状态</th>
+          <th>覆盖</th>
           <th>置信度</th>
           <th>完整度</th>
           <th>确认输入</th>
@@ -688,6 +878,7 @@ function rowTemplate(row, index) {
       <td><button class="text-link" data-pond-id="${id}" type="button"><strong>${sectorLabel(row)}</strong><span class="sub">${id}</span></button></td>
       <td class="score ${scoreClass(score)}">${formatScore(score)}</td>
       <td>${labelText(row.label)}</td>
+      <td>${coverageStatusLabel(row.coverage_status)}</td>
       <td>${formatScore(row.confidence)}</td>
       <td>${formatScore(row.data_completeness)}</td>
       <td>${confirmationText(row)}</td>
@@ -753,6 +944,7 @@ function bindTabs() {
 function renderAll() {
   renderHeader();
   renderReferencePanel();
+  renderRotationPanel();
   renderPondMap();
   renderSelectedSummary();
   renderFlowDetail();
@@ -767,7 +959,10 @@ function renderAll() {
 
 async function loadAll() {
   state.dashboard = await readJson("./data/dashboard.json", fallbackDashboard);
+  state.general = await readJson("./data/general_pool_analysis.json", null);
   state.flow = await readJson("./data/sector_flow_review.json", null);
+  state.rotation = await readJson("./data/sector_rotation_intelligence.json", null);
+  state.rotationHistory = await readJson("./data/sector_rotation_history.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

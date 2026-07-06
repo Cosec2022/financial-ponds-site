@@ -1,0 +1,15 @@
+{
+  "id": "textile_apparel_relative_strength",
+  "kind": "node",
+  "name": "Textile and Apparel Relative Strength",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Sector performance relative to broad A-shares or CSI 300. Sector context: Textile and apparel pool for exports, brands, and material cost cycles.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

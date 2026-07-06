@@ -6,6 +6,8 @@
   "region": "CN",
   "currency": "CNY",
   "parent_pool": "a_share",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Real estate and infrastructure ETFs are credit, policy, and fiscal-cycle-sensitive pools.",
   "scoring_profile": "default_pool_v0_1"
 }

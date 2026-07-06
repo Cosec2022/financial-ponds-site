@@ -112,7 +112,9 @@ test("sector flow review merges provider-flow observations after cycle observati
     fixture: false
   });
 
-  assert.equal(review.payload.counts.sectors, 11);
+  assert.equal(review.payload.counts.sectors, 31);
+  assert.equal(review.payload.counts.provider_mapped_representative_sectors, 11);
+  assert.equal(review.payload.counts.framework_only_sectors, 20);
   assert.ok(review.payload.sector_reviews.some((item) => item.pool_id === "a_share_semiconductor"));
 });
 

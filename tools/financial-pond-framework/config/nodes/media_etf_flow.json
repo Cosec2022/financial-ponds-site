@@ -1,0 +1,15 @@
+{
+  "id": "media_etf_flow",
+  "kind": "node",
+  "name": "Media ETF Flow",
+  "data_type": "hard_data",
+  "category": "sector_fund_flow",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Direct ETF share, AUM, or estimated net-flow evidence for the sector. Sector context: Media pool for advertising, games, content, and AI application cycles.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

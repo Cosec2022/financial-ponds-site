@@ -5,5 +5,7 @@
   "asset_type": "etf",
   "market": "CN",
   "currency": "CNY",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Example ETF asset for A-share Resources and Materials Pool. Typical real products include: 有色ETF, 稀土ETF, 煤炭ETF, 钢铁ETF, 化工ETF."
 }

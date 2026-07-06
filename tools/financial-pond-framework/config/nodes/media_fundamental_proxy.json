@@ -1,0 +1,15 @@
+{
+  "id": "media_fundamental_proxy",
+  "kind": "node",
+  "name": "Media Fundamental Proxy",
+  "data_type": "hard_data",
+  "category": "sector_fundamental",
+  "frequency": "weekly",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Sector-specific proxy for earnings, supply-demand, orders, inventory, or policy transmission. Sector context: Media pool for advertising, games, content, and AI application cycles.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

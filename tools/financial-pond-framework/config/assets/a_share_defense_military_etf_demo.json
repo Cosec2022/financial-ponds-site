@@ -5,5 +5,7 @@
   "asset_type": "etf",
   "market": "CN",
   "currency": "CNY",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Example ETF asset for A-share Defense and Military Pool. Typical real products include: 军工ETF, 国防ETF."
 }

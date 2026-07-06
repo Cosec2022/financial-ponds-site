@@ -1,0 +1,15 @@
+{
+  "id": "steel_policy_news",
+  "kind": "node",
+  "name": "Steel Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: Steel pool driven by construction demand, inventory, and margin changes.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

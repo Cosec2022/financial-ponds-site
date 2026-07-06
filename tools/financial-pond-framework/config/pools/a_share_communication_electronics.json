@@ -6,6 +6,8 @@
   "region": "CN",
   "currency": "CNY",
   "parent_pool": "a_share",
+  "coverage_status": "provider_mapped_representative",
+  "classification": "a_share_representative_cluster",
   "description": "Communication and electronics ETFs sit between AI hardware, consumer electronics, telecom infrastructure, and export demand.",
   "scoring_profile": "default_pool_v0_1"
 }

@@ -1,0 +1,13 @@
+{
+  "id": "a_share_construction",
+  "kind": "pool",
+  "name": "A-share Construction Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Construction pool driven by infrastructure orders, fiscal expansion, and SOE reform.",
+  "scoring_profile": "default_pool_v0_1"
+}

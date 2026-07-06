@@ -1,0 +1,15 @@
+{
+  "id": "beauty_care_leader_confirmation",
+  "kind": "node",
+  "name": "Beauty Care Leader Confirmation",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Confirmation from leading sector constituents. Sector context: Beauty care pool for cosmetics, medical beauty, and personal care demand.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

@@ -1,17 +1,17 @@
 {
-  "id": "a_share_industry_etf_catalog_v0_6_2",
-  "description": "Human-readable source catalog for A-share industry ETF pools. The materializer converts this catalog into standard node, pool, asset, edge, layer, and report config files.",
+  "id": "a_share_industry_etf_catalog_v0_10_11",
+  "description": "Human-readable source catalog for A-share industry ETF pools. The materializer converts this catalog into standard node, pool, asset, edge, layer, and report config files. v0.10.11 expands the framework to 31 A-share industry slots while keeping only reviewed provider mappings as provider_mapped_representative.",
   "parent_pool": "a_share",
   "pool_prefix": "a_share",
   "asset_suffix": "etf_demo",
   "scoring_profile": "default_pool_v0_1",
   "default_sector_components": {
-    "upstream": 0.20,
+    "upstream": 0.2,
     "inflow": 0.25,
     "confirmation": 0.25,
     "fundamental": 0.15,
     "news_expectation": 0.15,
-    "downstream": 0.00
+    "downstream": 0
   },
   "node_templates": [
     {
@@ -49,7 +49,7 @@
       "layer": "confirmation",
       "channel": "sector_confirmation",
       "direction": "positive",
-      "weight": 0.20,
+      "weight": 0.2,
       "transform": "identity",
       "description": "Sector performance relative to broad A-shares or CSI 300."
     },
@@ -75,7 +75,7 @@
       "layer": "confirmation",
       "channel": "leader_confirmation",
       "direction": "positive",
-      "weight": 0.10,
+      "weight": 0.1,
       "transform": "identity",
       "description": "Confirmation from leading sector constituents."
     },
@@ -99,100 +99,601 @@
       "name": "Brokerage",
       "display_name": "A-share Brokerage Pool",
       "priority": 1,
-      "typical_etfs": ["券商ETF", "证券ETF"],
-      "key_drivers": ["A-share turnover", "margin balance", "capital-market reform", "risk appetite"],
-      "description": "Brokerage ETFs are sensitive to market turnover, margin financing, IPO and refinancing policy, and expectations for a stronger equity cycle."
+      "typical_etfs": [
+        "券商ETF",
+        "证券ETF"
+      ],
+      "key_drivers": [
+        "A-share turnover",
+        "margin balance",
+        "capital-market reform",
+        "risk appetite"
+      ],
+      "description": "Brokerage ETFs are sensitive to market turnover, margin financing, IPO and refinancing policy, and expectations for a stronger equity cycle.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "bank_insurance",
       "name": "Bank and Insurance",
       "display_name": "A-share Bank and Insurance Pool",
       "priority": 2,
-      "typical_etfs": ["银行ETF", "证券保险ETF", "金融ETF"],
-      "key_drivers": ["credit cycle", "net interest margin", "asset quality", "real estate credit"],
-      "description": "Bank and insurance ETFs are credit-cycle and balance-sheet-sensitive financial pools."
+      "typical_etfs": [
+        "银行ETF",
+        "证券保险ETF",
+        "金融ETF"
+      ],
+      "key_drivers": [
+        "credit cycle",
+        "net interest margin",
+        "asset quality",
+        "real estate credit"
+      ],
+      "description": "Bank and insurance ETFs are credit-cycle and balance-sheet-sensitive financial pools.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "semiconductor",
       "name": "Semiconductor",
       "display_name": "A-share Semiconductor Pool",
       "priority": 3,
-      "typical_etfs": ["芯片ETF", "半导体ETF", "科创芯片ETF"],
-      "key_drivers": ["AI cycle", "domestic substitution", "export controls", "equipment orders"],
-      "description": "Semiconductor ETFs combine AI demand, localization, equipment cycles, and policy sensitivity."
+      "typical_etfs": [
+        "芯片ETF",
+        "半导体ETF",
+        "科创芯片ETF"
+      ],
+      "key_drivers": [
+        "AI cycle",
+        "domestic substitution",
+        "export controls",
+        "equipment orders"
+      ],
+      "description": "Semiconductor ETFs combine AI demand, localization, equipment cycles, and policy sensitivity.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "ai_computer",
       "name": "AI and Computer",
       "display_name": "A-share AI and Computer Pool",
       "priority": 4,
-      "typical_etfs": ["人工智能ETF", "云计算ETF", "软件ETF", "大数据ETF"],
-      "key_drivers": ["AI capex", "software orders", "government IT demand", "risk appetite"],
-      "description": "AI and computer ETFs depend on AI infrastructure spending, software demand, policy procurement, and growth-stock liquidity."
+      "typical_etfs": [
+        "人工智能ETF",
+        "云计算ETF",
+        "软件ETF",
+        "大数据ETF"
+      ],
+      "key_drivers": [
+        "AI capex",
+        "software orders",
+        "government IT demand",
+        "risk appetite"
+      ],
+      "description": "AI and computer ETFs depend on AI infrastructure spending, software demand, policy procurement, and growth-stock liquidity.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "communication_electronics",
       "name": "Communication and Electronics",
       "display_name": "A-share Communication and Electronics Pool",
       "priority": 5,
-      "typical_etfs": ["5GETF", "通信ETF", "消费电子ETF", "电子ETF"],
-      "key_drivers": ["device cycle", "AI hardware", "telecom equipment", "exports"],
-      "description": "Communication and electronics ETFs sit between AI hardware, consumer electronics, telecom infrastructure, and export demand."
+      "typical_etfs": [
+        "5GETF",
+        "通信ETF",
+        "消费电子ETF",
+        "电子ETF"
+      ],
+      "key_drivers": [
+        "device cycle",
+        "AI hardware",
+        "telecom equipment",
+        "exports"
+      ],
+      "description": "Communication and electronics ETFs sit between AI hardware, consumer electronics, telecom infrastructure, and export demand.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "new_energy_ev",
       "name": "New Energy Vehicle",
       "display_name": "A-share New Energy Vehicle Pool",
       "priority": 6,
-      "typical_etfs": ["新能源车ETF", "电池ETF", "锂电ETF"],
-      "key_drivers": ["EV sales", "lithium price", "inventory", "capacity clearing"],
-      "description": "New energy vehicle ETFs are driven by vehicle sales, battery prices, lithium cycle, inventory, and capacity discipline."
+      "typical_etfs": [
+        "新能源车ETF",
+        "电池ETF",
+        "锂电ETF"
+      ],
+      "key_drivers": [
+        "EV sales",
+        "lithium price",
+        "inventory",
+        "capacity clearing"
+      ],
+      "description": "New energy vehicle ETFs are driven by vehicle sales, battery prices, lithium cycle, inventory, and capacity discipline.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "healthcare_pharma",
       "name": "Healthcare and Pharma",
       "display_name": "A-share Healthcare and Pharma Pool",
       "priority": 7,
-      "typical_etfs": ["医药ETF", "医疗ETF", "创新药ETF", "中药ETF"],
-      "key_drivers": ["centralized procurement", "insurance payment", "drug approval", "license-out news"],
-      "description": "Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve."
+      "typical_etfs": [
+        "医药ETF",
+        "医疗ETF",
+        "创新药ETF",
+        "中药ETF"
+      ],
+      "key_drivers": [
+        "centralized procurement",
+        "insurance payment",
+        "drug approval",
+        "license-out news"
+      ],
+      "description": "Healthcare and pharma ETFs are policy-sensitive but can re-rate when innovation, overseas licensing, or payment expectations improve.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "consumer",
       "name": "Consumer",
       "display_name": "A-share Consumer Pool",
       "priority": 8,
-      "typical_etfs": ["消费ETF", "食品饮料ETF", "酒ETF", "家电ETF"],
-      "key_drivers": ["retail sales", "household income", "CPI", "channel inventory"],
-      "description": "Consumer ETFs depend on household income, retail sales, pricing power, inventory, and confidence."
+      "typical_etfs": [
+        "消费ETF",
+        "食品饮料ETF",
+        "酒ETF",
+        "家电ETF"
+      ],
+      "key_drivers": [
+        "retail sales",
+        "household income",
+        "CPI",
+        "channel inventory"
+      ],
+      "description": "Consumer ETFs depend on household income, retail sales, pricing power, inventory, and confidence.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "defense_military",
       "name": "Defense and Military",
       "display_name": "A-share Defense and Military Pool",
       "priority": 9,
-      "typical_etfs": ["军工ETF", "国防ETF"],
-      "key_drivers": ["geopolitical risk", "defense budget", "orders", "asset injection"],
-      "description": "Defense ETFs are influenced by orders, fiscal defense spending, geopolitics, and state-owned asset restructuring expectations."
+      "typical_etfs": [
+        "军工ETF",
+        "国防ETF"
+      ],
+      "key_drivers": [
+        "geopolitical risk",
+        "defense budget",
+        "orders",
+        "asset injection"
+      ],
+      "description": "Defense ETFs are influenced by orders, fiscal defense spending, geopolitics, and state-owned asset restructuring expectations.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "resources_materials",
       "name": "Resources and Materials",
       "display_name": "A-share Resources and Materials Pool",
       "priority": 10,
-      "typical_etfs": ["有色ETF", "稀土ETF", "煤炭ETF", "钢铁ETF", "化工ETF"],
-      "key_drivers": ["commodity price", "DXY", "inventory", "global manufacturing cycle"],
-      "description": "Resources and materials ETFs are driven by commodity prices, dollar pressure, inventory, supply discipline, and global manufacturing conditions."
+      "typical_etfs": [
+        "有色ETF",
+        "稀土ETF",
+        "煤炭ETF",
+        "钢铁ETF",
+        "化工ETF"
+      ],
+      "key_drivers": [
+        "commodity price",
+        "DXY",
+        "inventory",
+        "global manufacturing cycle"
+      ],
+      "description": "Resources and materials ETFs are driven by commodity prices, dollar pressure, inventory, supply discipline, and global manufacturing conditions.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
     },
     {
       "id": "real_estate_infra",
       "name": "Real Estate and Infrastructure",
       "display_name": "A-share Real Estate and Infrastructure Pool",
       "priority": 11,
-      "typical_etfs": ["房地产ETF", "基建ETF", "建材ETF"],
-      "key_drivers": ["property sales", "financing policy", "local fiscal expansion", "construction demand"],
-      "description": "Real estate and infrastructure ETFs are credit, policy, and fiscal-cycle-sensitive pools."
+      "typical_etfs": [
+        "房地产ETF",
+        "基建ETF",
+        "建材ETF"
+      ],
+      "key_drivers": [
+        "property sales",
+        "financing policy",
+        "local fiscal expansion",
+        "construction demand"
+      ],
+      "description": "Real estate and infrastructure ETFs are credit, policy, and fiscal-cycle-sensitive pools.",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster"
+    },
+    {
+      "id": "agriculture",
+      "name": "Agriculture",
+      "display_name": "A-share Agriculture Pool",
+      "priority": 12,
+      "typical_etfs": [
+        "农业ETF",
+        "畜牧养殖ETF"
+      ],
+      "key_drivers": [
+        "crop prices",
+        "hog cycle",
+        "feed cost",
+        "weather",
+        "policy subsidy"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Agriculture, forestry, animal husbandry, and fishery pool."
+    },
+    {
+      "id": "food_beverage",
+      "name": "Food and Beverage",
+      "display_name": "A-share Food and Beverage Pool",
+      "priority": 13,
+      "typical_etfs": [
+        "食品饮料ETF",
+        "酒ETF"
+      ],
+      "key_drivers": [
+        "retail demand",
+        "premium liquor cycle",
+        "CPI",
+        "channel inventory"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Food and beverage pool for staples, liquor, and packaged food demand."
+    },
+    {
+      "id": "home_appliances",
+      "name": "Home Appliances",
+      "display_name": "A-share Home Appliances Pool",
+      "priority": 14,
+      "typical_etfs": [
+        "家电ETF"
+      ],
+      "key_drivers": [
+        "property completion",
+        "export demand",
+        "raw material cost",
+        "replacement demand"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Home appliances pool driven by property completion, exports, and replacement cycles."
+    },
+    {
+      "id": "textile_apparel",
+      "name": "Textile and Apparel",
+      "display_name": "A-share Textile and Apparel Pool",
+      "priority": 15,
+      "typical_etfs": [
+        "纺织服装ETF"
+      ],
+      "key_drivers": [
+        "export orders",
+        "cotton price",
+        "brand retail",
+        "RMB exchange rate"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Textile and apparel pool for exports, brands, and material cost cycles."
+    },
+    {
+      "id": "light_manufacturing",
+      "name": "Light Manufacturing",
+      "display_name": "A-share Light Manufacturing Pool",
+      "priority": 16,
+      "typical_etfs": [
+        "轻工制造ETF"
+      ],
+      "key_drivers": [
+        "paper price",
+        "packaging demand",
+        "home furnishing",
+        "export demand"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Light manufacturing pool covering paper, packaging, furniture, and export-linked demand."
+    },
+    {
+      "id": "retail",
+      "name": "Retail",
+      "display_name": "A-share Retail Pool",
+      "priority": 17,
+      "typical_etfs": [
+        "商贸零售ETF"
+      ],
+      "key_drivers": [
+        "retail sales",
+        "consumer confidence",
+        "platform traffic",
+        "holiday demand"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Retail pool for offline and online trade activity."
+    },
+    {
+      "id": "social_services",
+      "name": "Social Services",
+      "display_name": "A-share Social Services Pool",
+      "priority": 18,
+      "typical_etfs": [
+        "旅游ETF",
+        "酒店餐饮ETF"
+      ],
+      "key_drivers": [
+        "travel demand",
+        "holiday bookings",
+        "income expectation",
+        "service consumption"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Social services pool for tourism, hotels, catering, and service consumption."
+    },
+    {
+      "id": "beauty_care",
+      "name": "Beauty Care",
+      "display_name": "A-share Beauty Care Pool",
+      "priority": 19,
+      "typical_etfs": [
+        "美容护理ETF"
+      ],
+      "key_drivers": [
+        "cosmetics demand",
+        "medical beauty regulation",
+        "brand inventory",
+        "consumer sentiment"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Beauty care pool for cosmetics, medical beauty, and personal care demand."
+    },
+    {
+      "id": "transportation",
+      "name": "Transportation",
+      "display_name": "A-share Transportation Pool",
+      "priority": 20,
+      "typical_etfs": [
+        "交运ETF",
+        "物流ETF"
+      ],
+      "key_drivers": [
+        "freight volume",
+        "oil price",
+        "air travel",
+        "export cycle"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Transportation pool for freight, airlines, logistics, highways, and ports."
+    },
+    {
+      "id": "utilities",
+      "name": "Utilities",
+      "display_name": "A-share Utilities Pool",
+      "priority": 21,
+      "typical_etfs": [
+        "公用事业ETF",
+        "电力ETF"
+      ],
+      "key_drivers": [
+        "power demand",
+        "tariff policy",
+        "coal price",
+        "dividend yield"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Utilities pool for power, gas, water, and defensive yield exposure."
+    },
+    {
+      "id": "environmental_protection",
+      "name": "Environmental Protection",
+      "display_name": "A-share Environmental Protection Pool",
+      "priority": 22,
+      "typical_etfs": [
+        "环保ETF"
+      ],
+      "key_drivers": [
+        "local fiscal spending",
+        "waste treatment orders",
+        "policy enforcement",
+        "project finance"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Environmental protection pool for waste treatment, water treatment, and environmental services."
+    },
+    {
+      "id": "petroleum_petrochemical",
+      "name": "Petroleum and Petrochemical",
+      "display_name": "A-share Petroleum and Petrochemical Pool",
+      "priority": 23,
+      "typical_etfs": [
+        "石油石化ETF"
+      ],
+      "key_drivers": [
+        "crude oil price",
+        "refining margin",
+        "chemical spread",
+        "geopolitical risk"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Petroleum and petrochemical pool driven by crude prices, refining, and chemical spreads."
+    },
+    {
+      "id": "coal",
+      "name": "Coal",
+      "display_name": "A-share Coal Pool",
+      "priority": 24,
+      "typical_etfs": [
+        "煤炭ETF"
+      ],
+      "key_drivers": [
+        "thermal coal price",
+        "power demand",
+        "supply discipline",
+        "dividend yield"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Coal pool driven by thermal coal pricing, power demand, and supply discipline."
+    },
+    {
+      "id": "steel",
+      "name": "Steel",
+      "display_name": "A-share Steel Pool",
+      "priority": 25,
+      "typical_etfs": [
+        "钢铁ETF"
+      ],
+      "key_drivers": [
+        "steel margin",
+        "construction demand",
+        "inventory",
+        "capacity policy"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Steel pool driven by construction demand, inventory, and margin changes."
+    },
+    {
+      "id": "nonferrous_metals",
+      "name": "Nonferrous Metals",
+      "display_name": "A-share Nonferrous Metals Pool",
+      "priority": 26,
+      "typical_etfs": [
+        "有色金属ETF",
+        "稀土ETF"
+      ],
+      "key_drivers": [
+        "global manufacturing",
+        "DXY",
+        "inventory",
+        "supply disruption"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Nonferrous metals pool for copper, aluminum, rare earths, and global cycle exposure."
+    },
+    {
+      "id": "basic_chemicals",
+      "name": "Basic Chemicals",
+      "display_name": "A-share Basic Chemicals Pool",
+      "priority": 27,
+      "typical_etfs": [
+        "化工ETF"
+      ],
+      "key_drivers": [
+        "chemical spread",
+        "oil price",
+        "inventory",
+        "export orders"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Basic chemicals pool driven by spreads, oil price, inventory, and exports."
+    },
+    {
+      "id": "building_materials",
+      "name": "Building Materials",
+      "display_name": "A-share Building Materials Pool",
+      "priority": 28,
+      "typical_etfs": [
+        "建材ETF",
+        "水泥ETF"
+      ],
+      "key_drivers": [
+        "cement price",
+        "glass price",
+        "property completion",
+        "infrastructure demand"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Building materials pool for cement, glass, and construction material demand."
+    },
+    {
+      "id": "construction",
+      "name": "Construction",
+      "display_name": "A-share Construction Pool",
+      "priority": 29,
+      "typical_etfs": [
+        "建筑ETF",
+        "基建ETF"
+      ],
+      "key_drivers": [
+        "infrastructure orders",
+        "local fiscal expansion",
+        "SOE reform",
+        "overseas contracts"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Construction pool driven by infrastructure orders, fiscal expansion, and SOE reform."
+    },
+    {
+      "id": "machinery",
+      "name": "Machinery",
+      "display_name": "A-share Machinery Pool",
+      "priority": 30,
+      "typical_etfs": [
+        "机械ETF",
+        "工程机械ETF"
+      ],
+      "key_drivers": [
+        "capex cycle",
+        "construction machinery sales",
+        "export orders",
+        "automation demand"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Machinery pool for capex, construction machinery, automation, and export equipment."
+    },
+    {
+      "id": "media",
+      "name": "Media",
+      "display_name": "A-share Media Pool",
+      "priority": 31,
+      "typical_etfs": [
+        "传媒ETF",
+        "游戏ETF"
+      ],
+      "key_drivers": [
+        "ad spending",
+        "game approvals",
+        "AI content",
+        "box office"
+      ],
+      "coverage_status": "framework_only",
+      "classification": "sw_level1_framework_slot",
+      "description": "Media pool for advertising, games, content, and AI application cycles."
     }
-  ]
+  ],
+  "coverage_policy": {
+    "target_framework_slots": 31,
+    "provider_mapped_representative_slots": 11,
+    "framework_only_slots": 20,
+    "boundary": "framework_only sectors have model structure but must not be treated as real ETF-flow provider coverage until a representative ETF or index source is reviewed."
+  }
 }
-

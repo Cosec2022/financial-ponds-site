@@ -91,7 +91,9 @@ test("flow review writes isolated model output without changing source status", 
   assert.equal(result.jsonPath, path.join(outputRoot, "model_outputs", "2026-07-03", "sector_flow_review.json"));
   assert.equal(result.mdPath, path.join(outputRoot, "model_outputs", "2026-07-03", "sector_flow_review.md"));
   assert.equal(review.model_id, "flow_engine_v0_9");
-  assert.equal(review.counts.sectors, 11);
+  assert.equal(review.counts.sectors, 31);
+  assert.equal(review.counts.provider_mapped_representative_sectors, 11);
+  assert.equal(review.counts.framework_only_sectors, 20);
   assert.match(markdown, /A-share Sector Flow Review/);
   assert.ok(review.safety_boundary.some((item) => item.includes("not a trading instruction")));
 });

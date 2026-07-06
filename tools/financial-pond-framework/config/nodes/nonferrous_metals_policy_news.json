@@ -1,0 +1,15 @@
+{
+  "id": "nonferrous_metals_policy_news",
+  "kind": "node",
+  "name": "Nonferrous Metals Policy News",
+  "data_type": "news",
+  "category": "sector_policy",
+  "frequency": "event",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Structured policy or regulatory news affecting expectations for the sector. Sector context: Nonferrous metals pool for copper, aluminum, rare earths, and global cycle exposure.",
+  "source": {
+    "provider": "official_media_or_ai_classifier",
+    "status": "planned"
+  }
+}

@@ -9,7 +9,7 @@ export async function runAShareDailyCi({
   asOf = new Date().toISOString().slice(0, 10)
 }) {
   const summary = {
-    runner_id: "a_share_daily_ci_v0_9_9",
+    runner_id: "a_share_daily_ci_v0_10_12",
     as_of: asOf,
     started_at: new Date().toISOString(),
     fallback_used: false,
@@ -68,8 +68,25 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "graph_cycle", "node", [
+    "src/pipeline/run_cycle.mjs",
+    asOf
+  ], { rootDir });
+
   await runStep(summary, "sector_flow_review", "node", [
     "src/tools/sector_flow_review.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
+  await runStep(summary, "sector_rotation_intelligence", "node", [
+    "src/tools/sector_rotation_intelligence.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
+  await runStep(summary, "sector_rotation_history", "node", [
+    "src/tools/sector_rotation_history.mjs",
     "--as-of",
     asOf
   ], { rootDir });

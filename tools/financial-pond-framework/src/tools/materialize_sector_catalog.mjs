@@ -37,6 +37,8 @@ export async function materializeSectorCatalog({ rootDir, catalogPath }) {
       region: "CN",
       currency: "CNY",
       parent_pool: catalog.parent_pool,
+      coverage_status: sector.coverage_status ?? "framework_only",
+      classification: sector.classification ?? "a_share_industry",
       description: sector.description,
       scoring_profile: catalog.scoring_profile
     });
@@ -48,6 +50,8 @@ export async function materializeSectorCatalog({ rootDir, catalogPath }) {
       asset_type: "etf",
       market: "CN",
       currency: "CNY",
+      coverage_status: sector.coverage_status ?? "framework_only",
+      classification: sector.classification ?? "a_share_industry",
       description: `Example ETF asset for ${sector.display_name}. Typical real products include: ${sector.typical_etfs.join(", ")}.`
     });
 
@@ -71,6 +75,8 @@ export async function materializeSectorCatalog({ rootDir, catalogPath }) {
         data_type: template.data_type,
         category: template.category,
         frequency: template.frequency,
+        coverage_status: sector.coverage_status ?? "framework_only",
+        classification: sector.classification ?? "a_share_industry",
         description: `${template.description} Sector context: ${sector.description}`,
         source: {
           provider: template.data_type === "news"

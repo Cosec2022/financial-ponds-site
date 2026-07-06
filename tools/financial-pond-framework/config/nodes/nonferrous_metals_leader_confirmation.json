@@ -1,0 +1,15 @@
+{
+  "id": "nonferrous_metals_leader_confirmation",
+  "kind": "node",
+  "name": "Nonferrous Metals Leader Confirmation",
+  "data_type": "hard_data",
+  "category": "sector_confirmation",
+  "frequency": "daily",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Confirmation from leading sector constituents. Sector context: Nonferrous metals pool for copper, aluminum, rare earths, and global cycle exposure.",
+  "source": {
+    "provider": "market_data_or_vendor",
+    "status": "planned"
+  }
+}

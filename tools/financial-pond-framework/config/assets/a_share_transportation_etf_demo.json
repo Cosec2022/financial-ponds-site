@@ -1,0 +1,11 @@
+{
+  "id": "a_share_transportation_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Transportation ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Example ETF asset for A-share Transportation Pool. Typical real products include: 交运ETF, 物流ETF."
+}

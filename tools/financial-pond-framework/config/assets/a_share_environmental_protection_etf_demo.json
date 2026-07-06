@@ -1,0 +1,11 @@
+{
+  "id": "a_share_environmental_protection_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Environmental Protection ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Example ETF asset for A-share Environmental Protection Pool. Typical real products include: 环保ETF."
+}

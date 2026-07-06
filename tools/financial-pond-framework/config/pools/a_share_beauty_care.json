@@ -1,0 +1,13 @@
+{
+  "id": "a_share_beauty_care",
+  "kind": "pool",
+  "name": "A-share Beauty Care Pool",
+  "pool_type": "sector",
+  "region": "CN",
+  "currency": "CNY",
+  "parent_pool": "a_share",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Beauty care pool for cosmetics, medical beauty, and personal care demand.",
+  "scoring_profile": "default_pool_v0_1"
+}

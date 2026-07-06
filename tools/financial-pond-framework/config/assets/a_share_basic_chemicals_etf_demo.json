@@ -1,0 +1,11 @@
+{
+  "id": "a_share_basic_chemicals_etf_demo",
+  "kind": "asset",
+  "name": "Demo A-share Basic Chemicals ETF",
+  "asset_type": "etf",
+  "market": "CN",
+  "currency": "CNY",
+  "coverage_status": "framework_only",
+  "classification": "sw_level1_framework_slot",
+  "description": "Example ETF asset for A-share Basic Chemicals Pool. Typical real products include: 化工ETF."
+}
