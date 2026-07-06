@@ -48,7 +48,6 @@ jobs:
 
       - name: Build and test Worker
         run: |
-          npm ci --no-audit --no-fund || (npm cache clean --force && npm ci --no-audit --no-fund)
           npm run build
           npm run validate
           npm test
@@ -63,4 +62,4 @@ jobs:
 
       - name: Deploy to Cloudflare
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' }}
-        run: npx wrangler deploy
+        run: npx wrangler@4.102.0 deploy
