@@ -84,9 +84,10 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const dailyAnalysis = await worker.fetch(request("/data/daily_sector_analysis.json"), {});
   assert.equal(dailyAnalysis.status, 200);
   const dailyAnalysisJson = await dailyAnalysis.json();
-  assert.equal(dailyAnalysisJson.module_id, "daily_sector_analysis_v0_10_35");
+  assert.equal(dailyAnalysisJson.module_id, "daily_sector_analysis_v0_10_40");
   assert.equal(dailyAnalysisJson.status, "daily_sector_analysis_available");
   assert.ok(dailyAnalysisJson.tiers.confirm_next);
+  assert.ok(dailyAnalysisJson.tiers.confirm_next[0]?.rotation_diagnostic);
   assert.ok(dailyAnalysisJson.gate_summary);
   assert.ok(dailyAnalysisJson.decision_gap?.checks?.length >= 5);
   assert.ok(dailyAnalysisJson.decision_ticket?.groups);
@@ -94,6 +95,13 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const news = await worker.fetch(request("/data/news_review.json"), {});
   assert.equal(news.status, 200);
   assert.ok((await news.json()).interpretation_boundary);
+
+  const maturity = await worker.fetch(request("/data/module_maturity_audit.json"), {});
+  assert.equal(maturity.status, 200);
+  const maturityJson = await maturity.json();
+  assert.equal(maturityJson.module_id, "module_maturity_audit_v0_10_39");
+  assert.ok(maturityJson.recommended_mainline);
+  assert.ok(maturityJson.modules.find((row) => row.module_id === "FP-DATA-01"));
 
   const pondMap = await worker.fetch(request("/data/pond_map.json"), {});
   assert.equal(pondMap.status, 200);

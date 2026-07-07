@@ -53,6 +53,7 @@ const state = {
   etfReadiness: null,
   realityAudit: null,
   dailyAnalysis: null,
+  moduleMaturity: null,
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -485,6 +486,91 @@ function renderDailyAnalysisPanel() {
   });
 }
 
+function renderMaturityPanel() {
+  const panel = document.getElementById("maturityPanel");
+  const statusBadge = document.getElementById("maturityStatus");
+  const audit = state.moduleMaturity;
+  if (!panel || !statusBadge) return;
+
+  if (!audit || audit.status !== "module_maturity_available") {
+    statusBadge.textContent = "等待审计";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无模块完成度审计。等待 module_maturity_audit.json 生成。</div>`;
+    return;
+  }
+
+  const overall = audit.overall ?? {};
+  const mainline = audit.recommended_mainline ?? {};
+  const decisionProgress = overall.decision_path_progress ?? 0;
+  const progressClass = decisionProgress >= 60 ? "positive" : decisionProgress >= 40 ? "warm" : "negative";
+  statusBadge.textContent = `${Math.round(overall.average_progress ?? 0)}% 平均`;
+  statusBadge.className = `pill ${progressClass}`;
+
+  panel.innerHTML = `
+    <article class="maturity-card headline ${progressClass}">
+      <span>推荐主线</span>
+      <strong>${mainline.label ?? "--"}</strong>
+      <p>${mainline.rationale ?? "等待主线审计。"}</p>
+      <small>当前主线进度 ${Math.round(mainline.current_progress ?? 0)}%</small>
+    </article>
+    ${maturityMetricCard("平均完成度", `${Math.round(overall.average_progress ?? 0)}%`, "项目所有模块平均进度。", progressClass)}
+    ${maturityMetricCard("决策链完成度", `${Math.round(decisionProgress)}%`, "DATA/FLOW/HIST/ETF/DAILY 主线平均进度。", progressClass)}
+    ${maturityMetricCard("低成熟模块", `${overall.low_maturity_count ?? 0}`, "进度低于 40% 的模块数量。", (overall.low_maturity_count ?? 0) > 5 ? "warm" : "positive")}
+    <article class="maturity-card wide">
+      <span>下一步</span>
+      <strong>${mainline.next_actions?.[0] ?? "--"}</strong>
+      <ul class="compact-list">
+        ${(mainline.next_actions ?? []).slice(1).map((item) => `<li>${item}</li>`).join("")}
+      </ul>
+    </article>
+    <article class="maturity-card wide">
+      <span>优先模块</span>
+      <div class="maturity-table">
+        ${(audit.priority_modules ?? []).slice(0, 6).map((row) => `
+          <div class="maturity-row">
+            <b>${row.module_id}</b>
+            <span>${row.module}</span>
+            <em>${row.progress}% · ${maturityLabel(row.maturity_label)}</em>
+          </div>
+        `).join("")}
+      </div>
+    </article>
+    <article class="maturity-card wide">
+      <span>低成熟模块</span>
+      <div class="maturity-table">
+        ${(audit.low_maturity_modules ?? []).slice(0, 6).map((row) => `
+          <div class="maturity-row passive">
+            <b>${row.module_id}</b>
+            <span>${row.module}</span>
+            <em>${row.progress}% · ${(row.blockers ?? []).join(", ") || "待定义"}</em>
+          </div>
+        `).join("")}
+      </div>
+    </article>
+  `;
+}
+
+function maturityMetricCard(label, value, reading, className) {
+  return `
+    <article class="maturity-card ${className}">
+      <span>${label}</span>
+      <strong>${value}</strong>
+      <p>${reading}</p>
+    </article>
+  `;
+}
+
+function maturityLabel(label) {
+  const map = {
+    strong: "较强",
+    usable: "可用",
+    prototype: "原型",
+    early: "早期",
+    planned: "计划中"
+  };
+  return map[label] ?? label ?? "--";
+}
+
 function dailyDecisionTicketTemplate(ticket) {
   const groups = ticket?.groups ?? {};
   const rows = [
@@ -551,10 +637,22 @@ function dailyTierTemplate(rows, emptyText) {
     <button class="daily-row" data-pond-id="${row.sector_id}" type="button">
       <span>${row.name}</span>
       <b class="score ${scoreClass(row.score)}">${formatScore(row.score)}</b>
+      ${rotationChipTemplate(row.rotation_diagnostic)}
       <small>${row.reading}</small>
       <em>连续 ${row.streak_days ?? "--"} 天 · 准备度 ${row.readiness_score ?? "--"}/100 · ${row.module_decision_text ?? row.action_text ?? labelText(row.label)}</em>
     </button>
   `).join("");
+}
+
+function rotationChipTemplate(diagnostic) {
+  if (!diagnostic?.label) return "";
+  return `<mark class="rotation-chip ${rotationChipClass(diagnostic.state)}">${diagnostic.label}</mark>`;
+}
+
+function rotationChipClass(state) {
+  if (["leader_continuation", "laggard_to_leader_reversal", "new_leader_watch", "strengthening_watch"].includes(state)) return "positive";
+  if (["laggard_continuation", "leader_to_laggard_reversal", "new_laggard_watch", "weakening_watch"].includes(state)) return "negative";
+  return "warm";
 }
 
 function providerStatusCard({ label, value, className, reading, detail }) {
@@ -1774,6 +1872,7 @@ function renderAll() {
   renderRealityPanel();
   renderProviderPanel();
   renderDailyAnalysisPanel();
+  renderMaturityPanel();
   renderHeader();
   renderReferencePanel();
   renderRotationPanel();
@@ -1801,6 +1900,7 @@ async function loadAll() {
   state.etfReadiness = await readJson("./data/etf_decision_readiness.json", null);
   state.realityAudit = await readJson("./data/data_reality_audit.json", null);
   state.dailyAnalysis = await readJson("./data/daily_sector_analysis.json", null);
+  state.moduleMaturity = await readJson("./data/module_maturity_audit.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

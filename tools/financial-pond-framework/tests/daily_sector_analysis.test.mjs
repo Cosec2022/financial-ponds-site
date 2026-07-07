@@ -19,7 +19,28 @@ test("daily sector analysis keeps not-ready ETF gates as observation-only tiers"
       rotationHistory: {
         trend_state: "trend_confirmed",
         sample_days: 3,
+        history: [
+          {
+            as_of: "2026-07-03",
+            leaders: [
+              { sector_id: "brokerage", name: "券商", score: 0.24, label: "constructive_inflow_bias" }
+            ],
+            laggards: [
+              { sector_id: "new_energy_ev", name: "新能源车", score: -0.02, label: "neutral" }
+            ]
+          },
+          {
+            as_of: "2026-07-06",
+            leaders: [
+              { sector_id: "brokerage", name: "券商", score: 0.26, label: "constructive_inflow_bias" }
+            ],
+            laggards: [
+              { sector_id: "new_energy_ev", name: "新能源车", score: -0.04, label: "neutral" }
+            ]
+          }
+        ],
         latest: {
+          as_of: "2026-07-07",
           leaders: [
             { sector_id: "brokerage", name: "券商", score: 0.28, label: "constructive_inflow_bias" },
             { sector_id: "semiconductor", name: "半导体", score: 0.2, label: "constructive_inflow_bias" }
@@ -97,8 +118,12 @@ test("daily sector analysis keeps not-ready ETF gates as observation-only tiers"
   assert.ok(payload.decision_ticket.groups.priority_watch[0].failure_conditions.some((item) => item.includes("estimated_flow")));
   assert.equal(payload.decision_ticket.groups.avoid_watch[0].ticket_label, "回避观察");
   assert.equal(payload.tiers.priority_watch[0].sector_id, "brokerage");
+  assert.equal(payload.tiers.priority_watch[0].rotation_diagnostic.state, "leader_continuation");
+  assert.match(payload.tiers.priority_watch[0].rotation_diagnostic.reading, /领先延续/);
   assert.equal(payload.tiers.priority_watch[0].reading.includes("观察项"), true);
+  assert.match(payload.tiers.priority_watch[0].reading, /轮动标签：领先延续/);
   assert.equal(payload.tiers.confirm_next.find((row) => row.sector_id === "bank_insurance").name, "银行保险");
   assert.equal(payload.tiers.avoid_watch[0].sector_id, "new_energy_ev");
+  assert.equal(payload.tiers.avoid_watch[0].rotation_diagnostic.state, "laggard_continuation");
   assert.match(payload.headline, /只做观察/);
 });

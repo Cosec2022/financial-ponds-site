@@ -1,5 +1,109 @@
 # Changelog
 
+## v0.10.41 - Visible rotation labels
+
+- Bumped site and framework package versions to `0.10.41`.
+- Added visible rotation chips to the homepage Daily Sector Analysis rows.
+- The chips surface `rotation_diagnostic.label` directly instead of leaving it
+  only inside the reading sentence.
+- Positive states include leader continuation, weak-to-strong reversal, new
+  leader, and marginal strengthening.
+- Negative states include laggard continuation, strong-to-weak reversal, new
+  laggard, and marginal weakening.
+
+Important boundary:
+
+- This is a UI/readability change.
+- It does not change model scores, ETF gates, or trading boundaries.
+
+## v0.10.40 - Rotation continuation labels
+
+- Bumped site and framework package versions to `0.10.40`.
+- Added `rotation_diagnostic` to each Daily Sector Analysis tier row.
+- The diagnostic labels rotation state as:
+  - `leader_continuation`;
+  - `laggard_continuation`;
+  - `leader_persistence_watch`;
+  - `laggard_persistence_watch`;
+  - `laggard_to_leader_reversal`;
+  - `leader_to_laggard_reversal`;
+  - `new_leader_watch`;
+  - `new_laggard_watch`;
+  - `strengthening_watch`;
+  - `weakening_watch`;
+  - `single_day_watch`.
+- Daily Sector Analysis readings now include the rotation label before the ETF
+  readiness boundary.
+- Added tests to keep priority-watch and avoid-watch rows carrying continuation
+  diagnostics.
+
+Important boundary:
+
+- This improves interpretability of existing sector history.
+- It does not change ETF readiness gates or create buy/sell/allocation
+  instructions.
+
+## v0.10.39 - Module maturity audit
+
+- Bumped site and framework package versions to `0.10.39`.
+- Added `npm run project:maturity`.
+- Added `FP-MAINT-02` style output:
+  - `model_outputs/<date>/module_maturity_audit.json`
+  - `model_outputs/<date>/module_maturity_audit.md`
+- Published `financial-pond/data/module_maturity_audit.json`.
+- Added a homepage `模块完成度` panel showing:
+  - recommended mainline;
+  - average module progress;
+  - decision-path progress;
+  - low-maturity module count;
+  - priority modules;
+  - low-maturity modules.
+- Added tests for the audit parser, output writer, workflow publish path, asset embedding, data validation, and Worker JSON serving.
+
+Important boundary:
+
+- This is a project/module readiness audit, not market analysis.
+- It does not alter sector scores or ETF readiness gates.
+- ETF execution language still depends on observed ETF share-change flow and
+  readiness gates.
+
+## v0.10.38 - Provider history audit command
+
+- Bumped site and framework package versions to `0.10.38`.
+- Added `npm run provider:akshare:history`.
+- The command writes:
+  - `model_outputs/provider_history/akshare_provider_history.json`
+  - `model_outputs/provider_history/akshare_provider_history.md`
+- The audit reports provider CSV dates, previous available date, row counts,
+  missing representative codes, `previous_share` rows, and `estimated_flow` rows.
+- Added tests for:
+  - single-date `baseline_only`;
+  - two-date `flow_gate_ready`.
+
+Important boundary:
+
+- This command is read-only against scoring config.
+- It does not run providers and does not create market signals.
+- It is an operational check for whether the provider history chain can unlock
+  share-change flow.
+
+## v0.10.37 - Provider CSV history persistence
+
+- Bumped site and framework package versions to `0.10.37`.
+- Updated the daily GitHub Action so it persists the AKShare provider CSV history:
+  - `tools/financial-pond-framework/data/provider_exports/*.csv`
+  - AKShare provider run status JSON;
+  - provider validation report;
+  - provider inspection report.
+- Added workflow regression checks so future changes do not silently drop provider CSV persistence.
+
+Important boundary:
+
+- This does not change scores or trading language.
+- It preserves the historical baseline required for future `previous_share`,
+  `share_change`, and `estimated_flow` calculation.
+- Raw provider payloads are not added to the daily commit path.
+
 ## v0.10.36 - Provider history diagnostics
 
 - Bumped site and framework package versions to `0.10.36`.

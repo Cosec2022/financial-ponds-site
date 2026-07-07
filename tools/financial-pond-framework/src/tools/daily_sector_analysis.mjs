@@ -78,16 +78,17 @@ export function buildDailySectorAnalysis({ asOf, inputs }) {
   const persistentLaggards = inputs.rotationHistory?.trend_confirmations?.persistent_laggards ?? [];
   const latestLeaders = inputs.rotationHistory?.latest?.leaders ?? [];
   const latestLaggards = inputs.rotationHistory?.latest?.laggards ?? [];
+  const rotationDiagnosticsBySector = buildRotationDiagnostics(inputs.rotationHistory);
 
   const context = buildContext({ asOf, inputs });
   const priorityWatch = uniqueBySector(persistentLeaders
-    .map((row) => sectorAnalysisRow({ row, tier: "priority_watch", flowBySector, modulesBySector, readinessBySector, context }))
+    .map((row) => sectorAnalysisRow({ row, tier: "priority_watch", flowBySector, modulesBySector, readinessBySector, rotationDiagnosticsBySector, context }))
     .filter((row) => row.score >= 0.08));
   const confirmNext = uniqueBySector([
     ...latestLeaders,
     ...(inputs.flow?.sector_reviews ?? []).slice(0, 6)
   ]
-    .map((row) => sectorAnalysisRow({ row, tier: "confirm_next", flowBySector, modulesBySector, readinessBySector, context }))
+    .map((row) => sectorAnalysisRow({ row, tier: "confirm_next", flowBySector, modulesBySector, readinessBySector, rotationDiagnosticsBySector, context }))
     .filter((row) => row.score >= 0.12 && !priorityWatch.some((item) => item.sector_id === row.sector_id)))
     .slice(0, 6);
   const avoidWatch = uniqueBySector([
@@ -95,14 +96,14 @@ export function buildDailySectorAnalysis({ asOf, inputs }) {
     ...(inputs.moduleReview?.risks ?? []),
     ...latestLaggards
   ]
-    .map((row) => sectorAnalysisRow({ row, tier: "avoid_watch", flowBySector, modulesBySector, readinessBySector, context }))
+    .map((row) => sectorAnalysisRow({ row, tier: "avoid_watch", flowBySector, modulesBySector, readinessBySector, rotationDiagnosticsBySector, context }))
     .filter((row) => row.score <= 0.08 || riskDecision(row.module_decision_label)))
     .slice(0, 6);
 
   return {
     as_of: inputs.flow?.as_of ?? inputs.etfReadiness?.as_of ?? asOf,
     generated_at: new Date().toISOString(),
-    module_id: "daily_sector_analysis_v0_10_35",
+    module_id: "daily_sector_analysis_v0_10_40",
     status: "daily_sector_analysis_available",
     analysis_mode: context.analysisMode,
     headline: buildHeadline({ context, priorityWatch, confirmNext, avoidWatch }),
@@ -158,6 +159,109 @@ async function readJsonIfExists(filePath) {
   }
 }
 
+function buildRotationDiagnostics(rotationHistory) {
+  const days = normalizeRotationDays(rotationHistory);
+  const latest = days.at(-1) ?? null;
+  const previous = days.at(-2) ?? null;
+  const sectorIds = new Set();
+  for (const day of days) {
+    for (const row of [...(day.leaders ?? []), ...(day.laggards ?? [])]) sectorIds.add(sectorId(row));
+  }
+
+  const diagnostics = new Map();
+  for (const id of sectorIds) {
+    const leaderDays = days.filter((day) => includesSector(day.leaders, id)).length;
+    const laggardDays = days.filter((day) => includesSector(day.laggards, id)).length;
+    const latestEntry = findRotationEntry(latest, id);
+    const previousEntry = findRotationEntry(previous, id);
+    const latestRole = latestEntry?.role ?? "not_ranked";
+    const previousRole = previousEntry?.role ?? "not_ranked";
+    const latestScore = numberOrNull(latestEntry?.row?.score);
+    const previousScore = numberOrNull(previousEntry?.row?.score);
+    const scoreDelta = latestScore !== null && previousScore !== null ? round(latestScore - previousScore) : null;
+    const state = rotationState({ latestRole, previousRole, leaderDays, laggardDays, scoreDelta });
+    diagnostics.set(id, {
+      state,
+      label: rotationStateLabel(state),
+      reading: rotationStateReading({ state, leaderDays, laggardDays, latestRole, previousRole, scoreDelta, daysObserved: days.length }),
+      latest_role: latestRole,
+      previous_role: previousRole,
+      leader_days: leaderDays,
+      laggard_days: laggardDays,
+      days_observed: days.length,
+      score_delta: scoreDelta
+    });
+  }
+  return diagnostics;
+}
+
+function normalizeRotationDays(rotationHistory) {
+  const byDate = new Map();
+  for (const day of rotationHistory?.history ?? []) {
+    if (day?.as_of) byDate.set(day.as_of, day);
+  }
+  if (rotationHistory?.latest?.as_of) byDate.set(rotationHistory.latest.as_of, rotationHistory.latest);
+  return [...byDate.values()].sort((left, right) => String(left.as_of).localeCompare(String(right.as_of)));
+}
+
+function includesSector(rows, id) {
+  return (rows ?? []).some((row) => sectorId(row) === id);
+}
+
+function findRotationEntry(day, id) {
+  if (!day) return null;
+  const leader = (day.leaders ?? []).find((row) => sectorId(row) === id);
+  if (leader) return { role: "leader", row: leader };
+  const laggard = (day.laggards ?? []).find((row) => sectorId(row) === id);
+  if (laggard) return { role: "laggard", row: laggard };
+  return null;
+}
+
+function rotationState({ latestRole, previousRole, leaderDays, laggardDays, scoreDelta }) {
+  if (latestRole === "leader" && previousRole === "laggard") return "laggard_to_leader_reversal";
+  if (latestRole === "laggard" && previousRole === "leader") return "leader_to_laggard_reversal";
+  if (latestRole === "leader" && leaderDays >= 3) return "leader_continuation";
+  if (latestRole === "laggard" && laggardDays >= 3) return "laggard_continuation";
+  if (latestRole === "leader" && previousRole === "leader") return "leader_persistence_watch";
+  if (latestRole === "laggard" && previousRole === "laggard") return "laggard_persistence_watch";
+  if (latestRole === "leader") return "new_leader_watch";
+  if (latestRole === "laggard") return "new_laggard_watch";
+  if (scoreDelta !== null && scoreDelta >= 0.03) return "strengthening_watch";
+  if (scoreDelta !== null && scoreDelta <= -0.03) return "weakening_watch";
+  return "single_day_watch";
+}
+
+function rotationStateLabel(state) {
+  return {
+    leader_continuation: "领先延续",
+    laggard_continuation: "弱势延续",
+    leader_persistence_watch: "领先待确认",
+    laggard_persistence_watch: "弱势待确认",
+    laggard_to_leader_reversal: "弱转强",
+    leader_to_laggard_reversal: "强转弱",
+    new_leader_watch: "新进强势",
+    new_laggard_watch: "新进弱势",
+    strengthening_watch: "边际转强",
+    weakening_watch: "边际转弱",
+    single_day_watch: "单日观察"
+  }[state] ?? "轮动观察";
+}
+
+function rotationStateReading({ state, leaderDays, laggardDays, latestRole, previousRole, scoreDelta, daysObserved }) {
+  const deltaText = scoreDelta === null ? "" : `，较上一样本变化 ${scoreDelta}`;
+  if (state === "leader_continuation") return `轮动标签：领先延续，${leaderDays}/${daysObserved} 个样本日进入领先组${deltaText}。`;
+  if (state === "laggard_continuation") return `轮动标签：弱势延续，${laggardDays}/${daysObserved} 个样本日进入弱势组${deltaText}。`;
+  if (state === "laggard_to_leader_reversal") return `轮动标签：弱转强，上一样本在弱势组、最新进入领先组${deltaText}。`;
+  if (state === "leader_to_laggard_reversal") return `轮动标签：强转弱，上一样本在领先组、最新进入弱势组${deltaText}。`;
+  if (state === "new_leader_watch") return `轮动标签：新进强势，最新进入领先组但连续性还不够${deltaText}。`;
+  if (state === "new_laggard_watch") return `轮动标签：新进弱势，最新进入弱势组，先观察是否延续${deltaText}。`;
+  if (state === "leader_persistence_watch") return `轮动标签：领先待确认，连续性正在形成但样本还未达到 3 日${deltaText}。`;
+  if (state === "laggard_persistence_watch") return `轮动标签：弱势待确认，连续性正在形成但样本还未达到 3 日${deltaText}。`;
+  if (state === "strengthening_watch") return `轮动标签：边际转强，最新角色 ${latestRole}、上一样本 ${previousRole}${deltaText}。`;
+  if (state === "weakening_watch") return `轮动标签：边际转弱，最新角色 ${latestRole}、上一样本 ${previousRole}${deltaText}。`;
+  return `轮动标签：单日观察，暂未形成连续领先或连续弱势${deltaText}。`;
+}
+
 function buildContext({ inputs }) {
   const gates = inputs.etfReadiness?.gates ?? {};
   const guidanceState = inputs.etfReadiness?.guidance_state ?? gates.guidance_state ?? "unknown";
@@ -178,11 +282,12 @@ function buildContext({ inputs }) {
   };
 }
 
-function sectorAnalysisRow({ row, tier, flowBySector, modulesBySector, readinessBySector, context }) {
+function sectorAnalysisRow({ row, tier, flowBySector, modulesBySector, readinessBySector, rotationDiagnosticsBySector, context }) {
   const id = sectorId(row);
   const flow = flowBySector.get(id) ?? row;
   const moduleRow = modulesBySector.get(id) ?? {};
   const readiness = readinessBySector.get(id) ?? {};
+  const rotationDiagnostic = rotationDiagnosticsBySector.get(id) ?? null;
   const score = numberOrNull(flow.score ?? row.score) ?? 0;
   const streakDays = row.streak_days ?? null;
   const name = sectorDisplayName(id, row, moduleRow, flow, readiness);
@@ -209,7 +314,8 @@ function sectorAnalysisRow({ row, tier, flowBySector, modulesBySector, readiness
       flow_price_label: moduleRow.modules?.flow_price?.label ?? readiness.evidence?.flow_price_label ?? flow.label ?? null,
       flow_price_score: numberOrNull(moduleRow.modules?.flow_price?.score ?? readiness.evidence?.flow_price_score ?? score)
     },
-    reading: buildSectorReading({ tier, row, name, score, readiness, context }),
+    rotation_diagnostic: rotationDiagnostic,
+    reading: buildSectorReading({ tier, row, name, score, readiness, rotationDiagnostic, context }),
     blockers: readiness.blockers ?? []
   };
 }
@@ -424,15 +530,16 @@ function nextBlockedGate(context) {
   return "估值/基本面";
 }
 
-function buildSectorReading({ tier, row, name, score, readiness, context }) {
+function buildSectorReading({ tier, row, name, score, readiness, rotationDiagnostic, context }) {
   const prefix = context.analysisMode === "decision_review" ? "可进入人工复核" : "仍是观察项";
+  const rotationReading = rotationDiagnostic?.reading ? `${rotationDiagnostic.reading}` : "";
   if (tier === "priority_watch") {
-    return `${prefix}：${name} 已出现连续领先，当前分数 ${round(score)}。${watchOnlyReason(context)}`;
+    return `${prefix}：${name} 已出现连续领先，当前分数 ${round(score)}。${rotationReading}${watchOnlyReason(context)}`;
   }
   if (tier === "avoid_watch") {
-    return `回避观察：分数或三模块组合偏弱，先等资金和基本面修复。${watchOnlyReason(context)}`;
+    return `回避观察：分数或三模块组合偏弱，先等资金和基本面修复。${rotationReading}${watchOnlyReason(context)}`;
   }
-  return `${prefix}：当日强度靠前，但连续性或真实份额流还要继续确认。${readiness.action?.reading ?? watchOnlyReason(context)}`;
+  return `${prefix}：当日强度靠前，但连续性或真实份额流还要继续确认。${rotationReading}${readiness.action?.reading ?? watchOnlyReason(context)}`;
 }
 
 function watchOnlyReason(context) {

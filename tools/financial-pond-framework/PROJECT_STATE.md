@@ -5,12 +5,17 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.36`
+Package version: `0.10.41`
 
 Purpose of this version:
 
 - add daily decision tickets so priority, confirmation, and avoid rows have upgrade and failure conditions for human review
 - add provider-history diagnostics so `baseline_only` shows the exact provider CSV dates and whether a previous trade-date baseline exists
+- persist AKShare provider CSV history in the daily Action so future runs can keep a usable `previous_share` baseline
+- add `npm run provider:akshare:history` so provider CSV history can be audited without running the full model pipeline
+- add `npm run project:maturity` and a homepage module-completion panel so low-maturity modules and recommended mainline are visible
+- add rotation-continuation diagnostics to daily sector analysis so priority, confirmation, and avoid rows explain whether a sector is extending, reversing, newly strong, or newly weak
+- show rotation-continuation labels as visible chips in the homepage Daily Sector Analysis panel
 - add ETF share-change diagnostics so the site can show whether estimated-flow is blocked by missing latest_share, previous_share, share_change, or estimated_flow
 - add daily decision-gap checks so the homepage explains which ETF gates passed and which still block execution language
 - normalize daily sector names to Chinese labels before rendering
