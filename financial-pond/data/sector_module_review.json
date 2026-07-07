@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-07",
-  "generated_at": "2026-07-07T13:17:42.193Z",
+  "generated_at": "2026-07-07T13:38:36.620Z",
   "module_id": "sector_module_review_v0_1",
   "input_contract_id": "sector_module_profiles_v0_1",
   "status": "module_review_available",
@@ -8,7 +8,7 @@
   "module_averages": {
     "valuation_position_score": -0.0603,
     "fundamental_score": -0.0097,
-    "flow_price_score": 0.0748
+    "flow_price_score": 0.0887
   },
   "counts": {
     "sectors": 31,
@@ -28,7 +28,7 @@
       "fundamental_label": "improving",
       "fundamental_score": 0.12,
       "flow_price_label": "constructive_inflow_bias",
-      "flow_price_score": 0.2704,
+      "flow_price_score": 0.2862,
       "decision": {
         "label": "balanced_candidate",
         "text": "合理且改善",
@@ -43,7 +43,7 @@
       "fundamental_label": "improving",
       "fundamental_score": 0.18,
       "flow_price_label": "constructive_inflow_bias",
-      "flow_price_score": 0.2154,
+      "flow_price_score": 0.2197,
       "decision": {
         "label": "balanced_candidate",
         "text": "合理且改善",
@@ -58,7 +58,7 @@
       "fundamental_label": "improving",
       "fundamental_score": 0.24,
       "flow_price_label": "constructive_inflow_bias",
-      "flow_price_score": 0.2183,
+      "flow_price_score": 0.2122,
       "decision": {
         "label": "expensive_momentum",
         "text": "偏贵但趋势强",
@@ -73,7 +73,7 @@
       "fundamental_label": "improving",
       "fundamental_score": 0.2,
       "flow_price_label": "constructive_inflow_bias",
-      "flow_price_score": 0.2159,
+      "flow_price_score": 0.2079,
       "decision": {
         "label": "expensive_momentum",
         "text": "偏贵但趋势强",
@@ -88,7 +88,7 @@
       "fundamental_label": "stable",
       "fundamental_score": 0.02,
       "flow_price_label": "neutral",
-      "flow_price_score": 0.1521,
+      "flow_price_score": 0.1671,
       "decision": {
         "label": "wait_for_confirmation",
         "text": "等待确认",
@@ -105,7 +105,7 @@
       "fundamental_label": "deteriorating",
       "fundamental_score": -0.32,
       "flow_price_label": "neutral",
-      "flow_price_score": -0.1383,
+      "flow_price_score": -0.1233,
       "decision": {
         "label": "value_trap_risk",
         "text": "便宜但基本面弱",
@@ -120,7 +120,7 @@
       "fundamental_label": "weak",
       "fundamental_score": -0.14,
       "flow_price_label": "neutral",
-      "flow_price_score": 0.0557,
+      "flow_price_score": 0.0727,
       "decision": {
         "label": "value_trap_risk",
         "text": "便宜但基本面弱",
@@ -135,7 +135,7 @@
       "fundamental_label": "deteriorating",
       "fundamental_score": -0.28,
       "flow_price_label": "neutral",
-      "flow_price_score": 0.0557,
+      "flow_price_score": 0.0727,
       "decision": {
         "label": "value_trap_risk",
         "text": "便宜但基本面弱",
@@ -150,7 +150,7 @@
       "fundamental_label": "weak",
       "fundamental_score": -0.12,
       "flow_price_label": "neutral",
-      "flow_price_score": 0.0557,
+      "flow_price_score": 0.0727,
       "decision": {
         "label": "value_trap_risk",
         "text": "便宜但基本面弱",
@@ -165,7 +165,7 @@
       "fundamental_label": "deteriorating",
       "fundamental_score": -0.3,
       "flow_price_label": "neutral",
-      "flow_price_score": 0.0557,
+      "flow_price_score": 0.0727,
       "decision": {
         "label": "value_trap_risk",
         "text": "便宜但基本面弱",
@@ -202,9 +202,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.2704,
+          "score": 0.2862,
           "label": "constructive_inflow_bias",
-          "confidence": 0.6597,
+          "confidence": 0.6764,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -224,19 +224,19 @@
               "available": true
             },
             {
+              "component": "policy_sentiment",
+              "score": 0.39397499999999996,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.0393975,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "fundamental_proxy",
-              "score": 0.25,
-              "confidence": 1,
-              "weight": 0.1,
-              "contribution": 0.025,
               "available": true
             }
           ]
@@ -276,9 +276,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.2154,
+          "score": 0.2197,
           "label": "constructive_inflow_bias",
-          "confidence": 0.6597,
+          "confidence": 0.6764,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -350,9 +350,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.2183,
+          "score": 0.2122,
           "label": "constructive_inflow_bias",
-          "confidence": 0.6597,
+          "confidence": 0.6764,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -424,9 +424,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.2159,
+          "score": 0.2079,
           "label": "constructive_inflow_bias",
-          "confidence": 0.6597,
+          "confidence": 0.6764,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -498,9 +498,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.1521,
+          "score": 0.1671,
           "label": "neutral",
-          "confidence": 0.6597,
+          "confidence": 0.6764,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -520,19 +520,19 @@
               "available": true
             },
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "market_confirmation",
-              "score": 0.11769999999999999,
-              "confidence": 0.7333333333333334,
-              "weight": 0.25,
-              "contribution": 0.029424999999999996,
               "available": true
             }
           ]
@@ -572,9 +572,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -584,19 +584,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -636,9 +636,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0957,
+          "score": 0.1041,
           "label": "neutral",
-          "confidence": 0.7139,
+          "confidence": 0.7222,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -710,9 +710,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -722,19 +722,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -774,9 +774,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -786,19 +786,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -838,9 +838,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0905,
+          "score": 0.099,
           "label": "neutral",
-          "confidence": 0.7139,
+          "confidence": 0.7222,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -912,9 +912,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -924,19 +924,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -976,9 +976,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -988,19 +988,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -1040,9 +1040,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1052,19 +1052,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -1104,9 +1104,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1116,77 +1116,11 @@
           ],
           "top_drivers": [
             {
-              "component": "market_liquidity",
-              "score": 0.23725943396226415,
-              "confidence": 0.875,
-              "weight": 0.15,
-              "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
               "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
               "weight": 0.1,
-              "contribution": 0.020159999999999997,
-              "available": true
-            }
-          ]
-        }
-      },
-      "decision": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
-      }
-    },
-    {
-      "sector_id": "consumer",
-      "pool_id": "a_share_consumer",
-      "name": "Consumer",
-      "display_name": "A-share Consumer Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "modules": {
-        "valuation": {
-          "status": "manual_seed",
-          "position_score": -0.24,
-          "label": "cheap",
-          "pe_percentile": 0.3,
-          "pb_percentile": 0.32,
-          "dividend_support": 0.12,
-          "note": "Consumption leaders have de-rated; valuation is becoming more reasonable."
-        },
-        "fundamental": {
-          "status": "manual_seed",
-          "score": -0.06,
-          "label": "weak",
-          "earnings_trend": -0.08,
-          "roe_quality": 0.08,
-          "cycle_position": -0.14,
-          "note": "Demand recovery is still the key missing confirmation."
-        },
-        "flow_price": {
-          "status": "from_sector_flow_review",
-          "score": 0.0331,
-          "label": "neutral",
-          "confidence": 0.6597,
-          "data_completeness": 0.9,
-          "direct_flow_available": true,
-          "market_confirmation_available": true,
-          "confirmation_inputs": [
-            "direct_flow",
-            "market_confirmation",
-            "market_liquidity",
-            "policy_sentiment"
-          ],
-          "top_drivers": [
-            {
-              "component": "market_confirmation",
-              "score": -0.1776,
-              "confidence": 0.7333333333333334,
-              "weight": 0.25,
-              "contribution": -0.0444,
+              "contribution": 0.037125,
               "available": true
             },
             {
@@ -1195,14 +1129,6 @@
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.1687,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.01687,
               "available": true
             }
           ]
@@ -1242,9 +1168,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1253,6 +1179,80 @@
             "policy_sentiment"
           ],
           "top_drivers": [
+            {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
+              "component": "market_liquidity",
+              "score": 0.23725943396226415,
+              "confidence": 0.875,
+              "weight": 0.15,
+              "contribution": 0.03558891509433962,
+              "available": true
+            }
+          ]
+        }
+      },
+      "decision": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      }
+    },
+    {
+      "sector_id": "consumer",
+      "pool_id": "a_share_consumer",
+      "name": "Consumer",
+      "display_name": "A-share Consumer Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "modules": {
+        "valuation": {
+          "status": "manual_seed",
+          "position_score": -0.24,
+          "label": "cheap",
+          "pe_percentile": 0.3,
+          "pb_percentile": 0.32,
+          "dividend_support": 0.12,
+          "note": "Consumption leaders have de-rated; valuation is becoming more reasonable."
+        },
+        "fundamental": {
+          "status": "manual_seed",
+          "score": -0.06,
+          "label": "weak",
+          "earnings_trend": -0.08,
+          "roe_quality": 0.08,
+          "cycle_position": -0.14,
+          "note": "Demand recovery is still the key missing confirmation."
+        },
+        "flow_price": {
+          "status": "from_sector_flow_review",
+          "score": 0.0438,
+          "label": "neutral",
+          "confidence": 0.6764,
+          "data_completeness": 0.9,
+          "direct_flow_available": true,
+          "market_confirmation_available": true,
+          "confirmation_inputs": [
+            "direct_flow",
+            "market_confirmation",
+            "market_liquidity",
+            "policy_sentiment"
+          ],
+          "top_drivers": [
+            {
+              "component": "market_confirmation",
+              "score": -0.1776,
+              "confidence": 0.7333333333333334,
+              "weight": 0.25,
+              "contribution": -0.0444,
+              "available": true
+            },
             {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
@@ -1263,10 +1263,10 @@
             },
             {
               "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
+              "score": 0.275625,
+              "confidence": 0.45,
               "weight": 0.1,
-              "contribution": 0.020159999999999997,
+              "contribution": 0.027562500000000004,
               "available": true
             }
           ]
@@ -1306,9 +1306,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1318,19 +1318,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -1370,9 +1370,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1382,19 +1382,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -1434,9 +1434,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1446,19 +1446,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -1498,9 +1498,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1510,85 +1510,11 @@
           ],
           "top_drivers": [
             {
-              "component": "market_liquidity",
-              "score": 0.23725943396226415,
-              "confidence": 0.875,
-              "weight": 0.15,
-              "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
               "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
               "weight": 0.1,
-              "contribution": 0.020159999999999997,
-              "available": true
-            }
-          ]
-        }
-      },
-      "decision": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
-      }
-    },
-    {
-      "sector_id": "defense_military",
-      "pool_id": "a_share_defense_military",
-      "name": "Defense and Military",
-      "display_name": "A-share Defense and Military Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "modules": {
-        "valuation": {
-          "status": "manual_seed",
-          "position_score": 0.12,
-          "label": "fair",
-          "pe_percentile": 0.58,
-          "pb_percentile": 0.54,
-          "dividend_support": -0.25,
-          "note": "Valuation is not cheap for the current earnings visibility."
-        },
-        "fundamental": {
-          "status": "manual_seed",
-          "score": 0.04,
-          "label": "stable",
-          "earnings_trend": 0.02,
-          "roe_quality": 0.02,
-          "cycle_position": 0.1,
-          "note": "Order visibility matters more than broad market liquidity."
-        },
-        "flow_price": {
-          "status": "from_sector_flow_review",
-          "score": 0.1285,
-          "label": "neutral",
-          "confidence": 0.7139,
-          "data_completeness": 0.9,
-          "direct_flow_available": true,
-          "market_confirmation_available": true,
-          "confirmation_inputs": [
-            "direct_flow",
-            "market_confirmation",
-            "market_liquidity",
-            "policy_sentiment"
-          ],
-          "top_drivers": [
-            {
-              "component": "direct_flow",
-              "score": 0.25,
-              "confidence": 1,
-              "weight": 0.3,
-              "contribution": 0.075,
-              "available": true
-            },
-            {
-              "component": "market_confirmation",
-              "score": -0.15853333333333333,
-              "confidence": 0.7333333333333334,
-              "weight": 0.25,
-              "contribution": -0.03963333333333333,
+              "contribution": 0.037125,
               "available": true
             },
             {
@@ -1636,9 +1562,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1648,19 +1574,93 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
               "available": true
+            }
+          ]
+        }
+      },
+      "decision": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      }
+    },
+    {
+      "sector_id": "defense_military",
+      "pool_id": "a_share_defense_military",
+      "name": "Defense and Military",
+      "display_name": "A-share Defense and Military Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "modules": {
+        "valuation": {
+          "status": "manual_seed",
+          "position_score": 0.12,
+          "label": "fair",
+          "pe_percentile": 0.58,
+          "pb_percentile": 0.54,
+          "dividend_support": -0.25,
+          "note": "Valuation is not cheap for the current earnings visibility."
+        },
+        "fundamental": {
+          "status": "manual_seed",
+          "score": 0.04,
+          "label": "stable",
+          "earnings_trend": 0.02,
+          "roe_quality": 0.02,
+          "cycle_position": 0.1,
+          "note": "Order visibility matters more than broad market liquidity."
+        },
+        "flow_price": {
+          "status": "from_sector_flow_review",
+          "score": 0.137,
+          "label": "neutral",
+          "confidence": 0.7222,
+          "data_completeness": 0.9,
+          "direct_flow_available": true,
+          "market_confirmation_available": true,
+          "confirmation_inputs": [
+            "direct_flow",
+            "market_confirmation",
+            "market_liquidity",
+            "policy_sentiment"
+          ],
+          "top_drivers": [
+            {
+              "component": "direct_flow",
+              "score": 0.25,
+              "confidence": 1,
+              "weight": 0.3,
+              "contribution": 0.075,
+              "available": true
+            },
+            {
+              "component": "market_confirmation",
+              "score": -0.15853333333333333,
+              "confidence": 0.7333333333333334,
+              "weight": 0.25,
+              "contribution": -0.03963333333333333,
+              "available": true
             },
             {
               "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
+              "score": 0.360625,
+              "confidence": 0.725,
               "weight": 0.1,
-              "contribution": 0.020159999999999997,
+              "contribution": 0.0360625,
               "available": true
             }
           ]
@@ -1700,9 +1700,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1712,19 +1712,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -1764,9 +1764,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1776,19 +1776,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -1828,9 +1828,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1840,19 +1840,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -1892,9 +1892,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": -0.0758,
+          "score": -0.0569,
           "label": "neutral",
-          "confidence": 0.6597,
+          "confidence": 0.7222,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -1966,9 +1966,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -1978,19 +1978,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -2030,9 +2030,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -2042,19 +2042,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -2094,9 +2094,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -2106,19 +2106,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -2158,9 +2158,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0557,
+          "score": 0.0727,
           "label": "neutral",
-          "confidence": 0.2042,
+          "confidence": 0.2208,
           "data_completeness": 0.25,
           "direct_flow_available": false,
           "market_confirmation_available": false,
@@ -2170,19 +2170,19 @@
           ],
           "top_drivers": [
             {
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
+              "available": true
+            },
+            {
               "component": "market_liquidity",
               "score": 0.23725943396226415,
               "confidence": 0.875,
               "weight": 0.15,
               "contribution": 0.03558891509433962,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.20159999999999997,
-              "confidence": 0.35,
-              "weight": 0.1,
-              "contribution": 0.020159999999999997,
               "available": true
             }
           ]
@@ -2222,9 +2222,9 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": -0.1383,
+          "score": -0.1233,
           "label": "neutral",
-          "confidence": 0.6597,
+          "confidence": 0.6764,
           "data_completeness": 0.9,
           "direct_flow_available": true,
           "market_confirmation_available": true,
@@ -2252,11 +2252,11 @@
               "available": true
             },
             {
-              "component": "market_liquidity",
-              "score": 0.23725943396226415,
-              "confidence": 0.875,
-              "weight": 0.15,
-              "contribution": 0.03558891509433962,
+              "component": "policy_sentiment",
+              "score": 0.37124999999999997,
+              "confidence": 0.45,
+              "weight": 0.1,
+              "contribution": 0.037125,
               "available": true
             }
           ]

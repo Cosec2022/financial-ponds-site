@@ -1,17 +1,17 @@
 {
   "as_of": "2026-07-07",
-  "generated_at": "2026-07-07T13:17:42.618Z",
+  "generated_at": "2026-07-07T13:38:37.042Z",
   "module_id": "data_reality_audit_v0_1",
   "status": "audit_available",
   "overall_reality": "mixed_non_real",
-  "headline": "当前页面含 7 个非真实或来源未验证层。模型结构可看，市场结论不可直接用。",
+  "headline": "当前页面含 6 个非真实或来源未验证层。模型结构可看，市场结论不可直接用。",
   "layers": [
     {
       "id": "akshare_provider_doctor",
       "name": "AKShare环境预检",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_doctor.json",
       "as_of": null,
-      "generated_at": "2026-07-07T13:15:05.992837+00:00",
+      "generated_at": "2026-07-07T13:37:40.372266+00:00",
       "reality": "provider_doctor_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -27,7 +27,7 @@
       "name": "AKShare真实数据探测",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-07.json",
       "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T13:17:04.867708+00:00",
+      "generated_at": "2026-07-07T13:38:24.471224+00:00",
       "reality": "provider_run_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -46,14 +46,14 @@
       "name": "资金量价",
       "source_file": "sector_flow_review.json",
       "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T13:17:42.074Z",
+      "generated_at": "2026-07-07T13:38:36.452Z",
       "reality": "mock",
       "confidence_for_market_use": "low",
       "source_counts": {
-        "mock_observation_collector": 98,
+        "mock_observation_collector": 99,
         "akshare_provider_flow_observations": 22,
         "a_share_water_level_provider": 62,
-        "news_intelligence_v1": 39,
+        "news_intelligence_v1": 38,
         "string_node": 100
       },
       "counts": {
@@ -68,23 +68,23 @@
       "name": "新闻层",
       "source_file": "news_review.json",
       "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T13:17:41.825Z",
-      "reality": "fixture",
+      "generated_at": "2026-07-07T13:38:36.262Z",
+      "reality": "unknown",
       "confidence_for_market_use": "low",
       "counts": {
-        "collected_items": 3,
+        "collected_items": 24,
         "matched_events": 8,
-        "observations": 11,
-        "affected_sectors": 8
+        "observations": 10,
+        "affected_sectors": 7
       },
-      "reading": "新闻层使用 fixture/fallback，只能检查流程，不能当作当天真实新闻。"
+      "reading": "新闻层来源不明。"
     },
     {
       "id": "sector_modules",
       "name": "估值/基本面/资金量价三模块",
       "source_file": "sector_module_review.json",
       "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T13:17:42.193Z",
+      "generated_at": "2026-07-07T13:38:36.620Z",
       "reality": "manual_seed",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -108,7 +108,7 @@
       "name": "ETF行动准备度",
       "source_file": "etf_decision_readiness.json",
       "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T13:17:42.232Z",
+      "generated_at": "2026-07-07T13:38:36.664Z",
       "reality": "decision_gate_blocked",
       "confidence_for_market_use": "low",
       "counts": {
@@ -136,10 +136,6 @@
           "reading": "真实 ETF 直接资金流覆盖不足。"
         },
         {
-          "id": "trend_history_short",
-          "reading": "轮动历史至少需要 3 个交易日样本。"
-        },
-        {
           "id": "manual_valuation_fundamental",
           "reading": "估值和基本面模块仍包含手工种子输入。"
         }
@@ -151,7 +147,7 @@
       "name": "行业轮动",
       "source_file": "sector_rotation_intelligence.json",
       "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T13:17:42.111Z",
+      "generated_at": "2026-07-07T13:38:36.490Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -161,7 +157,7 @@
         },
         {
           "id": "news",
-          "reality": "fixture"
+          "reality": "unknown"
         }
       ],
       "reading": "该层是解释层，上游仍含非真实输入，因此只能看结构，不能当真实市场结论。"
@@ -171,7 +167,7 @@
       "name": "通用池模型",
       "source_file": "general_pool_analysis.json",
       "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T13:17:42.470Z",
+      "generated_at": "2026-07-07T13:38:36.894Z",
       "reality": "contract_output_source_unverified",
       "confidence_for_market_use": "low",
       "counts": {
@@ -186,7 +182,7 @@
       "name": "轮动历史",
       "source_file": "sector_rotation_history.json",
       "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T13:17:42.157Z",
+      "generated_at": "2026-07-07T13:38:36.584Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -200,7 +196,7 @@
   ],
   "warnings": [
     "资金量价: 模型组件可运行，但当前资金量价节点来自 mock/fixture 来源，不能当作真实市场信号。",
-    "新闻层: 新闻层使用 fixture/fallback，只能检查流程，不能当作当天真实新闻。",
+    "新闻层: 新闻层来源不明。",
     "估值/基本面/资金量价三模块: 估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。",
     "ETF行动准备度: 暂不能指导买入 ETF：行业资金量价仍来自 mock、fixture 或未验证来源。",
     "行业轮动: 该层是解释层，上游仍含非真实输入，因此只能看结构，不能当真实市场结论。",
