@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.10.31 - Daily sector analysis panel
+
+- Bumped site and framework package versions to `0.10.31`.
+- Added `FP-DAILY-01` daily sector analysis:
+  - `src/tools/daily_sector_analysis.mjs`
+  - `npm run daily:sector-analysis`
+  - `financial-pond/data/daily_sector_analysis.json`
+- The analysis combines sector flow, rotation history, sector module review, and ETF readiness into:
+  - priority watch
+  - confirm next
+  - avoid watch
+- Added the homepage `今日行业结论` panel.
+- Updated GitHub Actions, asset embedding, and published-data validation so `daily_sector_analysis.json` is required.
+- Added framework and Worker tests for the new contract.
+
+Important boundary:
+
+- This is an observation layer only.
+- If `etf_decision_readiness.guidance_state` is `not_ready`, strong sectors remain watch-only.
+- No output is a buy, sell, rebalance, or allocation instruction.
+
 ## v0.10.30 - Published data completeness guard
 
 - Bumped site and framework package versions to `0.10.30`.

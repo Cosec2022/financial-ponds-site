@@ -45,6 +45,7 @@ jobs:
           npm run a-share:daily:ci -- --as-of "$AS_OF"
           npm run pool:analysis -- --as-of "$AS_OF"
           npm run data:audit -- --as-of "$AS_OF"
+          npm run daily:sector-analysis -- --as-of "$AS_OF"
           npm run export:web-data -- "$AS_OF"
           cp web/data/dashboard.json ../../financial-pond/data/dashboard.json
           cp "model_outputs/$AS_OF/general_pool_analysis.json" ../../financial-pond/data/general_pool_analysis.json
@@ -54,6 +55,7 @@ jobs:
           cp "model_outputs/$AS_OF/sector_module_review.json" ../../financial-pond/data/sector_module_review.json
           cp "model_outputs/$AS_OF/etf_decision_readiness.json" ../../financial-pond/data/etf_decision_readiness.json
           cp "model_outputs/$AS_OF/data_reality_audit.json" ../../financial-pond/data/data_reality_audit.json
+          cp "model_outputs/$AS_OF/daily_sector_analysis.json" ../../financial-pond/data/daily_sector_analysis.json
           cp "model_outputs/$AS_OF/news_review.json" ../../financial-pond/data/news_review.json
 
       - name: Build and test Worker

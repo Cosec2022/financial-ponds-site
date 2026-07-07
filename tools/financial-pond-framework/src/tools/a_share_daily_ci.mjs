@@ -107,6 +107,12 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "daily_sector_analysis", "node", [
+    "src/tools/daily_sector_analysis.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
   summary.status = "ok";
   summary.finished_at = new Date().toISOString();
   console.log(JSON.stringify(summary, null, 2));

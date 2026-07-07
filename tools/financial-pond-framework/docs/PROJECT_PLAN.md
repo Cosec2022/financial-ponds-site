@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.30
+Version: v0.10.31
 Status: active
 
 ## Final Target
@@ -37,7 +37,7 @@ Overall progress: 45%
 Current stage: usable prototype
 Daily data pipeline: partial, with CI ordering fixed for 31-industry A-share review
 Decision-grade model: not yet
-Main limitation: A-share now has an ETF action-readiness gate, but still needs stronger hard-data history, observed ETF share-change flow, real valuation/fundamental sources, real news quality, and multi-day confirmation before it can guide allocation
+Main limitation: A-share now has an ETF action-readiness gate and daily sector analysis, but still needs stronger hard-data history, observed ETF share-change flow, real valuation/fundamental sources, real news quality, and multi-day confirmation before it can guide allocation
 ```
 
 ## Phase Plan
@@ -68,6 +68,7 @@ sector rotation history
 ETF action-readiness gate with visible blockers and pending watch items
 Provider status panel showing AKShare environment, real run, flow readiness, and next command
 Published-data completeness guard for the daily Action
+Daily sector analysis panel with priority watch, confirm next, and avoid watch tiers
 clickable pond map
 news pressure with fallback labeling
 local graph node edits and patch export
@@ -84,7 +85,8 @@ local graph node edits and patch export
 6. UI local graph edits do not change backend configuration.
 7. GPT weekly review is planned only.
 8. ETF readiness can block guidance even when sector rankings look strong.
-9. No output is a trading instruction.
+9. Daily sector analysis is watch-only unless ETF readiness reaches decision-support mode.
+10. No output is a trading instruction.
 ```
 
 ## Next Work Order
@@ -93,6 +95,6 @@ local graph node edits and patch export
 2. Sync shared work into the general model: input coverage, confidence labels, missing-input reporting, and component contract tests.
 3. S&P 500 second: add live provider inputs for flow, breadth, EPS/valuation, and news pressure after the A-share baseline is firmer.
 4. Add continuation / reversal / strengthening / weakening labels.
-5. Feed confirmed trend labels into the frontend.
+5. Feed confirmed trend labels into the daily sector analysis scoring.
 6. Implement keyword state engine.
 7. Implement graph edge state backend.

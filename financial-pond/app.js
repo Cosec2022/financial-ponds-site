@@ -52,6 +52,7 @@ const state = {
   moduleReview: null,
   etfReadiness: null,
   realityAudit: null,
+  dailyAnalysis: null,
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -414,6 +415,78 @@ function renderProviderPanel() {
   `;
 }
 
+function renderDailyAnalysisPanel() {
+  const panel = document.getElementById("dailyAnalysisPanel");
+  const statusBadge = document.getElementById("dailyAnalysisStatus");
+  const analysis = state.dailyAnalysis;
+  if (!panel || !statusBadge) return;
+
+  if (!analysis || analysis.status !== "daily_sector_analysis_available") {
+    statusBadge.textContent = "等待结论";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无今日行业结论。等待 daily_sector_analysis.json 生成。</div>`;
+    return;
+  }
+
+  const statusClass = analysis.analysis_mode === "decision_review" ? "positive" : analysis.analysis_mode === "watch_only" ? "warm" : "negative";
+  const gates = analysis.gate_summary ?? {};
+  const tiers = analysis.tiers ?? {};
+
+  statusBadge.textContent = analysisModeLabel(analysis.analysis_mode);
+  statusBadge.className = `pill ${statusClass}`;
+
+  panel.innerHTML = `
+    <article class="daily-card headline ${statusClass}">
+      <span>今日结论</span>
+      <strong>${analysis.headline}</strong>
+      <p>状态 ${guidanceStateLabel(gates.guidance_state)} · Provider ${providerRunLabel(gates.provider_run)} · ETF流 ${providerFlowReadinessLabel(gates.provider_flow_readiness)} · 样本 ${gates.sample_days ?? 0} 天。</p>
+    </article>
+    <article class="daily-card ${statusClass}">
+      <span>执行边界</span>
+      <strong>${analysisModeLabel(analysis.analysis_mode)}</strong>
+      <p>${analysis.analysis_mode === "decision_review" ? "可以进入人工复核，但仍不是自动下单。" : "当前只读行业强弱，不输出 ETF 买入或调仓建议。"}</p>
+      <small>真实ETF流覆盖 ${formatPct(gates.true_flow_coverage)} · 数据真实性 ${realityLabel(gates.data_reality)} · 置信度 ${confidenceLabel(gates.market_use_confidence)}</small>
+    </article>
+    <article class="daily-card">
+      <span>下一解锁</span>
+      <strong>${analysis.next_unlock?.label ?? "--"}</strong>
+      <p>${analysis.next_unlock?.reading ?? "等待下一次 Action 更新样本。"}</p>
+    </article>
+    <article class="daily-card wide">
+      <span>优先观察</span>
+      ${dailyTierTemplate(tiers.priority_watch ?? [], "暂无连续领先方向。")}
+    </article>
+    <article class="daily-card wide">
+      <span>继续确认</span>
+      ${dailyTierTemplate(tiers.confirm_next ?? [], "暂无需要继续确认的当日强势方向。")}
+    </article>
+    <article class="daily-card wide risk">
+      <span>回避观察</span>
+      ${dailyTierTemplate(tiers.avoid_watch ?? [], "暂无明确回避观察项。")}
+    </article>
+  `;
+
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function dailyTierTemplate(rows, emptyText) {
+  if (!rows.length) return `<p class="muted">${emptyText}</p>`;
+  return rows.slice(0, 4).map((row) => `
+    <button class="daily-row" data-pond-id="${row.sector_id}" type="button">
+      <span>${row.name}</span>
+      <b class="score ${scoreClass(row.score)}">${formatScore(row.score)}</b>
+      <small>${row.reading}</small>
+      <em>连续 ${row.streak_days ?? "--"} 天 · 准备度 ${row.readiness_score ?? "--"}/100 · ${row.module_decision_text ?? row.action_text ?? labelText(row.label)}</em>
+    </button>
+  `).join("");
+}
+
 function providerStatusCard({ label, value, className, reading, detail }) {
   return `
     <article class="provider-card ${className}">
@@ -591,6 +664,15 @@ function providerFlowReadinessLabel(value) {
     ready: "可用",
     ok: "可用",
     unknown: "未知"
+  };
+  return map[value] ?? value ?? "--";
+}
+
+function analysisModeLabel(value) {
+  const map = {
+    analysis_only: "只做分析",
+    watch_only: "只做观察",
+    decision_review: "人工复核"
   };
   return map[value] ?? value ?? "--";
 }
@@ -1593,6 +1675,7 @@ function bindTabs() {
 function renderAll() {
   renderRealityPanel();
   renderProviderPanel();
+  renderDailyAnalysisPanel();
   renderHeader();
   renderReferencePanel();
   renderRotationPanel();
@@ -1619,6 +1702,7 @@ async function loadAll() {
   state.moduleReview = await readJson("./data/sector_module_review.json", null);
   state.etfReadiness = await readJson("./data/etf_decision_readiness.json", null);
   state.realityAudit = await readJson("./data/data_reality_audit.json", null);
+  state.dailyAnalysis = await readJson("./data/daily_sector_analysis.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

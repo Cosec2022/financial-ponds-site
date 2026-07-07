@@ -5,7 +5,7 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.30`
+Package version: `0.10.31`
 
 Purpose of this version:
 
@@ -1113,7 +1113,47 @@ This is operational guidance only.
 It does not change scores, provider collection rules, or ETF action labels.
 ```
 
-## Current v0.10.30 Addition
+## Current v0.10.31 Addition
+
+The package adds a daily sector analysis layer:
+
+```text
+src/tools/daily_sector_analysis.mjs
+npm run daily:sector-analysis
+financial-pond/data/daily_sector_analysis.json
+```
+
+The output combines:
+
+```text
+sector_flow_review.json
+sector_rotation_history.json
+sector_module_review.json
+etf_decision_readiness.json
+data_reality_audit.json when available
+```
+
+It writes three observation tiers:
+
+```text
+priority_watch
+confirm_next
+avoid_watch
+```
+
+The homepage now has a `今日行业结论` panel before the reference panel.
+The GitHub Action regenerates and publishes `daily_sector_analysis.json`, and
+`validate:data` now requires it.
+
+Important boundary:
+
+```text
+This is an observation layer.
+When ETF readiness is not_ready, strong sectors remain watch-only.
+It does not output buy, sell, rebalance, or allocation instructions.
+```
+
+## Previous v0.10.30 Addition
 
 The package adds a daily published-data completeness guard:
 

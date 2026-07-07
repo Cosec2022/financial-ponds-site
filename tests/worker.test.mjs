@@ -13,6 +13,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /资金池塘图谱/);
   assert.match(html, /数据真实性审计/);
   assert.match(html, /真实数据通道/);
+  assert.match(html, /今日行业结论/);
   assert.match(html, /ETF行动准备度/);
   assert.match(html, /流入流出算法/);
   assert.match(html, /节点反馈 \/ 修改/);
@@ -78,6 +79,14 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.ok(auditJson.layers.find((layer) => layer.id === "akshare_provider_doctor"));
   assert.ok(auditJson.layers.find((layer) => layer.id === "akshare_provider_run"));
   assert.ok(auditJson.layers.find((layer) => layer.id === "flow_price"));
+
+  const dailyAnalysis = await worker.fetch(request("/data/daily_sector_analysis.json"), {});
+  assert.equal(dailyAnalysis.status, 200);
+  const dailyAnalysisJson = await dailyAnalysis.json();
+  assert.equal(dailyAnalysisJson.module_id, "daily_sector_analysis_v0_10_31");
+  assert.equal(dailyAnalysisJson.status, "daily_sector_analysis_available");
+  assert.ok(dailyAnalysisJson.tiers.confirm_next);
+  assert.ok(dailyAnalysisJson.gate_summary);
 
   const news = await worker.fetch(request("/data/news_review.json"), {});
   assert.equal(news.status, 200);

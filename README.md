@@ -14,6 +14,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 - The ETF readiness panel now keeps blocked-but-close representative sectors visible as pending watch items, with blockers translated for human reading.
 - The first screen now includes a provider status panel for AKShare environment, real provider run, ETF share-flow readiness, trend samples, valuation source, and the next command to run.
 - The daily Action now runs a published-data completeness guard, so missing ETF readiness, module review, or data audit JSON fails the build instead of silently deploying partial data.
+- The first screen now includes `FP-DAILY-01` daily sector analysis: priority watch, confirm next, and avoid watch tiers gated by ETF readiness.
 - The first screen separates hard data, fallback news, and prototype signals.
 - The reference panel now shows ETF-flow availability separately from price-volume confirmation, so `0/11` ETF-flow days are clearly marked instead of silently mixed into the score.
 - A-share hard-data collection runs in `tools/financial-pond-framework`.
@@ -58,6 +59,7 @@ The CI runner collects:
 6. Sector Module Review: valuation, fundamentals, and flow/price kept independent.
 7. General Pool Analysis after the graph cycle.
 8. Data Reality Audit: labels real, mock, fixture, manual seed, and derived layers.
+9. Daily Sector Analysis: combines rotation history, flow review, module review, and ETF readiness into watch-only tiers.
 
 Published web JSON:
 
@@ -68,7 +70,9 @@ financial-pond/data/sector_flow_review.json
 financial-pond/data/sector_rotation_intelligence.json
 financial-pond/data/sector_rotation_history.json
 financial-pond/data/sector_module_review.json
+financial-pond/data/etf_decision_readiness.json
 financial-pond/data/data_reality_audit.json
+financial-pond/data/daily_sector_analysis.json
 financial-pond/data/news_review.json
 ```
 
@@ -118,10 +122,40 @@ tools/financial-pond-framework/docs/UPDATE_PROTOCOL.md
 tools/financial-pond-framework/docs/PROJECT_PLAN.md
 tools/financial-pond-framework/docs/MODULE_PLAN.md
 tools/financial-pond-framework/docs/GITHUB_SYNC_PROTOCOL.md
-tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_30.md
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_31.md
 ```
 
 Before making meaningful changes, read those files first.
+
+## v0.10.31 daily sector analysis
+
+This package adds `FP-DAILY-01`, a daily interpretation layer:
+
+```text
+sector_flow_review
++ sector_rotation_history
++ sector_module_review
++ etf_decision_readiness
+= daily_sector_analysis
+```
+
+Working:
+
+```text
+- tools/financial-pond-framework/src/tools/daily_sector_analysis.mjs
+- npm run daily:sector-analysis
+- financial-pond/data/daily_sector_analysis.json
+- frontend 今日行业结论 panel
+- GitHub Actions publish and validate guard for the new JSON
+```
+
+Boundary:
+
+```text
+- When ETF readiness is not_ready, all strong sectors remain observation-only.
+- The output ranks priority watch / confirm next / avoid watch.
+- It does not emit buy, sell, rebalance, or allocation instructions.
+```
 
 ## v0.10.8 general pool analysis
 

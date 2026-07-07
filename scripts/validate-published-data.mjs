@@ -12,6 +12,7 @@ const requiredFiles = [
   ["sector_module_review.json", (json) => json.module_id === "sector_module_review_v0_1"],
   ["etf_decision_readiness.json", (json) => json.status === "readiness_available" && Boolean(json.gates)],
   ["data_reality_audit.json", (json) => json.status === "audit_available" && Array.isArray(json.layers)],
+  ["daily_sector_analysis.json", (json) => json.status === "daily_sector_analysis_available" && Boolean(json.tiers)],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];

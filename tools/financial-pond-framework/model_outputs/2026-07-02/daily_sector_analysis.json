@@ -1,0 +1,489 @@
+{
+  "as_of": "2026-07-02",
+  "generated_at": "2026-07-07T13:04:53.263Z",
+  "module_id": "daily_sector_analysis_v0_10_31",
+  "status": "daily_sector_analysis_available",
+  "analysis_mode": "analysis_only",
+  "headline": "今日行业结论：券商 领头；0 个优先观察，6 个继续确认，6 个回避观察。当前只做观察，不做 ETF 执行建议。",
+  "gate_summary": {
+    "guidance_state": "not_ready",
+    "provider_run": "missing_or_not_ok",
+    "provider_flow_readiness": "unknown",
+    "true_flow_coverage": 0,
+    "sample_days": 1,
+    "trend_state": "insufficient_history",
+    "data_reality": "mixed_non_real",
+    "market_use_confidence": "low"
+  },
+  "tiers": {
+    "priority_watch": [],
+    "confirm_next": [
+      {
+        "sector_id": "brokerage",
+        "name": "券商",
+        "tier": "confirm_next",
+        "score": 0.3418,
+        "label": "constructive_inflow_bias",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "balanced_candidate",
+        "module_decision_text": "合理且改善",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量确认",
+            "总水位",
+            "新闻压力",
+            "基本面代理"
+          ],
+          "valuation_label": "fair",
+          "valuation_position_score": 0.08,
+          "fundamental_label": "improving",
+          "fundamental_score": 0.12,
+          "flow_price_label": "constructive_inflow_bias",
+          "flow_price_score": 0.3418
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+        "blockers": [
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "ai_computer",
+        "name": "AI计算机",
+        "tier": "confirm_next",
+        "score": 0.2636,
+        "label": "constructive_inflow_bias",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "expensive_momentum",
+        "module_decision_text": "偏贵但趋势强",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量确认",
+            "总水位",
+            "新闻压力",
+            "基本面代理"
+          ],
+          "valuation_label": "very_expensive",
+          "valuation_position_score": 0.38,
+          "fundamental_label": "improving",
+          "fundamental_score": 0.24,
+          "flow_price_label": "constructive_inflow_bias",
+          "flow_price_score": 0.2636
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+        "blockers": [
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "semiconductor",
+        "name": "半导体",
+        "tier": "confirm_next",
+        "score": 0.2156,
+        "label": "constructive_inflow_bias",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "expensive_momentum",
+        "module_decision_text": "偏贵但趋势强",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量确认",
+            "总水位",
+            "新闻压力",
+            "基本面代理"
+          ],
+          "valuation_label": "very_expensive",
+          "valuation_position_score": 0.42,
+          "fundamental_label": "improving",
+          "fundamental_score": 0.2,
+          "flow_price_label": "constructive_inflow_bias",
+          "flow_price_score": 0.2156
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+        "blockers": [
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "defense_military",
+        "name": "Defense and Military",
+        "tier": "confirm_next",
+        "score": 0.2146,
+        "label": "constructive_inflow_bias",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "wait_for_confirmation",
+        "module_decision_text": "等待确认",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量",
+            "总水位",
+            "新闻",
+            "基本面代理"
+          ],
+          "valuation_label": "fair",
+          "valuation_position_score": 0.12,
+          "fundamental_label": "stable",
+          "fundamental_score": 0.04,
+          "flow_price_label": "constructive_inflow_bias",
+          "flow_price_score": 0.2146
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+        "blockers": [
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "communication_electronics",
+        "name": "Communication and Electronics",
+        "tier": "confirm_next",
+        "score": 0.1919,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "balanced_candidate",
+        "module_decision_text": "合理且改善",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量",
+            "总水位",
+            "新闻",
+            "基本面代理"
+          ],
+          "valuation_label": "expensive",
+          "valuation_position_score": 0.22,
+          "fundamental_label": "improving",
+          "fundamental_score": 0.18,
+          "flow_price_label": "neutral",
+          "flow_price_score": 0.1919
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+        "blockers": [
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "healthcare_pharma",
+        "name": "Healthcare and Pharma",
+        "tier": "confirm_next",
+        "score": 0.1523,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "wait_for_confirmation",
+        "module_decision_text": "等待确认",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量",
+            "总水位",
+            "新闻",
+            "基本面代理"
+          ],
+          "valuation_label": "cheap",
+          "valuation_position_score": -0.28,
+          "fundamental_label": "stable",
+          "fundamental_score": -0.04,
+          "flow_price_label": "neutral",
+          "flow_price_score": 0.1523
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+        "blockers": [
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      }
+    ],
+    "avoid_watch": [
+      {
+        "sector_id": "real_estate_infra",
+        "name": "A-share Real Estate and Infrastructure Pool",
+        "tier": "avoid_watch",
+        "score": -0.1163,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "value_trap_risk",
+        "module_decision_text": "便宜但基本面弱",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量",
+            "总水位",
+            "新闻",
+            "基本面代理"
+          ],
+          "valuation_label": "deep_discount",
+          "valuation_position_score": -0.35,
+          "fundamental_label": "deteriorating",
+          "fundamental_score": -0.32,
+          "flow_price_label": "neutral",
+          "flow_price_score": -0.1163
+        },
+        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。",
+        "blockers": [
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "retail",
+        "name": "A-share Retail Pool",
+        "tier": "avoid_watch",
+        "score": 0.0663,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 28,
+        "action_label": "not_covered",
+        "action_text": "未接入代表ETF",
+        "module_decision_label": "value_trap_risk",
+        "module_decision_text": "便宜但基本面弱",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "总水位",
+            "新闻"
+          ],
+          "valuation_label": "cheap",
+          "valuation_position_score": -0.18,
+          "fundamental_label": "weak",
+          "fundamental_score": -0.14,
+          "flow_price_label": "neutral",
+          "flow_price_score": 0.0663
+        },
+        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。",
+        "blockers": [
+          "no_representative_provider_mapping",
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "steel",
+        "name": "A-share Steel Pool",
+        "tier": "avoid_watch",
+        "score": 0.0663,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 28,
+        "action_label": "not_covered",
+        "action_text": "未接入代表ETF",
+        "module_decision_label": "value_trap_risk",
+        "module_decision_text": "便宜但基本面弱",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "总水位",
+            "新闻"
+          ],
+          "valuation_label": "cheap",
+          "valuation_position_score": -0.24,
+          "fundamental_label": "deteriorating",
+          "fundamental_score": -0.28,
+          "flow_price_label": "neutral",
+          "flow_price_score": 0.0663
+        },
+        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。",
+        "blockers": [
+          "no_representative_provider_mapping",
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "basic_chemicals",
+        "name": "A-share Basic Chemicals Pool",
+        "tier": "avoid_watch",
+        "score": 0.0663,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 28,
+        "action_label": "not_covered",
+        "action_text": "未接入代表ETF",
+        "module_decision_label": "value_trap_risk",
+        "module_decision_text": "便宜但基本面弱",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "总水位",
+            "新闻"
+          ],
+          "valuation_label": "cheap",
+          "valuation_position_score": -0.16,
+          "fundamental_label": "weak",
+          "fundamental_score": -0.12,
+          "flow_price_label": "neutral",
+          "flow_price_score": 0.0663
+        },
+        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。",
+        "blockers": [
+          "no_representative_provider_mapping",
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "building_materials",
+        "name": "A-share Building Materials Pool",
+        "tier": "avoid_watch",
+        "score": 0.0663,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 28,
+        "action_label": "not_covered",
+        "action_text": "未接入代表ETF",
+        "module_decision_label": "value_trap_risk",
+        "module_decision_text": "便宜但基本面弱",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "总水位",
+            "新闻"
+          ],
+          "valuation_label": "deep_discount",
+          "valuation_position_score": -0.3,
+          "fundamental_label": "deteriorating",
+          "fundamental_score": -0.3,
+          "flow_price_label": "neutral",
+          "flow_price_score": 0.0663
+        },
+        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。",
+        "blockers": [
+          "no_representative_provider_mapping",
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "new_energy_ev",
+        "name": "新能源车",
+        "tier": "avoid_watch",
+        "score": -0.0468,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "wait_for_confirmation",
+        "module_decision_text": "等待确认",
+        "evidence": {
+          "observed_direct_flow": false,
+          "observed_price_volume": false,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量确认",
+            "总水位",
+            "新闻压力",
+            "基本面代理"
+          ],
+          "valuation_label": "fair",
+          "valuation_position_score": -0.08,
+          "fundamental_label": "weak",
+          "fundamental_score": -0.18,
+          "flow_price_label": "neutral",
+          "flow_price_score": -0.0468
+        },
+        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。",
+        "blockers": [
+          "non_real_flow_source",
+          "no_observed_direct_etf_flow",
+          "trend_history_short",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      }
+    ]
+  },
+  "counts": {
+    "priority_watch": 0,
+    "confirm_next": 6,
+    "avoid_watch": 6
+  },
+  "next_unlock": {
+    "milestone_id": "provider_environment",
+    "label": "AKShare通道",
+    "reading": "先跑通 AKShare provider，确认本机能取真实 ETF 数据。"
+  },
+  "interpretation_boundary": [
+    "Daily sector analysis is an observation layer, not a trading instruction.",
+    "When ETF decision readiness is not_ready, all strong sectors remain watch-only.",
+    "A sector can be a priority watch item before it becomes an ETF execution candidate.",
+    "Manual valuation or fundamental seeds must not be treated as live market valuation evidence."
+  ]
+}

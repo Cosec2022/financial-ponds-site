@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.30
+Version: v0.10.31
 Status: active
 
 Module IDs use this format:
@@ -25,10 +25,11 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots and compare latest vs previous day | working prototype | 35% | Accumulate 3+ trading days and add trend labels |
 | FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language | working prototype | 36% | Replace manual valuation/fundamental seeds and require observed multi-day flow |
-| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 62% | Add trend panels and maintenance-state display |
+| FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, and ETF readiness into watch tiers | working prototype | 32% | Add continuation/reversal labels after more history accumulates |
+| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 65% | Add maintenance-state display |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
-| FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 77% | Keep CI-order and provider-coverage guards current |
+| FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 79% | Keep CI-order and provider-coverage guards current |
 | FP-MAINT-01 | Maintenance Protocol | Rules, update protocol, total plan, module plan | working | 75% | Keep progress updated every version |
 | FP-POOL-01 | Free Pond Expansion | Add arbitrary market, asset, sector, theme, or watchlist as a pond | started | 20% | Define pond template and creation checklist |
 
@@ -64,6 +65,7 @@ Tests:
 1. FP-DATA-01: A-share hard-data depth first.
 2. FP-HIST-01: accumulate at least 3 trading days.
 3. FP-NEWS-01: real fixed A-share news sources.
-4. FP-GEN-01: sync reusable coverage/confidence work into the shared model.
-5. FP-DATA-01: S&P 500 live provider inputs after the A-share baseline is firmer.
+4. FP-DAILY-01: improve continuation/reversal labels without weakening ETF gates.
+5. FP-GEN-01: sync reusable coverage/confidence work into the shared model.
+6. FP-DATA-01: S&P 500 live provider inputs after the A-share baseline is firmer.
 ```
