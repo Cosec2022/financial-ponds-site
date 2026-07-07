@@ -1,0 +1,167 @@
+{
+  "id": "sector_module_profiles_v0_1",
+  "description": "Manual seed profiles for independent A-share sector valuation and fundamental modules. These are explicit editable inputs, not live provider facts. Update them after nightly review or replace them with provider-generated fields later.",
+  "score_convention": {
+    "valuation_position_score": "Negative means cheaper than its own/history-relative comfort zone; positive means more expensive.",
+    "fundamental_score": "Positive means improving or resilient fundamentals; negative means deterioration or value-trap risk.",
+    "flow_price_score": "Read from sector_flow_review.json and kept independent from this profile file."
+  },
+  "data_status": "manual_seed_v0_1",
+  "sectors": [
+    {
+      "sector_id": "brokerage",
+      "valuation": { "position_score": 0.08, "pe_percentile": 0.55, "pb_percentile": 0.50, "dividend_support": 0.10, "note": "Beta sector; valuation is not obviously cheap after a flow-led move." },
+      "fundamental": { "score": 0.12, "earnings_trend": 0.12, "roe_quality": 0.06, "cycle_position": 0.20, "note": "Turnover sensitivity improves quickly when market activity rises." }
+    },
+    {
+      "sector_id": "bank_insurance",
+      "valuation": { "position_score": -0.18, "pe_percentile": 0.28, "pb_percentile": 0.22, "dividend_support": 0.55, "note": "Low PB and dividend support, but asset-quality discount remains." },
+      "fundamental": { "score": 0.02, "earnings_trend": -0.04, "roe_quality": 0.10, "cycle_position": 0.00, "note": "Stable but credit and net-interest-margin pressure still need watching." }
+    },
+    {
+      "sector_id": "semiconductor",
+      "valuation": { "position_score": 0.42, "pe_percentile": 0.82, "pb_percentile": 0.78, "dividend_support": -0.35, "note": "High expectation sector; valuation safety margin is thin." },
+      "fundamental": { "score": 0.20, "earnings_trend": 0.20, "roe_quality": 0.08, "cycle_position": 0.32, "note": "Cycle and localization logic are constructive, but price already reflects much of it." }
+    },
+    {
+      "sector_id": "ai_computer",
+      "valuation": { "position_score": 0.38, "pe_percentile": 0.78, "pb_percentile": 0.72, "dividend_support": -0.40, "note": "Growth expectations are high; not a cheap module signal." },
+      "fundamental": { "score": 0.24, "earnings_trend": 0.24, "roe_quality": 0.08, "cycle_position": 0.40, "note": "AI demand story is improving, but needs order and earnings confirmation." }
+    },
+    {
+      "sector_id": "communication_electronics",
+      "valuation": { "position_score": 0.22, "pe_percentile": 0.63, "pb_percentile": 0.58, "dividend_support": -0.15, "note": "Fair-to-expensive because hardware cycle expectation has repriced." },
+      "fundamental": { "score": 0.18, "earnings_trend": 0.18, "roe_quality": 0.08, "cycle_position": 0.28, "note": "AI hardware and device cycle give moderate support." }
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "valuation": { "position_score": -0.08, "pe_percentile": 0.42, "pb_percentile": 0.38, "dividend_support": -0.20, "note": "Lower than previous boom valuation, but not enough alone." },
+      "fundamental": { "score": -0.18, "earnings_trend": -0.28, "roe_quality": -0.12, "cycle_position": -0.10, "note": "Capacity, price competition, and inventory pressure keep fundamentals weak." }
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "valuation": { "position_score": -0.28, "pe_percentile": 0.25, "pb_percentile": 0.30, "dividend_support": 0.05, "note": "Valuation has compressed meaningfully versus historical growth expectations." },
+      "fundamental": { "score": -0.04, "earnings_trend": -0.10, "roe_quality": 0.02, "cycle_position": -0.04, "note": "Cheapness needs policy and earnings recovery confirmation." }
+    },
+    {
+      "sector_id": "consumer",
+      "valuation": { "position_score": -0.24, "pe_percentile": 0.30, "pb_percentile": 0.32, "dividend_support": 0.12, "note": "Consumption leaders have de-rated; valuation is becoming more reasonable." },
+      "fundamental": { "score": -0.06, "earnings_trend": -0.08, "roe_quality": 0.08, "cycle_position": -0.14, "note": "Demand recovery is still the key missing confirmation." }
+    },
+    {
+      "sector_id": "defense_military",
+      "valuation": { "position_score": 0.12, "pe_percentile": 0.58, "pb_percentile": 0.54, "dividend_support": -0.25, "note": "Valuation is not cheap for the current earnings visibility." },
+      "fundamental": { "score": 0.04, "earnings_trend": 0.02, "roe_quality": 0.02, "cycle_position": 0.10, "note": "Order visibility matters more than broad market liquidity." }
+    },
+    {
+      "sector_id": "resources_materials",
+      "valuation": { "position_score": -0.10, "pe_percentile": 0.38, "pb_percentile": 0.36, "dividend_support": 0.16, "note": "Valuation is not demanding, but commodity cycle is mixed." },
+      "fundamental": { "score": 0.00, "earnings_trend": -0.04, "roe_quality": 0.04, "cycle_position": 0.00, "note": "Needs price and demand confirmation." }
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "valuation": { "position_score": -0.35, "pe_percentile": 0.18, "pb_percentile": 0.16, "dividend_support": 0.08, "note": "Deep discount, but discount reflects balance-sheet and demand risk." },
+      "fundamental": { "score": -0.32, "earnings_trend": -0.36, "roe_quality": -0.24, "cycle_position": -0.32, "note": "Classic value-trap candidate unless cash flow and policy transmission improve." }
+    },
+    {
+      "sector_id": "agriculture",
+      "valuation": { "position_score": 0.02, "pe_percentile": 0.52, "pb_percentile": 0.46, "dividend_support": -0.05, "note": "Mixed valuation because profits are cyclical." },
+      "fundamental": { "score": -0.02, "earnings_trend": -0.06, "roe_quality": -0.02, "cycle_position": 0.02, "note": "Depends on hog, seed, and feed cycle." }
+    },
+    {
+      "sector_id": "food_beverage",
+      "valuation": { "position_score": -0.12, "pe_percentile": 0.36, "pb_percentile": 0.38, "dividend_support": 0.16, "note": "Premium has compressed, but top brands still deserve some premium." },
+      "fundamental": { "score": 0.06, "earnings_trend": 0.02, "roe_quality": 0.20, "cycle_position": -0.04, "note": "Quality remains better than demand momentum." }
+    },
+    {
+      "sector_id": "home_appliances",
+      "valuation": { "position_score": -0.16, "pe_percentile": 0.32, "pb_percentile": 0.34, "dividend_support": 0.30, "note": "Reasonable valuation and dividend support." },
+      "fundamental": { "score": 0.10, "earnings_trend": 0.06, "roe_quality": 0.18, "cycle_position": 0.06, "note": "Export and replacement demand give some resilience." }
+    },
+    {
+      "sector_id": "textile_apparel",
+      "valuation": { "position_score": -0.10, "pe_percentile": 0.40, "pb_percentile": 0.36, "dividend_support": 0.08, "note": "Not demanding, but quality dispersion is high." },
+      "fundamental": { "score": -0.02, "earnings_trend": -0.04, "roe_quality": 0.00, "cycle_position": 0.00, "note": "Consumer and export demand both need confirmation." }
+    },
+    {
+      "sector_id": "light_manufacturing",
+      "valuation": { "position_score": -0.04, "pe_percentile": 0.45, "pb_percentile": 0.42, "dividend_support": 0.02, "note": "Mostly fair." },
+      "fundamental": { "score": 0.02, "earnings_trend": 0.00, "roe_quality": 0.04, "cycle_position": 0.02, "note": "No strong independent signal yet." }
+    },
+    {
+      "sector_id": "retail",
+      "valuation": { "position_score": -0.18, "pe_percentile": 0.31, "pb_percentile": 0.30, "dividend_support": 0.05, "note": "Cheap relative to history, but weak demand may justify discount." },
+      "fundamental": { "score": -0.14, "earnings_trend": -0.18, "roe_quality": -0.08, "cycle_position": -0.12, "note": "Needs consumption recovery before cheapness is actionable." }
+    },
+    {
+      "sector_id": "social_services",
+      "valuation": { "position_score": -0.06, "pe_percentile": 0.44, "pb_percentile": 0.40, "dividend_support": -0.08, "note": "Fair after reopening repricing faded." },
+      "fundamental": { "score": 0.00, "earnings_trend": 0.00, "roe_quality": -0.02, "cycle_position": 0.04, "note": "Travel and services demand need evidence." }
+    },
+    {
+      "sector_id": "beauty_care",
+      "valuation": { "position_score": -0.02, "pe_percentile": 0.48, "pb_percentile": 0.46, "dividend_support": -0.12, "note": "Fair but not deep value." },
+      "fundamental": { "score": -0.06, "earnings_trend": -0.10, "roe_quality": 0.02, "cycle_position": -0.08, "note": "Brand growth and consumer confidence are the bottlenecks." }
+    },
+    {
+      "sector_id": "transportation",
+      "valuation": { "position_score": -0.14, "pe_percentile": 0.34, "pb_percentile": 0.32, "dividend_support": 0.14, "note": "Moderately cheap with dividend support in some sub-sectors." },
+      "fundamental": { "score": 0.04, "earnings_trend": 0.04, "roe_quality": 0.04, "cycle_position": 0.02, "note": "Airports, expressways, and logistics differ materially." }
+    },
+    {
+      "sector_id": "utilities",
+      "valuation": { "position_score": -0.02, "pe_percentile": 0.46, "pb_percentile": 0.44, "dividend_support": 0.32, "note": "Dividend support offsets fair valuation." },
+      "fundamental": { "score": 0.08, "earnings_trend": 0.06, "roe_quality": 0.08, "cycle_position": 0.10, "note": "Cash-flow stability is better than market beta." }
+    },
+    {
+      "sector_id": "environmental_protection",
+      "valuation": { "position_score": -0.18, "pe_percentile": 0.30, "pb_percentile": 0.28, "dividend_support": 0.02, "note": "Cheap, but receivable and project-quality risks matter." },
+      "fundamental": { "score": -0.10, "earnings_trend": -0.12, "roe_quality": -0.08, "cycle_position": -0.08, "note": "Needs cash-collection improvement." }
+    },
+    {
+      "sector_id": "petroleum_petrochemical",
+      "valuation": { "position_score": -0.06, "pe_percentile": 0.40, "pb_percentile": 0.38, "dividend_support": 0.28, "note": "Dividend support with commodity sensitivity." },
+      "fundamental": { "score": 0.04, "earnings_trend": 0.02, "roe_quality": 0.08, "cycle_position": 0.02, "note": "Oil price and refining spread drive revisions." }
+    },
+    {
+      "sector_id": "coal",
+      "valuation": { "position_score": -0.10, "pe_percentile": 0.36, "pb_percentile": 0.34, "dividend_support": 0.42, "note": "Cheap-to-fair with high dividend support." },
+      "fundamental": { "score": 0.02, "earnings_trend": -0.04, "roe_quality": 0.14, "cycle_position": -0.02, "note": "High payout helps, but coal price trend is the key." }
+    },
+    {
+      "sector_id": "steel",
+      "valuation": { "position_score": -0.24, "pe_percentile": 0.26, "pb_percentile": 0.24, "dividend_support": 0.02, "note": "Looks cheap, but cyclicality and demand weakness dominate." },
+      "fundamental": { "score": -0.28, "earnings_trend": -0.34, "roe_quality": -0.22, "cycle_position": -0.22, "note": "Value-trap risk until margins and demand turn." }
+    },
+    {
+      "sector_id": "nonferrous_metals",
+      "valuation": { "position_score": 0.04, "pe_percentile": 0.52, "pb_percentile": 0.50, "dividend_support": 0.02, "note": "Fair because commodity prices already carry expectations." },
+      "fundamental": { "score": 0.12, "earnings_trend": 0.12, "roe_quality": 0.08, "cycle_position": 0.16, "note": "Precious and industrial metals create mixed but constructive support." }
+    },
+    {
+      "sector_id": "basic_chemicals",
+      "valuation": { "position_score": -0.16, "pe_percentile": 0.32, "pb_percentile": 0.30, "dividend_support": 0.00, "note": "De-rated after capacity pressure." },
+      "fundamental": { "score": -0.12, "earnings_trend": -0.16, "roe_quality": -0.08, "cycle_position": -0.10, "note": "Wait for capacity clearing and price spread recovery." }
+    },
+    {
+      "sector_id": "building_materials",
+      "valuation": { "position_score": -0.30, "pe_percentile": 0.20, "pb_percentile": 0.18, "dividend_support": 0.12, "note": "Deep discount due to real-estate chain pressure." },
+      "fundamental": { "score": -0.30, "earnings_trend": -0.36, "roe_quality": -0.22, "cycle_position": -0.28, "note": "Cheap but tied to weak construction demand." }
+    },
+    {
+      "sector_id": "construction",
+      "valuation": { "position_score": -0.22, "pe_percentile": 0.28, "pb_percentile": 0.24, "dividend_support": 0.18, "note": "Low valuation and dividend support, but receivable risk remains." },
+      "fundamental": { "score": -0.08, "earnings_trend": -0.12, "roe_quality": -0.04, "cycle_position": -0.06, "note": "Policy support needs to become orders and cash collection." }
+    },
+    {
+      "sector_id": "machinery",
+      "valuation": { "position_score": 0.00, "pe_percentile": 0.48, "pb_percentile": 0.46, "dividend_support": 0.02, "note": "Fair overall; sub-sector dispersion is large." },
+      "fundamental": { "score": 0.10, "earnings_trend": 0.08, "roe_quality": 0.08, "cycle_position": 0.14, "note": "Equipment replacement and export chains support the module." }
+    },
+    {
+      "sector_id": "media",
+      "valuation": { "position_score": 0.18, "pe_percentile": 0.60, "pb_percentile": 0.56, "dividend_support": -0.18, "note": "AI and platform expectations keep valuation above cheap range." },
+      "fundamental": { "score": 0.04, "earnings_trend": 0.04, "roe_quality": -0.02, "cycle_position": 0.10, "note": "Needs conversion from theme to earnings." }
+    }
+  ]
+}

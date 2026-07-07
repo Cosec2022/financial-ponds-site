@@ -1,5 +1,114 @@
 # Changelog
 
+## v0.10.30 - Published data completeness guard
+
+- Bumped site and framework package versions to `0.10.30`.
+- Added `scripts/validate-published-data.mjs`.
+- Added `npm run validate:data`.
+- Updated the daily GitHub Action to run `npm run validate:data` before Worker build.
+- Strengthened workflow tests so daily publish must include:
+  - `sector_module_review.json`;
+  - `etf_decision_readiness.json`;
+  - `data_reality_audit.json`;
+  - the rest of the web JSON contract.
+
+Boundary:
+
+- This update does not change scoring weights.
+- This update does not change provider endpoints.
+- It prevents silent partial publishes after the daily Action.
+
+## v0.10.29 - Provider status panel
+
+- Bumped site and framework package versions to `0.10.29`.
+- Added a first-screen Provider Status panel that reads existing audit/readiness JSON:
+  - AKShare doctor status;
+  - AKShare real provider run status;
+  - ETF share-flow coverage;
+  - rotation sample count;
+  - valuation/fundamental source state;
+  - the next command to run.
+- Added frontend styling for provider status and command cards.
+- Added Worker tests to guard the new provider panel and provider audit layers.
+
+Boundary:
+
+- This update does not change scoring weights.
+- This update does not change provider endpoints or collection logic.
+- The next-command card is operational guidance only.
+- Current packaged ETF guidance remains blocked until real provider and flow gates unlock.
+
+## v0.10.28 - ETF readiness blocked-watchlist clarity
+
+- Bumped site and framework package versions to `0.10.28`.
+- Kept `FP-ETF-01` as a conservative gatekeeper, but made its blocked state more useful:
+  - blocked representative sectors now remain visible in `top_watchlist` as pending watch items;
+  - global blocker readings are now user-facing Chinese text;
+  - frontend blocker labels cover sector-level blockers such as missing observed ETF flow and manual valuation/fundamental seeds;
+  - frontend readiness values display as percentages instead of decimal fractions.
+- Regenerated packaged `etf_decision_readiness.json` and `data_reality_audit.json`.
+- Added a regression test so mock-only data still blocks guidance while showing pending watch items.
+
+Boundary:
+
+- This update does not change scoring weights.
+- This update does not change provider collection rules.
+- A blocked sector remains blocked; it is not a buy candidate.
+- The current packaged data still says ETF buy guidance is not ready.
+
+## v0.10.27 - Daily Action publishes ETF readiness
+
+- Bumped site and framework package versions to `0.10.27`.
+- Updated `a_share_daily_ci` runner to `a_share_daily_ci_v0_10_27`.
+- Added `etf_decision_readiness` to the automated daily CI sequence after
+  `sector_module_review`.
+- Updated the GitHub daily workflow to publish
+  `financial-pond/data/etf_decision_readiness.json`.
+- Added workflow and runner tests so the ETF readiness panel cannot silently
+  become stale while other daily data updates.
+
+Boundary:
+
+- This update automates publication of the readiness gate.
+- It does not change provider collection rules or create trade orders.
+
+## v0.10.26 - ETF readiness progress view
+
+- Bumped site and framework package versions to `0.10.26`.
+- Upgraded `FP-ETF-01` from a blocker-only gate to a visible readiness progress view.
+- Added `progress` to `etf_decision_readiness.json`:
+  - completion ratio;
+  - current stage;
+  - next unlock;
+  - five milestone checks;
+  - a short sleep-note summary for the user.
+- Added frontend progress bar and milestone checklist inside the ETF行动准备度 panel.
+- Updated tests to guard the progress contract.
+
+Boundary:
+
+- This update still does not create buy/sell orders.
+- It makes the path to ETF decision support visible, especially while waiting
+  for the next trading-day AKShare flow data.
+
+## v0.10.25 - ETF decision readiness gate
+
+- Bumped site and framework package versions to `0.10.25`.
+- Added `FP-ETF-01` ETF decision readiness as a gatekeeper between sector rankings and ETF action language.
+- Added `npm run etf:readiness`.
+- Added `etf_decision_readiness.json` and Markdown output under `model_outputs/<date>/`.
+- Added frontend ETF行动准备度 panel.
+- Added the readiness layer to `data_reality_audit.json`.
+- Added tests for:
+  - blocking guidance when sector-flow data is mock-only;
+  - keeping AKShare first-day `baseline_only` data out of buyable ETF-flow labels.
+
+Boundary:
+
+- This update does not create buy/sell orders.
+- It intentionally blocks ETF guidance when observed ETF flow, sample days, or valuation/fundamental source quality are insufficient.
+- It does not fake `estimated_flow` before a second trading date exists.
+
 ## v0.10.19 - Rotation trend confirmation layer
 
 - Bumped site and framework package versions to `0.10.19`.

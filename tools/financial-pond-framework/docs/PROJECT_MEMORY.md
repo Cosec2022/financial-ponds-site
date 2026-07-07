@@ -131,6 +131,13 @@ The first practical decision target after v0.6 is:
 
 The ETF model has been documented in `docs/ETF_FLOW_MODEL.md`.
 
+v0.10.25 adds `FP-ETF-01` ETF Decision Readiness. It is a gatekeeper between
+sector rankings and ETF action language. It must block buy-oriented labels when
+AKShare data is only `baseline_only`, sector-flow sources are mock/fixture, real
+ETF-flow coverage is too low, rotation history has fewer than 3 samples, or
+valuation/fundamental inputs are still manual seeds. It is not an allocation
+engine and must not create buy/sell orders.
+
 Important implementation rule:
 
 - add A-share industry ETF definitions through

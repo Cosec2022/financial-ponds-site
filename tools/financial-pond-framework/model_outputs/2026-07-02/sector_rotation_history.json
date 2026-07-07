@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-02",
-  "generated_at": "2026-07-06T14:46:55.385Z",
+  "generated_at": "2026-07-06T15:23:26.292Z",
   "module_id": "sector_rotation_history_v0_10_19",
   "status": "history_available",
   "sample_days": 1,
@@ -10,16 +10,16 @@
   "latest": {
     "as_of": "2026-07-02",
     "rotation_state": "selective_rotation",
-    "evidence_level": "hard_data_with_news_fixture",
-    "confidence": 0.5107,
-    "data_completeness": 0.4806,
-    "score_spread": 0.4625,
+    "evidence_level": "mock_only",
+    "confidence": 0.5381,
+    "data_completeness": 0.5065,
+    "score_spread": 0.458,
     "leaders": [
       {
         "rank": 1,
         "sector_id": "brokerage",
         "name": "券商",
-        "score": 0.3463,
+        "score": 0.3418,
         "label": "constructive_inflow_bias",
         "confirmation_inputs": [
           "ETF流",
@@ -33,7 +33,7 @@
         "rank": 2,
         "sector_id": "ai_computer",
         "name": "AI计算机",
-        "score": 0.2963,
+        "score": 0.2636,
         "label": "constructive_inflow_bias",
         "confirmation_inputs": [
           "ETF流",
@@ -47,7 +47,7 @@
         "rank": 3,
         "sector_id": "semiconductor",
         "name": "半导体",
-        "score": 0.2579,
+        "score": 0.2156,
         "label": "constructive_inflow_bias",
         "confirmation_inputs": [
           "ETF流",
@@ -77,7 +77,7 @@
         "rank": 2,
         "sector_id": "new_energy_ev",
         "name": "新能源车",
-        "score": -0.0438,
+        "score": -0.0468,
         "label": "neutral",
         "confirmation_inputs": [
           "ETF流",
@@ -101,25 +101,25 @@
     ],
     "cluster_reviews": [
       {
-        "cluster_id": "technology_growth",
-        "name": "科技成长",
-        "score": 0.2596,
-        "label": "cluster_inflow_bias",
-        "strongest_sector_id": "ai_computer",
-        "weakest_sector_id": "communication_electronics"
-      },
-      {
         "cluster_id": "financial_beta",
         "name": "金融弹性",
-        "score": 0.2458,
+        "score": 0.2462,
         "label": "cluster_inflow_bias",
         "strongest_sector_id": "brokerage",
         "weakest_sector_id": "bank_insurance"
       },
       {
+        "cluster_id": "technology_growth",
+        "name": "科技成长",
+        "score": 0.2237,
+        "label": "cluster_inflow_bias",
+        "strongest_sector_id": "ai_computer",
+        "weakest_sector_id": "communication_electronics"
+      },
+      {
         "cluster_id": "defensive_domestic",
         "name": "防御内需",
-        "score": 0.146,
+        "score": 0.1495,
         "label": "cluster_neutral",
         "strongest_sector_id": "defense_military",
         "weakest_sector_id": "consumer"
@@ -127,7 +127,7 @@
       {
         "cluster_id": "cyclical_value",
         "name": "顺周期价值",
-        "score": -0.0085,
+        "score": -0.0095,
         "label": "cluster_neutral",
         "strongest_sector_id": "resources_materials",
         "weakest_sector_id": "real_estate_infra"
@@ -151,16 +151,16 @@
     "strengthening": [],
     "weakening": [],
     "leading_cluster": {
-      "cluster_id": "technology_growth",
-      "name": "科技成长",
-      "score": 0.2596,
+      "cluster_id": "financial_beta",
+      "name": "金融弹性",
+      "score": 0.2462,
       "label": "cluster_inflow_bias",
       "streak_days": 1
     },
     "lagging_cluster": {
       "cluster_id": "cyclical_value",
       "name": "顺周期价值",
-      "score": -0.0085,
+      "score": -0.0095,
       "label": "cluster_neutral",
       "streak_days": 1
     }
@@ -171,7 +171,7 @@
         "as_of": "2026-07-02",
         "rank": 1,
         "side": "leader",
-        "score": 0.3463,
+        "score": 0.3418,
         "label": "constructive_inflow_bias"
       }
     ],
@@ -180,7 +180,7 @@
         "as_of": "2026-07-02",
         "rank": 2,
         "side": "leader",
-        "score": 0.2963,
+        "score": 0.2636,
         "label": "constructive_inflow_bias"
       }
     ],
@@ -189,7 +189,7 @@
         "as_of": "2026-07-02",
         "rank": 3,
         "side": "leader",
-        "score": 0.2579,
+        "score": 0.2156,
         "label": "constructive_inflow_bias"
       }
     ],
@@ -207,7 +207,7 @@
         "as_of": "2026-07-02",
         "rank": 2,
         "side": "laggard",
-        "score": -0.0438,
+        "score": -0.0468,
         "label": "neutral"
       }
     ],
@@ -225,16 +225,16 @@
     {
       "as_of": "2026-07-02",
       "rotation_state": "selective_rotation",
-      "evidence_level": "hard_data_with_news_fixture",
-      "confidence": 0.5107,
-      "data_completeness": 0.4806,
-      "score_spread": 0.4625,
+      "evidence_level": "mock_only",
+      "confidence": 0.5381,
+      "data_completeness": 0.5065,
+      "score_spread": 0.458,
       "leaders": [
         {
           "rank": 1,
           "sector_id": "brokerage",
           "name": "券商",
-          "score": 0.3463,
+          "score": 0.3418,
           "label": "constructive_inflow_bias",
           "confirmation_inputs": [
             "ETF流",
@@ -248,7 +248,7 @@
           "rank": 2,
           "sector_id": "ai_computer",
           "name": "AI计算机",
-          "score": 0.2963,
+          "score": 0.2636,
           "label": "constructive_inflow_bias",
           "confirmation_inputs": [
             "ETF流",
@@ -262,7 +262,7 @@
           "rank": 3,
           "sector_id": "semiconductor",
           "name": "半导体",
-          "score": 0.2579,
+          "score": 0.2156,
           "label": "constructive_inflow_bias",
           "confirmation_inputs": [
             "ETF流",
@@ -292,7 +292,7 @@
           "rank": 2,
           "sector_id": "new_energy_ev",
           "name": "新能源车",
-          "score": -0.0438,
+          "score": -0.0468,
           "label": "neutral",
           "confirmation_inputs": [
             "ETF流",
@@ -316,25 +316,25 @@
       ],
       "cluster_reviews": [
         {
-          "cluster_id": "technology_growth",
-          "name": "科技成长",
-          "score": 0.2596,
-          "label": "cluster_inflow_bias",
-          "strongest_sector_id": "ai_computer",
-          "weakest_sector_id": "communication_electronics"
-        },
-        {
           "cluster_id": "financial_beta",
           "name": "金融弹性",
-          "score": 0.2458,
+          "score": 0.2462,
           "label": "cluster_inflow_bias",
           "strongest_sector_id": "brokerage",
           "weakest_sector_id": "bank_insurance"
         },
         {
+          "cluster_id": "technology_growth",
+          "name": "科技成长",
+          "score": 0.2237,
+          "label": "cluster_inflow_bias",
+          "strongest_sector_id": "ai_computer",
+          "weakest_sector_id": "communication_electronics"
+        },
+        {
           "cluster_id": "defensive_domestic",
           "name": "防御内需",
-          "score": 0.146,
+          "score": 0.1495,
           "label": "cluster_neutral",
           "strongest_sector_id": "defense_military",
           "weakest_sector_id": "consumer"
@@ -342,7 +342,7 @@
         {
           "cluster_id": "cyclical_value",
           "name": "顺周期价值",
-          "score": -0.0085,
+          "score": -0.0095,
           "label": "cluster_neutral",
           "strongest_sector_id": "resources_materials",
           "weakest_sector_id": "real_estate_infra"

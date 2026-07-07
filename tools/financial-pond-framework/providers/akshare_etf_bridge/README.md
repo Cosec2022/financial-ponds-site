@@ -36,14 +36,25 @@ npm run provider:akshare:validate
 Real AKShare export after installing Python dependency:
 
 ```bash
-python3 -m pip install akshare
+python3 -m pip install -r providers/requirements.txt
+npm run provider:akshare:doctor
 npm run provider:akshare
 npm run provider:akshare:validate
 npm run provider:akshare:inspect
 ```
 
+Use the endpoint probe only when network access is expected:
+
+```bash
+npm run provider:akshare:doctor:probe
+```
+
 The real command is disabled by operational convention until provider schema,
 ETF code mapping, and source freshness have been checked.
+
+`npm run a-share:daily` and the CI runner call the doctor before the real
+provider export. If the environment cannot import AKShare, the run fails before
+writing misleading provider CSV data.
 
 ## Output Files
 

@@ -11,11 +11,14 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   const html = await response.text();
   assert.match(html, /Financial Ponds/);
   assert.match(html, /资金池塘图谱/);
+  assert.match(html, /数据真实性审计/);
+  assert.match(html, /真实数据通道/);
+  assert.match(html, /ETF行动准备度/);
   assert.match(html, /流入流出算法/);
   assert.match(html, /节点反馈 \/ 修改/);
 });
 
-test("serves dashboard, general pool analysis, sector review, rotation data, news review, and pond map JSON", async () => {
+test("serves dashboard, general pool analysis, sector review, rotation data, module review, news review, and pond map JSON", async () => {
   const dashboard = await worker.fetch(request("/data/dashboard.json"), {});
   assert.equal(dashboard.status, 200);
   assert.ok((await dashboard.json()).entities);
@@ -50,6 +53,31 @@ test("serves dashboard, general pool analysis, sector review, rotation data, new
   assert.equal(rotationHistoryJson.module_id, "sector_rotation_history_v0_10_19");
   assert.ok(rotationHistoryJson.trend_confirmations);
   assert.ok(rotationHistoryJson.sample_days >= 1);
+
+  const moduleReview = await worker.fetch(request("/data/sector_module_review.json"), {});
+  assert.equal(moduleReview.status, 200);
+  const moduleReviewJson = await moduleReview.json();
+  assert.equal(moduleReviewJson.module_id, "sector_module_review_v0_1");
+  assert.ok(moduleReviewJson.sectors.find((row) => row.sector_id === "brokerage"));
+  assert.ok(moduleReviewJson.sectors[0].modules.valuation);
+  assert.ok(moduleReviewJson.sectors[0].modules.fundamental);
+  assert.ok(moduleReviewJson.sectors[0].modules.flow_price);
+
+  const etfReadiness = await worker.fetch(request("/data/etf_decision_readiness.json"), {});
+  assert.equal(etfReadiness.status, 200);
+  const etfReadinessJson = await etfReadiness.json();
+  assert.equal(etfReadinessJson.module_id, "etf_decision_readiness_v0_2");
+  assert.ok(etfReadinessJson.guidance_state);
+  assert.ok(etfReadinessJson.progress?.milestones?.length >= 5);
+
+  const audit = await worker.fetch(request("/data/data_reality_audit.json"), {});
+  assert.equal(audit.status, 200);
+  const auditJson = await audit.json();
+  assert.equal(auditJson.module_id, "data_reality_audit_v0_1");
+  assert.equal(auditJson.overall_reality, "mixed_non_real");
+  assert.ok(auditJson.layers.find((layer) => layer.id === "akshare_provider_doctor"));
+  assert.ok(auditJson.layers.find((layer) => layer.id === "akshare_provider_run"));
+  assert.ok(auditJson.layers.find((layer) => layer.id === "flow_price"));
 
   const news = await worker.fetch(request("/data/news_review.json"), {});
   assert.equal(news.status, 200);

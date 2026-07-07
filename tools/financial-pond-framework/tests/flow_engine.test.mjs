@@ -94,6 +94,10 @@ test("flow review writes isolated model output without changing source status", 
   assert.equal(review.counts.sectors, 31);
   assert.equal(review.counts.provider_mapped_representative_sectors, 11);
   assert.equal(review.counts.framework_only_sectors, 20);
+  assert.equal(review.data_availability.mode, "mock_only");
+  assert.equal(review.data_availability.source_reality, "mock");
+  assert.equal(review.data_availability.market_use_confidence, "low");
+  assert.ok(review.data_availability.warnings.some((item) => item.includes("mock or fixture")));
   assert.match(markdown, /A-share Sector Flow Review/);
   assert.ok(review.safety_boundary.some((item) => item.includes("not a trading instruction")));
 });

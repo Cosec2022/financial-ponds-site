@@ -49,6 +49,9 @@ const state = {
   flow: null,
   rotation: null,
   rotationHistory: null,
+  moduleReview: null,
+  etfReadiness: null,
+  realityAudit: null,
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -130,6 +133,10 @@ function getNewsPressure(pondId) {
   return (state.news.sector_news_pressure ?? []).find((row) => row.sector_id === pondId) ?? null;
 }
 
+function getModuleReview(pondId) {
+  return (state.moduleReview?.sectors ?? []).find((row) => row.sector_id === pondId || row.pool_id === `a_share_${pondId}`) ?? null;
+}
+
 
 function graphOverrideKey(pondId) {
   return `financialPonds.graphOverride.${pondId}`;
@@ -209,6 +216,10 @@ function average(values) {
 }
 
 function dataStatusLabel() {
+  const audit = state.realityAudit;
+  if (audit?.overall_reality === "mixed_non_real") return { label: "含样例/手工数据", className: "negative" };
+  if (audit?.overall_reality === "source_unverified") return { label: "来源未完全验证", className: "warm" };
+  if (audit?.overall_reality === "observed_pipeline") return { label: "已观察数据为主", className: "positive" };
   const rows = state.flow?.sector_reviews ?? [];
   const dataMode = state.flow?.data_availability?.mode;
   const directFlowCount = rows.filter((row) => componentAvailable(row, "direct_flow")).length;
@@ -222,9 +233,60 @@ function dataStatusLabel() {
   return { label: "仅部分可参考", className: "warm" };
 }
 
+function realityLayer(id) {
+  return (state.realityAudit?.layers ?? []).find((layer) => layer.id === id) ?? null;
+}
+
+function realityClass(reality) {
+  const negative = new Set(["mock", "fixture", "manual_seed", "derived_from_non_real", "provider_run_failed", "provider_doctor_blocked", "provider_not_run", "decision_gate_blocked"]);
+  const warm = new Set(["unknown", "contract_output_source_unverified", "source_unverified", "derived_mixed", "provider_run_unverified", "provider_doctor_not_run"]);
+  const positive = new Set(["provider_observed", "live_news", "derived_from_observed", "provider_run_ok", "provider_doctor_ok"]);
+  if (negative.has(reality)) return "negative";
+  if (warm.has(reality)) return "warm";
+  if (positive.has(reality)) return "positive";
+  return "muted";
+}
+
+function realityLabel(reality) {
+  const map = {
+    mixed_non_real: "混合非真实",
+    source_unverified: "来源未验证",
+    observed_pipeline: "观察数据为主",
+    mock: "样例数据",
+    fixture: "固定样例",
+    manual_seed: "手工种子",
+    derived_from_non_real: "非真实派生",
+    derived_from_observed: "真实派生",
+    provider_observed: "Provider观察",
+    provider_run_ok: "Provider成功",
+    provider_run_failed: "Provider失败",
+    provider_not_run: "Provider未运行",
+    provider_run_unverified: "Provider未验证",
+    provider_doctor_ok: "环境OK",
+    provider_doctor_blocked: "环境阻塞",
+    provider_doctor_not_run: "未预检",
+    live_news: "实时新闻",
+    contract_output_source_unverified: "契约输出，来源未验证",
+    unknown: "未知"
+  };
+  return map[reality] ?? reality ?? "--";
+}
+
+function confidenceLabel(value) {
+  const map = {
+    low: "低",
+    medium: "中",
+    high: "高"
+  };
+  return map[value] ?? value ?? "--";
+}
+
 function availabilityModeLabel(mode) {
   const map = {
     etf_flow_ready: "ETF流可用",
+    mock_only: "样例数据",
+    source_unverified: "来源未验证",
+    partial_observed_flow: "部分真实流",
     partial_etf_flow: "ETF流部分可用",
     price_volume_only: "ETF流缺失",
     thin_data: "数据较薄"
@@ -234,10 +296,204 @@ function availabilityModeLabel(mode) {
 
 function availabilityHeadlineCn(availability) {
   if (!availability) return "等待 sector_flow_review.json 输出数据可用度。";
+  if (availability.mode === "mock_only") return "当前资金量价输入来自 mock/fixture，只能检查结构。";
+  if (availability.mode === "source_unverified") return "当前资金量价输入有分数，但来源未验证。";
+  if (availability.mode === "partial_observed_flow") return "已有部分观察来源进入资金量价层，但覆盖不足。";
   if (availability.mode === "etf_flow_ready") return "代表行业 ETF 流和价量确认都已进入模型。";
   if (availability.mode === "partial_etf_flow") return "只有部分代表行业有 ETF 份额/资金流输入，轮动强度需要打折看。";
   if (availability.mode === "price_volume_only") return "ETF 份额/资金流今天缺失，当前排序主要来自价量、水位和新闻压力。";
   return "行业输入偏薄，只适合检查流程和观察相对变化。";
+}
+
+function renderRealityPanel() {
+  const panel = document.getElementById("realityPanel");
+  const statusBadge = document.getElementById("realityStatus");
+  const audit = state.realityAudit;
+  if (!panel || !statusBadge) return;
+
+  if (!audit || audit.status !== "audit_available") {
+    statusBadge.textContent = "等待审计";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无数据真实性审计。等待 data_reality_audit.json 生成。</div>`;
+    return;
+  }
+
+  statusBadge.textContent = realityLabel(audit.overall_reality);
+  statusBadge.className = `pill ${realityClass(audit.overall_reality)}`;
+  const layers = audit.layers ?? [];
+
+  panel.innerHTML = `
+    <article class="reality-card headline ${realityClass(audit.overall_reality)}">
+      <span>总判断</span>
+      <strong>${audit.headline}</strong>
+      <p>这个面板只判断数据来源，不改变模型分数。</p>
+    </article>
+    ${layers.map((layer) => `
+      <article class="reality-card ${realityClass(layer.reality)}">
+        <div class="reality-head">
+          <span>${layer.name}</span>
+          <b class="pill ${realityClass(layer.reality)}">${realityLabel(layer.reality)}</b>
+        </div>
+        <p>${layer.reading}</p>
+        <small>市场使用置信度：${confidenceLabel(layer.confidence_for_market_use)} · ${layer.source_file}</small>
+      </article>
+    `).join("")}
+  `;
+}
+
+function renderProviderPanel() {
+  const panel = document.getElementById("providerPanel");
+  const statusBadge = document.getElementById("providerStatus");
+  if (!panel || !statusBadge) return;
+
+  const audit = state.realityAudit;
+  const readiness = state.etfReadiness;
+  if (!audit || audit.status !== "audit_available") {
+    statusBadge.textContent = "等待审计";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无 provider 状态。等待 data_reality_audit.json 生成。</div>`;
+    return;
+  }
+
+  const doctor = realityLayer("akshare_provider_doctor");
+  const run = realityLayer("akshare_provider_run");
+  const gates = readiness?.gates ?? {};
+  const asOf = readiness?.as_of ?? audit.as_of ?? "YYYY-MM-DD";
+  const command = providerNextCommand({ doctor, run, gates, asOf });
+  const status = providerOverallStatus({ doctor, run, gates });
+
+  statusBadge.textContent = status.label;
+  statusBadge.className = `pill ${status.className}`;
+
+  panel.innerHTML = `
+    <article class="provider-card headline ${status.className}">
+      <span>当前卡点</span>
+      <strong>${command.title}</strong>
+      <p>${command.reading}</p>
+    </article>
+    ${providerStatusCard({
+      label: "AKShare环境",
+      value: realityLabel(doctor?.reality),
+      className: realityClass(doctor?.reality),
+      reading: providerReading(doctor),
+      detail: doctor?.counts ? `检查 ${doctor.counts.checks ?? 0} 项，阻塞 ${doctor.counts.blocked_checks ?? 0} 项` : "等待预检"
+    })}
+    ${providerStatusCard({
+      label: "真实抓取",
+      value: realityLabel(run?.reality),
+      className: realityClass(run?.reality),
+      reading: providerReading(run),
+      detail: run?.counts ? `记录 ${run.counts.records ?? 0} 行，错误 ${run.counts.errors ?? 0} 个` : "等待 provider run"
+    })}
+    ${providerStatusCard({
+      label: "ETF份额流",
+      value: providerFlowReadinessLabel(gates.provider_flow_readiness),
+      className: gates.true_flow_coverage >= 0.6 ? "positive" : gates.provider_flow_readiness === "baseline_only" ? "warm" : "negative",
+      reading: `真实 ETF 直接资金流覆盖 ${formatPct(gates.true_flow_coverage)}。代表行业 ${gates.observed_direct_flow_inputs ?? 0}/${gates.representative_sectors ?? 0}。`,
+      detail: `价量真实覆盖 ${formatPct(gates.true_confirmation_coverage)}`
+    })}
+    ${providerStatusCard({
+      label: "趋势样本",
+      value: `${gates.sample_days ?? 0}/${gates.min_sample_days ?? 3} 天`,
+      className: (gates.sample_days ?? 0) >= (gates.min_sample_days ?? 3) ? "positive" : "warm",
+      reading: "至少 3 个交易日样本后，轮动连续性才开始有基础判断意义。",
+      detail: `下一步：${readiness?.progress?.next_unlock?.label ?? "--"}`
+    })}
+    ${providerStatusCard({
+      label: "估值来源",
+      value: gates.valuation_fundamental_source === "manual_seed" ? "手工种子" : "非手工",
+      className: gates.valuation_fundamental_source === "manual_seed" ? "warm" : "positive",
+      reading: "PE/PB/股息/ROE 等真实来源未接入前，估值只能辅助结构化阅读。",
+      detail: `市场使用置信度：${confidenceLabel(gates.market_use_confidence)}`
+    })}
+    <article class="provider-card command-card">
+      <span>下一条命令</span>
+      <pre><code>${command.command}</code></pre>
+      <p>${command.after}</p>
+    </article>
+  `;
+}
+
+function providerStatusCard({ label, value, className, reading, detail }) {
+  return `
+    <article class="provider-card ${className}">
+      <span>${label}</span>
+      <strong>${value ?? "--"}</strong>
+      <p>${reading}</p>
+      <small>${detail}</small>
+    </article>
+  `;
+}
+
+function providerReading(layer) {
+  if (!layer) return "等待状态文件生成。";
+  return String(layer.reading ?? "").replace(/AKShare provider environment is blocked:/, "AKShare 环境阻塞：").replace(/AKShare real provider failed:/, "AKShare 真实抓取失败：");
+}
+
+function providerOverallStatus({ doctor, run, gates }) {
+  if (doctor?.reality === "provider_doctor_blocked" || run?.reality === "provider_run_failed") {
+    return { label: "通道阻塞", className: "negative" };
+  }
+  if (run?.reality === "provider_run_ok" && gates.provider_flow_readiness === "baseline_only") {
+    return { label: "已有基线", className: "warm" };
+  }
+  if (run?.reality === "provider_run_ok" && (gates.true_flow_coverage ?? 0) >= 0.6) {
+    return { label: "份额流可用", className: "positive" };
+  }
+  return { label: "等待通道", className: "warm" };
+}
+
+function providerNextCommand({ doctor, run, gates, asOf }) {
+  if (doctor?.reality === "provider_doctor_blocked" || doctor?.reality === "provider_doctor_not_run") {
+    return {
+      title: "先解决 AKShare 安装/环境",
+      reading: doctor?.reading ? providerReading(doctor) : "还没有 AKShare doctor 预检结果。",
+      command: [
+        "cd tools/financial-pond-framework",
+        doctor?.install_hint ?? "python3 -m pip install -r providers/requirements.txt",
+        "npm run provider:akshare:doctor"
+      ].join("\n"),
+      after: "doctor 通过后，再跑真实 provider。"
+    };
+  }
+  if (run?.reality !== "provider_run_ok") {
+    return {
+      title: "运行真实 AKShare provider",
+      reading: "环境通过后，需要生成目标日期的真实 provider run status。",
+      command: [
+        "cd tools/financial-pond-framework",
+        "npm run provider:akshare",
+        "npm run provider:akshare:validate",
+        "npm run provider:akshare:inspect"
+      ].join("\n"),
+      after: "首个真实交易日通常只能建立基线，下一交易日才更可能出现份额变化流。"
+    };
+  }
+  if (gates.provider_flow_readiness === "baseline_only" || (gates.true_flow_coverage ?? 0) < 0.6) {
+    return {
+      title: "等待下一个交易日计算份额变化",
+      reading: "已经有 provider 基线后，需要下一交易日继续跑，才能从份额差计算 estimated_flow。",
+      command: [
+        "cd tools/financial-pond-framework",
+        `npm run provider:akshare:to-flow -- --as-of ${asOf}`,
+        `npm run flow:review -- --as-of ${asOf}`,
+        `npm run etf:readiness -- --as-of ${asOf}`,
+        `npm run data:audit -- --as-of ${asOf}`
+      ].join("\n"),
+      after: "如果仍是 baseline_only，就继续等下一个真实交易日样本。"
+    };
+  }
+  return {
+    title: "数据门已过，进入人工复核",
+    reading: "真实资金流、样本和来源门槛已基本满足，下一步是仓位和回撤规则。",
+    command: [
+      "cd tools/financial-pond-framework",
+      `npm run rotation:history -- --as-of ${asOf}`,
+      `npm run module:review -- --as-of ${asOf}`,
+      `npm run etf:readiness -- --as-of ${asOf}`
+    ].join("\n"),
+    after: "这仍然不是自动下单，只是进入人工复核。"
+  };
 }
 
 function generalLabel(label) {
@@ -252,6 +508,104 @@ function generalLabel(label) {
   return map[label] ?? label ?? "--";
 }
 
+function valuationLabel(label) {
+  const map = {
+    deep_discount: "深度低估",
+    cheap: "偏便宜",
+    fair: "合理",
+    expensive: "偏贵",
+    very_expensive: "很贵"
+  };
+  return map[label] ?? label ?? "--";
+}
+
+function fundamentalLabel(label) {
+  const map = {
+    deteriorating: "恶化",
+    weak: "偏弱",
+    stable: "稳定",
+    improving: "改善"
+  };
+  return map[label] ?? label ?? "--";
+}
+
+function decisionClass(label) {
+  const positive = new Set(["undervalued_turning", "cheap_with_flow", "balanced_candidate"]);
+  const negative = new Set(["value_trap_risk", "expensive_deteriorating", "expensive_flow_fading"]);
+  if (positive.has(label)) return "positive";
+  if (negative.has(label)) return "negative";
+  if (label === "expensive_momentum" || label === "cheap_but_weak") return "warm";
+  return "muted";
+}
+
+function etfActionClass(label) {
+  const positive = new Set(["small_position_candidate", "confirmation_candidate"]);
+  const warm = new Set(["watch_for_persistence", "wait_for_real_flow", "wait_for_confirmation"]);
+  const negative = new Set(["blocked_non_real_source", "not_covered", "avoid_or_reduce_watch"]);
+  if (positive.has(label)) return "positive";
+  if (warm.has(label)) return "warm";
+  if (negative.has(label)) return "negative";
+  return "muted";
+}
+
+function guidanceStateLabel(label) {
+  const map = {
+    not_ready: "不能指导买入",
+    watch_only: "只能观察",
+    decision_support_ready: "可做人工复核"
+  };
+  return map[label] ?? label ?? "--";
+}
+
+function blockerText(id) {
+  const map = {
+    provider_run_missing: "缺真实Provider",
+    non_real_flow_source: "资金源非真实",
+    baseline_only: "只有基线",
+    true_flow_coverage_low: "真实ETF流不足",
+    trend_history_short: "趋势样本不足",
+    manual_valuation_fundamental: "估值/基本面仍是手工种子",
+    no_representative_provider_mapping: "缺代表ETF映射",
+    no_observed_direct_etf_flow: "缺真实ETF份额流",
+    valuation_manual_seed: "估值为手工种子",
+    fundamental_manual_seed: "基本面为手工种子",
+    valuation_profile_missing: "估值配置缺失",
+    fundamental_profile_missing: "基本面配置缺失"
+  };
+  return map[id] ?? id ?? "--";
+}
+
+function providerRunLabel(value) {
+  const map = {
+    real_ok: "真实已跑通",
+    missing_or_not_ok: "未确认",
+    unknown: "未知"
+  };
+  return map[value] ?? value ?? "--";
+}
+
+function providerFlowReadinessLabel(value) {
+  const map = {
+    baseline_only: "只有基线",
+    flow_ready: "份额流可用",
+    ready: "可用",
+    ok: "可用",
+    unknown: "未知"
+  };
+  return map[value] ?? value ?? "--";
+}
+
+function progressStageLabel(label) {
+  const map = {
+    model_contract_ready: "规则层完成",
+    provider_started: "真实入口启动",
+    real_data_foundation: "真实基线建立",
+    near_watchlist: "接近观察清单",
+    decision_support: "基础决策支持"
+  };
+  return map[label] ?? label ?? "--";
+}
+
 function confirmationText(row) {
   const parts = [];
   if (componentAvailable(row, "direct_flow")) parts.push("ETF流");
@@ -259,6 +613,221 @@ function confirmationText(row) {
   if (componentAvailable(row, "market_liquidity")) parts.push("水位");
   if (componentAvailable(row, "policy_sentiment")) parts.push("新闻");
   return parts.length ? parts.join(" + ") : "等待输入";
+}
+
+function renderModulePanel() {
+  const panel = document.getElementById("modulePanel");
+  const statusBadge = document.getElementById("moduleStatus");
+  const review = state.moduleReview;
+  if (!panel || !statusBadge) return;
+
+  if (!review || review.status !== "module_review_available") {
+    statusBadge.textContent = "等待模块数据";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无三模块判断。等待 sector_module_review.json 生成。</div>`;
+    return;
+  }
+
+  statusBadge.textContent = "三模块可读";
+  statusBadge.className = "pill positive";
+  const leaders = review.leaders ?? [];
+  const risks = review.risks ?? [];
+  const counts = review.counts ?? {};
+
+  panel.innerHTML = `
+    <article class="module-card headline">
+      <span>当前判断</span>
+      <strong>${review.headline}</strong>
+      <p>估值均值 ${formatScore(review.module_averages?.valuation_position_score)} · 基本面均值 ${formatScore(review.module_averages?.fundamental_score)} · 资金量价均值 ${formatScore(review.module_averages?.flow_price_score)}</p>
+    </article>
+    <article class="module-card">
+      <span>候选数量</span>
+      <strong>${(counts.undervalued_turning ?? 0) + (counts.cheap_with_flow ?? 0) + (counts.balanced_candidate ?? 0)}</strong>
+      <p>低估转强 / 低估有资金 / 合理且改善。</p>
+    </article>
+    <article class="module-card risk">
+      <span>风险数量</span>
+      <strong>${(counts.value_trap_risk ?? 0) + (counts.expensive_deteriorating ?? 0) + (counts.expensive_flow_fading ?? 0)}</strong>
+      <p>价值陷阱 / 贵且弱 / 贵且资金退潮。</p>
+    </article>
+    <article class="module-card wide">
+      <span>优先观察</span>
+      ${leaders.map(moduleBriefTemplate).join("")}
+    </article>
+    <article class="module-card wide risk">
+      <span>风险观察</span>
+      ${risks.length ? risks.map(moduleBriefTemplate).join("") : `<p class="muted">暂无高风险组合标签。</p>`}
+    </article>
+    <article class="module-card table-card">
+      <span>三模块矩阵</span>
+      ${moduleMatrixTemplate(review.sectors ?? [])}
+    </article>
+  `;
+
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function renderEtfReadinessPanel() {
+  const panel = document.getElementById("etfPanel");
+  const statusBadge = document.getElementById("etfStatus");
+  const readiness = state.etfReadiness;
+  if (!panel || !statusBadge) return;
+
+  if (!readiness || readiness.status !== "readiness_available") {
+    statusBadge.textContent = "等待准备度数据";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无 ETF 行动准备度。等待 etf_decision_readiness.json 生成。</div>`;
+    return;
+  }
+
+  const statusClass = readiness.guidance_state === "decision_support_ready" ? "positive" : readiness.guidance_state === "watch_only" ? "warm" : "negative";
+  statusBadge.textContent = guidanceStateLabel(readiness.guidance_state);
+  statusBadge.className = `pill ${statusClass}`;
+  const gates = readiness.gates ?? {};
+  const progress = readiness.progress ?? {};
+  const blockers = readiness.blockers ?? [];
+  const watchlist = readiness.top_watchlist ?? [];
+  const completion = typeof progress.completion_ratio === "number" ? Math.round(progress.completion_ratio * 100) : 0;
+
+  panel.innerHTML = `
+    <article class="etf-card headline">
+      <span>当前结论</span>
+      <strong>${readiness.headline}</strong>
+      <p>真实ETF流覆盖 ${formatPct(gates.true_flow_coverage)} · 价量观察覆盖 ${formatPct(gates.true_confirmation_coverage)} · 历史样本 ${gates.sample_days ?? 0}/${gates.min_sample_days ?? 3} 天。</p>
+    </article>
+    <article class="etf-card progress-card">
+      <span>进度</span>
+      <strong>${completion}%</strong>
+      <div class="progress-track"><i style="width:${completion}%"></i></div>
+      <p>${progressStageLabel(progress.stage)} · ${progress.sleep_note ?? "等待下一步数据。"}</p>
+      <small>下一步：${progress.next_unlock?.label ?? "--"}。${progress.next_unlock?.reading ?? ""}</small>
+    </article>
+    <article class="etf-card ${statusClass}">
+      <span>指导状态</span>
+      <strong>${guidanceStateLabel(readiness.guidance_state)}</strong>
+      <p>Provider ${providerRunLabel(gates.provider_run)} · ETF流 ${providerFlowReadinessLabel(gates.provider_flow_readiness)} · 来源 ${realityLabel(gates.flow_source_reality)}</p>
+    </article>
+    <article class="etf-card">
+      <span>候选数量</span>
+      <strong>${(readiness.counts?.small_position_candidate ?? 0) + (readiness.counts?.confirmation_candidate ?? 0)}</strong>
+      <p>只有通过真实流、趋势样本和模块组合后，才会进入候选。</p>
+    </article>
+    <article class="etf-card wide ${blockers.length ? "negative" : "positive"}">
+      <span>主要阻塞</span>
+      ${blockers.length ? blockers.slice(0, 4).map((item) => `
+        <div class="etf-blocker">
+          <b>${blockerText(item.id)}</b>
+          <small>${item.reading}</small>
+        </div>
+      `).join("") : `<p>基础门槛通过。仍需要人工检查仓位、回撤和交易计划。</p>`}
+    </article>
+    <article class="etf-card table-card">
+      <span>关卡清单</span>
+      ${etfMilestonesTemplate(progress.milestones ?? [])}
+    </article>
+    <article class="etf-card table-card">
+      <span>${readiness.guidance_state === "not_ready" ? "待解锁观察项" : "观察名单"}</span>
+      ${etfWatchlistTemplate(watchlist)}
+    </article>
+  `;
+
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function etfMilestonesTemplate(rows) {
+  if (!rows.length) return `<div class="empty">暂无进度关卡。</div>`;
+  return `
+    <div class="milestone-grid">
+      ${rows.map((row) => `
+        <div class="milestone ${row.status === "done" ? "done" : "pending"}">
+          <b>${row.label}</b>
+          <span>${row.status === "done" ? "已完成" : "等待"}</span>
+          <small>${row.reading}</small>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function etfWatchlistTemplate(rows) {
+  if (!rows.length) return `<div class="empty">暂无观察名单。</div>`;
+  return `
+    <div class="module-table">
+      <table>
+        <thead>
+          <tr>
+            <th>行业</th>
+            <th>准备度</th>
+            <th>行动标签</th>
+            <th>证据</th>
+            <th>阻塞</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <td><button class="text-link" data-pond-id="${row.sector_id}" type="button"><strong>${row.name}</strong><span class="sub">${row.sector_id}</span></button></td>
+              <td><b>${formatPct(row.readiness_score / 100)}</b><span class="sub">${row.readiness_score}/100</span></td>
+              <td><span class="pill ${etfActionClass(row.action?.label)}">${row.action?.text ?? "--"}</span></td>
+              <td>估值 ${valuationLabel(row.evidence?.valuation_label)} ${formatScore(row.evidence?.valuation_position_score)}<span class="sub">资金 ${labelText(row.evidence?.flow_price_label)} ${formatScore(row.evidence?.flow_price_score)} · 真实流 ${row.evidence?.observed_direct_flow ? "有" : "无"}</span></td>
+              <td>${(row.blockers ?? []).slice(0, 3).map(blockerText).join(" / ") || "无"}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function moduleBriefTemplate(row) {
+  return `
+    <button class="module-row" data-pond-id="${row.sector_id}" type="button">
+      <span>${row.name}</span>
+      <b class="pill ${decisionClass(row.decision?.label)}">${row.decision?.text ?? "--"}</b>
+      <small>估值 ${valuationLabel(row.valuation_label)} ${formatScore(row.valuation_position_score)} · 基本面 ${fundamentalLabel(row.fundamental_label)} ${formatScore(row.fundamental_score)} · 资金量价 ${labelText(row.flow_price_label)} ${formatScore(row.flow_price_score)}</small>
+    </button>
+  `;
+}
+
+function moduleMatrixTemplate(rows) {
+  return `
+    <div class="module-table">
+      <table>
+        <thead>
+          <tr>
+            <th>行业</th>
+            <th>估值</th>
+            <th>基本面</th>
+            <th>资金量价</th>
+            <th>组合标签</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.slice(0, 12).map((row) => `
+            <tr>
+              <td><button class="text-link" data-pond-id="${row.sector_id}" type="button"><strong>${row.display_name ?? row.name}</strong><span class="sub">${row.sector_id}</span></button></td>
+              <td>${valuationLabel(row.modules.valuation.label)} <span class="sub">${formatScore(row.modules.valuation.position_score)}</span></td>
+              <td>${fundamentalLabel(row.modules.fundamental.label)} <span class="sub">${formatScore(row.modules.fundamental.score)}</span></td>
+              <td>${labelText(row.modules.flow_price.label)} <span class="sub">${formatScore(row.modules.flow_price.score)}</span></td>
+              <td><span class="pill ${decisionClass(row.decision.label)}">${row.decision.text}</span></td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
 }
 
 function renderReferencePanel() {
@@ -282,6 +851,9 @@ function renderReferencePanel() {
   const avgConfidence = average(rows.map((row) => row.confidence));
   const avgCompleteness = average(rows.map((row) => row.data_completeness));
   const newsFallback = Boolean(state.news?.collection?.fallback_used);
+  const flowLayer = realityLayer("flow_price");
+  const newsLayer = realityLayer("news");
+  const moduleLayer = realityLayer("sector_modules");
   const availability = state.flow?.data_availability;
   const representativeCount = availability?.counts?.representative_sectors ?? rows.length;
   const representativeDirectFlowCount = availability?.counts?.representative_direct_flow_inputs ?? directFlowCount;
@@ -330,17 +902,22 @@ function renderReferencePanel() {
     <article class="reference-card ${availability?.mode === "price_volume_only" ? "warning" : ""}">
       <span>ETF流状态</span>
       <strong>${availabilityModeLabel(availability?.mode)}</strong>
-      <p>代表行业 ETF流 ${representativeDirectFlowCount}/${representativeCount}；价量确认 ${representativeConfirmationCount}/${representativeCount}。${availabilityHeadlineCn(availability)}</p>
+      <p>代表行业 ETF流 ${representativeDirectFlowCount}/${representativeCount}；价量确认 ${representativeConfirmationCount}/${representativeCount}。来源：${realityLabel(flowLayer?.reality)}。${availabilityHeadlineCn(availability)}</p>
     </article>
     <article class="reference-card wide ${newsFallback ? "warning" : ""}">
       <span>新闻层状态</span>
-      <strong>${newsFallback ? "样例新闻" : "新闻可用"}</strong>
-      <p>${state.news?.headline ?? "暂无新闻层输出"} ${newsFallback ? "因此新闻只用于检查流程，不参与强结论。" : "新闻仍需硬数据确认。"}</p>
+      <strong>${realityLabel(newsLayer?.reality) || (newsFallback ? "样例新闻" : "新闻可用")}</strong>
+      <p>${state.news?.headline ?? "暂无新闻层输出"} ${newsLayer?.reading ?? (newsFallback ? "因此新闻只用于检查流程，不参与强结论。" : "新闻仍需硬数据确认。")}</p>
+    </article>
+    <article class="reference-card wide ${moduleLayer ? "warning" : ""}">
+      <span>估值/基本面状态</span>
+      <strong>${realityLabel(moduleLayer?.reality)}</strong>
+      <p>${moduleLayer?.reading ?? "等待三模块审计。"} 当前三模块只应作为结构化阅读，不应当作实时估值结论。</p>
     </article>
     <article class="reference-card wide">
       <span>使用边界</span>
-      <strong>可做观察，不做买卖指令</strong>
-      <p>当前最有参考意义的是通用池状态、行业间相对强弱、ETF流/价量确认、数据完整度。Global Liquidity Graph 的旧 mock 分数只保留为技术视图。</p>
+      <strong>${state.realityAudit?.overall_reality === "mixed_non_real" ? "只能看结构，不能看结论" : "可做观察，不做买卖指令"}</strong>
+      <p>${state.realityAudit?.headline ?? "当前最有参考意义的是通用池状态、行业间相对强弱、ETF流/价量确认、数据完整度。"} Global Liquidity Graph 的旧 mock 分数只保留为技术视图。</p>
     </article>
     <div class="reference-list">
       <h3>强势候选</h3>
@@ -462,6 +1039,9 @@ function evidenceLabel(level) {
     hard_data_plus_live_news: "硬数据 + 实时新闻",
     hard_data_with_news_fixture: "硬数据为主，新闻样例",
     hard_data_confirmed: "硬数据确认",
+    mock_only: "样例数据",
+    source_unverified: "来源未验证",
+    partial_observed_flow: "部分真实流",
     partial_etf_flow: "部分ETF流",
     price_volume_only: "价量确认，ETF流缺失",
     partial_hard_data: "部分硬数据",
@@ -569,10 +1149,12 @@ function resolvePondForColumn(id) {
 function pondNodeTemplate(pond) {
   const review = getReview(pond.id);
   const news = getNewsPressure(pond.id);
+  const moduleReview = getModuleReview(pond.id);
   const active = pond.id === state.selectedPondId ? "active" : "";
   const statusText = pond.status === "planned" ? "待接入" : pond.status === "watchlist_demo" ? "观察池" : "已接入";
   const heat = typeof pond.heat === "number" ? pond.heat : Math.max(0, Math.min(1, (review?.score ?? 0) + 0.45));
-  const valuation = typeof pond.valuation === "number" ? pond.valuation : null;
+  const valuation = typeof moduleReview?.modules?.valuation?.position_score === "number" ? moduleReview.modules.valuation.position_score : typeof pond.valuation === "number" ? pond.valuation : null;
+  const fundamental = moduleReview?.modules?.fundamental?.score ?? null;
   return `
     <button class="pond-node ${active}" data-pond-id="${pond.id}" type="button">
       <span class="node-title">${pond.name}</span>
@@ -580,6 +1162,7 @@ function pondNodeTemplate(pond) {
       <span class="node-metrics">
         <span class="metric-chip ${heatClass(heat)}">热 ${formatPct(heat)}</span>
         <span class="metric-chip ${valuationClass(valuation)}">估 ${formatScore(valuation)}</span>
+        <span class="metric-chip ${scoreClass(fundamental)}">基 ${formatScore(fundamental)}</span>
         <span class="metric-chip ${scoreClass(review?.score)}">分 ${formatScore(review?.score)}</span>
         <span class="metric-chip ${scoreClass(news?.score)}">新闻 ${formatScore(news?.score)}</span>
       </span>
@@ -591,23 +1174,28 @@ function renderSelectedSummary() {
   const pond = getPond(state.selectedPondId) ?? resolvePondForColumn(state.selectedPondId);
   const review = getReview(pond.id);
   const news = getNewsPressure(pond.id);
+  const moduleReview = getModuleReview(pond.id);
   const path = pond.id === "a_share" ? "中国宏观水位 / A股总池" : `A股总池 / ${pond.name}`;
+  const valuationScore = moduleReview?.modules?.valuation?.position_score ?? pond.valuation;
+  const fundamentalScore = moduleReview?.modules?.fundamental?.score;
 
   document.getElementById("selectedPath").textContent = path;
   document.getElementById("selectedName").textContent = pond.name;
-  document.getElementById("selectedSummary").textContent = buildSummary(pond, review, news);
+  document.getElementById("selectedSummary").textContent = buildSummary(pond, review, news, moduleReview);
   document.getElementById("detailHeat").textContent = formatPct(pond.heat);
-  document.getElementById("detailValuation").textContent = formatScore(pond.valuation);
+  document.getElementById("detailValuation").textContent = formatScore(valuationScore);
+  document.getElementById("detailFundamental").textContent = formatScore(fundamentalScore);
   document.getElementById("detailScore").textContent = formatScore(review?.score);
 }
 
-function buildSummary(pond, review, news) {
+function buildSummary(pond, review, news, moduleReview) {
   if (pond.id === "a_share") {
     return "总池用于观察成交额、市场宽度、政策预期和外部流动性。它不是单一行业，而是所有A股行业池的上层水位。";
   }
   const live = review ? `当前模型分 ${formatScore(review.score)}，状态 ${labelText(review.label)}。` : "该行业尚未接入真实ETF review，先作为观察池展示参数结构。";
   const pressure = news ? `新闻压力 ${formatScore(news.score)}。` : "新闻压力暂无实时映射。";
-  return `${live}${pressure} 下方可查看上游变量、影响系数、关键词组、半衰期和相关行业。`;
+  const modules = moduleReview ? ` 三模块标签：${moduleReview.decision.text}；估值 ${valuationLabel(moduleReview.modules.valuation.label)}，基本面 ${fundamentalLabel(moduleReview.modules.fundamental.label)}。` : "";
+  return `${live}${pressure}${modules} 下方可查看上游变量、影响系数、关键词组、半衰期和相关行业。`;
 }
 
 function renderFlowDetail() {
@@ -903,6 +1491,9 @@ function renderSectorTable() {
           <th>排名</th>
           <th>行业</th>
           <th>分数</th>
+          <th>估值</th>
+          <th>基本面</th>
+          <th>组合标签</th>
           <th>状态</th>
           <th>覆盖</th>
           <th>置信度</th>
@@ -921,6 +1512,7 @@ function renderSectorTable() {
 function rowTemplate(row, index) {
   const score = row.score ?? row.flow_score ?? 0;
   const id = plainSectorId(row);
+  const moduleReview = getModuleReview(id);
   const drivers = (row.top_drivers ?? [])
     .slice(0, 3)
     .map((driver) => driverLabel(driver))
@@ -931,6 +1523,9 @@ function rowTemplate(row, index) {
       <td>${index + 1}</td>
       <td><button class="text-link" data-pond-id="${id}" type="button"><strong>${sectorLabel(row)}</strong><span class="sub">${id}</span></button></td>
       <td class="score ${scoreClass(score)}">${formatScore(score)}</td>
+      <td>${valuationLabel(moduleReview?.modules?.valuation?.label)} <span class="sub">${formatScore(moduleReview?.modules?.valuation?.position_score)}</span></td>
+      <td>${fundamentalLabel(moduleReview?.modules?.fundamental?.label)} <span class="sub">${formatScore(moduleReview?.modules?.fundamental?.score)}</span></td>
+      <td>${moduleReview ? `<span class="pill ${decisionClass(moduleReview.decision.label)}">${moduleReview.decision.text}</span>` : "--"}</td>
       <td>${labelText(row.label)}</td>
       <td>${coverageStatusLabel(row.coverage_status)}</td>
       <td>${formatScore(row.confidence)}</td>
@@ -996,9 +1591,13 @@ function bindTabs() {
 }
 
 function renderAll() {
+  renderRealityPanel();
+  renderProviderPanel();
   renderHeader();
   renderReferencePanel();
   renderRotationPanel();
+  renderModulePanel();
+  renderEtfReadinessPanel();
   renderPondMap();
   renderSelectedSummary();
   renderFlowDetail();
@@ -1017,6 +1616,9 @@ async function loadAll() {
   state.flow = await readJson("./data/sector_flow_review.json", null);
   state.rotation = await readJson("./data/sector_rotation_intelligence.json", null);
   state.rotationHistory = await readJson("./data/sector_rotation_history.json", null);
+  state.moduleReview = await readJson("./data/sector_module_review.json", null);
+  state.etfReadiness = await readJson("./data/etf_decision_readiness.json", null);
+  state.realityAudit = await readJson("./data/data_reality_audit.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

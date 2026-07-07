@@ -340,6 +340,49 @@ Not yet complete:
 - No interactive source enable or disable controls.
 - No upload workflow for user holdings yet.
 
+## ETF Decision Readiness
+
+Status: `working prototype`
+
+Files:
+
+- `src/tools/etf_decision_readiness.mjs`
+- `model_outputs/<date>/etf_decision_readiness.json`
+- `model_outputs/<date>/etf_decision_readiness.md`
+- `financial-pond/data/etf_decision_readiness.json`
+- `tests/etf_decision_readiness.test.mjs`
+
+Current capability:
+
+- Converts sector-module and sector-flow output into ETF action-readiness labels.
+- Blocks buy-oriented labels when the provider run is missing, data is mock-only,
+  AKShare output is `baseline_only`, observed ETF-flow coverage is too low, or
+  rotation history has fewer than 3 samples.
+- Separates `wait_for_real_flow`, `watch_for_persistence`,
+  `confirmation_candidate`, and `small_position_candidate`.
+- Publishes blockers and next steps so the frontend can explain why an ETF is
+  not actionable yet.
+- Keeps blocked representative sectors visible as pending watch items when no
+  actionable ETF candidate exists yet.
+- Publishes user-facing Chinese readings for global blockers.
+- Runs with:
+
+```bash
+npm run etf:readiness -- --as-of YYYY-MM-DD
+```
+
+Important boundary:
+
+- This module is a gatekeeper, not an allocation engine.
+- It does not create buy/sell orders.
+- It does not fake missing `estimated_flow`.
+
+Not yet complete:
+
+- No provider-backed PE/PB/dividend/ROE valuation source.
+- No user-specific position sizing, cash limits, or risk budget.
+- No backtested thresholds.
+
 ## Reporting
 
 Status: `working`

@@ -9,12 +9,16 @@ export async function runAShareDailyCi({
   asOf = new Date().toISOString().slice(0, 10)
 }) {
   const summary = {
-    runner_id: "a_share_daily_ci_v0_10_12",
+    runner_id: "a_share_daily_ci_v0_10_27",
     as_of: asOf,
     started_at: new Date().toISOString(),
     fallback_used: false,
     steps: []
   };
+
+  await runStep(summary, "akshare_provider_doctor", "python3", [
+    "providers/akshare_etf_bridge/doctor.py"
+  ], { rootDir });
 
   await runStep(summary, "akshare_etf_snapshot", "python3", [
     "providers/akshare_etf_bridge/export_a_share_etf_daily.py",
@@ -87,6 +91,18 @@ export async function runAShareDailyCi({
 
   await runStep(summary, "sector_rotation_history", "node", [
     "src/tools/sector_rotation_history.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
+  await runStep(summary, "sector_module_review", "node", [
+    "src/tools/sector_module_review.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
+  await runStep(summary, "etf_decision_readiness", "node", [
+    "src/tools/etf_decision_readiness.mjs",
     "--as-of",
     asOf
   ], { rootDir });

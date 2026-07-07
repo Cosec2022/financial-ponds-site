@@ -32,25 +32,33 @@ jobs:
           python-version: "3.10"
 
       - name: Install A-share provider dependencies
-        run: python -m pip install --upgrade pip akshare
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r tools/financial-pond-framework/providers/requirements.txt
 
       - name: Run Financial Ponds A-share daily cycle
         working-directory: tools/financial-pond-framework
         run: |
           AS_OF="$(date +%F)"
           npm test
+          npm run provider:akshare:doctor
           npm run a-share:daily:ci -- --as-of "$AS_OF"
           npm run pool:analysis -- --as-of "$AS_OF"
+          npm run data:audit -- --as-of "$AS_OF"
           npm run export:web-data -- "$AS_OF"
           cp web/data/dashboard.json ../../financial-pond/data/dashboard.json
           cp "model_outputs/$AS_OF/general_pool_analysis.json" ../../financial-pond/data/general_pool_analysis.json
           cp "model_outputs/$AS_OF/sector_flow_review.json" ../../financial-pond/data/sector_flow_review.json
           cp "model_outputs/$AS_OF/sector_rotation_intelligence.json" ../../financial-pond/data/sector_rotation_intelligence.json
           cp "model_outputs/$AS_OF/sector_rotation_history.json" ../../financial-pond/data/sector_rotation_history.json
+          cp "model_outputs/$AS_OF/sector_module_review.json" ../../financial-pond/data/sector_module_review.json
+          cp "model_outputs/$AS_OF/etf_decision_readiness.json" ../../financial-pond/data/etf_decision_readiness.json
+          cp "model_outputs/$AS_OF/data_reality_audit.json" ../../financial-pond/data/data_reality_audit.json
           cp "model_outputs/$AS_OF/news_review.json" ../../financial-pond/data/news_review.json
 
       - name: Build and test Worker
         run: |
+          npm run validate:data
           npm run build
           npm run validate
           npm test

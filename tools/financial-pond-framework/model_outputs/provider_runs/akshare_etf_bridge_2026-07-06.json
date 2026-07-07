@@ -1,0 +1,17 @@
+{
+  "bridge_id": "akshare_etf_bridge",
+  "provider": "akshare",
+  "mode": "real",
+  "as_of": "2026-07-06",
+  "provider_run_id": "akshare_etf_bridge_2026-07-06_152719",
+  "started_at": "2026-07-06T15:27:19.744002+00:00",
+  "status": "error",
+  "warnings": [],
+  "errors": [
+    "AKShare is not installed. Run `python3 -m pip install akshare` or use --fixture."
+  ],
+  "outputs": {
+    "run_status_json": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-06.json"
+  },
+  "finished_at": "2026-07-06T15:27:19.744148+00:00"
+}

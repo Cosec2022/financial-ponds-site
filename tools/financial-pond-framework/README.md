@@ -66,6 +66,8 @@ npm run flow:review:fixture
 npm run flow:review -- --as-of 2026-07-03
 npm run pool:analysis -- --as-of 2026-07-02
 npm run rotation:review -- --as-of 2026-07-02
+npm run module:review -- --as-of 2026-07-02
+npm run data:audit -- --as-of 2026-07-02
 npm test
 ```
 
@@ -132,6 +134,15 @@ review model.
 
 Read `docs/FLOW_ENGINE_V0_9_1_AKSHARE_INPUTS.md` before changing AKShare to
 Flow Engine observation mapping.
+
+Read `config/model/sector_module_profiles.json` before changing valuation or
+fundamental assumptions. `npm run module:review` keeps valuation, fundamentals,
+and flow/price independent and only combines them into a readable decision label.
+
+Run `npm run data:audit -- --as-of YYYY-MM-DD` after publishing model outputs.
+The audit labels each layer as real, mock, fixture, manual seed, source
+unverified, or derived. Treat it as the first screen to read before any market
+conclusion.
 
 Read `docs/PIPELINE_INTENT.md` before adding collectors, Codex API analysis,
 or report generators.

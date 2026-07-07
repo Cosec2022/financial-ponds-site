@@ -5,10 +5,19 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.0`
+Package version: `0.10.30`
 
 Purpose of this version:
 
+- add a daily published-data completeness guard so missing decision JSON fails CI
+- prevent silent partial publishes when ETF readiness, module review, or data audit is absent
+- add a first-screen Provider Status panel for AKShare environment, real provider run, ETF share-flow readiness, trend samples, valuation source, and next command
+- make the next operational step visible from the website instead of requiring JSON inspection
+- keep the ETF decision-readiness gate visible even when all candidates are blocked
+- translate ETF readiness blockers into user-facing Chinese
+- keep blocked representative sectors visible as pending watch items instead of
+  showing an empty watchlist
+- regenerate packaged ETF readiness and data reality audit JSON
 - preserve the model intent in plain language
 - keep the project resumable from a standalone zip
 - record the user's investment objective and wording preferences
@@ -31,6 +40,10 @@ Purpose of this version:
 - add a dedicated A-share daily scheduler
 - add an independent news intelligence module that writes separate news observations and review outputs
 - make the Financial Ponds frontend readable for A-share sector review, news pressure, and data boundaries
+- add independent valuation, fundamental, and flow/price sector modules with a cross-tab decision label
+- add a data reality audit so mock, fixture, manual seed, and derived layers cannot be mistaken for live market data
+- make Flow Review availability source-aware so mock inputs cannot be labeled as ETF-flow-ready market evidence
+- add ETF decision readiness as a gatekeeper before any ETF action language
 
 ## User Objective
 
@@ -226,6 +239,198 @@ overseas semiconductor selloff
 ```
 
 Flow Engine outputs are review reports, not trading commands.
+
+## Current v0.10.20 Addition
+
+The package adds the first independent sector module layer:
+
+```text
+FP-MOD-01 Sector Module Review
+```
+
+Command:
+
+```bash
+npm run module:review -- --as-of 2026-07-02
+```
+
+Inputs:
+
+```text
+model_outputs/<date>/sector_flow_review.json
+config/model/sector_module_profiles.json
+config/sector_catalog/a_share_industry_etfs.json
+```
+
+Output:
+
+```text
+model_outputs/<date>/sector_module_review.json
+model_outputs/<date>/sector_module_review.md
+financial-pond/data/sector_module_review.json
+```
+
+Design boundary:
+
+```text
+valuation module: only answers whether the sector is cheap or expensive
+fundamental module: only answers whether earnings/ROE/cycle quality is improving or deteriorating
+flow_price module: imports the existing ETF flow and price-volume review
+decision label: combines the three labels for readability, but does not rewrite any module score
+```
+
+The first profile file is a manual seed:
+
+```text
+config/model/sector_module_profiles.json
+```
+
+It is intentionally editable. Later real PE/PB/dividend/ROE/earnings providers
+can replace these fields while preserving the same JSON contract.
+
+## Current v0.10.21 Addition
+
+The package adds the data reality audit:
+
+```text
+FP-AUDIT-01 Data Reality Audit
+```
+
+Command:
+
+```bash
+npm run data:audit -- --as-of 2026-07-02
+```
+
+Output:
+
+```text
+model_outputs/<date>/data_reality_audit.json
+model_outputs/<date>/data_reality_audit.md
+financial-pond/data/data_reality_audit.json
+```
+
+The audit checks:
+
+```text
+flow_price
+news
+sector_modules
+sector_rotation
+general_pool_analysis
+rotation_history
+```
+
+Current packaged audit result:
+
+```text
+overall_reality: mixed_non_real
+flow_price: mock
+news: fixture
+sector_modules: manual_seed
+sector_rotation: derived_from_non_real
+general_pool_analysis: contract_output_source_unverified
+rotation_history: derived_from_non_real
+```
+
+Strict reading rule:
+
+```text
+If data_reality_audit.json says mixed_non_real, the website can be used to inspect
+model structure and data contracts, but not as a live ETF decision aid.
+```
+
+## Current v0.10.22 Addition
+
+The Flow Review availability contract is now source-aware.
+
+New fields:
+
+```text
+data_availability.source_reality
+data_availability.market_use_confidence
+data_availability.source_counts
+data_availability.counts.observed_direct_flow_inputs
+data_availability.counts.representative_observed_direct_flow_inputs
+data_availability.counts.observed_price_volume_confirmations
+data_availability.counts.representative_observed_price_volume_confirmations
+```
+
+If all active inputs come from mock or fixture sources, the mode is:
+
+```text
+mock_only
+```
+
+Downstream effect:
+
+```text
+sector_rotation_intelligence.evidence_level = mock_only
+```
+
+This closes the earlier ambiguity where component coverage could be full while
+source reality was still non-real.
+
+## Current v0.10.23 Addition
+
+The Data Reality Audit now includes real-provider run status:
+
+```text
+akshare_provider_run
+```
+
+It reads:
+
+```text
+model_outputs/provider_runs/akshare_etf_bridge_<date>.json
+```
+
+Current local probe:
+
+```text
+provider_run_failed
+AKShare is not installed. Run `python3 -m pip install akshare` or use --fixture.
+```
+
+This turns the next real-data blocker into a visible dashboard layer instead of
+leaving it hidden in terminal logs.
+
+## Current v0.10.24 Addition
+
+The AKShare provider has a doctor/preflight command:
+
+```bash
+npm run provider:akshare:doctor
+npm run provider:akshare:doctor:probe
+```
+
+It writes:
+
+```text
+model_outputs/provider_runs/akshare_etf_bridge_doctor.json
+```
+
+The command checks:
+
+```text
+python_runtime
+akshare_import
+fund_etf_spot_em, only with --probe-endpoint
+```
+
+The real daily path now runs the doctor before exporting provider data.
+
+Current local blocker:
+
+```text
+akshare_import blocked: No module named 'akshare'
+```
+
+CI install path:
+
+```bash
+python -m pip install -r tools/financial-pond-framework/providers/requirements.txt
+```
 
 ## Current v0.9.1 Addition
 
@@ -823,6 +1028,125 @@ Suggested order:
 15. Add tests proving a new sector pool can be added with config only.
 16. Add dashboard fields for pool internals, not only final score.
 17. Keep all real-data collectors optional so the package still runs offline.
+
+## Current v0.10.28 Addition
+
+The package improves the ETF decision-readiness reading layer:
+
+```text
+FP-ETF-01 ETF Decision Readiness
+FP-UI-01 Frontend Dashboard
+FP-MAINT-01 Maintenance Protocol
+```
+
+Command:
+
+```bash
+npm run etf:readiness -- --as-of 2026-07-02
+npm run data:audit -- --as-of 2026-07-02
+```
+
+Output:
+
+```text
+model_outputs/<date>/etf_decision_readiness.json
+model_outputs/<date>/etf_decision_readiness.md
+financial-pond/data/etf_decision_readiness.json
+financial-pond/data/data_reality_audit.json
+```
+
+Current packaged reading:
+
+```text
+guidance_state: not_ready
+headline: 暂不能指导买入 ETF：AKShare 真实 provider 今天还没有确认跑通。
+top_watchlist: 6 pending representative sectors
+```
+
+Important boundary:
+
+```text
+The pending watch items are not buy candidates.
+They show which representative sectors would be worth watching after data gates unlock.
+No scoring weights, provider endpoints, or trade rules changed in v0.10.28.
+```
+
+## Current v0.10.29 Addition
+
+The package adds a first-screen Provider Status panel:
+
+```text
+FP-UI-01 Frontend Dashboard
+FP-DATA-01 Hard Data Providers
+```
+
+Data inputs:
+
+```text
+financial-pond/data/data_reality_audit.json
+financial-pond/data/etf_decision_readiness.json
+```
+
+The panel shows:
+
+```text
+AKShare environment status
+AKShare real provider run status
+ETF share-flow coverage
+trend sample count
+valuation/fundamental source state
+next command
+```
+
+Current packaged reading:
+
+```text
+AKShare environment: provider_doctor_blocked
+AKShare run: provider_run_failed
+next command: install AKShare requirements, then run provider:akshare:doctor
+```
+
+Important boundary:
+
+```text
+This is operational guidance only.
+It does not change scores, provider collection rules, or ETF action labels.
+```
+
+## Current v0.10.30 Addition
+
+The package adds a daily published-data completeness guard:
+
+```text
+scripts/validate-published-data.mjs
+npm run validate:data
+```
+
+The GitHub Action now runs:
+
+```text
+npm run validate:data
+npm run build
+npm run validate
+npm test
+```
+
+The guard requires:
+
+```text
+sector_module_review.json
+etf_decision_readiness.json
+data_reality_audit.json
+```
+
+plus the rest of the web JSON contract.
+
+Important boundary:
+
+```text
+This update does not change any market score or provider endpoint.
+It only prevents the site from silently publishing incomplete decision data.
+```
 
 ## User Preferences
 

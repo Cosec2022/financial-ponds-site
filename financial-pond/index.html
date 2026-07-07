@@ -20,6 +20,30 @@
     </header>
 
     <main class="layout">
+      <section class="section reality-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Data Reality Audit</p>
+            <h2>数据真实性审计</h2>
+            <p>先看数据来源，再看模型结论。真实行情、样例、手工种子和派生解释分开标注。</p>
+          </div>
+          <span id="realityStatus" class="pill muted">Checking</span>
+        </div>
+        <div id="realityPanel" class="reality-grid">Loading data reality audit.</div>
+      </section>
+
+      <section class="section provider-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Provider Status</p>
+            <h2>真实数据通道</h2>
+            <p>专门看 AKShare 是否安装、真实抓取是否跑通、ETF 份额流是否可算，以及下一条该运行什么命令。</p>
+          </div>
+          <span id="providerStatus" class="pill muted">Checking</span>
+        </div>
+        <div id="providerPanel" class="provider-grid">Loading provider status.</div>
+      </section>
+
       <section class="section reference-panel">
         <div class="section-head">
           <div>
@@ -44,6 +68,30 @@
         <div id="rotationPanel" class="rotation-grid">Loading rotation intelligence.</div>
       </section>
 
+      <section class="section module-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Independent Modules</p>
+            <h2>估值 / 基本面 / 资金量价</h2>
+            <p>三条线分开判断，最后只做标签组合。估值便宜不会自动加到资金分里，资金转强也不会改写估值。</p>
+          </div>
+          <span id="moduleStatus" class="pill muted">Checking</span>
+        </div>
+        <div id="modulePanel" class="module-grid">Loading module review.</div>
+      </section>
+
+      <section class="section etf-panel">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">ETF Decision Readiness</p>
+            <h2>ETF行动准备度</h2>
+            <p>先判断能不能给 ETF 操作建议。真实资金流、趋势样本、估值基本面来源没达标时，系统会主动降级为观察。</p>
+          </div>
+          <span id="etfStatus" class="pill muted">Checking</span>
+        </div>
+        <div id="etfPanel" class="etf-grid">Loading ETF readiness.</div>
+      </section>
+
       <section class="left-pane section">
         <div class="section-head compact">
           <div>
@@ -65,6 +113,7 @@
           <div class="score-stack">
             <div><span>热度</span><strong id="detailHeat">--</strong></div>
             <div><span>估值</span><strong id="detailValuation">--</strong></div>
+            <div><span>基本面</span><strong id="detailFundamental">--</strong></div>
             <div><span>模型分</span><strong id="detailScore">--</strong></div>
           </div>
         </section>

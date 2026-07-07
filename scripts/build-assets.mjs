@@ -11,6 +11,9 @@ const files = [
   ["data/sector_flow_review.json", "application/json; charset=utf-8"],
   ["data/sector_rotation_intelligence.json", "application/json; charset=utf-8"],
   ["data/sector_rotation_history.json", "application/json; charset=utf-8"],
+  ["data/sector_module_review.json", "application/json; charset=utf-8"],
+  ["data/etf_decision_readiness.json", "application/json; charset=utf-8"],
+  ["data/data_reality_audit.json", "application/json; charset=utf-8"],
   ["data/news_review.json", "application/json; charset=utf-8"],
   ["data/pond_map.json", "application/json; charset=utf-8"],
 ];

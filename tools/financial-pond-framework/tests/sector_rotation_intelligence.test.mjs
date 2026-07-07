@@ -91,6 +91,30 @@ test("sector rotation intelligence keeps price-volume-only evidence separate fro
   assert.ok(result.watch_points[0].includes("ETF份额/资金流今天没有进入模型"));
 });
 
+test("sector rotation intelligence labels mock-only flow review as model-structure evidence", () => {
+  const result = buildSectorRotationIntelligence({
+    sectorReview: {
+      ...sampleSectorReview,
+      data_availability: {
+        mode: "mock_only",
+        headline: "Sector components are populated from mock or fixture sources.",
+        counts: {
+          representative_sectors: 11,
+          representative_direct_flow_inputs: 11,
+          representative_price_volume_confirmations: 11
+        },
+        source_reality: "mock",
+        warnings: ["All active sector-flow inputs are mock or fixture sources."]
+      }
+    },
+    newsReview: { collection: { fallback_used: true } }
+  });
+
+  assert.equal(result.evidence_level, "mock_only");
+  assert.equal(result.data_availability.mode, "mock_only");
+  assert.ok(result.watch_points[0].includes("mock/fixture"));
+});
+
 test("sector rotation intelligence writes JSON and Markdown outputs", async () => {
   const outputRoot = await mkdtemp(path.join(tmpdir(), "pond-rotation-"));
   const outDir = path.join(outputRoot, "model_outputs", "2026-07-02");

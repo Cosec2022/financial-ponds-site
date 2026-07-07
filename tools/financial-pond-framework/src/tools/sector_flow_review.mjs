@@ -142,13 +142,21 @@ function buildDataAvailability(rows) {
   const representativeDirectFlowCount = representativeRows.filter((row) => componentAvailable(row, "direct_flow")).length;
   const confirmationCount = rows.filter((row) => componentAvailable(row, "market_confirmation")).length;
   const representativeConfirmationCount = representativeRows.filter((row) => componentAvailable(row, "market_confirmation")).length;
+  const observedDirectFlowCount = rows.filter((row) => componentHasObservedSource(row, "direct_flow")).length;
+  const representativeObservedDirectFlowCount = representativeRows.filter((row) => componentHasObservedSource(row, "direct_flow")).length;
+  const observedConfirmationCount = rows.filter((row) => componentHasObservedSource(row, "market_confirmation")).length;
+  const representativeObservedConfirmationCount = representativeRows.filter((row) => componentHasObservedSource(row, "market_confirmation")).length;
   const marketLiquidityCount = rows.filter((row) => componentAvailable(row, "market_liquidity")).length;
   const newsPressureCount = rows.filter((row) => componentAvailable(row, "policy_sentiment")).length;
   const fundamentalProxyCount = rows.filter((row) => componentAvailable(row, "fundamental_proxy")).length;
+  const sourceSummary = buildSourceSummary(rows);
   const mode = availabilityMode({
     representativeCount,
     representativeDirectFlowCount,
-    representativeConfirmationCount
+    representativeConfirmationCount,
+    representativeObservedDirectFlowCount,
+    representativeObservedConfirmationCount,
+    sourceReality: sourceSummary.reality
   });
 
   return {
@@ -157,8 +165,14 @@ function buildDataAvailability(rows) {
       mode,
       representativeDirectFlowCount,
       representativeCount,
-      representativeConfirmationCount
+      representativeConfirmationCount,
+      representativeObservedDirectFlowCount,
+      representativeObservedConfirmationCount,
+      sourceReality: sourceSummary.reality
     }),
+    source_reality: sourceSummary.reality,
+    market_use_confidence: sourceSummary.market_use_confidence,
+    source_counts: sourceSummary.source_counts,
     counts: {
       sectors: rows.length,
       representative_sectors: representativeRows.length,
@@ -166,6 +180,10 @@ function buildDataAvailability(rows) {
       representative_direct_flow_inputs: representativeDirectFlowCount,
       price_volume_confirmations: confirmationCount,
       representative_price_volume_confirmations: representativeConfirmationCount,
+      observed_direct_flow_inputs: observedDirectFlowCount,
+      representative_observed_direct_flow_inputs: representativeObservedDirectFlowCount,
+      observed_price_volume_confirmations: observedConfirmationCount,
+      representative_observed_price_volume_confirmations: representativeObservedConfirmationCount,
       market_liquidity_inputs: marketLiquidityCount,
       news_pressure_inputs: newsPressureCount,
       fundamental_proxy_inputs: fundamentalProxyCount
@@ -180,13 +198,68 @@ function buildDataAvailability(rows) {
       mode,
       representativeCount,
       representativeDirectFlowCount,
-      representativeConfirmationCount
+      representativeConfirmationCount,
+      representativeObservedDirectFlowCount,
+      representativeObservedConfirmationCount,
+      sourceReality: sourceSummary.reality
     })
   };
 }
 
 function componentAvailable(row, componentName) {
   return Boolean(row?.components?.[componentName]?.available);
+}
+
+function componentHasObservedSource(row, componentName) {
+  const component = row?.components?.[componentName];
+  if (!component?.available) return false;
+  return (component.nodes ?? []).some((node) => {
+    if (typeof node === "string") return false;
+    return sourceKind(node.source) === "observed";
+  });
+}
+
+function buildSourceSummary(rows) {
+  const sourceCounts = {};
+  let observedCount = 0;
+  let mockCount = 0;
+  let unknownCount = 0;
+
+  for (const row of rows) {
+    for (const component of Object.values(row.components ?? {})) {
+      if (!component?.available) continue;
+      for (const node of component.nodes ?? []) {
+        if (typeof node === "string") continue;
+        const source = node.source ?? "unknown";
+        sourceCounts[source] = (sourceCounts[source] ?? 0) + 1;
+        const kind = sourceKind(source);
+        if (kind === "observed") observedCount += 1;
+        else if (kind === "mock") mockCount += 1;
+        else unknownCount += 1;
+      }
+    }
+  }
+
+  const reality = observedCount > 0 && mockCount === 0 && unknownCount === 0
+    ? "observed"
+    : observedCount > 0
+      ? "mixed_observed_mock"
+      : mockCount > 0
+        ? "mock"
+        : "unknown";
+
+  return {
+    reality,
+    market_use_confidence: reality === "observed" ? "medium" : "low",
+    source_counts: sourceCounts
+  };
+}
+
+function sourceKind(source) {
+  if (!source) return "unknown";
+  if (/mock|fixture|config\/mock_scores/i.test(source)) return "mock";
+  if (/akshare|provider|efinance|qstock|exchange|real|local_csv|http_csv|http_json|a_share_water_level/i.test(source)) return "observed";
+  return "unknown";
 }
 
 function ratio(numerator, denominator) {
@@ -197,11 +270,17 @@ function ratio(numerator, denominator) {
 function availabilityMode({
   representativeCount,
   representativeDirectFlowCount,
-  representativeConfirmationCount
+  representativeConfirmationCount,
+  representativeObservedDirectFlowCount,
+  representativeObservedConfirmationCount,
+  sourceReality
 }) {
+  if (sourceReality === "mock") return "mock_only";
+  if (sourceReality === "unknown" && (representativeDirectFlowCount > 0 || representativeConfirmationCount > 0)) return "source_unverified";
   if (representativeCount > 0 && representativeDirectFlowCount >= representativeCount && representativeConfirmationCount >= representativeCount) {
     return "etf_flow_ready";
   }
+  if (representativeObservedDirectFlowCount > 0 && representativeObservedConfirmationCount > 0) return "partial_observed_flow";
   if (representativeDirectFlowCount > 0) return "partial_etf_flow";
   if (representativeConfirmationCount > 0) return "price_volume_only";
   return "thin_data";
@@ -211,10 +290,21 @@ function availabilityHeadline({
   mode,
   representativeDirectFlowCount,
   representativeCount,
-  representativeConfirmationCount
+  representativeConfirmationCount,
+  representativeObservedDirectFlowCount,
+  representativeObservedConfirmationCount
 }) {
+  if (mode === "mock_only") {
+    return "Sector components are populated from mock or fixture sources; do not read this as live market evidence.";
+  }
+  if (mode === "source_unverified") {
+    return "Sector components are populated, but source provenance is not verified; treat rankings as low confidence.";
+  }
   if (mode === "etf_flow_ready") {
-    return `ETF flow and price-volume confirmation are available for ${representativeCount}/${representativeCount} representative sectors.`;
+    return `ETF flow and price-volume confirmation are available for ${representativeCount}/${representativeCount} representative sectors; observed-source direct flow ${representativeObservedDirectFlowCount}/${representativeCount}, observed-source confirmation ${representativeObservedConfirmationCount}/${representativeCount}.`;
+  }
+  if (mode === "partial_observed_flow") {
+    return `Observed-source ETF flow is partial: ${representativeObservedDirectFlowCount}/${representativeCount}; observed-source price-volume confirmation ${representativeObservedConfirmationCount}/${representativeCount}.`;
   }
   if (mode === "partial_etf_flow") {
     return `ETF flow is partial: ${representativeDirectFlowCount}/${representativeCount} representative sectors have direct flow inputs.`;
@@ -229,9 +319,21 @@ function availabilityWarnings({
   mode,
   representativeCount,
   representativeDirectFlowCount,
-  representativeConfirmationCount
+  representativeConfirmationCount,
+  representativeObservedDirectFlowCount,
+  representativeObservedConfirmationCount,
+  sourceReality
 }) {
   const warnings = [];
+  if (mode === "mock_only") {
+    warnings.push("All active sector-flow inputs are mock or fixture sources; use this output only for UI/model-contract checks.");
+  }
+  if (mode === "source_unverified") {
+    warnings.push("Sector-flow inputs are populated but source provenance is unknown; inspect component node sources before using the ranking.");
+  }
+  if (sourceReality === "mixed_observed_mock") {
+    warnings.push("Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage.");
+  }
   if (mode === "price_volume_only") {
     warnings.push("Direct ETF share-flow inputs are missing; sector ranking is based on price-volume, water-level, news, and proxy inputs.");
   }
@@ -240,6 +342,12 @@ function availabilityWarnings({
   }
   if (representativeConfirmationCount < representativeCount) {
     warnings.push(`Only ${representativeConfirmationCount}/${representativeCount} representative sectors have price-volume confirmation.`);
+  }
+  if (representativeObservedDirectFlowCount < representativeCount) {
+    warnings.push(`Only ${representativeObservedDirectFlowCount}/${representativeCount} representative sectors have observed-source direct ETF flow.`);
+  }
+  if (representativeObservedConfirmationCount < representativeCount) {
+    warnings.push(`Only ${representativeObservedConfirmationCount}/${representativeCount} representative sectors have observed-source price-volume confirmation.`);
   }
   if (mode === "thin_data") {
     warnings.push("Do not read sector rotation as a market signal until at least price-volume confirmation is available.");

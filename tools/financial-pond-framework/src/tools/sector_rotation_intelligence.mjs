@@ -242,6 +242,9 @@ function classifyEvidence({
   if (dataAvailability?.mode === "etf_flow_ready") {
     return newsFallback ? "hard_data_with_news_fixture" : "hard_data_confirmed";
   }
+  if (dataAvailability?.mode === "mock_only") return "mock_only";
+  if (dataAvailability?.mode === "source_unverified") return "source_unverified";
+  if (dataAvailability?.mode === "partial_observed_flow") return "partial_observed_flow";
   if (dataAvailability?.mode === "price_volume_only") return "price_volume_only";
   if (dataAvailability?.mode === "partial_etf_flow") return "partial_etf_flow";
   if (availableDirectFlowCount === sectorCount && availableConfirmationCount === sectorCount && avgCompleteness >= 0.55 && !newsFallback) {
@@ -377,7 +380,11 @@ function buildRotationPairs({ leaders, laggards }) {
 
 function buildWatchPoints({ rows, leaders, laggards, clusterReviews, newsFallback, avgCompleteness, dataAvailability }) {
   const points = [];
-  if (dataAvailability?.mode === "price_volume_only") {
+  if (dataAvailability?.mode === "mock_only") {
+    points.push("资金量价层当前为 mock/fixture，只能检查模型结构，不能读作真实行业轮动。");
+  } else if (dataAvailability?.mode === "source_unverified") {
+    points.push("资金量价层来源未验证，先检查 component node source，再读行业排序。");
+  } else if (dataAvailability?.mode === "price_volume_only") {
     points.push("ETF份额/资金流今天没有进入模型，优先把行业排序当作价量和新闻压力快照。");
   } else {
     points.push(`优先看${leaders[0]?.name_cn ?? "强势行业"}能否连续保持ETF流和价量确认。`);

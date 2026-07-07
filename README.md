@@ -5,9 +5,15 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 ## Current status
 
 - Site root shows a reference-first dashboard with general S&P 500 and A-share industry analysis.
+- The first screen starts with `FP-AUDIT-01` data reality audit, so model conclusions are read only after source reality is checked.
 - The first screen includes `FP-GEN-01` general pool analysis for S&P 500, A-share market, and A-share industries.
 - The first screen now includes A-share sector rotation intelligence: leaders, laggards, style clusters, possible switching paths, and watch points.
 - The rotation panel now shows rotation-history sample count, trend-confirmation boundary, and persistent leader/laggard summaries when enough samples exist.
+- The first screen now includes independent sector modules for valuation, fundamentals, and flow/price. The final label is a cross-tab, not a blended score.
+- The first screen now includes `FP-ETF-01` ETF decision readiness, so sector strength is gated before it can be read as ETF action support.
+- The ETF readiness panel now keeps blocked-but-close representative sectors visible as pending watch items, with blockers translated for human reading.
+- The first screen now includes a provider status panel for AKShare environment, real provider run, ETF share-flow readiness, trend samples, valuation source, and the next command to run.
+- The daily Action now runs a published-data completeness guard, so missing ETF readiness, module review, or data audit JSON fails the build instead of silently deploying partial data.
 - The first screen separates hard data, fallback news, and prototype signals.
 - The reference panel now shows ETF-flow availability separately from price-volume confirmation, so `0/11` ETF-flow days are clearly marked instead of silently mixed into the score.
 - A-share hard-data collection runs in `tools/financial-pond-framework`.
@@ -49,7 +55,9 @@ The CI runner collects:
 3. Independent news review, with explicit fixture fallback if news search is unavailable.
 4. Sector Flow Review.
 5. Sector Rotation Intelligence.
-6. General Pool Analysis after the graph cycle.
+6. Sector Module Review: valuation, fundamentals, and flow/price kept independent.
+7. General Pool Analysis after the graph cycle.
+8. Data Reality Audit: labels real, mock, fixture, manual seed, and derived layers.
 
 Published web JSON:
 
@@ -59,6 +67,8 @@ financial-pond/data/general_pool_analysis.json
 financial-pond/data/sector_flow_review.json
 financial-pond/data/sector_rotation_intelligence.json
 financial-pond/data/sector_rotation_history.json
+financial-pond/data/sector_module_review.json
+financial-pond/data/data_reality_audit.json
 financial-pond/data/news_review.json
 ```
 
@@ -108,7 +118,7 @@ tools/financial-pond-framework/docs/UPDATE_PROTOCOL.md
 tools/financial-pond-framework/docs/PROJECT_PLAN.md
 tools/financial-pond-framework/docs/MODULE_PLAN.md
 tools/financial-pond-framework/docs/GITHUB_SYNC_PROTOCOL.md
-tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_19.md
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_30.md
 ```
 
 Before making meaningful changes, read those files first.
@@ -216,6 +226,190 @@ Working:
 - possible weak-to-strong switching paths
 - watch points and evidence boundary
 - frontend Rotation Intelligence panel
+```
+
+## v0.10.20 independent sector modules
+
+This package adds `FP-MOD-01` on top of the existing flow review.
+
+```text
+Working:
+- config/model/sector_module_profiles.json as editable valuation/fundamental seed input
+- sector_module_review.json generation
+- independent modules: valuation, fundamental, flow_price
+- decision labels such as low valuation but weak fundamentals, fair and improving, or expensive momentum
+- frontend Independent Modules panel
+- detail and sector table fields for valuation, fundamentals, and cross-tab label
+```
+
+## v0.10.28 ETF readiness watchlist clarity
+
+This package improves the already automated `FP-ETF-01` readiness layer.
+
+Working:
+
+```text
+- ETF readiness is generated in the daily CI path.
+- financial-pond/data/etf_decision_readiness.json is published to the site.
+- blocked representative sectors remain visible as pending watch items instead of leaving the watchlist empty.
+- blocker readings are user-facing Chinese text.
+- frontend blocker labels and readiness percentages are easier to read.
+```
+
+## v0.10.29 provider status panel
+
+This package adds a visible operational status layer before the market-reading panels.
+
+Working:
+
+```text
+- Provider Status panel reads existing data_reality_audit.json and etf_decision_readiness.json.
+- It shows AKShare doctor status, real provider run status, ETF share-flow coverage, trend sample count, and valuation-source state.
+- It shows the next command to run from the downloaded zip workspace.
+- Worker tests now guard the provider status section and provider audit layers.
+```
+
+## v0.10.30 published data completeness guard
+
+This package hardens the daily GitHub Action.
+
+Working:
+
+```text
+- scripts/validate-published-data.mjs checks all published web JSON files.
+- The daily Action runs npm run validate:data before building the Worker.
+- Missing sector_module_review.json, etf_decision_readiness.json, or data_reality_audit.json now fails CI.
+- Workflow tests guard the completeness validator and the full decision-data publish list.
+```
+
+Boundary:
+
+```text
+- No scoring weights changed.
+- No provider endpoint changed.
+- This update prevents silent partial publish only.
+```
+
+Boundary:
+
+```text
+- The panel is operational guidance only.
+- It does not change model scores.
+- It does not change provider collection rules.
+- It does not turn blocked ETF rows into buy candidates.
+```
+
+Boundary:
+
+```text
+- No scoring weights changed.
+- No provider endpoint changed.
+- No blocked sector becomes a buy candidate.
+- The current packaged data still says: not ready for ETF buy guidance.
+```
+
+Boundary:
+
+```text
+- valuation does not modify flow/price score
+- short-term flow does not modify valuation
+- manual seed profiles are editable placeholders until live PE/PB/dividend/ROE/earnings data providers are connected
+```
+
+## v0.10.21 data reality audit
+
+This package adds `FP-AUDIT-01`.
+
+```text
+Working:
+- data_reality_audit.json generation
+- source classification for flow/price, news, sector modules, rotation, general pool analysis, and rotation history
+- frontend Data Reality Audit panel before the reference panel
+- reference panel now uses audit status before calling anything hard data
+```
+
+Current packaged data reality:
+
+```text
+flow_price: mock
+news: fixture
+sector_modules: manual_seed
+sector_rotation: derived_from_non_real
+general_pool_analysis: contract_output_source_unverified
+rotation_history: derived_from_non_real
+```
+
+Boundary:
+
+```text
+The model structure is usable, but the current packaged data is not a live market signal.
+Read data_reality_audit.json before using any ranking or decision label.
+```
+
+## v0.10.22 source-aware flow availability
+
+`sector_flow_review.json` now separates populated components from observed-source evidence.
+
+```text
+Added:
+- data_availability.source_reality
+- data_availability.market_use_confidence
+- data_availability.source_counts
+- observed-source direct-flow counts
+- observed-source price-volume counts
+```
+
+If active inputs are mock or fixture only, `data_availability.mode` becomes:
+
+```text
+mock_only
+```
+
+This prevents a populated mock review from being displayed as `etf_flow_ready`.
+
+## v0.10.23 provider run audit
+
+`data_reality_audit.json` now includes the AKShare real-provider run status.
+
+```text
+Layer:
+- akshare_provider_run
+
+Possible states:
+- provider_run_ok
+- provider_run_failed
+- provider_not_run
+- provider_run_unverified
+```
+
+Current local status:
+
+```text
+provider_doctor_blocked: No module named 'akshare'
+provider_run_failed: AKShare is not installed.
+```
+
+This makes the next blocker visible on the dashboard before any model output is read.
+
+## v0.10.24 AKShare provider doctor
+
+The AKShare bridge now has a read-only preflight:
+
+```bash
+npm run provider:akshare:doctor
+npm run provider:akshare:doctor:probe
+```
+
+It writes:
+
+```text
+model_outputs/provider_runs/akshare_etf_bridge_doctor.json
+```
+
+The CI and `npm run a-share:daily` path run the doctor before real provider export. Current local result:
+
+```text
+akshare_import: blocked, No module named 'akshare'
 ```
 
 The output explains relative sector rotation only. It is not a trading instruction.

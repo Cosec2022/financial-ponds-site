@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.12
+Version: v0.10.30
 Status: active
 
 Module IDs use this format:
@@ -24,11 +24,12 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-NEWS-01 | News Pressure Engine | News as pressure, catalyst, risk, expectation | basic / fallback | 30% | Add fixed real sources and source-quality labels |
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots and compare latest vs previous day | working prototype | 35% | Accumulate 3+ trading days and add trend labels |
-| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 60% | Add trend panels and maintenance-state display |
+| FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language | working prototype | 36% | Replace manual valuation/fundamental seeds and require observed multi-day flow |
+| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 62% | Add trend panels and maintenance-state display |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
-| FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 75% | Keep CI-order and provider-coverage guards current |
-| FP-MAINT-01 | Maintenance Protocol | Rules, update protocol, total plan, module plan | working | 72% | Keep progress updated every version |
+| FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 77% | Keep CI-order and provider-coverage guards current |
+| FP-MAINT-01 | Maintenance Protocol | Rules, update protocol, total plan, module plan | working | 75% | Keep progress updated every version |
 | FP-POOL-01 | Free Pond Expansion | Add arbitrary market, asset, sector, theme, or watchlist as a pond | started | 20% | Define pond template and creation checklist |
 
 ## Progress Labels
