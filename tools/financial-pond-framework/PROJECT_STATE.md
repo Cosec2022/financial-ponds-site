@@ -5,10 +5,13 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.33`
+Package version: `0.10.36`
 
 Purpose of this version:
 
+- add daily decision tickets so priority, confirmation, and avoid rows have upgrade and failure conditions for human review
+- add provider-history diagnostics so `baseline_only` shows the exact provider CSV dates and whether a previous trade-date baseline exists
+- add ETF share-change diagnostics so the site can show whether estimated-flow is blocked by missing latest_share, previous_share, share_change, or estimated_flow
 - add daily decision-gap checks so the homepage explains which ETF gates passed and which still block execution language
 - normalize daily sector names to Chinese labels before rendering
 - recover recent published sector-rotation history from Git so trend samples are less likely to be lost
@@ -1117,7 +1120,53 @@ This is operational guidance only.
 It does not change scores, provider collection rules, or ETF action labels.
 ```
 
-## Current v0.10.33 Addition
+## Current v0.10.35 Addition
+
+The package adds a daily human-review ticket to `FP-DAILY-01`.
+
+The fix:
+
+```text
+src/tools/daily_sector_analysis.mjs -> add decision_ticket
+financial-pond/app.js -> render 明日决策票
+financial-pond/styles.css -> add compact ticket cards
+scripts/validate-published-data.mjs -> require decision_ticket.groups
+tests/daily_sector_analysis.test.mjs -> lock ticket upgrade/failure conditions
+tests/worker.test.mjs -> lock published contract
+```
+
+Important boundary:
+
+```text
+This does not emit buy, sell, rebalance, or allocation instructions.
+The ticket only defines upgrade conditions, failure conditions, and human-review boundaries.
+ETF execution language still requires readiness gates to pass.
+```
+
+## Previous v0.10.34 Addition
+
+The package hardens the ETF share-change flow gate.
+
+The fix:
+
+```text
+src/tools/akshare_flow_observations.mjs -> add share_change_diagnostics
+src/tools/etf_decision_readiness.mjs -> expose gates.share_change_diagnostics
+src/tools/daily_sector_analysis.mjs -> use diagnostics in decision_gap readings
+financial-pond/app.js -> render the ETF 份额变化流 diagnostic card
+scripts/validate-published-data.mjs -> require readiness diagnostics
+tests/* -> lock converter, readiness, daily, and Worker contracts
+```
+
+Important boundary:
+
+```text
+This does not synthesize missing ETF share-change flow.
+It only shows whether the blocker is latest_share, previous_share, share_change, or estimated_flow.
+flow_ready still requires real provider rows with estimated_flow.
+```
+
+## Previous v0.10.33 Addition
 
 The package hardens `FP-DAILY-01` after the 3-day rotation chain recovered and
 `priority_watch` began populating.

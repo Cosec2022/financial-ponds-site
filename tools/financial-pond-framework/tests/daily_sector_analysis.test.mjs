@@ -53,6 +53,15 @@ test("daily sector analysis keeps not-ready ETF gates as observation-only tiers"
           provider_run: "real_ok",
           provider_flow_readiness: "baseline_only",
           true_flow_coverage: 0,
+          share_change_diagnostics: {
+            status: "baseline_only",
+            total_rows: 11,
+            latest_share_rows: 11,
+            previous_share_rows: 0,
+            share_change_rows: 0,
+            estimated_flow_rows: 0,
+            next_unlock: "还差 11/11 只代表 ETF 的份额变化流。"
+          },
           sample_days: 2,
           market_use_confidence: "low"
         },
@@ -79,6 +88,14 @@ test("daily sector analysis keeps not-ready ETF gates as observation-only tiers"
   assert.equal(payload.decision_gap.status, "blocked");
   assert.deepEqual(payload.decision_gap.passed_checks, ["provider_run", "trend_history", "source_reality"]);
   assert.deepEqual(payload.decision_gap.blocked_checks, ["share_change_flow", "valuation_fundamental"]);
+  assert.match(payload.decision_gap.checks.find((item) => item.id === "share_change_flow").reading, /previous_share/);
+  assert.equal(payload.decision_ticket.status, "watchlist_ready");
+  assert.match(payload.decision_ticket.summary, /券商/);
+  assert.equal(payload.decision_ticket.groups.priority_watch[0].sector_id, "brokerage");
+  assert.equal(payload.decision_ticket.groups.priority_watch[0].ticket_label, "优先观察");
+  assert.ok(payload.decision_ticket.groups.priority_watch[0].upgrade_conditions.some((item) => item.includes("份额变化流")));
+  assert.ok(payload.decision_ticket.groups.priority_watch[0].failure_conditions.some((item) => item.includes("estimated_flow")));
+  assert.equal(payload.decision_ticket.groups.avoid_watch[0].ticket_label, "回避观察");
   assert.equal(payload.tiers.priority_watch[0].sector_id, "brokerage");
   assert.equal(payload.tiers.priority_watch[0].reading.includes("观察项"), true);
   assert.equal(payload.tiers.confirm_next.find((row) => row.sector_id === "bank_insurance").name, "银行保险");

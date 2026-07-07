@@ -458,6 +458,11 @@ function renderDailyAnalysisPanel() {
       ${dailyDecisionGapTemplate(analysis.decision_gap)}
     </article>
     <article class="daily-card wide">
+      <span>明日决策票</span>
+      <strong>${analysis.decision_ticket?.summary ?? "等待决策票生成。"}</strong>
+      ${dailyDecisionTicketTemplate(analysis.decision_ticket)}
+    </article>
+    <article class="daily-card wide">
       <span>优先观察</span>
       ${dailyTierTemplate(tiers.priority_watch ?? [], "暂无连续领先方向。")}
     </article>
@@ -478,6 +483,36 @@ function renderDailyAnalysisPanel() {
       document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
+}
+
+function dailyDecisionTicketTemplate(ticket) {
+  const groups = ticket?.groups ?? {};
+  const rows = [
+    ...(groups.priority_watch ?? []).slice(0, 2),
+    ...(groups.confirm_next ?? []).slice(0, 2),
+    ...(groups.avoid_watch ?? []).slice(0, 2)
+  ];
+  if (!rows.length) return `<p class="muted">暂无可读决策票。</p>`;
+  return `
+    <div class="daily-ticket-list">
+      ${rows.map((row) => `
+        <button class="daily-ticket ${ticketClass(row.group)}" data-pond-id="${row.sector_id}" type="button">
+          <span>${row.ticket_label}</span>
+          <strong>${row.name}</strong>
+          <small>当前：${row.current_action_text ?? row.current_state ?? "--"} · 分数 ${formatScore(row.score)} · 连续 ${row.streak_days ?? "--"} 天</small>
+          <em>升级：${(row.upgrade_conditions ?? []).slice(0, 2).join("；")}</em>
+          <em>失败：${(row.failure_conditions ?? []).slice(0, 2).join("；")}</em>
+        </button>
+      `).join("")}
+    </div>
+    <small>${ticket.trade_boundary ?? "这里只是人工复核票，不是交易指令。"}</small>
+  `;
+}
+
+function ticketClass(group) {
+  if (group === "priority_watch") return "positive";
+  if (group === "avoid_watch") return "negative";
+  return "warm";
 }
 
 function dailyDecisionGapTemplate(gap) {
@@ -835,6 +870,10 @@ function renderEtfReadinessPanel() {
       <strong>${(readiness.counts?.small_position_candidate ?? 0) + (readiness.counts?.confirmation_candidate ?? 0)}</strong>
       <p>只有通过真实流、趋势样本和模块组合后，才会进入候选。</p>
     </article>
+    <article class="etf-card wide">
+      <span>份额变化流</span>
+      ${shareChangeDiagnosticsTemplate(gates.share_change_diagnostics)}
+    </article>
     <article class="etf-card wide ${blockers.length ? "negative" : "positive"}">
       <span>主要阻塞</span>
       ${blockers.length ? blockers.slice(0, 4).map((item) => `
@@ -861,6 +900,30 @@ function renderEtfReadinessPanel() {
       document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
+}
+
+function shareChangeDiagnosticsTemplate(diagnostics) {
+  if (!diagnostics) return `<strong>等待诊断</strong><p>等待 akshare_provider_flow_observations.json 生成份额变化诊断。</p>`;
+  const total = diagnostics.total_rows ?? 0;
+  const estimated = diagnostics.estimated_flow_rows ?? 0;
+  const latest = diagnostics.latest_share_rows ?? "--";
+  const previous = diagnostics.previous_share_rows ?? "--";
+  const missing = diagnostics.missing ?? [];
+  return `
+    <strong>${estimated}/${total} 可计算</strong>
+    <p>latest_share ${latest}/${total} · previous_share ${previous}/${total} · 状态 ${providerFlowReadinessLabel(diagnostics.status)}</p>
+    <small>${diagnostics.next_unlock ?? "等待下一次 provider 输出。"}</small>
+    ${missing.length ? `
+      <div class="share-gap-list">
+        ${missing.slice(0, 4).map((row) => `
+          <div class="share-gap-row">
+            <b>${sectorNames[row.sector_id] ?? row.sector_id}</b>
+            <small>${row.fund_code} · 缺 ${row.missing_fields?.join(", ") ?? "--"}</small>
+          </div>
+        `).join("")}
+      </div>
+    ` : ""}
+  `;
 }
 
 function etfMilestonesTemplate(rows) {

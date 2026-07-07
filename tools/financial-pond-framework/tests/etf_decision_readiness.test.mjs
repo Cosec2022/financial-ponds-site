@@ -64,7 +64,34 @@ test("ETF decision readiness distinguishes baseline provider data from buyable f
   await mkdir(path.join(outputRoot, "model_outputs", "provider_runs"), { recursive: true });
   await writeFile(path.join(outDir, "akshare_provider_flow_observations.json"), jsonContent({
     as_of: "2026-07-08",
-    readiness: { status: "baseline_only" }
+    readiness: { status: "baseline_only" },
+    counts: {
+      source_rows: 11,
+      flow_ready_rows: 0
+    },
+    share_change_diagnostics: {
+      status: "baseline_only",
+      total_rows: 11,
+      latest_share_rows: 11,
+      previous_share_rows: 0,
+      share_change_rows: 0,
+      estimated_flow_rows: 0,
+      coverage: {
+        latest_share: 1,
+        previous_share: 0,
+        share_change: 0,
+        estimated_flow: 0
+      },
+      missing: [
+        {
+          sector_id: "brokerage",
+          fund_code: "512000",
+          fund_name: "Brokerage ETF candidate",
+          missing_fields: ["previous_share", "share_change", "estimated_flow"]
+        }
+      ],
+      next_unlock: "还差 11/11 只代表 ETF 的份额变化流。"
+    }
   }));
   await writeFile(path.join(outputRoot, "model_outputs", "provider_runs", "akshare_etf_bridge_2026-07-08.json"), jsonContent({
     mode: "real",
@@ -83,5 +110,8 @@ test("ETF decision readiness distinguishes baseline provider data from buyable f
   assert.ok(result.payload.progress.milestones.find((item) => item.id === "baseline_snapshot" && item.status === "done"));
   assert.ok(result.payload.progress.next_unlock);
   assert.ok(result.payload.blockers.find((item) => item.id === "baseline_only"));
+  assert.equal(result.payload.gates.share_change_diagnostics.total_rows, 11);
+  assert.equal(result.payload.gates.share_change_diagnostics.previous_share_rows, 0);
+  assert.match(result.payload.progress.milestones.find((item) => item.id === "share_change_flow").reading, /previous_share/);
   assert.ok(result.payload.sectors.some((row) => row.action.label === "wait_for_real_flow"));
 });

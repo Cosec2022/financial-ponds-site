@@ -102,7 +102,7 @@ export function buildDailySectorAnalysis({ asOf, inputs }) {
   return {
     as_of: inputs.flow?.as_of ?? inputs.etfReadiness?.as_of ?? asOf,
     generated_at: new Date().toISOString(),
-    module_id: "daily_sector_analysis_v0_10_33",
+    module_id: "daily_sector_analysis_v0_10_35",
     status: "daily_sector_analysis_available",
     analysis_mode: context.analysisMode,
     headline: buildHeadline({ context, priorityWatch, confirmNext, avoidWatch }),
@@ -127,6 +127,7 @@ export function buildDailySectorAnalysis({ asOf, inputs }) {
       avoid_watch: avoidWatch.length
     },
     decision_gap: buildDecisionGap({ context, inputs }),
+    decision_ticket: buildDecisionTicket({ context, priorityWatch, confirmNext, avoidWatch }),
     next_unlock: inputs.etfReadiness?.progress?.next_unlock ?? null,
     interpretation_boundary: [
       "Daily sector analysis is an observation layer, not a trading instruction.",
@@ -167,6 +168,7 @@ function buildContext({ inputs }) {
     providerRun: gates.provider_run ?? "unknown",
     providerFlowReadiness: gates.provider_flow_readiness ?? "unknown",
     trueFlowCoverage: numberOrNull(gates.true_flow_coverage) ?? 0,
+    shareChangeDiagnostics: gates.share_change_diagnostics ?? null,
     sampleDays: Math.max(gateSampleDays, historySampleDays),
     minSampleDays: gates.min_sample_days ?? inputs.rotationHistory?.min_sample_days ?? 3,
     trendState: inputs.rotationHistory?.trend_state ?? "unknown",
@@ -236,7 +238,7 @@ function buildDecisionGap({ context, inputs }) {
       reading: flowReady
         ? `真实 ETF 直接资金流覆盖 ${pctText(context.trueFlowCoverage)}。`
         : context.providerFlowReadiness === "baseline_only"
-          ? "已有首日基线，还需要下一个交易日才能计算份额变化流。"
+          ? shareChangeGapReading(context)
           : `真实 ETF 直接资金流覆盖 ${pctText(context.trueFlowCoverage)}，未达决策门槛。`
     },
     {
@@ -272,6 +274,154 @@ function buildDecisionGap({ context, inputs }) {
     passed_checks: passed.map((item) => item.id),
     blocked_checks: blocked.map((item) => item.id)
   };
+}
+
+function shareChangeGapReading(context) {
+  const diagnostics = context.shareChangeDiagnostics ?? {};
+  const total = diagnostics.total_rows ?? 0;
+  const estimated = diagnostics.estimated_flow_rows ?? 0;
+  const previous = diagnostics.previous_share_rows;
+  const latest = diagnostics.latest_share_rows;
+  const history = diagnostics.provider_history;
+  if (!total) return "已有首日基线，还需要 provider 行级诊断确认份额字段。";
+  if (estimated > 0) return `已有 ${estimated}/${total} 只代表 ETF 可计算份额变化流，但覆盖不足。`;
+  if (previous === 0 && history?.previous_available_date) {
+    return `CSV 已有上一可用日期 ${history.previous_available_date}，但仍缺 previous_share；检查导出脚本历史回填。`;
+  }
+  if (previous === 0 && history?.current_date) {
+    return `当前真实 provider CSV 只有 ${history.current_date} 的基线；需要下一次真实交易日运行，或补入更早真实 CSV 基线。`;
+  }
+  if (previous === 0) return `已有 ${latest ?? "--"}/${total} 只代表 ETF 的 latest_share，但缺 previous_share；需要下一个交易日或历史 CSV 基线。`;
+  return diagnostics.next_unlock ?? "已有首日基线，还需要下一个交易日才能计算份额变化流。";
+}
+
+function buildDecisionTicket({ context, priorityWatch, confirmNext, avoidWatch }) {
+  const priorityTickets = priorityWatch.slice(0, 4).map((row) => decisionTicketRow({ row, context, group: "priority_watch" }));
+  const confirmTickets = confirmNext.slice(0, 4).map((row) => decisionTicketRow({ row, context, group: "confirm_next" }));
+  const avoidTickets = avoidWatch.slice(0, 4).map((row) => decisionTicketRow({ row, context, group: "avoid_watch" }));
+  const total = priorityTickets.length + confirmTickets.length + avoidTickets.length;
+  const status = context.analysisMode === "decision_review"
+    ? "manual_review_ready"
+    : priorityTickets.length
+      ? "watchlist_ready"
+      : "no_priority_ticket";
+
+  return {
+    status,
+    summary: buildDecisionTicketSummary({ context, priorityTickets, confirmTickets, avoidTickets }),
+    trade_boundary: "This ticket is for human review only. It is not a buy, sell, rebalance, or allocation instruction.",
+    counts: {
+      total,
+      priority_watch: priorityTickets.length,
+      confirm_next: confirmTickets.length,
+      avoid_watch: avoidTickets.length
+    },
+    groups: {
+      priority_watch: priorityTickets,
+      confirm_next: confirmTickets,
+      avoid_watch: avoidTickets
+    }
+  };
+}
+
+function buildDecisionTicketSummary({ context, priorityTickets, confirmTickets, avoidTickets }) {
+  if (context.analysisMode === "decision_review") {
+    return `基础 ETF 决策门已打开：${priorityTickets.length + confirmTickets.length} 个方向可进入人工复核。`;
+  }
+  if (priorityTickets.length) {
+    return `当前只做观察：${priorityTickets.map((row) => row.name).join("、")} 是优先观察；ETF 执行语言仍被 ${nextBlockedGate(context)} 阻塞。`;
+  }
+  if (confirmTickets.length) {
+    return `当前没有连续领先优先票；${confirmTickets[0].name} 等方向继续确认。`;
+  }
+  if (avoidTickets.length) return `当前以风险复核为主：${avoidTickets[0].name} 等方向进入回避观察。`;
+  return "当前没有足够清晰的行业票据。";
+}
+
+function decisionTicketRow({ row, context, group }) {
+  const reviewReady = context.analysisMode === "decision_review" && ["small_position_candidate", "confirmation_candidate"].includes(row.action_label);
+  const base = {
+    sector_id: row.sector_id,
+    name: row.name,
+    group,
+    score: row.score,
+    streak_days: row.streak_days,
+    readiness_score: row.readiness_score,
+    module_decision_label: row.module_decision_label,
+    module_decision_text: row.module_decision_text,
+    current_action_label: row.action_label,
+    current_action_text: row.action_text,
+    current_state: reviewReady ? "manual_review_candidate" : group,
+    current_reading: row.reading,
+    manual_review_boundary: reviewReady
+      ? "可以进入人工复核，但仍需要仓位上限、回撤和交易计划。"
+      : "只能作为观察或风险复核，不是 ETF 买入建议。"
+  };
+
+  if (group === "avoid_watch") {
+    return {
+      ...base,
+      ticket_label: "回避观察",
+      upgrade_conditions: [
+        `${row.name} 不再处于连续弱势或风险模块列表`,
+        "资金量价从弱势修复为中性以上",
+        "基本面或估值模块不再触发风险标签"
+      ],
+      failure_conditions: [
+        "继续处于 persistent_laggards",
+        "score 继续低于 0.08 或三模块仍是风险组合",
+        "真实 ETF 份额变化流为负且价量未修复"
+      ]
+    };
+  }
+
+  if (group === "priority_watch") {
+    return {
+      ...base,
+      ticket_label: reviewReady ? "人工复核候选" : "优先观察",
+      upgrade_conditions: priorityUpgradeConditions({ row, context }),
+      failure_conditions: [
+        `${row.name} 跌出连续领先组或当日前三强`,
+        "真实 ETF 份额变化流为负，或 estimated_flow 覆盖仍不足",
+        "三模块标签降级为 value_trap_risk / expensive_deteriorating / expensive_flow_fading"
+      ]
+    };
+  }
+
+  return {
+    ...base,
+    ticket_label: "继续确认",
+    upgrade_conditions: [
+      `${row.name} 连续进入领先组并形成 3 日 streak`,
+      "真实 ETF 份额变化流覆盖达到 60% 以上",
+      "三模块标签维持合理且改善、低估且转强，或至少不转为风险组合"
+    ],
+    failure_conditions: [
+      "跌出当日强势队列",
+      "score 回落到 0.12 以下",
+      "价量或份额变化流转弱"
+    ]
+  };
+}
+
+function priorityUpgradeConditions({ row, context }) {
+  const conditions = [
+    "真实 ETF 份额变化流覆盖达到 60% 以上",
+    `${row.name} 继续处于 persistent_leaders 或当日前三强`,
+    "该行业代表 ETF estimated_flow 为正，或 direct_flow 组件已经可观测",
+    "三模块标签不降级为风险组合"
+  ];
+  if (context.sampleDays < context.minSampleDays) {
+    conditions.unshift(`轮动历史达到 ${context.minSampleDays} 个交易日样本`);
+  }
+  return conditions;
+}
+
+function nextBlockedGate(context) {
+  if (context.providerRun !== "real_ok") return "真实Provider";
+  if (!["flow_ready", "ready", "ok"].includes(context.providerFlowReadiness) || context.trueFlowCoverage < 0.6) return "份额变化流";
+  if (context.sampleDays < context.minSampleDays || context.trendState !== "trend_confirmed") return "趋势样本";
+  return "估值/基本面";
 }
 
 function buildSectorReading({ tier, row, name, score, readiness, context }) {
@@ -368,6 +518,8 @@ ${payload.headline}
 Analysis mode: ${payload.analysis_mode}
 
 Decision gap: ${payload.decision_gap?.summary ?? "--"}
+
+Decision ticket: ${payload.decision_ticket?.summary ?? "--"}
 
 ${rows}
 ## Boundary

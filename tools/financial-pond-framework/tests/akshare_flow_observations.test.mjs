@@ -41,6 +41,8 @@ test("AKShare fixture export converts to flow-engine observations without enabli
   assert.equal(result.payload.readiness, "flow_ready");
   assert.equal(result.payload.counts.source_rows, 11);
   assert.equal(result.payload.counts.observations, 33);
+  assert.equal(result.payload.share_change_diagnostics.status, "flow_ready");
+  assert.equal(result.payload.share_change_diagnostics.estimated_flow_rows, 11);
   assert.equal(observationsFile.observations.length, 33);
   assert.ok(observationsFile.observations.some((item) => item.node_id === "semiconductor_etf_flow"));
   assert.ok(observationsFile.observations.some((item) => item.node_id === "semiconductor_relative_strength"));
@@ -84,8 +86,20 @@ test("AKShare baseline-only export creates confirmation inputs but does not fake
 
   assert.equal(result.payload.readiness, "baseline_only");
   assert.equal(result.payload.counts.observations, 22);
+  assert.equal(result.payload.share_change_diagnostics.status, "baseline_only");
+  assert.equal(result.payload.share_change_diagnostics.total_rows, 11);
+  assert.equal(result.payload.share_change_diagnostics.latest_share_rows, 11);
+  assert.equal(result.payload.share_change_diagnostics.previous_share_rows, 0);
+  assert.equal(result.payload.share_change_diagnostics.estimated_flow_rows, 0);
+  assert.deepEqual(result.payload.provider_history.available_dates, ["2026-07-09"]);
+  assert.equal(result.payload.provider_history.previous_available_date, null);
+  assert.equal(result.payload.provider_history.current_rows, 11);
+  assert.equal(result.payload.share_change_diagnostics.provider_history.current_date, "2026-07-09");
+  assert.match(result.payload.share_change_diagnostics.next_unlock, /2026-07-09/);
+  assert.equal(result.payload.share_change_diagnostics.missing[0].missing_fields.includes("previous_share"), true);
   assert.equal(directFlowObservations.length, 0);
   assert.ok(result.payload.warnings.some((item) => item.includes("No estimated_flow")));
+  assert.ok(result.payload.warnings.some((item) => item.includes("no earlier trade date")));
 });
 
 test("sector flow review merges provider-flow observations after cycle observations", async () => {

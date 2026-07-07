@@ -12,9 +12,11 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 - The first screen now includes independent sector modules for valuation, fundamentals, and flow/price. The final label is a cross-tab, not a blended score.
 - The first screen now includes `FP-ETF-01` ETF decision readiness, so sector strength is gated before it can be read as ETF action support.
 - The ETF readiness panel now keeps blocked-but-close representative sectors visible as pending watch items, with blockers translated for human reading.
+- The ETF readiness panel now shows share-change flow diagnostics: estimated-flow coverage and missing latest/previous/share-change fields.
 - The first screen now includes a provider status panel for AKShare environment, real provider run, ETF share-flow readiness, trend samples, valuation source, and the next command to run.
 - The daily Action now runs a published-data completeness guard, so missing ETF readiness, module review, or data audit JSON fails the build instead of silently deploying partial data.
 - The first screen now includes `FP-DAILY-01` daily sector analysis: priority watch, confirm next, and avoid watch tiers gated by ETF readiness.
+- The daily sector analysis now includes a `decision_ticket` with upgrade and failure conditions for tomorrow's manual review.
 - The daily sector analysis now exposes an explicit `decision_gap`, so the page shows which ETF decision gates passed and which still block execution language.
 - The rotation-history runner can recover recently published history from Git, so a shallow or stale working tree is less likely to drop multi-day trend samples.
 - The first screen separates hard data, fallback news, and prototype signals.
@@ -124,10 +126,53 @@ tools/financial-pond-framework/docs/UPDATE_PROTOCOL.md
 tools/financial-pond-framework/docs/PROJECT_PLAN.md
 tools/financial-pond-framework/docs/MODULE_PLAN.md
 tools/financial-pond-framework/docs/GITHUB_SYNC_PROTOCOL.md
-tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_33.md
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_35.md
 ```
 
 Before making meaningful changes, read those files first.
+
+## v0.10.35 daily decision ticket
+
+This package adds a human-review ticket to `FP-DAILY-01`.
+
+Working:
+
+```text
+- daily_sector_analysis.json includes decision_ticket
+- each ticket has current state, upgrade conditions, failure conditions, and boundary text
+- the homepage shows 明日决策票 inside 今日行业结论
+- validate:data requires the decision_ticket contract
+```
+
+Boundary:
+
+```text
+- The ticket is not a buy, sell, rebalance, or allocation instruction.
+- It only says what would upgrade a sector to human review, and what would invalidate it.
+- ETF execution language still requires readiness gates to pass.
+```
+
+## v0.10.34 share-change flow diagnostics
+
+This package hardens the ETF share-change gate.
+
+Working:
+
+```text
+- akshare_provider_flow_observations.json includes share_change_diagnostics
+- etf_decision_readiness.gates carries the same diagnostics
+- the ETF readiness page shows how many representative ETFs can calculate estimated_flow
+- missing rows list latest_share / previous_share / share_change / estimated_flow gaps
+- validate:data requires the diagnostics contract
+```
+
+Boundary:
+
+```text
+- This does not fake missing share-change data.
+- flow_ready still requires real estimated_flow rows.
+- It does not emit buy, sell, rebalance, or allocation instructions.
+```
 
 ## v0.10.33 daily decision gap
 

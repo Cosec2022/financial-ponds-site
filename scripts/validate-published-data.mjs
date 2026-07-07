@@ -10,9 +10,9 @@ const requiredFiles = [
   ["sector_rotation_intelligence.json", (json) => json.module_id === "sector_rotation_intelligence_v0_10_5"],
   ["sector_rotation_history.json", (json) => json.module_id === "sector_rotation_history_v0_10_19"],
   ["sector_module_review.json", (json) => json.module_id === "sector_module_review_v0_1"],
-  ["etf_decision_readiness.json", (json) => json.status === "readiness_available" && Boolean(json.gates)],
+  ["etf_decision_readiness.json", (json) => json.status === "readiness_available" && Boolean(json.gates) && Boolean(json.gates.share_change_diagnostics)],
   ["data_reality_audit.json", (json) => json.status === "audit_available" && Array.isArray(json.layers)],
-  ["daily_sector_analysis.json", (json) => json.status === "daily_sector_analysis_available" && Boolean(json.tiers) && Array.isArray(json.decision_gap?.checks)],
+  ["daily_sector_analysis.json", (json) => json.status === "daily_sector_analysis_available" && Boolean(json.tiers) && Array.isArray(json.decision_gap?.checks) && Boolean(json.decision_ticket?.groups)],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];

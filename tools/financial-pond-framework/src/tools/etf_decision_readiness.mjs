@@ -106,6 +106,7 @@ function buildGlobalGates({ inputs }) {
   const counts = availability.counts ?? {};
   const providerRun = inputs.providerRun ?? {};
   const providerFlow = inputs.providerFlow ?? {};
+  const shareChangeDiagnostics = buildShareChangeGate(providerFlow);
   const sourceReality = availability.source_reality ?? availability.mode ?? "unknown";
   const representativeSectors = counts.representative_sectors ?? 0;
   const observedDirect = counts.representative_observed_direct_flow_inputs ?? 0;
@@ -142,10 +143,45 @@ function buildGlobalGates({ inputs }) {
     observed_price_volume_confirmations: observedConfirmation,
     true_flow_coverage: round(trueFlowCoverage),
     true_confirmation_coverage: round(trueConfirmationCoverage),
+    share_change_diagnostics: shareChangeDiagnostics,
     sample_days: sampleDays,
     min_sample_days: 3,
     valuation_fundamental_source: hasManualModules ? "manual_seed" : "non_manual_or_missing",
     blockers
+  };
+}
+
+function buildShareChangeGate(providerFlow) {
+  const diagnostics = providerFlow?.share_change_diagnostics;
+  if (diagnostics) {
+    return {
+      status: diagnostics.status ?? providerReadinessLabel(providerFlow),
+      total_rows: diagnostics.total_rows ?? providerFlow?.counts?.source_rows ?? 0,
+      latest_share_rows: diagnostics.latest_share_rows ?? 0,
+      previous_share_rows: diagnostics.previous_share_rows ?? 0,
+      share_change_rows: diagnostics.share_change_rows ?? 0,
+      estimated_flow_rows: diagnostics.estimated_flow_rows ?? providerFlow?.counts?.flow_ready_rows ?? 0,
+      coverage: diagnostics.coverage ?? {},
+      missing: diagnostics.missing ?? [],
+      provider_history: diagnostics.provider_history ?? providerFlow?.provider_history ?? null,
+      next_unlock: diagnostics.next_unlock ?? null
+    };
+  }
+  const totalRows = providerFlow?.counts?.source_rows ?? 0;
+  const readyRows = providerFlow?.counts?.flow_ready_rows ?? 0;
+  return {
+    status: providerReadinessLabel(providerFlow),
+    total_rows: totalRows,
+    latest_share_rows: null,
+    previous_share_rows: null,
+    share_change_rows: readyRows,
+    estimated_flow_rows: readyRows,
+    coverage: {
+      estimated_flow: totalRows ? round(readyRows / totalRows) : 0
+    },
+    missing: [],
+    provider_history: providerFlow?.provider_history ?? null,
+    next_unlock: readyRows >= totalRows && totalRows > 0 ? "代表 ETF 份额变化流已可计算。" : null
   };
 }
 
@@ -304,8 +340,8 @@ function buildProgress({ gates }) {
       done: gates.true_flow_coverage >= 0.6,
       current: gates.true_flow_coverage,
       reading: gates.true_flow_coverage >= 0.6
-        ? "代表行业已经有足够的真实 ETF 份额变化输入。"
-        : "还需要下一个交易日，才能由份额差计算真实资金流。"
+        ? `代表行业已经有足够的真实 ETF 份额变化输入：${gates.share_change_diagnostics.estimated_flow_rows}/${gates.share_change_diagnostics.total_rows}。`
+        : shareChangeReading(gates)
     }),
     milestone({
       id: "trend_history",
@@ -384,6 +420,26 @@ function nextUnlock(milestones) {
     label: pending.label,
     reading: pending.reading
   };
+}
+
+function shareChangeReading(gates) {
+  const diagnostics = gates.share_change_diagnostics ?? {};
+  const total = diagnostics.total_rows ?? 0;
+  const estimated = diagnostics.estimated_flow_rows ?? 0;
+  const previous = diagnostics.previous_share_rows;
+  const latest = diagnostics.latest_share_rows;
+  const history = diagnostics.provider_history;
+  if (!total) return "还没有代表 ETF provider 行级输出，不能计算份额变化流。";
+  if (estimated > 0) return `已有 ${estimated}/${total} 只代表 ETF 可计算份额变化流，仍未达到 60% 覆盖门槛。`;
+  if (latest === 0) return `0/${total} 只代表 ETF 有 latest_share，先确认 AKShare 份额字段是否可取。`;
+  if (previous === 0 && history?.previous_available_date) {
+    return `CSV 已有上一可用日期 ${history.previous_available_date}，但 ${total} 只代表 ETF 仍缺 previous_share；检查导出脚本是否从历史 CSV 回填。`;
+  }
+  if (previous === 0 && history?.current_date) {
+    return `当前真实 provider CSV 只有 ${history.current_date} 的基线；需要下一次真实交易日运行，或补入更早真实 CSV 基线。`;
+  }
+  if (previous === 0) return `已有 ${latest ?? "--"}/${total} 只代表 ETF 的 latest_share，但缺 previous_share；需要下一个交易日或历史 CSV 基线。`;
+  return diagnostics.next_unlock ?? "还需要下一个交易日，才能由份额差计算真实资金流。";
 }
 
 function nextSteps(gates) {

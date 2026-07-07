@@ -70,6 +70,7 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(etfReadinessJson.module_id, "etf_decision_readiness_v0_2");
   assert.ok(etfReadinessJson.guidance_state);
   assert.ok(etfReadinessJson.progress?.milestones?.length >= 5);
+  assert.ok(etfReadinessJson.gates?.share_change_diagnostics);
 
   const audit = await worker.fetch(request("/data/data_reality_audit.json"), {});
   assert.equal(audit.status, 200);
@@ -83,11 +84,12 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const dailyAnalysis = await worker.fetch(request("/data/daily_sector_analysis.json"), {});
   assert.equal(dailyAnalysis.status, 200);
   const dailyAnalysisJson = await dailyAnalysis.json();
-  assert.equal(dailyAnalysisJson.module_id, "daily_sector_analysis_v0_10_33");
+  assert.equal(dailyAnalysisJson.module_id, "daily_sector_analysis_v0_10_35");
   assert.equal(dailyAnalysisJson.status, "daily_sector_analysis_available");
   assert.ok(dailyAnalysisJson.tiers.confirm_next);
   assert.ok(dailyAnalysisJson.gate_summary);
   assert.ok(dailyAnalysisJson.decision_gap?.checks?.length >= 5);
+  assert.ok(dailyAnalysisJson.decision_ticket?.groups);
 
   const news = await worker.fetch(request("/data/news_review.json"), {});
   assert.equal(news.status, 200);

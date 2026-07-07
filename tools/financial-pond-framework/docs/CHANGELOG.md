@@ -1,5 +1,57 @@
 # Changelog
 
+## v0.10.36 - Provider history diagnostics
+
+- Bumped site and framework package versions to `0.10.36`.
+- Added `provider_history` to `akshare_provider_flow_observations.json`.
+- The provider history records:
+  - `available_dates`;
+  - `current_date`;
+  - `previous_available_date`;
+  - row counts by date.
+- Carried the provider history into `etf_decision_readiness.gates.share_change_diagnostics`.
+- Updated ETF readiness and daily decision-gap readings so `baseline_only` explains whether the CSV truly has only one provider date or whether a previous date exists but `previous_share` was not backfilled.
+- Added regression coverage for baseline-only provider exports with a single real provider date.
+
+Important boundary:
+
+- This does not synthesize historical ETF share flow.
+- It does not unlock ETF execution advice.
+- It only makes the remaining provider-history blocker auditable.
+
+## v0.10.35 - Daily decision ticket
+
+- Bumped site and framework package versions to `0.10.35`.
+- Extended `FP-DAILY-01` with `decision_ticket`.
+- The ticket turns priority watch, confirm next, and avoid watch rows into:
+  - current state;
+  - upgrade conditions;
+  - failure conditions;
+  - human-review boundary.
+- The homepage now renders a `明日决策票` card inside `今日行业结论`.
+- Published-data validation now requires the `decision_ticket` contract.
+
+Important boundary:
+
+- This is not a buy, sell, rebalance, or allocation instruction.
+- The ticket can upgrade a sector only to human review.
+- ETF execution language remains blocked until readiness gates pass.
+
+## v0.10.34 - Share-change flow diagnostics
+
+- Bumped site and framework package versions to `0.10.34`.
+- Added `share_change_diagnostics` to `akshare_provider_flow_observations.json`.
+- Carried the diagnostics into `etf_decision_readiness.gates.share_change_diagnostics`.
+- The ETF readiness page now shows how many representative ETFs can calculate share-change flow and which rows still miss fields.
+- Daily decision-gap readings now use the share-change diagnostics instead of a generic waiting message.
+- Published-data validation now requires the ETF share-change diagnostics contract.
+
+Important boundary:
+
+- This does not synthesize ETF share-change flow.
+- `flow_ready` still requires real estimated-flow rows from provider data.
+- No output is a buy, sell, rebalance, or allocation instruction.
+
 ## v0.10.33 - Daily decision gap
 
 - Bumped site and framework package versions to `0.10.33`.
