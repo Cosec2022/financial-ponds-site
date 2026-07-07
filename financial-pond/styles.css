@@ -333,6 +333,30 @@ h3 { margin-bottom: 10px; font-size: 15px; }
   font-size: 12px;
   line-height: 1.45;
 }
+.daily-check-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+.daily-check {
+  display: grid;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 9px 10px;
+}
+.daily-check.positive { border-color: rgba(31,122,77,.34); background: #f4fbf6; }
+.daily-check.warm { border-color: rgba(152,111,34,.38); background: #fffaf0; }
+.daily-check.negative { border-color: rgba(173,63,50,.34); background: #fff8f7; }
+.daily-check b {
+  font-size: 13px;
+}
+.daily-check small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
 .etf-blocker {
   display: grid;
   gap: 4px;
@@ -714,6 +738,7 @@ th { color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: 0.0
   .left-pane { position: static; max-height: none; }
   .reference-grid, .rotation-grid, .module-grid, .etf-grid, .reality-grid, .provider-grid, .daily-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .milestone-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .daily-check-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 760px) {
@@ -725,6 +750,7 @@ th { color: var(--muted); font-size: 12px; font-weight: 800; letter-spacing: 0.0
   .reference-grid, .rotation-grid, .module-grid, .etf-grid, .reality-grid, .provider-grid, .daily-grid { grid-template-columns: 1fr; }
   .reference-card.wide, .reference-list, .rotation-card.wide, .rotation-card.headline, .module-card.wide, .module-card.headline, .module-card.table-card, .etf-card.wide, .etf-card.headline, .etf-card.table-card, .reality-card.headline, .provider-card.headline, .provider-card.command-card, .daily-card.headline, .daily-card.wide { grid-column: auto; }
   .milestone-grid { grid-template-columns: 1fr; }
+  .daily-check-grid { grid-template-columns: 1fr; }
   .detail-hero { grid-template-columns: 1fr; }
   .score-stack { grid-template-columns: repeat(2, 1fr); }
   .component-grid, .related-grid { grid-template-columns: 1fr; }

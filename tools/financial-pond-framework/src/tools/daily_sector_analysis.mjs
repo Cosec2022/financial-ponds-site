@@ -10,6 +10,41 @@ import { atomicWriteFile, jsonContent } from "../storage/atomic_write.mjs";
 
 const defaultRootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 
+const sectorNames = {
+  brokerage: "券商",
+  bank_insurance: "银行保险",
+  semiconductor: "半导体",
+  ai_computer: "AI计算机",
+  communication_electronics: "通信电子",
+  new_energy_ev: "新能源车",
+  healthcare_pharma: "医药医疗",
+  consumer: "消费",
+  defense_military: "军工",
+  resources_materials: "资源材料",
+  real_estate_infra: "地产基建",
+  electric_power: "电力行业",
+  agriculture: "农林牧渔",
+  food_beverage: "食品饮料",
+  home_appliances: "家用电器",
+  textile_apparel: "纺织服饰",
+  light_manufacturing: "轻工制造",
+  retail: "商贸零售",
+  social_services: "社会服务",
+  beauty_care: "美容护理",
+  transportation: "交通运输",
+  utilities: "公用事业",
+  environmental_protection: "环保",
+  petroleum_petrochemical: "石油石化",
+  coal: "煤炭",
+  steel: "钢铁",
+  nonferrous_metals: "有色金属",
+  basic_chemicals: "基础化工",
+  building_materials: "建筑材料",
+  construction: "建筑装饰",
+  machinery: "机械设备",
+  media: "传媒"
+};
+
 export async function runDailySectorAnalysis({
   rootDir = defaultRootDir,
   asOf
@@ -67,7 +102,7 @@ export function buildDailySectorAnalysis({ asOf, inputs }) {
   return {
     as_of: inputs.flow?.as_of ?? inputs.etfReadiness?.as_of ?? asOf,
     generated_at: new Date().toISOString(),
-    module_id: "daily_sector_analysis_v0_10_31",
+    module_id: "daily_sector_analysis_v0_10_33",
     status: "daily_sector_analysis_available",
     analysis_mode: context.analysisMode,
     headline: buildHeadline({ context, priorityWatch, confirmNext, avoidWatch }),
@@ -91,6 +126,7 @@ export function buildDailySectorAnalysis({ asOf, inputs }) {
       confirm_next: confirmNext.length,
       avoid_watch: avoidWatch.length
     },
+    decision_gap: buildDecisionGap({ context, inputs }),
     next_unlock: inputs.etfReadiness?.progress?.next_unlock ?? null,
     interpretation_boundary: [
       "Daily sector analysis is an observation layer, not a trading instruction.",
@@ -124,12 +160,15 @@ async function readJsonIfExists(filePath) {
 function buildContext({ inputs }) {
   const gates = inputs.etfReadiness?.gates ?? {};
   const guidanceState = inputs.etfReadiness?.guidance_state ?? gates.guidance_state ?? "unknown";
+  const gateSampleDays = numberOrNull(gates.sample_days) ?? 0;
+  const historySampleDays = numberOrNull(inputs.rotationHistory?.sample_days) ?? 0;
   return {
     guidanceState,
     providerRun: gates.provider_run ?? "unknown",
     providerFlowReadiness: gates.provider_flow_readiness ?? "unknown",
     trueFlowCoverage: numberOrNull(gates.true_flow_coverage) ?? 0,
-    sampleDays: gates.sample_days ?? inputs.rotationHistory?.sample_days ?? 0,
+    sampleDays: Math.max(gateSampleDays, historySampleDays),
+    minSampleDays: gates.min_sample_days ?? inputs.rotationHistory?.min_sample_days ?? 3,
     trendState: inputs.rotationHistory?.trend_state ?? "unknown",
     dataReality: inputs.realityAudit?.overall_reality ?? gates.flow_source_reality ?? inputs.flow?.data_availability?.source_reality ?? "unknown",
     marketUseConfidence: gates.market_use_confidence ?? inputs.flow?.data_availability?.market_use_confidence ?? "unknown",
@@ -144,9 +183,10 @@ function sectorAnalysisRow({ row, tier, flowBySector, modulesBySector, readiness
   const readiness = readinessBySector.get(id) ?? {};
   const score = numberOrNull(flow.score ?? row.score) ?? 0;
   const streakDays = row.streak_days ?? null;
+  const name = sectorDisplayName(id, row, moduleRow, flow, readiness);
   return {
     sector_id: id,
-    name: row.name ?? moduleRow.display_name ?? moduleRow.name ?? flow.display_name ?? flow.name ?? id,
+    name,
     tier,
     score: round(score),
     label: flow.label ?? row.label ?? null,
@@ -167,15 +207,77 @@ function sectorAnalysisRow({ row, tier, flowBySector, modulesBySector, readiness
       flow_price_label: moduleRow.modules?.flow_price?.label ?? readiness.evidence?.flow_price_label ?? flow.label ?? null,
       flow_price_score: numberOrNull(moduleRow.modules?.flow_price?.score ?? readiness.evidence?.flow_price_score ?? score)
     },
-    reading: buildSectorReading({ tier, row, score, readiness, context }),
+    reading: buildSectorReading({ tier, row, name, score, readiness, context }),
     blockers: readiness.blockers ?? []
   };
 }
 
-function buildSectorReading({ tier, row, score, readiness, context }) {
+function buildDecisionGap({ context, inputs }) {
+  const blockers = inputs.etfReadiness?.blockers ?? [];
+  const blockerIds = new Set(blockers.map((item) => typeof item === "string" ? item : item.id).filter(Boolean));
+  const minSampleDays = context.minSampleDays;
+  const flowReady = ["flow_ready", "ready", "ok"].includes(context.providerFlowReadiness) && context.trueFlowCoverage >= 0.6;
+  const trendReady = context.sampleDays >= minSampleDays && context.trendState === "trend_confirmed";
+  const providerReady = context.providerRun === "real_ok";
+  const sourceReady = !blockerIds.has("non_real_flow_source") && context.dataReality !== "mock";
+  const moduleSeedBlocked = ["manual_valuation_fundamental", "valuation_manual_seed", "fundamental_manual_seed"].some((id) => blockerIds.has(id));
+
+  const checks = [
+    {
+      id: "provider_run",
+      label: "真实Provider",
+      status: providerReady ? "passed" : "blocked",
+      reading: providerReady ? "AKShare 真实 provider 已跑通。" : "AKShare 真实 provider 还没有确认跑通。"
+    },
+    {
+      id: "share_change_flow",
+      label: "份额变化流",
+      status: flowReady ? "passed" : context.providerFlowReadiness === "baseline_only" ? "pending" : "blocked",
+      reading: flowReady
+        ? `真实 ETF 直接资金流覆盖 ${pctText(context.trueFlowCoverage)}。`
+        : context.providerFlowReadiness === "baseline_only"
+          ? "已有首日基线，还需要下一个交易日才能计算份额变化流。"
+          : `真实 ETF 直接资金流覆盖 ${pctText(context.trueFlowCoverage)}，未达决策门槛。`
+    },
+    {
+      id: "trend_history",
+      label: "趋势样本",
+      status: trendReady ? "passed" : context.sampleDays > 0 ? "pending" : "blocked",
+      reading: trendReady
+        ? `轮动历史 ${context.sampleDays}/${minSampleDays} 天，趋势已确认。`
+        : `轮动历史 ${context.sampleDays}/${minSampleDays} 天，暂不能确认连续趋势。`
+    },
+    {
+      id: "source_reality",
+      label: "数据真实性",
+      status: sourceReady ? "passed" : "blocked",
+      reading: sourceReady ? `数据现实层为 ${context.dataReality}。` : "仍有 mock/fixture/source-unverified 输入，不能进入 ETF 执行建议。"
+    },
+    {
+      id: "valuation_fundamental",
+      label: "估值/基本面",
+      status: moduleSeedBlocked ? "pending" : "passed",
+      reading: moduleSeedBlocked ? "估值或基本面仍含手工种子，只能辅助观察。" : "估值和基本面模块未触发手工种子阻塞。"
+    }
+  ];
+  const passed = checks.filter((item) => item.status === "passed");
+  const blocked = checks.filter((item) => item.status !== "passed");
+
+  return {
+    status: blocked.length ? "blocked" : "review_ready",
+    summary: blocked.length
+      ? `已通过 ${passed.length}/${checks.length} 个关卡；还差 ${blocked.map((item) => item.label).join("、")}。`
+      : "基础关卡通过，可进入人工复核；仍不是自动下单。",
+    checks,
+    passed_checks: passed.map((item) => item.id),
+    blocked_checks: blocked.map((item) => item.id)
+  };
+}
+
+function buildSectorReading({ tier, row, name, score, readiness, context }) {
   const prefix = context.analysisMode === "decision_review" ? "可进入人工复核" : "仍是观察项";
   if (tier === "priority_watch") {
-    return `${prefix}：${row.name ?? row.sector_id} 已出现连续领先，当前分数 ${round(score)}。${watchOnlyReason(context)}`;
+    return `${prefix}：${name} 已出现连续领先，当前分数 ${round(score)}。${watchOnlyReason(context)}`;
   }
   if (tier === "avoid_watch") {
     return `回避观察：分数或三模块组合偏弱，先等资金和基本面修复。${watchOnlyReason(context)}`;
@@ -233,6 +335,10 @@ function sectorId(row) {
   return row?.sector_id ?? String(row?.pool_id ?? "").replace(/^a_share_/, "");
 }
 
+function sectorDisplayName(id, ...rows) {
+  return sectorNames[id] ?? rows.find((row) => row?.display_name)?.display_name ?? rows.find((row) => row?.name)?.name ?? id;
+}
+
 function numberOrNull(value) {
   return typeof value === "number" && Number.isFinite(value) ? value : null;
 }
@@ -240,6 +346,10 @@ function numberOrNull(value) {
 function round(value, digits = 4) {
   if (typeof value !== "number" || !Number.isFinite(value)) return null;
   return Number(value.toFixed(digits));
+}
+
+function pctText(value) {
+  return typeof value === "number" && Number.isFinite(value) ? `${Math.round(value * 100)}%` : "--";
 }
 
 function buildMarkdown(payload) {
@@ -256,6 +366,8 @@ ${items.length ? items.map((row) => `- ${row.name}: ${row.reading}`).join("\n") 
 ${payload.headline}
 
 Analysis mode: ${payload.analysis_mode}
+
+Decision gap: ${payload.decision_gap?.summary ?? "--"}
 
 ${rows}
 ## Boundary

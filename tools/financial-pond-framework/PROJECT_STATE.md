@@ -5,10 +5,12 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.32`
+Package version: `0.10.33`
 
 Purpose of this version:
 
+- add daily decision-gap checks so the homepage explains which ETF gates passed and which still block execution language
+- normalize daily sector names to Chinese labels before rendering
 - recover recent published sector-rotation history from Git so trend samples are less likely to be lost
 - require deeper GitHub Actions checkout history for the daily workflow
 - add a daily published-data completeness guard so missing decision JSON fails CI
@@ -1115,7 +1117,31 @@ This is operational guidance only.
 It does not change scores, provider collection rules, or ETF action labels.
 ```
 
-## Current v0.10.32 Addition
+## Current v0.10.33 Addition
+
+The package hardens `FP-DAILY-01` after the 3-day rotation chain recovered and
+`priority_watch` began populating.
+
+The fix:
+
+```text
+src/tools/daily_sector_analysis.mjs -> add decision_gap.checks
+src/tools/daily_sector_analysis.mjs -> normalize sector names to Chinese labels
+src/tools/daily_sector_analysis.mjs -> prefer recovered rotation-history sample_days when newer than readiness gates
+financial-pond/app.js -> render the daily 解锁差距 card
+scripts/validate-published-data.mjs -> require decision_gap.checks
+tests/daily_sector_analysis.test.mjs -> lock decision-gap and name-normalization behavior
+```
+
+Important boundary:
+
+```text
+This does not unlock ETF execution advice.
+The output remains observation-only while true ETF share-change flow is missing.
+It does not emit buy, sell, rebalance, or allocation instructions.
+```
+
+## Previous v0.10.32 Addition
 
 The package hardens `FP-HIST-01` after a real daily run showed:
 

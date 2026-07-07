@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.32
+Version: v0.10.33
 Status: active
 
 Module IDs use this format:
@@ -25,7 +25,7 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots, recover recent published history, and compare latest vs previous day | working prototype | 42% | Add explicit continuation/reversal labels |
 | FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language | working prototype | 36% | Replace manual valuation/fundamental seeds and require observed multi-day flow |
-| FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, and ETF readiness into watch tiers | working prototype | 32% | Add continuation/reversal labels after more history accumulates |
+| FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, and ETF readiness into watch tiers plus decision-gap checks | working prototype | 35% | Add continuation/reversal labels after more history accumulates |
 | FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 65% | Add maintenance-state display |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |

@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.10.33 - Daily decision gap
+
+- Bumped site and framework package versions to `0.10.33`.
+- Extended `FP-DAILY-01` with `decision_gap.checks`.
+- The homepage now shows passed, pending, and blocked ETF decision gates inside `今日行业结论`.
+- Daily sector names now normalize to the Chinese sector registry before rendering.
+- Daily sample count now uses recovered rotation-history samples when they are ahead of ETF readiness gates.
+- `validate:data` now requires the daily decision-gap contract.
+
+Important boundary:
+
+- This does not unlock ETF execution advice.
+- `priority_watch` remains observation-only until ETF readiness gates pass.
+- No output is a buy, sell, rebalance, or allocation instruction.
+
 ## v0.10.32 - Rotation history recovery guard
 
 - Bumped site and framework package versions to `0.10.32`.

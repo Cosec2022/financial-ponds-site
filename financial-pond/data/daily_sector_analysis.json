@@ -1,7 +1,7 @@
 {
   "as_of": "2026-07-07",
-  "generated_at": "2026-07-07T13:38:37.187Z",
-  "module_id": "daily_sector_analysis_v0_10_31",
+  "generated_at": "2026-07-07T13:55:34.568Z",
+  "module_id": "daily_sector_analysis_v0_10_33",
   "status": "daily_sector_analysis_available",
   "analysis_mode": "analysis_only",
   "headline": "今日行业结论：券商 领头；2 个优先观察，4 个继续确认，6 个回避观察。当前只做观察，不做 ETF 执行建议。",
@@ -135,7 +135,7 @@
       },
       {
         "sector_id": "semiconductor",
-        "name": "Semiconductor",
+        "name": "半导体",
         "tier": "confirm_next",
         "score": 0.2079,
         "label": "constructive_inflow_bias",
@@ -173,7 +173,7 @@
       },
       {
         "sector_id": "bank_insurance",
-        "name": "Bank and Insurance",
+        "name": "银行保险",
         "tier": "confirm_next",
         "score": 0.1671,
         "label": "neutral",
@@ -211,7 +211,7 @@
       },
       {
         "sector_id": "defense_military",
-        "name": "Defense and Military",
+        "name": "军工",
         "tier": "confirm_next",
         "score": 0.137,
         "label": "neutral",
@@ -327,7 +327,7 @@
       },
       {
         "sector_id": "retail",
-        "name": "A-share Retail Pool",
+        "name": "商贸零售",
         "tier": "avoid_watch",
         "score": 0.0727,
         "label": "neutral",
@@ -363,7 +363,7 @@
       },
       {
         "sector_id": "steel",
-        "name": "A-share Steel Pool",
+        "name": "钢铁",
         "tier": "avoid_watch",
         "score": 0.0727,
         "label": "neutral",
@@ -399,7 +399,7 @@
       },
       {
         "sector_id": "basic_chemicals",
-        "name": "A-share Basic Chemicals Pool",
+        "name": "基础化工",
         "tier": "avoid_watch",
         "score": 0.0727,
         "label": "neutral",
@@ -435,7 +435,7 @@
       },
       {
         "sector_id": "building_materials",
-        "name": "A-share Building Materials Pool",
+        "name": "建筑材料",
         "tier": "avoid_watch",
         "score": 0.0727,
         "label": "neutral",
@@ -475,6 +475,51 @@
     "priority_watch": 2,
     "confirm_next": 4,
     "avoid_watch": 6
+  },
+  "decision_gap": {
+    "status": "blocked",
+    "summary": "已通过 2/5 个关卡；还差 份额变化流、数据真实性、估值/基本面。",
+    "checks": [
+      {
+        "id": "provider_run",
+        "label": "真实Provider",
+        "status": "passed",
+        "reading": "AKShare 真实 provider 已跑通。"
+      },
+      {
+        "id": "share_change_flow",
+        "label": "份额变化流",
+        "status": "pending",
+        "reading": "已有首日基线，还需要下一个交易日才能计算份额变化流。"
+      },
+      {
+        "id": "trend_history",
+        "label": "趋势样本",
+        "status": "passed",
+        "reading": "轮动历史 3/3 天，趋势已确认。"
+      },
+      {
+        "id": "source_reality",
+        "label": "数据真实性",
+        "status": "blocked",
+        "reading": "仍有 mock/fixture/source-unverified 输入，不能进入 ETF 执行建议。"
+      },
+      {
+        "id": "valuation_fundamental",
+        "label": "估值/基本面",
+        "status": "pending",
+        "reading": "估值或基本面仍含手工种子，只能辅助观察。"
+      }
+    ],
+    "passed_checks": [
+      "provider_run",
+      "trend_history"
+    ],
+    "blocked_checks": [
+      "share_change_flow",
+      "source_reality",
+      "valuation_fundamental"
+    ]
   },
   "next_unlock": {
     "milestone_id": "share_change_flow",

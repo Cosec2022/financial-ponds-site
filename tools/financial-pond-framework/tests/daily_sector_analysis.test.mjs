@@ -12,6 +12,7 @@ test("daily sector analysis keeps not-ready ETF gates as observation-only tiers"
         sector_reviews: [
           { sector_id: "brokerage", name: "券商", score: 0.28, label: "constructive_inflow_bias" },
           { sector_id: "semiconductor", name: "半导体", score: 0.2, label: "constructive_inflow_bias" },
+          { sector_id: "bank_insurance", name: "Bank and Insurance", score: 0.17, label: "neutral" },
           { sector_id: "new_energy_ev", name: "新能源车", score: -0.05, label: "neutral" }
         ]
       },
@@ -58,6 +59,9 @@ test("daily sector analysis keeps not-ready ETF gates as observation-only tiers"
         progress: {
           next_unlock: { label: "份额变化流", reading: "还需要下一个交易日。" }
         },
+        blockers: [
+          { id: "manual_valuation_fundamental", reading: "估值或基本面仍是手工种子。" }
+        ],
         sectors: [
           { sector_id: "brokerage", readiness_score: 42, action: { label: "wait_for_real_flow", text: "等真实资金流" }, evidence: { observed_direct_flow: false, observed_price_volume: true }, blockers: ["baseline_only"] }
         ]
@@ -71,8 +75,13 @@ test("daily sector analysis keeps not-ready ETF gates as observation-only tiers"
   assert.equal(payload.status, "daily_sector_analysis_available");
   assert.equal(payload.analysis_mode, "analysis_only");
   assert.equal(payload.gate_summary.provider_flow_readiness, "baseline_only");
+  assert.equal(payload.gate_summary.sample_days, 3);
+  assert.equal(payload.decision_gap.status, "blocked");
+  assert.deepEqual(payload.decision_gap.passed_checks, ["provider_run", "trend_history", "source_reality"]);
+  assert.deepEqual(payload.decision_gap.blocked_checks, ["share_change_flow", "valuation_fundamental"]);
   assert.equal(payload.tiers.priority_watch[0].sector_id, "brokerage");
   assert.equal(payload.tiers.priority_watch[0].reading.includes("观察项"), true);
+  assert.equal(payload.tiers.confirm_next.find((row) => row.sector_id === "bank_insurance").name, "银行保险");
   assert.equal(payload.tiers.avoid_watch[0].sector_id, "new_energy_ev");
   assert.match(payload.headline, /只做观察/);
 });

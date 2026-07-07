@@ -15,6 +15,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 - The first screen now includes a provider status panel for AKShare environment, real provider run, ETF share-flow readiness, trend samples, valuation source, and the next command to run.
 - The daily Action now runs a published-data completeness guard, so missing ETF readiness, module review, or data audit JSON fails the build instead of silently deploying partial data.
 - The first screen now includes `FP-DAILY-01` daily sector analysis: priority watch, confirm next, and avoid watch tiers gated by ETF readiness.
+- The daily sector analysis now exposes an explicit `decision_gap`, so the page shows which ETF decision gates passed and which still block execution language.
 - The rotation-history runner can recover recently published history from Git, so a shallow or stale working tree is less likely to drop multi-day trend samples.
 - The first screen separates hard data, fallback news, and prototype signals.
 - The reference panel now shows ETF-flow availability separately from price-volume confirmation, so `0/11` ETF-flow days are clearly marked instead of silently mixed into the score.
@@ -123,10 +124,32 @@ tools/financial-pond-framework/docs/UPDATE_PROTOCOL.md
 tools/financial-pond-framework/docs/PROJECT_PLAN.md
 tools/financial-pond-framework/docs/MODULE_PLAN.md
 tools/financial-pond-framework/docs/GITHUB_SYNC_PROTOCOL.md
-tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_32.md
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_33.md
 ```
 
 Before making meaningful changes, read those files first.
+
+## v0.10.33 daily decision gap
+
+This package hardens `FP-DAILY-01`.
+
+Working:
+
+```text
+- daily_sector_analysis.json now includes decision_gap.checks
+- the homepage shows passed / pending / blocked ETF decision gates inside 今日行业结论
+- daily sector names are normalized to Chinese labels before rendering
+- sample_days in daily analysis uses recovered rotation history when it is newer than readiness gates
+- validate:data now requires the decision_gap contract
+```
+
+Boundary:
+
+```text
+- This does not unlock ETF execution advice by itself.
+- Priority watch remains observation-only while true ETF share-change flow is still missing.
+- No buy, sell, rebalance, or allocation instruction is emitted.
+```
 
 ## v0.10.32 rotation history recovery
 

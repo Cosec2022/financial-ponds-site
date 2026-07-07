@@ -4,6 +4,8 @@
 
 Analysis mode: analysis_only
 
+Decision gap: 已通过 0/5 个关卡；还差 真实Provider、份额变化流、趋势样本、数据真实性、估值/基本面。
+
 ## 优先观察
 
 - 暂无。
@@ -13,17 +15,17 @@ Analysis mode: analysis_only
 - 券商: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
 - AI计算机: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
 - 半导体: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
-- Defense and Military: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
-- Communication and Electronics: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
-- Healthcare and Pharma: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
+- 军工: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
+- 通信电子: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
+- 医药医疗: 仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。
 
 ## 回避观察
 
-- A-share Real Estate and Infrastructure Pool: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
-- A-share Retail Pool: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
-- A-share Steel Pool: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
-- A-share Basic Chemicals Pool: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
-- A-share Building Materials Pool: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
+- 地产基建: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
+- 商贸零售: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
+- 钢铁: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
+- 基础化工: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
+- 建筑材料: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
 - 新能源车: 回避观察：分数或三模块组合偏弱，先等资金和基本面修复。当前真实 ETF 直接资金流覆盖仍为 0。
 
 ## Boundary

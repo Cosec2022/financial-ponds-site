@@ -1,7 +1,7 @@
 {
   "as_of": "2026-07-02",
-  "generated_at": "2026-07-07T13:04:53.263Z",
-  "module_id": "daily_sector_analysis_v0_10_31",
+  "generated_at": "2026-07-07T13:48:34.547Z",
+  "module_id": "daily_sector_analysis_v0_10_33",
   "status": "daily_sector_analysis_available",
   "analysis_mode": "analysis_only",
   "headline": "今日行业结论：券商 领头；0 个优先观察，6 个继续确认，6 个回避观察。当前只做观察，不做 ETF 执行建议。",
@@ -134,7 +134,7 @@
       },
       {
         "sector_id": "defense_military",
-        "name": "Defense and Military",
+        "name": "军工",
         "tier": "confirm_next",
         "score": 0.2146,
         "label": "constructive_inflow_bias",
@@ -172,7 +172,7 @@
       },
       {
         "sector_id": "communication_electronics",
-        "name": "Communication and Electronics",
+        "name": "通信电子",
         "tier": "confirm_next",
         "score": 0.1919,
         "label": "neutral",
@@ -210,7 +210,7 @@
       },
       {
         "sector_id": "healthcare_pharma",
-        "name": "Healthcare and Pharma",
+        "name": "医药医疗",
         "tier": "confirm_next",
         "score": 0.1523,
         "label": "neutral",
@@ -250,7 +250,7 @@
     "avoid_watch": [
       {
         "sector_id": "real_estate_infra",
-        "name": "A-share Real Estate and Infrastructure Pool",
+        "name": "地产基建",
         "tier": "avoid_watch",
         "score": -0.1163,
         "label": "neutral",
@@ -288,7 +288,7 @@
       },
       {
         "sector_id": "retail",
-        "name": "A-share Retail Pool",
+        "name": "商贸零售",
         "tier": "avoid_watch",
         "score": 0.0663,
         "label": "neutral",
@@ -324,7 +324,7 @@
       },
       {
         "sector_id": "steel",
-        "name": "A-share Steel Pool",
+        "name": "钢铁",
         "tier": "avoid_watch",
         "score": 0.0663,
         "label": "neutral",
@@ -360,7 +360,7 @@
       },
       {
         "sector_id": "basic_chemicals",
-        "name": "A-share Basic Chemicals Pool",
+        "name": "基础化工",
         "tier": "avoid_watch",
         "score": 0.0663,
         "label": "neutral",
@@ -396,7 +396,7 @@
       },
       {
         "sector_id": "building_materials",
-        "name": "A-share Building Materials Pool",
+        "name": "建筑材料",
         "tier": "avoid_watch",
         "score": 0.0663,
         "label": "neutral",
@@ -474,6 +474,50 @@
     "priority_watch": 0,
     "confirm_next": 6,
     "avoid_watch": 6
+  },
+  "decision_gap": {
+    "status": "blocked",
+    "summary": "已通过 0/5 个关卡；还差 真实Provider、份额变化流、趋势样本、数据真实性、估值/基本面。",
+    "checks": [
+      {
+        "id": "provider_run",
+        "label": "真实Provider",
+        "status": "blocked",
+        "reading": "AKShare 真实 provider 还没有确认跑通。"
+      },
+      {
+        "id": "share_change_flow",
+        "label": "份额变化流",
+        "status": "blocked",
+        "reading": "真实 ETF 直接资金流覆盖 0%，未达决策门槛。"
+      },
+      {
+        "id": "trend_history",
+        "label": "趋势样本",
+        "status": "pending",
+        "reading": "轮动历史 1/3 天，暂不能确认连续趋势。"
+      },
+      {
+        "id": "source_reality",
+        "label": "数据真实性",
+        "status": "blocked",
+        "reading": "仍有 mock/fixture/source-unverified 输入，不能进入 ETF 执行建议。"
+      },
+      {
+        "id": "valuation_fundamental",
+        "label": "估值/基本面",
+        "status": "pending",
+        "reading": "估值或基本面仍含手工种子，只能辅助观察。"
+      }
+    ],
+    "passed_checks": [],
+    "blocked_checks": [
+      "provider_run",
+      "share_change_flow",
+      "trend_history",
+      "source_reality",
+      "valuation_fundamental"
+    ]
   },
   "next_unlock": {
     "milestone_id": "provider_environment",

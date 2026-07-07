@@ -453,6 +453,11 @@ function renderDailyAnalysisPanel() {
       <p>${analysis.next_unlock?.reading ?? "等待下一次 Action 更新样本。"}</p>
     </article>
     <article class="daily-card wide">
+      <span>解锁差距</span>
+      <strong>${analysis.decision_gap?.summary ?? "等待 ETF 准备度关卡。"}</strong>
+      ${dailyDecisionGapTemplate(analysis.decision_gap)}
+    </article>
+    <article class="daily-card wide">
       <span>优先观察</span>
       ${dailyTierTemplate(tiers.priority_watch ?? [], "暂无连续领先方向。")}
     </article>
@@ -473,6 +478,36 @@ function renderDailyAnalysisPanel() {
       document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
+}
+
+function dailyDecisionGapTemplate(gap) {
+  const checks = gap?.checks ?? [];
+  if (!checks.length) return `<p class="muted">暂无解锁关卡明细。</p>`;
+  return `
+    <div class="daily-check-grid">
+      ${checks.map((row) => `
+        <div class="daily-check ${dailyCheckClass(row.status)}">
+          <b>${row.label}</b>
+          <small>${dailyCheckStatusLabel(row.status)} · ${row.reading}</small>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function dailyCheckClass(status) {
+  if (status === "passed") return "positive";
+  if (status === "pending") return "warm";
+  return "negative";
+}
+
+function dailyCheckStatusLabel(status) {
+  const map = {
+    passed: "已通过",
+    pending: "等待确认",
+    blocked: "未通过"
+  };
+  return map[status] ?? status ?? "--";
 }
 
 function dailyTierTemplate(rows, emptyText) {
