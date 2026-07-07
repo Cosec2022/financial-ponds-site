@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-07",
-  "generated_at": "2026-07-07T12:49:21.499Z",
+  "generated_at": "2026-07-07T13:17:42.232Z",
   "module_id": "etf_decision_readiness_v0_2",
   "status": "readiness_available",
   "guidance_state": "not_ready",
@@ -118,7 +118,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.12,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2862,
+        "flow_price_score": 0.2704,
         "observed_direct_flow": false
       },
       "blockers": [
@@ -145,7 +145,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.18,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2197,
+        "flow_price_score": 0.2154,
         "observed_direct_flow": false
       },
       "blockers": [
@@ -172,7 +172,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.24,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2122,
+        "flow_price_score": 0.2183,
         "observed_direct_flow": false
       },
       "blockers": [
@@ -199,7 +199,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.2,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2079,
+        "flow_price_score": 0.2159,
         "observed_direct_flow": false
       },
       "blockers": [
@@ -226,7 +226,7 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.1671,
+        "flow_price_score": 0.1521,
         "observed_direct_flow": false
       },
       "blockers": [
@@ -253,7 +253,7 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.1041,
+        "flow_price_score": 0.0957,
         "observed_direct_flow": false
       },
       "blockers": [
@@ -322,8 +322,8 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.12,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2862,
-        "flow_confidence": 0.6764,
+        "flow_price_score": 0.2704,
+        "flow_confidence": 0.6597,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -368,8 +368,8 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.18,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2197,
-        "flow_confidence": 0.6764,
+        "flow_price_score": 0.2154,
+        "flow_confidence": 0.6597,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -414,8 +414,8 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.24,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2122,
-        "flow_confidence": 0.6764,
+        "flow_price_score": 0.2183,
+        "flow_confidence": 0.6597,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -460,8 +460,8 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.2,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2079,
-        "flow_confidence": 0.6764,
+        "flow_price_score": 0.2159,
+        "flow_confidence": 0.6597,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -506,8 +506,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.1671,
-        "flow_confidence": 0.6764,
+        "flow_price_score": 0.1521,
+        "flow_confidence": 0.6597,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -552,8 +552,8 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.1041,
-        "flow_confidence": 0.7222,
+        "flow_price_score": 0.0957,
+        "flow_confidence": 0.7139,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -598,8 +598,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.099,
-        "flow_confidence": 0.7222,
+        "flow_price_score": 0.0905,
+        "flow_confidence": 0.7139,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -644,8 +644,8 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.06,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0438,
-        "flow_confidence": 0.6764,
+        "flow_price_score": 0.0331,
+        "flow_confidence": 0.6597,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -690,8 +690,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.137,
-        "flow_confidence": 0.7222,
+        "flow_price_score": 0.1285,
+        "flow_confidence": 0.7139,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -736,8 +736,8 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.18,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0569,
-        "flow_confidence": 0.7222,
+        "flow_price_score": -0.0758,
+        "flow_confidence": 0.6597,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -782,8 +782,8 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.32,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.1233,
-        "flow_confidence": 0.6764,
+        "flow_price_score": -0.1383,
+        "flow_confidence": 0.6597,
         "data_completeness": 0.9
       },
       "blockers": [
@@ -828,8 +828,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.1,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -875,8 +875,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.06,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -922,8 +922,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -969,8 +969,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.1,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1016,8 +1016,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.08,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1063,8 +1063,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1110,8 +1110,8 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.12,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1157,8 +1157,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1204,8 +1204,8 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.08,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1251,8 +1251,8 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1298,8 +1298,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1345,8 +1345,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1392,8 +1392,8 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.1,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1439,8 +1439,8 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1486,8 +1486,8 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.06,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1533,8 +1533,8 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1580,8 +1580,8 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.12,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1627,8 +1627,8 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.14,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1674,8 +1674,8 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.3,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
@@ -1721,8 +1721,8 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.28,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0727,
-        "flow_confidence": 0.2208,
+        "flow_price_score": 0.0557,
+        "flow_confidence": 0.2042,
         "data_completeness": 0.25
       },
       "blockers": [
