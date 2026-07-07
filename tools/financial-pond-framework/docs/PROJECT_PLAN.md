@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.31
+Version: v0.10.32
 Status: active
 
 ## Final Target
@@ -35,7 +35,7 @@ The system should not output direct trading instructions.
 ```text
 Overall progress: 45%
 Current stage: usable prototype
-Daily data pipeline: partial, with CI ordering fixed for 31-industry A-share review
+Daily data pipeline: partial, with CI ordering fixed and recent Git history recovery for 31-industry A-share review
 Decision-grade model: not yet
 Main limitation: A-share now has an ETF action-readiness gate and daily sector analysis, but still needs stronger hard-data history, observed ETF share-change flow, real valuation/fundamental sources, real news quality, and multi-day confirmation before it can guide allocation
 ```
@@ -69,6 +69,7 @@ ETF action-readiness gate with visible blockers and pending watch items
 Provider status panel showing AKShare environment, real run, flow readiness, and next command
 Published-data completeness guard for the daily Action
 Daily sector analysis panel with priority watch, confirm next, and avoid watch tiers
+Rotation-history recovery from recent published Git versions
 clickable pond map
 news pressure with fallback labeling
 local graph node edits and patch export
@@ -79,7 +80,7 @@ local graph node edits and patch export
 ```text
 1. General pool analysis covers S&P 500 and A-share industries through one component contract with pool-specific input profiles.
 2. S&P 500 live provider ingestion is not yet enabled.
-3. Rotation trend confirmation still needs at least 3 trading-day samples.
+3. Rotation trend confirmation still needs at least 3 trading-day samples, and v0.10.32 only recovers committed samples; it does not invent missing days.
 4. News can be fallback and must be treated as degraded context.
 5. Electricity is a watchlist/demo pond, not a real ETF-backed sector.
 6. UI local graph edits do not change backend configuration.

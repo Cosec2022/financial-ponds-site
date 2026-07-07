@@ -5,10 +5,12 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.31`
+Package version: `0.10.32`
 
 Purpose of this version:
 
+- recover recent published sector-rotation history from Git so trend samples are less likely to be lost
+- require deeper GitHub Actions checkout history for the daily workflow
 - add a daily published-data completeness guard so missing decision JSON fails CI
 - prevent silent partial publishes when ETF readiness, module review, or data audit is absent
 - add a first-screen Provider Status panel for AKShare environment, real provider run, ETF share-flow readiness, trend samples, valuation source, and next command
@@ -1113,7 +1115,36 @@ This is operational guidance only.
 It does not change scores, provider collection rules, or ETF action labels.
 ```
 
-## Current v0.10.31 Addition
+## Current v0.10.32 Addition
+
+The package hardens `FP-HIST-01` after a real daily run showed:
+
+```text
+sector_rotation_history.sample_days = 2
+history = 2026-07-02, 2026-07-07
+persistent_leaders = []
+```
+
+even though a prior published state had already shown a longer history chain.
+
+The fix:
+
+```text
+.github/workflows/daily.yml -> actions/checkout fetch-depth: 30
+src/tools/sector_rotation_history.mjs -> read recent Git versions of financial-pond/data/sector_rotation_history.json
+src/tools/sector_rotation_history.mjs -> merge history arrays by as_of
+tests/sector_rotation_history.test.mjs -> recovery regression test
+```
+
+Important boundary:
+
+```text
+This does not invent missing market samples.
+It only recovers rotation snapshots already committed in recent published data.
+It does not change sector scores, provider endpoints, or ETF readiness gates.
+```
+
+## Previous v0.10.31 Addition
 
 The package adds a daily sector analysis layer:
 

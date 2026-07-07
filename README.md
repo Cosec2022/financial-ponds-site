@@ -15,6 +15,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 - The first screen now includes a provider status panel for AKShare environment, real provider run, ETF share-flow readiness, trend samples, valuation source, and the next command to run.
 - The daily Action now runs a published-data completeness guard, so missing ETF readiness, module review, or data audit JSON fails the build instead of silently deploying partial data.
 - The first screen now includes `FP-DAILY-01` daily sector analysis: priority watch, confirm next, and avoid watch tiers gated by ETF readiness.
+- The rotation-history runner can recover recently published history from Git, so a shallow or stale working tree is less likely to drop multi-day trend samples.
 - The first screen separates hard data, fallback news, and prototype signals.
 - The reference panel now shows ETF-flow availability separately from price-volume confirmation, so `0/11` ETF-flow days are clearly marked instead of silently mixed into the score.
 - A-share hard-data collection runs in `tools/financial-pond-framework`.
@@ -122,10 +123,31 @@ tools/financial-pond-framework/docs/UPDATE_PROTOCOL.md
 tools/financial-pond-framework/docs/PROJECT_PLAN.md
 tools/financial-pond-framework/docs/MODULE_PLAN.md
 tools/financial-pond-framework/docs/GITHUB_SYNC_PROTOCOL.md
-tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_31.md
+tools/financial-pond-framework/docs/handbook/CURRENT_PROGRESS_V0_10_32.md
 ```
 
 Before making meaningful changes, read those files first.
+
+## v0.10.32 rotation history recovery
+
+This package hardens `FP-HIST-01`.
+
+Working:
+
+```text
+- GitHub Actions checkout now uses fetch-depth: 30
+- sector_rotation_history can read recent Git versions of financial-pond/data/sector_rotation_history.json
+- recovered history arrays are merged by as_of date before trend confirmation
+- tests guard recovery from a damaged current history file
+```
+
+Boundary:
+
+```text
+- This does not invent missing market days.
+- It only recovers rotation snapshots that were already committed in recent published data.
+- It does not change industry scores, provider endpoints, or ETF readiness gates.
+```
 
 ## v0.10.31 daily sector analysis
 

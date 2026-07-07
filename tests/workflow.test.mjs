@@ -24,6 +24,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.equal(scripts["daily:sector-analysis"], "node src/tools/daily_sector_analysis.mjs");
   assert.equal(siteScripts["validate:data"], "node scripts/validate-published-data.mjs");
   assert.match(workflow, /node-version: "22"/);
+  assert.match(workflow, /fetch-depth: 30/);
   assert.match(workflow, /contents: write/);
   assert.doesNotMatch(workflow, /npm ci/);
   assert.doesNotMatch(workflow, /\bnpm install\b/);

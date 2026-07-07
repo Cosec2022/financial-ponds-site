@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.10.32 - Rotation history recovery guard
+
+- Bumped site and framework package versions to `0.10.32`.
+- Hardened `FP-HIST-01` against history-chain loss:
+  - GitHub Actions checkout now uses `fetch-depth: 30`.
+  - `sector_rotation_history` can read recent committed versions of `financial-pond/data/sector_rotation_history.json`.
+  - History arrays are merged by `as_of` before trend confirmation.
+  - The output records `history_recovery` metadata.
+- Added a regression test for recovering a missing middle history day.
+- Updated workflow tests to require checkout history depth.
+
+Important boundary:
+
+- This does not create artificial market samples.
+- It only recovers rotation snapshots already present in recent Git history.
+- It does not change sector scores, provider endpoints, ETF readiness gates, or trading language.
+
 ## v0.10.31 - Daily sector analysis panel
 
 - Bumped site and framework package versions to `0.10.31`.

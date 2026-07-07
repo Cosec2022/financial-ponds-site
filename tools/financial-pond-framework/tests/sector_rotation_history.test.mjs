@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import path from "node:path";
 import { mkdir, mkdtemp, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
-import { buildSectorRotationHistory, runSectorRotationHistory } from "../src/tools/sector_rotation_history.mjs";
+import { buildSectorRotationHistory, mergeHistoryPayloads, runSectorRotationHistory } from "../src/tools/sector_rotation_history.mjs";
 
 const rotationDay1 = rotation("2026-07-02", 0.28, -0.22);
 const rotationDay2 = rotation("2026-07-03", 0.36, -0.30);
@@ -54,6 +54,32 @@ test("sector rotation history confirms persistent leaders and laggards after eno
   assert.equal(day3.trend_confirmations.persistent_leaders[0].streak_days, 3);
   assert.equal(day3.trend_confirmations.persistent_laggards[0].sector_id, "brokerage");
   assert.ok(day3.watch_points.some((item) => item.includes("趋势确认")));
+});
+
+test("sector rotation history recovery merges history days from multiple published payloads", () => {
+  const day1 = buildSectorRotationHistory({ rotation: rotationDay1 });
+  const day2 = buildSectorRotationHistory({
+    rotation: rotationDay2,
+    previousHistory: day1
+  });
+  const damagedCurrent = buildSectorRotationHistory({
+    rotation: rotationDay3,
+    previousHistory: day1
+  });
+  const recovered = mergeHistoryPayloads([damagedCurrent, day2]);
+  const rebuilt = buildSectorRotationHistory({
+    rotation: rotationDay3,
+    previousHistory: recovered
+  });
+
+  assert.deepEqual(recovered.history.map((item) => item.as_of), [
+    "2026-07-02",
+    "2026-07-03",
+    "2026-07-06"
+  ]);
+  assert.equal(rebuilt.sample_days, 3);
+  assert.equal(rebuilt.trend_state, "trend_confirmed");
+  assert.equal(rebuilt.trend_confirmations.persistent_leaders[0].streak_days, 3);
 });
 
 test("sector rotation history writes JSON and Markdown outputs", async () => {

@@ -3,14 +3,17 @@
 // Output: sector_rotation_history.json and sector_rotation_history.md
 // Boundary: stores rotation history and tentative changes; trend confirmation needs enough samples.
 
+import { execFile } from "node:child_process";
 import { mkdir, readFile } from "node:fs/promises";
 import path from "node:path";
+import { promisify } from "node:util";
 import { fileURLToPath } from "node:url";
 import { atomicWriteFile, jsonContent } from "../storage/atomic_write.mjs";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const maxHistoryDays = 60;
 const minTrendDays = 3;
+const execFileAsync = promisify(execFile);
 
 export async function runSectorRotationHistory({
   rootDir,
@@ -55,6 +58,7 @@ export function buildSectorRotationHistory({ rotation, previousHistory = null })
     changes,
     trend_confirmations: trendConfirmations,
     sector_series: sectorSeries,
+    history_recovery: previousHistory?.history_recovery ?? null,
     history,
     watch_points: buildWatchPoints({ history, changes, trendState }),
     interpretation_boundary: [
@@ -83,11 +87,69 @@ async function readPreviousHistory({ rootDir }) {
     path.join(rootDir, "..", "..", "financial-pond", "data", "sector_rotation_history.json"),
     path.join(rootDir, "data", "sector_rotation_history.json")
   ];
+  const payloads = [];
   for (const candidate of candidates) {
     const payload = await readJsonIfExists(candidate);
-    if (payload?.history) return payload;
+    if (payload?.history) payloads.push(payload);
   }
-  return null;
+  payloads.push(...await readGitHistoryPayloads({ rootDir }));
+  return mergeHistoryPayloads(payloads);
+}
+
+export function mergeHistoryPayloads(payloads) {
+  const byDate = new Map();
+  const sources = [];
+  for (const payload of payloads ?? []) {
+    if (!Array.isArray(payload?.history)) continue;
+    if (payload.as_of) sources.push(payload.as_of);
+    for (const item of payload.history) {
+      if (!item?.as_of) continue;
+      byDate.set(item.as_of, item);
+    }
+  }
+  const history = [...byDate.values()]
+    .sort((a, b) => a.as_of.localeCompare(b.as_of))
+    .slice(-maxHistoryDays);
+  if (!history.length) return null;
+  return {
+    history,
+    history_recovery: {
+      source_payloads: payloads.filter((payload) => Array.isArray(payload?.history)).length,
+      source_as_of: [...new Set(sources)].sort(),
+      recovered_days: history.length
+    }
+  };
+}
+
+async function readGitHistoryPayloads({ rootDir }) {
+  const repoRoot = path.resolve(rootDir, "..", "..");
+  const relativePath = "financial-pond/data/sector_rotation_history.json";
+  try {
+    const { stdout } = await execFileAsync("git", [
+      "log",
+      "--format=%H",
+      "--max-count=30",
+      "--",
+      relativePath
+    ], { cwd: repoRoot });
+    const hashes = stdout.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+    const payloads = [];
+    for (const hash of hashes) {
+      try {
+        const { stdout: fileText } = await execFileAsync("git", [
+          "show",
+          `${hash}:${relativePath}`
+        ], { cwd: repoRoot, maxBuffer: 10 * 1024 * 1024 });
+        const payload = JSON.parse(fileText);
+        if (payload?.history) payloads.push(payload);
+      } catch {
+        // Some commits may not contain the file. Ignore them.
+      }
+    }
+    return payloads;
+  } catch {
+    return [];
+  }
 }
 
 async function readJsonIfExists(filePath) {
