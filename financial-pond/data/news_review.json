@@ -1,14 +1,14 @@
 {
   "as_of": "2026-07-07",
-  "generated_at": "2026-07-07T14:00:15.834Z",
+  "generated_at": "2026-07-07T14:14:25.440Z",
   "module_id": "news_daily_v1",
   "status": "news_available",
-  "headline": "8 rule-matched news events; strongest mapped pressure is brokerage (0.92).",
+  "headline": "5 rule-matched news events; strongest mapped pressure is brokerage (0.49).",
   "counts": {
     "collected_items": 24,
-    "matched_events": 8,
-    "observations": 10,
-    "affected_sectors": 7
+    "matched_events": 5,
+    "observations": 8,
+    "affected_sectors": 6
   },
   "collection": {
     "mode": "real",
@@ -19,38 +19,9 @@
     "top_positive_sectors": [
       {
         "sector_id": "brokerage",
-        "score": 0.923,
-        "event_count": 4,
+        "score": 0.495,
+        "event_count": 2,
         "top_events": [
-          {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-            "bucket": "China policy",
-            "channel": "policy_liquidity",
-            "score": 0.248,
-            "direction": "positive",
-            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-            "affected_sector_ids": [
-              "brokerage",
-              "bank_insurance",
-              "real_estate_infra"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-          },
-          {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-            "bucket": "China policy",
-            "channel": "liquidity",
-            "score": 0.18,
-            "direction": "positive",
-            "reason": "Easier global liquidity can support equity duration and risk appetite.",
-            "affected_sector_ids": [
-              "brokerage",
-              "semiconductor",
-              "ai_computer",
-              "consumer"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-          },
           {
             "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
             "bucket": "China policy",
@@ -64,16 +35,9 @@
               "real_estate_infra"
             ],
             "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
-          }
-        ]
-      },
-      {
-        "sector_id": "bank_insurance",
-        "score": 0.743,
-        "event_count": 3,
-        "top_events": [
+          },
           {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+            "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
             "bucket": "China policy",
             "channel": "policy_liquidity",
             "score": 0.248,
@@ -84,8 +48,15 @@
               "bank_insurance",
               "real_estate_infra"
             ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-          },
+            "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+          }
+        ]
+      },
+      {
+        "sector_id": "bank_insurance",
+        "score": 0.495,
+        "event_count": 2,
+        "top_events": [
           {
             "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
             "bucket": "China policy",
@@ -118,23 +89,9 @@
       },
       {
         "sector_id": "real_estate_infra",
-        "score": 0.743,
-        "event_count": 3,
+        "score": 0.495,
+        "event_count": 2,
         "top_events": [
-          {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-            "bucket": "China policy",
-            "channel": "policy_liquidity",
-            "score": 0.248,
-            "direction": "positive",
-            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-            "affected_sector_ids": [
-              "brokerage",
-              "bank_insurance",
-              "real_estate_infra"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-          },
           {
             "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
             "bucket": "China policy",
@@ -166,65 +123,15 @@
         ]
       }
     ],
-    "top_negative_sectors": [
-      {
-        "sector_id": "communication_electronics",
-        "score": -0.135,
-        "event_count": 4,
-        "top_events": [
-          {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-            "bucket": "China policy",
-            "channel": "external_risk",
-            "score": -0.293,
-            "direction": "negative",
-            "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-            "affected_sector_ids": [
-              "semiconductor",
-              "ai_computer",
-              "communication_electronics"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-          },
-          {
-            "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
-            "bucket": "Global technology risk",
-            "channel": "industry_cycle",
-            "score": 0.225,
-            "direction": "positive",
-            "reason": "Global AI and chip demand news can support domestic technology expectations.",
-            "affected_sector_ids": [
-              "semiconductor",
-              "ai_computer",
-              "communication_electronics"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5"
-          },
-          {
-            "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
-            "bucket": "Global technology risk",
-            "channel": "industry_cycle",
-            "score": 0.225,
-            "direction": "positive",
-            "reason": "Global AI and chip demand news can support domestic technology expectations.",
-            "affected_sector_ids": [
-              "semiconductor",
-              "ai_computer",
-              "communication_electronics"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
-          }
-        ]
-      }
-    ],
+    "top_negative_sectors": [],
     "pressure_buckets": [
       {
         "bucket": "China policy",
-        "score": 0.63,
-        "event_count": 5,
+        "score": 0.495,
+        "event_count": 2,
         "top_events": [
           {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+            "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
             "bucket": "China policy",
             "channel": "policy_liquidity",
             "score": 0.248,
@@ -235,36 +142,21 @@
               "bank_insurance",
               "real_estate_infra"
             ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
+            "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
           },
           {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+            "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
             "bucket": "China policy",
-            "channel": "external_risk",
-            "score": -0.293,
-            "direction": "negative",
-            "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-            "affected_sector_ids": [
-              "semiconductor",
-              "ai_computer",
-              "communication_electronics"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-          },
-          {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-            "bucket": "China policy",
-            "channel": "liquidity",
-            "score": 0.18,
+            "channel": "policy_liquidity",
+            "score": 0.248,
             "direction": "positive",
-            "reason": "Easier global liquidity can support equity duration and risk appetite.",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
             "affected_sector_ids": [
               "brokerage",
-              "semiconductor",
-              "ai_computer",
-              "consumer"
+              "bank_insurance",
+              "real_estate_infra"
             ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
+            "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
           }
         ]
       },
@@ -329,38 +221,9 @@
   "sector_news_pressure": [
     {
       "sector_id": "brokerage",
-      "score": 0.923,
-      "event_count": 4,
+      "score": 0.495,
+      "event_count": 2,
       "top_events": [
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "policy_liquidity",
-          "score": 0.248,
-          "direction": "positive",
-          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-          "affected_sector_ids": [
-            "brokerage",
-            "bank_insurance",
-            "real_estate_infra"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "liquidity",
-          "score": 0.18,
-          "direction": "positive",
-          "reason": "Easier global liquidity can support equity duration and risk appetite.",
-          "affected_sector_ids": [
-            "brokerage",
-            "semiconductor",
-            "ai_computer",
-            "consumer"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
         {
           "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
           "bucket": "China policy",
@@ -374,16 +237,9 @@
             "real_estate_infra"
           ],
           "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
-        }
-      ]
-    },
-    {
-      "sector_id": "bank_insurance",
-      "score": 0.743,
-      "event_count": 3,
-      "top_events": [
+        },
         {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+          "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
           "bucket": "China policy",
           "channel": "policy_liquidity",
           "score": 0.248,
@@ -394,8 +250,15 @@
             "bank_insurance",
             "real_estate_infra"
           ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+        }
+      ]
+    },
+    {
+      "sector_id": "bank_insurance",
+      "score": 0.495,
+      "event_count": 2,
+      "top_events": [
         {
           "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
           "bucket": "China policy",
@@ -428,23 +291,9 @@
     },
     {
       "sector_id": "real_estate_infra",
-      "score": 0.743,
-      "event_count": 3,
+      "score": 0.495,
+      "event_count": 2,
       "top_events": [
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "policy_liquidity",
-          "score": 0.248,
-          "direction": "positive",
-          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-          "affected_sector_ids": [
-            "brokerage",
-            "bank_insurance",
-            "real_estate_infra"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
         {
           "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
           "bucket": "China policy",
@@ -476,146 +325,10 @@
       ]
     },
     {
-      "sector_id": "consumer",
-      "score": 0.18,
-      "event_count": 1,
-      "top_events": [
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "liquidity",
-          "score": 0.18,
-          "direction": "positive",
-          "reason": "Easier global liquidity can support equity duration and risk appetite.",
-          "affected_sector_ids": [
-            "brokerage",
-            "semiconductor",
-            "ai_computer",
-            "consumer"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        }
-      ]
-    },
-    {
       "sector_id": "semiconductor",
-      "score": 0.045,
-      "event_count": 5,
+      "score": 0.157,
+      "event_count": 3,
       "top_events": [
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "external_risk",
-          "score": -0.293,
-          "direction": "negative",
-          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "liquidity",
-          "score": 0.18,
-          "direction": "positive",
-          "reason": "Easier global liquidity can support equity duration and risk appetite.",
-          "affected_sector_ids": [
-            "brokerage",
-            "semiconductor",
-            "ai_computer",
-            "consumer"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
-        {
-          "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
-          "bucket": "Global technology risk",
-          "channel": "industry_cycle",
-          "score": 0.225,
-          "direction": "positive",
-          "reason": "Global AI and chip demand news can support domestic technology expectations.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5"
-        }
-      ]
-    },
-    {
-      "sector_id": "ai_computer",
-      "score": 0.045,
-      "event_count": 5,
-      "top_events": [
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "external_risk",
-          "score": -0.293,
-          "direction": "negative",
-          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "liquidity",
-          "score": 0.18,
-          "direction": "positive",
-          "reason": "Easier global liquidity can support equity duration and risk appetite.",
-          "affected_sector_ids": [
-            "brokerage",
-            "semiconductor",
-            "ai_computer",
-            "consumer"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
-        {
-          "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
-          "bucket": "Global technology risk",
-          "channel": "industry_cycle",
-          "score": 0.225,
-          "direction": "positive",
-          "reason": "Global AI and chip demand news can support domestic technology expectations.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5"
-        }
-      ]
-    },
-    {
-      "sector_id": "communication_electronics",
-      "score": -0.135,
-      "event_count": 4,
-      "top_events": [
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "external_risk",
-          "score": -0.293,
-          "direction": "negative",
-          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
         {
           "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
           "bucket": "Global technology risk",
@@ -643,6 +356,118 @@
             "communication_electronics"
           ],
           "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
+        },
+        {
+          "title": "I think you must be looking for the reasons behind the simultaneous plunge in gold & Bitcoin! - Binance",
+          "bucket": "Macro liquidity",
+          "channel": "external_risk",
+          "score": -0.293,
+          "direction": "negative",
+          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9jdWdaaEFFcVliZnotTER4Qkg5b3NRM1VKXy1wWUxCWU81ZFlnOVRDMDV5X050UUs2NE1uZU1VSkppV0NKZF9hc2lSbzY0cTBNWV9OWmYwWG1LbnZNVGdTM0lLamg2QW8?oc=5"
+        }
+      ]
+    },
+    {
+      "sector_id": "ai_computer",
+      "score": 0.157,
+      "event_count": 3,
+      "top_events": [
+        {
+          "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
+          "bucket": "Global technology risk",
+          "channel": "industry_cycle",
+          "score": 0.225,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5"
+        },
+        {
+          "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
+          "bucket": "Global technology risk",
+          "channel": "industry_cycle",
+          "score": 0.225,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
+        },
+        {
+          "title": "I think you must be looking for the reasons behind the simultaneous plunge in gold & Bitcoin! - Binance",
+          "bucket": "Macro liquidity",
+          "channel": "external_risk",
+          "score": -0.293,
+          "direction": "negative",
+          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9jdWdaaEFFcVliZnotTER4Qkg5b3NRM1VKXy1wWUxCWU81ZFlnOVRDMDV5X050UUs2NE1uZU1VSkppV0NKZF9hc2lSbzY0cTBNWV9OWmYwWG1LbnZNVGdTM0lLamg2QW8?oc=5"
+        }
+      ]
+    },
+    {
+      "sector_id": "communication_electronics",
+      "score": 0.157,
+      "event_count": 3,
+      "top_events": [
+        {
+          "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
+          "bucket": "Global technology risk",
+          "channel": "industry_cycle",
+          "score": 0.225,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5"
+        },
+        {
+          "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
+          "bucket": "Global technology risk",
+          "channel": "industry_cycle",
+          "score": 0.225,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
+        },
+        {
+          "title": "I think you must be looking for the reasons behind the simultaneous plunge in gold & Bitcoin! - Binance",
+          "bucket": "Macro liquidity",
+          "channel": "external_risk",
+          "score": -0.293,
+          "direction": "negative",
+          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9jdWdaaEFFcVliZnotTER4Qkg5b3NRM1VKXy1wWUxCWU81ZFlnOVRDMDV5X050UUs2NE1uZU1VSkppV0NKZF9hc2lSbzY0cTBNWV9OWmYwWG1LbnZNVGdTM0lLamg2QW8?oc=5"
         }
       ]
     }
@@ -650,11 +475,11 @@
   "pressure_buckets": [
     {
       "bucket": "China policy",
-      "score": 0.63,
-      "event_count": 5,
+      "score": 0.495,
+      "event_count": 2,
       "top_events": [
         {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+          "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
           "bucket": "China policy",
           "channel": "policy_liquidity",
           "score": 0.248,
@@ -665,36 +490,21 @@
             "bank_insurance",
             "real_estate_infra"
           ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
+          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
         },
         {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+          "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
           "bucket": "China policy",
-          "channel": "external_risk",
-          "score": -0.293,
-          "direction": "negative",
-          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "liquidity",
-          "score": 0.18,
+          "channel": "policy_liquidity",
+          "score": 0.248,
           "direction": "positive",
-          "reason": "Easier global liquidity can support equity duration and risk appetite.",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
           "affected_sector_ids": [
             "brokerage",
-            "semiconductor",
-            "ai_computer",
-            "consumer"
+            "bank_insurance",
+            "real_estate_infra"
           ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
         }
       ]
     },
@@ -756,49 +566,6 @@
     }
   ],
   "top_events": [
-    {
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "bucket": "China policy",
-      "channel": "policy_liquidity",
-      "score": 0.248,
-      "direction": "positive",
-      "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-      "affected_sector_ids": [
-        "brokerage",
-        "bank_insurance",
-        "real_estate_infra"
-      ],
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-    },
-    {
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "bucket": "China policy",
-      "channel": "external_risk",
-      "score": -0.293,
-      "direction": "negative",
-      "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-      "affected_sector_ids": [
-        "semiconductor",
-        "ai_computer",
-        "communication_electronics"
-      ],
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-    },
-    {
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "bucket": "China policy",
-      "channel": "liquidity",
-      "score": 0.18,
-      "direction": "positive",
-      "reason": "Easier global liquidity can support equity duration and risk appetite.",
-      "affected_sector_ids": [
-        "brokerage",
-        "semiconductor",
-        "ai_computer",
-        "consumer"
-      ],
-      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-    },
     {
       "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "bucket": "China policy",

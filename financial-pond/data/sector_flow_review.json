@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-07",
-  "generated_at": "2026-07-07T14:00:16.031Z",
+  "generated_at": "2026-07-07T14:14:25.637Z",
   "model_id": "flow_engine_v0_9",
   "scenario_id": null,
   "counts": {
@@ -17,7 +17,7 @@
       "display_name": "A-share Brokerage Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.28617808176100634,
+      "score": 0.2777405817610063,
       "label": "constructive_inflow_bias",
       "confidence": 0.6764,
       "data_completeness": 0.9,
@@ -92,19 +92,19 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.39397499999999996,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "brokerage_policy_news",
-              "score": 0.4167,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -141,19 +141,19 @@
           "available": true
         },
         {
-          "component": "policy_sentiment",
-          "score": 0.39397499999999996,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.0393975,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         },
         {
@@ -173,7 +173,7 @@
       "display_name": "A-share Communication and Electronics Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.2197480817610063,
+      "score": 0.2397280817610063,
       "label": "constructive_inflow_bias",
       "confidence": 0.6764,
       "data_completeness": 0.9,
@@ -248,19 +248,19 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.05917499999999998,
+          "score": 0.258975,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "communication_electronics_policy_news",
-              "score": -0.2529,
+              "score": 0.20835,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -313,11 +313,11 @@
           "available": true
         },
         {
-          "component": "fundamental_proxy",
-          "score": 0.2,
-          "confidence": 1,
+          "component": "policy_sentiment",
+          "score": 0.258975,
+          "confidence": 0.45,
           "weight": 0.1,
-          "contribution": 0.020000000000000004,
+          "contribution": 0.025897500000000004,
           "available": true
         }
       ]
@@ -329,7 +329,7 @@
       "display_name": "A-share AI and Computer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.21217308176100627,
+      "score": 0.2299030817610063,
       "label": "constructive_inflow_bias",
       "confidence": 0.6764,
       "data_completeness": 0.9,
@@ -404,19 +404,19 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.08167499999999998,
+          "score": 0.258975,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "ai_computer_policy_news",
-              "score": -0.2079,
+              "score": 0.20835,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -461,19 +461,19 @@
           "available": true
         },
         {
+          "component": "policy_sentiment",
+          "score": 0.258975,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.025897500000000004,
+          "available": true
+        },
+        {
           "component": "fundamental_proxy",
           "score": 0.25,
           "confidence": 1,
           "weight": 0.1,
           "contribution": 0.025,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.03366666666666667,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.008416666666666668,
           "available": true
         }
       ]
@@ -485,7 +485,7 @@
       "display_name": "A-share Semiconductor Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.2078814150943396,
+      "score": 0.22561141509433963,
       "label": "constructive_inflow_bias",
       "confidence": 0.6764,
       "data_completeness": 0.9,
@@ -560,19 +560,19 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.08167499999999998,
+          "score": 0.258975,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "semiconductor_policy_news",
-              "score": -0.2079,
+              "score": 0.20835,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -625,11 +625,11 @@
           "available": true
         },
         {
-          "component": "fundamental_proxy",
-          "score": 0.15,
-          "confidence": 1,
+          "component": "policy_sentiment",
+          "score": 0.258975,
+          "confidence": 0.45,
           "weight": 0.1,
-          "contribution": 0.015,
+          "contribution": 0.025897500000000004,
           "available": true
         }
       ]
@@ -641,7 +641,7 @@
       "display_name": "A-share Bank and Insurance Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.16713891509433962,
+      "score": 0.16097391509433961,
       "label": "neutral",
       "confidence": 0.6764,
       "data_completeness": 0.9,
@@ -716,19 +716,19 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "bank_insurance_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -765,19 +765,19 @@
           "available": true
         },
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         },
         {
@@ -797,7 +797,7 @@
       "display_name": "A-share Defense and Military Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.13701808176100627,
+      "score": 0.13393558176100628,
       "label": "neutral",
       "confidence": 0.7222,
       "data_completeness": 0.9,
@@ -872,7 +872,7 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.360625,
+          "score": 0.3298,
           "confidence": 0.725,
           "available": true,
           "nodes": [
@@ -884,7 +884,7 @@
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -929,19 +929,19 @@
           "available": true
         },
         {
-          "component": "policy_sentiment",
-          "score": 0.360625,
-          "confidence": 0.725,
-          "weight": 0.1,
-          "contribution": 0.0360625,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3298,
+          "confidence": 0.725,
+          "weight": 0.1,
+          "contribution": 0.03298,
           "available": true
         }
       ]
@@ -953,7 +953,7 @@
       "display_name": "A-share Healthcare and Pharma Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.10413474842767295,
+      "score": 0.10105224842767296,
       "label": "neutral",
       "confidence": 0.7222,
       "data_completeness": 0.9,
@@ -1028,7 +1028,7 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.285625,
+          "score": 0.2548,
           "confidence": 0.725,
           "available": true,
           "nodes": [
@@ -1040,7 +1040,7 @@
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -1094,10 +1094,10 @@
         },
         {
           "component": "policy_sentiment",
-          "score": 0.285625,
+          "score": 0.2548,
           "confidence": 0.725,
           "weight": 0.1,
-          "contribution": 0.028562500000000005,
+          "contribution": 0.025480000000000003,
           "available": true
         }
       ]
@@ -1109,7 +1109,7 @@
       "display_name": "A-share Resources and Materials Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.09901808176100628,
+      "score": 0.09593558176100628,
       "label": "neutral",
       "confidence": 0.7222,
       "data_completeness": 0.9,
@@ -1184,7 +1184,7 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.21062499999999998,
+          "score": 0.1798,
           "confidence": 0.725,
           "available": true,
           "nodes": [
@@ -1196,7 +1196,7 @@
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -1249,11 +1249,11 @@
           "available": true
         },
         {
-          "component": "policy_sentiment",
-          "score": 0.21062499999999998,
-          "confidence": 0.725,
+          "component": "fundamental_proxy",
+          "score": 0.2,
+          "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.021062499999999998,
+          "contribution": 0.020000000000000004,
           "available": true
         }
       ]
@@ -1265,7 +1265,7 @@
       "display_name": "A-share Agriculture Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -1320,13 +1320,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -1350,19 +1350,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -1374,7 +1374,7 @@
       "display_name": "A-share Food and Beverage Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -1429,13 +1429,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -1459,19 +1459,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -1483,7 +1483,7 @@
       "display_name": "A-share Home Appliances Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -1538,13 +1538,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -1568,19 +1568,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -1592,7 +1592,7 @@
       "display_name": "A-share Textile and Apparel Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -1647,13 +1647,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -1677,19 +1677,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -1701,7 +1701,7 @@
       "display_name": "A-share Light Manufacturing Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -1756,13 +1756,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -1786,19 +1786,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -1810,7 +1810,7 @@
       "display_name": "A-share Retail Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -1865,13 +1865,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -1895,19 +1895,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -1919,7 +1919,7 @@
       "display_name": "A-share Social Services Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -1974,13 +1974,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2004,19 +2004,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2028,7 +2028,7 @@
       "display_name": "A-share Beauty Care Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2083,13 +2083,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2113,19 +2113,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2137,7 +2137,7 @@
       "display_name": "A-share Transportation Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2192,13 +2192,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2222,19 +2222,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2246,7 +2246,7 @@
       "display_name": "A-share Utilities Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2301,13 +2301,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2331,19 +2331,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2355,7 +2355,7 @@
       "display_name": "A-share Environmental Protection Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2410,13 +2410,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2440,19 +2440,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2464,7 +2464,7 @@
       "display_name": "A-share Petroleum and Petrochemical Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2519,13 +2519,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2549,19 +2549,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2573,7 +2573,7 @@
       "display_name": "A-share Coal Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2628,13 +2628,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2658,19 +2658,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2682,7 +2682,7 @@
       "display_name": "A-share Steel Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2737,13 +2737,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2767,19 +2767,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2791,7 +2791,7 @@
       "display_name": "A-share Nonferrous Metals Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2846,13 +2846,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2876,19 +2876,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -2900,7 +2900,7 @@
       "display_name": "A-share Basic Chemicals Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -2955,13 +2955,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -2985,19 +2985,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -3009,7 +3009,7 @@
       "display_name": "A-share Building Materials Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -3064,13 +3064,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -3094,19 +3094,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -3118,7 +3118,7 @@
       "display_name": "A-share Construction Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -3173,13 +3173,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -3203,19 +3203,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -3227,7 +3227,7 @@
       "display_name": "A-share Machinery Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -3282,13 +3282,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -3312,19 +3312,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -3336,7 +3336,7 @@
       "display_name": "A-share Media Pool",
       "coverage_status": "framework_only",
       "classification": "sw_level1_framework_slot",
-      "score": 0.07271391509433961,
+      "score": 0.06654891509433962,
       "label": "neutral",
       "confidence": 0.2208,
       "data_completeness": 0.25,
@@ -3391,13 +3391,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -3421,19 +3421,19 @@
       },
       "top_drivers": [
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.3096,
+          "confidence": 0.45,
+          "weight": 0.1,
+          "contribution": 0.03096,
           "available": true
         }
       ]
@@ -3445,9 +3445,9 @@
       "display_name": "A-share Consumer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.04375141509433962,
+      "score": 0.036668915094339616,
       "label": "neutral",
-      "confidence": 0.6764,
+      "confidence": 0.7222,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
@@ -3520,19 +3520,19 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.275625,
-          "confidence": 0.45,
+          "score": 0.20479999999999998,
+          "confidence": 0.725,
           "available": true,
           "nodes": [
             {
               "node_id": "consumer_policy_news",
-              "score": 0.18000000000000002,
-              "confidence": 0.45,
-              "source": "news_intelligence_v1"
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -3578,10 +3578,10 @@
         },
         {
           "component": "policy_sentiment",
-          "score": 0.275625,
-          "confidence": 0.45,
+          "score": 0.20479999999999998,
+          "confidence": 0.725,
           "weight": 0.1,
-          "contribution": 0.027562500000000004,
+          "contribution": 0.020479999999999998,
           "available": true
         },
         {
@@ -3601,7 +3601,7 @@
       "display_name": "A-share New Energy Vehicle Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": -0.056940251572327065,
+      "score": -0.06002275157232707,
       "label": "neutral",
       "confidence": 0.7222,
       "data_completeness": 0.9,
@@ -3676,7 +3676,7 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.21062499999999998,
+          "score": 0.1798,
           "confidence": 0.725,
           "available": true,
           "nodes": [
@@ -3688,7 +3688,7 @@
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -3757,7 +3757,7 @@
       "display_name": "A-share Real Estate and Infrastructure Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": -0.12329441823899373,
+      "score": -0.1294594182389937,
       "label": "neutral",
       "confidence": 0.6764,
       "data_completeness": 0.9,
@@ -3832,19 +3832,19 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.37124999999999997,
+          "score": 0.3096,
           "confidence": 0.45,
           "available": true,
           "nodes": [
             {
               "node_id": "real_estate_infra_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             },
             {
               "node_id": "china_policy_news",
-              "score": 0.37124999999999997,
+              "score": 0.3096,
               "confidence": 0.45,
               "source": "news_intelligence_v1"
             }
@@ -3889,19 +3889,19 @@
           "available": true
         },
         {
-          "component": "policy_sentiment",
-          "score": 0.37124999999999997,
-          "confidence": 0.45,
-          "weight": 0.1,
-          "contribution": 0.037125,
-          "available": true
-        },
-        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "fundamental_proxy",
+          "score": -0.35,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": -0.034999999999999996,
           "available": true
         }
       ]
@@ -3911,34 +3911,34 @@
     "top_positive": [
       {
         "pool_id": "a_share_brokerage",
-        "score": 0.28617808176100634,
+        "score": 0.2777405817610063,
         "label": "constructive_inflow_bias"
       },
       {
         "pool_id": "a_share_communication_electronics",
-        "score": 0.2197480817610063,
+        "score": 0.2397280817610063,
         "label": "constructive_inflow_bias"
       },
       {
         "pool_id": "a_share_ai_computer",
-        "score": 0.21217308176100627,
+        "score": 0.2299030817610063,
         "label": "constructive_inflow_bias"
       }
     ],
     "top_negative": [
       {
         "pool_id": "a_share_real_estate_infra",
-        "score": -0.12329441823899373,
+        "score": -0.1294594182389937,
         "label": "neutral"
       },
       {
         "pool_id": "a_share_new_energy_ev",
-        "score": -0.056940251572327065,
+        "score": -0.06002275157232707,
         "label": "neutral"
       },
       {
         "pool_id": "a_share_consumer",
-        "score": 0.04375141509433962,
+        "score": 0.036668915094339616,
         "label": "neutral"
       }
     ]
@@ -3949,10 +3949,10 @@
     "source_reality": "mixed_observed_mock",
     "market_use_confidence": "low",
     "source_counts": {
-      "mock_observation_collector": 99,
+      "mock_observation_collector": 100,
       "akshare_provider_flow_observations": 22,
       "a_share_water_level_provider": 62,
-      "news_intelligence_v1": 38
+      "news_intelligence_v1": 37
     },
     "counts": {
       "sectors": 31,
