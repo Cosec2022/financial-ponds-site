@@ -1,20 +1,20 @@
 {
   "doctor_id": "akshare_etf_bridge_doctor_v0_10_24",
   "provider": "akshare",
-  "status": "blocked",
-  "started_at": "2026-07-06T15:31:19.298715+00:00",
-  "finished_at": "2026-07-06T15:31:19.298809+00:00",
+  "status": "ok",
+  "started_at": "2026-07-07T14:56:07.226520+00:00",
+  "finished_at": "2026-07-07T14:56:08.171853+00:00",
   "checks": [
     {
       "id": "python_runtime",
       "status": "ok",
-      "detail": "3.12.13 (main, Mar  3 2026, 14:59:34) [Clang 21.1.4 ]"
+      "detail": "3.10.6 (v3.10.6:9c7b4bd164, Aug  1 2022, 17:13:48) [Clang 13.0.0 (clang-1300.0.29.30)]"
     },
     {
       "id": "akshare_import",
-      "status": "blocked",
-      "detail": "No module named 'akshare'",
-      "remediation": "Install with `python3 -m pip install -r providers/requirements.txt`."
+      "status": "ok",
+      "detail": "akshare package imported",
+      "version": "1.18.64"
     }
   ],
   "install_hint": "python3 -m pip install -r providers/requirements.txt",

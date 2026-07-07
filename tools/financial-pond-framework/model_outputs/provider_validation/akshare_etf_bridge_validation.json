@@ -1,0 +1,47 @@
+{
+  "status": "ok",
+  "errors": [],
+  "warnings": [
+    "Fewer than two dates are available; change-based normalization will be weak.",
+    "Sector flow columns have no values yet. This is acceptable for a first baseline run; run the provider again on a later trading date before enabling ETF-flow sources."
+  ],
+  "partial_reasons": [],
+  "flow_readiness": {
+    "status": "baseline_only",
+    "reason": "Only one date is available. Latest share can be stored, but share-change flow needs a later date.",
+    "empty_flow_columns": [
+      "brokerage_etf_flow",
+      "bank_insurance_etf_flow",
+      "semiconductor_etf_flow",
+      "ai_computer_etf_flow",
+      "communication_electronics_etf_flow",
+      "new_energy_ev_etf_flow",
+      "healthcare_pharma_etf_flow",
+      "consumer_etf_flow",
+      "defense_military_etf_flow",
+      "resources_materials_etf_flow",
+      "real_estate_infra_etf_flow"
+    ]
+  },
+  "counts": {
+    "row_records": 11,
+    "sector_flow_records": 1,
+    "dates": 1,
+    "representative_codes_expected": 11,
+    "representative_codes_observed": 11
+  },
+  "dates": [
+    "2026-07-07"
+  ],
+  "latest_run": {
+    "path": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-07.json",
+    "mode": "real",
+    "as_of": "2026-07-07",
+    "status": "ok",
+    "errors": []
+  },
+  "validator_id": "akshare_etf_bridge_export_validator",
+  "generated_at": "2026-07-07T14:57:20.142823+00:00",
+  "row_csv": "data/provider_exports/a_share_etf_daily.csv",
+  "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv"
+}

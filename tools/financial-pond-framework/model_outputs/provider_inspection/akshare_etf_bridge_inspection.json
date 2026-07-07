@@ -1,0 +1,448 @@
+{
+  "status": "ok",
+  "errors": [],
+  "warnings": [
+    "brokerage_etf_flow should remain disabled: estimated_flow is missing",
+    "bank_insurance_etf_flow should remain disabled: estimated_flow is missing",
+    "semiconductor_etf_flow should remain disabled: estimated_flow is missing",
+    "ai_computer_etf_flow should remain disabled: estimated_flow is missing",
+    "communication_electronics_etf_flow should remain disabled: estimated_flow is missing",
+    "new_energy_ev_etf_flow should remain disabled: estimated_flow is missing",
+    "healthcare_pharma_etf_flow should remain disabled: estimated_flow is missing",
+    "consumer_etf_flow should remain disabled: estimated_flow is missing",
+    "defense_military_etf_flow should remain disabled: estimated_flow is missing",
+    "resources_materials_etf_flow should remain disabled: estimated_flow is missing",
+    "real_estate_infra_etf_flow should remain disabled: estimated_flow is missing",
+    "brokerage_etf_flow has no latest sector-flow value on 2026-07-07",
+    "bank_insurance_etf_flow has no latest sector-flow value on 2026-07-07",
+    "semiconductor_etf_flow has no latest sector-flow value on 2026-07-07",
+    "ai_computer_etf_flow has no latest sector-flow value on 2026-07-07",
+    "communication_electronics_etf_flow has no latest sector-flow value on 2026-07-07",
+    "new_energy_ev_etf_flow has no latest sector-flow value on 2026-07-07",
+    "healthcare_pharma_etf_flow has no latest sector-flow value on 2026-07-07",
+    "consumer_etf_flow has no latest sector-flow value on 2026-07-07",
+    "defense_military_etf_flow has no latest sector-flow value on 2026-07-07",
+    "resources_materials_etf_flow has no latest sector-flow value on 2026-07-07",
+    "real_estate_infra_etf_flow has no latest sector-flow value on 2026-07-07"
+  ],
+  "as_of": "2026-07-07",
+  "counts": {
+    "dates": 1,
+    "row_records_total": 11,
+    "sector_flow_records_total": 1,
+    "latest_row_records": 11,
+    "expected_representative_codes": 11,
+    "missing_representative_codes": 0,
+    "enable_candidates": 0
+  },
+  "overall_recommendation": "keep_all_provider_sources_disabled",
+  "row_findings": [
+    {
+      "sector_id": "brokerage",
+      "node_id": "brokerage_etf_flow",
+      "fund_code": "512000",
+      "fund_name": "券商ETF华宝",
+      "close": 0.537,
+      "amount": 1437391954.0,
+      "latest_share": 73208434688.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "bank_insurance",
+      "node_id": "bank_insurance_etf_flow",
+      "fund_code": "512800",
+      "fund_name": "银行ETF华宝",
+      "close": 0.759,
+      "amount": 1214082957.0,
+      "latest_share": 14453079808.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "semiconductor",
+      "node_id": "semiconductor_etf_flow",
+      "fund_code": "512480",
+      "fund_name": "半导体ETF国联安",
+      "close": 1.336,
+      "amount": 1699973250.0,
+      "latest_share": 16978007296.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "ai_computer",
+      "node_id": "ai_computer_etf_flow",
+      "fund_code": "159819",
+      "fund_name": "人工智能ETF易方达",
+      "close": 2.015,
+      "amount": 629528489.712,
+      "latest_share": 11117229568.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "communication_electronics",
+      "node_id": "communication_electronics_etf_flow",
+      "fund_code": "515880",
+      "fund_name": "通信ETF国泰",
+      "close": 0.761,
+      "amount": 5331025385.0,
+      "latest_share": 66283773952.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "node_id": "new_energy_ev_etf_flow",
+      "fund_code": "515030",
+      "fund_name": "新能源车ETF华夏",
+      "close": 1.816,
+      "amount": 149083623.0,
+      "latest_share": 1633384000.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "node_id": "healthcare_pharma_etf_flow",
+      "fund_code": "512010",
+      "fund_name": "医药ETF易方达",
+      "close": 0.354,
+      "amount": 677065095.0,
+      "latest_share": 48405694976.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "consumer",
+      "node_id": "consumer_etf_flow",
+      "fund_code": "159928",
+      "fund_name": "消费ETF汇添富",
+      "close": 0.63,
+      "amount": 287305948.186,
+      "latest_share": 23316628992.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "defense_military",
+      "node_id": "defense_military_etf_flow",
+      "fund_code": "512660",
+      "fund_name": "军工ETF国泰",
+      "close": 1.244,
+      "amount": 326242776.0,
+      "latest_share": 5417080064.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "resources_materials",
+      "node_id": "resources_materials_etf_flow",
+      "fund_code": "512400",
+      "fund_name": "有色金属ETF南方",
+      "close": 1.803,
+      "amount": 917678780.0,
+      "latest_share": 12679538944.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "node_id": "real_estate_infra_etf_flow",
+      "fund_code": "512200",
+      "fund_name": "房地产ETF南方",
+      "close": 1.171,
+      "amount": 84885078.0,
+      "latest_share": 2609097904.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    }
+  ],
+  "sector_flow_findings": [
+    {
+      "column": "brokerage_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "bank_insurance_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "semiconductor_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "ai_computer_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "communication_electronics_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "new_energy_ev_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "healthcare_pharma_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "consumer_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "defense_military_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "resources_materials_etf_flow",
+      "value": null,
+      "has_value": false
+    },
+    {
+      "column": "real_estate_infra_etf_flow",
+      "value": null,
+      "has_value": false
+    }
+  ],
+  "source_recommendations": [
+    {
+      "node_id": "brokerage_etf_flow",
+      "sector_id": "brokerage",
+      "fund_code": "512000",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "bank_insurance_etf_flow",
+      "sector_id": "bank_insurance",
+      "fund_code": "512800",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "semiconductor_etf_flow",
+      "sector_id": "semiconductor",
+      "fund_code": "512480",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "ai_computer_etf_flow",
+      "sector_id": "ai_computer",
+      "fund_code": "159819",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "communication_electronics_etf_flow",
+      "sector_id": "communication_electronics",
+      "fund_code": "515880",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "new_energy_ev_etf_flow",
+      "sector_id": "new_energy_ev",
+      "fund_code": "515030",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "healthcare_pharma_etf_flow",
+      "sector_id": "healthcare_pharma",
+      "fund_code": "512010",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "consumer_etf_flow",
+      "sector_id": "consumer",
+      "fund_code": "159928",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "defense_military_etf_flow",
+      "sector_id": "defense_military",
+      "fund_code": "512660",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "resources_materials_etf_flow",
+      "sector_id": "resources_materials",
+      "fund_code": "512400",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    },
+    {
+      "node_id": "real_estate_infra_etf_flow",
+      "sector_id": "real_estate_infra",
+      "fund_code": "512200",
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
+    }
+  ],
+  "ranked_by_amount": [
+    {
+      "sector_id": "communication_electronics",
+      "node_id": "communication_electronics_etf_flow",
+      "fund_code": "515880",
+      "fund_name": "通信ETF国泰",
+      "close": 0.761,
+      "amount": 5331025385.0,
+      "latest_share": 66283773952.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "semiconductor",
+      "node_id": "semiconductor_etf_flow",
+      "fund_code": "512480",
+      "fund_name": "半导体ETF国联安",
+      "close": 1.336,
+      "amount": 1699973250.0,
+      "latest_share": 16978007296.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "brokerage",
+      "node_id": "brokerage_etf_flow",
+      "fund_code": "512000",
+      "fund_name": "券商ETF华宝",
+      "close": 0.537,
+      "amount": 1437391954.0,
+      "latest_share": 73208434688.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "bank_insurance",
+      "node_id": "bank_insurance_etf_flow",
+      "fund_code": "512800",
+      "fund_name": "银行ETF华宝",
+      "close": 0.759,
+      "amount": 1214082957.0,
+      "latest_share": 14453079808.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "resources_materials",
+      "node_id": "resources_materials_etf_flow",
+      "fund_code": "512400",
+      "fund_name": "有色金属ETF南方",
+      "close": 1.803,
+      "amount": 917678780.0,
+      "latest_share": 12679538944.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "node_id": "healthcare_pharma_etf_flow",
+      "fund_code": "512010",
+      "fund_name": "医药ETF易方达",
+      "close": 0.354,
+      "amount": 677065095.0,
+      "latest_share": 48405694976.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "ai_computer",
+      "node_id": "ai_computer_etf_flow",
+      "fund_code": "159819",
+      "fund_name": "人工智能ETF易方达",
+      "close": 2.015,
+      "amount": 629528489.712,
+      "latest_share": 11117229568.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "defense_military",
+      "node_id": "defense_military_etf_flow",
+      "fund_code": "512660",
+      "fund_name": "军工ETF国泰",
+      "close": 1.244,
+      "amount": 326242776.0,
+      "latest_share": 5417080064.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "consumer",
+      "node_id": "consumer_etf_flow",
+      "fund_code": "159928",
+      "fund_name": "消费ETF汇添富",
+      "close": 0.63,
+      "amount": 287305948.186,
+      "latest_share": 23316628992.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "node_id": "new_energy_ev_etf_flow",
+      "fund_code": "515030",
+      "fund_name": "新能源车ETF华夏",
+      "close": 1.816,
+      "amount": 149083623.0,
+      "latest_share": 1633384000.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "node_id": "real_estate_infra_etf_flow",
+      "fund_code": "512200",
+      "fund_name": "房地产ETF南方",
+      "close": 1.171,
+      "amount": 84885078.0,
+      "latest_share": 2609097904.0,
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
+    }
+  ],
+  "ranked_by_estimated_flow": [],
+  "inspector_id": "akshare_etf_bridge_export_inspector",
+  "generated_at": "2026-07-07T14:57:20.274223+00:00",
+  "row_csv": "data/provider_exports/a_share_etf_daily.csv",
+  "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv"
+}
