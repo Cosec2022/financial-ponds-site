@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-07",
-  "generated_at": "2026-07-07T13:38:36.584Z",
+  "generated_at": "2026-07-07T14:00:16.163Z",
   "module_id": "sector_rotation_history_v0_10_19",
   "status": "history_available",
   "sample_days": 3,
@@ -542,7 +542,7 @@
     ]
   },
   "history_recovery": {
-    "source_payloads": 12,
+    "source_payloads": 13,
     "source_as_of": [
       "2026-07-02",
       "2026-07-06",
