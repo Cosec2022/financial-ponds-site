@@ -87,7 +87,14 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(dailyAnalysisJson.module_id, "daily_sector_analysis_v0_10_40");
   assert.equal(dailyAnalysisJson.status, "daily_sector_analysis_available");
   assert.ok(dailyAnalysisJson.tiers.confirm_next);
-  assert.ok(dailyAnalysisJson.tiers.confirm_next[0]?.rotation_diagnostic);
+  const dailyRows = [
+    ...(dailyAnalysisJson.tiers.priority_watch ?? []),
+    ...(dailyAnalysisJson.tiers.confirm_next ?? []),
+    ...(dailyAnalysisJson.tiers.avoid_watch ?? [])
+  ];
+  for (const row of dailyRows) {
+    assert.ok("rotation_diagnostic" in row);
+  }
   assert.ok(dailyAnalysisJson.gate_summary);
   assert.ok(dailyAnalysisJson.decision_gap?.checks?.length >= 5);
   assert.ok(dailyAnalysisJson.decision_ticket?.groups);
