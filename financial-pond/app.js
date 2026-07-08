@@ -224,7 +224,10 @@ function coverageStatusLabel(status) {
 
 function renderHeader() {
   document.getElementById("asOfBadge").textContent = `数据日期 ${state.flow?.as_of ?? state.dashboard.as_of}`;
-  document.getElementById("modelBadge").textContent = state.flow?.model_id ?? state.dashboard.model_version ?? "model";
+  document.getElementById("modelBadge").textContent = "v0.10.48 Observation Workbench";
+  document.getElementById("observedPoolBadge").textContent = `observed_pool_count ${state.observationSnapshot?.observed_pool_count ?? state.observationSnapshot?.rows?.length ?? "--"}`;
+  document.getElementById("pendingOutcomeBadge").textContent = `pending_outcome_count ${state.outcomeLabels?.pending?.length ?? "--"}`;
+  document.getElementById("executionStateBadge").textContent = `execution_state ${state.observationSnapshot?.execution_state ?? "--"}`;
 }
 
 function componentAvailable(row, componentName) {
@@ -334,17 +337,22 @@ function renderWorkbenchPanel() {
   if (!panel || !statusBadge) return;
 
   if (!snapshot || snapshot.status !== "observation_snapshot_available") {
-    statusBadge.textContent = "等待快照";
+    statusBadge.textContent = "not loaded";
     statusBadge.className = "pill warm";
-    panel.innerHTML = `<div class="empty">暂无观察快照。等待 observation_snapshot.json 生成。</div>`;
+    panel.innerHTML = `<div class="empty">observation_snapshot not loaded</div>`;
     return;
   }
 
   const rows = snapshot.rows ?? [];
   const pending = state.outcomeLabels?.pending ?? [];
-  statusBadge.textContent = `${rows.length} 个池`;
+  statusBadge.textContent = `observed ${rows.length}`;
   statusBadge.className = `pill ${snapshot.execution_state === "blocked" ? "warm" : "positive"}`;
   panel.innerHTML = `
+    <div class="workbench-summary">
+      <span>observed_pool_count ${snapshot.observed_pool_count ?? rows.length}</span>
+      <span>pending_outcome_count ${pending.length}</span>
+      <span>execution_state ${snapshot.execution_state ?? "observe_only"}</span>
+    </div>
     <div class="workbench-tabs" role="tablist">
       ${workbenchTabButton("today", "今日观察")}
       ${workbenchTabButton("matrix", "信号矩阵")}
@@ -637,7 +645,7 @@ function renderDailyAnalysisPanel() {
     <article class="daily-card ${statusClass}">
       <span>执行边界</span>
       <strong>${analysisModeLabel(analysis.analysis_mode)}</strong>
-      <p>${analysis.analysis_mode === "decision_review" ? "可以进入人工复核，但仍不是自动下单。" : "当前只读行业强弱，不输出 ETF 买入或调仓建议。"}</p>
+      <p>${analysis.analysis_mode === "decision_review" ? "可以进入人工复核，但仍不是自动执行。" : "当前只读行业强弱，不输出 ETF 执行建议。"}</p>
       <small>真实ETF流覆盖 ${formatPct(gates.true_flow_coverage)} · 数据真实性 ${realityLabel(gates.data_reality)} · 置信度 ${confidenceLabel(gates.market_use_confidence)}</small>
     </article>
     <article class="daily-card">
@@ -918,7 +926,7 @@ function providerNextCommand({ doctor, run, gates, asOf }) {
   }
   return {
     title: "数据门已过，进入人工复核",
-    reading: "真实资金流、样本和来源门槛已基本满足，下一步是仓位和回撤规则。",
+    reading: "真实资金流、样本和来源门槛已基本满足，下一步是人工复核和回撤规则。",
     command: [
       "cd tools/financial-pond-framework",
       `npm run rotation:history -- --as-of ${asOf}`,
@@ -983,7 +991,7 @@ function etfActionClass(label) {
 
 function guidanceStateLabel(label) {
   const map = {
-    not_ready: "不能指导买入",
+    not_ready: "执行未开放",
     watch_only: "只能观察",
     decision_support_ready: "可做人工复核"
   };
@@ -1171,7 +1179,7 @@ function renderEtfReadinessPanel() {
           <b>${blockerText(item.id)}</b>
           <small>${item.reading}</small>
         </div>
-      `).join("") : `<p>基础门槛通过。仍需要人工检查仓位、回撤和交易计划。</p>`}
+      `).join("") : `<p>基础门槛通过。仍需要人工检查回撤和复核计划。</p>`}
     </article>
     <article class="etf-card table-card">
       <span>关卡清单</span>
@@ -1218,7 +1226,7 @@ function renderEtfFlowPanel() {
   panel.innerHTML = `
     <article class="etf-flow-card headline ${readinessClass}">
       <span>数据边界</span>
-      <strong>观察数据，不是买入指令。</strong>
+      <strong>观察数据，不是执行指令。</strong>
       <p>Provider ${providerFlowReadinessLabel(readiness.provider_flow_readiness)} · 数据准备度 ${leaderboardReadinessLabel(readiness.data_readiness)} · 样本 ${readiness.provider_history?.date_count ?? "--"} 天。</p>
     </article>
     <article class="etf-flow-card">
@@ -1968,7 +1976,7 @@ function renderReferencePanel() {
     <article class="reference-card primary">
       <span>通用模型</span>
       <strong>${general?.counts?.pools ?? 0} 个池</strong>
-      <p>${general?.headline ?? "等待 general_pool_analysis.json 生成。"} 同一组件契约覆盖标普500与A股行业。</p>
+      <p>${general?.headline ?? "等待 general_pool_analysis.json 生成。"} 该面板保留为下方参考视图。</p>
     </article>
     <article class="reference-card">
       <span>标普500对照</span>
