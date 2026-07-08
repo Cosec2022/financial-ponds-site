@@ -8,7 +8,7 @@
     "validate:data": "node scripts/validate-published-data.mjs",
     "test": "node --test tests/*.test.mjs",
     "preview": "npm run build && node scripts/preview.mjs",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "npm run build && npx wrangler@4.102.0 deploy",
     "fp:today": "bash scripts/local/fp-today-full-update.sh",
     "fp:summary": "node scripts/local/fp-progress-summary.mjs"
   },
