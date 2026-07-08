@@ -15,9 +15,9 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /pending_outcome_count/);
   assert.match(html, /execution_state/);
   assert.match(html, /数据真实性审计/);
-  assert.match(html, /真实数据通道/);
+  assert.match(html, /高级诊断/);
   assert.match(html, /观察工作台/);
-  assert.match(html, /今日行业结论/);
+  assert.match(html, /今日观察/);
   assert.match(html, /ETF行动准备度/);
   assert.match(html, /ETF 真实资金流观察/);
   assert.match(html, /行业信号归因/);
