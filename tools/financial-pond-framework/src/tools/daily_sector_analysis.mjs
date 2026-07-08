@@ -103,7 +103,7 @@ export function buildDailySectorAnalysis({ asOf, inputs }) {
   return {
     as_of: inputs.flow?.as_of ?? inputs.etfReadiness?.as_of ?? asOf,
     generated_at: new Date().toISOString(),
-    module_id: "daily_sector_analysis_v0_10_40",
+    module_id: "daily_sector_analysis_v0_10_42",
     status: "daily_sector_analysis_available",
     analysis_mode: context.analysisMode,
     headline: buildHeadline({ context, priorityWatch, confirmNext, avoidWatch }),
@@ -288,7 +288,8 @@ function sectorAnalysisRow({ row, tier, flowBySector, modulesBySector, readiness
   const moduleRow = modulesBySector.get(id) ?? {};
   const readiness = readinessBySector.get(id) ?? {};
   const rotationDiagnostic = rotationDiagnosticsBySector.get(id) ?? null;
-  const score = numberOrNull(flow.score ?? row.score) ?? 0;
+  const score = numberOrNull(row.score ?? flow.score) ?? 0;
+  const currentFlowScore = numberOrNull(flow.score);
   const streakDays = row.streak_days ?? null;
   const name = sectorDisplayName(id, row, moduleRow, flow, readiness);
   return {
@@ -296,6 +297,7 @@ function sectorAnalysisRow({ row, tier, flowBySector, modulesBySector, readiness
     name,
     tier,
     score: round(score),
+    current_flow_score: round(currentFlowScore),
     label: flow.label ?? row.label ?? null,
     streak_days: streakDays,
     readiness_score: readiness.readiness_score ?? null,

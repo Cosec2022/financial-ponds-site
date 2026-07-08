@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.10.42 - Confirmed leader score preservation
+
+- Bumped site and framework package versions to `0.10.42`.
+- Daily Sector Analysis now preserves the source row score for tiering and
+  display.
+- Persistent rotation leaders no longer disappear just because the current
+  real-provider baseline flow score is compressed below the old absolute
+  threshold.
+- Added `current_flow_score` to Daily Sector Analysis rows so the compressed
+  flow score remains visible for diagnostics.
+- Added a regression test for the `trend_confirmed` + low current-flow-score
+  case.
+
+Important boundary:
+
+- This restores watchlist readability; it does not relax ETF readiness gates.
+- `baseline_only` still blocks ETF execution language.
+
 ## v0.10.41 - Visible rotation labels
 
 - Bumped site and framework package versions to `0.10.41`.

@@ -127,3 +127,72 @@ test("daily sector analysis keeps not-ready ETF gates as observation-only tiers"
   assert.equal(payload.tiers.avoid_watch[0].rotation_diagnostic.state, "laggard_continuation");
   assert.match(payload.headline, /只做观察/);
 });
+
+test("daily sector analysis preserves confirmed rotation leaders when current flow scores are compressed", () => {
+  const payload = buildDailySectorAnalysis({
+    asOf: "2026-07-07",
+    inputs: {
+      flow: {
+        as_of: "2026-07-07",
+        data_availability: { source_reality: "observed", market_use_confidence: "low" },
+        sector_reviews: [
+          { sector_id: "communication_electronics", name: "通信电子", score: 0.0774, label: "neutral" },
+          { sector_id: "brokerage", name: "券商", score: 0.025, label: "neutral" },
+          { sector_id: "ai_computer", name: "AI计算机", score: 0.02, label: "neutral" }
+        ]
+      },
+      rotationHistory: {
+        trend_state: "trend_confirmed",
+        sample_days: 3,
+        history: [
+          {
+            as_of: "2026-07-02",
+            leaders: [{ sector_id: "brokerage", name: "券商", score: 0.28 }],
+            laggards: []
+          },
+          {
+            as_of: "2026-07-06",
+            leaders: [{ sector_id: "brokerage", name: "券商", score: 0.27 }],
+            laggards: []
+          }
+        ],
+        latest: {
+          as_of: "2026-07-07",
+          leaders: [
+            { sector_id: "brokerage", name: "券商", score: 0.2862 },
+            { sector_id: "communication_electronics", name: "通信电子", score: 0.2197 },
+            { sector_id: "ai_computer", name: "AI计算机", score: 0.2122 }
+          ],
+          laggards: []
+        },
+        trend_confirmations: {
+          persistent_leaders: [
+            { sector_id: "brokerage", name: "券商", score: 0.2862, label: "constructive_inflow_bias", streak_days: 3 },
+            { sector_id: "ai_computer", name: "AI计算机", score: 0.2122, label: "constructive_inflow_bias", streak_days: 3 }
+          ],
+          persistent_laggards: []
+        }
+      },
+      moduleReview: { sectors: [], risks: [] },
+      etfReadiness: {
+        guidance_state: "not_ready",
+        gates: {
+          guidance_state: "not_ready",
+          provider_run: "real_ok",
+          provider_flow_readiness: "baseline_only",
+          true_flow_coverage: 0,
+          sample_days: 3
+        },
+        sectors: []
+      },
+      realityAudit: { overall_reality: "observed_pipeline" }
+    }
+  });
+
+  assert.equal(payload.module_id, "daily_sector_analysis_v0_10_42");
+  assert.equal(payload.tiers.priority_watch.length, 2);
+  assert.equal(payload.tiers.priority_watch[0].sector_id, "brokerage");
+  assert.equal(payload.tiers.priority_watch[0].score, 0.2862);
+  assert.equal(payload.tiers.priority_watch[0].current_flow_score, 0.025);
+  assert.match(payload.headline, /券商 领头/);
+});

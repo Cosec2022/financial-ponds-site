@@ -5,7 +5,7 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.41`
+Package version: `0.10.42`
 
 Purpose of this version:
 
@@ -16,6 +16,7 @@ Purpose of this version:
 - add `npm run project:maturity` and a homepage module-completion panel so low-maturity modules and recommended mainline are visible
 - add rotation-continuation diagnostics to daily sector analysis so priority, confirmation, and avoid rows explain whether a sector is extending, reversing, newly strong, or newly weak
 - show rotation-continuation labels as visible chips in the homepage Daily Sector Analysis panel
+- preserve confirmed rotation leader scores in Daily Sector Analysis when real-provider baseline flow scores are compressed
 - add ETF share-change diagnostics so the site can show whether estimated-flow is blocked by missing latest_share, previous_share, share_change, or estimated_flow
 - add daily decision-gap checks so the homepage explains which ETF gates passed and which still block execution language
 - normalize daily sector names to Chinese labels before rendering
