@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.45
+Version: v0.10.46
 Status: active
 
 ## Final Target
@@ -35,9 +35,9 @@ The system should not output direct trading instructions.
 ```text
 Overall progress: 45%
 Current stage: usable prototype
-Daily data pipeline: partial, with AKShare provider flow_ready, one-command recovery for missing pool graph snapshots, signal attribution, and watchlist state machine
+Daily data pipeline: partial, with AKShare provider flow_ready, one-command recovery for missing pool graph snapshots, signal attribution, watchlist state machine, and decision gate ledger
 Decision-grade model: not yet
-Main limitation: A-share provider flow is flow_ready and watchlist states can route conflicts into review groups, but ETF readiness remains watch_only/not_ready when source, valuation/fundamental, rotation, or execution gates block allocation guidance
+Main limitation: A-share provider flow is flow_ready and watchlist states can route conflicts into review groups, but ETF readiness remains watch_only/not_ready when source, valuation/fundamental, rotation, conflict-review, data reality, or execution gates block guidance
 ```
 
 ## Phase Plan
@@ -70,6 +70,7 @@ Provider status panel showing AKShare environment, real run, flow readiness, and
 ETF true-flow observation leaderboard with positive, negative, and zero-flow rows
 Signal attribution panel explaining daily rankings and cross-module conflicts
 Watchlist state panel grouping confirmed, conflict, flow-only, rotation-only, deteriorating, and avoid rows
+Decision gate ledger panel explaining why provider-ready does not automatically mean execution-ready
 Published-data completeness guard for the daily Action
 Daily sector analysis panel with priority watch, confirm next, and avoid watch tiers
 Rotation-history recovery from recent published Git versions
@@ -94,19 +95,21 @@ local graph node edits and patch export
 11. ETF flow leaderboard is observation-only and must not be read as buy/sell guidance.
 12. Signal attribution explains observation conflicts only; it does not unlock ETF execution advice.
 13. Watchlist state is an observation workflow, not a trading instruction.
+14. Decision gate ledger explains blocked readiness; it does not unlock ETF execution advice.
 ```
 
 ## Next Work Order
 
 1. A-share first: replace valuation/fundamental manual seeds with reviewed hard-data sources.
-2. Use Watchlist State to route conflict, flow-only, and rotation-only rows before changing scoring.
-3. Use Signal Attribution to review ETF-flow-vs-daily-leader conflicts before changing scoring.
-4. Make pool graph snapshots robust so `pool:analysis` can run after cycle recovery or graceful fallback.
-5. Improve rotation visibility while sample history is still low.
-6. Keep execution decision blocked until ETF readiness exits watch-only mode.
-7. Sync shared work into the general model: input coverage, confidence labels, missing-input reporting, and component contract tests.
-8. S&P 500 second: add live provider inputs for flow, breadth, EPS/valuation, and news pressure after the A-share flow path is stable.
-9. Add continuation / reversal / strengthening / weakening labels.
-10. Feed confirmed trend labels into the daily sector analysis scoring.
-11. Implement keyword state engine.
-12. Implement graph edge state backend.
+2. Use Decision Gate Ledger to keep provider-ready-but-execution-blocked reasons visible.
+3. Use Watchlist State to route conflict, flow-only, and rotation-only rows before changing scoring.
+4. Use Signal Attribution to review ETF-flow-vs-daily-leader conflicts before changing scoring.
+5. Make pool graph snapshots robust so `pool:analysis` can run after cycle recovery or graceful fallback.
+6. Improve rotation visibility while sample history is still low.
+7. Keep execution decision blocked until ETF readiness exits watch-only mode.
+8. Sync shared work into the general model: input coverage, confidence labels, missing-input reporting, and component contract tests.
+9. S&P 500 second: add live provider inputs for flow, breadth, EPS/valuation, and news pressure after the A-share flow path is stable.
+10. Add continuation / reversal / strengthening / weakening labels.
+11. Feed confirmed trend labels into the daily sector analysis scoring.
+12. Implement keyword state engine.
+13. Implement graph edge state backend.

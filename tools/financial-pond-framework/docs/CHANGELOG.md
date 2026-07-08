@@ -1,5 +1,33 @@
 # Changelog
 
+## v0.10.46 - Decision gate ledger
+
+- Bumped site and framework package versions to `0.10.46`.
+- Added `npm run decision:gates`.
+- Added `decision_gate_ledger.json` and `.md` outputs.
+- The ledger explains readiness gates across:
+  - provider run and provider history;
+  - estimated-flow and true-flow coverage;
+  - attribution conflicts;
+  - watchlist conflict review;
+  - confirmed watch availability;
+  - valuation/fundamental source reality;
+  - rotation visibility;
+  - pool graph snapshot availability;
+  - data reality audit;
+  - execution-language safety.
+- Published `financial-pond/data/decision_gate_ledger.json`.
+- Added the homepage `决策闸门账本` panel.
+- Updated the daily runner, CI runner, build assets, published-data validation,
+  Worker tests, workflow tests, and summary command.
+
+Important boundary:
+
+- Provider flow readiness does not equal execution readiness.
+- v0.10.46 improves readiness explanation and cross-module gate visibility.
+- ETF execution advice remains blocked while valuation/fundamental, data
+  reality, conflict, or execution-language gates are not cleared.
+
 ## v0.10.45 - Watchlist state machine
 
 - Bumped site and framework package versions to `0.10.45`.

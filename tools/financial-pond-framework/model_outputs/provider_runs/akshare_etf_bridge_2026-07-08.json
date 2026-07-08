@@ -3,8 +3,8 @@
   "provider": "akshare",
   "mode": "real",
   "as_of": "2026-07-08",
-  "provider_run_id": "akshare_etf_bridge_2026-07-08_111927",
-  "started_at": "2026-07-08T11:19:27.898480+00:00",
+  "provider_run_id": "akshare_etf_bridge_2026-07-08_113625",
+  "started_at": "2026-07-08T11:36:25.724212+00:00",
   "status": "ok",
   "warnings": [],
   "errors": [],
@@ -14,6 +14,6 @@
     "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv",
     "run_status_json": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-08.json"
   },
-  "finished_at": "2026-07-08T11:20:41.701001+00:00",
+  "finished_at": "2026-07-08T11:37:36.872508+00:00",
   "records": 11
 }

@@ -57,6 +57,7 @@ const state = {
   etfFlowLeaderboard: null,
   signalAttribution: null,
   watchlistState: null,
+  decisionGateLedger: null,
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -1281,6 +1282,158 @@ function renderWatchlistPanel() {
   });
 }
 
+function renderGateLedgerPanel() {
+  const panel = document.getElementById("gateLedgerPanel");
+  const statusBadge = document.getElementById("gateLedgerStatus");
+  const ledger = state.decisionGateLedger;
+  if (!panel || !statusBadge) return;
+
+  if (!ledger || ledger.status !== "gate_ledger_available") {
+    statusBadge.textContent = "等待账本";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无决策闸门账本。等待 decision_gate_ledger.json 生成。</div>`;
+    return;
+  }
+
+  const gates = ledger.gates ?? [];
+  const counts = gateCounts(gates);
+  const statusClass = counts.block ? "negative" : counts.warn ? "warm" : "positive";
+  const topBlockers = (ledger.blockers ?? []).slice(0, 5);
+  const unlocks = (ledger.next_unlock_sequence ?? []).slice(0, 5);
+
+  statusBadge.textContent = `${counts.block} 阻塞 / ${counts.warn} 复核`;
+  statusBadge.className = `pill ${statusClass}`;
+
+  panel.innerHTML = `
+    <article class="gate-ledger-card headline ${statusClass}">
+      <span>解释边界</span>
+      <strong>解释为什么不能执行，不是交易指令。</strong>
+      <p>${ledger.headline ?? "等待闸门账本 headline。"}</p>
+    </article>
+    <article class="gate-ledger-card ${executionStateClass(ledger.execution_state)}">
+      <span>执行状态</span>
+      <strong>${executionStateLabel(ledger.execution_state)}</strong>
+      <p>指导状态 ${guidanceStateLabel(ledger.guidance_state)}。</p>
+    </article>
+    <article class="gate-ledger-card positive">
+      <span>通过</span>
+      <strong>${counts.pass}</strong>
+      <p>已满足的 provider、覆盖和解释关卡。</p>
+    </article>
+    <article class="gate-ledger-card warm">
+      <span>复核</span>
+      <strong>${counts.warn}</strong>
+      <p>需要人工标注或继续观察的分歧项。</p>
+    </article>
+    <article class="gate-ledger-card negative">
+      <span>阻塞</span>
+      <strong>${counts.block}</strong>
+      <p>仍然阻止执行语言解锁的硬边界。</p>
+    </article>
+    <article class="gate-ledger-card wide ${ledger.state_consistency?.provider_ready_but_execution_blocked ? "warm" : "positive"}">
+      <span>状态一致性</span>
+      <strong>${ledger.state_consistency?.provider_ready_but_execution_blocked ? "Provider 已就绪，执行仍阻塞" : "状态一致"}</strong>
+      <p>${ledger.state_consistency?.reading ?? "--"}</p>
+    </article>
+    <article class="gate-ledger-card wide negative">
+      <span>Top blockers</span>
+      ${gateSummaryListTemplate(topBlockers, "暂无阻塞关卡。")}
+    </article>
+    <article class="gate-ledger-card wide warm">
+      <span>Next unlock sequence</span>
+      ${gateUnlockListTemplate(unlocks)}
+    </article>
+    <article class="gate-ledger-card table-card">
+      <span>闸门明细</span>
+      ${gateLedgerTableTemplate(gates)}
+    </article>
+  `;
+}
+
+function gateCounts(gates) {
+  return gates.reduce((counts, gateItem) => {
+    const key = gateItem.status ?? "unknown";
+    counts[key] = (counts[key] ?? 0) + 1;
+    return counts;
+  }, { pass: 0, warn: 0, block: 0, unknown: 0 });
+}
+
+function executionStateLabel(value) {
+  const map = {
+    blocked: "阻塞",
+    review_ready: "复核就绪"
+  };
+  return map[value] ?? value ?? "--";
+}
+
+function executionStateClass(value) {
+  if (value === "review_ready") return "positive";
+  if (value === "blocked") return "negative";
+  return "warm";
+}
+
+function gateStatusLabel(value) {
+  const map = {
+    pass: "通过",
+    warn: "复核",
+    block: "阻塞",
+    unknown: "未知"
+  };
+  return map[value] ?? value ?? "--";
+}
+
+function gateStatusClass(value) {
+  if (value === "pass") return "positive";
+  if (value === "block") return "negative";
+  return "warm";
+}
+
+function gateSummaryListTemplate(rows, emptyText) {
+  if (!rows.length) return `<p class="muted">${emptyText}</p>`;
+  return `
+    <ol class="watch-list">
+      ${rows.map((row) => `<li><b>${row.label}</b>：${row.reading}</li>`).join("")}
+    </ol>
+  `;
+}
+
+function gateUnlockListTemplate(rows) {
+  if (!rows.length) return `<p class="muted">暂无下一解锁项。</p>`;
+  return `
+    <ol class="watch-list">
+      ${rows.map((row) => `<li><b>${row.label}</b>：${row.next_action}</li>`).join("")}
+    </ol>
+  `;
+}
+
+function gateLedgerTableTemplate(rows) {
+  if (!rows.length) return `<div class="empty">暂无闸门明细。</div>`;
+  return `
+    <div class="module-table">
+      <table>
+        <thead>
+          <tr>
+            <th>闸门</th>
+            <th>状态</th>
+            <th>读数</th>
+            <th>下一步</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <td><strong>${row.label}</strong><span class="sub">${row.gate_id}</span></td>
+              <td><span class="pill ${gateStatusClass(row.status)}">${gateStatusLabel(row.status)}</span></td>
+              <td>${row.reading ?? "--"}</td>
+              <td>${row.next_action ?? "--"}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
 function watchlistCountCard(label, count, stateName, className) {
   return `
     <article class="watchlist-card ${className}">
@@ -2246,6 +2399,7 @@ function renderAll() {
   renderEtfFlowPanel();
   renderAttributionPanel();
   renderWatchlistPanel();
+  renderGateLedgerPanel();
   renderPondMap();
   renderSelectedSummary();
   renderFlowDetail();
@@ -2272,6 +2426,7 @@ async function loadAll() {
   state.etfFlowLeaderboard = await readJson("./data/etf_flow_leaderboard.json", null);
   state.signalAttribution = await readJson("./data/sector_signal_attribution.json", null);
   state.watchlistState = await readJson("./data/sector_watchlist_state.json", null);
+  state.decisionGateLedger = await readJson("./data/decision_gate_ledger.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

@@ -1,10 +1,10 @@
 {
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T11:20:43.901Z",
+  "generated_at": "2026-07-08T11:37:39.432Z",
   "module_id": "daily_sector_analysis_v0_10_42",
   "status": "daily_sector_analysis_available",
   "analysis_mode": "analysis_only",
-  "headline": "今日行业结论：券商 领头；2 个优先观察，0 个继续确认，6 个回避观察。当前只做观察，不做 ETF 执行建议。",
+  "headline": "今日行业结论：券商 领头；1 个优先观察，4 个继续确认，6 个回避观察。当前只做观察，不做 ETF 执行建议。",
   "gate_summary": {
     "guidance_state": "not_ready",
     "provider_run": "real_ok",
@@ -21,15 +21,15 @@
         "sector_id": "brokerage",
         "name": "券商",
         "tier": "priority_watch",
-        "score": 0.1743,
-        "current_flow_score": 0.1743,
-        "label": "neutral",
+        "score": 0.3338,
+        "current_flow_score": 0.3338,
+        "label": "constructive_inflow_bias",
         "streak_days": 4,
         "readiness_score": 32,
         "action_label": "blocked_non_real_source",
         "action_text": "数据非真实，禁止指导",
-        "module_decision_label": "wait_for_confirmation",
-        "module_decision_text": "等待确认",
+        "module_decision_label": "balanced_candidate",
+        "module_decision_text": "合理且改善",
         "evidence": {
           "observed_direct_flow": true,
           "observed_price_volume": true,
@@ -44,21 +44,119 @@
           "valuation_position_score": 0.08,
           "fundamental_label": "improving",
           "fundamental_score": 0.12,
-          "flow_price_label": "neutral",
-          "flow_price_score": 0.1743
+          "flow_price_label": "constructive_inflow_bias",
+          "flow_price_score": 0.3338
         },
         "rotation_diagnostic": {
           "state": "leader_continuation",
           "label": "领先延续",
-          "reading": "轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 -0.1119。",
+          "reading": "轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 0.0476。",
           "latest_role": "leader",
           "previous_role": "leader",
           "leader_days": 4,
           "laggard_days": 0,
           "days_observed": 4,
-          "score_delta": -0.1119
+          "score_delta": 0.0476
         },
-        "reading": "仍是观察项：券商 已出现连续领先，当前分数 0.1743。轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 -0.1119。ETF 决策门尚未完全打开。",
+        "reading": "仍是观察项：券商 已出现连续领先，当前分数 0.3338。轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 0.0476。ETF 决策门尚未完全打开。",
+        "blockers": [
+          "non_real_flow_source",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      }
+    ],
+    "confirm_next": [
+      {
+        "sector_id": "semiconductor",
+        "name": "半导体",
+        "tier": "confirm_next",
+        "score": 0.2026,
+        "current_flow_score": 0.2026,
+        "label": "constructive_inflow_bias",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "expensive_momentum",
+        "module_decision_text": "偏贵但趋势强",
+        "evidence": {
+          "observed_direct_flow": true,
+          "observed_price_volume": true,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量确认",
+            "总水位",
+            "新闻压力",
+            "基本面代理"
+          ],
+          "valuation_label": "very_expensive",
+          "valuation_position_score": 0.42,
+          "fundamental_label": "improving",
+          "fundamental_score": 0.2,
+          "flow_price_label": "constructive_inflow_bias",
+          "flow_price_score": 0.2026
+        },
+        "rotation_diagnostic": {
+          "state": "leader_continuation",
+          "label": "领先延续",
+          "reading": "轮动标签：领先延续，3/4 个样本日进入领先组。",
+          "latest_role": "leader",
+          "previous_role": "not_ranked",
+          "leader_days": 3,
+          "laggard_days": 0,
+          "days_observed": 4,
+          "score_delta": null
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。轮动标签：领先延续，3/4 个样本日进入领先组。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+        "blockers": [
+          "non_real_flow_source",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "healthcare_pharma",
+        "name": "医药医疗",
+        "tier": "confirm_next",
+        "score": 0.1459,
+        "current_flow_score": 0.1459,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "wait_for_confirmation",
+        "module_decision_text": "等待确认",
+        "evidence": {
+          "observed_direct_flow": true,
+          "observed_price_volume": true,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量确认",
+            "总水位",
+            "新闻压力",
+            "基本面代理"
+          ],
+          "valuation_label": "cheap",
+          "valuation_position_score": -0.28,
+          "fundamental_label": "stable",
+          "fundamental_score": -0.04,
+          "flow_price_label": "neutral",
+          "flow_price_score": 0.1459
+        },
+        "rotation_diagnostic": {
+          "state": "new_leader_watch",
+          "label": "新进强势",
+          "reading": "轮动标签：新进强势，最新进入领先组但连续性还不够。",
+          "latest_role": "leader",
+          "previous_role": "not_ranked",
+          "leader_days": 1,
+          "laggard_days": 0,
+          "days_observed": 4,
+          "score_delta": null
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。轮动标签：新进强势，最新进入领先组但连续性还不够。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
         "blockers": [
           "non_real_flow_source",
           "valuation_manual_seed",
@@ -68,11 +166,11 @@
       {
         "sector_id": "ai_computer",
         "name": "AI计算机",
-        "tier": "priority_watch",
-        "score": 0.1564,
-        "current_flow_score": 0.1564,
+        "tier": "confirm_next",
+        "score": 0.1453,
+        "current_flow_score": 0.1453,
         "label": "neutral",
-        "streak_days": 4,
+        "streak_days": null,
         "readiness_score": 32,
         "action_label": "blocked_non_real_source",
         "action_text": "数据非真实，禁止指导",
@@ -93,20 +191,68 @@
           "fundamental_label": "improving",
           "fundamental_score": 0.24,
           "flow_price_label": "neutral",
-          "flow_price_score": 0.1564
+          "flow_price_score": 0.1453
         },
         "rotation_diagnostic": {
-          "state": "leader_continuation",
-          "label": "领先延续",
-          "reading": "轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 -0.0558。",
-          "latest_role": "leader",
+          "state": "single_day_watch",
+          "label": "单日观察",
+          "reading": "轮动标签：单日观察，暂未形成连续领先或连续弱势。",
+          "latest_role": "not_ranked",
           "previous_role": "leader",
-          "leader_days": 4,
+          "leader_days": 3,
           "laggard_days": 0,
           "days_observed": 4,
-          "score_delta": -0.0558
+          "score_delta": null
         },
-        "reading": "仍是观察项：AI计算机 已出现连续领先，当前分数 0.1564。轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 -0.0558。ETF 决策门尚未完全打开。",
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。轮动标签：单日观察，暂未形成连续领先或连续弱势。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+        "blockers": [
+          "non_real_flow_source",
+          "valuation_manual_seed",
+          "fundamental_manual_seed"
+        ]
+      },
+      {
+        "sector_id": "communication_electronics",
+        "name": "通信电子",
+        "tier": "confirm_next",
+        "score": 0.133,
+        "current_flow_score": 0.133,
+        "label": "neutral",
+        "streak_days": null,
+        "readiness_score": 32,
+        "action_label": "blocked_non_real_source",
+        "action_text": "数据非真实，禁止指导",
+        "module_decision_label": "wait_for_confirmation",
+        "module_decision_text": "等待确认",
+        "evidence": {
+          "observed_direct_flow": true,
+          "observed_price_volume": true,
+          "confirmation_inputs": [
+            "ETF流",
+            "价量",
+            "总水位",
+            "新闻",
+            "基本面代理"
+          ],
+          "valuation_label": "expensive",
+          "valuation_position_score": 0.22,
+          "fundamental_label": "improving",
+          "fundamental_score": 0.18,
+          "flow_price_label": "neutral",
+          "flow_price_score": 0.133
+        },
+        "rotation_diagnostic": {
+          "state": "single_day_watch",
+          "label": "单日观察",
+          "reading": "轮动标签：单日观察，暂未形成连续领先或连续弱势。",
+          "latest_role": "not_ranked",
+          "previous_role": "leader",
+          "leader_days": 1,
+          "laggard_days": 0,
+          "days_observed": 4,
+          "score_delta": null
+        },
+        "reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。轮动标签：单日观察，暂未形成连续领先或连续弱势。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
         "blockers": [
           "non_real_flow_source",
           "valuation_manual_seed",
@@ -114,14 +260,13 @@
         ]
       }
     ],
-    "confirm_next": [],
     "avoid_watch": [
       {
         "sector_id": "new_energy_ev",
         "name": "新能源车",
         "tier": "avoid_watch",
-        "score": -0.0796,
-        "current_flow_score": -0.0796,
+        "score": -0.0689,
+        "current_flow_score": -0.0689,
         "label": "neutral",
         "streak_days": 4,
         "readiness_score": 32,
@@ -144,20 +289,20 @@
           "fundamental_label": "weak",
           "fundamental_score": -0.18,
           "flow_price_label": "neutral",
-          "flow_price_score": -0.0796
+          "flow_price_score": -0.0689
         },
         "rotation_diagnostic": {
           "state": "laggard_continuation",
           "label": "弱势延续",
-          "reading": "轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 -0.0227。",
+          "reading": "轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 -0.012。",
           "latest_role": "laggard",
           "previous_role": "laggard",
           "leader_days": 0,
           "laggard_days": 4,
           "days_observed": 4,
-          "score_delta": -0.0227
+          "score_delta": -0.012
         },
-        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 -0.0227。ETF 决策门尚未完全打开。",
+        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 -0.012。ETF 决策门尚未完全打开。",
         "blockers": [
           "non_real_flow_source",
           "valuation_manual_seed",
@@ -168,8 +313,8 @@
         "sector_id": "real_estate_infra",
         "name": "地产基建",
         "tier": "avoid_watch",
-        "score": -0.0335,
-        "current_flow_score": -0.0335,
+        "score": -0.0382,
+        "current_flow_score": -0.0382,
         "label": "neutral",
         "streak_days": 4,
         "readiness_score": 32,
@@ -192,20 +337,20 @@
           "fundamental_label": "deteriorating",
           "fundamental_score": -0.32,
           "flow_price_label": "neutral",
-          "flow_price_score": -0.0335
+          "flow_price_score": -0.0382
         },
         "rotation_diagnostic": {
           "state": "laggard_continuation",
           "label": "弱势延续",
-          "reading": "轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 0.0898。",
+          "reading": "轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 0.0851。",
           "latest_role": "laggard",
           "previous_role": "laggard",
           "leader_days": 0,
           "laggard_days": 4,
           "days_observed": 4,
-          "score_delta": 0.0898
+          "score_delta": 0.0851
         },
-        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 0.0898。ETF 决策门尚未完全打开。",
+        "reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 0.0851。ETF 决策门尚未完全打开。",
         "blockers": [
           "non_real_flow_source",
           "valuation_manual_seed",
@@ -363,8 +508,8 @@
     ]
   },
   "counts": {
-    "priority_watch": 2,
-    "confirm_next": 0,
+    "priority_watch": 1,
+    "confirm_next": 4,
     "avoid_watch": 6
   },
   "decision_gap": {
@@ -414,12 +559,12 @@
   },
   "decision_ticket": {
     "status": "watchlist_ready",
-    "summary": "当前只做观察：券商、AI计算机 是优先观察；ETF 执行语言仍被 估值/基本面 阻塞。",
+    "summary": "当前只做观察：券商 是优先观察；ETF 执行语言仍被 估值/基本面 阻塞。",
     "trade_boundary": "This ticket is for human review only. It is not a buy, sell, rebalance, or allocation instruction.",
     "counts": {
-      "total": 6,
-      "priority_watch": 2,
-      "confirm_next": 0,
+      "total": 9,
+      "priority_watch": 1,
+      "confirm_next": 4,
       "avoid_watch": 4
     },
     "groups": {
@@ -428,15 +573,15 @@
           "sector_id": "brokerage",
           "name": "券商",
           "group": "priority_watch",
-          "score": 0.1743,
+          "score": 0.3338,
           "streak_days": 4,
           "readiness_score": 32,
-          "module_decision_label": "wait_for_confirmation",
-          "module_decision_text": "等待确认",
+          "module_decision_label": "balanced_candidate",
+          "module_decision_text": "合理且改善",
           "current_action_label": "blocked_non_real_source",
           "current_action_text": "数据非真实，禁止指导",
           "current_state": "priority_watch",
-          "current_reading": "仍是观察项：券商 已出现连续领先，当前分数 0.1743。轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 -0.1119。ETF 决策门尚未完全打开。",
+          "current_reading": "仍是观察项：券商 已出现连续领先，当前分数 0.3338。轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 0.0476。ETF 决策门尚未完全打开。",
           "manual_review_boundary": "只能作为观察或风险复核，不是 ETF 买入建议。",
           "ticket_label": "优先观察",
           "upgrade_conditions": [
@@ -450,42 +595,120 @@
             "真实 ETF 份额变化流为负，或 estimated_flow 覆盖仍不足",
             "三模块标签降级为 value_trap_risk / expensive_deteriorating / expensive_flow_fading"
           ]
+        }
+      ],
+      "confirm_next": [
+        {
+          "sector_id": "semiconductor",
+          "name": "半导体",
+          "group": "confirm_next",
+          "score": 0.2026,
+          "streak_days": null,
+          "readiness_score": 32,
+          "module_decision_label": "expensive_momentum",
+          "module_decision_text": "偏贵但趋势强",
+          "current_action_label": "blocked_non_real_source",
+          "current_action_text": "数据非真实，禁止指导",
+          "current_state": "confirm_next",
+          "current_reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。轮动标签：领先延续，3/4 个样本日进入领先组。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+          "manual_review_boundary": "只能作为观察或风险复核，不是 ETF 买入建议。",
+          "ticket_label": "继续确认",
+          "upgrade_conditions": [
+            "半导体 连续进入领先组并形成 3 日 streak",
+            "真实 ETF 份额变化流覆盖达到 60% 以上",
+            "三模块标签维持合理且改善、低估且转强，或至少不转为风险组合"
+          ],
+          "failure_conditions": [
+            "跌出当日强势队列",
+            "score 回落到 0.12 以下",
+            "价量或份额变化流转弱"
+          ]
         },
         {
-          "sector_id": "ai_computer",
-          "name": "AI计算机",
-          "group": "priority_watch",
-          "score": 0.1564,
-          "streak_days": 4,
+          "sector_id": "healthcare_pharma",
+          "name": "医药医疗",
+          "group": "confirm_next",
+          "score": 0.1459,
+          "streak_days": null,
           "readiness_score": 32,
           "module_decision_label": "wait_for_confirmation",
           "module_decision_text": "等待确认",
           "current_action_label": "blocked_non_real_source",
           "current_action_text": "数据非真实，禁止指导",
-          "current_state": "priority_watch",
-          "current_reading": "仍是观察项：AI计算机 已出现连续领先，当前分数 0.1564。轮动标签：领先延续，4/4 个样本日进入领先组，较上一样本变化 -0.0558。ETF 决策门尚未完全打开。",
+          "current_state": "confirm_next",
+          "current_reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。轮动标签：新进强势，最新进入领先组但连续性还不够。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
           "manual_review_boundary": "只能作为观察或风险复核，不是 ETF 买入建议。",
-          "ticket_label": "优先观察",
+          "ticket_label": "继续确认",
           "upgrade_conditions": [
+            "医药医疗 连续进入领先组并形成 3 日 streak",
             "真实 ETF 份额变化流覆盖达到 60% 以上",
-            "AI计算机 继续处于 persistent_leaders 或当日前三强",
-            "该行业代表 ETF estimated_flow 为正，或 direct_flow 组件已经可观测",
-            "三模块标签不降级为风险组合"
+            "三模块标签维持合理且改善、低估且转强，或至少不转为风险组合"
           ],
           "failure_conditions": [
-            "AI计算机 跌出连续领先组或当日前三强",
-            "真实 ETF 份额变化流为负，或 estimated_flow 覆盖仍不足",
-            "三模块标签降级为 value_trap_risk / expensive_deteriorating / expensive_flow_fading"
+            "跌出当日强势队列",
+            "score 回落到 0.12 以下",
+            "价量或份额变化流转弱"
+          ]
+        },
+        {
+          "sector_id": "ai_computer",
+          "name": "AI计算机",
+          "group": "confirm_next",
+          "score": 0.1453,
+          "streak_days": null,
+          "readiness_score": 32,
+          "module_decision_label": "wait_for_confirmation",
+          "module_decision_text": "等待确认",
+          "current_action_label": "blocked_non_real_source",
+          "current_action_text": "数据非真实，禁止指导",
+          "current_state": "confirm_next",
+          "current_reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。轮动标签：单日观察，暂未形成连续领先或连续弱势。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+          "manual_review_boundary": "只能作为观察或风险复核，不是 ETF 买入建议。",
+          "ticket_label": "继续确认",
+          "upgrade_conditions": [
+            "AI计算机 连续进入领先组并形成 3 日 streak",
+            "真实 ETF 份额变化流覆盖达到 60% 以上",
+            "三模块标签维持合理且改善、低估且转强，或至少不转为风险组合"
+          ],
+          "failure_conditions": [
+            "跌出当日强势队列",
+            "score 回落到 0.12 以下",
+            "价量或份额变化流转弱"
+          ]
+        },
+        {
+          "sector_id": "communication_electronics",
+          "name": "通信电子",
+          "group": "confirm_next",
+          "score": 0.133,
+          "streak_days": null,
+          "readiness_score": 32,
+          "module_decision_label": "wait_for_confirmation",
+          "module_decision_text": "等待确认",
+          "current_action_label": "blocked_non_real_source",
+          "current_action_text": "数据非真实，禁止指导",
+          "current_state": "confirm_next",
+          "current_reading": "仍是观察项：当日强度靠前，但连续性或真实份额流还要继续确认。轮动标签：单日观察，暂未形成连续领先或连续弱势。资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。",
+          "manual_review_boundary": "只能作为观察或风险复核，不是 ETF 买入建议。",
+          "ticket_label": "继续确认",
+          "upgrade_conditions": [
+            "通信电子 连续进入领先组并形成 3 日 streak",
+            "真实 ETF 份额变化流覆盖达到 60% 以上",
+            "三模块标签维持合理且改善、低估且转强，或至少不转为风险组合"
+          ],
+          "failure_conditions": [
+            "跌出当日强势队列",
+            "score 回落到 0.12 以下",
+            "价量或份额变化流转弱"
           ]
         }
       ],
-      "confirm_next": [],
       "avoid_watch": [
         {
           "sector_id": "new_energy_ev",
           "name": "新能源车",
           "group": "avoid_watch",
-          "score": -0.0796,
+          "score": -0.0689,
           "streak_days": 4,
           "readiness_score": 32,
           "module_decision_label": "wait_for_confirmation",
@@ -493,7 +716,7 @@
           "current_action_label": "blocked_non_real_source",
           "current_action_text": "数据非真实，禁止指导",
           "current_state": "avoid_watch",
-          "current_reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 -0.0227。ETF 决策门尚未完全打开。",
+          "current_reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 -0.012。ETF 决策门尚未完全打开。",
           "manual_review_boundary": "只能作为观察或风险复核，不是 ETF 买入建议。",
           "ticket_label": "回避观察",
           "upgrade_conditions": [
@@ -511,7 +734,7 @@
           "sector_id": "real_estate_infra",
           "name": "地产基建",
           "group": "avoid_watch",
-          "score": -0.0335,
+          "score": -0.0382,
           "streak_days": 4,
           "readiness_score": 32,
           "module_decision_label": "value_trap_risk",
@@ -519,7 +742,7 @@
           "current_action_label": "blocked_non_real_source",
           "current_action_text": "数据非真实，禁止指导",
           "current_state": "avoid_watch",
-          "current_reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 0.0898。ETF 决策门尚未完全打开。",
+          "current_reading": "回避观察：分数或三模块组合偏弱，先等资金和基本面修复。轮动标签：弱势延续，4/4 个样本日进入弱势组，较上一样本变化 0.0851。ETF 决策门尚未完全打开。",
           "manual_review_boundary": "只能作为观察或风险复核，不是 ETF 买入建议。",
           "ticket_label": "回避观察",
           "upgrade_conditions": [

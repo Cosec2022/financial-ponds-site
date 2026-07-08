@@ -131,6 +131,12 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "decision_gate_ledger", "node", [
+    "src/tools/decision_gate_ledger.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
   summary.status = "ok";
   summary.finished_at = new Date().toISOString();
   console.log(JSON.stringify(summary, null, 2));

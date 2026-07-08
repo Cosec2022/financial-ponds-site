@@ -33,7 +33,8 @@ const [
   daily,
   maturity,
   attribution,
-  watchlist
+  watchlist,
+  gateLedger
 ] = await Promise.all([
   readJson("financial-pond/data/sector_flow_review.json"),
   readJson("financial-pond/data/sector_rotation_history.json"),
@@ -42,7 +43,8 @@ const [
   readJson("financial-pond/data/daily_sector_analysis.json"),
   readJson("financial-pond/data/module_maturity_audit.json"),
   readJson("financial-pond/data/sector_signal_attribution.json"),
-  readJson("financial-pond/data/sector_watchlist_state.json")
+  readJson("financial-pond/data/sector_watchlist_state.json"),
+  readJson("financial-pond/data/decision_gate_ledger.json")
 ]);
 
 const asOf = readiness?.as_of ?? daily?.as_of ?? flow?.as_of ?? new Date().toISOString().slice(0, 10);
@@ -102,6 +104,20 @@ const summary = {
   flow_only_candidate_sectors: watchlist?.groups?.flow_only_candidate ?? [],
   deteriorating_watch_sectors: watchlist?.groups?.deteriorating_watch ?? [],
   blocked_execution_reason: (watchlist?.rows ?? []).find((row) => row.execution_boundary?.includes("blocked"))?.execution_boundary ?? null,
+  execution_state: gateLedger?.execution_state ?? null,
+  gate_counts: gateLedger?.gates ? {
+    pass: gateLedger.gates.filter((gate) => gate.status === "pass").length,
+    warn: gateLedger.gates.filter((gate) => gate.status === "warn").length,
+    block: gateLedger.gates.filter((gate) => gate.status === "block").length,
+    unknown: gateLedger.gates.filter((gate) => gate.status === "unknown").length
+  } : null,
+  gate_top_blockers: (gateLedger?.blockers ?? []).slice(0, 5).map((gate) => ({
+    gate_id: gate.gate_id,
+    label: gate.label,
+    reading: gate.reading
+  })),
+  gate_next_unlock_sequence: gateLedger?.next_unlock_sequence ?? [],
+  provider_ready_but_execution_blocked: gateLedger?.state_consistency?.provider_ready_but_execution_blocked ?? null,
   blockers,
   next_action: daily?.next_unlock?.label ?? readiness?.progress?.next_unlock?.label ?? maturity?.recommended_mainline?.next_actions?.[0] ?? null
 };

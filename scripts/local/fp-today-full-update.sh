@@ -60,8 +60,9 @@ npm run etf:readiness -- --as-of "$AS_OF"
 npm run daily:sector-analysis -- --as-of "$AS_OF"
 npm run signal:attribution -- --as-of "$AS_OF"
 npm run watchlist:state -- --as-of "$AS_OF"
-npm run project:maturity -- --as-of "$AS_OF"
 npm run data:audit -- --as-of "$AS_OF" || true
+npm run decision:gates -- --as-of "$AS_OF"
+npm run project:maturity -- --as-of "$AS_OF"
 
 cd "$ROOT"
 
@@ -86,6 +87,7 @@ copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/module_matur
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/etf_flow_leaderboard.json" "financial-pond/data/etf_flow_leaderboard.json"
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/sector_signal_attribution.json" "financial-pond/data/sector_signal_attribution.json"
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/sector_watchlist_state.json" "financial-pond/data/sector_watchlist_state.json"
+copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/decision_gate_ledger.json" "financial-pond/data/decision_gate_ledger.json"
 
 echo "== validate/build/test =="
 npm run validate:data

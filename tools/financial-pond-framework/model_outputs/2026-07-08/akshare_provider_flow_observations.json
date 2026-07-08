@@ -1,7 +1,7 @@
 {
   "converter_id": "akshare_provider_to_flow_observations_v0_9_1",
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T11:20:42.352Z",
+  "generated_at": "2026-07-08T11:37:37.865Z",
   "readiness": "flow_ready",
   "counts": {
     "source_rows": 11,
@@ -87,9 +87,9 @@
     {
       "node_id": "ai_computer_etf_flow",
       "as_of": "2026-07-08",
-      "value": 36936262.656,
+      "value": 0,
       "unit": "estimated_flow",
-      "score": 0.04889072453848828,
+      "score": 0,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -123,9 +123,9 @@
     {
       "node_id": "consumer_etf_flow",
       "as_of": "2026-07-08",
-      "value": 30000000,
+      "value": 0,
       "unit": "estimated_flow",
-      "score": 0.03970953287328303,
+      "score": 0,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -159,9 +159,9 @@
     {
       "node_id": "brokerage_etf_flow",
       "as_of": "2026-07-08",
-      "value": 141508812.8,
+      "value": 390504407.04,
       "unit": "estimated_flow",
-      "score": 0.18730829512469516,
+      "score": 0.8963390560924852,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -195,9 +195,9 @@
     {
       "node_id": "healthcare_pharma_etf_flow",
       "as_of": "2026-07-08",
-      "value": -246393955.32799998,
+      "value": 156352000,
       "unit": "estimated_flow",
-      "score": -0.32613962896251486,
+      "score": 0.35888046734339935,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -231,9 +231,9 @@
     {
       "node_id": "real_estate_infra_etf_flow",
       "as_of": "2026-07-08",
-      "value": 7356250,
+      "value": -4708000,
       "unit": "estimated_flow",
-      "score": 0.009737108373302942,
+      "score": -0.010806444690523461,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -267,9 +267,9 @@
     {
       "node_id": "resources_materials_etf_flow",
       "as_of": "2026-07-08",
-      "value": 206499776,
+      "value": -13125056,
       "unit": "estimated_flow",
-      "score": 0.2733336547799194,
+      "score": -0.030126421351746622,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -303,9 +303,9 @@
     {
       "node_id": "semiconductor_etf_flow",
       "as_of": "2026-07-08",
-      "value": -198172000,
+      "value": 80340000,
       "unit": "estimated_flow",
-      "score": -0.2623105849521415,
+      "score": 0.18440734206386042,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -339,9 +339,9 @@
     {
       "node_id": "defense_military_etf_flow",
       "as_of": "2026-07-08",
-      "value": 75578156.032,
+      "value": 68264000,
       "unit": "estimated_flow",
-      "score": 0.10003910904849395,
+      "score": 0.15668885733939963,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -375,9 +375,9 @@
     {
       "node_id": "bank_insurance_etf_flow",
       "as_of": "2026-07-08",
-      "value": -61446049.28,
+      "value": -435665950.72,
       "unit": "estimated_flow",
-      "score": -0.0813331304605843,
+      "score": -1,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -411,9 +411,9 @@
     {
       "node_id": "new_energy_ev_etf_flow",
       "as_of": "2026-07-08",
-      "value": 0,
+      "value": 20640000,
       "unit": "estimated_flow",
-      "score": 0,
+      "score": 0.04737574732633905,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -447,9 +447,9 @@
     {
       "node_id": "communication_electronics_etf_flow",
       "as_of": "2026-07-08",
-      "value": -755486096.896,
+      "value": 0,
       "unit": "estimated_flow",
-      "score": -1,
+      "score": 0,
       "confidence": 0.75,
       "data_type": "hard_data",
       "source": "akshare_provider_flow_observations",
@@ -465,9 +465,9 @@
       "pct_change": 1.84,
       "amount": 807496409.361,
       "latest_share": 11135229696,
-      "previous_share": 11117229568,
-      "share_change": 18000128,
-      "estimated_flow": 36936262.656,
+      "previous_share": 11135229696,
+      "share_change": 0,
+      "estimated_flow": 0,
       "flow_available": true
     },
     {
@@ -477,9 +477,9 @@
       "pct_change": -0.79,
       "amount": 240678474.244,
       "latest_share": 23364628992,
-      "previous_share": 23316628992,
-      "share_change": 48000000,
-      "estimated_flow": 30000000,
+      "previous_share": 23364628992,
+      "share_change": 0,
+      "estimated_flow": 0,
       "flow_available": true
     },
     {
@@ -488,10 +488,10 @@
       "fund_name": "券商ETF华宝",
       "pct_change": -1.3,
       "amount": 1253277254,
-      "latest_share": 73208434688,
-      "previous_share": 72941436928,
-      "share_change": 266997760,
-      "estimated_flow": 141508812.8,
+      "latest_share": 73945235456,
+      "previous_share": 73208434688,
+      "share_change": 736800768,
+      "estimated_flow": 390504407.04,
       "flow_available": true
     },
     {
@@ -500,10 +500,10 @@
       "fund_name": "医药ETF易方达",
       "pct_change": -1.41,
       "amount": 516761665,
-      "latest_share": 48405694976,
-      "previous_share": 49111694848,
-      "share_change": -705999872,
-      "estimated_flow": -246393955.32799998,
+      "latest_share": 48853694976,
+      "previous_share": 48405694976,
+      "share_change": 448000000,
+      "estimated_flow": 156352000,
       "flow_available": true
     },
     {
@@ -512,10 +512,10 @@
       "fund_name": "房地产ETF南方",
       "pct_change": 0.51,
       "amount": 78165826,
-      "latest_share": 2609097904,
-      "previous_share": 2602847904,
-      "share_change": 6250000,
-      "estimated_flow": 7356250,
+      "latest_share": 2605097904,
+      "previous_share": 2609097904,
+      "share_change": -4000000,
+      "estimated_flow": -4708000,
       "flow_available": true
     },
     {
@@ -524,10 +524,10 @@
       "fund_name": "有色金属ETF南方",
       "pct_change": -2.94,
       "amount": 797936585,
-      "latest_share": 12679538944,
-      "previous_share": 12561539072,
-      "share_change": 117999872,
-      "estimated_flow": 206499776,
+      "latest_share": 12672038912,
+      "previous_share": 12679538944,
+      "share_change": -7500032,
+      "estimated_flow": -13125056,
       "flow_available": true
     },
     {
@@ -536,10 +536,10 @@
       "fund_name": "半导体ETF国联安",
       "pct_change": 0.22,
       "amount": 1945067169,
-      "latest_share": 16978007296,
-      "previous_share": 17126007296,
-      "share_change": -148000000,
-      "estimated_flow": -198172000,
+      "latest_share": 17038007296,
+      "previous_share": 16978007296,
+      "share_change": 60000000,
+      "estimated_flow": 80340000,
       "flow_available": true
     },
     {
@@ -548,10 +548,10 @@
       "fund_name": "军工ETF国泰",
       "pct_change": -2.01,
       "amount": 277735779,
-      "latest_share": 5417080064,
-      "previous_share": 5355079936,
-      "share_change": 62000128,
-      "estimated_flow": 75578156.032,
+      "latest_share": 5473080064,
+      "previous_share": 5417080064,
+      "share_change": 56000000,
+      "estimated_flow": 68264000,
       "flow_available": true
     },
     {
@@ -560,10 +560,10 @@
       "fund_name": "银行ETF华宝",
       "pct_change": 1.45,
       "amount": 785232565,
-      "latest_share": 14453079808,
-      "previous_share": 14532879872,
-      "share_change": -79800064,
-      "estimated_flow": -61446049.28,
+      "latest_share": 13887279872,
+      "previous_share": 14453079808,
+      "share_change": -565799936,
+      "estimated_flow": -435665950.72,
       "flow_available": true
     },
     {
@@ -572,10 +572,10 @@
       "fund_name": "新能源车ETF华夏",
       "pct_change": -5.29,
       "amount": 171662510,
-      "latest_share": 1633384000,
+      "latest_share": 1645384000,
       "previous_share": 1633384000,
-      "share_change": 0,
-      "estimated_flow": 0,
+      "share_change": 12000000,
+      "estimated_flow": 20640000,
       "flow_available": true
     },
     {
@@ -585,9 +585,9 @@
       "pct_change": -0.53,
       "amount": 4810678792,
       "latest_share": 66283773952,
-      "previous_share": 67281774080,
-      "share_change": -998000128,
-      "estimated_flow": -755486096.896,
+      "previous_share": 66283773952,
+      "share_change": 0,
+      "estimated_flow": 0,
       "flow_available": true
     }
   ]

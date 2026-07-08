@@ -5,10 +5,18 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.45`
+Package version: `0.10.46`
 
 Purpose of this version:
 
+- add the Decision Gate Ledger / Readiness Explanation layer as `npm run decision:gates`
+- write `decision_gate_ledger.json` and `.md` from ETF readiness, watchlist state, attribution, ETF flow leaderboard, daily analysis, rotation history, module review, flow review, data reality audit, provider history, and optional graph scores
+- publish `financial-pond/data/decision_gate_ledger.json`
+- add a homepage "决策闸门账本" panel with the boundary "解释为什么不能执行，不是交易指令。"
+- explain why provider flow can be ready while execution remains blocked
+- track provider, coverage, attribution, watchlist, valuation/fundamental, rotation, graph snapshot, data reality, and execution-language gates in one ledger
+- update `fp:summary` with execution state, gate counts, top blockers, next unlock sequence, and provider-ready-but-execution-blocked consistency
+- keep v0.10.46 strictly readiness-explanation focused; it does not unlock ETF execution advice
 - add the Watchlist State Machine / Conflict Handling layer as `npm run watchlist:state`
 - write `sector_watchlist_state.json` and `.md` from daily analysis, signal attribution, ETF flow leaderboard, readiness, rotation, module review, and flow review
 - publish `financial-pond/data/sector_watchlist_state.json`
