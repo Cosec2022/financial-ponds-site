@@ -59,6 +59,12 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "etf_flow_leaderboard", "node", [
+    "src/tools/etf_flow_leaderboard.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
   await runStep(summary, "water_level_to_observations", "node", [
     "src/tools/a_share_water_observations.mjs",
     "--as-of",
@@ -109,6 +115,12 @@ export async function runAShareDailyCi({
 
   await runStep(summary, "daily_sector_analysis", "node", [
     "src/tools/daily_sector_analysis.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
+  await runStep(summary, "sector_signal_attribution", "node", [
+    "src/tools/sector_signal_attribution.mjs",
     "--as-of",
     asOf
   ], { rootDir });

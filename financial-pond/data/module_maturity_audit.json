@@ -2,12 +2,12 @@
   "module_id": "module_maturity_audit_v0_10_39",
   "status": "module_maturity_available",
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T10:50:08.957Z",
+  "generated_at": "2026-07-08T11:08:27.247Z",
   "overall": {
-    "module_count": 17,
-    "average_progress": 45.65,
+    "module_count": 18,
+    "average_progress": 45.06,
     "decision_path_progress": 50.8,
-    "low_maturity_count": 6,
+    "low_maturity_count": 7,
     "current_stage": "usable prototype",
     "decision_grade_model": "not yet"
   },
@@ -27,10 +27,27 @@
     "next_actions": [
       "Add valuation/fundamental real sources; S&P 500 provider second",
       "Run provider:akshare:history before the full model to verify provider CSV continuity.",
-      "Review ETF readiness gates after estimated_flow appears."
+      "Keep valuation/fundamental outputs as blockers until non-manual sources are connected."
     ]
   },
   "priority_modules": [
+    {
+      "module_id": "FP-ATTR-01",
+      "module": "Signal Attribution",
+      "role": "Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes",
+      "status": "working prototype",
+      "progress": 35,
+      "next": "Add richer attribution weights and history-aware explanations",
+      "priority_rank": 2,
+      "priority_reading": "keep cross-module conflicts visible while ETF readiness is watch-only.",
+      "focus_lane": "future_expansion",
+      "maturity_label": "prototype",
+      "urgency": "critical_path",
+      "blockers": [
+        "history_depth_gap"
+      ],
+      "next_action": "Add richer attribution weights and history-aware explanations"
+    },
     {
       "module_id": "FP-GEN-01",
       "module": "General Pool Analysis",
@@ -38,11 +55,11 @@
       "status": "working prototype",
       "progress": 52,
       "next": "Surface provider-mapped vs framework-only coverage in the frontend",
-      "priority_rank": 2,
+      "priority_rank": 3,
       "priority_reading": "remove pool graph snapshot dependency from one-command runs.",
       "focus_lane": "quality_expansion",
       "maturity_label": "prototype",
-      "urgency": "critical_path",
+      "urgency": "near_term",
       "blockers": [
         "real_provider_gap"
       ],
@@ -55,11 +72,11 @@
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 5,
+      "priority_rank": 6,
       "priority_reading": "real fixed A-share news sources.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
-      "urgency": "near_term",
+      "urgency": "later",
       "blockers": [
         "real_provider_gap"
       ],
@@ -72,7 +89,7 @@
       "status": "working with fallback",
       "progress": 66,
       "next": "Add valuation/fundamental real sources; S&P 500 provider second",
-      "priority_rank": 6,
+      "priority_rank": 7,
       "priority_reading": "S&P 500 live provider inputs after the A-share flow path is stable.",
       "focus_lane": "decision_path",
       "maturity_label": "usable",
@@ -155,17 +172,34 @@
   ],
   "low_maturity_modules": [
     {
+      "module_id": "FP-ATTR-01",
+      "module": "Signal Attribution",
+      "role": "Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes",
+      "status": "working prototype",
+      "progress": 35,
+      "next": "Add richer attribution weights and history-aware explanations",
+      "priority_rank": 2,
+      "priority_reading": "keep cross-module conflicts visible while ETF readiness is watch-only.",
+      "focus_lane": "future_expansion",
+      "maturity_label": "prototype",
+      "urgency": "critical_path",
+      "blockers": [
+        "history_depth_gap"
+      ],
+      "next_action": "Add richer attribution weights and history-aware explanations"
+    },
+    {
       "module_id": "FP-NEWS-01",
       "module": "News Pressure Engine",
       "role": "News as pressure, catalyst, risk, expectation",
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 5,
+      "priority_rank": 6,
       "priority_reading": "real fixed A-share news sources.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
-      "urgency": "near_term",
+      "urgency": "later",
       "blockers": [
         "real_provider_gap"
       ],
@@ -344,7 +378,7 @@
       "status": "working with fallback",
       "progress": 66,
       "next": "Add valuation/fundamental real sources; S&P 500 provider second",
-      "priority_rank": 6,
+      "priority_rank": 7,
       "priority_reading": "S&P 500 live provider inputs after the A-share flow path is stable.",
       "focus_lane": "decision_path",
       "maturity_label": "usable",
@@ -379,11 +413,11 @@
       "status": "working prototype",
       "progress": 52,
       "next": "Surface provider-mapped vs framework-only coverage in the frontend",
-      "priority_rank": 2,
+      "priority_rank": 3,
       "priority_reading": "remove pool graph snapshot dependency from one-command runs.",
       "focus_lane": "quality_expansion",
       "maturity_label": "prototype",
-      "urgency": "critical_path",
+      "urgency": "near_term",
       "blockers": [
         "real_provider_gap"
       ],
@@ -432,11 +466,11 @@
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 5,
+      "priority_rank": 6,
       "priority_reading": "real fixed A-share news sources.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
-      "urgency": "near_term",
+      "urgency": "later",
       "blockers": [
         "real_provider_gap"
       ],
@@ -480,14 +514,16 @@
       "role": "Gate whether sector rankings may support ETF action language, with share-change flow diagnostics",
       "status": "working prototype",
       "progress": 42,
-      "next": "Current state is `watch_only`; unblock valuation/fundamental seeds, rotation visibility, and execution rules",
+      "next": "Current state is `watch_only`; unblock manual valuation/fundamental seeds, rotation visibility, and execution rules",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "decision_path",
       "maturity_label": "prototype",
       "urgency": "later",
-      "blockers": [],
-      "next_action": "Current state is `watch_only`; unblock valuation/fundamental seeds, rotation visibility, and execution rules"
+      "blockers": [
+        "manual_or_seed_input"
+      ],
+      "next_action": "Current state is `watch_only`; unblock manual valuation/fundamental seeds, rotation visibility, and execution rules"
     },
     {
       "module_id": "FP-DAILY-01",
@@ -505,6 +541,23 @@
         "history_depth_gap"
       ],
       "next_action": "Add continuation/reversal labels after more history accumulates"
+    },
+    {
+      "module_id": "FP-ATTR-01",
+      "module": "Signal Attribution",
+      "role": "Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes",
+      "status": "working prototype",
+      "progress": 35,
+      "next": "Add richer attribution weights and history-aware explanations",
+      "priority_rank": 2,
+      "priority_reading": "keep cross-module conflicts visible while ETF readiness is watch-only.",
+      "focus_lane": "future_expansion",
+      "maturity_label": "prototype",
+      "urgency": "critical_path",
+      "blockers": [
+        "history_depth_gap"
+      ],
+      "next_action": "Add richer attribution weights and history-aware explanations"
     },
     {
       "module_id": "FP-UI-01",

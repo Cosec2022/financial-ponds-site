@@ -31,14 +31,16 @@ const [
   moduleReview,
   readiness,
   daily,
-  maturity
+  maturity,
+  attribution
 ] = await Promise.all([
   readJson("financial-pond/data/sector_flow_review.json"),
   readJson("financial-pond/data/sector_rotation_history.json"),
   readJson("financial-pond/data/sector_module_review.json"),
   readJson("financial-pond/data/etf_decision_readiness.json"),
   readJson("financial-pond/data/daily_sector_analysis.json"),
-  readJson("financial-pond/data/module_maturity_audit.json")
+  readJson("financial-pond/data/module_maturity_audit.json"),
+  readJson("financial-pond/data/sector_signal_attribution.json")
 ]);
 
 const asOf = readiness?.as_of ?? daily?.as_of ?? flow?.as_of ?? new Date().toISOString().slice(0, 10);
@@ -78,6 +80,19 @@ const summary = {
   sample_days: gates.sample_days ?? rotationHistory?.sample_days ?? null,
   maturity_average: maturity?.overall?.average_progress ?? null,
   maturity_decision_path: maturity?.overall?.decision_path_progress ?? null,
+  attribution_headline: attribution?.headline ?? null,
+  conflicts_count: attribution?.conflicts?.length ?? 0,
+  first_conflict: attribution?.conflicts?.[0] ?? null,
+  top_attribution_rows: (attribution?.rows ?? []).slice(0, 5).map((row) => ({
+    sector_id: row.sector_id,
+    name: row.name,
+    daily_tier: row.daily_tier,
+    daily_score: row.daily_score,
+    final_rank: row.final_rank,
+    etf_flow_rank: row.signal_components?.etf_flow_rank ?? null,
+    conflict_notes: row.conflict_notes ?? [],
+    manual_review_boundary: row.manual_review_boundary
+  })),
   blockers,
   next_action: daily?.next_unlock?.label ?? readiness?.progress?.next_unlock?.label ?? maturity?.recommended_mainline?.next_actions?.[0] ?? null
 };

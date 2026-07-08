@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.43
+Version: v0.10.44
 Status: active
 
 Module IDs use this format:
@@ -24,8 +24,9 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-NEWS-01 | News Pressure Engine | News as pressure, catalyst, risk, expectation | basic / fallback | 30% | Add fixed real sources and source-quality labels |
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots, recover recent published history, and compare latest vs previous day | working prototype | 42% | Add explicit continuation/reversal labels |
-| FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language, with share-change flow diagnostics | working prototype | 42% | Current state is `watch_only`; unblock valuation/fundamental seeds, rotation visibility, and execution rules |
+| FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language, with share-change flow diagnostics | working prototype | 42% | Current state is `watch_only`; unblock manual valuation/fundamental seeds, rotation visibility, and execution rules |
 | FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, ETF readiness, and decision tickets | working prototype | 40% | Add continuation/reversal labels after more history accumulates |
+| FP-ATTR-01 | Signal Attribution | Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes | working prototype | 35% | Add richer attribution weights and history-aware explanations |
 | FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 65% | Add maintenance-state display |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
@@ -63,18 +64,20 @@ Tests:
 
 ```text
 1. FP-DATA-01: valuation/fundamental manual seed replacement.
-2. FP-GEN-01: remove pool graph snapshot dependency from one-command runs.
-3. FP-HIST-01 / FP-ROT-01: improve rotation visibility while sample history is still low.
-4. FP-ETF-01 / FP-DAILY-01: keep execution decision blocked until watch-only gates are cleared.
-5. FP-NEWS-01: real fixed A-share news sources.
-6. FP-DATA-01: S&P 500 live provider inputs after the A-share flow path is stable.
+2. FP-ATTR-01: keep cross-module conflicts visible while ETF readiness is watch-only.
+3. FP-GEN-01: remove pool graph snapshot dependency from one-command runs.
+4. FP-HIST-01 / FP-ROT-01: improve rotation visibility while sample history is still low.
+5. FP-ETF-01 / FP-DAILY-01: keep execution decision blocked until watch-only gates are cleared.
+6. FP-NEWS-01: real fixed A-share news sources.
+7. FP-DATA-01: S&P 500 live provider inputs after the A-share flow path is stable.
 ```
 
-## v0.10.43 Status Note
+## v0.10.44 Status Note
 
 ```text
 Provider flow: baseline_only -> flow_ready
 ETF readiness: not_ready -> watch_only
+Signal attribution: added observation-only conflict visibility
 Remaining blockers:
 - valuation/fundamental manual seed
 - pool graph snapshot dependency

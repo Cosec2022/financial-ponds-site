@@ -3,12 +3,10 @@
   "provider": "akshare",
   "mode": "real",
   "as_of": "2026-07-08",
-  "provider_run_id": "akshare_etf_bridge_2026-07-08_104908",
-  "started_at": "2026-07-08T10:49:08.652298+00:00",
+  "provider_run_id": "akshare_etf_bridge_2026-07-08_110721",
+  "started_at": "2026-07-08T11:07:21.057013+00:00",
   "status": "ok",
-  "warnings": [
-    "Optional AKShare endpoint failed: fund_etf_scale_szse: HTTPSConnectionPool(host='fund.szse.cn', port=443): Max retries exceeded with url: /api/report/ShowReport?SHOWTYPE=xlsx&CATALOGID=1000_lf&TABKEY=tab1&random=0.07610353191740105 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))"
-  ],
+  "warnings": [],
   "errors": [],
   "outputs": {
     "raw_json": "raw_data/provider/akshare/2026-07-08/a_share_etf_daily_raw.json",
@@ -16,6 +14,6 @@
     "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv",
     "run_status_json": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-08.json"
   },
-  "finished_at": "2026-07-08T10:50:06.545650+00:00",
+  "finished_at": "2026-07-08T11:08:24.685420+00:00",
   "records": 11
 }

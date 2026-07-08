@@ -55,6 +55,7 @@ const state = {
   dailyAnalysis: null,
   moduleMaturity: null,
   etfFlowLeaderboard: null,
+  signalAttribution: null,
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -1140,6 +1141,98 @@ function leaderboardDirectionLabel(value) {
   return map[value] ?? value ?? "--";
 }
 
+function renderAttributionPanel() {
+  const panel = document.getElementById("attributionPanel");
+  const statusBadge = document.getElementById("attributionStatus");
+  const attribution = state.signalAttribution;
+  if (!panel || !statusBadge) return;
+
+  if (!attribution || attribution.status !== "attribution_available") {
+    statusBadge.textContent = "等待归因";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无行业信号归因。等待 sector_signal_attribution.json 生成。</div>`;
+    return;
+  }
+
+  const conflicts = attribution.conflicts ?? [];
+  const rows = (attribution.rows ?? []).slice(0, 5);
+  const statusClass = conflicts.length ? "warm" : "positive";
+  statusBadge.textContent = conflicts.length ? `${conflicts.length} 个冲突` : "解释可读";
+  statusBadge.className = `pill ${statusClass}`;
+
+  panel.innerHTML = `
+    <article class="attribution-card headline ${statusClass}">
+      <span>解释边界</span>
+      <strong>解释观察结果，不是交易指令。</strong>
+      <p>${attribution.headline ?? "等待归因 headline。"}</p>
+    </article>
+    <article class="attribution-card ${statusClass}">
+      <span>跨模块冲突</span>
+      <strong>${conflicts.length}</strong>
+      <p>${conflicts[0]?.reading ?? "暂未发现关键跨模块冲突。"}</p>
+    </article>
+    <article class="attribution-card table-card">
+      <span>Top 5 归因</span>
+      ${attributionTableTemplate(rows)}
+    </article>
+  `;
+
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function attributionTableTemplate(rows) {
+  if (!rows.length) return `<div class="empty">暂无归因行。</div>`;
+  return `
+    <div class="module-table">
+      <table>
+        <thead>
+          <tr>
+            <th>行业</th>
+            <th>日结论</th>
+            <th>ETF流</th>
+            <th>轮动</th>
+            <th>三模块</th>
+            <th>图谱</th>
+            <th>冲突</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((row) => {
+            const signals = row.signal_components ?? {};
+            return `
+              <tr>
+                <td><button class="text-link" data-pond-id="${row.sector_id}" type="button"><strong>${row.name}</strong><span class="sub">#${row.final_rank} · ${row.sector_id}</span></button></td>
+                <td>${dailyTierLabel(row.daily_tier)}<span class="sub">分数 ${formatScore(row.daily_score)}</span></td>
+                <td>Rank ${signals.etf_flow_rank ?? "--"}<span class="sub">${formatAmount(signals.etf_estimated_flow)}</span></td>
+                <td>${signals.rotation_label ?? "--"}<span class="sub">连续 ${signals.rotation_streak_days ?? "--"} · ${formatScore(signals.rotation_score)}</span></td>
+                <td>${signals.module_text ?? signals.module_label ?? "--"}<span class="sub">${signals.valuation_fundamental_status ?? "--"}</span></td>
+                <td>${formatScore(signals.graph_score)}</td>
+                <td>${(row.conflict_notes ?? []).slice(0, 2).join("；") || row.manual_review_boundary}</td>
+              </tr>
+            `;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function dailyTierLabel(value) {
+  const map = {
+    priority_watch: "优先观察",
+    confirm_next: "继续确认",
+    avoid_watch: "回避观察",
+    unranked: "未入日榜"
+  };
+  return map[value] ?? value ?? "--";
+}
+
 function shareChangeDiagnosticsTemplate(diagnostics) {
   if (!diagnostics) return `<strong>等待诊断</strong><p>等待 akshare_provider_flow_observations.json 生成份额变化诊断。</p>`;
   const total = diagnostics.total_rows ?? 0;
@@ -2019,6 +2112,7 @@ function renderAll() {
   renderModulePanel();
   renderEtfReadinessPanel();
   renderEtfFlowPanel();
+  renderAttributionPanel();
   renderPondMap();
   renderSelectedSummary();
   renderFlowDetail();
@@ -2043,6 +2137,7 @@ async function loadAll() {
   state.dailyAnalysis = await readJson("./data/daily_sector_analysis.json", null);
   state.moduleMaturity = await readJson("./data/module_maturity_audit.json", null);
   state.etfFlowLeaderboard = await readJson("./data/etf_flow_leaderboard.json", null);
+  state.signalAttribution = await readJson("./data/sector_signal_attribution.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

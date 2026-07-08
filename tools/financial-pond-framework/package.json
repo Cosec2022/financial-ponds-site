@@ -1,6 +1,6 @@
 {
   "name": "financial-pond-framework",
-  "version": "0.10.43",
+  "version": "0.10.44",
   "description": "Config-driven financial pond graph framework for cross-asset and sector ETF analysis.",
   "type": "module",
   "scripts": {
@@ -35,6 +35,7 @@
     "provider:qstock:probe:fixture": "python3 providers/qstock_bridge/probe_a_share_structure.py --fixture",
     "providers:compare:a-share-etf": "python3 providers/provider_comparison/compare_a_share_etf_providers.py",
     "flow:review": "node src/tools/sector_flow_review.mjs",
+    "signal:attribution": "node src/tools/sector_signal_attribution.mjs",
     "pool:analysis": "node src/tools/general_pool_analysis.mjs",
     "rotation:review": "node src/tools/sector_rotation_intelligence.mjs",
     "rotation:history": "node src/tools/sector_rotation_history.mjs",

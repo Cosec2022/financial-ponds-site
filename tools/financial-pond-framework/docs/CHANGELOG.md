@@ -1,5 +1,33 @@
 # Changelog
 
+## v0.10.44 - Signal attribution and conflict visibility
+
+- Bumped site and framework package versions to `0.10.44`.
+- Added `npm run signal:attribution`.
+- Added `sector_signal_attribution.json` and `.md` outputs for cross-module
+  signal attribution.
+- The attribution layer combines:
+  - ETF estimated flow and amount ranks;
+  - daily sector tiers;
+  - rotation labels and streaks;
+  - module labels;
+  - optional graph snapshot scores.
+- Added conflict detection when:
+  - ETF flow rank #1 differs from the daily conclusion leader;
+  - ETF estimated flow is positive while the daily tier is weak;
+  - rotation is strong while ETF estimated flow is zero, missing, or negative.
+- Published `financial-pond/data/sector_signal_attribution.json`.
+- Added the homepage `行业信号归因` panel.
+- Updated the daily runner, build assets, published-data validation, Worker
+  tests, and summary command.
+
+Important boundary:
+
+- This improves explainability and cross-module conflict visibility.
+- It does not unlock ETF execution advice.
+- Attribution rows use observation/review labels only and do not output
+  buy/sell/position wording.
+
 ## v0.10.42 - Confirmed leader score preservation
 
 - Bumped site and framework package versions to `0.10.42`.

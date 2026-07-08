@@ -1,16 +1,16 @@
 {
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T10:50:08.663Z",
+  "generated_at": "2026-07-08T11:08:26.799Z",
   "module_id": "etf_decision_readiness_v0_2",
   "status": "readiness_available",
-  "guidance_state": "watch_only",
-  "headline": "可以做观察清单，但还不能做买入指令。优先复核 A-share Communication and Electronics Pool。",
+  "guidance_state": "not_ready",
+  "headline": "暂不能指导买入 ETF：行业资金量价仍来自 mock、fixture 或未验证来源。",
   "gates": {
-    "guidance_state": "watch_only",
+    "guidance_state": "not_ready",
     "provider_run": "real_ok",
     "provider_flow_readiness": "flow_ready",
-    "flow_source_reality": "observed",
-    "market_use_confidence": "medium",
+    "flow_source_reality": "mixed_observed_mock",
+    "market_use_confidence": "low",
     "representative_sectors": 11,
     "observed_direct_flow_inputs": 11,
     "observed_price_volume_confirmations": 11,
@@ -52,6 +52,10 @@
     "min_sample_days": 3,
     "valuation_fundamental_source": "manual_seed",
     "blockers": [
+      {
+        "id": "non_real_flow_source",
+        "reading": "行业资金量价仍来自 mock、fixture 或未验证来源。"
+      },
       {
         "id": "manual_valuation_fundamental",
         "reading": "估值和基本面模块仍包含手工种子输入。"
@@ -110,34 +114,155 @@
   "counts": {
     "sectors": 31,
     "small_position_candidate": 0,
-    "confirmation_candidate": 1,
+    "confirmation_candidate": 0,
     "watch_for_persistence": 0,
     "wait_for_real_flow": 0,
-    "wait_for_confirmation": 9,
-    "blocked_non_real_source": 0,
+    "wait_for_confirmation": 0,
+    "blocked_non_real_source": 11,
     "not_covered": 20,
-    "avoid_or_reduce_watch": 1
+    "avoid_or_reduce_watch": 0
   },
   "top_watchlist": [
     {
+      "sector_id": "healthcare_pharma",
+      "name": "A-share Healthcare and Pharma Pool",
+      "readiness_score": 32,
+      "action": {
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
+      },
+      "evidence": {
+        "valuation_label": "cheap",
+        "valuation_position_score": -0.28,
+        "fundamental_label": "stable",
+        "fundamental_score": -0.04,
+        "flow_price_label": "constructive_inflow_bias",
+        "flow_price_score": 0.2901,
+        "observed_direct_flow": true
+      },
+      "blockers": [
+        "non_real_flow_source",
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
+      "sector_id": "semiconductor",
+      "name": "A-share Semiconductor Pool",
+      "readiness_score": 32,
+      "action": {
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
+      },
+      "evidence": {
+        "valuation_label": "very_expensive",
+        "valuation_position_score": 0.42,
+        "fundamental_label": "improving",
+        "fundamental_score": 0.2,
+        "flow_price_label": "constructive_inflow_bias",
+        "flow_price_score": 0.3421,
+        "observed_direct_flow": true
+      },
+      "blockers": [
+        "non_real_flow_source",
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
+      "sector_id": "bank_insurance",
+      "name": "A-share Bank and Insurance Pool",
+      "readiness_score": 32,
+      "action": {
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
+      },
+      "evidence": {
+        "valuation_label": "cheap",
+        "valuation_position_score": -0.18,
+        "fundamental_label": "stable",
+        "fundamental_score": 0.02,
+        "flow_price_label": "neutral",
+        "flow_price_score": 0.1406,
+        "observed_direct_flow": true
+      },
+      "blockers": [
+        "non_real_flow_source",
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
       "sector_id": "communication_electronics",
       "name": "A-share Communication and Electronics Pool",
-      "readiness_score": 87.1,
+      "readiness_score": 32,
       "action": {
-        "label": "confirmation_candidate",
-        "text": "确认候选",
-        "reading": "组合标签较好，但仍需要人工检查估值来源、仓位上限和回撤风险。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "valuation_label": "expensive",
         "valuation_position_score": 0.22,
         "fundamental_label": "improving",
         "fundamental_score": 0.18,
-        "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2851,
+        "flow_price_label": "neutral",
+        "flow_price_score": 0.133,
         "observed_direct_flow": true
       },
       "blockers": [
+        "non_real_flow_source",
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
+      "sector_id": "consumer",
+      "name": "A-share Consumer Pool",
+      "readiness_score": 32,
+      "action": {
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
+      },
+      "evidence": {
+        "valuation_label": "cheap",
+        "valuation_position_score": -0.24,
+        "fundamental_label": "weak",
+        "fundamental_score": -0.06,
+        "flow_price_label": "neutral",
+        "flow_price_score": -0.0022,
+        "observed_direct_flow": true
+      },
+      "blockers": [
+        "non_real_flow_source",
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
+      "sector_id": "ai_computer",
+      "name": "A-share AI and Computer Pool",
+      "readiness_score": 32,
+      "action": {
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
+      },
+      "evidence": {
+        "valuation_label": "very_expensive",
+        "valuation_position_score": 0.38,
+        "fundamental_label": "improving",
+        "fundamental_score": 0.24,
+        "flow_price_label": "neutral",
+        "flow_price_score": 0.1116,
+        "observed_direct_flow": true
+      },
+      "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
@@ -145,22 +270,26 @@
   ],
   "blockers": [
     {
+      "id": "non_real_flow_source",
+      "reading": "行业资金量价仍来自 mock、fixture 或未验证来源。"
+    },
+    {
       "id": "manual_valuation_fundamental",
       "reading": "估值和基本面模块仍包含手工种子输入。"
     }
   ],
   "sectors": [
     {
-      "sector_id": "communication_electronics",
-      "pool_id": "a_share_communication_electronics",
-      "name": "A-share Communication and Electronics Pool",
+      "sector_id": "healthcare_pharma",
+      "pool_id": "a_share_healthcare_pharma",
+      "name": "A-share Healthcare and Pharma Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 87.1,
+      "readiness_score": 32,
       "action": {
-        "label": "confirmation_candidate",
-        "text": "确认候选",
-        "reading": "组合标签较好，但仍需要人工检查估值来源、仓位上限和回撤风险。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -170,23 +299,68 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
-          "label": "balanced_candidate",
-          "text": "合理且改善",
-          "reading": "没有明显估值便宜，但基本面和资金量价较顺。"
+          "label": "cheap_with_flow",
+          "text": "低估且有资金",
+          "reading": "估值有安全边际，市场开始确认，但基本面仍需继续看。"
         },
-        "valuation_label": "expensive",
-        "valuation_position_score": 0.22,
-        "fundamental_label": "improving",
-        "fundamental_score": 0.18,
+        "valuation_label": "cheap",
+        "valuation_position_score": -0.28,
+        "fundamental_label": "stable",
+        "fundamental_score": -0.04,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2851,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": 0.2901,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
+        "non_real_flow_source",
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
+      "sector_id": "semiconductor",
+      "pool_id": "a_share_semiconductor",
+      "name": "A-share Semiconductor Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "readiness_score": 32,
+      "action": {
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
+      },
+      "evidence": {
+        "observed_direct_flow": true,
+        "observed_price_volume": true,
+        "direct_flow_sources": [
+          "akshare_provider_flow_observations"
+        ],
+        "price_volume_sources": [
+          "akshare_provider_flow_observations",
+          "mock_observation_collector",
+          "akshare_provider_flow_observations"
+        ],
+        "module_decision": {
+          "label": "expensive_momentum",
+          "text": "偏贵但趋势强",
+          "reading": "这是趋势机会而不是便宜机会，追高风险要单独控制。"
+        },
+        "valuation_label": "very_expensive",
+        "valuation_position_score": 0.42,
+        "fundamental_label": "improving",
+        "fundamental_score": 0.2,
+        "flow_price_label": "constructive_inflow_bias",
+        "flow_price_score": 0.3421,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
+      },
+      "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
@@ -197,11 +371,11 @@
       "name": "A-share Bank and Insurance Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 89.8,
+      "readiness_score": 32,
       "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -211,6 +385,7 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
@@ -223,26 +398,27 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.1533,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": 0.1406,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
     },
     {
-      "sector_id": "healthcare_pharma",
-      "pool_id": "a_share_healthcare_pharma",
-      "name": "A-share Healthcare and Pharma Pool",
+      "sector_id": "communication_electronics",
+      "pool_id": "a_share_communication_electronics",
+      "name": "A-share Communication and Electronics Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 84.9,
+      "readiness_score": 32,
       "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -252,6 +428,7 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
@@ -259,16 +436,17 @@
           "text": "等待确认",
           "reading": "三条线没有形成足够清晰的组合。"
         },
-        "valuation_label": "cheap",
-        "valuation_position_score": -0.28,
-        "fundamental_label": "stable",
-        "fundamental_score": -0.04,
+        "valuation_label": "expensive",
+        "valuation_position_score": 0.22,
+        "fundamental_label": "improving",
+        "fundamental_score": 0.18,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0832,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": 0.133,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
@@ -279,11 +457,11 @@
       "name": "A-share Consumer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 84.4,
+      "readiness_score": 32,
       "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -293,6 +471,7 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
@@ -305,93 +484,12 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.06,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0452,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": -0.0022,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
-        "valuation_manual_seed",
-        "fundamental_manual_seed"
-      ]
-    },
-    {
-      "sector_id": "resources_materials",
-      "pool_id": "a_share_resources_materials",
-      "name": "A-share Resources and Materials Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "readiness_score": 82.7,
-      "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
-      },
-      "evidence": {
-        "observed_direct_flow": true,
-        "observed_price_volume": true,
-        "direct_flow_sources": [
-          "akshare_provider_flow_observations"
-        ],
-        "price_volume_sources": [
-          "akshare_provider_flow_observations",
-          "akshare_provider_flow_observations"
-        ],
-        "module_decision": {
-          "label": "wait_for_confirmation",
-          "text": "等待确认",
-          "reading": "三条线没有形成足够清晰的组合。"
-        },
-        "valuation_label": "fair",
-        "valuation_position_score": -0.1,
-        "fundamental_label": "stable",
-        "fundamental_score": 0,
-        "flow_price_label": "neutral",
-        "flow_price_score": -0.0301,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
-      },
-      "blockers": [
-        "valuation_manual_seed",
-        "fundamental_manual_seed"
-      ]
-    },
-    {
-      "sector_id": "brokerage",
-      "pool_id": "a_share_brokerage",
-      "name": "A-share Brokerage Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "readiness_score": 79.6,
-      "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
-      },
-      "evidence": {
-        "observed_direct_flow": true,
-        "observed_price_volume": true,
-        "direct_flow_sources": [
-          "akshare_provider_flow_observations"
-        ],
-        "price_volume_sources": [
-          "akshare_provider_flow_observations",
-          "akshare_provider_flow_observations"
-        ],
-        "module_decision": {
-          "label": "wait_for_confirmation",
-          "text": "等待确认",
-          "reading": "三条线没有形成足够清晰的组合。"
-        },
-        "valuation_label": "fair",
-        "valuation_position_score": 0.08,
-        "fundamental_label": "improving",
-        "fundamental_score": 0.12,
-        "flow_price_label": "neutral",
-        "flow_price_score": -0.0962,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
-      },
-      "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
@@ -402,11 +500,11 @@
       "name": "A-share AI and Computer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 79.2,
+      "readiness_score": 32,
       "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -416,6 +514,7 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
@@ -428,11 +527,55 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.24,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0684,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": 0.1116,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
+        "non_real_flow_source",
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
+      "sector_id": "brokerage",
+      "pool_id": "a_share_brokerage",
+      "name": "A-share Brokerage Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "readiness_score": 32,
+      "action": {
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
+      },
+      "evidence": {
+        "observed_direct_flow": true,
+        "observed_price_volume": true,
+        "direct_flow_sources": [
+          "akshare_provider_flow_observations"
+        ],
+        "price_volume_sources": [
+          "akshare_provider_flow_observations",
+          "mock_observation_collector",
+          "akshare_provider_flow_observations"
+        ],
+        "module_decision": {
+          "label": "wait_for_confirmation",
+          "text": "等待确认",
+          "reading": "三条线没有形成足够清晰的组合。"
+        },
+        "valuation_label": "fair",
+        "valuation_position_score": 0.08,
+        "fundamental_label": "improving",
+        "fundamental_score": 0.12,
+        "flow_price_label": "neutral",
+        "flow_price_score": 0.0029,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
+      },
+      "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
@@ -443,11 +586,11 @@
       "name": "A-share Defense and Military Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 77,
+      "readiness_score": 32,
       "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -457,6 +600,7 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
@@ -469,26 +613,27 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0805,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": -0.0029,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
     },
     {
-      "sector_id": "semiconductor",
-      "pool_id": "a_share_semiconductor",
-      "name": "A-share Semiconductor Pool",
+      "sector_id": "resources_materials",
+      "pool_id": "a_share_resources_materials",
+      "name": "A-share Resources and Materials Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 76.9,
+      "readiness_score": 32,
       "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -498,6 +643,7 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
@@ -505,16 +651,17 @@
           "text": "等待确认",
           "reading": "三条线没有形成足够清晰的组合。"
         },
-        "valuation_label": "very_expensive",
-        "valuation_position_score": 0.42,
-        "fundamental_label": "improving",
-        "fundamental_score": 0.2,
+        "valuation_label": "fair",
+        "valuation_position_score": -0.1,
+        "fundamental_label": "stable",
+        "fundamental_score": 0,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0346,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": -0.1383,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
@@ -525,11 +672,11 @@
       "name": "A-share New Energy Vehicle Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 75.1,
+      "readiness_score": 32,
       "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -539,6 +686,7 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
@@ -551,11 +699,12 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.18,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.1342,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": -0.0859,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
@@ -566,11 +715,11 @@
       "name": "A-share Real Estate and Infrastructure Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 45,
+      "readiness_score": 32,
       "action": {
-        "label": "avoid_or_reduce_watch",
-        "text": "风险优先",
-        "reading": "估值低不能单独视为机会，先等盈利或现金流改善。"
+        "label": "blocked_non_real_source",
+        "text": "数据非真实，禁止指导",
+        "reading": "资金量价仍含 mock/fixture/source-unverified，不能用于买 ETF。"
       },
       "evidence": {
         "observed_direct_flow": true,
@@ -580,6 +729,7 @@
         ],
         "price_volume_sources": [
           "akshare_provider_flow_observations",
+          "mock_observation_collector",
           "akshare_provider_flow_observations"
         ],
         "module_decision": {
@@ -592,11 +742,12 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.32,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0591,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
+        "flow_price_score": -0.0424,
+        "flow_confidence": 0.7472,
+        "data_completeness": 0.9
       },
       "blockers": [
+        "non_real_flow_source",
         "valuation_manual_seed",
         "fundamental_manual_seed"
       ]
@@ -634,12 +785,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.1,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -678,12 +830,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.06,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -722,12 +875,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -766,12 +920,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.1,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -810,12 +965,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.08,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -854,12 +1010,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -898,12 +1055,13 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.12,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -942,12 +1100,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -986,12 +1145,13 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.08,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1030,12 +1190,13 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1074,12 +1235,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1118,12 +1280,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1162,12 +1325,13 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.1,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1206,12 +1370,13 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1250,12 +1415,13 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.06,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1294,12 +1460,13 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1338,12 +1505,13 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.12,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1382,12 +1550,13 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.14,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1426,12 +1595,13 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.3,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"
@@ -1470,12 +1640,13 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.28,
         "flow_price_label": "neutral",
-        "flow_price_score": 0,
-        "flow_confidence": 0,
-        "data_completeness": 0
+        "flow_price_score": 0.0663,
+        "flow_confidence": 0.3333,
+        "data_completeness": 0.25
       },
       "blockers": [
         "no_representative_provider_mapping",
+        "non_real_flow_source",
         "no_observed_direct_etf_flow",
         "valuation_manual_seed",
         "fundamental_manual_seed"

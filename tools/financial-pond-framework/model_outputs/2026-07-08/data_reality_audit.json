@@ -1,17 +1,17 @@
 {
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T10:50:09.097Z",
+  "generated_at": "2026-07-08T11:08:27.389Z",
   "module_id": "data_reality_audit_v0_1",
   "status": "audit_available",
   "overall_reality": "mixed_non_real",
-  "headline": "当前页面含 5 个非真实或来源未验证层。模型结构可看，市场结论不可直接用。",
+  "headline": "当前页面含 6 个非真实或来源未验证层。模型结构可看，市场结论不可直接用。",
   "layers": [
     {
       "id": "akshare_provider_doctor",
       "name": "AKShare环境预检",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_doctor.json",
       "as_of": null,
-      "generated_at": "2026-07-08T10:49:08.411733+00:00",
+      "generated_at": "2026-07-08T11:07:20.863404+00:00",
       "reality": "provider_doctor_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -27,18 +27,16 @@
       "name": "AKShare真实数据探测",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-08.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:50:06.545650+00:00",
+      "generated_at": "2026-07-08T11:08:24.685420+00:00",
       "reality": "provider_run_ok",
       "confidence_for_market_use": "medium",
       "counts": {
         "records": 11,
-        "warnings": 1,
+        "warnings": 0,
         "errors": 0
       },
       "errors": [],
-      "warnings": [
-        "Optional AKShare endpoint failed: fund_etf_scale_szse: HTTPSConnectionPool(host='fund.szse.cn', port=443): Max retries exceeded with url: /api/report/ShowReport?SHOWTYPE=xlsx&CATALOGID=1000_lf&TABKEY=tab1&random=0.07610353191740105 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))"
-      ],
+      "warnings": [],
       "reading": "AKShare real provider completed with 11 rows. Flow review still needs observed-source coverage checks."
     },
     {
@@ -46,19 +44,20 @@
       "name": "资金量价",
       "source_file": "sector_flow_review.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:50:07.558Z",
-      "reality": "provider_observed",
-      "confidence_for_market_use": "medium",
+      "generated_at": "2026-07-08T11:08:25.884Z",
+      "reality": "mock",
+      "confidence_for_market_use": "low",
       "source_counts": {
         "akshare_provider_flow_observations": 33,
-        "string_node": 297
+        "mock_observation_collector": 188,
+        "string_node": 100
       },
       "counts": {
         "sectors": 31,
         "representative_direct_flow_inputs": 11,
         "representative_price_volume_confirmations": 11
       },
-      "reading": "资金量价来自 provider/observed source，仍需检查覆盖和异常。"
+      "reading": "模型组件可运行，但当前资金量价节点来自 mock/fixture 来源，不能当作真实市场信号。"
     },
     {
       "id": "news",
@@ -81,7 +80,7 @@
       "name": "估值/基本面/资金量价三模块",
       "source_file": "sector_module_review.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:50:08.167Z",
+      "generated_at": "2026-07-08T11:08:26.478Z",
       "reality": "manual_seed",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -93,8 +92,9 @@
         "sectors": 31,
         "provider_mapped_representative_sectors": 11,
         "framework_only_sectors": 20,
-        "wait_for_confirmation": 25,
-        "balanced_candidate": 1,
+        "wait_for_confirmation": 24,
+        "expensive_momentum": 1,
+        "cheap_with_flow": 1,
         "value_trap_risk": 5
       },
       "reading": "估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。"
@@ -104,40 +104,44 @@
       "name": "ETF行动准备度",
       "source_file": "etf_decision_readiness.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:50:08.663Z",
+      "generated_at": "2026-07-08T11:08:26.799Z",
       "reality": "decision_gate_blocked",
       "confidence_for_market_use": "low",
       "counts": {
         "sectors": 31,
         "small_position_candidate": 0,
-        "confirmation_candidate": 1,
+        "confirmation_candidate": 0,
         "watch_for_persistence": 0,
         "wait_for_real_flow": 0,
-        "wait_for_confirmation": 9,
-        "blocked_non_real_source": 0,
+        "wait_for_confirmation": 0,
+        "blocked_non_real_source": 11,
         "not_covered": 20,
-        "avoid_or_reduce_watch": 1
+        "avoid_or_reduce_watch": 0
       },
       "blockers": [
+        {
+          "id": "non_real_flow_source",
+          "reading": "行业资金量价仍来自 mock、fixture 或未验证来源。"
+        },
         {
           "id": "manual_valuation_fundamental",
           "reading": "估值和基本面模块仍包含手工种子输入。"
         }
       ],
-      "reading": "可以做观察清单，但还不能做买入指令。优先复核 A-share Communication and Electronics Pool。"
+      "reading": "暂不能指导买入 ETF：行业资金量价仍来自 mock、fixture 或未验证来源。"
     },
     {
       "id": "sector_rotation",
       "name": "行业轮动",
       "source_file": "sector_rotation_intelligence.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:50:07.698Z",
+      "generated_at": "2026-07-08T11:08:26.026Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
         {
           "id": "flow_price",
-          "reality": "provider_observed"
+          "reality": "mock"
         },
         {
           "id": "news",
@@ -151,7 +155,7 @@
       "name": "通用池模型",
       "source_file": "general_pool_analysis.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:50:08.521Z",
+      "generated_at": "2026-07-08T11:08:26.654Z",
       "reality": "contract_output_source_unverified",
       "confidence_for_market_use": "low",
       "counts": {
@@ -166,7 +170,7 @@
       "name": "轮动历史",
       "source_file": "sector_rotation_history.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:50:07.996Z",
+      "generated_at": "2026-07-08T11:08:26.335Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -179,9 +183,10 @@
     }
   ],
   "warnings": [
+    "资金量价: 模型组件可运行，但当前资金量价节点来自 mock/fixture 来源，不能当作真实市场信号。",
     "新闻层: 新闻层来源不明。",
     "估值/基本面/资金量价三模块: 估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。",
-    "ETF行动准备度: 可以做观察清单，但还不能做买入指令。优先复核 A-share Communication and Electronics Pool。",
+    "ETF行动准备度: 暂不能指导买入 ETF：行业资金量价仍来自 mock、fixture 或未验证来源。",
     "行业轮动: 该层是解释层，上游仍含非真实输入，因此只能看结构，不能当真实市场结论。",
     "通用池模型: 通用池模型契约可用，但当前发布 JSON 没有携带可验证 provider source，不能视为实时真实行情判断。",
     "轮动历史: 该层是解释层，上游仍含非真实输入，因此只能看结构，不能当真实市场结论。"

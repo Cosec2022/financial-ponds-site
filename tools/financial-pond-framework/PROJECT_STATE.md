@@ -5,10 +5,17 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.43`
+Package version: `0.10.44`
 
 Purpose of this version:
 
+- add the Signal Attribution / Decision Explanation layer as `npm run signal:attribution`
+- write `sector_signal_attribution.json` and `.md` from daily analysis, ETF flow leaderboard, rotation, module review, ETF readiness, and optional graph scores
+- publish `financial-pond/data/sector_signal_attribution.json`
+- add a homepage "行业信号归因" panel with the boundary "解释观察结果，不是交易指令。"
+- expose cross-module conflicts when ETF flow rank #1 differs from the daily leader, when positive ETF flow has a weak daily tier, or when strong rotation has zero/negative ETF flow
+- update `fp:summary` with attribution headline, conflict count, first conflict, and top attribution rows
+- keep v0.10.44 strictly explainability-focused; it does not unlock ETF execution advice
 - move AKShare provider flow from `baseline_only` to `flow_ready` with two real provider dates, 2026-07-07 and 2026-07-08
 - move ETF readiness from `not_ready` to `watch_only`; daily conclusion is brokerage leading, watch only, and not an ETF buy instruction
 - add `npm run fp:summary` for a compact local progress summary across provider flow, daily analysis, readiness, maturity, and blockers

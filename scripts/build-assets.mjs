@@ -17,6 +17,7 @@ const files = [
   ["data/daily_sector_analysis.json", "application/json; charset=utf-8"],
   ["data/module_maturity_audit.json", "application/json; charset=utf-8"],
   ["data/etf_flow_leaderboard.json", "application/json; charset=utf-8"],
+  ["data/sector_signal_attribution.json", "application/json; charset=utf-8"],
   ["data/news_review.json", "application/json; charset=utf-8"],
   ["data/pond_map.json", "application/json; charset=utf-8"],
 ];
