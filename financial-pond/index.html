@@ -3,274 +3,69 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Financial Ponds | CosecLab</title>
+    <title>Financial Ponds | Vector Workbench</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <header class="hero">
+    <header class="topbar">
       <div>
         <p class="eyebrow">CosecLab · Financial Ponds</p>
-        <h1>v0.10.48 Observation Workbench</h1>
-        <p class="hero-copy">观察工作台优先显示今日观察、信号矩阵、资金矢量和复盘记录。旧面板保留在下方作为参考。</p>
+        <h1>v0.10.48 Vector Workbench</h1>
+        <p class="subline">通用资金流矢量观察。A股只是第一个样本。</p>
       </div>
-      <div class="hero-status">
-        <span id="asOfBadge" class="pill">Loading</span>
-        <span id="modelBadge" class="pill muted">Model</span>
-        <span id="observedPoolBadge" class="pill muted">observed_pool_count --</span>
-        <span id="pendingOutcomeBadge" class="pill muted">pending_outcome_count --</span>
-        <span id="executionStateBadge" class="pill muted">execution_state --</span>
+      <div class="badges">
+        <span id="asOfBadge" class="badge">as_of --</span>
+        <span id="poolCountBadge" class="badge">pools --</span>
+        <span id="pendingBadge" class="badge">pending --</span>
+        <span id="executionBadge" class="badge danger">blocked</span>
       </div>
     </header>
 
-    <main class="layout">
-      <section class="section workbench-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Observation Workbench</p>
-            <h2>观察工作台</h2>
+    <main class="shell">
+      <nav class="tabs" aria-label="workbench tabs">
+        <button class="tab active" data-view="today" type="button">今日观察</button>
+        <button class="tab" data-view="matrix" type="button">信号矩阵</button>
+        <button class="tab" data-view="vector" type="button">资金矢量</button>
+        <button class="tab" data-view="review" type="button">复盘记录</button>
+      </nav>
+
+      <section class="workbench">
+        <aside class="panel pool-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Pools</p>
+              <h2>资金池</h2>
+            </div>
+            <input id="poolSearch" class="search" type="search" placeholder="搜索">
           </div>
-          <span id="workbenchStatus" class="pill muted">Checking</span>
+          <div id="poolList" class="pool-list">Loading pools.</div>
+        </aside>
+
+        <section id="mainPanel" class="panel main-panel">Loading workbench.</section>
+
+        <aside class="panel trace-panel">
+          <div class="panel-head">
+            <div>
+              <p class="eyebrow">Trace</p>
+              <h2>公式溯源</h2>
+            </div>
+            <span id="traceStatus" class="badge muted">missing</span>
+          </div>
+          <div id="traceDrawer" class="trace-drawer">选择一个指标。</div>
+        </aside>
+      </section>
+
+      <details class="advanced">
+        <summary>高级诊断</summary>
+        <div class="advanced-grid">
+          <a href="./data/daily_data_vault.json">daily_data_vault.json</a>
+          <a href="./data/observation_snapshot.json">observation_snapshot.json</a>
+          <a href="./data/outcome_labels.json">outcome_labels.json</a>
+          <a href="./data/index_explainability.json">index_explainability.json</a>
+          <a href="./data/data_reality_audit.json">data_reality_audit.json</a>
+          <a href="./data/decision_gate_ledger.json">decision_gate_ledger.json</a>
         </div>
-        <div id="workbenchPanel" class="workbench-grid">Loading observation snapshot.</div>
-      </section>
-
-      <section class="section reality-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Data Reality Audit</p>
-            <h2>数据真实性审计</h2>
-            <p>先看数据来源，再看模型结论。真实行情、样例、手工种子和派生解释分开标注。</p>
-          </div>
-          <span id="realityStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="realityPanel" class="reality-grid">Loading data reality audit.</div>
-      </section>
-
-      <section class="section provider-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Provider Status</p>
-            <h2>真实数据通道</h2>
-            <p>专门看 AKShare 是否安装、真实抓取是否跑通、ETF 份额流是否可算，以及下一条该运行什么命令。</p>
-          </div>
-          <span id="providerStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="providerPanel" class="provider-grid">Loading provider status.</div>
-      </section>
-
-      <section class="section daily-analysis-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Daily Sector Analysis</p>
-            <h2>今日行业结论</h2>
-            <p>把行业轮动、三模块和 ETF 准备度合并成三档：优先观察、继续确认、回避观察。ETF gate 没开时只做分析。</p>
-          </div>
-          <span id="dailyAnalysisStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="dailyAnalysisPanel" class="daily-grid">Loading daily sector analysis.</div>
-      </section>
-
-      <section class="section maturity-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Module Maturity</p>
-            <h2>模块完成度</h2>
-            <p>把项目模块、完成度、低成熟模块和下一条主线分开显示。这个面板评估工程进度，不评估市场方向。</p>
-          </div>
-          <span id="maturityStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="maturityPanel" class="maturity-grid">Loading module maturity audit.</div>
-      </section>
-
-      <section class="section reference-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Reference View</p>
-            <h2>今日参考面板</h2>
-            <p>只把真实硬数据和明确标注的样例/原型分开显示。这里不是交易指令。</p>
-          </div>
-          <span id="referenceStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="referencePanel" class="reference-grid">Loading reference panel.</div>
-      </section>
-
-      <section class="section rotation-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Rotation Intelligence</p>
-            <h2>行业轮动情报</h2>
-            <p>把行业排序翻译成轮动状态：谁在吸水、谁在失水、强弱差是否足够大、证据是否可靠。</p>
-          </div>
-          <span id="rotationStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="rotationPanel" class="rotation-grid">Loading rotation intelligence.</div>
-      </section>
-
-      <section class="section module-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Independent Modules</p>
-            <h2>估值 / 基本面 / 资金量价</h2>
-            <p>三条线分开判断，最后只做标签组合。估值便宜不会自动加到资金分里，资金转强也不会改写估值。</p>
-          </div>
-          <span id="moduleStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="modulePanel" class="module-grid">Loading module review.</div>
-      </section>
-
-      <section class="section etf-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">ETF Decision Readiness</p>
-            <h2>ETF行动准备度</h2>
-            <p>先判断能不能给 ETF 操作建议。真实资金流、趋势样本、估值基本面来源没达标时，系统会主动降级为观察。</p>
-          </div>
-          <span id="etfStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="etfPanel" class="etf-grid">Loading ETF readiness.</div>
-      </section>
-
-      <section class="section etf-flow-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">ETF Real Flow Observation</p>
-            <h2>ETF 真实资金流观察</h2>
-            <p>按 AKShare 代表 ETF 的 estimated_flow 和成交额排序，正流、负流、零流分开看。</p>
-          </div>
-          <span id="etfFlowStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="etfFlowPanel" class="etf-flow-grid">Loading ETF flow leaderboard.</div>
-      </section>
-
-      <section class="section attribution-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Signal Attribution</p>
-            <h2>行业信号归因</h2>
-            <p>把 ETF 份额流、日结论、轮动、三模块和图谱分数放到同一张解释表，专门暴露冲突。</p>
-          </div>
-          <span id="attributionStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="attributionPanel" class="attribution-grid">Loading signal attribution.</div>
-      </section>
-
-      <section class="section watchlist-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Watchlist State</p>
-            <h2>观察清单状态</h2>
-            <p>把归因冲突、资金流单线候选、轮动单线候选、弱化观察和执行边界整理成每日状态。</p>
-          </div>
-          <span id="watchlistStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="watchlistPanel" class="watchlist-grid">Loading watchlist state.</div>
-      </section>
-
-      <section class="section gate-ledger-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Decision Gate Ledger</p>
-            <h2>决策闸门账本</h2>
-            <p>把 provider、真实流覆盖、归因冲突、观察清单、估值基本面、数据真实性和执行边界逐项列清楚。</p>
-          </div>
-          <span id="gateLedgerStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="gateLedgerPanel" class="gate-ledger-grid">Loading decision gate ledger.</div>
-      </section>
-
-      <section class="section index-explain-panel">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Index Explainability</p>
-            <h2>指数详情解释</h2>
-            <p>解释页面指标的来源文件、字段、公式、原始输入、贡献项、计算步骤、数据现实和边界。</p>
-          </div>
-          <span id="indexExplainStatus" class="pill muted">Checking</span>
-        </div>
-        <div id="indexExplainPanel" class="index-explain-grid">Loading index explanations.</div>
-      </section>
-
-      <section class="left-pane section">
-        <div class="section-head compact">
-          <div>
-            <h2>所有池塘</h2>
-            <p>按层级从左到右排列。色块数字显示热度和估值位置。</p>
-          </div>
-          <button id="refreshButton" class="button" type="button">刷新</button>
-        </div>
-        <div id="pondMap" class="pond-map">Loading pond map.</div>
-      </section>
-
-      <section class="right-pane">
-        <section class="section detail-hero">
-          <div>
-            <p id="selectedPath" class="eyebrow">选择池塘</p>
-            <h2 id="selectedName">读取中</h2>
-            <p id="selectedSummary">点击左侧任一池塘查看算法和新闻引擎细节。</p>
-          </div>
-          <div class="score-stack">
-            <div><span>热度</span><strong id="detailHeat">--</strong></div>
-            <div><span>估值</span><strong id="detailValuation">--</strong></div>
-            <div><span>基本面</span><strong id="detailFundamental">--</strong></div>
-            <div><span>模型分</span><strong id="detailScore">--</strong></div>
-          </div>
-        </section>
-
-        <section class="section tabs">
-          <div class="tab-buttons" role="tablist">
-            <button class="tab-button active" data-tab="flow" type="button">流入流出算法</button>
-            <button class="tab-button" data-tab="news" type="button">新闻搜索引擎</button>
-            <button class="tab-button" data-tab="related" type="button">相关行业</button>
-            <button class="tab-button" data-tab="graph" type="button">节点反馈 / 修改</button>
-            <button class="tab-button" data-tab="reports" type="button">日报 / 周报</button>
-          </div>
-
-          <div id="tab-flow" class="tab-panel active">
-            <h3>上游流入流出</h3>
-            <div id="upstreamPanel" class="metric-list"></div>
-            <h3>当前模型组件</h3>
-            <div id="componentPanel" class="component-grid"></div>
-          </div>
-
-          <div id="tab-news" class="tab-panel">
-            <h3>关键词组、权重、半衰期、水花系数</h3>
-            <div id="keywordPanel" class="keyword-list"></div>
-            <h3>新闻压力</h3>
-            <div id="newsPanel" class="news-panel"></div>
-          </div>
-
-          <div id="tab-related" class="tab-panel">
-            <h3>相关行业数据</h3>
-            <div id="relatedPanel" class="related-grid"></div>
-          </div>
-
-          <div id="tab-graph" class="tab-panel">
-            <h3>上下游节点反馈</h3>
-            <p class="muted">上游和下游不是永久设定。新闻主线和硬数据确认会提出调权、新增、归档建议。这里的修改先保存在浏览器本地，可导出 patch 后再写回模型配置。</p>
-            <div id="graphFeedbackPanel" class="graph-feedback"></div>
-            <h3>本地修改</h3>
-            <div id="graphEditPanel" class="graph-edit"></div>
-          </div>
-
-          <div id="tab-reports" class="tab-panel">
-            <h3>日报</h3>
-            <div id="dailyPanel" class="report-list"></div>
-            <h3>周报 / 反馈机制</h3>
-            <div id="weeklyPanel" class="report-list"></div>
-          </div>
-        </section>
-
-        <section class="section">
-          <h2>全行业排序</h2>
-          <p>用于从详情页回看整体位置。分数不是交易指令。</p>
-          <div id="sectorTable" class="sector-table">Loading sector review.</div>
-        </section>
-
-        <details class="section technical">
-          <summary>技术视图：原始池子和节点</summary>
-          <div id="technicalPanel" class="technical-grid"></div>
-        </details>
-      </section>
+      </details>
     </main>
 
     <script src="./app.js" type="module"></script>
