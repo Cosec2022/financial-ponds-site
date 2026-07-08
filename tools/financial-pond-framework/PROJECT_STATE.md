@@ -5,10 +5,17 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.44`
+Package version: `0.10.45`
 
 Purpose of this version:
 
+- add the Watchlist State Machine / Conflict Handling layer as `npm run watchlist:state`
+- write `sector_watchlist_state.json` and `.md` from daily analysis, signal attribution, ETF flow leaderboard, readiness, rotation, module review, and flow review
+- publish `financial-pond/data/sector_watchlist_state.json`
+- add a homepage "观察清单状态" panel with the boundary "观察清单，不是交易指令。"
+- convert attribution conflicts into `conflict_review`, positive-flow single-line evidence into `flow_only_candidate`, strong-rotation single-line evidence into `rotation_only_candidate`, and weak rows into avoid/deteriorating states
+- add execution boundaries and first-run `state_change: new` labels
+- keep v0.10.45 strictly observation-focused; it does not unlock ETF execution advice
 - add the Signal Attribution / Decision Explanation layer as `npm run signal:attribution`
 - write `sector_signal_attribution.json` and `.md` from daily analysis, ETF flow leaderboard, rotation, module review, ETF readiness, and optional graph scores
 - publish `financial-pond/data/sector_signal_attribution.json`

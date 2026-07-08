@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.10.45 - Watchlist state machine
+
+- Bumped site and framework package versions to `0.10.45`.
+- Added `npm run watchlist:state`.
+- Added `sector_watchlist_state.json` and `.md` outputs.
+- Converts cross-module attribution into daily watchlist states:
+  - `confirmed_watch`;
+  - `conflict_review`;
+  - `flow_only_candidate`;
+  - `rotation_only_candidate`;
+  - `deteriorating_watch`;
+  - `avoid_watch`;
+  - `blocked_execution`.
+- Added state-change labels, evidence summaries, upgrade/downgrade conditions,
+  and execution boundaries.
+- Published `financial-pond/data/sector_watchlist_state.json`.
+- Added the homepage `观察清单状态` panel.
+- Updated the daily runner, CI runner, build assets, published-data validation,
+  Worker tests, workflow tests, and summary command.
+
+Important boundary:
+
+- This converts attribution into a review workflow.
+- It does not unlock ETF execution advice.
+- It does not output buy/sell/position wording.
+
 ## v0.10.44 - Signal attribution and conflict visibility
 
 - Bumped site and framework package versions to `0.10.44`.

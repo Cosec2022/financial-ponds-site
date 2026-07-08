@@ -59,6 +59,7 @@ run_noncritical "pool:analysis $AS_OF" npm run pool:analysis -- --as-of "$AS_OF"
 npm run etf:readiness -- --as-of "$AS_OF"
 npm run daily:sector-analysis -- --as-of "$AS_OF"
 npm run signal:attribution -- --as-of "$AS_OF"
+npm run watchlist:state -- --as-of "$AS_OF"
 npm run project:maturity -- --as-of "$AS_OF"
 npm run data:audit -- --as-of "$AS_OF" || true
 
@@ -84,6 +85,7 @@ copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/daily_sector
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/module_maturity_audit.json" "financial-pond/data/module_maturity_audit.json"
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/etf_flow_leaderboard.json" "financial-pond/data/etf_flow_leaderboard.json"
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/sector_signal_attribution.json" "financial-pond/data/sector_signal_attribution.json"
+copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/sector_watchlist_state.json" "financial-pond/data/sector_watchlist_state.json"
 
 echo "== validate/build/test =="
 npm run validate:data

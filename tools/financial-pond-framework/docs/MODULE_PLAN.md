@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.44
+Version: v0.10.45
 Status: active
 
 Module IDs use this format:
@@ -27,6 +27,7 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language, with share-change flow diagnostics | working prototype | 42% | Current state is `watch_only`; unblock manual valuation/fundamental seeds, rotation visibility, and execution rules |
 | FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, ETF readiness, and decision tickets | working prototype | 40% | Add continuation/reversal labels after more history accumulates |
 | FP-ATTR-01 | Signal Attribution | Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes | working prototype | 35% | Add richer attribution weights and history-aware explanations |
+| FP-WATCH-01 | Watchlist State Machine | Convert attribution and daily evidence into observation states and review boundaries | working prototype | 30% | Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples |
 | FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 65% | Add maintenance-state display |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
@@ -64,20 +65,22 @@ Tests:
 
 ```text
 1. FP-DATA-01: valuation/fundamental manual seed replacement.
-2. FP-ATTR-01: keep cross-module conflicts visible while ETF readiness is watch-only.
-3. FP-GEN-01: remove pool graph snapshot dependency from one-command runs.
-4. FP-HIST-01 / FP-ROT-01: improve rotation visibility while sample history is still low.
-5. FP-ETF-01 / FP-DAILY-01: keep execution decision blocked until watch-only gates are cleared.
-6. FP-NEWS-01: real fixed A-share news sources.
-7. FP-DATA-01: S&P 500 live provider inputs after the A-share flow path is stable.
+2. FP-WATCH-01: keep attribution conflicts sorted into daily review states.
+3. FP-ATTR-01: keep cross-module conflicts visible while ETF readiness is watch-only.
+4. FP-GEN-01: remove pool graph snapshot dependency from one-command runs.
+5. FP-HIST-01 / FP-ROT-01: improve rotation visibility while sample history is still low.
+6. FP-ETF-01 / FP-DAILY-01: keep execution decision blocked until watch-only gates are cleared.
+7. FP-NEWS-01: real fixed A-share news sources.
+8. FP-DATA-01: S&P 500 live provider inputs after the A-share flow path is stable.
 ```
 
-## v0.10.44 Status Note
+## v0.10.45 Status Note
 
 ```text
 Provider flow: baseline_only -> flow_ready
 ETF readiness: not_ready -> watch_only
 Signal attribution: added observation-only conflict visibility
+Watchlist state: added observation-only state machine
 Remaining blockers:
 - valuation/fundamental manual seed
 - pool graph snapshot dependency

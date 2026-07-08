@@ -32,7 +32,8 @@ const [
   readiness,
   daily,
   maturity,
-  attribution
+  attribution,
+  watchlist
 ] = await Promise.all([
   readJson("financial-pond/data/sector_flow_review.json"),
   readJson("financial-pond/data/sector_rotation_history.json"),
@@ -40,7 +41,8 @@ const [
   readJson("financial-pond/data/etf_decision_readiness.json"),
   readJson("financial-pond/data/daily_sector_analysis.json"),
   readJson("financial-pond/data/module_maturity_audit.json"),
-  readJson("financial-pond/data/sector_signal_attribution.json")
+  readJson("financial-pond/data/sector_signal_attribution.json"),
+  readJson("financial-pond/data/sector_watchlist_state.json")
 ]);
 
 const asOf = readiness?.as_of ?? daily?.as_of ?? flow?.as_of ?? new Date().toISOString().slice(0, 10);
@@ -93,6 +95,13 @@ const summary = {
     conflict_notes: row.conflict_notes ?? [],
     manual_review_boundary: row.manual_review_boundary
   })),
+  watchlist_headline: watchlist?.headline ?? null,
+  watchlist_group_counts: watchlist?.groups ? Object.fromEntries(Object.entries(watchlist.groups).map(([key, value]) => [key, Array.isArray(value) ? value.length : 0])) : null,
+  conflict_review_sectors: watchlist?.groups?.conflict_review ?? [],
+  confirmed_watch_sectors: watchlist?.groups?.confirmed_watch ?? [],
+  flow_only_candidate_sectors: watchlist?.groups?.flow_only_candidate ?? [],
+  deteriorating_watch_sectors: watchlist?.groups?.deteriorating_watch ?? [],
+  blocked_execution_reason: (watchlist?.rows ?? []).find((row) => row.execution_boundary?.includes("blocked"))?.execution_boundary ?? null,
   blockers,
   next_action: daily?.next_unlock?.label ?? readiness?.progress?.next_unlock?.label ?? maturity?.recommended_mainline?.next_actions?.[0] ?? null
 };

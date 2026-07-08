@@ -56,6 +56,7 @@ const state = {
   moduleMaturity: null,
   etfFlowLeaderboard: null,
   signalAttribution: null,
+  watchlistState: null,
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -1233,6 +1234,137 @@ function dailyTierLabel(value) {
   return map[value] ?? value ?? "--";
 }
 
+function renderWatchlistPanel() {
+  const panel = document.getElementById("watchlistPanel");
+  const statusBadge = document.getElementById("watchlistStatus");
+  const watchlist = state.watchlistState;
+  if (!panel || !statusBadge) return;
+
+  if (!watchlist || watchlist.status !== "watchlist_state_available") {
+    statusBadge.textContent = "等待状态";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无观察清单状态。等待 sector_watchlist_state.json 生成。</div>`;
+    return;
+  }
+
+  const groups = watchlist.groups ?? {};
+  const conflictCount = groups.conflict_review?.length ?? 0;
+  const statusClass = conflictCount ? "warm" : (groups.confirmed_watch?.length ?? 0) ? "positive" : "negative";
+  statusBadge.textContent = conflictCount ? `${conflictCount} 个复核` : "状态可读";
+  statusBadge.className = `pill ${statusClass}`;
+  const topRows = (watchlist.rows ?? []).slice(0, 8);
+
+  panel.innerHTML = `
+    <article class="watchlist-card headline ${statusClass}">
+      <span>观察边界</span>
+      <strong>观察清单，不是交易指令。</strong>
+      <p>${watchlist.headline ?? "等待观察清单状态。"}</p>
+    </article>
+    ${watchlistCountCard("确认观察", groups.confirmed_watch?.length ?? 0, "confirmed_watch", "positive")}
+    ${watchlistCountCard("冲突复核", groups.conflict_review?.length ?? 0, "conflict_review", "warm")}
+    ${watchlistCountCard("资金流单线", groups.flow_only_candidate?.length ?? 0, "flow_only_candidate", "warm")}
+    ${watchlistCountCard("轮动单线", groups.rotation_only_candidate?.length ?? 0, "rotation_only_candidate", "warm")}
+    ${watchlistCountCard("弱化观察", groups.deteriorating_watch?.length ?? 0, "deteriorating_watch", "negative")}
+    ${watchlistCountCard("回避观察", groups.avoid_watch?.length ?? 0, "avoid_watch", "negative")}
+    <article class="watchlist-card table-card">
+      <span>观察清单行</span>
+      ${watchlistTableTemplate(topRows)}
+    </article>
+  `;
+
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function watchlistCountCard(label, count, stateName, className) {
+  return `
+    <article class="watchlist-card ${className}">
+      <span>${label}</span>
+      <strong>${count}</strong>
+      <p>${watchStateLabel(stateName)}</p>
+    </article>
+  `;
+}
+
+function watchlistTableTemplate(rows) {
+  if (!rows.length) return `<div class="empty">暂无观察清单行。</div>`;
+  return `
+    <div class="module-table">
+      <table>
+        <thead>
+          <tr>
+            <th>行业</th>
+            <th>状态</th>
+            <th>优先级</th>
+            <th>变化</th>
+            <th>证据</th>
+            <th>边界</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <td><button class="text-link" data-pond-id="${row.sector_id}" type="button"><strong>${row.name}</strong><span class="sub">${row.sector_id}</span></button></td>
+              <td><span class="pill ${watchStateClass(row.watch_state)}">${watchStateLabel(row.watch_state)}</span></td>
+              <td>${priorityLevelLabel(row.priority_level)}</td>
+              <td>${stateChangeLabel(row.state_change)}</td>
+              <td>${row.evidence_summary ?? "--"}${row.conflict_evidence?.length ? `<span class="sub">${row.conflict_evidence.slice(0, 1).join("；")}</span>` : ""}</td>
+              <td>${row.execution_boundary ?? "--"}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function watchStateLabel(value) {
+  const map = {
+    confirmed_watch: "确认观察",
+    conflict_review: "冲突复核",
+    flow_only_candidate: "资金流单线候选",
+    rotation_only_candidate: "轮动单线候选",
+    deteriorating_watch: "弱化观察",
+    avoid_watch: "回避观察",
+    blocked_execution: "执行边界阻塞"
+  };
+  return map[value] ?? value ?? "--";
+}
+
+function watchStateClass(value) {
+  if (value === "confirmed_watch") return "positive";
+  if (["avoid_watch", "deteriorating_watch", "blocked_execution"].includes(value)) return "negative";
+  return "warm";
+}
+
+function priorityLevelLabel(value) {
+  const map = {
+    high: "高",
+    manual_review: "人工复核",
+    medium: "中",
+    risk_review: "风险复核",
+    low: "低",
+    background: "背景"
+  };
+  return map[value] ?? value ?? "--";
+}
+
+function stateChangeLabel(value) {
+  const map = {
+    new: "新增",
+    unchanged: "不变",
+    upgraded: "升级",
+    downgraded: "降级",
+    removed: "移除"
+  };
+  return map[value] ?? value ?? "--";
+}
+
 function shareChangeDiagnosticsTemplate(diagnostics) {
   if (!diagnostics) return `<strong>等待诊断</strong><p>等待 akshare_provider_flow_observations.json 生成份额变化诊断。</p>`;
   const total = diagnostics.total_rows ?? 0;
@@ -2113,6 +2245,7 @@ function renderAll() {
   renderEtfReadinessPanel();
   renderEtfFlowPanel();
   renderAttributionPanel();
+  renderWatchlistPanel();
   renderPondMap();
   renderSelectedSummary();
   renderFlowDetail();
@@ -2138,6 +2271,7 @@ async function loadAll() {
   state.moduleMaturity = await readJson("./data/module_maturity_audit.json", null);
   state.etfFlowLeaderboard = await readJson("./data/etf_flow_leaderboard.json", null);
   state.signalAttribution = await readJson("./data/sector_signal_attribution.json", null);
+  state.watchlistState = await readJson("./data/sector_watchlist_state.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

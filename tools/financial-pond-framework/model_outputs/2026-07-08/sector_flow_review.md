@@ -22,11 +22,11 @@
 
 | Rank | Pool | Score | Label | Confidence | Data completeness |
 |---:|---|---:|---|---:|---:|
-| 1 | a_share_semiconductor | 0.342 | constructive_inflow_bias | 0.747 | 0.900 |
-| 2 | a_share_healthcare_pharma | 0.290 | constructive_inflow_bias | 0.747 | 0.900 |
-| 3 | a_share_bank_insurance | 0.141 | neutral | 0.747 | 0.900 |
-| 4 | a_share_communication_electronics | 0.133 | neutral | 0.747 | 0.900 |
-| 5 | a_share_ai_computer | 0.112 | neutral | 0.747 | 0.900 |
+| 1 | a_share_brokerage | 0.174 | neutral | 0.747 | 0.900 |
+| 2 | a_share_ai_computer | 0.156 | neutral | 0.747 | 0.900 |
+| 3 | a_share_resources_materials | 0.112 | neutral | 0.747 | 0.900 |
+| 4 | a_share_semiconductor | 0.102 | neutral | 0.747 | 0.900 |
+| 5 | a_share_defense_military | 0.089 | neutral | 0.747 | 0.900 |
 | 6 | a_share_agriculture | 0.066 | neutral | 0.333 | 0.250 |
 | 7 | a_share_food_beverage | 0.066 | neutral | 0.333 | 0.250 |
 | 8 | a_share_home_appliances | 0.066 | neutral | 0.333 | 0.250 |
@@ -47,17 +47,17 @@
 | 23 | a_share_construction | 0.066 | neutral | 0.333 | 0.250 |
 | 24 | a_share_machinery | 0.066 | neutral | 0.333 | 0.250 |
 | 25 | a_share_media | 0.066 | neutral | 0.333 | 0.250 |
-| 26 | a_share_brokerage | 0.003 | neutral | 0.747 | 0.900 |
-| 27 | a_share_consumer | -0.002 | neutral | 0.747 | 0.900 |
-| 28 | a_share_defense_military | -0.003 | neutral | 0.747 | 0.900 |
-| 29 | a_share_real_estate_infra | -0.042 | neutral | 0.747 | 0.900 |
-| 30 | a_share_new_energy_ev | -0.086 | neutral | 0.747 | 0.900 |
-| 31 | a_share_resources_materials | -0.138 | neutral | 0.747 | 0.900 |
+| 26 | a_share_bank_insurance | 0.066 | neutral | 0.747 | 0.900 |
+| 27 | a_share_consumer | 0.034 | neutral | 0.747 | 0.900 |
+| 28 | a_share_healthcare_pharma | -0.008 | neutral | 0.747 | 0.900 |
+| 29 | a_share_real_estate_infra | -0.034 | neutral | 0.747 | 0.900 |
+| 30 | a_share_new_energy_ev | -0.080 | neutral | 0.747 | 0.900 |
+| 31 | a_share_communication_electronics | -0.092 | neutral | 0.747 | 0.900 |
 
 ## Top Drivers
 
-- a_share_semiconductor: direct_flow: 0.181; policy_sentiment: 0.060; market_confirmation: 0.060; market_liquidity: 0.026
-- a_share_healthcare_pharma: direct_flow: 0.225; policy_sentiment: 0.030; market_liquidity: 0.026; fundamental_proxy: 0.025
-- a_share_bank_insurance: direct_flow: 0.056; market_confirmation: 0.028; market_liquidity: 0.026; policy_sentiment: 0.025
-- a_share_communication_electronics: market_confirmation: 0.057; policy_sentiment: 0.030; market_liquidity: 0.026; fundamental_proxy: 0.020
-- a_share_ai_computer: market_confirmation: 0.059; policy_sentiment: 0.035; direct_flow: -0.034; market_liquidity: 0.026
+- a_share_brokerage: policy_sentiment: 0.043; direct_flow: 0.042; market_confirmation: 0.038; market_liquidity: 0.026
+- a_share_ai_computer: market_confirmation: 0.059; policy_sentiment: 0.035; market_liquidity: 0.026; fundamental_proxy: 0.025
+- a_share_resources_materials: direct_flow: 0.062; market_liquidity: 0.026; policy_sentiment: 0.023; fundamental_proxy: 0.020
+- a_share_semiconductor: policy_sentiment: 0.060; market_confirmation: 0.060; direct_flow: -0.059; market_liquidity: 0.026
+- a_share_defense_military: policy_sentiment: 0.038; fundamental_proxy: 0.030; market_confirmation: -0.028; market_liquidity: 0.026

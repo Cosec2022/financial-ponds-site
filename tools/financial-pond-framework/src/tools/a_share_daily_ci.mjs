@@ -125,6 +125,12 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "sector_watchlist_state", "node", [
+    "src/tools/sector_watchlist_state.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
   summary.status = "ok";
   summary.finished_at = new Date().toISOString();
   console.log(JSON.stringify(summary, null, 2));

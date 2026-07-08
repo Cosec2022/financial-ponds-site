@@ -16,6 +16,7 @@ const requiredFiles = [
   ["module_maturity_audit.json", (json) => json.status === "module_maturity_available" && Array.isArray(json.modules) && Boolean(json.recommended_mainline)],
   ["etf_flow_leaderboard.json", (json) => json.status === "leaderboard_available" && json.module_id === "etf_flow_leaderboard_v0_10_43" && Array.isArray(json.rows)],
   ["sector_signal_attribution.json", (json) => json.status === "attribution_available" && json.module_id === "sector_signal_attribution_v0_10_44" && Array.isArray(json.rows) && json.rows.every((row) => Boolean(row.manual_review_boundary))],
+  ["sector_watchlist_state.json", (json) => json.status === "watchlist_state_available" && json.module_id === "sector_watchlist_state_v0_10_45" && Array.isArray(json.rows) && Boolean(json.groups)],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];

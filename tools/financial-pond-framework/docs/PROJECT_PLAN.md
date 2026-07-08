@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.44
+Version: v0.10.45
 Status: active
 
 ## Final Target
@@ -35,9 +35,9 @@ The system should not output direct trading instructions.
 ```text
 Overall progress: 45%
 Current stage: usable prototype
-Daily data pipeline: partial, with AKShare provider flow_ready, one-command recovery for missing pool graph snapshots, and signal attribution
+Daily data pipeline: partial, with AKShare provider flow_ready, one-command recovery for missing pool graph snapshots, signal attribution, and watchlist state machine
 Decision-grade model: not yet
-Main limitation: A-share provider flow is flow_ready and signal attribution can explain cross-module conflicts, but ETF readiness remains watch_only because valuation/fundamental manual seeds, pool graph snapshot dependency, low rotation visibility, and blocked execution decision still prevent allocation guidance
+Main limitation: A-share provider flow is flow_ready and watchlist states can route conflicts into review groups, but ETF readiness remains watch_only/not_ready when source, valuation/fundamental, rotation, or execution gates block allocation guidance
 ```
 
 ## Phase Plan
@@ -69,6 +69,7 @@ ETF action-readiness gate with visible blockers and pending watch items
 Provider status panel showing AKShare environment, real run, flow readiness, and next command
 ETF true-flow observation leaderboard with positive, negative, and zero-flow rows
 Signal attribution panel explaining daily rankings and cross-module conflicts
+Watchlist state panel grouping confirmed, conflict, flow-only, rotation-only, deteriorating, and avoid rows
 Published-data completeness guard for the daily Action
 Daily sector analysis panel with priority watch, confirm next, and avoid watch tiers
 Rotation-history recovery from recent published Git versions
@@ -92,18 +93,20 @@ local graph node edits and patch export
 10. No output is a trading instruction.
 11. ETF flow leaderboard is observation-only and must not be read as buy/sell guidance.
 12. Signal attribution explains observation conflicts only; it does not unlock ETF execution advice.
+13. Watchlist state is an observation workflow, not a trading instruction.
 ```
 
 ## Next Work Order
 
 1. A-share first: replace valuation/fundamental manual seeds with reviewed hard-data sources.
-2. Use Signal Attribution to review ETF-flow-vs-daily-leader conflicts before changing scoring.
-3. Make pool graph snapshots robust so `pool:analysis` can run after cycle recovery or graceful fallback.
-4. Improve rotation visibility while sample history is still low.
-5. Keep execution decision blocked until ETF readiness exits watch-only mode.
-6. Sync shared work into the general model: input coverage, confidence labels, missing-input reporting, and component contract tests.
-7. S&P 500 second: add live provider inputs for flow, breadth, EPS/valuation, and news pressure after the A-share flow path is stable.
-8. Add continuation / reversal / strengthening / weakening labels.
-9. Feed confirmed trend labels into the daily sector analysis scoring.
-10. Implement keyword state engine.
-11. Implement graph edge state backend.
+2. Use Watchlist State to route conflict, flow-only, and rotation-only rows before changing scoring.
+3. Use Signal Attribution to review ETF-flow-vs-daily-leader conflicts before changing scoring.
+4. Make pool graph snapshots robust so `pool:analysis` can run after cycle recovery or graceful fallback.
+5. Improve rotation visibility while sample history is still low.
+6. Keep execution decision blocked until ETF readiness exits watch-only mode.
+7. Sync shared work into the general model: input coverage, confidence labels, missing-input reporting, and component contract tests.
+8. S&P 500 second: add live provider inputs for flow, breadth, EPS/valuation, and news pressure after the A-share flow path is stable.
+9. Add continuation / reversal / strengthening / weakening labels.
+10. Feed confirmed trend labels into the daily sector analysis scoring.
+11. Implement keyword state engine.
+12. Implement graph edge state backend.

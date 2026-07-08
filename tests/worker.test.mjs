@@ -17,6 +17,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /ETF行动准备度/);
   assert.match(html, /ETF 真实资金流观察/);
   assert.match(html, /行业信号归因/);
+  assert.match(html, /观察清单状态/);
   assert.match(html, /流入流出算法/);
   assert.match(html, /节点反馈 \/ 修改/);
 });
@@ -126,6 +127,14 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(attributionJson.status, "attribution_available");
   assert.ok(attributionJson.rows.length >= 1);
   assert.ok(attributionJson.rows.every((row) => row.manual_review_boundary));
+
+  const watchlist = await worker.fetch(request("/data/sector_watchlist_state.json"), {});
+  assert.equal(watchlist.status, 200);
+  const watchlistJson = await watchlist.json();
+  assert.equal(watchlistJson.module_id, "sector_watchlist_state_v0_10_45");
+  assert.equal(watchlistJson.status, "watchlist_state_available");
+  assert.ok(watchlistJson.rows.length >= 1);
+  assert.ok(watchlistJson.groups);
 
   const pondMap = await worker.fetch(request("/data/pond_map.json"), {});
   assert.equal(pondMap.status, 200);
