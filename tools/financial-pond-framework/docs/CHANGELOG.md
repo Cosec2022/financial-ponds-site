@@ -1,5 +1,31 @@
 # Changelog
 
+## v0.10.47 - Index explainability and score breakdown
+
+- Bumped site and framework package versions to `0.10.47`.
+- Added a formula registry in `src/core/formula_registry.mjs`.
+- Added `npm run index:explain`.
+- Added `index_explainability.json` and `.md` outputs.
+- The explainability layer documents displayed indexes with:
+  - source files and source fields;
+  - raw inputs;
+  - formulas in human and machine-readable form;
+  - component contributions;
+  - calculation steps;
+  - data reality flags;
+  - caveats and execution boundary.
+- Published `financial-pond/data/index_explainability.json`.
+- Added the homepage `指数详情解释` panel with search/selectable index details.
+- Updated the daily runner, CI runner, build assets, published-data validation,
+  Worker tests, workflow tests, framework tests, and summary command.
+
+Important boundary:
+
+- v0.10.47 explains where displayed numbers come from.
+- It does not invent formulas; missing formula registry entries are reported as
+  `formula_registry_missing`.
+- ETF execution advice remains blocked.
+
 ## v0.10.46 - Decision gate ledger
 
 - Bumped site and framework package versions to `0.10.46`.

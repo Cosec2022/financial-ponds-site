@@ -21,8 +21,8 @@
       "fund_name": "券商ETF华宝",
       "close": 0.53,
       "amount": 1253277254.0,
-      "latest_share": 73945235456.0,
-      "estimated_flow": 390504407.04,
+      "latest_share": 73208434688.0,
+      "estimated_flow": -390504407.04,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -33,8 +33,8 @@
       "fund_name": "银行ETF华宝",
       "close": 0.77,
       "amount": 785232565.0,
-      "latest_share": 13887279872.0,
-      "estimated_flow": -435665950.72,
+      "latest_share": 14453079808.0,
+      "estimated_flow": 435665950.72,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -45,8 +45,8 @@
       "fund_name": "半导体ETF国联安",
       "close": 1.339,
       "amount": 1945067169.0,
-      "latest_share": 17038007296.0,
-      "estimated_flow": 80340000.0,
+      "latest_share": 16978007296.0,
+      "estimated_flow": -80340000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -57,8 +57,8 @@
       "fund_name": "人工智能ETF易方达",
       "close": 2.052,
       "amount": 807496409.361,
-      "latest_share": 11135229696.0,
-      "estimated_flow": 0.0,
+      "latest_share": 11159229696.0,
+      "estimated_flow": 49248000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -69,8 +69,8 @@
       "fund_name": "通信ETF国泰",
       "close": 0.757,
       "amount": 4810678792.0,
-      "latest_share": 66283773952.0,
-      "estimated_flow": 0.0,
+      "latest_share": 67281774080.0,
+      "estimated_flow": 755486096.896,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -81,8 +81,8 @@
       "fund_name": "新能源车ETF华夏",
       "close": 1.72,
       "amount": 171662510.0,
-      "latest_share": 1645384000.0,
-      "estimated_flow": 20640000.0,
+      "latest_share": 1637384000.0,
+      "estimated_flow": -13760000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -93,8 +93,8 @@
       "fund_name": "医药ETF易方达",
       "close": 0.349,
       "amount": 516761665.0,
-      "latest_share": 48853694976.0,
-      "estimated_flow": 156352000.0,
+      "latest_share": 48405694976.0,
+      "estimated_flow": -156352000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -105,8 +105,8 @@
       "fund_name": "消费ETF汇添富",
       "close": 0.625,
       "amount": 240678474.244,
-      "latest_share": 23364628992.0,
-      "estimated_flow": 0.0,
+      "latest_share": 23356628992.0,
+      "estimated_flow": -5000000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -117,8 +117,8 @@
       "fund_name": "军工ETF国泰",
       "close": 1.219,
       "amount": 277735779.0,
-      "latest_share": 5473080064.0,
-      "estimated_flow": 68264000.0,
+      "latest_share": 5417080064.0,
+      "estimated_flow": -68264000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -129,8 +129,8 @@
       "fund_name": "有色金属ETF南方",
       "close": 1.75,
       "amount": 797936585.0,
-      "latest_share": 12672038912.0,
-      "estimated_flow": -13125056.0,
+      "latest_share": 12679538944.0,
+      "estimated_flow": 13125056.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -141,8 +141,8 @@
       "fund_name": "房地产ETF南方",
       "close": 1.177,
       "amount": 78165826.0,
-      "latest_share": 2605097904.0,
-      "estimated_flow": -4708000.0,
+      "latest_share": 2609097904.0,
+      "estimated_flow": 4708000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     }
@@ -150,57 +150,57 @@
   "sector_flow_findings": [
     {
       "column": "brokerage_etf_flow",
-      "value": 390504407.04,
+      "value": -390504407.04,
       "has_value": true
     },
     {
       "column": "bank_insurance_etf_flow",
-      "value": -435665950.72,
+      "value": 435665950.72,
       "has_value": true
     },
     {
       "column": "semiconductor_etf_flow",
-      "value": 80340000.0,
+      "value": -80340000.0,
       "has_value": true
     },
     {
       "column": "ai_computer_etf_flow",
-      "value": 0.0,
+      "value": 49248000.0,
       "has_value": true
     },
     {
       "column": "communication_electronics_etf_flow",
-      "value": 0.0,
+      "value": 755486096.896,
       "has_value": true
     },
     {
       "column": "new_energy_ev_etf_flow",
-      "value": 20640000.0,
+      "value": -13760000.0,
       "has_value": true
     },
     {
       "column": "healthcare_pharma_etf_flow",
-      "value": 156352000.0,
+      "value": -156352000.0,
       "has_value": true
     },
     {
       "column": "consumer_etf_flow",
-      "value": 0.0,
+      "value": -5000000.0,
       "has_value": true
     },
     {
       "column": "defense_military_etf_flow",
-      "value": 68264000.0,
+      "value": -68264000.0,
       "has_value": true
     },
     {
       "column": "resources_materials_etf_flow",
-      "value": -13125056.0,
+      "value": 13125056.0,
       "has_value": true
     },
     {
       "column": "real_estate_infra_etf_flow",
-      "value": -4708000.0,
+      "value": 4708000.0,
       "has_value": true
     }
   ],
@@ -291,8 +291,8 @@
       "fund_name": "通信ETF国泰",
       "close": 0.757,
       "amount": 4810678792.0,
-      "latest_share": 66283773952.0,
-      "estimated_flow": 0.0,
+      "latest_share": 67281774080.0,
+      "estimated_flow": 755486096.896,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -303,8 +303,8 @@
       "fund_name": "半导体ETF国联安",
       "close": 1.339,
       "amount": 1945067169.0,
-      "latest_share": 17038007296.0,
-      "estimated_flow": 80340000.0,
+      "latest_share": 16978007296.0,
+      "estimated_flow": -80340000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -315,8 +315,8 @@
       "fund_name": "券商ETF华宝",
       "close": 0.53,
       "amount": 1253277254.0,
-      "latest_share": 73945235456.0,
-      "estimated_flow": 390504407.04,
+      "latest_share": 73208434688.0,
+      "estimated_flow": -390504407.04,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -327,8 +327,8 @@
       "fund_name": "人工智能ETF易方达",
       "close": 2.052,
       "amount": 807496409.361,
-      "latest_share": 11135229696.0,
-      "estimated_flow": 0.0,
+      "latest_share": 11159229696.0,
+      "estimated_flow": 49248000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -339,8 +339,8 @@
       "fund_name": "有色金属ETF南方",
       "close": 1.75,
       "amount": 797936585.0,
-      "latest_share": 12672038912.0,
-      "estimated_flow": -13125056.0,
+      "latest_share": 12679538944.0,
+      "estimated_flow": 13125056.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -351,8 +351,8 @@
       "fund_name": "银行ETF华宝",
       "close": 0.77,
       "amount": 785232565.0,
-      "latest_share": 13887279872.0,
-      "estimated_flow": -435665950.72,
+      "latest_share": 14453079808.0,
+      "estimated_flow": 435665950.72,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -363,8 +363,8 @@
       "fund_name": "医药ETF易方达",
       "close": 0.349,
       "amount": 516761665.0,
-      "latest_share": 48853694976.0,
-      "estimated_flow": 156352000.0,
+      "latest_share": 48405694976.0,
+      "estimated_flow": -156352000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -375,8 +375,8 @@
       "fund_name": "军工ETF国泰",
       "close": 1.219,
       "amount": 277735779.0,
-      "latest_share": 5473080064.0,
-      "estimated_flow": 68264000.0,
+      "latest_share": 5417080064.0,
+      "estimated_flow": -68264000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -387,8 +387,8 @@
       "fund_name": "消费ETF汇添富",
       "close": 0.625,
       "amount": 240678474.244,
-      "latest_share": 23364628992.0,
-      "estimated_flow": 0.0,
+      "latest_share": 23356628992.0,
+      "estimated_flow": -5000000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -399,8 +399,8 @@
       "fund_name": "新能源车ETF华夏",
       "close": 1.72,
       "amount": 171662510.0,
-      "latest_share": 1645384000.0,
-      "estimated_flow": 20640000.0,
+      "latest_share": 1637384000.0,
+      "estimated_flow": -13760000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -411,85 +411,13 @@
       "fund_name": "房地产ETF南方",
       "close": 1.177,
       "amount": 78165826.0,
-      "latest_share": 2605097904.0,
-      "estimated_flow": -4708000.0,
+      "latest_share": 2609097904.0,
+      "estimated_flow": 4708000.0,
       "enable_candidate": true,
       "blocking_reason": ""
     }
   ],
   "ranked_by_estimated_flow": [
-    {
-      "sector_id": "brokerage",
-      "node_id": "brokerage_etf_flow",
-      "fund_code": "512000",
-      "fund_name": "券商ETF华宝",
-      "close": 0.53,
-      "amount": 1253277254.0,
-      "latest_share": 73945235456.0,
-      "estimated_flow": 390504407.04,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "healthcare_pharma",
-      "node_id": "healthcare_pharma_etf_flow",
-      "fund_code": "512010",
-      "fund_name": "医药ETF易方达",
-      "close": 0.349,
-      "amount": 516761665.0,
-      "latest_share": 48853694976.0,
-      "estimated_flow": 156352000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "semiconductor",
-      "node_id": "semiconductor_etf_flow",
-      "fund_code": "512480",
-      "fund_name": "半导体ETF国联安",
-      "close": 1.339,
-      "amount": 1945067169.0,
-      "latest_share": 17038007296.0,
-      "estimated_flow": 80340000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "defense_military",
-      "node_id": "defense_military_etf_flow",
-      "fund_code": "512660",
-      "fund_name": "军工ETF国泰",
-      "close": 1.219,
-      "amount": 277735779.0,
-      "latest_share": 5473080064.0,
-      "estimated_flow": 68264000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "new_energy_ev",
-      "node_id": "new_energy_ev_etf_flow",
-      "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏",
-      "close": 1.72,
-      "amount": 171662510.0,
-      "latest_share": 1645384000.0,
-      "estimated_flow": 20640000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "ai_computer",
-      "node_id": "ai_computer_etf_flow",
-      "fund_code": "159819",
-      "fund_name": "人工智能ETF易方达",
-      "close": 2.052,
-      "amount": 807496409.361,
-      "latest_share": 11135229696.0,
-      "estimated_flow": 0.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
     {
       "sector_id": "communication_electronics",
       "node_id": "communication_electronics_etf_flow",
@@ -497,44 +425,8 @@
       "fund_name": "通信ETF国泰",
       "close": 0.757,
       "amount": 4810678792.0,
-      "latest_share": 66283773952.0,
-      "estimated_flow": 0.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "consumer",
-      "node_id": "consumer_etf_flow",
-      "fund_code": "159928",
-      "fund_name": "消费ETF汇添富",
-      "close": 0.625,
-      "amount": 240678474.244,
-      "latest_share": 23364628992.0,
-      "estimated_flow": 0.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "real_estate_infra",
-      "node_id": "real_estate_infra_etf_flow",
-      "fund_code": "512200",
-      "fund_name": "房地产ETF南方",
-      "close": 1.177,
-      "amount": 78165826.0,
-      "latest_share": 2605097904.0,
-      "estimated_flow": -4708000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "resources_materials",
-      "node_id": "resources_materials_etf_flow",
-      "fund_code": "512400",
-      "fund_name": "有色金属ETF南方",
-      "close": 1.75,
-      "amount": 797936585.0,
-      "latest_share": 12672038912.0,
-      "estimated_flow": -13125056.0,
+      "latest_share": 67281774080.0,
+      "estimated_flow": 755486096.896,
       "enable_candidate": true,
       "blocking_reason": ""
     },
@@ -545,14 +437,122 @@
       "fund_name": "银行ETF华宝",
       "close": 0.77,
       "amount": 785232565.0,
-      "latest_share": 13887279872.0,
-      "estimated_flow": -435665950.72,
+      "latest_share": 14453079808.0,
+      "estimated_flow": 435665950.72,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "ai_computer",
+      "node_id": "ai_computer_etf_flow",
+      "fund_code": "159819",
+      "fund_name": "人工智能ETF易方达",
+      "close": 2.052,
+      "amount": 807496409.361,
+      "latest_share": 11159229696.0,
+      "estimated_flow": 49248000.0,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "resources_materials",
+      "node_id": "resources_materials_etf_flow",
+      "fund_code": "512400",
+      "fund_name": "有色金属ETF南方",
+      "close": 1.75,
+      "amount": 797936585.0,
+      "latest_share": 12679538944.0,
+      "estimated_flow": 13125056.0,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "node_id": "real_estate_infra_etf_flow",
+      "fund_code": "512200",
+      "fund_name": "房地产ETF南方",
+      "close": 1.177,
+      "amount": 78165826.0,
+      "latest_share": 2609097904.0,
+      "estimated_flow": 4708000.0,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "consumer",
+      "node_id": "consumer_etf_flow",
+      "fund_code": "159928",
+      "fund_name": "消费ETF汇添富",
+      "close": 0.625,
+      "amount": 240678474.244,
+      "latest_share": 23356628992.0,
+      "estimated_flow": -5000000.0,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "node_id": "new_energy_ev_etf_flow",
+      "fund_code": "515030",
+      "fund_name": "新能源车ETF华夏",
+      "close": 1.72,
+      "amount": 171662510.0,
+      "latest_share": 1637384000.0,
+      "estimated_flow": -13760000.0,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "defense_military",
+      "node_id": "defense_military_etf_flow",
+      "fund_code": "512660",
+      "fund_name": "军工ETF国泰",
+      "close": 1.219,
+      "amount": 277735779.0,
+      "latest_share": 5417080064.0,
+      "estimated_flow": -68264000.0,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "semiconductor",
+      "node_id": "semiconductor_etf_flow",
+      "fund_code": "512480",
+      "fund_name": "半导体ETF国联安",
+      "close": 1.339,
+      "amount": 1945067169.0,
+      "latest_share": 16978007296.0,
+      "estimated_flow": -80340000.0,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "node_id": "healthcare_pharma_etf_flow",
+      "fund_code": "512010",
+      "fund_name": "医药ETF易方达",
+      "close": 0.349,
+      "amount": 516761665.0,
+      "latest_share": 48405694976.0,
+      "estimated_flow": -156352000.0,
+      "enable_candidate": true,
+      "blocking_reason": ""
+    },
+    {
+      "sector_id": "brokerage",
+      "node_id": "brokerage_etf_flow",
+      "fund_code": "512000",
+      "fund_name": "券商ETF华宝",
+      "close": 0.53,
+      "amount": 1253277254.0,
+      "latest_share": 73208434688.0,
+      "estimated_flow": -390504407.04,
       "enable_candidate": true,
       "blocking_reason": ""
     }
   ],
   "inspector_id": "akshare_etf_bridge_export_inspector",
-  "generated_at": "2026-07-08T11:37:37.706306+00:00",
+  "generated_at": "2026-07-08T11:55:54.353179+00:00",
   "row_csv": "data/provider_exports/a_share_etf_daily.csv",
   "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv"
 }

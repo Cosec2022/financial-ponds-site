@@ -137,6 +137,12 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "index_explainability", "node", [
+    "src/tools/index_explainability.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
   summary.status = "ok";
   summary.finished_at = new Date().toISOString();
   console.log(JSON.stringify(summary, null, 2));

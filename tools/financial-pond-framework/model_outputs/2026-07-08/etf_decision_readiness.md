@@ -6,14 +6,14 @@ Guidance state: not_ready
 
 | Rank | Sector | Readiness | Action | Blockers |
 | --- | --- | ---: | --- | --- |
-| 1 | A-share Brokerage Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
-| 2 | A-share Semiconductor Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
-| 3 | A-share Bank and Insurance Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
-| 4 | A-share Healthcare and Pharma Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
-| 5 | A-share Communication and Electronics Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
-| 6 | A-share Consumer Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
-| 7 | A-share AI and Computer Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
-| 8 | A-share Resources and Materials Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
+| 1 | A-share Bank and Insurance Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
+| 2 | A-share Communication and Electronics Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
+| 3 | A-share Healthcare and Pharma Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
+| 4 | A-share AI and Computer Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
+| 5 | A-share Consumer Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
+| 6 | A-share Resources and Materials Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
+| 7 | A-share Brokerage Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
+| 8 | A-share Semiconductor Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
 | 9 | A-share Defense and Military Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
 | 10 | A-share New Energy Vehicle Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |
 | 11 | A-share Real Estate and Infrastructure Pool | 32 | 数据非真实，禁止指导 | non_real_flow_source, valuation_manual_seed, fundamental_manual_seed |

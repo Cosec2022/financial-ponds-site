@@ -58,6 +58,9 @@ const state = {
   signalAttribution: null,
   watchlistState: null,
   decisionGateLedger: null,
+  indexExplainability: null,
+  selectedIndexId: null,
+  indexExplainFilter: "",
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -1350,6 +1353,134 @@ function renderGateLedgerPanel() {
   `;
 }
 
+function renderIndexExplainPanel() {
+  const panel = document.getElementById("indexExplainPanel");
+  const statusBadge = document.getElementById("indexExplainStatus");
+  const explainability = state.indexExplainability;
+  if (!panel || !statusBadge) return;
+
+  if (!explainability || explainability.status !== "index_explainability_available") {
+    statusBadge.textContent = "等待解释";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无指数详情解释。等待 index_explainability.json 生成。</div>`;
+    return;
+  }
+
+  const indexes = explainability.indexes ?? [];
+  const missingCount = explainability.missing_explanations?.length ?? 0;
+  const statusClass = missingCount ? "warm" : "positive";
+  const important = importantIndexIds(indexes);
+  const filter = state.indexExplainFilter.trim().toLowerCase();
+  const filtered = indexes.filter((item) => {
+    const haystack = `${item.index_id} ${item.label} ${item.category} ${item.related_sector_name ?? ""}`.toLowerCase();
+    return !filter || haystack.includes(filter);
+  }).slice(0, 24);
+  const selected = indexes.find((item) => item.index_id === state.selectedIndexId)
+    ?? indexes.find((item) => item.index_id === important[0])
+    ?? indexes[0];
+  if (selected && !state.selectedIndexId) state.selectedIndexId = selected.index_id;
+
+  statusBadge.textContent = `${indexes.length} 个解释`;
+  statusBadge.className = `pill ${statusClass}`;
+
+  panel.innerHTML = `
+    <article class="index-explain-card headline ${statusClass}">
+      <span>解释边界</span>
+      <strong>解释指数来源和公式，不是交易指令。</strong>
+      <p>${explainability.headline ?? "等待解释摘要。"}</p>
+    </article>
+    <article class="index-explain-card ${statusClass}">
+      <span>缺失解释</span>
+      <strong>${missingCount}</strong>
+      <p>${missingCount ? "有指标缺少公式注册，需要补 registry。" : "所有生成指标都有公式注册。"}</p>
+    </article>
+    <article class="index-explain-card table-card">
+      <span>默认重要指数</span>
+      <div class="index-list">
+        ${important.map((id) => indexOptionTemplate(indexes.find((item) => item.index_id === id), selected?.index_id)).join("")}
+      </div>
+    </article>
+    <article class="index-explain-card table-card">
+      <span>选择 / 搜索</span>
+      <input id="indexExplainSearch" class="index-search" type="search" value="${state.indexExplainFilter}" placeholder="Search index id, category, sector">
+      <div class="index-list">
+        ${filtered.map((item) => indexOptionTemplate(item, selected?.index_id)).join("")}
+      </div>
+    </article>
+    <article class="index-explain-card detail-card">
+      <span>详情</span>
+      ${indexExplainDetailTemplate(selected)}
+    </article>
+  `;
+
+  panel.querySelectorAll("[data-index-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedIndexId = button.dataset.indexId;
+      renderAll();
+      document.querySelector(".index-explain-panel")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+  panel.querySelector("#indexExplainSearch")?.addEventListener("input", (event) => {
+    state.indexExplainFilter = event.target.value;
+    renderIndexExplainPanel();
+  });
+}
+
+function importantIndexIds(indexes) {
+  const ids = [
+    "readiness.guidance_state",
+    "readiness.true_flow_coverage",
+    indexes.find((item) => item.index_id.startsWith("etf.estimated_flow."))?.index_id,
+    indexes.find((item) => item.index_id.startsWith("daily.score."))?.index_id,
+    "decision_gate.counts",
+    "watchlist.count.confirmed_watch",
+    "maturity.average_progress"
+  ];
+  return [...new Set(ids.filter((id) => indexes.some((item) => item.index_id === id)))];
+}
+
+function indexOptionTemplate(item, selectedId) {
+  if (!item) return "";
+  return `
+    <button class="index-option ${item.index_id === selectedId ? "active" : ""}" data-index-id="${item.index_id}" type="button">
+      <b>${item.label}</b>
+      <small>${item.display_value ?? "--"} · ${item.category} · ${item.index_id}</small>
+    </button>
+  `;
+}
+
+function indexExplainDetailTemplate(item) {
+  if (!item) return `<div class="empty">暂无可选指标。</div>`;
+  return `
+    <div class="explain-detail-grid">
+      ${explainBox("Value", `<b>${item.display_value ?? "--"}</b><br><small>${item.index_id}</small>`)}
+      ${explainBox("Formula", `<b>${item.formula_id}</b><p>${item.formula?.plain_language ?? "--"}</p><code>${item.formula?.formula_human ?? "--"}</code>`)}
+      ${explainBox("Source files", listTemplate(item.source_files))}
+      ${explainBox("Source fields", listTemplate(item.source_fields))}
+      ${explainBox("Raw inputs", codeBlock(item.inputs))}
+      ${explainBox("Components", codeBlock(item.components))}
+      ${explainBox("Calculation steps", listTemplate(item.calculation_steps))}
+      ${explainBox("Data reality", codeBlock(item.data_reality))}
+      ${explainBox("Caveats", listTemplate(item.caveats))}
+      ${explainBox("Execution boundary", `<p>${item.execution_boundary ?? "--"}</p>`)}
+    </div>
+  `;
+}
+
+function explainBox(title, body) {
+  return `<div class="explain-box"><b>${title}</b>${body}</div>`;
+}
+
+function listTemplate(items) {
+  const rows = (items ?? []).filter(Boolean);
+  if (!rows.length) return `<p class="muted">--</p>`;
+  return `<ul class="compact-list">${rows.map((item) => `<li>${item}</li>`).join("")}</ul>`;
+}
+
+function codeBlock(value) {
+  return `<pre><code>${JSON.stringify(value ?? {}, null, 2)}</code></pre>`;
+}
+
 function gateCounts(gates) {
   return gates.reduce((counts, gateItem) => {
     const key = gateItem.status ?? "unknown";
@@ -2400,6 +2531,7 @@ function renderAll() {
   renderAttributionPanel();
   renderWatchlistPanel();
   renderGateLedgerPanel();
+  renderIndexExplainPanel();
   renderPondMap();
   renderSelectedSummary();
   renderFlowDetail();
@@ -2427,6 +2559,7 @@ async function loadAll() {
   state.signalAttribution = await readJson("./data/sector_signal_attribution.json", null);
   state.watchlistState = await readJson("./data/sector_watchlist_state.json", null);
   state.decisionGateLedger = await readJson("./data/decision_gate_ledger.json", null);
+  state.indexExplainability = await readJson("./data/index_explainability.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

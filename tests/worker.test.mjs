@@ -19,6 +19,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /行业信号归因/);
   assert.match(html, /观察清单状态/);
   assert.match(html, /决策闸门账本/);
+  assert.match(html, /指数详情解释/);
   assert.match(html, /流入流出算法/);
   assert.match(html, /节点反馈 \/ 修改/);
 });
@@ -144,6 +145,14 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(gateLedgerJson.status, "gate_ledger_available");
   assert.ok(Array.isArray(gateLedgerJson.gates));
   assert.ok(gateLedgerJson.gates.every((gate) => gate.reading && gate.next_action));
+
+  const explainability = await worker.fetch(request("/data/index_explainability.json"), {});
+  assert.equal(explainability.status, 200);
+  const explainabilityJson = await explainability.json();
+  assert.equal(explainabilityJson.module_id, "index_explainability_v0_10_47");
+  assert.equal(explainabilityJson.status, "index_explainability_available");
+  assert.ok(explainabilityJson.indexes.length >= 1);
+  assert.ok(explainabilityJson.indexes.every((item) => item.source_files.length));
 
   const pondMap = await worker.fetch(request("/data/pond_map.json"), {});
   assert.equal(pondMap.status, 200);

@@ -34,7 +34,8 @@ const [
   maturity,
   attribution,
   watchlist,
-  gateLedger
+  gateLedger,
+  explainability
 ] = await Promise.all([
   readJson("financial-pond/data/sector_flow_review.json"),
   readJson("financial-pond/data/sector_rotation_history.json"),
@@ -44,7 +45,8 @@ const [
   readJson("financial-pond/data/module_maturity_audit.json"),
   readJson("financial-pond/data/sector_signal_attribution.json"),
   readJson("financial-pond/data/sector_watchlist_state.json"),
-  readJson("financial-pond/data/decision_gate_ledger.json")
+  readJson("financial-pond/data/decision_gate_ledger.json"),
+  readJson("financial-pond/data/index_explainability.json")
 ]);
 
 const asOf = readiness?.as_of ?? daily?.as_of ?? flow?.as_of ?? new Date().toISOString().slice(0, 10);
@@ -118,6 +120,14 @@ const summary = {
   })),
   gate_next_unlock_sequence: gateLedger?.next_unlock_sequence ?? [],
   provider_ready_but_execution_blocked: gateLedger?.state_consistency?.provider_ready_but_execution_blocked ?? null,
+  explainability_status: explainability?.status ?? null,
+  explained_index_count: explainability?.indexes?.length ?? 0,
+  missing_explanations_count: explainability?.missing_explanations?.length ?? 0,
+  top_missing_explanations: (explainability?.missing_explanations ?? []).slice(0, 5).map((item) => ({
+    index_id: item.index_id,
+    formula_id: item.formula_id,
+    status: item.status
+  })),
   blockers,
   next_action: daily?.next_unlock?.label ?? readiness?.progress?.next_unlock?.label ?? maturity?.recommended_mainline?.next_actions?.[0] ?? null
 };

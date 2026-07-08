@@ -5,10 +5,19 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.46`
+Package version: `0.10.47`
 
 Purpose of this version:
 
+- add the Index Explainability / Score Breakdown layer as `npm run index:explain`
+- add `src/core/formula_registry.mjs` for registered formulas behind displayed indexes
+- write `index_explainability.json` and `.md` from flow review, rotation history, module review, ETF readiness, daily analysis, ETF flow leaderboard, signal attribution, watchlist state, decision gate ledger, maturity audit, data reality audit, provider history, provider CSV exports, and optional graph scores
+- publish `financial-pond/data/index_explainability.json`
+- add a homepage "指数详情解释" panel with the boundary "解释指数来源和公式，不是交易指令。"
+- explain displayed readiness, score, rank, watchlist, gate, and maturity numbers with source files, fields, raw inputs, formula, components, calculation steps, data reality, caveats, and execution boundary
+- report `formula_registry_missing` if a displayed index lacks a registered formula
+- update `fp:summary` with explainability status, explained index count, missing explanation count, and top missing explanations
+- keep v0.10.47 strictly explainability-focused; it does not unlock ETF execution advice
 - add the Decision Gate Ledger / Readiness Explanation layer as `npm run decision:gates`
 - write `decision_gate_ledger.json` and `.md` from ETF readiness, watchlist state, attribution, ETF flow leaderboard, daily analysis, rotation history, module review, flow review, data reality audit, provider history, and optional graph scores
 - publish `financial-pond/data/decision_gate_ledger.json`

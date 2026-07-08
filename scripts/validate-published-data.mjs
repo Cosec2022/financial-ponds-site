@@ -18,6 +18,7 @@ const requiredFiles = [
   ["sector_signal_attribution.json", (json) => json.status === "attribution_available" && json.module_id === "sector_signal_attribution_v0_10_44" && Array.isArray(json.rows) && json.rows.every((row) => Boolean(row.manual_review_boundary))],
   ["sector_watchlist_state.json", (json) => json.status === "watchlist_state_available" && json.module_id === "sector_watchlist_state_v0_10_45" && Array.isArray(json.rows) && Boolean(json.groups)],
   ["decision_gate_ledger.json", (json) => json.status === "gate_ledger_available" && json.module_id === "decision_gate_ledger_v0_10_46" && Array.isArray(json.gates) && json.gates.every((gate) => gate.reading && gate.next_action)],
+  ["index_explainability.json", (json) => json.status === "index_explainability_available" && json.module_id === "index_explainability_v0_10_47" && Array.isArray(json.indexes) && json.indexes.every((item) => item.source_files?.length && (Object.keys(item.inputs ?? {}).length || item.caveats?.length))],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];
