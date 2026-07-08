@@ -27,10 +27,12 @@ const state = {
   outcomes: null,
   explainability: null,
   vault: null,
+  readiness: null,
   pools: [],
   view: "today",
   selectedPoolId: null,
   selectedMetric: "flow",
+  traceOpen: false,
   query: ""
 };
 
@@ -75,6 +77,17 @@ function fmt(value, digits = 2) {
 function statusOf(signal) {
   const raw = firstDefined(signal?.reality, signal?.status, signal?.data_reality, signal?.trace_status, "missing");
   return REALITY_SHORT[raw] ?? raw;
+}
+
+function displaySignalStatus(signal, key) {
+  const reality = fullStatusOf(signal);
+  if (reality === "real_provider") return "real";
+  if (key === "flow" && reality === "real_provider_derived" && numberOrNull(signalValue(signal)) !== null) return "estimated";
+  if (reality === "real_provider_derived") return "derived";
+  if (reality === "manual_seed") return "derived";
+  if (reality === "insufficient_history") return "insufficient";
+  if (reality === "planned") return "planned";
+  return "missing";
 }
 
 function fullStatusOf(signal) {
@@ -229,7 +242,7 @@ function buildTrace(pool, metric) {
     calculation: asArray(found.calculation_steps).length ? found.calculation_steps : generatedTrace(pool, metric).calculation,
     sources: asArray(found.source_files).length ? found.source_files : ["index_explainability.json"],
     reality: firstDefined(found.data_reality?.real_provider && "real_provider", found.data_reality?.manual_seed && "manual_seed", fullStatusOf(pool.signals?.[metric])),
-    boundary: found.execution_boundary ?? pool.vector.boundary ?? "observe_only"
+    boundary: pool.vector.boundary ?? "observe_only"
   };
 }
 
@@ -242,14 +255,55 @@ function badgeClass(status) {
   return `badge ${statusOf({ reality: status })}`;
 }
 
+function boundaryLabel(value) {
+  return value === "blocked" ? "observe_only / blocked boundary" : (value ?? "observe_only");
+}
+
+function observationState() {
+  return "observe_only";
+}
+
+function poolDataStatus(pool) {
+  const flow = pool.signals.flow;
+  const flowStatus = displaySignalStatus(flow, "flow");
+  if (flowStatus === "real") return "real";
+  if (flowStatus === "estimated") return "estimated";
+  if (SIGNAL_ORDER.some((key) => displaySignalStatus(pool.signals[key], key) === "derived")) return "derived";
+  return "missing";
+}
+
+function importantGaps(pool) {
+  const gaps = [];
+  const status = (key) => displaySignalStatus(pool.signals[key], key);
+  if (!["real", "estimated"].includes(status("flow"))) gaps.push("missing real flow");
+  if (!["real", "estimated", "derived"].includes(status("price_momentum"))) gaps.push("missing momentum");
+  if (!["real", "estimated", "derived"].includes(status("liquidity"))) gaps.push("missing liquidity");
+  if (status("rotation") === "insufficient") gaps.push("rotation insufficient");
+  if (["planned", "missing"].includes(status("valuation")) || ["planned", "missing"].includes(status("fundamental"))) gaps.push("valuation/fundamental planned");
+  if (status("risk") === "derived") gaps.push("risk derived");
+  return gaps;
+}
+
+function renderSummaryStrip() {
+  const el = document.getElementById("summaryStrip");
+  if (!el) return;
+  const pending = asArray(state.outcomes?.pending).length;
+  const coverage = firstDefined(state.readiness?.gates?.true_flow_coverage, state.snapshot?.true_flow_coverage, null);
+  el.innerHTML = `
+    <article class="summary-card"><span>Observation State</span><strong>${observationState()}</strong></article>
+    <article class="summary-card"><span>Real Flow Coverage</span><strong>${pct(coverage)}</strong></article>
+    <article class="summary-card"><span>Observed Pools</span><strong>${state.snapshot?.observed_pool_count ?? state.pools.length}</strong></article>
+    <article class="summary-card"><span>Pending Reviews</span><strong>${pending}</strong></article>
+  `;
+}
+
 function renderHeader() {
   const asOf = state.snapshot?.as_of ?? state.vault?.as_of ?? "--";
   setText("asOfBadge", `as_of ${asOf}`);
-  setText("poolCountBadge", `pools ${state.pools.length}`);
+  setText("poolCountBadge", `observed_pool_count ${state.snapshot?.observed_pool_count ?? state.pools.length}`);
   const pending = asArray(state.outcomes?.pending).length;
-  setText("pendingBadge", `pending ${pending}`);
-  const execution = firstDefined(state.snapshot?.execution_state, state.snapshot?.boundary, "blocked");
-  setText("executionBadge", execution);
+  setText("pendingBadge", `pending_outcome_count ${pending}`);
+  setText("executionBadge", boundaryLabel(firstDefined(state.snapshot?.execution_state, state.snapshot?.boundary, "observe_only")));
 }
 
 function renderPools() {
@@ -263,41 +317,22 @@ function renderPools() {
   el.innerHTML = pools.map((pool) => {
     const active = pool.id === state.selectedPoolId ? " active" : "";
     const vector = pool.vector;
-    const chips = SIGNAL_ORDER.map((key) => {
-      const signal = pool.signals[key];
-      const status = statusOf(signal);
-      const label = SIGNAL_LABELS[key] ?? key;
-      return `<button class="signal-chip ${status}" type="button" data-pool="${escapeHtml(pool.id)}" data-metric="${key}" title="trace: ${escapeHtml(traceIdFor(pool, key))}">${label} ${status}</button>`;
-    }).join("");
+    const dataStatus = poolDataStatus(pool);
     return `
-      <article class="pool-card${active}" data-pool-card="${escapeHtml(pool.id)}">
-        <div class="pool-title">
-          <div class="pool-name">${escapeHtml(pool.label)}</div>
-          <span class="badge muted">${escapeHtml(pool.watch_state)}</span>
-        </div>
-        <div class="pool-meta">
-          <span>${escapeHtml(DIRECTION_LABEL[vector.direction] ?? vector.direction)}</span>
-          <span>强度 ${pct(vector.magnitude)}</span>
-          <span>置信 ${fmt(vector.confidence)}</span>
-        </div>
-        <div class="signal-chips">${chips}</div>
-      </article>
+      <button class="pool-row${active}" data-pool-card="${escapeHtml(pool.id)}" type="button">
+        <span class="pool-row-name">${escapeHtml(pool.label)}</span>
+        <span>${escapeHtml(DIRECTION_LABEL[vector.direction] ?? vector.direction)}</span>
+        <span>${pct(vector.magnitude)}</span>
+        <span>${fmt(vector.confidence)}</span>
+        <span class="badge ${dataStatus}">${dataStatus}</span>
+      </button>
     `;
   }).join("");
 
   el.querySelectorAll("[data-pool-card]").forEach((card) => {
-    card.addEventListener("click", (event) => {
-      const metricButton = event.target.closest("[data-metric]");
-      if (metricButton) return;
+    card.addEventListener("click", () => {
       state.selectedPoolId = card.getAttribute("data-pool-card");
-      render();
-    });
-  });
-  el.querySelectorAll("[data-metric]").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      state.selectedPoolId = button.getAttribute("data-pool");
-      state.selectedMetric = button.getAttribute("data-metric");
+      state.traceOpen = false;
       render();
     });
   });
@@ -306,26 +341,51 @@ function renderPools() {
 function renderToday(pool) {
   if (!pool) return `<div class="empty">observation_snapshot not loaded</div>`;
   const v = pool.vector;
+  const gaps = importantGaps(pool);
   return `
     <div class="panel-head">
       <div>
         <p class="eyebrow">Today</p>
         <h2>${escapeHtml(pool.label)}</h2>
       </div>
-      <span class="badge muted">${escapeHtml(pool.watch_state)}</span>
+      <span class="badge muted">${escapeHtml(boundaryLabel(v.boundary))}</span>
     </div>
-    <div class="kpi-grid">
-      <button class="kpi metric-button" data-vector-metric="flow"><span>F</span><strong>${fmt(v.flow)}</strong></button>
-      <button class="kpi metric-button" data-vector-metric="direction"><span>Direction</span><strong>${escapeHtml(v.direction)}</strong></button>
-      <button class="kpi metric-button" data-vector-metric="magnitude"><span>Magnitude</span><strong>${pct(v.magnitude)}</strong></button>
-      <button class="kpi metric-button" data-vector-metric="confidence"><span>Confidence</span><strong>${fmt(v.confidence)}</strong></button>
-    </div>
+    <section class="selected-summary">
+      <article><span>F</span><strong>${fmt(v.flow)}</strong></article>
+      <article><span>direction</span><strong>${escapeHtml(v.direction)}</strong></article>
+      <article><span>magnitude</span><strong>${pct(v.magnitude)}</strong></article>
+      <article><span>confidence</span><strong>${fmt(v.confidence)}</strong></article>
+      <article><span>boundary</span><strong>${escapeHtml(boundaryLabel(v.boundary))}</strong></article>
+    </section>
+    <section class="health-section">
+      <div class="section-title">Signal Health</div>
+      <div class="signal-health-grid">
+        ${SIGNAL_ORDER.map((key) => {
+          const status = displaySignalStatus(pool.signals[key], key);
+          return `<button class="health-cell ${status}" data-signal-metric="${key}" type="button">
+            <span>${SIGNAL_LABELS[key]}</span>
+            <strong>${status}</strong>
+          </button>`;
+        }).join("")}
+      </div>
+    </section>
+    <section class="gap-section">
+      <div class="section-title">Data Gap</div>
+      <div class="gap-list">
+        ${gaps.length ? gaps.map((gap) => `<span>${escapeHtml(gap)}</span>`).join("") : `<span>no priority data gap</span>`}
+      </div>
+    </section>
+  `;
+}
+
+function renderRawSignalTable(pool) {
+  return `
     <div class="table-wrap">
       <table>
         <thead><tr><th>Signal</th><th>Value</th><th>Status</th><th>Trace</th></tr></thead>
         <tbody>${SIGNAL_ORDER.map((key) => {
           const signal = pool.signals[key];
-          const status = statusOf(signal);
+          const status = displaySignalStatus(signal, key);
           return `<tr>
             <td><button class="metric-button" data-signal-metric="${key}">${SIGNAL_LABELS[key] ?? key}</button></td>
             <td>${fmt(signalValue(signal))}</td>
@@ -347,7 +407,7 @@ function renderMatrix() {
         <tbody>${state.pools.map((pool) => `<tr>
           <td><button class="row-button" data-row-pool="${escapeHtml(pool.id)}">${escapeHtml(pool.label)}</button></td>
           ${SIGNAL_ORDER.map((key) => {
-            const status = statusOf(pool.signals[key]);
+            const status = displaySignalStatus(pool.signals[key], key);
             return `<td><button class="signal-chip ${status}" data-row-pool="${escapeHtml(pool.id)}" data-row-metric="${key}" type="button">${status}</button></td>`;
           }).join("")}
         </tr>`).join("")}</tbody>
@@ -372,7 +432,7 @@ function renderVector() {
             <td>${v.velocity === null ? escapeHtml(v.velocity_status ?? "--") : fmt(v.velocity)}</td>
             <td>${v.acceleration === null ? escapeHtml(v.acceleration_status ?? "--") : fmt(v.acceleration)}</td>
             <td>${fmt(v.confidence)}</td>
-            <td>${escapeHtml(v.boundary)}</td>
+            <td>${escapeHtml(boundaryLabel(v.boundary))}</td>
           </tr>`;
         }).join("")}</tbody>
       </table>
@@ -418,6 +478,7 @@ function renderMain() {
   el.querySelectorAll("[data-signal-metric]").forEach((button) => {
     button.addEventListener("click", () => {
       state.selectedMetric = button.getAttribute("data-signal-metric");
+      state.traceOpen = true;
       render();
     });
   });
@@ -425,6 +486,7 @@ function renderMain() {
     button.addEventListener("click", () => {
       const metric = button.getAttribute("data-vector-metric");
       state.selectedMetric = metric === "flow" ? "flow" : metric;
+      state.traceOpen = true;
       render();
     });
   });
@@ -433,6 +495,7 @@ function renderMain() {
       state.selectedPoolId = node.getAttribute("data-row-pool");
       const metric = node.getAttribute("data-row-metric");
       if (metric) state.selectedMetric = metric;
+      state.traceOpen = Boolean(metric);
       render();
     });
   });
@@ -442,9 +505,16 @@ function renderTrace() {
   const pool = selectedPool();
   const el = document.getElementById("traceDrawer");
   if (!pool || !el) {
-    if (el) el.innerHTML = `<div class="empty">trace missing</div>`;
+    if (el) el.innerHTML = `<div class="empty">点击指标查看公式溯源</div>`;
     return;
   }
+  if (!state.traceOpen) {
+    setText("traceStatus", "secondary");
+    el.classList.add("trace-empty");
+    el.innerHTML = `点击指标查看公式溯源`;
+    return;
+  }
+  el.classList.remove("trace-empty");
   const metric = SIGNAL_ORDER.includes(state.selectedMetric) ? state.selectedMetric : "flow";
   const trace = buildTrace(pool, metric);
   setText("traceStatus", trace.trace_status ?? "missing");
@@ -487,7 +557,7 @@ function renderTrace() {
     </section>
     <section class="trace-block">
       <div class="trace-label">Boundary</div>
-      <span>${escapeHtml(trace.boundary ?? "observe_only")}</span>
+      <span>${escapeHtml(boundaryLabel(trace.boundary ?? "observe_only"))}</span>
     </section>
   `;
 }
@@ -500,6 +570,7 @@ function renderTabs() {
 
 function render() {
   renderHeader();
+  renderSummaryStrip();
   renderTabs();
   renderPools();
   renderMain();
@@ -516,16 +587,18 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
-    readJson("./data/daily_data_vault.json", null)
+    readJson("./data/daily_data_vault.json", null),
+    readJson("./data/etf_decision_readiness.json", null)
   ]);
   state.snapshot = snapshot;
   state.outcomes = outcomes;
   state.explainability = explainability;
   state.vault = vault;
+  state.readiness = readiness;
   state.pools = extractPools(snapshot);
   state.selectedPoolId = state.pools[0]?.id ?? null;
 

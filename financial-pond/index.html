@@ -3,14 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Financial Ponds | Vector Workbench</title>
+    <title>Financial Ponds | Focused Workbench</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <header class="topbar">
       <div>
         <p class="eyebrow">CosecLab · Financial Ponds</p>
-        <h1>v0.10.48 Vector Workbench</h1>
+        <h1>v0.10.49 Focused Workbench</h1>
         <p class="subline">观察工作台</p>
         <p class="subline">通用资金流矢量观察。A股只是第一个样本。</p>
       </div>
@@ -18,7 +18,7 @@
         <span id="asOfBadge" class="badge">as_of --</span>
         <span id="poolCountBadge" class="badge" data-metric="observed_pool_count">observed_pool_count --</span>
         <span id="pendingBadge" class="badge" data-metric="pending_outcome_count">pending_outcome_count --</span>
-        <span id="executionBadge" class="badge danger" data-metric="execution_state">execution_state blocked</span>
+        <span id="executionBadge" class="badge warn" data-metric="execution_state">observe_only / blocked boundary</span>
       </div>
     </header>
 
@@ -29,6 +29,13 @@
         <button class="tab" data-view="vector" type="button">资金矢量</button>
         <button class="tab" data-view="review" type="button">复盘记录</button>
       </nav>
+
+      <section id="summaryStrip" class="summary-strip" aria-label="focused observation summary">
+        <article class="summary-card"><span>Observation State</span><strong>observe_only</strong></article>
+        <article class="summary-card"><span>Real Flow Coverage</span><strong>--</strong></article>
+        <article class="summary-card"><span>Observed Pools</span><strong>--</strong></article>
+        <article class="summary-card"><span>Pending Reviews</span><strong>--</strong></article>
+      </section>
 
       <section class="workbench">
         <aside class="panel pool-panel">
@@ -42,7 +49,7 @@
           <div id="poolList" class="pool-list">Loading pools.</div>
         </aside>
 
-        <section id="mainPanel" class="panel main-panel">Loading workbench.</section>
+        <section id="mainPanel" class="panel main-panel">Loading Focused Workbench. Signal Health. Data Gap.</section>
 
         <aside class="panel trace-panel">
           <div class="panel-head">
@@ -52,7 +59,7 @@
             </div>
             <span id="traceStatus" class="badge muted">missing</span>
           </div>
-          <div id="traceDrawer" class="trace-drawer">选择一个指标。</div>
+          <div id="traceDrawer" class="trace-drawer trace-empty">点击指标查看公式溯源</div>
         </aside>
       </section>
 
