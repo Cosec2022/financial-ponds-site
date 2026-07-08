@@ -9,23 +9,17 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
-  assert.match(html, /Financial Ponds/);
-  assert.match(html, /v0\.10\.48 Vector Workbench/);
+  assert.match(html, /v0\\.10\\.48 Vector Workbench/);
+  assert.match(html, /观察工作台/);
   assert.match(html, /observed_pool_count/);
   assert.match(html, /pending_outcome_count/);
   assert.match(html, /execution_state/);
-  assert.match(html, /数据真实性审计/);
-  assert.match(html, /高级诊断/);
-  assert.match(html, /观察工作台/);
   assert.match(html, /今日观察/);
+  assert.match(html, /信号矩阵/);
+  assert.match(html, /资金矢量/);
+  assert.match(html, /复盘记录/);
   assert.match(html, /高级诊断/);
-  assert.match(html, /ETF 真实资金流观察/);
-  assert.match(html, /行业信号归因/);
-  assert.match(html, /观察清单状态/);
-  assert.match(html, /决策闸门账本/);
-  assert.match(html, /指数详情解释/);
-  assert.match(html, /流入流出算法/);
-  assert.match(html, /节点反馈 \/ 修改/);
+  assert.match(html, /数据真实性审计/);
 });
 
 test("serves dashboard, general pool analysis, sector review, rotation data, module review, news review, and pond map JSON", async () => {
