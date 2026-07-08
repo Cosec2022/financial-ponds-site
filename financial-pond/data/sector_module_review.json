@@ -1,55 +1,23 @@
 {
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T11:55:55.555Z",
+  "generated_at": "2026-07-08T13:18:55.917Z",
   "module_id": "sector_module_review_v0_1",
   "input_contract_id": "sector_module_profiles_v0_1",
   "status": "module_review_available",
-  "headline": "三模块已分离：2 个候选，5 个风险观察。当前优先观察 A-share Bank and Insurance Pool：低估且有资金。",
+  "headline": "三模块已分离：0 个候选，5 个风险观察。当前优先观察 A-share Home Appliances Pool：等待确认。",
   "module_averages": {
     "valuation_position_score": -0.0603,
     "fundamental_score": -0.0097,
-    "flow_price_score": 0.0721
+    "flow_price_score": 0.0585
   },
   "counts": {
     "sectors": 31,
     "provider_mapped_representative_sectors": 11,
     "framework_only_sectors": 20,
-    "wait_for_confirmation": 24,
-    "cheap_with_flow": 1,
-    "balanced_candidate": 1,
+    "wait_for_confirmation": 26,
     "value_trap_risk": 5
   },
   "leaders": [
-    {
-      "sector_id": "bank_insurance",
-      "name": "A-share Bank and Insurance Pool",
-      "valuation_label": "cheap",
-      "valuation_position_score": -0.18,
-      "fundamental_label": "stable",
-      "fundamental_score": 0.02,
-      "flow_price_label": "constructive_inflow_bias",
-      "flow_price_score": 0.2142,
-      "decision": {
-        "label": "cheap_with_flow",
-        "text": "低估且有资金",
-        "reading": "估值有安全边际，市场开始确认，但基本面仍需继续看。"
-      }
-    },
-    {
-      "sector_id": "communication_electronics",
-      "name": "A-share Communication and Electronics Pool",
-      "valuation_label": "expensive",
-      "valuation_position_score": 0.22,
-      "fundamental_label": "improving",
-      "fundamental_score": 0.18,
-      "flow_price_label": "constructive_inflow_bias",
-      "flow_price_score": 0.358,
-      "decision": {
-        "label": "balanced_candidate",
-        "text": "合理且改善",
-        "reading": "没有明显估值便宜，但基本面和资金量价较顺。"
-      }
-    },
     {
       "sector_id": "home_appliances",
       "name": "A-share Home Appliances Pool",
@@ -59,6 +27,36 @@
       "fundamental_score": 0.1,
       "flow_price_label": "neutral",
       "flow_price_score": 0.0663,
+      "decision": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      }
+    },
+    {
+      "sector_id": "bank_insurance",
+      "name": "A-share Bank and Insurance Pool",
+      "valuation_label": "cheap",
+      "valuation_position_score": -0.18,
+      "fundamental_label": "stable",
+      "fundamental_score": 0.02,
+      "flow_price_label": "neutral",
+      "flow_price_score": 0.0845,
+      "decision": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      }
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "name": "A-share Healthcare and Pharma Pool",
+      "valuation_label": "cheap",
+      "valuation_position_score": -0.28,
+      "fundamental_label": "stable",
+      "fundamental_score": -0.04,
+      "flow_price_label": "neutral",
+      "flow_price_score": 0.0651,
       "decision": {
         "label": "wait_for_confirmation",
         "text": "等待确认",
@@ -105,7 +103,7 @@
       "fundamental_label": "deteriorating",
       "fundamental_score": -0.32,
       "flow_price_label": "neutral",
-      "flow_price_score": -0.0343,
+      "flow_price_score": -0.0357,
       "decision": {
         "label": "value_trap_risk",
         "text": "便宜但基本面弱",
@@ -175,154 +173,6 @@
   ],
   "sectors": [
     {
-      "sector_id": "bank_insurance",
-      "pool_id": "a_share_bank_insurance",
-      "name": "Bank and Insurance",
-      "display_name": "A-share Bank and Insurance Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "modules": {
-        "valuation": {
-          "status": "manual_seed",
-          "position_score": -0.18,
-          "label": "cheap",
-          "pe_percentile": 0.28,
-          "pb_percentile": 0.22,
-          "dividend_support": 0.55,
-          "note": "Low PB and dividend support, but asset-quality discount remains."
-        },
-        "fundamental": {
-          "status": "manual_seed",
-          "score": 0.02,
-          "label": "stable",
-          "earnings_trend": -0.04,
-          "roe_quality": 0.1,
-          "cycle_position": 0,
-          "note": "Stable but credit and net-interest-margin pressure still need watching."
-        },
-        "flow_price": {
-          "status": "from_sector_flow_review",
-          "score": 0.2142,
-          "label": "constructive_inflow_bias",
-          "confidence": 0.7472,
-          "data_completeness": 0.9,
-          "direct_flow_available": true,
-          "market_confirmation_available": true,
-          "confirmation_inputs": [
-            "direct_flow",
-            "market_confirmation",
-            "market_liquidity",
-            "policy_sentiment"
-          ],
-          "top_drivers": [
-            {
-              "component": "direct_flow",
-              "score": 0.43250228479714864,
-              "confidence": 0.75,
-              "weight": 0.3,
-              "contribution": 0.1297506854391446,
-              "available": true
-            },
-            {
-              "component": "market_confirmation",
-              "score": 0.11283333333333334,
-              "confidence": 0.7333333333333334,
-              "weight": 0.25,
-              "contribution": 0.028208333333333335,
-              "available": true
-            },
-            {
-              "component": "market_liquidity",
-              "score": 0.175,
-              "confidence": 1,
-              "weight": 0.15,
-              "contribution": 0.02625,
-              "available": true
-            }
-          ]
-        }
-      },
-      "decision": {
-        "label": "cheap_with_flow",
-        "text": "低估且有资金",
-        "reading": "估值有安全边际，市场开始确认，但基本面仍需继续看。"
-      }
-    },
-    {
-      "sector_id": "communication_electronics",
-      "pool_id": "a_share_communication_electronics",
-      "name": "Communication and Electronics",
-      "display_name": "A-share Communication and Electronics Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "modules": {
-        "valuation": {
-          "status": "manual_seed",
-          "position_score": 0.22,
-          "label": "expensive",
-          "pe_percentile": 0.63,
-          "pb_percentile": 0.58,
-          "dividend_support": -0.15,
-          "note": "Fair-to-expensive because hardware cycle expectation has repriced."
-        },
-        "fundamental": {
-          "status": "manual_seed",
-          "score": 0.18,
-          "label": "improving",
-          "earnings_trend": 0.18,
-          "roe_quality": 0.08,
-          "cycle_position": 0.28,
-          "note": "AI hardware and device cycle give moderate support."
-        },
-        "flow_price": {
-          "status": "from_sector_flow_review",
-          "score": 0.358,
-          "label": "constructive_inflow_bias",
-          "confidence": 0.7472,
-          "data_completeness": 0.9,
-          "direct_flow_available": true,
-          "market_confirmation_available": true,
-          "confirmation_inputs": [
-            "direct_flow",
-            "market_confirmation",
-            "market_liquidity",
-            "policy_sentiment"
-          ],
-          "top_drivers": [
-            {
-              "component": "direct_flow",
-              "score": 0.75,
-              "confidence": 0.75,
-              "weight": 0.3,
-              "contribution": 0.22499999999999998,
-              "available": true
-            },
-            {
-              "component": "market_confirmation",
-              "score": 0.22703333333333334,
-              "confidence": 0.7333333333333334,
-              "weight": 0.25,
-              "contribution": 0.056758333333333334,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.30000000000000004,
-              "confidence": 1,
-              "weight": 0.1,
-              "contribution": 0.030000000000000006,
-              "available": true
-            }
-          ]
-        }
-      },
-      "decision": {
-        "label": "balanced_candidate",
-        "text": "合理且改善",
-        "reading": "没有明显估值便宜，但基本面和资金量价较顺。"
-      }
-    },
-    {
       "sector_id": "home_appliances",
       "pool_id": "a_share_home_appliances",
       "name": "Home Appliances",
@@ -375,6 +225,154 @@
               "confidence": 1,
               "weight": 0.15,
               "contribution": 0.02625,
+              "available": true
+            }
+          ]
+        }
+      },
+      "decision": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      }
+    },
+    {
+      "sector_id": "bank_insurance",
+      "pool_id": "a_share_bank_insurance",
+      "name": "Bank and Insurance",
+      "display_name": "A-share Bank and Insurance Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "modules": {
+        "valuation": {
+          "status": "manual_seed",
+          "position_score": -0.18,
+          "label": "cheap",
+          "pe_percentile": 0.28,
+          "pb_percentile": 0.22,
+          "dividend_support": 0.55,
+          "note": "Low PB and dividend support, but asset-quality discount remains."
+        },
+        "fundamental": {
+          "status": "manual_seed",
+          "score": 0.02,
+          "label": "stable",
+          "earnings_trend": -0.04,
+          "roe_quality": 0.1,
+          "cycle_position": 0,
+          "note": "Stable but credit and net-interest-margin pressure still need watching."
+        },
+        "flow_price": {
+          "status": "from_sector_flow_review",
+          "score": 0.0845,
+          "label": "neutral",
+          "confidence": 0.7472,
+          "data_completeness": 0.9,
+          "direct_flow_available": true,
+          "market_confirmation_available": true,
+          "confirmation_inputs": [
+            "direct_flow",
+            "market_confirmation",
+            "market_liquidity",
+            "policy_sentiment"
+          ],
+          "top_drivers": [
+            {
+              "component": "market_confirmation",
+              "score": 0.11283333333333334,
+              "confidence": 0.7333333333333334,
+              "weight": 0.25,
+              "contribution": 0.028208333333333335,
+              "available": true
+            },
+            {
+              "component": "market_liquidity",
+              "score": 0.175,
+              "confidence": 1,
+              "weight": 0.15,
+              "contribution": 0.02625,
+              "available": true
+            },
+            {
+              "component": "policy_sentiment",
+              "score": 0.25,
+              "confidence": 1,
+              "weight": 0.1,
+              "contribution": 0.025,
+              "available": true
+            }
+          ]
+        }
+      },
+      "decision": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      }
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "pool_id": "a_share_healthcare_pharma",
+      "name": "Healthcare and Pharma",
+      "display_name": "A-share Healthcare and Pharma Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "modules": {
+        "valuation": {
+          "status": "manual_seed",
+          "position_score": -0.28,
+          "label": "cheap",
+          "pe_percentile": 0.25,
+          "pb_percentile": 0.3,
+          "dividend_support": 0.05,
+          "note": "Valuation has compressed meaningfully versus historical growth expectations."
+        },
+        "fundamental": {
+          "status": "manual_seed",
+          "score": -0.04,
+          "label": "stable",
+          "earnings_trend": -0.1,
+          "roe_quality": 0.02,
+          "cycle_position": -0.04,
+          "note": "Cheapness needs policy and earnings recovery confirmation."
+        },
+        "flow_price": {
+          "status": "from_sector_flow_review",
+          "score": 0.0651,
+          "label": "neutral",
+          "confidence": 0.7472,
+          "data_completeness": 0.9,
+          "direct_flow_available": true,
+          "market_confirmation_available": true,
+          "confirmation_inputs": [
+            "direct_flow",
+            "market_confirmation",
+            "market_liquidity",
+            "policy_sentiment"
+          ],
+          "top_drivers": [
+            {
+              "component": "policy_sentiment",
+              "score": 0.30000000000000004,
+              "confidence": 1,
+              "weight": 0.1,
+              "contribution": 0.030000000000000006,
+              "available": true
+            },
+            {
+              "component": "market_liquidity",
+              "score": 0.175,
+              "confidence": 1,
+              "weight": 0.15,
+              "contribution": 0.02625,
+              "available": true
+            },
+            {
+              "component": "fundamental_proxy",
+              "score": 0.25,
+              "confidence": 1,
+              "weight": 0.1,
+              "contribution": 0.025,
               "available": true
             }
           ]
@@ -515,34 +513,34 @@
       }
     },
     {
-      "sector_id": "healthcare_pharma",
-      "pool_id": "a_share_healthcare_pharma",
-      "name": "Healthcare and Pharma",
-      "display_name": "A-share Healthcare and Pharma Pool",
+      "sector_id": "brokerage",
+      "pool_id": "a_share_brokerage",
+      "name": "Brokerage",
+      "display_name": "A-share Brokerage Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
       "modules": {
         "valuation": {
           "status": "manual_seed",
-          "position_score": -0.28,
-          "label": "cheap",
-          "pe_percentile": 0.25,
-          "pb_percentile": 0.3,
-          "dividend_support": 0.05,
-          "note": "Valuation has compressed meaningfully versus historical growth expectations."
+          "position_score": 0.08,
+          "label": "fair",
+          "pe_percentile": 0.55,
+          "pb_percentile": 0.5,
+          "dividend_support": 0.1,
+          "note": "Beta sector; valuation is not obviously cheap after a flow-led move."
         },
         "fundamental": {
           "status": "manual_seed",
-          "score": -0.04,
-          "label": "stable",
-          "earnings_trend": -0.1,
-          "roe_quality": 0.02,
-          "cycle_position": -0.04,
-          "note": "Cheapness needs policy and earnings recovery confirmation."
+          "score": 0.12,
+          "label": "improving",
+          "earnings_trend": 0.12,
+          "roe_quality": 0.06,
+          "cycle_position": 0.2,
+          "note": "Turnover sensitivity improves quickly when market activity rises."
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0186,
+          "score": 0.1322,
           "label": "neutral",
           "confidence": 0.7472,
           "data_completeness": 0.9,
@@ -556,19 +554,19 @@
           ],
           "top_drivers": [
             {
-              "component": "direct_flow",
-              "score": -0.15521662209508869,
-              "confidence": 0.75,
-              "weight": 0.3,
-              "contribution": -0.0465649866285266,
+              "component": "policy_sentiment",
+              "score": 0.42500000000000004,
+              "confidence": 1,
+              "weight": 0.1,
+              "contribution": 0.04250000000000001,
               "available": true
             },
             {
-              "component": "policy_sentiment",
-              "score": 0.30000000000000004,
-              "confidence": 1,
-              "weight": 0.1,
-              "contribution": 0.030000000000000006,
+              "component": "market_confirmation",
+              "score": 0.1536666666666667,
+              "confidence": 0.7333333333333334,
+              "weight": 0.25,
+              "contribution": 0.038416666666666675,
               "available": true
             },
             {
@@ -973,80 +971,6 @@
       }
     },
     {
-      "sector_id": "ai_computer",
-      "pool_id": "a_share_ai_computer",
-      "name": "AI and Computer",
-      "display_name": "A-share AI and Computer Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "modules": {
-        "valuation": {
-          "status": "manual_seed",
-          "position_score": 0.38,
-          "label": "very_expensive",
-          "pe_percentile": 0.78,
-          "pb_percentile": 0.72,
-          "dividend_support": -0.4,
-          "note": "Growth expectations are high; not a cheap module signal."
-        },
-        "fundamental": {
-          "status": "manual_seed",
-          "score": 0.24,
-          "label": "improving",
-          "earnings_trend": 0.24,
-          "roe_quality": 0.08,
-          "cycle_position": 0.4,
-          "note": "AI demand story is improving, but needs order and earnings confirmation."
-        },
-        "flow_price": {
-          "status": "from_sector_flow_review",
-          "score": 0.16,
-          "label": "neutral",
-          "confidence": 0.7472,
-          "data_completeness": 0.9,
-          "direct_flow_available": true,
-          "market_confirmation_available": true,
-          "confirmation_inputs": [
-            "direct_flow",
-            "market_confirmation",
-            "market_liquidity",
-            "policy_sentiment"
-          ],
-          "top_drivers": [
-            {
-              "component": "market_confirmation",
-              "score": 0.23639999999999997,
-              "confidence": 0.7333333333333334,
-              "weight": 0.25,
-              "contribution": 0.05909999999999999,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.35,
-              "confidence": 1,
-              "weight": 0.1,
-              "contribution": 0.034999999999999996,
-              "available": true
-            },
-            {
-              "component": "market_liquidity",
-              "score": 0.175,
-              "confidence": 1,
-              "weight": 0.15,
-              "contribution": 0.02625,
-              "available": true
-            }
-          ]
-        }
-      },
-      "decision": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
-      }
-    },
-    {
       "sector_id": "consumer",
       "pool_id": "a_share_consumer",
       "name": "Consumer",
@@ -1074,7 +998,7 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0237,
+          "score": 0.0177,
           "label": "neutral",
           "confidence": 0.7472,
           "data_completeness": 0.9,
@@ -1148,7 +1072,7 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0541,
+          "score": 0.0502,
           "label": "neutral",
           "confidence": 0.7472,
           "data_completeness": 0.9,
@@ -1387,6 +1311,80 @@
       }
     },
     {
+      "sector_id": "ai_computer",
+      "pool_id": "a_share_ai_computer",
+      "name": "AI and Computer",
+      "display_name": "A-share AI and Computer Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "modules": {
+        "valuation": {
+          "status": "manual_seed",
+          "position_score": 0.38,
+          "label": "very_expensive",
+          "pe_percentile": 0.78,
+          "pb_percentile": 0.72,
+          "dividend_support": -0.4,
+          "note": "Growth expectations are high; not a cheap module signal."
+        },
+        "fundamental": {
+          "status": "manual_seed",
+          "score": 0.24,
+          "label": "improving",
+          "earnings_trend": 0.24,
+          "roe_quality": 0.08,
+          "cycle_position": 0.4,
+          "note": "AI demand story is improving, but needs order and earnings confirmation."
+        },
+        "flow_price": {
+          "status": "from_sector_flow_review",
+          "score": 0.1197,
+          "label": "neutral",
+          "confidence": 0.7472,
+          "data_completeness": 0.9,
+          "direct_flow_available": true,
+          "market_confirmation_available": true,
+          "confirmation_inputs": [
+            "direct_flow",
+            "market_confirmation",
+            "market_liquidity",
+            "policy_sentiment"
+          ],
+          "top_drivers": [
+            {
+              "component": "market_confirmation",
+              "score": 0.23639999999999997,
+              "confidence": 0.7333333333333334,
+              "weight": 0.25,
+              "contribution": 0.05909999999999999,
+              "available": true
+            },
+            {
+              "component": "policy_sentiment",
+              "score": 0.35,
+              "confidence": 1,
+              "weight": 0.1,
+              "contribution": 0.034999999999999996,
+              "available": true
+            },
+            {
+              "component": "market_liquidity",
+              "score": 0.175,
+              "confidence": 1,
+              "weight": 0.15,
+              "contribution": 0.02625,
+              "available": true
+            }
+          ]
+        }
+      },
+      "decision": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      }
+    },
+    {
       "sector_id": "environmental_protection",
       "pool_id": "a_share_environmental_protection",
       "name": "Environmental Protection",
@@ -1451,80 +1449,6 @@
       }
     },
     {
-      "sector_id": "brokerage",
-      "pool_id": "a_share_brokerage",
-      "name": "Brokerage",
-      "display_name": "A-share Brokerage Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "modules": {
-        "valuation": {
-          "status": "manual_seed",
-          "position_score": 0.08,
-          "label": "fair",
-          "pe_percentile": 0.55,
-          "pb_percentile": 0.5,
-          "dividend_support": 0.1,
-          "note": "Beta sector; valuation is not obviously cheap after a flow-led move."
-        },
-        "fundamental": {
-          "status": "manual_seed",
-          "score": 0.12,
-          "label": "improving",
-          "earnings_trend": 0.12,
-          "roe_quality": 0.06,
-          "cycle_position": 0.2,
-          "note": "Turnover sensitivity improves quickly when market activity rises."
-        },
-        "flow_price": {
-          "status": "from_sector_flow_review",
-          "score": 0.0159,
-          "label": "neutral",
-          "confidence": 0.7472,
-          "data_completeness": 0.9,
-          "direct_flow_available": true,
-          "market_confirmation_available": true,
-          "confirmation_inputs": [
-            "direct_flow",
-            "market_confirmation",
-            "market_liquidity",
-            "policy_sentiment"
-          ],
-          "top_drivers": [
-            {
-              "component": "direct_flow",
-              "score": -0.3876686897129194,
-              "confidence": 0.75,
-              "weight": 0.3,
-              "contribution": -0.11630060691387581,
-              "available": true
-            },
-            {
-              "component": "policy_sentiment",
-              "score": 0.42500000000000004,
-              "confidence": 1,
-              "weight": 0.1,
-              "contribution": 0.04250000000000001,
-              "available": true
-            },
-            {
-              "component": "market_confirmation",
-              "score": 0.1536666666666667,
-              "confidence": 0.7333333333333334,
-              "weight": 0.25,
-              "contribution": 0.038416666666666675,
-              "available": true
-            }
-          ]
-        }
-      },
-      "decision": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
-      }
-    },
-    {
       "sector_id": "semiconductor",
       "pool_id": "a_share_semiconductor",
       "name": "Semiconductor",
@@ -1552,7 +1476,7 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.1372,
+          "score": 0.1611,
           "label": "neutral",
           "confidence": 0.7472,
           "data_completeness": 0.9,
@@ -1754,7 +1678,7 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": 0.0458,
+          "score": 0.0661,
           "label": "neutral",
           "confidence": 0.7472,
           "data_completeness": 0.9,
@@ -1865,6 +1789,80 @@
       }
     },
     {
+      "sector_id": "communication_electronics",
+      "pool_id": "a_share_communication_electronics",
+      "name": "Communication and Electronics",
+      "display_name": "A-share Communication and Electronics Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "modules": {
+        "valuation": {
+          "status": "manual_seed",
+          "position_score": 0.22,
+          "label": "expensive",
+          "pe_percentile": 0.63,
+          "pb_percentile": 0.58,
+          "dividend_support": -0.15,
+          "note": "Fair-to-expensive because hardware cycle expectation has repriced."
+        },
+        "fundamental": {
+          "status": "manual_seed",
+          "score": 0.18,
+          "label": "improving",
+          "earnings_trend": 0.18,
+          "roe_quality": 0.08,
+          "cycle_position": 0.28,
+          "note": "AI hardware and device cycle give moderate support."
+        },
+        "flow_price": {
+          "status": "from_sector_flow_review",
+          "score": -0.092,
+          "label": "neutral",
+          "confidence": 0.7472,
+          "data_completeness": 0.9,
+          "direct_flow_available": true,
+          "market_confirmation_available": true,
+          "confirmation_inputs": [
+            "direct_flow",
+            "market_confirmation",
+            "market_liquidity",
+            "policy_sentiment"
+          ],
+          "top_drivers": [
+            {
+              "component": "direct_flow",
+              "score": -0.75,
+              "confidence": 0.75,
+              "weight": 0.3,
+              "contribution": -0.22499999999999998,
+              "available": true
+            },
+            {
+              "component": "market_confirmation",
+              "score": 0.22703333333333334,
+              "confidence": 0.7333333333333334,
+              "weight": 0.25,
+              "contribution": 0.056758333333333334,
+              "available": true
+            },
+            {
+              "component": "policy_sentiment",
+              "score": 0.30000000000000004,
+              "confidence": 1,
+              "weight": 0.1,
+              "contribution": 0.030000000000000006,
+              "available": true
+            }
+          ]
+        }
+      },
+      "decision": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      }
+    },
+    {
       "sector_id": "new_energy_ev",
       "pool_id": "a_share_new_energy_ev",
       "name": "New Energy Vehicle",
@@ -1892,7 +1890,7 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": -0.0837,
+          "score": -0.0816,
           "label": "neutral",
           "confidence": 0.7472,
           "data_completeness": 0.9,
@@ -2222,7 +2220,7 @@
         },
         "flow_price": {
           "status": "from_sector_flow_review",
-          "score": -0.0343,
+          "score": -0.0357,
           "label": "neutral",
           "confidence": 0.7472,
           "data_completeness": 0.9,

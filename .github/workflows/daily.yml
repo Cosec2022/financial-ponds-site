@@ -46,6 +46,7 @@ jobs:
           npm run provider:akshare:doctor
           npm run a-share:daily:ci -- --as-of "$AS_OF"
           npm run pool:analysis -- --as-of "$AS_OF"
+          npm run data:vault -- --as-of "$AS_OF"
           npm run data:audit -- --as-of "$AS_OF"
           npm run daily:sector-analysis -- --as-of "$AS_OF"
           npm run signal:attribution -- --as-of "$AS_OF"
@@ -53,6 +54,8 @@ jobs:
           npm run decision:gates -- --as-of "$AS_OF"
           npm run project:maturity -- --as-of "$AS_OF"
           npm run index:explain -- --as-of "$AS_OF"
+          npm run observation:snapshot -- --as-of "$AS_OF"
+          npm run data:vault -- --as-of "$AS_OF"
           npm run export:web-data -- "$AS_OF"
           cp web/data/dashboard.json ../../financial-pond/data/dashboard.json
           cp "model_outputs/$AS_OF/general_pool_analysis.json" ../../financial-pond/data/general_pool_analysis.json
@@ -69,6 +72,8 @@ jobs:
           cp "model_outputs/$AS_OF/sector_watchlist_state.json" ../../financial-pond/data/sector_watchlist_state.json
           cp "model_outputs/$AS_OF/decision_gate_ledger.json" ../../financial-pond/data/decision_gate_ledger.json
           cp "model_outputs/$AS_OF/index_explainability.json" ../../financial-pond/data/index_explainability.json
+          cp "model_outputs/$AS_OF/observation_snapshot.json" ../../financial-pond/data/observation_snapshot.json
+          cp "model_outputs/$AS_OF/daily_data_vault.json" ../../financial-pond/data/daily_data_vault.json
           cp "model_outputs/$AS_OF/news_review.json" ../../financial-pond/data/news_review.json
 
       - name: Build and test Worker

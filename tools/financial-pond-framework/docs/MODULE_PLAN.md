@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.47
+Version: v0.10.48
 Status: active
 
 Module IDs use this format:
@@ -30,7 +30,8 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-WATCH-01 | Watchlist State Machine | Convert attribution and daily evidence into observation states and review boundaries | working prototype | 30% | Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples |
 | FP-GATE-01 | Decision Gate Ledger | Explain why provider readiness does or does not unlock execution-language readiness | working prototype | 25% | Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers |
 | FP-EXPLAIN-01 | Index Explainability | Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns | working prototype | 25% | Expand formula registry as more UI indexes become clickable |
-| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 65% | Add maintenance-state display |
+| FP-OBS-01 | Observation Data Backbone | Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes | working prototype | 30% | Add manual review editing and realized-outcome filling |
+| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 68% | Keep observation workbench compact and trace-visible |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
 | FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 80% | Keep CI-order, history-recovery, and provider-coverage guards current |
@@ -67,10 +68,10 @@ Tests:
 
 ```text
 1. FP-DATA-01: valuation/fundamental manual seed replacement.
-2. FP-EXPLAIN-01: keep every displayed index backed by source/formula/input explanation.
-3. FP-GATE-01: keep provider-ready-but-execution-blocked reasons visible.
-4. FP-WATCH-01: keep attribution conflicts sorted into daily review states.
-5. FP-ATTR-01: keep cross-module conflicts visible while ETF readiness is watch-only.
+2. FP-OBS-01: preserve every daily observation and keep history append-only.
+3. FP-EXPLAIN-01: keep every displayed index backed by source/formula/input explanation.
+4. FP-GATE-01: keep provider-ready-but-execution-blocked reasons visible.
+5. FP-WATCH-01: keep attribution conflicts sorted into daily review states.
 6. FP-GEN-01: remove pool graph snapshot dependency from one-command runs.
 7. FP-HIST-01 / FP-ROT-01: improve rotation visibility while sample history is still low.
 8. FP-ETF-01 / FP-DAILY-01: keep execution decision blocked until watch-only gates are cleared.

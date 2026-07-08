@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.47
+Version: v0.10.48
 Status: active
 
 ## Final Target
@@ -35,9 +35,9 @@ The system should not output direct trading instructions.
 ```text
 Overall progress: 45%
 Current stage: usable prototype
-Daily data pipeline: partial, with AKShare provider flow_ready, one-command recovery for missing pool graph snapshots, signal attribution, watchlist state machine, decision gate ledger, and index explainability
+Daily data pipeline: partial, with AKShare provider flow_ready, one-command recovery for missing pool graph snapshots, signal attribution, watchlist state machine, decision gate ledger, index explainability, observation vault, and workbench snapshot
 Decision-grade model: not yet
-Main limitation: A-share provider flow is flow_ready and displayed numbers are now explainable, but ETF readiness remains watch_only/not_ready when source, valuation/fundamental, rotation, conflict-review, data reality, or execution gates block guidance
+Main limitation: A-share provider flow is flow_ready and displayed numbers are now preserved/explainable, but ETF readiness remains watch_only/not_ready when source, valuation/fundamental, rotation, conflict-review, data reality, or execution gates block guidance
 ```
 
 ## Phase Plan
@@ -53,7 +53,7 @@ Main limitation: A-share provider flow is flow_ready and displayed numbers are n
 | P7 | Influence graph backend state | prototype | 25% |
 | P8 | Real fixed news sources | planned | 10% |
 | P9 | Free pond creation / arbitrary pool expansion | started | 28% |
-| P10 | Full financial analysis network | working prototype | 45% |
+| P10 | Full financial analysis network | working prototype | 46% |
 
 ## Current Working Surface
 
@@ -72,6 +72,8 @@ Signal attribution panel explaining daily rankings and cross-module conflicts
 Watchlist state panel grouping confirmed, conflict, flow-only, rotation-only, deteriorating, and avoid rows
 Decision gate ledger panel explaining why provider-ready does not automatically mean execution-ready
 Index explainability panel showing source files, fields, formulas, raw inputs, components, steps, caveats, and boundary for displayed indexes
+Observation workbench showing today, signal matrix, vector forecasts, and pending review records
+Daily data vault preserving seen files, missing files, hashes, and module availability
 Published-data completeness guard for the daily Action
 Daily sector analysis panel with priority watch, confirm next, and avoid watch tiers
 Rotation-history recovery from recent published Git versions

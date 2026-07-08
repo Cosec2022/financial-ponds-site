@@ -13,7 +13,7 @@ Readiness explanation only. Not a trading instruction.
 | Provider history | pass | Provider history must include current and previous dates for share-change flow. | Maintain provider CSV history across daily runs. |
 | Estimated-flow coverage | pass | 11/11 representative rows have estimated_flow. | Regenerate provider flow observations if coverage drops. |
 | True-flow coverage | pass | True-flow coverage is 1. | Keep representative ETF mappings and provider observations complete. |
-| Attribution conflicts | warn | 2 attribution conflict(s) require review. | Resolve or annotate attribution conflicts before relaxing readiness. |
+| Attribution conflicts | warn | 1 attribution conflict(s) require review. | Resolve or annotate attribution conflicts before relaxing readiness. |
 | Watchlist conflict review | warn | 3 watchlist row(s) are in conflict_review. | Review conflict rows before changing model thresholds. |
 | Confirmed watch rows | warn | No confirmed_watch rows are available. | Keep confirmed rows separate from conflict and single-line evidence rows. |
 | Valuation and fundamental reality | block | Valuation or fundamental modules still depend on manual seed inputs. | Connect reviewed valuation and fundamental sources. |

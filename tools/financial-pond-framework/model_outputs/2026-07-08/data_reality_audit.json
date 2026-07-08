@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T11:55:56.475Z",
+  "generated_at": "2026-07-08T13:18:56.855Z",
   "module_id": "data_reality_audit_v0_1",
   "status": "audit_available",
   "overall_reality": "mixed_non_real",
@@ -11,7 +11,7 @@
       "name": "AKShare环境预检",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_doctor.json",
       "as_of": null,
-      "generated_at": "2026-07-08T11:54:46.641639+00:00",
+      "generated_at": "2026-07-08T13:17:45.356075+00:00",
       "reality": "provider_doctor_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -27,16 +27,18 @@
       "name": "AKShare真实数据探测",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-08.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T11:55:53.890081+00:00",
+      "generated_at": "2026-07-08T13:18:53.779527+00:00",
       "reality": "provider_run_ok",
       "confidence_for_market_use": "medium",
       "counts": {
         "records": 11,
-        "warnings": 0,
+        "warnings": 1,
         "errors": 0
       },
       "errors": [],
-      "warnings": [],
+      "warnings": [
+        "Optional AKShare endpoint failed: fund_etf_scale_szse: HTTPSConnectionPool(host='fund.szse.cn', port=443): Max retries exceeded with url: /api/report/ShowReport?SHOWTYPE=xlsx&CATALOGID=1000_lf&TABKEY=tab1&random=0.07610353191740105 (Caused by SSLError(SSLEOFError(8, 'EOF occurred in violation of protocol (_ssl.c:997)')))"
+      ],
       "reading": "AKShare real provider completed with 11 rows. Flow review still needs observed-source coverage checks."
     },
     {
@@ -44,7 +46,7 @@
       "name": "资金量价",
       "source_file": "sector_flow_review.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T11:55:54.921Z",
+      "generated_at": "2026-07-08T13:18:55.279Z",
       "reality": "mock",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -80,7 +82,7 @@
       "name": "估值/基本面/资金量价三模块",
       "source_file": "sector_module_review.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T11:55:55.555Z",
+      "generated_at": "2026-07-08T13:18:55.917Z",
       "reality": "manual_seed",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -92,9 +94,7 @@
         "sectors": 31,
         "provider_mapped_representative_sectors": 11,
         "framework_only_sectors": 20,
-        "wait_for_confirmation": 24,
-        "cheap_with_flow": 1,
-        "balanced_candidate": 1,
+        "wait_for_confirmation": 26,
         "value_trap_risk": 5
       },
       "reading": "估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。"
@@ -104,7 +104,7 @@
       "name": "ETF行动准备度",
       "source_file": "etf_decision_readiness.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T11:55:55.876Z",
+      "generated_at": "2026-07-08T13:18:56.246Z",
       "reality": "decision_gate_blocked",
       "confidence_for_market_use": "low",
       "counts": {
@@ -135,7 +135,7 @@
       "name": "行业轮动",
       "source_file": "sector_rotation_intelligence.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T11:55:55.068Z",
+      "generated_at": "2026-07-08T13:18:55.427Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -155,7 +155,7 @@
       "name": "通用池模型",
       "source_file": "general_pool_analysis.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T11:55:55.733Z",
+      "generated_at": "2026-07-08T13:18:56.091Z",
       "reality": "contract_output_source_unverified",
       "confidence_for_market_use": "low",
       "counts": {
@@ -170,7 +170,7 @@
       "name": "轮动历史",
       "source_file": "sector_rotation_history.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T11:55:55.408Z",
+      "generated_at": "2026-07-08T13:18:55.774Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [

@@ -2,12 +2,12 @@
   "module_id": "module_maturity_audit_v0_10_39",
   "status": "module_maturity_available",
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T11:55:56.764Z",
+  "generated_at": "2026-07-08T13:18:57.147Z",
   "overall": {
-    "module_count": 21,
-    "average_progress": 42.43,
+    "module_count": 22,
+    "average_progress": 42,
     "decision_path_progress": 50.8,
-    "low_maturity_count": 10,
+    "low_maturity_count": 11,
     "current_stage": "usable prototype",
     "decision_grade_model": "not yet"
   },
@@ -32,17 +32,35 @@
   },
   "priority_modules": [
     {
+      "module_id": "FP-OBS-01",
+      "module": "Observation Data Backbone",
+      "role": "Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes",
+      "status": "working prototype",
+      "progress": 30,
+      "next": "Add manual review editing and realized-outcome filling",
+      "priority_rank": 2,
+      "priority_reading": "preserve every daily observation and keep history append-only.",
+      "focus_lane": "future_expansion",
+      "maturity_label": "early",
+      "urgency": "critical_path",
+      "blockers": [
+        "manual_or_seed_input",
+        "real_provider_gap"
+      ],
+      "next_action": "Add manual review editing and realized-outcome filling"
+    },
+    {
       "module_id": "FP-EXPLAIN-01",
       "module": "Index Explainability",
       "role": "Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns",
       "status": "working prototype",
       "progress": 25,
       "next": "Expand formula registry as more UI indexes become clickable",
-      "priority_rank": 2,
+      "priority_rank": 3,
       "priority_reading": "keep every displayed index backed by source/formula/input explanation.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "critical_path",
+      "urgency": "near_term",
       "blockers": [
         "low_maturity"
       ],
@@ -55,7 +73,7 @@
       "status": "working prototype",
       "progress": 25,
       "next": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers",
-      "priority_rank": 3,
+      "priority_rank": 4,
       "priority_reading": "keep provider-ready-but-execution-blocked reasons visible.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
@@ -73,30 +91,13 @@
       "status": "working prototype",
       "progress": 30,
       "next": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples",
-      "priority_rank": 4,
+      "priority_rank": 5,
       "priority_reading": "keep attribution conflicts sorted into daily review states.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
       "urgency": "near_term",
       "blockers": [],
       "next_action": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples"
-    },
-    {
-      "module_id": "FP-ATTR-01",
-      "module": "Signal Attribution",
-      "role": "Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes",
-      "status": "working prototype",
-      "progress": 35,
-      "next": "Add richer attribution weights and history-aware explanations",
-      "priority_rank": 5,
-      "priority_reading": "keep cross-module conflicts visible while ETF readiness is watch-only.",
-      "focus_lane": "future_expansion",
-      "maturity_label": "prototype",
-      "urgency": "near_term",
-      "blockers": [
-        "history_depth_gap"
-      ],
-      "next_action": "Add richer attribution weights and history-aware explanations"
     },
     {
       "module_id": "FP-GEN-01",
@@ -170,17 +171,35 @@
   ],
   "low_maturity_modules": [
     {
+      "module_id": "FP-OBS-01",
+      "module": "Observation Data Backbone",
+      "role": "Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes",
+      "status": "working prototype",
+      "progress": 30,
+      "next": "Add manual review editing and realized-outcome filling",
+      "priority_rank": 2,
+      "priority_reading": "preserve every daily observation and keep history append-only.",
+      "focus_lane": "future_expansion",
+      "maturity_label": "early",
+      "urgency": "critical_path",
+      "blockers": [
+        "manual_or_seed_input",
+        "real_provider_gap"
+      ],
+      "next_action": "Add manual review editing and realized-outcome filling"
+    },
+    {
       "module_id": "FP-EXPLAIN-01",
       "module": "Index Explainability",
       "role": "Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns",
       "status": "working prototype",
       "progress": 25,
       "next": "Expand formula registry as more UI indexes become clickable",
-      "priority_rank": 2,
+      "priority_rank": 3,
       "priority_reading": "keep every displayed index backed by source/formula/input explanation.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "critical_path",
+      "urgency": "near_term",
       "blockers": [
         "low_maturity"
       ],
@@ -193,7 +212,7 @@
       "status": "working prototype",
       "progress": 25,
       "next": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers",
-      "priority_rank": 3,
+      "priority_rank": 4,
       "priority_reading": "keep provider-ready-but-execution-blocked reasons visible.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
@@ -211,30 +230,13 @@
       "status": "working prototype",
       "progress": 30,
       "next": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples",
-      "priority_rank": 4,
+      "priority_rank": 5,
       "priority_reading": "keep attribution conflicts sorted into daily review states.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
       "urgency": "near_term",
       "blockers": [],
       "next_action": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples"
-    },
-    {
-      "module_id": "FP-ATTR-01",
-      "module": "Signal Attribution",
-      "role": "Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes",
-      "status": "working prototype",
-      "progress": 35,
-      "next": "Add richer attribution weights and history-aware explanations",
-      "priority_rank": 5,
-      "priority_reading": "keep cross-module conflicts visible while ETF readiness is watch-only.",
-      "focus_lane": "future_expansion",
-      "maturity_label": "prototype",
-      "urgency": "near_term",
-      "blockers": [
-        "history_depth_gap"
-      ],
-      "next_action": "Add richer attribution weights and history-aware explanations"
     },
     {
       "module_id": "FP-NEWS-01",
@@ -323,6 +325,23 @@
       "next_action": "Add weekly report and proposal sections"
     },
     {
+      "module_id": "FP-ATTR-01",
+      "module": "Signal Attribution",
+      "role": "Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes",
+      "status": "working prototype",
+      "progress": 35,
+      "next": "Add richer attribution weights and history-aware explanations",
+      "priority_rank": null,
+      "priority_reading": null,
+      "focus_lane": "future_expansion",
+      "maturity_label": "prototype",
+      "urgency": "later",
+      "blockers": [
+        "history_depth_gap"
+      ],
+      "next_action": "Add richer attribution weights and history-aware explanations"
+    },
+    {
       "module_id": "FP-GRAPH-01",
       "module": "Influence Graph",
       "role": "Upstream, downstream, and peer influence factors",
@@ -400,7 +419,7 @@
       "phase": "P10",
       "goal": "Full financial analysis network",
       "status": "working prototype",
-      "progress": 45
+      "progress": 46
     }
   ],
   "modules": [
@@ -597,11 +616,11 @@
       "status": "working prototype",
       "progress": 35,
       "next": "Add richer attribution weights and history-aware explanations",
-      "priority_rank": 5,
-      "priority_reading": "keep cross-module conflicts visible while ETF readiness is watch-only.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "future_expansion",
       "maturity_label": "prototype",
-      "urgency": "near_term",
+      "urgency": "later",
       "blockers": [
         "history_depth_gap"
       ],
@@ -614,7 +633,7 @@
       "status": "working prototype",
       "progress": 30,
       "next": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples",
-      "priority_rank": 4,
+      "priority_rank": 5,
       "priority_reading": "keep attribution conflicts sorted into daily review states.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
@@ -629,7 +648,7 @@
       "status": "working prototype",
       "progress": 25,
       "next": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers",
-      "priority_rank": 3,
+      "priority_rank": 4,
       "priority_reading": "keep provider-ready-but-execution-blocked reasons visible.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
@@ -647,30 +666,48 @@
       "status": "working prototype",
       "progress": 25,
       "next": "Expand formula registry as more UI indexes become clickable",
-      "priority_rank": 2,
+      "priority_rank": 3,
       "priority_reading": "keep every displayed index backed by source/formula/input explanation.",
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "critical_path",
+      "urgency": "near_term",
       "blockers": [
         "low_maturity"
       ],
       "next_action": "Expand formula registry as more UI indexes become clickable"
     },
     {
+      "module_id": "FP-OBS-01",
+      "module": "Observation Data Backbone",
+      "role": "Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes",
+      "status": "working prototype",
+      "progress": 30,
+      "next": "Add manual review editing and realized-outcome filling",
+      "priority_rank": 2,
+      "priority_reading": "preserve every daily observation and keep history append-only.",
+      "focus_lane": "future_expansion",
+      "maturity_label": "early",
+      "urgency": "critical_path",
+      "blockers": [
+        "manual_or_seed_input",
+        "real_provider_gap"
+      ],
+      "next_action": "Add manual review editing and realized-outcome filling"
+    },
+    {
       "module_id": "FP-UI-01",
       "module": "Frontend Dashboard",
       "role": "Explain model outputs and data boundaries",
       "status": "usable prototype",
-      "progress": 65,
-      "next": "Add maintenance-state display",
+      "progress": 68,
+      "next": "Keep observation workbench compact and trace-visible",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "infrastructure",
       "maturity_label": "usable",
       "urgency": "later",
       "blockers": [],
-      "next_action": "Add maintenance-state display"
+      "next_action": "Keep observation workbench compact and trace-visible"
     },
     {
       "module_id": "FP-RPT-01",

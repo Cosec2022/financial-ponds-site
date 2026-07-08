@@ -5,10 +5,20 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.47`
+Package version: `0.10.48`
 
 Purpose of this version:
 
+- add the Observation Data Backbone and Workbench UI layer
+- add `src/core/observation_schema.mjs` with generic universe, pool, signal, vector, review, outcome, and boundary contracts
+- add `npm run data:vault` to preserve the complete daily observation file surface, including seen files, missing files, hashes, available modules, missing modules, and data-reality summary
+- add `npm run observation:snapshot` to write generic pool-level vector observations with all signal slots always present
+- append one observation-history record per pool per run without overwriting previous rows
+- publish `observation_snapshot.json`, `manual_review_log.json`, `outcome_labels.json`, and `daily_data_vault.json`
+- add pending T+1, T+3, T+5, and T+20 outcome checks for every observation
+- add a homepage "观察工作台" with 今日观察, 信号矩阵, 资金矢量, and 复盘记录 tabs
+- keep the core schema market-agnostic; A-share remains the first sample universe, not the model assumption
+- keep v0.10.48 strictly observe-only / blocked; it does not unlock ETF execution advice
 - add the Index Explainability / Score Breakdown layer as `npm run index:explain`
 - add `src/core/formula_registry.mjs` for registered formulas behind displayed indexes
 - write `index_explainability.json` and `.md` from flow review, rotation history, module review, ETF readiness, daily analysis, ETF flow leaderboard, signal attribution, watchlist state, decision gate ledger, maturity audit, data reality audit, provider history, provider CSV exports, and optional graph scores

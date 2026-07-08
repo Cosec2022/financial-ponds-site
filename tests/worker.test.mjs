@@ -13,6 +13,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /资金池塘图谱/);
   assert.match(html, /数据真实性审计/);
   assert.match(html, /真实数据通道/);
+  assert.match(html, /观察工作台/);
   assert.match(html, /今日行业结论/);
   assert.match(html, /ETF行动准备度/);
   assert.match(html, /ETF 真实资金流观察/);
@@ -153,6 +154,31 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(explainabilityJson.status, "index_explainability_available");
   assert.ok(explainabilityJson.indexes.length >= 1);
   assert.ok(explainabilityJson.indexes.every((item) => item.source_files.length));
+
+  const observation = await worker.fetch(request("/data/observation_snapshot.json"), {});
+  assert.equal(observation.status, 200);
+  const observationJson = await observation.json();
+  assert.equal(observationJson.module_id, "observation_snapshot_v0_10_48");
+  assert.equal(observationJson.status, "observation_snapshot_available");
+  assert.ok(observationJson.rows.length >= 1);
+  assert.ok(observationJson.rows.every((row) => ["flow", "price_momentum", "liquidity", "rotation", "news", "valuation", "fundamental", "risk"].every((slot) => row.signals?.[slot]?.reality)));
+
+  const manualReview = await worker.fetch(request("/data/manual_review_log.json"), {});
+  assert.equal(manualReview.status, 200);
+  assert.equal((await manualReview.json()).module_id, "manual_review_log_v0_10_48");
+
+  const outcomes = await worker.fetch(request("/data/outcome_labels.json"), {});
+  assert.equal(outcomes.status, 200);
+  const outcomesJson = await outcomes.json();
+  assert.equal(outcomesJson.module_id, "outcome_labels_v0_10_48");
+  assert.ok(outcomesJson.pending.length >= 4);
+
+  const vault = await worker.fetch(request("/data/daily_data_vault.json"), {});
+  assert.equal(vault.status, 200);
+  const vaultJson = await vault.json();
+  assert.equal(vaultJson.module_id, "daily_data_vault_v0_10_48");
+  assert.equal(vaultJson.status, "vault_available");
+  assert.ok(vaultJson.files_seen.length >= 1);
 
   const pondMap = await worker.fetch(request("/data/pond_map.json"), {});
   assert.equal(pondMap.status, 200);

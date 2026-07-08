@@ -45,6 +45,7 @@ npm run provider:akshare:inspect
 npm run provider:akshare:to-flow -- --as-of "$AS_OF"
 npm run etf:flow-leaderboard -- --as-of "$AS_OF"
 npm run provider:akshare:history -- --as-of "$AS_OF" || true
+npm run data:vault -- --as-of "$AS_OF"
 
 echo "== modules =="
 npm run flow:review -- --as-of "$AS_OF"
@@ -64,6 +65,8 @@ npm run data:audit -- --as-of "$AS_OF" || true
 npm run decision:gates -- --as-of "$AS_OF"
 npm run project:maturity -- --as-of "$AS_OF"
 npm run index:explain -- --as-of "$AS_OF"
+npm run observation:snapshot -- --as-of "$AS_OF"
+npm run data:vault -- --as-of "$AS_OF"
 
 cd "$ROOT"
 
@@ -90,6 +93,8 @@ copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/sector_signa
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/sector_watchlist_state.json" "financial-pond/data/sector_watchlist_state.json"
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/decision_gate_ledger.json" "financial-pond/data/decision_gate_ledger.json"
 copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/index_explainability.json" "financial-pond/data/index_explainability.json"
+copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/observation_snapshot.json" "financial-pond/data/observation_snapshot.json"
+copy_if_exists "tools/financial-pond-framework/model_outputs/$AS_OF/daily_data_vault.json" "financial-pond/data/daily_data_vault.json"
 
 echo "== validate/build/test =="
 npm run validate:data

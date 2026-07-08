@@ -59,6 +59,11 @@ const state = {
   watchlistState: null,
   decisionGateLedger: null,
   indexExplainability: null,
+  observationSnapshot: null,
+  manualReviewLog: null,
+  outcomeLabels: null,
+  dailyDataVault: null,
+  workbenchTab: "today",
   selectedIndexId: null,
   indexExplainFilter: "",
   news: null,
@@ -320,6 +325,170 @@ function availabilityHeadlineCn(availability) {
   if (availability.mode === "partial_etf_flow") return "只有部分代表行业有 ETF 份额/资金流输入，轮动强度需要打折看。";
   if (availability.mode === "price_volume_only") return "ETF 份额/资金流今天缺失，当前排序主要来自价量、水位和新闻压力。";
   return "行业输入偏薄，只适合检查流程和观察相对变化。";
+}
+
+function renderWorkbenchPanel() {
+  const panel = document.getElementById("workbenchPanel");
+  const statusBadge = document.getElementById("workbenchStatus");
+  const snapshot = state.observationSnapshot;
+  if (!panel || !statusBadge) return;
+
+  if (!snapshot || snapshot.status !== "observation_snapshot_available") {
+    statusBadge.textContent = "等待快照";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无观察快照。等待 observation_snapshot.json 生成。</div>`;
+    return;
+  }
+
+  const rows = snapshot.rows ?? [];
+  const pending = state.outcomeLabels?.pending ?? [];
+  statusBadge.textContent = `${rows.length} 个池`;
+  statusBadge.className = `pill ${snapshot.execution_state === "blocked" ? "warm" : "positive"}`;
+  panel.innerHTML = `
+    <div class="workbench-tabs" role="tablist">
+      ${workbenchTabButton("today", "今日观察")}
+      ${workbenchTabButton("matrix", "信号矩阵")}
+      ${workbenchTabButton("vector", "资金矢量")}
+      ${workbenchTabButton("review", "复盘记录")}
+    </div>
+    <div class="workbench-boundary">trace_status=${snapshot.status} · boundary=${snapshot.execution_state ?? "observe_only"}</div>
+    ${workbenchBody(state.workbenchTab, rows, pending)}
+  `;
+
+  panel.querySelectorAll("[data-workbench-tab]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.workbenchTab = button.dataset.workbenchTab;
+      renderWorkbenchPanel();
+    });
+  });
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function workbenchTabButton(tab, label) {
+  return `<button class="workbench-tab ${state.workbenchTab === tab ? "active" : ""}" data-workbench-tab="${tab}" type="button">${label}</button>`;
+}
+
+function workbenchBody(tab, rows, pending) {
+  if (tab === "matrix") return workbenchMatrixTable(rows);
+  if (tab === "vector") return workbenchVectorTable(rows);
+  if (tab === "review") return workbenchReviewTable(pending, rows);
+  return workbenchTodayTable(rows);
+}
+
+function workbenchRows(rows) {
+  return [...rows].sort((a, b) => (b.vector_forecast?.confidence ?? 0) - (a.vector_forecast?.confidence ?? 0)).slice(0, 16);
+}
+
+function workbenchTodayTable(rows) {
+  return workbenchTable(["Pool", "Direction", "Magnitude", "Confidence", "Watch State", "Boundary"], workbenchRows(rows).map((row) => [
+    pondButton(row),
+    metricCell(directionLabel(row.vector_forecast?.direction), row.vector_forecast),
+    metricCell(formatScore(row.vector_forecast?.magnitude), row.vector_forecast),
+    metricCell(formatPct(row.vector_forecast?.confidence), row.vector_forecast),
+    traceCell(row.review_status ?? "observe_only", row.trace_refs?.[0]),
+    metricCell(row.vector_forecast?.boundary ?? "observe_only", row.vector_forecast)
+  ]));
+}
+
+function workbenchMatrixTable(rows) {
+  const slots = ["Flow", "Momentum", "Liquidity", "Rotation", "News", "Valuation", "Fundamental", "Risk"];
+  return workbenchTable(["Pool", ...slots], workbenchRows(rows).map((row) => [
+    pondButton(row),
+    ...["flow", "price_momentum", "liquidity", "rotation", "news", "valuation", "fundamental", "risk"].map((slot) => signalStatusCell(row, slot))
+  ]));
+}
+
+function workbenchVectorTable(rows) {
+  return workbenchTable(["Pool", "F", "Direction", "Magnitude", "Velocity", "Acceleration", "Confidence", "Boundary"], workbenchRows(rows).map((row) => {
+    const vector = row.vector_forecast ?? {};
+    return [
+      pondButton(row),
+      metricCell(formatAmount(vector.F), vector),
+      metricCell(directionLabel(vector.direction), vector),
+      metricCell(formatScore(vector.magnitude), vector),
+      metricCell(vector.velocity ?? vector.velocity_status ?? "insufficient_history", { trace_status: vector.velocity_status ?? "missing" }),
+      metricCell(vector.acceleration ?? vector.acceleration_status ?? "insufficient_history", { trace_status: vector.acceleration_status ?? "missing" }),
+      metricCell(formatPct(vector.confidence), vector),
+      metricCell(vector.boundary ?? "observe_only", vector)
+    ];
+  }));
+}
+
+function workbenchReviewTable(pending, rows) {
+  const names = new Map(rows.map((row) => [row.pool_id, row.pool_name]));
+  const grouped = new Map();
+  for (const item of pending) {
+    const key = `${item.as_of}|${item.pool_id}`;
+    grouped.set(key, { ...(grouped.get(key) ?? { as_of: item.as_of, pool_id: item.pool_id, pool_name: item.pool_name ?? names.get(item.pool_id) ?? item.pool_id }), [item.horizon]: item.status ?? "pending" });
+  }
+  const groupedRows = [...grouped.values()].slice(0, 20);
+  return workbenchTable(["Forecast Date", "Pool", "Direction", "T+1", "T+3", "T+5", "T+20", "Status"], groupedRows.map((item) => {
+    const source = rows.find((row) => row.pool_id === item.pool_id) ?? {};
+    return [
+      traceCell(item.as_of, { trace_status: "pending" }),
+      pondButton(source.pool_id ? source : item),
+      metricCell(directionLabel(source.vector_forecast?.direction), source.vector_forecast ?? { trace_status: "missing" }),
+      traceCell(item["T+1"] ?? "pending", { trace_status: item["T+1"] ?? "missing" }),
+      traceCell(item["T+3"] ?? "pending", { trace_status: item["T+3"] ?? "missing" }),
+      traceCell(item["T+5"] ?? "pending", { trace_status: item["T+5"] ?? "missing" }),
+      traceCell(item["T+20"] ?? "pending", { trace_status: item["T+20"] ?? "missing" }),
+      traceCell("pending", { trace_status: "pending" })
+    ];
+  }));
+}
+
+function workbenchTable(headers, rows) {
+  if (!rows.length) return `<div class="empty">暂无观察行。</div>`;
+  return `
+    <div class="module-table workbench-table">
+      <table>
+        <thead><tr>${headers.map((header) => `<th>${header}</th>`).join("")}</tr></thead>
+        <tbody>
+          ${rows.map((cells) => `<tr>${cells.map((cell) => `<td>${cell}</td>`).join("")}</tr>`).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function pondButton(row) {
+  const id = String(row.sector_id ?? row.pool_id ?? "").replace(/^a_share_/, "");
+  const name = row.pool_name ?? row.name ?? row.pool_id ?? id;
+  return `<button class="text-link" data-pond-id="${id}" type="button"><strong>${name}</strong><span class="sub">${row.pool_id ?? id}</span></button>`;
+}
+
+function signalStatusCell(row, slot) {
+  const signal = row.signals?.[slot] ?? {};
+  const status = row.signal_matrix_row?.[slot] ?? "missing";
+  return traceCell(status, signal);
+}
+
+function metricCell(value, trace) {
+  return `<span class="metric-stack"><b>${value ?? "--"}</b><small>${traceLabel(trace)}</small></span>`;
+}
+
+function traceCell(value, trace) {
+  return `<span class="metric-stack"><span>${value ?? "--"}</span><small>${traceLabel(trace)}</small></span>`;
+}
+
+function traceLabel(trace) {
+  if (trace?.trace_id) return `trace_id=${trace.trace_id}`;
+  return `trace_status=${trace?.trace_status ?? "missing"}`;
+}
+
+function directionLabel(value) {
+  const map = {
+    inward: "inward",
+    outward: "outward",
+    neutral: "neutral"
+  };
+  return map[value] ?? "--";
 }
 
 function renderRealityPanel() {
@@ -2518,6 +2687,7 @@ function bindTabs() {
 }
 
 function renderAll() {
+  renderWorkbenchPanel();
   renderRealityPanel();
   renderProviderPanel();
   renderDailyAnalysisPanel();
@@ -2560,6 +2730,10 @@ async function loadAll() {
   state.watchlistState = await readJson("./data/sector_watchlist_state.json", null);
   state.decisionGateLedger = await readJson("./data/decision_gate_ledger.json", null);
   state.indexExplainability = await readJson("./data/index_explainability.json", null);
+  state.observationSnapshot = await readJson("./data/observation_snapshot.json", null);
+  state.manualReviewLog = await readJson("./data/manual_review_log.json", null);
+  state.outcomeLabels = await readJson("./data/outcome_labels.json", null);
+  state.dailyDataVault = await readJson("./data/daily_data_vault.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

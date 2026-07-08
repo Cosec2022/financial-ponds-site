@@ -65,6 +65,12 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "daily_data_vault_initial", "node", [
+    "src/tools/daily_data_vault.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
   await runStep(summary, "water_level_to_observations", "node", [
     "src/tools/a_share_water_observations.mjs",
     "--as-of",
@@ -139,6 +145,18 @@ export async function runAShareDailyCi({
 
   await runStep(summary, "index_explainability", "node", [
     "src/tools/index_explainability.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
+  await runStep(summary, "observation_snapshot", "node", [
+    "src/tools/observation_snapshot.mjs",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
+  await runStep(summary, "daily_data_vault_final", "node", [
+    "src/tools/daily_data_vault.mjs",
     "--as-of",
     asOf
   ], { rootDir });

@@ -9,17 +9,18 @@ Observation watchlist only. Not a trading instruction.
 
 | State | Sector | Priority | Change | Evidence | Boundary |
 | --- | --- | --- | --- | --- | --- |
-| conflict_review | AI计算机 | manual_review | new | state=conflict_review · daily=priority_watch · ETF flow rank=3 · rotation=领先延续 · conflict=manual review | execution language blocked: guidance_state=not_ready; observation-only review. |
-| conflict_review | 通信电子 | manual_review | new | state=conflict_review · daily=confirm_next · ETF flow rank=1 · rotation=领先待确认 · conflict=manual review | execution language blocked: guidance_state=not_ready; observation-only review. |
-| conflict_review | 地产基建 | manual_review | new | state=conflict_review · daily=avoid_watch · ETF flow rank=5 · rotation=弱势延续 · conflict=manual review | execution language blocked: guidance_state=not_ready; observation-only review. |
-| deteriorating_watch | 半导体 | risk_review | new | state=deteriorating_watch · daily=confirm_next · ETF flow rank=9 · rotation=单日观察 | execution language blocked: guidance_state=not_ready; observation-only review. |
+| conflict_review | AI计算机 | manual_review | new | state=conflict_review · daily=priority_watch · ETF flow rank=10 · rotation=领先延续 · conflict=manual review | execution language blocked: guidance_state=not_ready; observation-only review. |
+| conflict_review | 券商 | manual_review | new | state=conflict_review · daily=priority_watch · ETF flow rank=1 · rotation=领先延续 · conflict=manual review | execution language blocked: guidance_state=not_ready; observation-only review. |
+| conflict_review | 半导体 | manual_review | new | state=conflict_review · daily=confirm_next · ETF flow rank=5 · rotation=领先延续 · conflict=manual review | execution language blocked: guidance_state=not_ready; observation-only review. |
 | avoid_watch | 基础化工 | low | new | state=avoid_watch · daily=avoid_watch · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | avoid_watch | 建筑材料 | low | new | state=avoid_watch · daily=avoid_watch · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
-| avoid_watch | 新能源车 | low | new | state=avoid_watch · daily=avoid_watch · ETF flow rank=7 · rotation=弱势延续 | execution language blocked: guidance_state=not_ready; observation-only review. |
+| avoid_watch | 新能源车 | low | new | state=avoid_watch · daily=avoid_watch · ETF flow rank=8 · rotation=弱势延续 | execution language blocked: guidance_state=not_ready; observation-only review. |
+| avoid_watch | 地产基建 | low | new | state=avoid_watch · daily=avoid_watch · ETF flow rank=3 · rotation=弱势延续 | execution language blocked: guidance_state=not_ready; observation-only review. |
 | avoid_watch | 商贸零售 | low | new | state=avoid_watch · daily=avoid_watch · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | avoid_watch | 钢铁 | low | new | state=avoid_watch · daily=avoid_watch · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Agriculture | medium | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
-| blocked_execution | 银行保险 | medium | new | state=blocked_execution · daily=confirm_next · ETF flow rank=2 · rotation=新进强势 | execution language blocked: guidance_state=not_ready; observation-only review. |
+| blocked_execution | Bank and Insurance | medium | new | state=blocked_execution · daily=unranked · ETF flow rank=7 · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
+| blocked_execution | Healthcare and Pharma | medium | new | state=blocked_execution · daily=unranked · ETF flow rank=2 · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | a_share | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | a_share_agriculture | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | a_share_ai_computer | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
@@ -53,16 +54,15 @@ Observation watchlist only. Not a trading instruction.
 | blocked_execution | a_share_transportation | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | a_share_utilities | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Beauty Care | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
-| blocked_execution | Brokerage | background | new | state=blocked_execution · daily=unranked · ETF flow rank=11 · rotation=弱势 | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | btc | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Coal | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
+| blocked_execution | Communication and Electronics | background | new | state=blocked_execution · daily=unranked · ETF flow rank=11 · rotation=弱势 | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Construction | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
-| blocked_execution | Consumer | background | new | state=blocked_execution · daily=unranked · ETF flow rank=6 · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
-| blocked_execution | Defense and Military | background | new | state=blocked_execution · daily=unranked · ETF flow rank=8 · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
+| blocked_execution | Consumer | background | new | state=blocked_execution · daily=unranked · ETF flow rank=9 · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
+| blocked_execution | Defense and Military | background | new | state=blocked_execution · daily=unranked · ETF flow rank=6 · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Environmental Protection | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Food and Beverage | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | gold | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
-| blocked_execution | Healthcare and Pharma | background | new | state=blocked_execution · daily=unranked · ETF flow rank=10 · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Home Appliances | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Light Manufacturing | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |
 | blocked_execution | Machinery | background | new | state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=-- | execution language blocked: guidance_state=not_ready; observation-only review. |

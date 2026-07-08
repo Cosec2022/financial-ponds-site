@@ -35,7 +35,10 @@ const [
   attribution,
   watchlist,
   gateLedger,
-  explainability
+  explainability,
+  observationSnapshot,
+  outcomeLabels,
+  dailyVault
 ] = await Promise.all([
   readJson("financial-pond/data/sector_flow_review.json"),
   readJson("financial-pond/data/sector_rotation_history.json"),
@@ -46,7 +49,10 @@ const [
   readJson("financial-pond/data/sector_signal_attribution.json"),
   readJson("financial-pond/data/sector_watchlist_state.json"),
   readJson("financial-pond/data/decision_gate_ledger.json"),
-  readJson("financial-pond/data/index_explainability.json")
+  readJson("financial-pond/data/index_explainability.json"),
+  readJson("financial-pond/data/observation_snapshot.json"),
+  readJson("financial-pond/data/outcome_labels.json"),
+  readJson("financial-pond/data/daily_data_vault.json")
 ]);
 
 const asOf = readiness?.as_of ?? daily?.as_of ?? flow?.as_of ?? new Date().toISOString().slice(0, 10);
@@ -70,6 +76,9 @@ const blockers = uniq([
   ...(daily?.decision_gap?.checks ?? []).filter((item) => item.status !== "passed").map((item) => item.id ?? item.label),
   ...(maturity?.recommended_mainline?.blockers ?? [])
 ]);
+const observationRows = observationSnapshot?.rows ?? [];
+const observationCounts = observationSnapshot?.counts ?? {};
+const historyText = await readText("tools/financial-pond-framework/model_outputs/observation_history.jsonl");
 
 const summary = {
   as_of: asOf,
@@ -128,8 +137,25 @@ const summary = {
     formula_id: item.formula_id,
     status: item.status
   })),
+  observed_pool_count: observationSnapshot?.observed_pool_count ?? observationRows.length,
+  real_signal_count: observationCounts.real_provider ?? 0,
+  derived_signal_count: observationCounts.real_provider_derived ?? 0,
+  missing_signal_count: (observationCounts.missing ?? 0) + (observationCounts.mock ?? 0) + (observationCounts.fixture ?? 0),
+  planned_signal_count: observationCounts.planned ?? 0,
+  insufficient_history_count: observationCounts.insufficient_history ?? 0,
+  pending_outcome_count: outcomeLabels?.pending?.length ?? 0,
+  observation_history_rows: historyText ? historyText.trim().split(/\r?\n/).filter(Boolean).length : 0,
+  workbench_status: observationSnapshot?.status === "observation_snapshot_available" && dailyVault?.status === "vault_available" ? "ready" : "missing",
   blockers,
   next_action: daily?.next_unlock?.label ?? readiness?.progress?.next_unlock?.label ?? maturity?.recommended_mainline?.next_actions?.[0] ?? null
 };
 
 console.log(JSON.stringify(summary, null, 2));
+
+async function readText(path) {
+  try {
+    return await readFile(path, "utf8");
+  } catch {
+    return "";
+  }
+}

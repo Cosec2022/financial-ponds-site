@@ -1,6 +1,6 @@
 {
   "name": "financial-pond-framework",
-  "version": "0.10.47",
+  "version": "0.10.48",
   "description": "Config-driven financial pond graph framework for cross-asset and sector ETF analysis.",
   "type": "module",
   "scripts": {
@@ -39,6 +39,8 @@
     "watchlist:state": "node src/tools/sector_watchlist_state.mjs",
     "decision:gates": "node src/tools/decision_gate_ledger.mjs",
     "index:explain": "node src/tools/index_explainability.mjs",
+    "data:vault": "node src/tools/daily_data_vault.mjs",
+    "observation:snapshot": "node src/tools/observation_snapshot.mjs",
     "pool:analysis": "node src/tools/general_pool_analysis.mjs",
     "rotation:review": "node src/tools/sector_rotation_intelligence.mjs",
     "rotation:history": "node src/tools/sector_rotation_history.mjs",

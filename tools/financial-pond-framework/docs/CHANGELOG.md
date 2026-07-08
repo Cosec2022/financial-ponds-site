@@ -1,5 +1,34 @@
 # Changelog
 
+## v0.10.48 - Observation data backbone and workbench
+
+- Bumped site and framework package versions to `0.10.48`.
+- Added `src/core/observation_schema.mjs` with generic universe, pool, signal,
+  vector forecast, manual review, outcome label, review horizon, and boundary
+  contracts.
+- Added `npm run data:vault`.
+- Added `npm run observation:snapshot`.
+- Added daily vault outputs with file lists, missing-file lists, hashes,
+  available modules, missing modules, and data-reality summary.
+- Added observation snapshots with all signal slots present for every pool:
+  flow, price momentum, liquidity, rotation, news, valuation, fundamental, and
+  risk.
+- Added append-only `observation_history.jsonl`.
+- Published `observation_snapshot.json`, `manual_review_log.json`,
+  `outcome_labels.json`, and `daily_data_vault.json`.
+- Added pending T+1, T+3, T+5, and T+20 outcome checks.
+- Added the homepage `观察工作台` with 今日观察, 信号矩阵, 资金矢量, and
+  复盘记录 tabs.
+- Updated the daily runner, CI runner, build assets, published-data validation,
+  Worker tests, workflow tests, framework tests, and summary command.
+
+Important boundary:
+
+- v0.10.48 preserves observation data so future review can happen.
+- It improves cross-module workbench visibility.
+- A-share is the first sample universe, not a core model assumption.
+- ETF execution advice remains blocked.
+
 ## v0.10.47 - Index explainability and score breakdown
 
 - Bumped site and framework package versions to `0.10.47`.

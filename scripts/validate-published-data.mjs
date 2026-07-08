@@ -19,9 +19,32 @@ const requiredFiles = [
   ["sector_watchlist_state.json", (json) => json.status === "watchlist_state_available" && json.module_id === "sector_watchlist_state_v0_10_45" && Array.isArray(json.rows) && Boolean(json.groups)],
   ["decision_gate_ledger.json", (json) => json.status === "gate_ledger_available" && json.module_id === "decision_gate_ledger_v0_10_46" && Array.isArray(json.gates) && json.gates.every((gate) => gate.reading && gate.next_action)],
   ["index_explainability.json", (json) => json.status === "index_explainability_available" && json.module_id === "index_explainability_v0_10_47" && Array.isArray(json.indexes) && json.indexes.every((item) => item.source_files?.length && (Object.keys(item.inputs ?? {}).length || item.caveats?.length))],
+  ["observation_snapshot.json", (json) => json.status === "observation_snapshot_available" && json.module_id === "observation_snapshot_v0_10_48" && Array.isArray(json.rows) && json.rows.every(validateObservationRow)],
+  ["manual_review_log.json", (json) => json.module_id === "manual_review_log_v0_10_48" && Array.isArray(json.entries)],
+  ["outcome_labels.json", (json) => json.module_id === "outcome_labels_v0_10_48" && Array.isArray(json.labels) && Array.isArray(json.pending) && hasOutcomeHorizons(json.pending)],
+  ["daily_data_vault.json", (json) => json.status === "vault_available" && json.module_id === "daily_data_vault_v0_10_48" && Array.isArray(json.files_seen) && Array.isArray(json.files_missing) && Boolean(json.file_hashes) && Boolean(json.data_reality_summary)],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];
+
+const signalSlots = ["flow", "price_momentum", "liquidity", "rotation", "news", "valuation", "fundamental", "risk"];
+const signalReality = new Set(["real_provider", "real_provider_derived", "manual_seed", "mock", "fixture", "missing", "planned", "insufficient_history"]);
+const boundaries = new Set(["observe_only", "manual_review", "blocked"]);
+
+function validateObservationRow(row) {
+  return signalSlots.every((slot) => signalReality.has(row.signals?.[slot]?.reality) && row.signal_matrix_row?.[slot])
+    && ["inward", "outward", "neutral"].includes(row.vector_forecast?.direction)
+    && typeof row.vector_forecast?.magnitude === "number"
+    && typeof row.vector_forecast?.confidence === "number"
+    && boundaries.has(row.vector_forecast?.boundary)
+    && (row.vector_forecast?.trace_id || row.vector_forecast?.trace_status);
+}
+
+function hasOutcomeHorizons(pending) {
+  if (!pending.length) return false;
+  const horizons = new Set(pending.map((item) => item.horizon));
+  return ["T+1", "T+3", "T+5", "T+20"].every((horizon) => horizons.has(horizon));
+}
 
 const failures = [];
 

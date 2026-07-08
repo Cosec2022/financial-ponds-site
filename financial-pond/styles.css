@@ -99,7 +99,61 @@ h3 { margin-bottom: 10px; font-size: 15px; }
   align-items: start;
 }
 
-.reference-panel, .rotation-panel, .module-panel, .etf-panel, .etf-flow-panel, .attribution-panel, .watchlist-panel, .gate-ledger-panel, .index-explain-panel, .reality-panel, .provider-panel, .daily-analysis-panel, .maturity-panel { grid-column: 1 / -1; }
+.workbench-panel, .reference-panel, .rotation-panel, .module-panel, .etf-panel, .etf-flow-panel, .attribution-panel, .watchlist-panel, .gate-ledger-panel, .index-explain-panel, .reality-panel, .provider-panel, .daily-analysis-panel, .maturity-panel { grid-column: 1 / -1; }
+.workbench-grid {
+  display: grid;
+  gap: 10px;
+}
+.workbench-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.workbench-tab {
+  min-height: 34px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.workbench-tab.active {
+  border-color: var(--green);
+  background: var(--green-soft);
+  color: var(--green);
+}
+.workbench-boundary {
+  display: inline-flex;
+  width: fit-content;
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfa;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+.workbench-table table {
+  font-size: 12px;
+}
+.workbench-table th,
+.workbench-table td {
+  vertical-align: top;
+}
+.metric-stack {
+  display: grid;
+  gap: 3px;
+  min-width: 88px;
+}
+.metric-stack small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
 .reality-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
