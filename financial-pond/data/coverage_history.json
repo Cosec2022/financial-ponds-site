@@ -1,0 +1,16 @@
+{
+  "module_id": "coverage_history_v0_10_50",
+  "history": [
+    {
+      "as_of": "2026-07-08",
+      "real_count": 0,
+      "estimated_count": 11,
+      "derived_count": 208,
+      "missing_count": 148,
+      "planned_count": 108,
+      "insufficient_count": 61,
+      "coverage_ratio": 0.4086,
+      "observed_pool_count": 67
+    }
+  ]
+}

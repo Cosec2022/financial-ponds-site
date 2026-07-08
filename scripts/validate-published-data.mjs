@@ -23,6 +23,8 @@ const requiredFiles = [
   ["manual_review_log.json", (json) => json.module_id === "manual_review_log_v0_10_48" && Array.isArray(json.entries)],
   ["outcome_labels.json", (json) => json.module_id === "outcome_labels_v0_10_48" && Array.isArray(json.labels) && Array.isArray(json.pending) && hasOutcomeHorizons(json.pending)],
   ["daily_data_vault.json", (json) => json.status === "vault_available" && json.module_id === "daily_data_vault_v0_10_48" && Array.isArray(json.files_seen) && Array.isArray(json.files_missing) && Boolean(json.file_hashes) && Boolean(json.data_reality_summary)],
+  ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_50" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count],
+  ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_50" && Array.isArray(json.history)],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];

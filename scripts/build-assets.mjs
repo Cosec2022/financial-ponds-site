@@ -25,6 +25,8 @@ const files = [
   ["data/manual_review_log.json", "application/json; charset=utf-8"],
   ["data/outcome_labels.json", "application/json; charset=utf-8"],
   ["data/daily_data_vault.json", "application/json; charset=utf-8"],
+  ["data/data_coverage_report.json", "application/json; charset=utf-8"],
+  ["data/coverage_history.json", "application/json; charset=utf-8"],
   ["data/news_review.json", "application/json; charset=utf-8"],
   ["data/pond_map.json", "application/json; charset=utf-8"],
 ];

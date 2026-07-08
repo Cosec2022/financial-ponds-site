@@ -28,6 +28,7 @@ const state = {
   explainability: null,
   vault: null,
   readiness: null,
+  coverage: null,
   pools: [],
   view: "today",
   selectedPoolId: null,
@@ -294,6 +295,30 @@ function renderSummaryStrip() {
     <article class="summary-card"><span>Real Flow Coverage</span><strong>${pct(coverage)}</strong></article>
     <article class="summary-card"><span>Observed Pools</span><strong>${state.snapshot?.observed_pool_count ?? state.pools.length}</strong></article>
     <article class="summary-card"><span>Pending Reviews</span><strong>${pending}</strong></article>
+  `;
+}
+
+function renderCoverageStrip() {
+  const el = document.getElementById("coverageStrip");
+  if (!el) return;
+  const report = state.coverage;
+  if (!report) {
+    el.innerHTML = `
+      <div class="coverage-head"><span>Data Coverage</span><strong>--</strong></div>
+      <div class="coverage-counts">data_coverage_report not loaded</div>
+      <div class="coverage-gaps">Top gaps unavailable.</div>
+    `;
+    return;
+  }
+  const gaps = asArray(report.priority_gaps).slice(0, 3);
+  el.innerHTML = `
+    <div class="coverage-head"><span>Data Coverage</span><strong>${pct(report.coverage_ratio)}</strong></div>
+    <div class="coverage-counts">
+      real ${report.real_count ?? 0} · estimated ${report.estimated_count ?? 0} · derived ${report.derived_count ?? 0} · missing ${report.missing_count ?? 0} · planned ${report.planned_count ?? 0}
+    </div>
+    <div class="coverage-gaps">
+      ${gaps.length ? gaps.map((gap) => `<span>${escapeHtml(gap.priority_label ?? gap.signal_type)} ${gap.affected_pool_count ?? 0}</span>`).join("") : "<span>no priority data gap</span>"}
+    </div>
   `;
 }
 
@@ -571,6 +596,7 @@ function renderTabs() {
 function render() {
   renderHeader();
   renderSummaryStrip();
+  renderCoverageStrip();
   renderTabs();
   renderPools();
   renderMain();
@@ -587,18 +613,20 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault, readiness] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness, coverage] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
     readJson("./data/daily_data_vault.json", null),
-    readJson("./data/etf_decision_readiness.json", null)
+    readJson("./data/etf_decision_readiness.json", null),
+    readJson("./data/data_coverage_report.json", null)
   ]);
   state.snapshot = snapshot;
   state.outcomes = outcomes;
   state.explainability = explainability;
   state.vault = vault;
   state.readiness = readiness;
+  state.coverage = coverage;
   state.pools = extractPools(snapshot);
   state.selectedPoolId = state.pools[0]?.id ?? null;
 

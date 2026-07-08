@@ -12,6 +12,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /Focused Workbench|Vector Workbench/);
   assert.match(html, /观察工作台/);
   assert.match(html, /Observation State/);
+  assert.match(html, /Data Coverage/);
   assert.match(html, /Signal Health/);
   assert.match(html, /Data Gap/);
   assert.match(html, /observe_only/);
@@ -24,6 +25,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /复盘记录/);
   assert.match(html, /高级诊断/);
   assert.match(html, /数据真实性审计/);
+  assert.doesNotMatch(html, /资金池塘图谱/);
 });
 
 test("serves dashboard, general pool analysis, sector review, rotation data, module review, news review, and pond map JSON", async () => {
@@ -180,6 +182,20 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(vaultJson.module_id, "daily_data_vault_v0_10_48");
   assert.equal(vaultJson.status, "vault_available");
   assert.ok(vaultJson.files_seen.length >= 1);
+
+  const coverage = await worker.fetch(request("/data/data_coverage_report.json"), {});
+  assert.equal(coverage.status, 200);
+  const coverageJson = await coverage.json();
+  assert.equal(coverageJson.module_id, "data_coverage_report_v0_10_50");
+  assert.ok(Array.isArray(coverageJson.pools));
+  assert.ok(coverageJson.total_signal_cells >= coverageJson.observed_pool_count);
+  assert.ok(Array.isArray(coverageJson.priority_gaps));
+
+  const coverageHistory = await worker.fetch(request("/data/coverage_history.json"), {});
+  assert.equal(coverageHistory.status, 200);
+  const coverageHistoryJson = await coverageHistory.json();
+  assert.equal(coverageHistoryJson.module_id, "coverage_history_v0_10_50");
+  assert.ok(Array.isArray(coverageHistoryJson.history));
 
   const pondMap = await worker.fetch(request("/data/pond_map.json"), {});
   assert.equal(pondMap.status, 200);
