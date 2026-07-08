@@ -2,12 +2,12 @@
   "module_id": "module_maturity_audit_v0_10_39",
   "status": "module_maturity_available",
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T10:06:26.100Z",
+  "generated_at": "2026-07-08T10:50:08.957Z",
   "overall": {
     "module_count": 17,
-    "average_progress": 44.94,
-    "decision_path_progress": 48.4,
-    "low_maturity_count": 7,
+    "average_progress": 45.65,
+    "decision_path_progress": 50.8,
+    "low_maturity_count": 6,
     "current_stage": "usable prototype",
     "decision_grade_model": "not yet"
   },
@@ -16,7 +16,7 @@
     "label": "A股真实 Provider -> ETF 份额变化流",
     "priority": 1,
     "rationale": "ETF readiness cannot unlock until provider history produces observed share-change flow. This is the narrowest path from prototype to usable decision support.",
-    "current_progress": 48.4,
+    "current_progress": 50.8,
     "immediate_modules": [
       "FP-DATA-01",
       "FP-FLOW-01",
@@ -25,26 +25,28 @@
       "FP-DAILY-01"
     ],
     "next_actions": [
-      "A-share provider history first; S&P 500 provider second",
+      "Add valuation/fundamental real sources; S&P 500 provider second",
       "Run provider:akshare:history before the full model to verify provider CSV continuity.",
-      "Keep valuation/fundamental outputs as blockers until non-manual sources are connected."
+      "Review ETF readiness gates after estimated_flow appears."
     ]
   },
   "priority_modules": [
     {
-      "module_id": "FP-HIST-01",
-      "module": "Sector Rotation History",
-      "role": "Persist daily rotation snapshots, recover recent published history, and compare latest vs previous day",
+      "module_id": "FP-GEN-01",
+      "module": "General Pool Analysis",
+      "role": "Analyze pools through one component contract with pool-specific input profiles",
       "status": "working prototype",
-      "progress": 42,
-      "next": "Add explicit continuation/reversal labels",
+      "progress": 52,
+      "next": "Surface provider-mapped vs framework-only coverage in the frontend",
       "priority_rank": 2,
-      "priority_reading": "keep published history from regressing and accumulate at least 3 trading days.",
-      "focus_lane": "decision_path",
+      "priority_reading": "remove pool graph snapshot dependency from one-command runs.",
+      "focus_lane": "quality_expansion",
       "maturity_label": "prototype",
       "urgency": "critical_path",
-      "blockers": [],
-      "next_action": "Add explicit continuation/reversal labels"
+      "blockers": [
+        "real_provider_gap"
+      ],
+      "next_action": "Surface provider-mapped vs framework-only coverage in the frontend"
     },
     {
       "module_id": "FP-NEWS-01",
@@ -53,7 +55,7 @@
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 3,
+      "priority_rank": 5,
       "priority_reading": "real fixed A-share news sources.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
@@ -64,57 +66,22 @@
       "next_action": "Add fixed real sources and source-quality labels"
     },
     {
-      "module_id": "FP-DAILY-01",
-      "module": "Daily Sector Analysis",
-      "role": "Combine flow, rotation, modules, ETF readiness, and decision tickets",
-      "status": "working prototype",
-      "progress": 40,
-      "next": "Add continuation/reversal labels after more history accumulates",
-      "priority_rank": 4,
-      "priority_reading": "improve continuation/reversal labels without weakening ETF gates.",
-      "focus_lane": "decision_path",
-      "maturity_label": "prototype",
-      "urgency": "near_term",
-      "blockers": [
-        "history_depth_gap"
-      ],
-      "next_action": "Add continuation/reversal labels after more history accumulates"
-    },
-    {
-      "module_id": "FP-GEN-01",
-      "module": "General Pool Analysis",
-      "role": "Analyze pools through one component contract with pool-specific input profiles",
-      "status": "working prototype",
-      "progress": 52,
-      "next": "Surface provider-mapped vs framework-only coverage in the frontend",
-      "priority_rank": 5,
-      "priority_reading": "sync reusable coverage/confidence work into the shared model.",
-      "focus_lane": "quality_expansion",
-      "maturity_label": "prototype",
-      "urgency": "near_term",
-      "blockers": [
-        "real_provider_gap"
-      ],
-      "next_action": "Surface provider-mapped vs framework-only coverage in the frontend"
-    },
-    {
       "module_id": "FP-DATA-01",
       "module": "Hard Data Providers",
       "role": "AKShare ETF snapshot, A-share water level, provider adapters",
       "status": "working with fallback",
-      "progress": 62,
-      "next": "A-share provider history first; S&P 500 provider second",
+      "progress": 66,
+      "next": "Add valuation/fundamental real sources; S&P 500 provider second",
       "priority_rank": 6,
-      "priority_reading": "S&P 500 live provider inputs after the A-share baseline is firmer.",
+      "priority_reading": "S&P 500 live provider inputs after the A-share flow path is stable.",
       "focus_lane": "decision_path",
       "maturity_label": "usable",
       "urgency": "later",
       "blockers": [
         "real_provider_gap",
-        "history_depth_gap",
         "cross_market_provider_gap"
       ],
-      "next_action": "A-share provider history first; S&P 500 provider second"
+      "next_action": "Add valuation/fundamental real sources; S&P 500 provider second"
     },
     {
       "module_id": "FP-GPT-01",
@@ -167,6 +134,23 @@
         "low_maturity"
       ],
       "next_action": "Add trend, divergence, volume expansion, and persistence"
+    },
+    {
+      "module_id": "FP-RPT-01",
+      "module": "Reports",
+      "role": "Daily and weekly human-readable reports",
+      "status": "basic",
+      "progress": 25,
+      "next": "Add weekly report and proposal sections",
+      "priority_rank": null,
+      "priority_reading": null,
+      "focus_lane": "quality_expansion",
+      "maturity_label": "early",
+      "urgency": "weak_module",
+      "blockers": [
+        "low_maturity"
+      ],
+      "next_action": "Add weekly report and proposal sections"
     }
   ],
   "low_maturity_modules": [
@@ -177,7 +161,7 @@
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 3,
+      "priority_rank": 5,
       "priority_reading": "real fixed A-share news sources.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
@@ -273,24 +257,6 @@
         "backend_state_gap"
       ],
       "next_action": "Add backend edge state and confirmation history"
-    },
-    {
-      "module_id": "FP-ETF-01",
-      "module": "ETF Decision Readiness",
-      "role": "Gate whether sector rankings may support ETF action language, with share-change flow diagnostics",
-      "status": "working prototype",
-      "progress": 38,
-      "next": "Replace manual valuation/fundamental seeds and require observed multi-day flow",
-      "priority_rank": null,
-      "priority_reading": null,
-      "focus_lane": "decision_path",
-      "maturity_label": "prototype",
-      "urgency": "later",
-      "blockers": [
-        "manual_or_seed_input",
-        "history_depth_gap"
-      ],
-      "next_action": "Replace manual valuation/fundamental seeds and require observed multi-day flow"
     }
   ],
   "phase_plan": [
@@ -376,34 +342,35 @@
       "module": "Hard Data Providers",
       "role": "AKShare ETF snapshot, A-share water level, provider adapters",
       "status": "working with fallback",
-      "progress": 62,
-      "next": "A-share provider history first; S&P 500 provider second",
+      "progress": 66,
+      "next": "Add valuation/fundamental real sources; S&P 500 provider second",
       "priority_rank": 6,
-      "priority_reading": "S&P 500 live provider inputs after the A-share baseline is firmer.",
+      "priority_reading": "S&P 500 live provider inputs after the A-share flow path is stable.",
       "focus_lane": "decision_path",
       "maturity_label": "usable",
       "urgency": "later",
       "blockers": [
         "real_provider_gap",
-        "history_depth_gap",
         "cross_market_provider_gap"
       ],
-      "next_action": "A-share provider history first; S&P 500 provider second"
+      "next_action": "Add valuation/fundamental real sources; S&P 500 provider second"
     },
     {
       "module_id": "FP-FLOW-01",
       "module": "Capital Flow Engine",
       "role": "Convert observations into 31-slot A-share sector-flow review",
       "status": "working prototype",
-      "progress": 60,
-      "next": "Strengthen ETF share-change and market-water inputs",
+      "progress": 64,
+      "next": "Keep provider flow `flow_ready` and expand coverage beyond representative ETFs",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "decision_path",
       "maturity_label": "usable",
       "urgency": "later",
-      "blockers": [],
-      "next_action": "Strengthen ETF share-change and market-water inputs"
+      "blockers": [
+        "real_provider_gap"
+      ],
+      "next_action": "Keep provider flow `flow_ready` and expand coverage beyond representative ETFs"
     },
     {
       "module_id": "FP-GEN-01",
@@ -412,11 +379,11 @@
       "status": "working prototype",
       "progress": 52,
       "next": "Surface provider-mapped vs framework-only coverage in the frontend",
-      "priority_rank": 5,
-      "priority_reading": "sync reusable coverage/confidence work into the shared model.",
+      "priority_rank": 2,
+      "priority_reading": "remove pool graph snapshot dependency from one-command runs.",
       "focus_lane": "quality_expansion",
       "maturity_label": "prototype",
-      "urgency": "near_term",
+      "urgency": "critical_path",
       "blockers": [
         "real_provider_gap"
       ],
@@ -465,7 +432,7 @@
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 3,
+      "priority_rank": 5,
       "priority_reading": "real fixed A-share news sources.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
@@ -499,11 +466,11 @@
       "status": "working prototype",
       "progress": 42,
       "next": "Add explicit continuation/reversal labels",
-      "priority_rank": 2,
-      "priority_reading": "keep published history from regressing and accumulate at least 3 trading days.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "decision_path",
       "maturity_label": "prototype",
-      "urgency": "critical_path",
+      "urgency": "later",
       "blockers": [],
       "next_action": "Add explicit continuation/reversal labels"
     },
@@ -512,18 +479,15 @@
       "module": "ETF Decision Readiness",
       "role": "Gate whether sector rankings may support ETF action language, with share-change flow diagnostics",
       "status": "working prototype",
-      "progress": 38,
-      "next": "Replace manual valuation/fundamental seeds and require observed multi-day flow",
+      "progress": 42,
+      "next": "Current state is `watch_only`; unblock valuation/fundamental seeds, rotation visibility, and execution rules",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "decision_path",
       "maturity_label": "prototype",
       "urgency": "later",
-      "blockers": [
-        "manual_or_seed_input",
-        "history_depth_gap"
-      ],
-      "next_action": "Replace manual valuation/fundamental seeds and require observed multi-day flow"
+      "blockers": [],
+      "next_action": "Current state is `watch_only`; unblock valuation/fundamental seeds, rotation visibility, and execution rules"
     },
     {
       "module_id": "FP-DAILY-01",
@@ -532,11 +496,11 @@
       "status": "working prototype",
       "progress": 40,
       "next": "Add continuation/reversal labels after more history accumulates",
-      "priority_rank": 4,
-      "priority_reading": "improve continuation/reversal labels without weakening ETF gates.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "decision_path",
       "maturity_label": "prototype",
-      "urgency": "near_term",
+      "urgency": "later",
       "blockers": [
         "history_depth_gap"
       ],

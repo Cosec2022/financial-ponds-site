@@ -1,6 +1,6 @@
 {
   "name": "financial-pond-framework",
-  "version": "0.10.42",
+  "version": "0.10.43",
   "description": "Config-driven financial pond graph framework for cross-asset and sector ETF analysis.",
   "type": "module",
   "scripts": {
@@ -23,6 +23,7 @@
     "provider:akshare:validate": "python3 providers/akshare_etf_bridge/validate_exports.py",
     "provider:akshare:inspect": "python3 providers/akshare_etf_bridge/inspect_exports.py",
     "provider:akshare:history": "node src/tools/akshare_provider_history.mjs",
+    "etf:flow-leaderboard": "node src/tools/etf_flow_leaderboard.mjs",
     "project:maturity": "node src/tools/module_maturity_audit.mjs",
     "provider:akshare:to-flow": "node src/tools/akshare_flow_observations.mjs",
     "provider:a-share-water": "python3 providers/a_share_water_level/export_a_share_water_level.py",

@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T10:06:24.927Z",
+  "generated_at": "2026-07-08T10:50:07.698Z",
   "module_id": "sector_rotation_intelligence_v0_10_5",
   "status": "rotation_available",
   "headline": "数据可见度偏低：当前只适合作为流程检查，不适合下强结论。",
@@ -42,18 +42,18 @@
   "counts": {
     "sectors": 31,
     "positive_bias_sectors": 1,
-    "negative_bias_sectors": 1,
+    "negative_bias_sectors": 0,
     "direct_flow_inputs": 11,
     "price_volume_confirmations": 11,
     "news_fallback": false
   },
-  "score_spread": 0.4232,
+  "score_spread": 0.4193,
   "leaders": [
     {
-      "sector_id": "brokerage",
-      "pool_id": "a_share_brokerage",
-      "name": "券商",
-      "score": 0.2218,
+      "sector_id": "communication_electronics",
+      "pool_id": "a_share_communication_electronics",
+      "name": "通信电子",
+      "score": 0.2851,
       "label": "constructive_inflow_bias",
       "confidence": 0.225,
       "data_completeness": 0.55,
@@ -64,80 +64,24 @@
       "top_drivers": [
         {
           "component": "direct_flow",
-          "contribution": 0.2017,
-          "score": 0.6723,
+          "contribution": 0.225,
+          "score": 0.75,
           "available": true
         },
-        {
-          "component": "market_confirmation",
-          "contribution": 0.0201,
-          "score": 0.0805,
-          "available": true
-        }
-      ]
-    },
-    {
-      "sector_id": "semiconductor",
-      "pool_id": "a_share_semiconductor",
-      "name": "半导体",
-      "score": 0.1001,
-      "label": "neutral",
-      "confidence": 0.225,
-      "data_completeness": 0.55,
-      "confirmation_inputs": [
-        "ETF流",
-        "价量确认"
-      ],
-      "top_drivers": [
-        {
-          "component": "market_confirmation",
-          "contribution": 0.0586,
-          "score": 0.2343,
-          "available": true
-        },
-        {
-          "component": "direct_flow",
-          "contribution": 0.0415,
-          "score": 0.1383,
-          "available": true
-        }
-      ]
-    },
-    {
-      "sector_id": "communication_electronics",
-      "pool_id": "a_share_communication_electronics",
-      "name": "通信电子",
-      "score": 0.0601,
-      "label": "neutral",
-      "confidence": 0.225,
-      "data_completeness": 0.55,
-      "confirmation_inputs": [
-        "ETF流",
-        "价量确认"
-      ],
-      "top_drivers": [
         {
           "component": "market_confirmation",
           "contribution": 0.0601,
           "score": 0.2406,
           "available": true
-        },
-        {
-          "component": "direct_flow",
-          "contribution": 0,
-          "score": 0,
-          "available": true
         }
       ]
-    }
-  ],
-  "laggards": [
+    },
     {
       "sector_id": "bank_insurance",
       "pool_id": "a_share_bank_insurance",
       "name": "银行保险",
-      "score": -0.2014,
-      "label": "outflow_watch",
+      "score": 0.1533,
+      "label": "neutral",
       "confidence": 0.225,
       "data_completeness": 0.55,
       "confirmation_inputs": [
@@ -147,8 +91,8 @@
       "top_drivers": [
         {
           "component": "direct_flow",
-          "contribution": -0.225,
-          "score": -0.75,
+          "contribution": 0.1298,
+          "score": 0.4325,
           "available": true
         },
         {
@@ -160,10 +104,39 @@
       ]
     },
     {
+      "sector_id": "ai_computer",
+      "pool_id": "a_share_ai_computer",
+      "name": "AI计算机",
+      "score": 0.0684,
+      "label": "neutral",
+      "confidence": 0.225,
+      "data_completeness": 0.55,
+      "confirmation_inputs": [
+        "ETF流",
+        "价量确认"
+      ],
+      "top_drivers": [
+        {
+          "component": "market_confirmation",
+          "contribution": 0.0574,
+          "score": 0.2296,
+          "available": true
+        },
+        {
+          "component": "direct_flow",
+          "contribution": 0.011,
+          "score": 0.0367,
+          "available": true
+        }
+      ]
+    }
+  ],
+  "laggards": [
+    {
       "sector_id": "new_energy_ev",
       "pool_id": "a_share_new_energy_ev",
       "name": "新能源车",
-      "score": -0.1363,
+      "score": -0.1342,
       "label": "neutral",
       "confidence": 0.225,
       "data_completeness": 0.55,
@@ -180,17 +153,17 @@
         },
         {
           "component": "direct_flow",
-          "contribution": 0,
-          "score": 0,
+          "contribution": 0.002,
+          "score": 0.0068,
           "available": true
         }
       ]
     },
     {
-      "sector_id": "real_estate_infra",
-      "pool_id": "a_share_real_estate_infra",
-      "name": "地产基建",
-      "score": -0.0629,
+      "sector_id": "brokerage",
+      "pool_id": "a_share_brokerage",
+      "name": "券商",
+      "score": -0.0962,
       "label": "neutral",
       "confidence": 0.225,
       "data_completeness": 0.55,
@@ -200,15 +173,42 @@
       ],
       "top_drivers": [
         {
-          "component": "market_confirmation",
-          "contribution": -0.0605,
-          "score": -0.2419,
+          "component": "direct_flow",
+          "contribution": -0.1163,
+          "score": -0.3877,
           "available": true
         },
         {
+          "component": "market_confirmation",
+          "contribution": 0.0201,
+          "score": 0.0805,
+          "available": true
+        }
+      ]
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "pool_id": "a_share_healthcare_pharma",
+      "name": "医药医疗",
+      "score": -0.0832,
+      "label": "neutral",
+      "confidence": 0.225,
+      "data_completeness": 0.55,
+      "confirmation_inputs": [
+        "ETF流",
+        "价量确认"
+      ],
+      "top_drivers": [
+        {
           "component": "direct_flow",
-          "contribution": -0.0024,
-          "score": -0.0081,
+          "contribution": -0.0466,
+          "score": -0.1552,
+          "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "contribution": -0.0367,
+          "score": -0.1467,
           "available": true
         }
       ]
@@ -217,68 +217,10 @@
   "rotation_pairs": [
     {
       "from_sector": {
-        "sector_id": "bank_insurance",
-        "pool_id": "a_share_bank_insurance",
-        "name": "银行保险",
-        "score": -0.2014,
-        "label": "outflow_watch",
-        "confidence": 0.225,
-        "data_completeness": 0.55,
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认"
-        ],
-        "top_drivers": [
-          {
-            "component": "direct_flow",
-            "contribution": -0.225,
-            "score": -0.75,
-            "available": true
-          },
-          {
-            "component": "market_confirmation",
-            "contribution": 0.0236,
-            "score": 0.0943,
-            "available": true
-          }
-        ]
-      },
-      "to_sector": {
-        "sector_id": "brokerage",
-        "pool_id": "a_share_brokerage",
-        "name": "券商",
-        "score": 0.2218,
-        "label": "constructive_inflow_bias",
-        "confidence": 0.225,
-        "data_completeness": 0.55,
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认"
-        ],
-        "top_drivers": [
-          {
-            "component": "direct_flow",
-            "contribution": 0.2017,
-            "score": 0.6723,
-            "available": true
-          },
-          {
-            "component": "market_confirmation",
-            "contribution": 0.0201,
-            "score": 0.0805,
-            "available": true
-          }
-        ]
-      },
-      "score_gap": 0.4232,
-      "reading": "银行保险相对弱，券商相对强，观察资金是否继续从弱势池切向强势池。"
-    },
-    {
-      "from_sector": {
         "sector_id": "new_energy_ev",
         "pool_id": "a_share_new_energy_ev",
         "name": "新能源车",
-        "score": -0.1363,
+        "score": -0.1342,
         "label": "neutral",
         "confidence": 0.225,
         "data_completeness": 0.55,
@@ -295,66 +237,8 @@
           },
           {
             "component": "direct_flow",
-            "contribution": 0,
-            "score": 0,
-            "available": true
-          }
-        ]
-      },
-      "to_sector": {
-        "sector_id": "semiconductor",
-        "pool_id": "a_share_semiconductor",
-        "name": "半导体",
-        "score": 0.1001,
-        "label": "neutral",
-        "confidence": 0.225,
-        "data_completeness": 0.55,
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认"
-        ],
-        "top_drivers": [
-          {
-            "component": "market_confirmation",
-            "contribution": 0.0586,
-            "score": 0.2343,
-            "available": true
-          },
-          {
-            "component": "direct_flow",
-            "contribution": 0.0415,
-            "score": 0.1383,
-            "available": true
-          }
-        ]
-      },
-      "score_gap": 0.2363,
-      "reading": "新能源车相对弱，半导体相对强，观察资金是否继续从弱势池切向强势池。"
-    },
-    {
-      "from_sector": {
-        "sector_id": "real_estate_infra",
-        "pool_id": "a_share_real_estate_infra",
-        "name": "地产基建",
-        "score": -0.0629,
-        "label": "neutral",
-        "confidence": 0.225,
-        "data_completeness": 0.55,
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认"
-        ],
-        "top_drivers": [
-          {
-            "component": "market_confirmation",
-            "contribution": -0.0605,
-            "score": -0.2419,
-            "available": true
-          },
-          {
-            "component": "direct_flow",
-            "contribution": -0.0024,
-            "score": -0.0081,
+            "contribution": 0.002,
+            "score": 0.0068,
             "available": true
           }
         ]
@@ -363,8 +247,8 @@
         "sector_id": "communication_electronics",
         "pool_id": "a_share_communication_electronics",
         "name": "通信电子",
-        "score": 0.0601,
-        "label": "neutral",
+        "score": 0.2851,
+        "label": "constructive_inflow_bias",
         "confidence": 0.225,
         "data_completeness": 0.55,
         "confirmation_inputs": [
@@ -372,36 +256,29 @@
           "价量确认"
         ],
         "top_drivers": [
+          {
+            "component": "direct_flow",
+            "contribution": 0.225,
+            "score": 0.75,
+            "available": true
+          },
           {
             "component": "market_confirmation",
             "contribution": 0.0601,
             "score": 0.2406,
             "available": true
-          },
-          {
-            "component": "direct_flow",
-            "contribution": 0,
-            "score": 0,
-            "available": true
           }
         ]
       },
-      "score_gap": 0.123,
-      "reading": "地产基建相对弱，通信电子相对强，观察资金是否继续从弱势池切向强势池。"
-    }
-  ],
-  "cluster_reviews": [
+      "score_gap": 0.4193,
+      "reading": "新能源车相对弱，通信电子相对强，观察资金是否继续从弱势池切向强势池。"
+    },
     {
-      "cluster_id": "technology_growth",
-      "name": "科技成长",
-      "score": 0.0725,
-      "confidence": 0.225,
-      "label": "cluster_neutral",
-      "strongest_sector": {
-        "sector_id": "semiconductor",
-        "pool_id": "a_share_semiconductor",
-        "name": "半导体",
-        "score": 0.1001,
+      "from_sector": {
+        "sector_id": "brokerage",
+        "pool_id": "a_share_brokerage",
+        "name": "券商",
+        "score": -0.0962,
         "label": "neutral",
         "confidence": 0.225,
         "data_completeness": 0.55,
@@ -411,24 +288,82 @@
         ],
         "top_drivers": [
           {
-            "component": "market_confirmation",
-            "contribution": 0.0586,
-            "score": 0.2343,
+            "component": "direct_flow",
+            "contribution": -0.1163,
+            "score": -0.3877,
             "available": true
           },
           {
-            "component": "direct_flow",
-            "contribution": 0.0415,
-            "score": 0.1383,
+            "component": "market_confirmation",
+            "contribution": 0.0201,
+            "score": 0.0805,
             "available": true
           }
         ]
       },
-      "weakest_sector": {
+      "to_sector": {
+        "sector_id": "bank_insurance",
+        "pool_id": "a_share_bank_insurance",
+        "name": "银行保险",
+        "score": 0.1533,
+        "label": "neutral",
+        "confidence": 0.225,
+        "data_completeness": 0.55,
+        "confirmation_inputs": [
+          "ETF流",
+          "价量确认"
+        ],
+        "top_drivers": [
+          {
+            "component": "direct_flow",
+            "contribution": 0.1298,
+            "score": 0.4325,
+            "available": true
+          },
+          {
+            "component": "market_confirmation",
+            "contribution": 0.0236,
+            "score": 0.0943,
+            "available": true
+          }
+        ]
+      },
+      "score_gap": 0.2495,
+      "reading": "券商相对弱，银行保险相对强，观察资金是否继续从弱势池切向强势池。"
+    },
+    {
+      "from_sector": {
+        "sector_id": "healthcare_pharma",
+        "pool_id": "a_share_healthcare_pharma",
+        "name": "医药医疗",
+        "score": -0.0832,
+        "label": "neutral",
+        "confidence": 0.225,
+        "data_completeness": 0.55,
+        "confirmation_inputs": [
+          "ETF流",
+          "价量确认"
+        ],
+        "top_drivers": [
+          {
+            "component": "direct_flow",
+            "contribution": -0.0466,
+            "score": -0.1552,
+            "available": true
+          },
+          {
+            "component": "market_confirmation",
+            "contribution": -0.0367,
+            "score": -0.1467,
+            "available": true
+          }
+        ]
+      },
+      "to_sector": {
         "sector_id": "ai_computer",
         "pool_id": "a_share_ai_computer",
         "name": "AI计算机",
-        "score": 0.0574,
+        "score": 0.0684,
         "label": "neutral",
         "confidence": 0.225,
         "data_completeness": 0.55,
@@ -445,8 +380,73 @@
           },
           {
             "component": "direct_flow",
-            "contribution": 0,
-            "score": 0,
+            "contribution": 0.011,
+            "score": 0.0367,
+            "available": true
+          }
+        ]
+      },
+      "score_gap": 0.1516,
+      "reading": "医药医疗相对弱，AI计算机相对强，观察资金是否继续从弱势池切向强势池。"
+    }
+  ],
+  "cluster_reviews": [
+    {
+      "cluster_id": "technology_growth",
+      "name": "科技成长",
+      "score": 0.1294,
+      "confidence": 0.225,
+      "label": "cluster_neutral",
+      "strongest_sector": {
+        "sector_id": "communication_electronics",
+        "pool_id": "a_share_communication_electronics",
+        "name": "通信电子",
+        "score": 0.2851,
+        "label": "constructive_inflow_bias",
+        "confidence": 0.225,
+        "data_completeness": 0.55,
+        "confirmation_inputs": [
+          "ETF流",
+          "价量确认"
+        ],
+        "top_drivers": [
+          {
+            "component": "direct_flow",
+            "contribution": 0.225,
+            "score": 0.75,
+            "available": true
+          },
+          {
+            "component": "market_confirmation",
+            "contribution": 0.0601,
+            "score": 0.2406,
+            "available": true
+          }
+        ]
+      },
+      "weakest_sector": {
+        "sector_id": "semiconductor",
+        "pool_id": "a_share_semiconductor",
+        "name": "半导体",
+        "score": 0.0346,
+        "label": "neutral",
+        "confidence": 0.225,
+        "data_completeness": 0.55,
+        "confirmation_inputs": [
+          "ETF流",
+          "价量确认"
+        ],
+        "top_drivers": [
+          {
+            "component": "market_confirmation",
+            "contribution": 0.0586,
+            "score": 0.2343,
+            "available": true
+          },
+          {
+            "component": "direct_flow",
+            "contribution": -0.0239,
+            "score": -0.0798,
             "available": true
           }
         ]
@@ -460,42 +460,15 @@
     {
       "cluster_id": "financial_beta",
       "name": "金融弹性",
-      "score": 0.0102,
+      "score": 0.0286,
       "confidence": 0.225,
       "label": "cluster_neutral",
       "strongest_sector": {
-        "sector_id": "brokerage",
-        "pool_id": "a_share_brokerage",
-        "name": "券商",
-        "score": 0.2218,
-        "label": "constructive_inflow_bias",
-        "confidence": 0.225,
-        "data_completeness": 0.55,
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认"
-        ],
-        "top_drivers": [
-          {
-            "component": "direct_flow",
-            "contribution": 0.2017,
-            "score": 0.6723,
-            "available": true
-          },
-          {
-            "component": "market_confirmation",
-            "contribution": 0.0201,
-            "score": 0.0805,
-            "available": true
-          }
-        ]
-      },
-      "weakest_sector": {
         "sector_id": "bank_insurance",
         "pool_id": "a_share_bank_insurance",
         "name": "银行保险",
-        "score": -0.2014,
-        "label": "outflow_watch",
+        "score": 0.1533,
+        "label": "neutral",
         "confidence": 0.225,
         "data_completeness": 0.55,
         "confirmation_inputs": [
@@ -505,14 +478,41 @@
         "top_drivers": [
           {
             "component": "direct_flow",
-            "contribution": -0.225,
-            "score": -0.75,
+            "contribution": 0.1298,
+            "score": 0.4325,
             "available": true
           },
           {
             "component": "market_confirmation",
             "contribution": 0.0236,
             "score": 0.0943,
+            "available": true
+          }
+        ]
+      },
+      "weakest_sector": {
+        "sector_id": "brokerage",
+        "pool_id": "a_share_brokerage",
+        "name": "券商",
+        "score": -0.0962,
+        "label": "neutral",
+        "confidence": 0.225,
+        "data_completeness": 0.55,
+        "confirmation_inputs": [
+          "ETF流",
+          "价量确认"
+        ],
+        "top_drivers": [
+          {
+            "component": "direct_flow",
+            "contribution": -0.1163,
+            "score": -0.3877,
+            "available": true
+          },
+          {
+            "component": "market_confirmation",
+            "contribution": 0.0201,
+            "score": 0.0805,
             "available": true
           }
         ]
@@ -525,41 +525,14 @@
     {
       "cluster_id": "defensive_domestic",
       "name": "防御内需",
-      "score": -0.0116,
+      "score": -0.0696,
       "confidence": 0.225,
       "label": "cluster_neutral",
       "strongest_sector": {
-        "sector_id": "healthcare_pharma",
-        "pool_id": "a_share_healthcare_pharma",
-        "name": "医药医疗",
-        "score": 0.0441,
-        "label": "neutral",
-        "confidence": 0.225,
-        "data_completeness": 0.55,
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认"
-        ],
-        "top_drivers": [
-          {
-            "component": "direct_flow",
-            "contribution": 0.0807,
-            "score": 0.2692,
-            "available": true
-          },
-          {
-            "component": "market_confirmation",
-            "contribution": -0.0367,
-            "score": -0.1467,
-            "available": true
-          }
-        ]
-      },
-      "weakest_sector": {
         "sector_id": "consumer",
         "pool_id": "a_share_consumer",
         "name": "消费",
-        "score": -0.0541,
+        "score": -0.0452,
         "label": "neutral",
         "confidence": 0.225,
         "data_completeness": 0.55,
@@ -576,8 +549,35 @@
           },
           {
             "component": "direct_flow",
-            "contribution": 0,
-            "score": 0,
+            "contribution": 0.0089,
+            "score": 0.0298,
+            "available": true
+          }
+        ]
+      },
+      "weakest_sector": {
+        "sector_id": "healthcare_pharma",
+        "pool_id": "a_share_healthcare_pharma",
+        "name": "医药医疗",
+        "score": -0.0832,
+        "label": "neutral",
+        "confidence": 0.225,
+        "data_completeness": 0.55,
+        "confirmation_inputs": [
+          "ETF流",
+          "价量确认"
+        ],
+        "top_drivers": [
+          {
+            "component": "direct_flow",
+            "contribution": -0.0466,
+            "score": -0.1552,
+            "available": true
+          },
+          {
+            "component": "market_confirmation",
+            "contribution": -0.0367,
+            "score": -0.1467,
             "available": true
           }
         ]
@@ -591,14 +591,14 @@
     {
       "cluster_id": "cyclical_value",
       "name": "顺周期价值",
-      "score": -0.08,
+      "score": -0.0745,
       "confidence": 0.225,
       "label": "cluster_neutral",
       "strongest_sector": {
         "sector_id": "resources_materials",
         "pool_id": "a_share_resources_materials",
         "name": "资源材料",
-        "score": -0.0408,
+        "score": -0.0301,
         "label": "neutral",
         "confidence": 0.225,
         "data_completeness": 0.55,
@@ -615,8 +615,8 @@
           },
           {
             "component": "direct_flow",
-            "contribution": -0.0068,
-            "score": -0.0226,
+            "contribution": 0.0039,
+            "score": 0.013,
             "available": true
           }
         ]
@@ -625,7 +625,7 @@
         "sector_id": "new_energy_ev",
         "pool_id": "a_share_new_energy_ev",
         "name": "新能源车",
-        "score": -0.1363,
+        "score": -0.1342,
         "label": "neutral",
         "confidence": 0.225,
         "data_completeness": 0.55,
@@ -642,8 +642,8 @@
           },
           {
             "component": "direct_flow",
-            "contribution": 0,
-            "score": 0,
+            "contribution": 0.002,
+            "score": 0.0068,
             "available": true
           }
         ]
@@ -656,8 +656,8 @@
     }
   ],
   "watch_points": [
-    "优先看券商能否连续保持ETF流和价量确认。",
-    "弱势端观察银行保险是否从流出观察转为中性。",
+    "优先看通信电子能否连续保持ETF流和价量确认。",
+    "弱势端观察新能源车是否从流出观察转为中性。",
     "科技成长目前相对领先，顺周期价值相对落后。",
     "数据完整度仍不足，下一阶段应补连续历史和更多确认输入。",
     "A股总水位尚未稳定进入所有行业评分，轮动结论仍以相对强弱为主。"

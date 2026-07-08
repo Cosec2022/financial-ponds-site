@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.42
+Version: v0.10.43
 Status: active
 
 Module IDs use this format:
@@ -16,15 +16,15 @@ Do not use pure numeric IDs such as `FP-00`.
 | Module ID | Module | Role | Status | Progress | Next |
 |---|---|---|---|---:|---|
 | FP-CORE-01 | Core Graph Engine | Market-agnostic graph, registry, scoring, snapshots | working | 70% | Keep core free of market-specific branches |
-| FP-DATA-01 | Hard Data Providers | AKShare ETF snapshot, A-share water level, provider adapters | working with fallback | 62% | A-share provider history first; S&P 500 provider second |
-| FP-FLOW-01 | Capital Flow Engine | Convert observations into 31-slot A-share sector-flow review | working prototype | 60% | Strengthen ETF share-change and market-water inputs |
+| FP-DATA-01 | Hard Data Providers | AKShare ETF snapshot, A-share water level, provider adapters | working with fallback | 66% | Add valuation/fundamental real sources; S&P 500 provider second |
+| FP-FLOW-01 | Capital Flow Engine | Convert observations into 31-slot A-share sector-flow review | working prototype | 64% | Keep provider flow `flow_ready` and expand coverage beyond representative ETFs |
 | FP-GEN-01 | General Pool Analysis | Analyze pools through one component contract with pool-specific input profiles | working prototype | 52% | Surface provider-mapped vs framework-only coverage in the frontend |
 | FP-GRAPH-01 | Influence Graph | Upstream, downstream, and peer influence factors | frontend prototype | 35% | Add backend edge state and confirmation history |
 | FP-PV-01 | Price-Volume Analysis | Relative strength, volume, breadth, confirmation | basic | 20% | Add trend, divergence, volume expansion, and persistence |
 | FP-NEWS-01 | News Pressure Engine | News as pressure, catalyst, risk, expectation | basic / fallback | 30% | Add fixed real sources and source-quality labels |
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots, recover recent published history, and compare latest vs previous day | working prototype | 42% | Add explicit continuation/reversal labels |
-| FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language, with share-change flow diagnostics | working prototype | 38% | Replace manual valuation/fundamental seeds and require observed multi-day flow |
+| FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language, with share-change flow diagnostics | working prototype | 42% | Current state is `watch_only`; unblock valuation/fundamental seeds, rotation visibility, and execution rules |
 | FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, ETF readiness, and decision tickets | working prototype | 40% | Add continuation/reversal labels after more history accumulates |
 | FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 65% | Add maintenance-state display |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
@@ -62,10 +62,22 @@ Tests:
 ## Current Priority
 
 ```text
-1. FP-DATA-01: A-share hard-data depth first.
-2. FP-HIST-01: keep published history from regressing and accumulate at least 3 trading days.
-3. FP-NEWS-01: real fixed A-share news sources.
-4. FP-DAILY-01: improve continuation/reversal labels without weakening ETF gates.
-5. FP-GEN-01: sync reusable coverage/confidence work into the shared model.
-6. FP-DATA-01: S&P 500 live provider inputs after the A-share baseline is firmer.
+1. FP-DATA-01: valuation/fundamental manual seed replacement.
+2. FP-GEN-01: remove pool graph snapshot dependency from one-command runs.
+3. FP-HIST-01 / FP-ROT-01: improve rotation visibility while sample history is still low.
+4. FP-ETF-01 / FP-DAILY-01: keep execution decision blocked until watch-only gates are cleared.
+5. FP-NEWS-01: real fixed A-share news sources.
+6. FP-DATA-01: S&P 500 live provider inputs after the A-share flow path is stable.
+```
+
+## v0.10.43 Status Note
+
+```text
+Provider flow: baseline_only -> flow_ready
+ETF readiness: not_ready -> watch_only
+Remaining blockers:
+- valuation/fundamental manual seed
+- pool graph snapshot dependency
+- rotation visibility low
+- execution decision still blocked
 ```

@@ -1,0 +1,77 @@
+{
+  "as_of": "2026-07-08",
+  "generated_at": "2026-07-08T10:50:08.364Z",
+  "model": "regime_rules_v0_6",
+  "active": [
+    {
+      "id": "liquidity_easing",
+      "name": "Liquidity Easing",
+      "description": "Dollar liquidity is supportive while real-rate pressure is not dominant.",
+      "score": 1,
+      "matched_conditions": [
+        {
+          "node_id": "usd_liquidity",
+          "operator": ">=",
+          "expected": 0.4,
+          "actual": 0.6
+        },
+        {
+          "node_id": "us_real_rate",
+          "operator": "<=",
+          "expected": 0.5,
+          "actual": 0.4
+        }
+      ]
+    },
+    {
+      "id": "china_credit_impulse",
+      "name": "China Credit Impulse",
+      "description": "China credit or liquidity conditions are improving enough to matter for China-linked ponds.",
+      "score": 1,
+      "matched_conditions": [
+        {
+          "node_id": "china_social_financing",
+          "operator": ">=",
+          "expected": 0.25,
+          "actual": 0.3
+        }
+      ]
+    },
+    {
+      "id": "crypto_liquidity_expansion",
+      "name": "Crypto Liquidity Expansion",
+      "description": "Stablecoin liquidity and BTC ETF flow are both supportive.",
+      "score": 1,
+      "matched_conditions": [
+        {
+          "node_id": "stablecoin_supply",
+          "operator": ">=",
+          "expected": 0.35,
+          "actual": 0.4
+        },
+        {
+          "node_id": "btc_etf_flow",
+          "operator": ">=",
+          "expected": 0.5,
+          "actual": 0.9
+        }
+      ]
+    },
+    {
+      "id": "gold_defensive_bid",
+      "name": "Gold Defensive Bid",
+      "description": "Geopolitical risk news is strong enough to support defensive demand for gold.",
+      "score": 1,
+      "matched_conditions": [
+        {
+          "node_id": "geopolitical_risk_news",
+          "operator": ">=",
+          "expected": 0.5,
+          "actual": 0.7
+        }
+      ]
+    }
+  ],
+  "count": 4,
+  "summary": "liquidity_easing, china_credit_impulse, crypto_liquidity_expansion, gold_defensive_bid"
+}

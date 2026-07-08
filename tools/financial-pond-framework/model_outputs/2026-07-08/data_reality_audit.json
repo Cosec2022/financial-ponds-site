@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T10:06:26.241Z",
+  "generated_at": "2026-07-08T10:50:09.097Z",
   "module_id": "data_reality_audit_v0_1",
   "status": "audit_available",
   "overall_reality": "mixed_non_real",
@@ -11,7 +11,7 @@
       "name": "AKShare环境预检",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_doctor.json",
       "as_of": null,
-      "generated_at": "2026-07-08T10:05:22.967631+00:00",
+      "generated_at": "2026-07-08T10:49:08.411733+00:00",
       "reality": "provider_doctor_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -27,7 +27,7 @@
       "name": "AKShare真实数据探测",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-08.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:06:23.599183+00:00",
+      "generated_at": "2026-07-08T10:50:06.545650+00:00",
       "reality": "provider_run_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -46,7 +46,7 @@
       "name": "资金量价",
       "source_file": "sector_flow_review.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:06:24.785Z",
+      "generated_at": "2026-07-08T10:50:07.558Z",
       "reality": "provider_observed",
       "confidence_for_market_use": "medium",
       "source_counts": {
@@ -81,7 +81,7 @@
       "name": "估值/基本面/资金量价三模块",
       "source_file": "sector_module_review.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:06:25.523Z",
+      "generated_at": "2026-07-08T10:50:08.167Z",
       "reality": "manual_seed",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -93,9 +93,8 @@
         "sectors": 31,
         "provider_mapped_representative_sectors": 11,
         "framework_only_sectors": 20,
+        "wait_for_confirmation": 25,
         "balanced_candidate": 1,
-        "cheap_but_weak": 1,
-        "wait_for_confirmation": 24,
         "value_trap_risk": 5
       },
       "reading": "估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。"
@@ -105,7 +104,7 @@
       "name": "ETF行动准备度",
       "source_file": "etf_decision_readiness.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:06:25.812Z",
+      "generated_at": "2026-07-08T10:50:08.663Z",
       "reality": "decision_gate_blocked",
       "confidence_for_market_use": "low",
       "counts": {
@@ -125,14 +124,14 @@
           "reading": "估值和基本面模块仍包含手工种子输入。"
         }
       ],
-      "reading": "可以做观察清单，但还不能做买入指令。优先复核 A-share Brokerage Pool。"
+      "reading": "可以做观察清单，但还不能做买入指令。优先复核 A-share Communication and Electronics Pool。"
     },
     {
       "id": "sector_rotation",
       "name": "行业轮动",
       "source_file": "sector_rotation_intelligence.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:06:24.927Z",
+      "generated_at": "2026-07-08T10:50:07.698Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -151,8 +150,8 @@
       "id": "general_pool_analysis",
       "name": "通用池模型",
       "source_file": "general_pool_analysis.json",
-      "as_of": "2026-07-07",
-      "generated_at": "2026-07-07T14:41:35.068Z",
+      "as_of": "2026-07-08",
+      "generated_at": "2026-07-08T10:50:08.521Z",
       "reality": "contract_output_source_unverified",
       "confidence_for_market_use": "low",
       "counts": {
@@ -167,7 +166,7 @@
       "name": "轮动历史",
       "source_file": "sector_rotation_history.json",
       "as_of": "2026-07-08",
-      "generated_at": "2026-07-08T10:06:25.372Z",
+      "generated_at": "2026-07-08T10:50:07.996Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -182,7 +181,7 @@
   "warnings": [
     "新闻层: 新闻层来源不明。",
     "估值/基本面/资金量价三模块: 估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。",
-    "ETF行动准备度: 可以做观察清单，但还不能做买入指令。优先复核 A-share Brokerage Pool。",
+    "ETF行动准备度: 可以做观察清单，但还不能做买入指令。优先复核 A-share Communication and Electronics Pool。",
     "行业轮动: 该层是解释层，上游仍含非真实输入，因此只能看结构，不能当真实市场结论。",
     "通用池模型: 通用池模型契约可用，但当前发布 JSON 没有携带可验证 provider source，不能视为实时真实行情判断。",
     "轮动历史: 该层是解释层，上游仍含非真实输入，因此只能看结构，不能当真实市场结论。"

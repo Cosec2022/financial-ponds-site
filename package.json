@@ -9,10 +9,11 @@
     "test": "node --test tests/*.test.mjs",
     "preview": "npm run build && node scripts/preview.mjs",
     "deploy": "npm run build && wrangler deploy",
-    "fp:today": "bash scripts/local/fp-today-full-update.sh"
+    "fp:today": "bash scripts/local/fp-today-full-update.sh",
+    "fp:summary": "node scripts/local/fp-progress-summary.mjs"
   },
   "devDependencies": {
     "wrangler": "4.102.0"
   },
-  "version": "0.10.42"
+  "version": "0.10.43"
 }

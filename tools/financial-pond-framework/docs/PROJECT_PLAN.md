@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.42
+Version: v0.10.43
 Status: active
 
 ## Final Target
@@ -35,9 +35,9 @@ The system should not output direct trading instructions.
 ```text
 Overall progress: 45%
 Current stage: usable prototype
-Daily data pipeline: partial, with CI ordering fixed and recent Git history recovery for 31-industry A-share review
+Daily data pipeline: partial, with AKShare provider flow_ready and one-command recovery for missing pool graph snapshots
 Decision-grade model: not yet
-Main limitation: A-share now has an ETF action-readiness gate and daily sector analysis, but still needs stronger hard-data history, observed ETF share-change flow, real valuation/fundamental sources, real news quality, and multi-day confirmation before it can guide allocation
+Main limitation: A-share provider flow moved from baseline_only to flow_ready and ETF readiness moved from not_ready to watch_only, but valuation/fundamental manual seeds, pool graph snapshot dependency, low rotation visibility, and blocked execution decision still prevent allocation guidance
 ```
 
 ## Phase Plan
@@ -67,6 +67,7 @@ sector rotation intelligence
 sector rotation history
 ETF action-readiness gate with visible blockers and pending watch items
 Provider status panel showing AKShare environment, real run, flow readiness, and next command
+ETF true-flow observation leaderboard with positive, negative, and zero-flow rows
 Published-data completeness guard for the daily Action
 Daily sector analysis panel with priority watch, confirm next, and avoid watch tiers
 Rotation-history recovery from recent published Git versions
@@ -86,16 +87,20 @@ local graph node edits and patch export
 6. UI local graph edits do not change backend configuration.
 7. GPT weekly review is planned only.
 8. ETF readiness can block guidance even when sector rankings look strong.
-9. Daily sector analysis is watch-only unless ETF readiness reaches decision-support mode.
+9. Daily sector analysis is watch-only unless ETF readiness reaches decision-support mode; current ETF readiness is `watch_only`.
 10. No output is a trading instruction.
+11. ETF flow leaderboard is observation-only and must not be read as buy/sell guidance.
 ```
 
 ## Next Work Order
 
-1. A-share first: strengthen ETF share-change history, A-share water-level inputs, real news quality, and multi-day rotation confirmation.
-2. Sync shared work into the general model: input coverage, confidence labels, missing-input reporting, and component contract tests.
-3. S&P 500 second: add live provider inputs for flow, breadth, EPS/valuation, and news pressure after the A-share baseline is firmer.
-4. Add continuation / reversal / strengthening / weakening labels.
-5. Feed confirmed trend labels into the daily sector analysis scoring.
-6. Implement keyword state engine.
-7. Implement graph edge state backend.
+1. A-share first: replace valuation/fundamental manual seeds with reviewed hard-data sources.
+2. Make pool graph snapshots robust so `pool:analysis` can run after cycle recovery or graceful fallback.
+3. Improve rotation visibility while sample history is still low.
+4. Keep execution decision blocked until ETF readiness exits watch-only mode.
+5. Sync shared work into the general model: input coverage, confidence labels, missing-input reporting, and component contract tests.
+6. S&P 500 second: add live provider inputs for flow, breadth, EPS/valuation, and news pressure after the A-share flow path is stable.
+7. Add continuation / reversal / strengthening / weakening labels.
+8. Feed confirmed trend labels into the daily sector analysis scoring.
+9. Implement keyword state engine.
+10. Implement graph edge state backend.

@@ -54,6 +54,7 @@ const state = {
   realityAudit: null,
   dailyAnalysis: null,
   moduleMaturity: null,
+  etfFlowLeaderboard: null,
   news: null,
   pondMap: null,
   selectedPondId: "a_share"
@@ -105,6 +106,14 @@ function formatScore(score) {
 
 function formatPct(score) {
   return typeof score === "number" ? `${Math.round(score * 100)}%` : "--";
+}
+
+function formatAmount(value) {
+  if (typeof value !== "number" || !Number.isFinite(value)) return "--";
+  const abs = Math.abs(value);
+  if (abs >= 100000000) return `${(value / 100000000).toFixed(2)}亿`;
+  if (abs >= 10000) return `${(value / 10000).toFixed(2)}万`;
+  return value.toFixed(2);
 }
 
 function plainSectorId(row) {
@@ -414,6 +423,14 @@ function renderProviderPanel() {
       <p>${command.after}</p>
     </article>
   `;
+
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
 }
 
 function renderDailyAnalysisPanel() {
@@ -998,6 +1015,129 @@ function renderEtfReadinessPanel() {
       document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
     });
   });
+}
+
+function renderEtfFlowPanel() {
+  const panel = document.getElementById("etfFlowPanel");
+  const statusBadge = document.getElementById("etfFlowStatus");
+  const leaderboard = state.etfFlowLeaderboard;
+  if (!panel || !statusBadge) return;
+
+  if (!leaderboard || leaderboard.status !== "leaderboard_available") {
+    statusBadge.textContent = "等待观察数据";
+    statusBadge.className = "pill warm";
+    panel.innerHTML = `<div class="empty">暂无 ETF 真实资金流观察。等待 etf_flow_leaderboard.json 生成。</div>`;
+    return;
+  }
+
+  const rows = leaderboard.rows ?? [];
+  const positive = rows.filter((row) => row.estimated_flow_direction === "positive").sort((a, b) => (a.estimated_flow_rank ?? 999) - (b.estimated_flow_rank ?? 999));
+  const negative = rows.filter((row) => row.estimated_flow_direction === "negative").sort((a, b) => (a.estimated_flow ?? 0) - (b.estimated_flow ?? 0));
+  const zero = rows.filter((row) => row.estimated_flow_direction === "zero").sort((a, b) => (a.amount_rank ?? 999) - (b.amount_rank ?? 999));
+  const readiness = leaderboard.readiness ?? {};
+  const readinessClass = readiness.data_readiness === "flow_ready" ? "positive" : readiness.data_readiness === "partial_flow" ? "warm" : "negative";
+
+  statusBadge.textContent = providerFlowReadinessLabel(readiness.provider_flow_readiness);
+  statusBadge.className = `pill ${readinessClass}`;
+
+  panel.innerHTML = `
+    <article class="etf-flow-card headline ${readinessClass}">
+      <span>数据边界</span>
+      <strong>观察数据，不是买入指令。</strong>
+      <p>Provider ${providerFlowReadinessLabel(readiness.provider_flow_readiness)} · 数据准备度 ${leaderboardReadinessLabel(readiness.data_readiness)} · 样本 ${readiness.provider_history?.date_count ?? "--"} 天。</p>
+    </article>
+    <article class="etf-flow-card">
+      <span>覆盖</span>
+      <strong>${leaderboard.counts?.rows ?? 0} 行</strong>
+      <p>正流 ${leaderboard.counts?.positive ?? 0} · 零流 ${leaderboard.counts?.zero ?? 0} · 负流 ${leaderboard.counts?.negative ?? 0}。</p>
+    </article>
+    <article class="etf-flow-card positive wide">
+      <span>Top positive estimated_flow</span>
+      ${etfFlowListTemplate(positive.slice(0, 5), "positive")}
+    </article>
+    <article class="etf-flow-card negative wide">
+      <span>Top negative estimated_flow</span>
+      ${etfFlowListTemplate(negative.slice(0, 5), "negative")}
+    </article>
+    <article class="etf-flow-card warm wide">
+      <span>Zero-flow rows</span>
+      ${etfFlowListTemplate(zero.slice(0, 6), "warm")}
+    </article>
+    <article class="etf-flow-card table-card">
+      <span>观察明细</span>
+      ${etfFlowTableTemplate(rows)}
+    </article>
+  `;
+
+  panel.querySelectorAll("[data-pond-id]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.selectedPondId = button.dataset.pondId;
+      renderAll();
+      document.querySelector(".detail-hero")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  });
+}
+
+function leaderboardReadinessLabel(value) {
+  const map = {
+    flow_ready: "真实份额流可用",
+    partial_flow: "部分份额流可用",
+    baseline_or_inspection_only: "基线/检查数据",
+    no_rows: "无行"
+  };
+  return map[value] ?? value ?? "--";
+}
+
+function etfFlowListTemplate(rows, className) {
+  if (!rows.length) return `<p class="muted">暂无该方向观察行。</p>`;
+  return rows.map((row) => `
+    <button class="module-row" data-pond-id="${row.sector_id}" type="button">
+      <span>${row.name}</span>
+      <b class="score ${className === "negative" ? "negative" : className === "positive" ? "positive" : "neutral"}">${formatAmount(row.estimated_flow)}</b>
+      <small>${row.fund_code ?? "--"} · ${row.fund_name ?? "--"} · 成交额 ${formatAmount(row.amount)} · 流排名 ${row.estimated_flow_rank ?? "--"}</small>
+    </button>
+  `).join("");
+}
+
+function etfFlowTableTemplate(rows) {
+  if (!rows.length) return `<div class="empty">暂无观察明细。</div>`;
+  return `
+    <div class="module-table">
+      <table>
+        <thead>
+          <tr>
+            <th>行业</th>
+            <th>基金</th>
+            <th>Estimated flow</th>
+            <th>方向</th>
+            <th>排名</th>
+            <th>复核标签</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows.map((row) => `
+            <tr>
+              <td><button class="text-link" data-pond-id="${row.sector_id}" type="button"><strong>${row.name}</strong><span class="sub">${row.sector_id}</span></button></td>
+              <td>${row.fund_code ?? "--"}<span class="sub">${row.fund_name ?? "--"}</span></td>
+              <td><b class="score ${scoreClass(row.estimated_flow)}">${formatAmount(row.estimated_flow)}</b><span class="sub">成交额 ${formatAmount(row.amount)}</span></td>
+              <td>${leaderboardDirectionLabel(row.estimated_flow_direction)}</td>
+              <td>流 ${row.estimated_flow_rank ?? "--"}<span class="sub">成交 ${row.amount_rank ?? "--"}</span></td>
+              <td>${row.manual_review_label ?? "--"}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function leaderboardDirectionLabel(value) {
+  const map = {
+    positive: "正流",
+    zero: "零流",
+    negative: "负流"
+  };
+  return map[value] ?? value ?? "--";
 }
 
 function shareChangeDiagnosticsTemplate(diagnostics) {
@@ -1878,6 +2018,7 @@ function renderAll() {
   renderRotationPanel();
   renderModulePanel();
   renderEtfReadinessPanel();
+  renderEtfFlowPanel();
   renderPondMap();
   renderSelectedSummary();
   renderFlowDetail();
@@ -1901,6 +2042,7 @@ async function loadAll() {
   state.realityAudit = await readJson("./data/data_reality_audit.json", null);
   state.dailyAnalysis = await readJson("./data/daily_sector_analysis.json", null);
   state.moduleMaturity = await readJson("./data/module_maturity_audit.json", null);
+  state.etfFlowLeaderboard = await readJson("./data/etf_flow_leaderboard.json", null);
   state.news = await readJson("./data/news_review.json", null);
   state.pondMap = await readJson("./data/pond_map.json", { ponds: [], keyword_groups: [], reports: {} });
   renderAll();

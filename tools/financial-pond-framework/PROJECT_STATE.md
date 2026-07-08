@@ -5,10 +5,17 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.42`
+Package version: `0.10.43`
 
 Purpose of this version:
 
+- move AKShare provider flow from `baseline_only` to `flow_ready` with two real provider dates, 2026-07-07 and 2026-07-08
+- move ETF readiness from `not_ready` to `watch_only`; daily conclusion is brokerage leading, watch only, and not an ETF buy instruction
+- add `npm run fp:summary` for a compact local progress summary across provider flow, daily analysis, readiness, maturity, and blockers
+- add an observation-only ETF true-flow leaderboard JSON/Markdown contract and publish it to the frontend
+- add a homepage "ETF 真实资金流观察" panel that separates positive, negative, and zero estimated-flow rows and labels the data as not a buy instruction
+- make the one-command runner recover missing `graph_scores.json` by running cycle before pool analysis, and record cycle/pool failures as noncritical instead of hiding them
+- keep remaining blockers explicit: valuation/fundamental manual seed, pool graph snapshot dependency, rotation visibility low, and execution decision still blocked
 - add daily decision tickets so priority, confirmation, and avoid rows have upgrade and failure conditions for human review
 - add provider-history diagnostics so `baseline_only` shows the exact provider CSV dates and whether a previous trade-date baseline exists
 - persist AKShare provider CSV history in the daily Action so future runs can keep a usable `previous_share` baseline

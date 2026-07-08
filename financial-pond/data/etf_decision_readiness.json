@@ -1,10 +1,10 @@
 {
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T10:06:25.812Z",
+  "generated_at": "2026-07-08T10:50:08.663Z",
   "module_id": "etf_decision_readiness_v0_2",
   "status": "readiness_available",
   "guidance_state": "watch_only",
-  "headline": "可以做观察清单，但还不能做买入指令。优先复核 A-share Brokerage Pool。",
+  "headline": "可以做观察清单，但还不能做买入指令。优先复核 A-share Communication and Electronics Pool。",
   "gates": {
     "guidance_state": "watch_only",
     "provider_run": "real_ok",
@@ -120,21 +120,21 @@
   },
   "top_watchlist": [
     {
-      "sector_id": "brokerage",
-      "name": "A-share Brokerage Pool",
-      "readiness_score": 87.5,
+      "sector_id": "communication_electronics",
+      "name": "A-share Communication and Electronics Pool",
+      "readiness_score": 87.1,
       "action": {
         "label": "confirmation_candidate",
         "text": "确认候选",
         "reading": "组合标签较好，但仍需要人工检查估值来源、仓位上限和回撤风险。"
       },
       "evidence": {
-        "valuation_label": "fair",
-        "valuation_position_score": 0.08,
+        "valuation_label": "expensive",
+        "valuation_position_score": 0.22,
         "fundamental_label": "improving",
-        "fundamental_score": 0.12,
+        "fundamental_score": 0.18,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2218,
+        "flow_price_score": 0.2851,
         "observed_direct_flow": true
       },
       "blockers": [
@@ -151,12 +151,12 @@
   ],
   "sectors": [
     {
-      "sector_id": "brokerage",
-      "pool_id": "a_share_brokerage",
-      "name": "A-share Brokerage Pool",
+      "sector_id": "communication_electronics",
+      "pool_id": "a_share_communication_electronics",
+      "name": "A-share Communication and Electronics Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 87.5,
+      "readiness_score": 87.1,
       "action": {
         "label": "confirmation_candidate",
         "text": "确认候选",
@@ -177,12 +177,53 @@
           "text": "合理且改善",
           "reading": "没有明显估值便宜，但基本面和资金量价较顺。"
         },
-        "valuation_label": "fair",
-        "valuation_position_score": 0.08,
+        "valuation_label": "expensive",
+        "valuation_position_score": 0.22,
         "fundamental_label": "improving",
-        "fundamental_score": 0.12,
+        "fundamental_score": 0.18,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2218,
+        "flow_price_score": 0.2851,
+        "flow_confidence": 0.225,
+        "data_completeness": 0.55
+      },
+      "blockers": [
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
+      "sector_id": "bank_insurance",
+      "pool_id": "a_share_bank_insurance",
+      "name": "A-share Bank and Insurance Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "readiness_score": 89.8,
+      "action": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      },
+      "evidence": {
+        "observed_direct_flow": true,
+        "observed_price_volume": true,
+        "direct_flow_sources": [
+          "akshare_provider_flow_observations"
+        ],
+        "price_volume_sources": [
+          "akshare_provider_flow_observations",
+          "akshare_provider_flow_observations"
+        ],
+        "module_decision": {
+          "label": "wait_for_confirmation",
+          "text": "等待确认",
+          "reading": "三条线没有形成足够清晰的组合。"
+        },
+        "valuation_label": "cheap",
+        "valuation_position_score": -0.18,
+        "fundamental_label": "stable",
+        "fundamental_score": 0.02,
+        "flow_price_label": "neutral",
+        "flow_price_score": 0.1533,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },
@@ -197,7 +238,7 @@
       "name": "A-share Healthcare and Pharma Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 88.1,
+      "readiness_score": 84.9,
       "action": {
         "label": "wait_for_confirmation",
         "text": "等待确认",
@@ -223,7 +264,7 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0441,
+        "flow_price_score": -0.0832,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },
@@ -238,7 +279,7 @@
       "name": "A-share Consumer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 84.1,
+      "readiness_score": 84.4,
       "action": {
         "label": "wait_for_confirmation",
         "text": "等待确认",
@@ -264,7 +305,7 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.06,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0541,
+        "flow_price_score": -0.0452,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },
@@ -279,7 +320,7 @@
       "name": "A-share Resources and Materials Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 82.5,
+      "readiness_score": 82.7,
       "action": {
         "label": "wait_for_confirmation",
         "text": "等待确认",
@@ -305,7 +346,7 @@
         "fundamental_label": "stable",
         "fundamental_score": 0,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0408,
+        "flow_price_score": -0.0301,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },
@@ -315,12 +356,12 @@
       ]
     },
     {
-      "sector_id": "communication_electronics",
-      "pool_id": "a_share_communication_electronics",
-      "name": "A-share Communication and Electronics Pool",
+      "sector_id": "brokerage",
+      "pool_id": "a_share_brokerage",
+      "name": "A-share Brokerage Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 81.5,
+      "readiness_score": 79.6,
       "action": {
         "label": "wait_for_confirmation",
         "text": "等待确认",
@@ -341,53 +382,12 @@
           "text": "等待确认",
           "reading": "三条线没有形成足够清晰的组合。"
         },
-        "valuation_label": "expensive",
-        "valuation_position_score": 0.22,
+        "valuation_label": "fair",
+        "valuation_position_score": 0.08,
         "fundamental_label": "improving",
-        "fundamental_score": 0.18,
+        "fundamental_score": 0.12,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0601,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
-      },
-      "blockers": [
-        "valuation_manual_seed",
-        "fundamental_manual_seed"
-      ]
-    },
-    {
-      "sector_id": "bank_insurance",
-      "pool_id": "a_share_bank_insurance",
-      "name": "A-share Bank and Insurance Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "readiness_score": 81,
-      "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "估值便宜，但资金量价没有认可。"
-      },
-      "evidence": {
-        "observed_direct_flow": true,
-        "observed_price_volume": true,
-        "direct_flow_sources": [
-          "akshare_provider_flow_observations"
-        ],
-        "price_volume_sources": [
-          "akshare_provider_flow_observations",
-          "akshare_provider_flow_observations"
-        ],
-        "module_decision": {
-          "label": "cheap_but_weak",
-          "text": "便宜但未转强",
-          "reading": "估值便宜，但资金量价没有认可。"
-        },
-        "valuation_label": "cheap",
-        "valuation_position_score": -0.18,
-        "fundamental_label": "stable",
-        "fundamental_score": 0.02,
-        "flow_price_label": "outflow_watch",
-        "flow_price_score": -0.2014,
+        "flow_price_score": -0.0962,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },
@@ -402,7 +402,7 @@
       "name": "A-share AI and Computer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 78.9,
+      "readiness_score": 79.2,
       "action": {
         "label": "wait_for_confirmation",
         "text": "等待确认",
@@ -428,48 +428,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.24,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0574,
-        "flow_confidence": 0.225,
-        "data_completeness": 0.55
-      },
-      "blockers": [
-        "valuation_manual_seed",
-        "fundamental_manual_seed"
-      ]
-    },
-    {
-      "sector_id": "semiconductor",
-      "pool_id": "a_share_semiconductor",
-      "name": "A-share Semiconductor Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "readiness_score": 78.5,
-      "action": {
-        "label": "wait_for_confirmation",
-        "text": "等待确认",
-        "reading": "三条线没有形成足够清晰的组合。"
-      },
-      "evidence": {
-        "observed_direct_flow": true,
-        "observed_price_volume": true,
-        "direct_flow_sources": [
-          "akshare_provider_flow_observations"
-        ],
-        "price_volume_sources": [
-          "akshare_provider_flow_observations",
-          "akshare_provider_flow_observations"
-        ],
-        "module_decision": {
-          "label": "wait_for_confirmation",
-          "text": "等待确认",
-          "reading": "三条线没有形成足够清晰的组合。"
-        },
-        "valuation_label": "very_expensive",
-        "valuation_position_score": 0.42,
-        "fundamental_label": "improving",
-        "fundamental_score": 0.2,
-        "flow_price_label": "neutral",
-        "flow_price_score": 0.1001,
+        "flow_price_score": 0.0684,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },
@@ -484,7 +443,7 @@
       "name": "A-share Defense and Military Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "readiness_score": 78.4,
+      "readiness_score": 77,
       "action": {
         "label": "wait_for_confirmation",
         "text": "等待确认",
@@ -510,7 +469,48 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0249,
+        "flow_price_score": -0.0805,
+        "flow_confidence": 0.225,
+        "data_completeness": 0.55
+      },
+      "blockers": [
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ]
+    },
+    {
+      "sector_id": "semiconductor",
+      "pool_id": "a_share_semiconductor",
+      "name": "A-share Semiconductor Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "readiness_score": 76.9,
+      "action": {
+        "label": "wait_for_confirmation",
+        "text": "等待确认",
+        "reading": "三条线没有形成足够清晰的组合。"
+      },
+      "evidence": {
+        "observed_direct_flow": true,
+        "observed_price_volume": true,
+        "direct_flow_sources": [
+          "akshare_provider_flow_observations"
+        ],
+        "price_volume_sources": [
+          "akshare_provider_flow_observations",
+          "akshare_provider_flow_observations"
+        ],
+        "module_decision": {
+          "label": "wait_for_confirmation",
+          "text": "等待确认",
+          "reading": "三条线没有形成足够清晰的组合。"
+        },
+        "valuation_label": "very_expensive",
+        "valuation_position_score": 0.42,
+        "fundamental_label": "improving",
+        "fundamental_score": 0.2,
+        "flow_price_label": "neutral",
+        "flow_price_score": 0.0346,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },
@@ -551,7 +551,7 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.18,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.1363,
+        "flow_price_score": -0.1342,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },
@@ -592,7 +592,7 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.32,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0629,
+        "flow_price_score": -0.0591,
         "flow_confidence": 0.225,
         "data_completeness": 0.55
       },

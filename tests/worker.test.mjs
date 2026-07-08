@@ -15,6 +15,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /真实数据通道/);
   assert.match(html, /今日行业结论/);
   assert.match(html, /ETF行动准备度/);
+  assert.match(html, /ETF 真实资金流观察/);
   assert.match(html, /流入流出算法/);
   assert.match(html, /节点反馈 \/ 修改/);
 });
@@ -109,6 +110,13 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(maturityJson.module_id, "module_maturity_audit_v0_10_39");
   assert.ok(maturityJson.recommended_mainline);
   assert.ok(maturityJson.modules.find((row) => row.module_id === "FP-DATA-01"));
+
+  const flowLeaderboard = await worker.fetch(request("/data/etf_flow_leaderboard.json"), {});
+  assert.equal(flowLeaderboard.status, 200);
+  const flowLeaderboardJson = await flowLeaderboard.json();
+  assert.equal(flowLeaderboardJson.module_id, "etf_flow_leaderboard_v0_10_43");
+  assert.equal(flowLeaderboardJson.status, "leaderboard_available");
+  assert.ok(flowLeaderboardJson.rows.find((row) => row.sector_id === "brokerage"));
 
   const pondMap = await worker.fetch(request("/data/pond_map.json"), {});
   assert.equal(pondMap.status, 200);
