@@ -33,7 +33,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(workflow, /node-version: "22"/);
   assert.match(workflow, /fetch-depth: 30/);
   assert.match(workflow, /contents: write/);
-  assert.doesNotMatch(workflow, /npm ci/);
+  assert.match(workflow, /npm ci/);
   assert.doesNotMatch(workflow, /\bnpm install\b/);
   assert.match(workflow, /npm run a-share:daily:ci -- --as-of "\$AS_OF"/);
   assert.doesNotMatch(workflow, /npm run cycle -- "\$AS_OF"/);
@@ -47,7 +47,9 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.ok(workflow.indexOf("npm run index:explain") > workflow.indexOf("npm run project:maturity"));
   assert.ok(workflow.indexOf("npm run observation:snapshot") > workflow.indexOf("npm run index:explain"));
   assert.ok(workflow.lastIndexOf("npm run data:vault") > workflow.indexOf("npm run observation:snapshot"));
-  assert.ok(workflow.indexOf("npm run validate:data") < workflow.indexOf("npm run build"));
+  assert.match(workflow, /npm run fp:daily/);
+  assert.ok(workflow.indexOf("npm run fp:daily") < workflow.indexOf("npm run build"));
+  assert.ok(workflow.indexOf("npm run validate:data") > workflow.indexOf("npm run build"));
   assert.match(workflow, /general_pool_analysis\.json/);
   assert.match(workflow, /sector_rotation_intelligence\.json/);
   assert.match(workflow, /sector_rotation_history\.json/);
@@ -64,6 +66,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(workflow, /observation_snapshot\.json/);
   assert.match(workflow, /daily_data_vault\.json/);
   assert.match(workflow, /Persist published data/);
+  assert.match(workflow, /git add financial-pond\/data/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/data\/provider_exports\/\*\.csv/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_runs\/akshare_etf_bridge_\*\.json/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_validation\/akshare_etf_bridge_validation\.json/);
@@ -86,6 +89,10 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(assetBuilder, /data\/manual_review_log\.json/);
   assert.match(assetBuilder, /data\/outcome_labels\.json/);
   assert.match(assetBuilder, /data\/daily_data_vault\.json/);
+  assert.match(assetBuilder, /data\/history\/latest_observation_pointer\.json/);
+  assert.match(assetBuilder, /data\/daily_delta_report\.json/);
+  assert.match(assetBuilder, /data\/pool_delta_signals\.json/);
+  assert.match(assetBuilder, /data\/daily_delta_history\.json/);
   assert.match(assetBuilder, /data\/news_review\.json/);
   assert.match(assetBuilder, /data\/pond_map\.json/);
   assert.match(dataValidator, /sector_module_review\.json/);
@@ -101,6 +108,10 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(dataValidator, /manual_review_log\.json/);
   assert.match(dataValidator, /outcome_labels\.json/);
   assert.match(dataValidator, /daily_data_vault\.json/);
+  assert.match(dataValidator, /history\/latest_observation_pointer\.json/);
+  assert.match(dataValidator, /daily_delta_report\.json/);
+  assert.match(dataValidator, /pool_delta_signals\.json/);
+  assert.match(dataValidator, /daily_delta_history\.json/);
   assert.match(dataValidator, /Published Financial Ponds data complete/);
   assert.doesNotMatch(workflow, /npm run a-share:daily\s*$/m);
 });

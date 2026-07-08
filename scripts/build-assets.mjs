@@ -29,9 +29,21 @@ const files = [
   ["data/pool_flow_signals.json", "application/json; charset=utf-8"],
   ["data/data_coverage_report.json", "application/json; charset=utf-8"],
   ["data/coverage_history.json", "application/json; charset=utf-8"],
+  ["data/history/latest_observation_pointer.json", "application/json; charset=utf-8"],
+  ["data/daily_delta_report.json", "application/json; charset=utf-8"],
+  ["data/pool_delta_signals.json", "application/json; charset=utf-8"],
+  ["data/daily_delta_history.json", "application/json; charset=utf-8"],
   ["data/news_review.json", "application/json; charset=utf-8"],
   ["data/pond_map.json", "application/json; charset=utf-8"],
 ];
+
+try {
+  const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
+  const archiveKey = String(pointer.latest_path ?? "").replace(/^financial-pond\//, "");
+  if (archiveKey) files.push([archiveKey, "application/json; charset=utf-8"]);
+} catch {
+  // Archive assets are added after the daily persistence step has written the pointer.
+}
 
 const assets = {};
 for (const [file, contentType] of files) {

@@ -34,7 +34,7 @@ const totalSignalCells = rows.length * signalMap.length;
 const coverageRatio = totalSignalCells ? round((totals.real + totals.estimated + totals.derived) / totalSignalCells) : 0;
 
 const report = {
-  module_id: "data_coverage_report_v0_10_51",
+  module_id: "data_coverage_report_v0_10_52",
   as_of: snapshot.as_of,
   generated_at: new Date().toISOString(),
   observed_pool_count: rows.length,
@@ -194,7 +194,7 @@ async function updateHistory(report) {
   }
   const last = history.at(-1);
   if (!last || JSON.stringify(last) !== JSON.stringify(snapshot)) history.push(snapshot);
-  await writeFile(historyPath, `${JSON.stringify({ module_id: "coverage_history_v0_10_51", history }, null, 2)}\n`, "utf8");
+  await writeFile(historyPath, `${JSON.stringify({ module_id: "coverage_history_v0_10_52", history }, null, 2)}\n`, "utf8");
 }
 
 async function readJson(path, fallback) {

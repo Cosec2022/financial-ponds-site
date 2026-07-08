@@ -1,0 +1,20 @@
+{
+  "module_id": "daily_delta_report_v0_10_52",
+  "as_of": "2026-07-08",
+  "generated_at": "2026-07-08T16:03:54.574Z",
+  "comparison_available": false,
+  "latest_as_of": "2026-07-08",
+  "previous_as_of": null,
+  "latest_path": "financial-pond/data/history/observations/2026-07-08.json",
+  "previous_path": null,
+  "observed_pool_count": 67,
+  "changed_pool_count": 0,
+  "insufficient_history_count": 67,
+  "stable_pool_count": 0,
+  "baseline_state": "today archived / insufficient history",
+  "boundary_notes": [
+    "Delta report compares observation snapshots only.",
+    "Rows are review flags, not execution signals.",
+    "observe_only boundary remains in force."
+  ]
+}

@@ -25,8 +25,12 @@ const requiredFiles = [
   ["daily_data_vault.json", (json) => json.status === "vault_available" && json.module_id === "daily_data_vault_v0_10_48" && Array.isArray(json.files_seen) && Array.isArray(json.files_missing) && Boolean(json.file_hashes) && Boolean(json.data_reality_summary)],
   ["flow_channel_report.json", (json) => json.module_id === "flow_channel_report_v0_10_51" && Array.isArray(json.source_files_used) && json.mapped_pool_count >= 1],
   ["pool_flow_signals.json", (json) => json.module_id === "pool_flow_signals_v0_10_51" && Array.isArray(json.rows) && json.rows.every((row) => flowStatuses.has(row.flow_status))],
-  ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_51" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel)],
-  ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_51" && Array.isArray(json.history)],
+  ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_52" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel)],
+  ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_52" && Array.isArray(json.history)],
+  ["history/latest_observation_pointer.json", validatePointer],
+  ["daily_delta_report.json", (json) => json.module_id === "daily_delta_report_v0_10_52" && typeof json.comparison_available === "boolean" && Boolean(json.baseline_state)],
+  ["pool_delta_signals.json", (json) => json.module_id === "pool_delta_signals_v0_10_52" && Array.isArray(json.rows) && json.rows.every((row) => deltaFlags.has(row.review_flag))],
+  ["daily_delta_history.json", (json) => json.module_id === "daily_delta_history_v0_10_52" && Array.isArray(json.history)],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];
@@ -35,6 +39,14 @@ const signalSlots = ["flow", "price_momentum", "liquidity", "rotation", "news", 
 const signalReality = new Set(["real_provider", "real_provider_derived", "source_backed", "estimated_from_source", "manual_seed", "mock", "fixture", "missing", "planned", "insufficient_history", "unavailable"]);
 const flowStatuses = new Set(["source_backed", "estimated_from_source", "derived", "missing", "unavailable"]);
 const boundaries = new Set(["observe_only", "manual_review", "blocked"]);
+const deltaFlags = new Set(["insufficient_history", "changed", "stable"]);
+
+function validatePointer(json) {
+  return json.module_id === "latest_observation_pointer_v0_10_52"
+    && Boolean(json.latest_as_of)
+    && json.latest_path === `financial-pond/data/history/observations/${json.latest_as_of}.json`
+    && json.available_snapshot_count >= 1;
+}
 
 function validateObservationRow(row) {
   return signalSlots.every((slot) => signalReality.has(row.signals?.[slot]?.reality) && row.signal_matrix_row?.[slot])
@@ -61,6 +73,14 @@ for (const [fileName, validate] of requiredFiles) {
   } catch (error) {
     failures.push(`${fileName}: ${error.message}`);
   }
+}
+
+try {
+  const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
+  const archive = JSON.parse(await readFile(resolve(root, pointer.latest_path), "utf8"));
+  if (archive.module_id !== "observation_archive_v0_10_52" || archive.as_of !== pointer.latest_as_of) failures.push(`${pointer.latest_path}: archive contract check failed`);
+} catch (error) {
+  failures.push(`history/observations archive: ${error.message}`);
 }
 
 if (failures.length) {

@@ -32,6 +32,8 @@ const state = {
   readiness: null,
   coverage: null,
   flowChannel: null,
+  delta: null,
+  pointer: null,
   pools: [],
   view: "today",
   selectedPoolId: null,
@@ -317,6 +319,7 @@ function renderCoverageStrip() {
   }
   const gaps = asArray(report.priority_gaps).slice(0, 3);
   const flow = state.flowChannel ?? report.flow_channel ?? {};
+  const baseline = state.delta?.baseline_state ?? (state.pointer?.latest_as_of ? "today archived / insufficient history" : "insufficient history");
   el.innerHTML = `
     <div class="coverage-head"><span>Data Coverage</span><strong>${pct(report.coverage_ratio)}</strong></div>
     <div class="coverage-counts">
@@ -324,6 +327,7 @@ function renderCoverageStrip() {
     </div>
     <div class="coverage-gaps">
       <span>Flow Channel: source_backed ${flow.source_backed_flow_count ?? 0} / estimated ${flow.estimated_from_source_count ?? 0} / missing ${flow.missing_flow_count ?? 0}</span>
+      <span>Daily Delta: Baseline: ${escapeHtml(baseline)}</span>
       ${gaps.length ? gaps.map((gap) => `<span>${escapeHtml(gap.priority_label ?? gap.signal_type)} ${gap.affected_pool_count ?? 0}</span>`).join("") : "<span>no priority data gap</span>"}
     </div>
   `;
@@ -620,14 +624,16 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, delta, pointer] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
     readJson("./data/daily_data_vault.json", null),
     readJson("./data/etf_decision_readiness.json", null),
     readJson("./data/data_coverage_report.json", null),
-    readJson("./data/flow_channel_report.json", null)
+    readJson("./data/flow_channel_report.json", null),
+    readJson("./data/daily_delta_report.json", null),
+    readJson("./data/history/latest_observation_pointer.json", null)
   ]);
   state.snapshot = snapshot;
   state.outcomes = outcomes;
@@ -636,6 +642,8 @@ async function init() {
   state.readiness = readiness;
   state.coverage = coverage;
   state.flowChannel = flowChannel;
+  state.delta = delta;
+  state.pointer = pointer;
   state.pools = extractPools(snapshot);
   state.selectedPoolId = state.pools[0]?.id ?? null;
 

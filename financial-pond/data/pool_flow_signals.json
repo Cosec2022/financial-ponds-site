@@ -1,7 +1,7 @@
 {
   "module_id": "pool_flow_signals_v0_10_51",
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T15:49:06.259Z",
+  "generated_at": "2026-07-08T16:03:54.460Z",
   "source_files_used": [
     "etf_flow_leaderboard.json",
     "tools/financial-pond-framework/model_outputs/2026-07-08/akshare_provider_flow_observations.json"

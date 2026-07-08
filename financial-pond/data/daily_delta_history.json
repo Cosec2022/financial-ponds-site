@@ -1,0 +1,16 @@
+{
+  "module_id": "daily_delta_history_v0_10_52",
+  "history": [
+    {
+      "as_of": "2026-07-08",
+      "comparison_available": false,
+      "latest_as_of": "2026-07-08",
+      "previous_as_of": null,
+      "observed_pool_count": 67,
+      "changed_pool_count": 0,
+      "insufficient_history_count": 67,
+      "stable_pool_count": 0,
+      "baseline_state": "today archived / insufficient history"
+    }
+  ]
+}

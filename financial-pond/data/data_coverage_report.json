@@ -1,7 +1,7 @@
 {
-  "module_id": "data_coverage_report_v0_10_51",
+  "module_id": "data_coverage_report_v0_10_52",
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T15:49:06.298Z",
+  "generated_at": "2026-07-08T16:03:54.503Z",
   "observed_pool_count": 67,
   "total_signal_cells": 536,
   "real_count": 0,

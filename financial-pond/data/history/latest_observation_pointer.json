@@ -1,0 +1,8 @@
+{
+  "module_id": "latest_observation_pointer_v0_10_52",
+  "latest_as_of": "2026-07-08",
+  "latest_path": "financial-pond/data/history/observations/2026-07-08.json",
+  "previous_as_of": null,
+  "previous_path": null,
+  "available_snapshot_count": 1
+}
