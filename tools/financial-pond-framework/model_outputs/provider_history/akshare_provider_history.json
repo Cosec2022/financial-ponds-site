@@ -1,0 +1,70 @@
+{
+  "audit_id": "akshare_provider_history_audit_v0_10_38",
+  "generated_at": "2026-07-08T10:06:24.639Z",
+  "status": "flow_gate_ready",
+  "as_of": "2026-07-08",
+  "row_csv": "data/provider_exports/a_share_etf_daily.csv",
+  "expected_representative_rows": 11,
+  "min_flow_rows_for_gate": 7,
+  "provider_history": {
+    "available_dates": [
+      "2026-07-07",
+      "2026-07-08"
+    ],
+    "date_count": 2,
+    "current_date": "2026-07-08",
+    "previous_available_date": "2026-07-07",
+    "has_previous_available_date": true,
+    "rows_by_date": {
+      "2026-07-07": 11,
+      "2026-07-08": 11
+    }
+  },
+  "current": {
+    "date": "2026-07-08",
+    "row_count": 11,
+    "expected_rows": 11,
+    "missing_codes": [],
+    "latest_share_rows": 11,
+    "previous_share_rows": 11,
+    "share_change_rows": 11,
+    "estimated_flow_rows": 11,
+    "status": "flow_gate_ready"
+  },
+  "previous": {
+    "date": "2026-07-07",
+    "row_count": 11,
+    "expected_rows": 11,
+    "missing_codes": [],
+    "latest_share_rows": 11,
+    "previous_share_rows": 0,
+    "share_change_rows": 0,
+    "estimated_flow_rows": 0,
+    "status": "baseline_only"
+  },
+  "date_findings": [
+    {
+      "date": "2026-07-07",
+      "row_count": 11,
+      "expected_rows": 11,
+      "missing_codes": [],
+      "latest_share_rows": 11,
+      "previous_share_rows": 0,
+      "share_change_rows": 0,
+      "estimated_flow_rows": 0,
+      "status": "baseline_only"
+    },
+    {
+      "date": "2026-07-08",
+      "row_count": 11,
+      "expected_rows": 11,
+      "missing_codes": [],
+      "latest_share_rows": 11,
+      "previous_share_rows": 11,
+      "share_change_rows": 11,
+      "estimated_flow_rows": 11,
+      "status": "flow_gate_ready"
+    }
+  ],
+  "next_action": "provider 历史和 estimated_flow 覆盖已达到基础门槛；继续运行 flow/review/readiness 下游。"
+}
