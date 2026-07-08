@@ -1,7 +1,7 @@
 {
-  "module_id": "data_coverage_report_v0_10_50",
+  "module_id": "data_coverage_report_v0_10_51",
   "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T15:37:08.860Z",
+  "generated_at": "2026-07-08T15:49:06.298Z",
   "observed_pool_count": 67,
   "total_signal_cells": 536,
   "real_count": 0,
@@ -11,6 +11,12 @@
   "missing_count": 148,
   "insufficient_count": 61,
   "coverage_ratio": 0.4086,
+  "flow_channel": {
+    "source_backed_flow_count": 0,
+    "estimated_from_source_count": 11,
+    "missing_flow_count": 56,
+    "coverage_ratio": 0.1642
+  },
   "top_missing_signal_types": [
     {
       "signal_type": "rotation",
@@ -67,78 +73,78 @@
       "pool_id": "a_share_a_share",
       "pool_name": "a_share",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_agriculture",
       "pool_name": "a_share_agriculture",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_ai_computer",
       "pool_name": "a_share_ai_computer",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_bank_insurance",
       "pool_name": "a_share_bank_insurance",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_basic_chemicals",
       "pool_name": "a_share_basic_chemicals",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_beauty_care",
       "pool_name": "a_share_beauty_care",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_brokerage",
       "pool_name": "a_share_brokerage",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_building_materials",
       "pool_name": "a_share_building_materials",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_coal",
       "pool_name": "a_share_coal",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_communication_electronics",
       "pool_name": "a_share_communication_electronics",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     }
   ],
   "priority_gaps": [
     {
       "signal_type": "flow",
       "priority_label": "real flow",
-      "affected_pool_count": 67,
+      "affected_pool_count": 56,
       "sample_pools": [
         "a_share",
         "a_share_agriculture",
@@ -146,7 +152,7 @@
         "a_share_bank_insurance",
         "a_share_basic_chemicals"
       ],
-      "next_data_need": "connect reviewed real flow source"
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "signal_type": "momentum",
@@ -256,8 +262,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_agriculture",
@@ -274,15 +280,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_ai_computer",
       "pool_name": "a_share_ai_computer",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -292,15 +298,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_bank_insurance",
       "pool_name": "a_share_bank_insurance",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -310,8 +316,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_basic_chemicals",
@@ -328,8 +334,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_beauty_care",
@@ -346,15 +352,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_brokerage",
       "pool_name": "a_share_brokerage",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -364,8 +370,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_building_materials",
@@ -382,8 +388,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_coal",
@@ -400,15 +406,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_communication_electronics",
       "pool_name": "a_share_communication_electronics",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -418,8 +424,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_construction",
@@ -436,15 +442,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_consumer",
       "pool_name": "a_share_consumer",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -454,15 +460,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_defense_military",
       "pool_name": "a_share_defense_military",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -472,8 +478,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_environmental_protection",
@@ -490,8 +496,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_food_beverage",
@@ -508,15 +514,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_healthcare_pharma",
       "pool_name": "a_share_healthcare_pharma",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -526,8 +532,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_home_appliances",
@@ -544,8 +550,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_light_manufacturing",
@@ -562,8 +568,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_machinery",
@@ -580,8 +586,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_media",
@@ -598,15 +604,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_new_energy_ev",
       "pool_name": "a_share_new_energy_ev",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -616,8 +622,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_nonferrous_metals",
@@ -634,8 +640,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_petroleum_petrochemical",
@@ -652,15 +658,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_real_estate_infra",
       "pool_name": "a_share_real_estate_infra",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -670,15 +676,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_resources_materials",
       "pool_name": "a_share_resources_materials",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -688,8 +694,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_retail",
@@ -706,15 +712,15 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_semiconductor",
       "pool_name": "a_share_semiconductor",
       "direction": "neutral",
       "magnitude": 0,
-      "confidence": 0.0044,
+      "confidence": 0.3024,
       "flow_status": "missing",
       "momentum_status": "missing",
       "liquidity_status": "missing",
@@ -724,8 +730,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_social_services",
@@ -742,8 +748,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_steel",
@@ -760,8 +766,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_textile_apparel",
@@ -778,8 +784,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_transportation",
@@ -796,8 +802,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_a_share_utilities",
@@ -814,8 +820,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_agriculture",
@@ -832,14 +838,14 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_ai_computer",
       "pool_name": "AI计算机",
       "direction": "outward",
-      "magnitude": 0.9,
+      "magnitude": 0.1141,
       "confidence": 0.315,
       "flow_status": "estimated",
       "momentum_status": "derived",
@@ -850,8 +856,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_bank_insurance",
@@ -868,8 +874,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_basic_chemicals",
@@ -886,8 +892,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_beauty_care",
@@ -904,8 +910,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_brokerage",
@@ -922,8 +928,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_btc",
@@ -940,8 +946,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_building_materials",
@@ -958,8 +964,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_coal",
@@ -976,8 +982,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_communication_electronics",
@@ -994,8 +1000,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_construction",
@@ -1012,14 +1018,14 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_consumer",
       "pool_name": "Consumer",
       "direction": "outward",
-      "magnitude": 0.8,
+      "magnitude": 0.0331,
       "confidence": 0.315,
       "flow_status": "estimated",
       "momentum_status": "derived",
@@ -1030,8 +1036,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_defense_military",
@@ -1048,8 +1054,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_environmental_protection",
@@ -1066,8 +1072,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_food_beverage",
@@ -1084,8 +1090,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_gold",
@@ -1102,8 +1108,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_healthcare_pharma",
@@ -1120,8 +1126,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_home_appliances",
@@ -1138,8 +1144,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_light_manufacturing",
@@ -1156,8 +1162,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_machinery",
@@ -1174,8 +1180,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_media",
@@ -1192,14 +1198,14 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_new_energy_ev",
       "pool_name": "新能源车",
       "direction": "outward",
-      "magnitude": 0.7,
+      "magnitude": 0.0091,
       "confidence": 0.315,
       "flow_status": "estimated",
       "momentum_status": "derived",
@@ -1210,8 +1216,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_nonferrous_metals",
@@ -1228,8 +1234,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_petroleum_petrochemical",
@@ -1246,8 +1252,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_real_estate_infra",
@@ -1264,8 +1270,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_resources_materials",
@@ -1282,8 +1288,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_retail",
@@ -1300,8 +1306,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_semiconductor",
@@ -1318,8 +1324,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing momentum confirmation",
+      "next_data_need": "connect momentum confirmation"
     },
     {
       "pool_id": "a_share_social_services",
@@ -1336,8 +1342,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_sp500",
@@ -1354,8 +1360,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_steel",
@@ -1372,8 +1378,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_textile_apparel",
@@ -1390,8 +1396,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_transportation",
@@ -1408,8 +1414,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_us_equity",
@@ -1426,8 +1432,8 @@
       "fundamental_status": "planned",
       "risk_status": "derived",
       "coverage_score": 0.125,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     },
     {
       "pool_id": "a_share_utilities",
@@ -1444,8 +1450,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.625,
-      "main_gap": "missing real flow",
-      "next_data_need": "connect reviewed real flow source"
+      "main_gap": "missing source-backed flow",
+      "next_data_need": "connect mapped provider flow source"
     }
   ]
 }

@@ -12,6 +12,8 @@ const SIGNAL_LABELS = {
 const REALITY_SHORT = {
   real_provider: "real",
   real_provider_derived: "derived",
+  source_backed: "source_backed",
+  estimated_from_source: "estimated_from_source",
   manual_seed: "seed",
   mock: "mock",
   fixture: "mock",
@@ -29,6 +31,7 @@ const state = {
   vault: null,
   readiness: null,
   coverage: null,
+  flowChannel: null,
   pools: [],
   view: "today",
   selectedPoolId: null,
@@ -83,6 +86,8 @@ function statusOf(signal) {
 function displaySignalStatus(signal, key) {
   const reality = fullStatusOf(signal);
   if (reality === "real_provider") return "real";
+  if (reality === "source_backed") return "source_backed";
+  if (reality === "estimated_from_source") return "estimated_from_source";
   if (key === "flow" && reality === "real_provider_derived" && numberOrNull(signalValue(signal)) !== null) return "estimated";
   if (reality === "real_provider_derived") return "derived";
   if (reality === "manual_seed") return "derived";
@@ -186,7 +191,7 @@ function findExplainability(traceId, pool, metric) {
 
 function formulaFor(metric) {
   const map = {
-    flow: "F = estimated_flow",
+    flow: "F = provider estimated_flow when source-backed channel is available",
     price_momentum: "M = close_t / close_{t-1} - 1",
     liquidity: "L = rank_normalize(amount)",
     rotation: "R = rank_{t-1} - rank_t",
@@ -306,17 +311,19 @@ function renderCoverageStrip() {
     el.innerHTML = `
       <div class="coverage-head"><span>Data Coverage</span><strong>--</strong></div>
       <div class="coverage-counts">data_coverage_report not loaded</div>
-      <div class="coverage-gaps">Top gaps unavailable.</div>
+      <div class="coverage-gaps">Flow Channel unavailable.</div>
     `;
     return;
   }
   const gaps = asArray(report.priority_gaps).slice(0, 3);
+  const flow = state.flowChannel ?? report.flow_channel ?? {};
   el.innerHTML = `
     <div class="coverage-head"><span>Data Coverage</span><strong>${pct(report.coverage_ratio)}</strong></div>
     <div class="coverage-counts">
       real ${report.real_count ?? 0} · estimated ${report.estimated_count ?? 0} · derived ${report.derived_count ?? 0} · missing ${report.missing_count ?? 0} · planned ${report.planned_count ?? 0}
     </div>
     <div class="coverage-gaps">
+      <span>Flow Channel: source_backed ${flow.source_backed_flow_count ?? 0} / estimated ${flow.estimated_from_source_count ?? 0} / missing ${flow.missing_flow_count ?? 0}</span>
       ${gaps.length ? gaps.map((gap) => `<span>${escapeHtml(gap.priority_label ?? gap.signal_type)} ${gap.affected_pool_count ?? 0}</span>`).join("") : "<span>no priority data gap</span>"}
     </div>
   `;
@@ -613,13 +620,14 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault, readiness, coverage] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
     readJson("./data/daily_data_vault.json", null),
     readJson("./data/etf_decision_readiness.json", null),
-    readJson("./data/data_coverage_report.json", null)
+    readJson("./data/data_coverage_report.json", null),
+    readJson("./data/flow_channel_report.json", null)
   ]);
   state.snapshot = snapshot;
   state.outcomes = outcomes;
@@ -627,6 +635,7 @@ async function init() {
   state.vault = vault;
   state.readiness = readiness;
   state.coverage = coverage;
+  state.flowChannel = flowChannel;
   state.pools = extractPools(snapshot);
   state.selectedPoolId = state.pools[0]?.id ?? null;
 

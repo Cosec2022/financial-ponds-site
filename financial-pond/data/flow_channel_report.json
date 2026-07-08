@@ -1,0 +1,23 @@
+{
+  "module_id": "flow_channel_report_v0_10_51",
+  "as_of": "2026-07-08",
+  "generated_at": "2026-07-08T15:49:06.259Z",
+  "source_files_used": [
+    "etf_flow_leaderboard.json",
+    "tools/financial-pond-framework/model_outputs/2026-07-08/akshare_provider_flow_observations.json"
+  ],
+  "source_row_count": 11,
+  "mapped_pool_count": 11,
+  "unmapped_row_count": 0,
+  "source_backed_flow_count": 0,
+  "estimated_from_source_count": 11,
+  "missing_flow_count": 56,
+  "coverage_ratio": 0.1642,
+  "mapping_method": "exact observation_snapshot.rows[].sector_id to etf_flow_leaderboard.rows[].sector_id; prefixed placeholder pools remain missing",
+  "unmapped_examples": [],
+  "boundary_notes": [
+    "Flow channel uses representative ETF estimated_flow from provider-backed artifacts when available.",
+    "Mapped rows are estimated_from_source because the available field is estimated_flow, not exact capital movement.",
+    "Unmapped pools remain missing or unavailable; no values are fabricated."
+  ]
+}

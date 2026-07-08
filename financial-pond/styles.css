@@ -39,8 +39,8 @@ h3 { margin-bottom: 8px; font-size: 14px; }
 .badge.muted { background: var(--surface2); color: var(--muted); }
 .badge.warn { background: var(--soft-gold); color: var(--gold); }
 .badge.danger { background: var(--soft-red); color: var(--red); }
-.badge.real { background: var(--soft-green); color: var(--green); }
-.badge.estimated { background: var(--soft-green); color: var(--green); }
+.badge.real, .badge.source_backed { background: var(--soft-green); color: var(--green); }
+.badge.estimated, .badge.estimated_from_source { background: var(--soft-green); color: var(--green); }
 .badge.derived { background: #e7eef8; color: #2f5f93; }
 .badge.missing, .badge.planned, .badge.insufficient, .badge.seed { background: var(--surface2); color: var(--muted); }
 
@@ -74,8 +74,8 @@ h3 { margin-bottom: 8px; font-size: 14px; }
 .pool-meta { display: flex; flex-wrap: wrap; gap: 6px; color: var(--muted); font-size: 12px; margin-bottom: 10px; }
 .signal-chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .signal-chip { border: 0; border-radius: 999px; padding: 5px 8px; font-size: 12px; font-weight: 800; background: var(--surface2); color: var(--muted); }
-.signal-chip.real { background: var(--soft-green); color: var(--green); }
-.signal-chip.estimated { background: var(--soft-green); color: var(--green); }
+.signal-chip.real, .signal-chip.source_backed { background: var(--soft-green); color: var(--green); }
+.signal-chip.estimated, .signal-chip.estimated_from_source { background: var(--soft-green); color: var(--green); }
 .signal-chip.derived { background: #e7eef8; color: #2f5f93; }
 .signal-chip.seed, .signal-chip.mock { background: var(--soft-gold); color: var(--gold); }
 .signal-chip.missing, .signal-chip.planned, .signal-chip.insufficient { background: var(--surface2); color: var(--muted); }
@@ -91,7 +91,7 @@ h3 { margin-bottom: 8px; font-size: 14px; }
 .health-cell { min-height: 58px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfa; color: var(--text); padding: 8px; }
 .health-cell span { display: block; color: var(--muted); font-size: 12px; font-weight: 800; margin-bottom: 3px; }
 .health-cell strong { font-size: 12px; }
-.health-cell.real, .health-cell.estimated { background: var(--soft-green); color: var(--green); }
+.health-cell.real, .health-cell.estimated, .health-cell.source_backed, .health-cell.estimated_from_source { background: var(--soft-green); color: var(--green); }
 .health-cell.derived { background: #e7eef8; color: #2f5f93; }
 .health-cell.missing, .health-cell.planned, .health-cell.insufficient { background: var(--surface2); color: var(--muted); }
 .gap-list { display: flex; flex-wrap: wrap; gap: 8px; }
