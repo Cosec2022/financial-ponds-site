@@ -3,113 +3,137 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Financial Ponds | Focused Workbench</title>
+    <title>Financial Ponds | Observation Dashboard</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <header class="topbar">
       <div>
         <p class="eyebrow">CosecLab · Financial Ponds</p>
-        <h1>v0.10.57 Focused Workbench</h1>
-        <p class="subline">观察工作台</p>
-        <p class="subline">通用资金流矢量观察。A股只是第一个样本。</p>
+        <h1>v0.10.58 Observation Dashboard</h1>
+        <p class="subline">observe_only · not investment advice · insufficient outcome history</p>
       </div>
-      <div class="badges">
-        <span id="asOfBadge" class="badge">as_of --</span>
-        <span id="poolCountBadge" class="badge" data-metric="observed_pool_count">observed_pool_count --</span>
-        <span id="pendingBadge" class="badge" data-metric="pending_outcome_count">pending_outcome_count --</span>
-        <span id="executionBadge" class="badge warn" data-metric="execution_state">observe_only / blocked boundary</span>
-      </div>
+      <span class="state-mark">observe_only</span>
     </header>
 
-    <main class="shell">
-      <nav class="tabs" aria-label="workbench tabs">
-        <button class="tab active" data-view="today" type="button">今日观察</button>
-        <button class="tab" data-view="matrix" type="button">信号矩阵</button>
-        <button class="tab" data-view="vector" type="button">资金矢量</button>
-        <button class="tab" data-view="review" type="button">复盘记录</button>
-      </nav>
-
-      <section id="summaryStrip" class="summary-strip" aria-label="focused observation summary">
-        <article class="summary-card"><span>Observation State</span><strong>observe_only</strong></article>
-        <article class="summary-card"><span>Real Flow Coverage</span><strong>--</strong></article>
-        <article class="summary-card"><span>Observed Pools</span><strong>--</strong></article>
-        <article class="summary-card"><span>Pending Reviews</span><strong>--</strong></article>
-      </section>
-
-      <section id="coverageStrip" class="coverage-strip" aria-label="data coverage">
-        <div class="coverage-head"><span>Data Coverage</span><strong>--</strong></div>
-        <div class="coverage-counts">real -- · estimated -- · derived -- · missing -- · planned --</div>
-        <div class="coverage-gaps">Flow Channel loading. Market Channel loading. Mapping loading. Quality loading. Daily Delta: Baseline loading.</div>
-      </section>
-
-      <section id="eveningSummary" class="coverage-strip" aria-label="evening observation summary">
-        <div class="coverage-head"><span>Evening Summary</span><strong>observe_only</strong></div>
-        <div class="coverage-counts">Evening observation summary loading.</div>
-      </section>
-
-      <section id="observationCandidates" class="coverage-strip" aria-label="observation candidates">
-        <div class="coverage-head"><span>Observation Candidates</span><strong>observe_only</strong></div>
-        <div class="coverage-counts">Candidate ledger loading.</div>
-      </section>
-
-      <section class="workbench">
-        <aside class="panel pool-panel">
-          <div class="panel-head">
-            <div>
-              <p class="eyebrow">Pools</p>
-              <h2>资金池</h2>
-            </div>
-            <input id="poolSearch" class="search" type="search" placeholder="搜索">
+    <main class="dashboard">
+      <section class="zone status-zone" aria-labelledby="todayStatusTitle">
+        <div class="section-head">
+          <div>
+            <p class="section-kicker">1 · 今日状态</p>
+            <h2 id="todayStatusTitle">Today Status</h2>
           </div>
-          <div id="poolList" class="pool-list">Loading pools.</div>
-        </aside>
-
-        <section id="mainPanel" class="panel main-panel">Loading Focused Workbench. Signal Health. Data Gap.</section>
-
-        <aside class="panel trace-panel">
-          <div class="panel-head">
-            <div>
-              <p class="eyebrow">Trace</p>
-              <h2>公式溯源</h2>
-            </div>
-            <span id="traceStatus" class="badge muted">missing</span>
-          </div>
-          <div id="traceDrawer" class="trace-drawer trace-empty">点击指标查看公式溯源</div>
-        </aside>
-      </section>
-
-      <details class="advanced">
-        <summary>高级诊断</summary>
-        <div class="advanced-grid">
-          <a href="./data/daily_data_vault.json">daily_data_vault.json</a>
-          <a href="./data/observation_snapshot.json">observation_snapshot.json</a>
-          <a href="./data/outcome_labels.json">outcome_labels.json</a>
-          <a href="./data/index_explainability.json">index_explainability.json</a>
-          <a href="./data/flow_channel_report.json">flow_channel_report.json</a>
-          <a href="./data/pool_flow_signals.json">pool_flow_signals.json</a>
-          <a href="./data/market_signal_report.json">market_signal_report.json</a>
-          <a href="./data/pool_market_signals.json">pool_market_signals.json</a>
-          <a href="./data/pool_instrument_map.json">pool_instrument_map.json</a>
-          <a href="./data/pool_mapping_report.json">pool_mapping_report.json</a>
-          <a href="./data/signal_quality_report.json">signal_quality_report.json</a>
-          <a href="./data/pool_signal_quality.json">pool_signal_quality.json</a>
-          <a href="./data/evening_observation_summary.json">evening_observation_summary.json</a>
-          <a href="./data/pool_observation_scores.json">pool_observation_scores.json</a>
-          <a href="./data/evening_report.md">evening_report.md</a>
-          <a href="./data/observation_candidate_ledger.json">observation_candidate_ledger.json</a>
-          <a href="./data/score_calibration_report.json">score_calibration_report.json</a>
-          <a href="./data/candidate_review_schedule.json">candidate_review_schedule.json</a>
-          <a href="./data/data_coverage_report.json">data_coverage_report.json</a>
-          <a href="./data/coverage_history.json">coverage_history.json</a>
-          <a href="./data/history/observations/">history/observations/</a>
-          <a href="./data/history/latest_observation_pointer.json">latest_observation_pointer.json</a>
-          <a href="./data/daily_delta_report.json">daily_delta_report.json</a>
-          <a href="./data/daily_delta_history.json">daily_delta_history.json</a>
-          <a href="./data/data_reality_audit.json">数据真实性审计 data_reality_audit.json</a>
-          <a href="./data/decision_gate_ledger.json">decision_gate_ledger.json</a>
+          <span class="boundary">observe_only</span>
         </div>
-      </details>
+        <div id="todayStatus" class="status-grid">Loading today status.</div>
+      </section>
+
+      <section class="workspace" aria-label="observation candidates and selected candidate">
+        <section class="zone candidates-zone" aria-labelledby="candidateTitle">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">2 · 今日观察候选</p>
+              <h2 id="candidateTitle">Observation Candidates</h2>
+            </div>
+            <span class="quiet-label">Top 5</span>
+          </div>
+          <div id="candidateList" class="candidate-list">Loading candidates.</div>
+        </section>
+
+        <section class="zone detail-zone" aria-labelledby="selectedTitle">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">3 · 为什么上榜</p>
+              <h2 id="selectedTitle">Selected Candidate</h2>
+            </div>
+          </div>
+          <div id="selectedCandidate">Select a candidate.</div>
+        </section>
+      </section>
+
+      <section class="bottom-grid">
+        <section class="zone quality-zone" aria-labelledby="qualityTitle">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">4 · 证据可靠吗</p>
+              <h2 id="qualityTitle">Evidence Quality</h2>
+            </div>
+          </div>
+          <div id="evidenceQuality">Loading evidence quality.</div>
+        </section>
+
+        <section class="zone review-zone" aria-labelledby="reviewTitle">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">5 · 什么时候复盘</p>
+              <h2 id="reviewTitle">Review Schedule</h2>
+            </div>
+          </div>
+          <div id="reviewSchedule">Loading review schedule.</div>
+        </section>
+      </section>
+
+      <section class="collapsed-groups" aria-label="collapsed observation details">
+        <details>
+          <summary>Data Health</summary>
+          <div id="dataHealth" class="detail-content">Loading data health.</div>
+        </details>
+        <details>
+          <summary>Signal Details</summary>
+          <div id="signalDetails" class="detail-content">Select a candidate.</div>
+        </details>
+        <details>
+          <summary>Review Details</summary>
+          <div id="reviewDetails" class="detail-content">Loading review details.</div>
+        </details>
+        <details>
+          <summary>Advanced Diagnostics</summary>
+          <div class="diagnostic-links">
+            <a href="./data/dashboard.json">dashboard.json</a>
+            <a href="./data/general_pool_analysis.json">general_pool_analysis.json</a>
+            <a href="./data/sector_flow_review.json">sector_flow_review.json</a>
+            <a href="./data/sector_rotation_intelligence.json">sector_rotation_intelligence.json</a>
+            <a href="./data/sector_rotation_history.json">sector_rotation_history.json</a>
+            <a href="./data/sector_module_review.json">sector_module_review.json</a>
+            <a href="./data/etf_decision_readiness.json">etf_decision_readiness.json</a>
+            <a href="./data/data_reality_audit.json">data_reality_audit.json</a>
+            <a href="./data/daily_sector_analysis.json">daily_sector_analysis.json</a>
+            <a href="./data/module_maturity_audit.json">module_maturity_audit.json</a>
+            <a href="./data/etf_flow_leaderboard.json">etf_flow_leaderboard.json</a>
+            <a href="./data/sector_signal_attribution.json">sector_signal_attribution.json</a>
+            <a href="./data/sector_watchlist_state.json">sector_watchlist_state.json</a>
+            <a href="./data/decision_gate_ledger.json">decision_gate_ledger.json</a>
+            <a href="./data/index_explainability.json">index_explainability.json</a>
+            <a href="./data/observation_snapshot.json">observation_snapshot.json</a>
+            <a href="./data/manual_review_log.json">manual_review_log.json</a>
+            <a href="./data/outcome_labels.json">outcome_labels.json</a>
+            <a href="./data/daily_data_vault.json">daily_data_vault.json</a>
+            <a href="./data/flow_channel_report.json">flow_channel_report.json</a>
+            <a href="./data/pool_flow_signals.json">pool_flow_signals.json</a>
+            <a href="./data/market_signal_report.json">market_signal_report.json</a>
+            <a href="./data/pool_market_signals.json">pool_market_signals.json</a>
+            <a href="./data/pool_instrument_map.json">pool_instrument_map.json</a>
+            <a href="./data/pool_mapping_report.json">pool_mapping_report.json</a>
+            <a href="./data/signal_quality_report.json">signal_quality_report.json</a>
+            <a href="./data/pool_signal_quality.json">pool_signal_quality.json</a>
+            <a href="./data/evening_observation_summary.json">evening_observation_summary.json</a>
+            <a href="./data/pool_observation_scores.json">pool_observation_scores.json</a>
+            <a href="./data/evening_report.md">evening_report.md</a>
+            <a href="./data/observation_candidate_ledger.json">observation_candidate_ledger.json</a>
+            <a href="./data/score_calibration_report.json">score_calibration_report.json</a>
+            <a href="./data/candidate_review_schedule.json">candidate_review_schedule.json</a>
+            <a href="./data/data_coverage_report.json">data_coverage_report.json</a>
+            <a href="./data/coverage_history.json">coverage_history.json</a>
+            <a href="./data/history/observations/">history/observations/</a>
+            <a href="./data/history/latest_observation_pointer.json">latest_observation_pointer.json</a>
+            <a href="./data/daily_delta_report.json">daily_delta_report.json</a>
+            <a href="./data/pool_delta_signals.json">pool_delta_signals.json</a>
+            <a href="./data/daily_delta_history.json">daily_delta_history.json</a>
+            <a href="./data/news_review.json">news_review.json</a>
+            <a href="./data/pond_map.json">pond_map.json</a>
+          </div>
+        </details>
+      </section>
     </main>
 
     <script src="./app.js" type="module"></script>
