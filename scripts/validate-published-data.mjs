@@ -35,7 +35,9 @@ const requiredFiles = [
   ["pool_observation_scores.json", (json) => json.module_id === "pool_observation_scores_v0_10_57" && Array.isArray(json.rows) && json.rows.every(validateObservationScore)],
   ["observation_candidate_ledger.json", (json) => json.module_id === "observation_candidate_ledger_v0_10_57" && Array.isArray(json.rows) && json.rows.every(validateCandidate)],
   ["score_calibration_report.json", (json) => json.module_id === "score_calibration_report_v0_10_57" && Array.isArray(json.suspicious_distribution_flags) && Array.isArray(json.score_distribution)],
-  ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_57" && json.candidate_count >= 1 && Boolean(json.next_review_dates)],
+  ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_59" && json.candidate_count >= 1 && Boolean(json.next_review_dates) && Array.isArray(json.next_due_reviews)],
+  ["candidate_outcome_reviews.json", validateOutcomeReviews],
+  ["outcome_review_report.json", (json) => json.module_id === "outcome_review_report_v0_10_59" && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && Array.isArray(json.next_due_reviews)],
   ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_55" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel) && Boolean(json.market_channel) && Boolean(json.quality)],
   ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_55" && Array.isArray(json.history)],
   ["history/latest_observation_pointer.json", validatePointer],
@@ -58,9 +60,12 @@ const boundaries = new Set(["observe_only", "manual_review", "blocked"]);
 const deltaFlags = new Set(["insufficient_history", "changed", "stable", "improved_data", "new_signal", "confidence_change"]);
 const observationTiers = new Set(["strong_observe", "moderate_observe", "weak_observe", "insufficient"]);
 const reviewStatuses = new Set(["pending", "review_due", "reviewed", "insufficient_data"]);
+const outcomeReviewStatuses = new Set(["pending", "due", "reviewed", "unavailable", "insufficient_data"]);
+const outcomeHorizons = new Set(["T+1", "T+3", "T+5", "T+20"]);
+const directionResults = new Set(["aligned", "opposite", "neutral", "unavailable"]);
 
 function validatePointer(json) {
-  return json.module_id === "latest_observation_pointer_v0_10_57"
+  return json.module_id === "latest_observation_pointer_v0_10_59"
     && Boolean(json.latest_as_of)
     && json.latest_path === `financial-pond/data/history/observations/${json.latest_as_of}.json`
     && json.available_snapshot_count >= 1;
@@ -105,6 +110,26 @@ function validateCandidate(row) {
     && Boolean(row.review_t20_due);
 }
 
+function validateOutcomeReviews(json) {
+  return json.module_id === "candidate_outcome_reviews_v0_10_59"
+    && Array.isArray(json.rows)
+    && json.rows.every((row) => {
+      const future = row.review_as_of > json.as_of;
+      const futureSafe = !future || (
+        row.review_status === "pending"
+        && row.outcome_available === false
+        && row.observed_return === null
+        && row.benchmark_return === null
+        && row.relative_return === null
+      );
+      return outcomeHorizons.has(row.horizon)
+        && outcomeReviewStatuses.has(row.review_status)
+        && directionResults.has(row.direction_result)
+        && row.boundary?.includes("observe_only")
+        && futureSafe;
+    });
+}
+
 function validateObservationRow(row) {
   return signalSlots.every((slot) => signalReality.has(row.signals?.[slot]?.reality) && row.signal_matrix_row?.[slot])
     && ["inward", "outward", "neutral"].includes(row.vector_forecast?.direction)
@@ -135,7 +160,7 @@ for (const [fileName, validate] of requiredFiles) {
 try {
   const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
   const archive = JSON.parse(await readFile(resolve(root, pointer.latest_path), "utf8"));
-  if (archive.module_id !== "observation_archive_v0_10_57" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_review_schedule) failures.push(`${pointer.latest_path}: archive contract check failed`);
+  if (archive.module_id !== "observation_archive_v0_10_59" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_review_schedule || !archive.candidate_outcome_reviews || !archive.outcome_review_report) failures.push(`${pointer.latest_path}: archive contract check failed`);
 } catch (error) {
   failures.push(`history/observations archive: ${error.message}`);
 }

@@ -1,0 +1,28 @@
+{
+  "module_id": "outcome_review_report_v0_10_59",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T11:55:11.676Z",
+  "total_candidates": 5,
+  "due_review_count": 0,
+  "reviewed_count": 0,
+  "pending_count": 20,
+  "unavailable_count": 0,
+  "insufficient_count": 0,
+  "aligned_count": 0,
+  "opposite_count": 0,
+  "neutral_count": 0,
+  "reviewed_horizons": [],
+  "next_due_reviews": [
+    {
+      "date": "2026-07-10",
+      "horizon": "T+1",
+      "count": 5
+    }
+  ],
+  "boundary_notes": [
+    "observe_only",
+    "Future review dates remain pending.",
+    "Observed returns are calculated only from archived market close values.",
+    "Missing market levels or history never produce fabricated outcomes."
+  ]
+}

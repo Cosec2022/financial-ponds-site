@@ -1,7 +1,7 @@
 {
   "module_id": "market_signal_report_v0_10_54",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T11:47:20.064Z",
+  "generated_at": "2026-07-09T11:55:11.411Z",
   "source_files_used": [
     "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"

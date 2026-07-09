@@ -116,6 +116,7 @@ function marketSignal(pool, mapping, source) {
     boundary: `${direct ? "derived" : "estimated"} from mapped market price/volume; not trading signal; observe_only`,
     reason: mapping.mapping_method,
     source_date: source.date,
+    market_close: numberOrNull(source.close),
     fund_code: source.fund_code,
     fund_name: source.fund_name
   };

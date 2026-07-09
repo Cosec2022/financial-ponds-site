@@ -10,6 +10,8 @@ const state = {
   market: null,
   mapping: null,
   scores: null,
+  outcomeReviews: null,
+  outcomeReport: null,
   selectedPoolId: null
 };
 
@@ -107,6 +109,7 @@ function renderSelectedCandidate() {
     ["Missing penalty", score.missing_data_penalty, true],
     ["Final", score.final_score]
   ];
+  const t1Review = (state.outcomeReviews?.rows ?? []).find((row) => row.pool_id === candidate.pool_id && row.candidate_as_of === candidate.as_of && row.horizon === "T+1");
   el.innerHTML = `
     <div class="selected-title">
       <div>
@@ -120,6 +123,7 @@ function renderSelectedCandidate() {
       ${metric("Direction", candidate.direction)}
       ${metric("Capped Confidence", candidate.capped_confidence)}
       ${metric("Review Status", candidate.review_status)}
+      ${metric("T+1 Review", t1Review?.review_status ?? "pending")}
     </div>
     <div class="signal-row">
       ${signalStatus("Flow", candidate.flow_status)}
@@ -169,6 +173,7 @@ function renderEvidenceQuality() {
 function renderReviewSchedule() {
   const el = document.getElementById("reviewSchedule");
   const schedule = state.schedule ?? {};
+  const outcome = state.outcomeReport ?? {};
   el.innerHTML = `
     <div class="review-counts">
       ${countCell("T+1 pending", schedule.pending_t1_count ?? 0)}
@@ -182,6 +187,7 @@ function renderReviewSchedule() {
       <div class="fact">Candidate count <strong>${schedule.candidate_count ?? 0}</strong></div>
     </div>
   `;
+  document.getElementById("outcomeReviewLine").textContent = `Outcome Review: reviewed ${outcome.reviewed_count ?? 0} / pending ${outcome.pending_count ?? 0} / next due ${nextOutcomeDue(outcome)}`;
 }
 
 function renderCollapsedDetails() {
@@ -245,6 +251,11 @@ function nextReviewDate(schedule) {
   return dates[0] ?? "--";
 }
 
+function nextOutcomeDue(report) {
+  const dates = (report?.next_due_reviews ?? []).map((row) => row.date).filter(Boolean).sort();
+  return dates[0] ?? "--";
+}
+
 function nextDates(schedule, key) {
   return (schedule?.next_review_dates?.[key] ?? []).join(", ") || "--";
 }
@@ -270,7 +281,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores] = await Promise.all([
+  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport] = await Promise.all([
     readJson("./data/evening_observation_summary.json"),
     readJson("./data/observation_candidate_ledger.json", { rows: [] }),
     readJson("./data/candidate_review_schedule.json", {}),
@@ -281,9 +292,11 @@ async function init() {
     readJson("./data/flow_channel_report.json", {}),
     readJson("./data/market_signal_report.json", {}),
     readJson("./data/pool_mapping_report.json", {}),
-    readJson("./data/pool_observation_scores.json", { rows: [] })
+    readJson("./data/pool_observation_scores.json", { rows: [] }),
+    readJson("./data/candidate_outcome_reviews.json", { rows: [] }),
+    readJson("./data/outcome_review_report.json", {})
   ]);
-  Object.assign(state, { summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores });
+  Object.assign(state, { summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport });
   state.selectedPoolId = rowsForToday()[0]?.pool_id ?? null;
   renderTodayStatus();
   renderCandidates();

@@ -1,7 +1,7 @@
 {
-  "module_id": "observation_archive_v0_10_57",
+  "module_id": "observation_archive_v0_10_59",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T11:47:20.394Z",
+  "generated_at": "2026-07-09T11:55:11.721Z",
   "observation_snapshot": {
     "module_id": "observation_snapshot_v0_10_48",
     "as_of": "2026-07-09",
@@ -14438,7 +14438,7 @@
     "quality_guardrail": {
       "module_id": "signal_quality_report_v0_10_55",
       "as_of": "2026-07-09",
-      "generated_at": "2026-07-09T11:47:20.108Z",
+      "generated_at": "2026-07-09T11:55:11.452Z",
       "total_pool_count": 67,
       "mapped_pool_count": 62,
       "direct_evidence_count": 22,
@@ -14462,7 +14462,7 @@
   "data_coverage_report": {
     "module_id": "data_coverage_report_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.151Z",
+    "generated_at": "2026-07-09T11:55:11.490Z",
     "observed_pool_count": 67,
     "total_signal_cells": 536,
     "real_count": 0,
@@ -15932,7 +15932,7 @@
   "flow_channel_report": {
     "module_id": "flow_channel_report_v0_10_51",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.019Z",
+    "generated_at": "2026-07-09T11:55:11.369Z",
     "source_files_used": [
       "pool_instrument_map.json",
       "etf_flow_leaderboard.json"
@@ -15955,7 +15955,7 @@
   "pool_flow_signals": {
     "module_id": "pool_flow_signals_v0_10_51",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.019Z",
+    "generated_at": "2026-07-09T11:55:11.369Z",
     "source_files_used": [
       "pool_instrument_map.json",
       "etf_flow_leaderboard.json"
@@ -17037,7 +17037,7 @@
   "market_signal_report": {
     "module_id": "market_signal_report_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.064Z",
+    "generated_at": "2026-07-09T11:55:11.411Z",
     "source_files_used": [
       "financial-pond/data/pool_instrument_map.json",
       "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
@@ -17089,7 +17089,7 @@
   "pool_market_signals": {
     "module_id": "pool_market_signals_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.064Z",
+    "generated_at": "2026-07-09T11:55:11.411Z",
     "source_files_used": [
       "financial-pond/data/pool_instrument_map.json",
       "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
@@ -17166,6 +17166,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -17215,6 +17216,7 @@
         "instrument_code": "159819",
         "instrument_name": "人工智能ETF易方达",
         "source_date": "2026-07-09",
+        "market_close": 2.185,
         "fund_code": "159819",
         "fund_name": "人工智能ETF易方达",
         "raw_confidence": {
@@ -17264,6 +17266,7 @@
         "instrument_code": "512800",
         "instrument_name": "银行ETF华宝",
         "source_date": "2026-07-09",
+        "market_close": 0.761,
         "fund_code": "512800",
         "fund_name": "银行ETF华宝",
         "raw_confidence": {
@@ -17313,6 +17316,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -17362,6 +17366,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -17411,6 +17416,7 @@
         "instrument_code": "512000",
         "instrument_name": "券商ETF华宝",
         "source_date": "2026-07-09",
+        "market_close": 0.542,
         "fund_code": "512000",
         "fund_name": "券商ETF华宝",
         "raw_confidence": {
@@ -17460,6 +17466,7 @@
         "instrument_code": "512200",
         "instrument_name": "房地产ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.189,
         "fund_code": "512200",
         "fund_name": "房地产ETF南方",
         "raw_confidence": {
@@ -17509,6 +17516,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -17558,6 +17566,7 @@
         "instrument_code": "515880",
         "instrument_name": "通信ETF国泰",
         "source_date": "2026-07-09",
+        "market_close": 0.807,
         "fund_code": "515880",
         "fund_name": "通信ETF国泰",
         "raw_confidence": {
@@ -17607,6 +17616,7 @@
         "instrument_code": "512200",
         "instrument_name": "房地产ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.189,
         "fund_code": "512200",
         "fund_name": "房地产ETF南方",
         "raw_confidence": {
@@ -17656,6 +17666,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -17705,6 +17716,7 @@
         "instrument_code": "512660",
         "instrument_name": "军工ETF国泰",
         "source_date": "2026-07-09",
+        "market_close": 1.243,
         "fund_code": "512660",
         "fund_name": "军工ETF国泰",
         "raw_confidence": {
@@ -17754,6 +17766,7 @@
         "instrument_code": "515030",
         "instrument_name": "新能源车ETF华夏",
         "source_date": "2026-07-09",
+        "market_close": 1.714,
         "fund_code": "515030",
         "fund_name": "新能源车ETF华夏",
         "raw_confidence": {
@@ -17803,6 +17816,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -17852,6 +17866,7 @@
         "instrument_code": "512010",
         "instrument_name": "医药ETF易方达",
         "source_date": "2026-07-09",
+        "market_close": 0.356,
         "fund_code": "512010",
         "fund_name": "医药ETF易方达",
         "raw_confidence": {
@@ -17901,6 +17916,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -17950,6 +17966,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -17999,6 +18016,7 @@
         "instrument_code": "515030",
         "instrument_name": "新能源车ETF华夏",
         "source_date": "2026-07-09",
+        "market_close": 1.714,
         "fund_code": "515030",
         "fund_name": "新能源车ETF华夏",
         "raw_confidence": {
@@ -18048,6 +18066,7 @@
         "instrument_code": "159819",
         "instrument_name": "人工智能ETF易方达",
         "source_date": "2026-07-09",
+        "market_close": 2.185,
         "fund_code": "159819",
         "fund_name": "人工智能ETF易方达",
         "raw_confidence": {
@@ -18097,6 +18116,7 @@
         "instrument_code": "515030",
         "instrument_name": "新能源车ETF华夏",
         "source_date": "2026-07-09",
+        "market_close": 1.714,
         "fund_code": "515030",
         "fund_name": "新能源车ETF华夏",
         "raw_confidence": {
@@ -18146,6 +18166,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -18195,6 +18216,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -18244,6 +18266,7 @@
         "instrument_code": "512200",
         "instrument_name": "房地产ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.189,
         "fund_code": "512200",
         "fund_name": "房地产ETF南方",
         "raw_confidence": {
@@ -18293,6 +18316,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -18342,6 +18366,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -18391,6 +18416,7 @@
         "instrument_code": "512480",
         "instrument_name": "半导体ETF国联安",
         "source_date": "2026-07-09",
+        "market_close": 1.471,
         "fund_code": "512480",
         "fund_name": "半导体ETF国联安",
         "raw_confidence": {
@@ -18440,6 +18466,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -18489,6 +18516,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -18538,6 +18566,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -18587,6 +18616,7 @@
         "instrument_code": "512200",
         "instrument_name": "房地产ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.189,
         "fund_code": "512200",
         "fund_name": "房地产ETF南方",
         "raw_confidence": {
@@ -18636,6 +18666,7 @@
         "instrument_code": "515030",
         "instrument_name": "新能源车ETF华夏",
         "source_date": "2026-07-09",
+        "market_close": 1.714,
         "fund_code": "515030",
         "fund_name": "新能源车ETF华夏",
         "raw_confidence": {
@@ -18685,6 +18716,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -18734,6 +18766,7 @@
         "instrument_code": "159819",
         "instrument_name": "人工智能ETF易方达",
         "source_date": "2026-07-09",
+        "market_close": 2.185,
         "fund_code": "159819",
         "fund_name": "人工智能ETF易方达",
         "raw_confidence": {
@@ -18783,6 +18816,7 @@
         "instrument_code": "512800",
         "instrument_name": "银行ETF华宝",
         "source_date": "2026-07-09",
+        "market_close": 0.761,
         "fund_code": "512800",
         "fund_name": "银行ETF华宝",
         "raw_confidence": {
@@ -18832,6 +18866,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -18881,6 +18916,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -18930,6 +18966,7 @@
         "instrument_code": "512000",
         "instrument_name": "券商ETF华宝",
         "source_date": "2026-07-09",
+        "market_close": 0.542,
         "fund_code": "512000",
         "fund_name": "券商ETF华宝",
         "raw_confidence": {
@@ -19025,6 +19062,7 @@
         "instrument_code": "512200",
         "instrument_name": "房地产ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.189,
         "fund_code": "512200",
         "fund_name": "房地产ETF南方",
         "raw_confidence": {
@@ -19074,6 +19112,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -19123,6 +19162,7 @@
         "instrument_code": "515880",
         "instrument_name": "通信ETF国泰",
         "source_date": "2026-07-09",
+        "market_close": 0.807,
         "fund_code": "515880",
         "fund_name": "通信ETF国泰",
         "raw_confidence": {
@@ -19172,6 +19212,7 @@
         "instrument_code": "512200",
         "instrument_name": "房地产ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.189,
         "fund_code": "512200",
         "fund_name": "房地产ETF南方",
         "raw_confidence": {
@@ -19221,6 +19262,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -19270,6 +19312,7 @@
         "instrument_code": "512660",
         "instrument_name": "军工ETF国泰",
         "source_date": "2026-07-09",
+        "market_close": 1.243,
         "fund_code": "512660",
         "fund_name": "军工ETF国泰",
         "raw_confidence": {
@@ -19319,6 +19362,7 @@
         "instrument_code": "515030",
         "instrument_name": "新能源车ETF华夏",
         "source_date": "2026-07-09",
+        "market_close": 1.714,
         "fund_code": "515030",
         "fund_name": "新能源车ETF华夏",
         "raw_confidence": {
@@ -19368,6 +19412,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -19463,6 +19508,7 @@
         "instrument_code": "512010",
         "instrument_name": "医药ETF易方达",
         "source_date": "2026-07-09",
+        "market_close": 0.356,
         "fund_code": "512010",
         "fund_name": "医药ETF易方达",
         "raw_confidence": {
@@ -19512,6 +19558,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -19561,6 +19608,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -19610,6 +19658,7 @@
         "instrument_code": "515030",
         "instrument_name": "新能源车ETF华夏",
         "source_date": "2026-07-09",
+        "market_close": 1.714,
         "fund_code": "515030",
         "fund_name": "新能源车ETF华夏",
         "raw_confidence": {
@@ -19659,6 +19708,7 @@
         "instrument_code": "159819",
         "instrument_name": "人工智能ETF易方达",
         "source_date": "2026-07-09",
+        "market_close": 2.185,
         "fund_code": "159819",
         "fund_name": "人工智能ETF易方达",
         "raw_confidence": {
@@ -19708,6 +19758,7 @@
         "instrument_code": "515030",
         "instrument_name": "新能源车ETF华夏",
         "source_date": "2026-07-09",
+        "market_close": 1.714,
         "fund_code": "515030",
         "fund_name": "新能源车ETF华夏",
         "raw_confidence": {
@@ -19757,6 +19808,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -19806,6 +19858,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -19855,6 +19908,7 @@
         "instrument_code": "512200",
         "instrument_name": "房地产ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.189,
         "fund_code": "512200",
         "fund_name": "房地产ETF南方",
         "raw_confidence": {
@@ -19904,6 +19958,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -19953,6 +20008,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -20002,6 +20058,7 @@
         "instrument_code": "512480",
         "instrument_name": "半导体ETF国联安",
         "source_date": "2026-07-09",
+        "market_close": 1.471,
         "fund_code": "512480",
         "fund_name": "半导体ETF国联安",
         "raw_confidence": {
@@ -20051,6 +20108,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -20146,6 +20204,7 @@
         "instrument_code": "512400",
         "instrument_name": "有色金属ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.745,
         "fund_code": "512400",
         "fund_name": "有色金属ETF南方",
         "raw_confidence": {
@@ -20195,6 +20254,7 @@
         "instrument_code": "159928",
         "instrument_name": "消费ETF汇添富",
         "source_date": "2026-07-09",
+        "market_close": 0.618,
         "fund_code": "159928",
         "fund_name": "消费ETF汇添富",
         "raw_confidence": {
@@ -20244,6 +20304,7 @@
         "instrument_code": "512200",
         "instrument_name": "房地产ETF南方",
         "source_date": "2026-07-09",
+        "market_close": 1.189,
         "fund_code": "512200",
         "fund_name": "房地产ETF南方",
         "raw_confidence": {
@@ -20339,6 +20400,7 @@
         "instrument_code": "515030",
         "instrument_name": "新能源车ETF华夏",
         "source_date": "2026-07-09",
+        "market_close": 1.714,
         "fund_code": "515030",
         "fund_name": "新能源车ETF华夏",
         "raw_confidence": {
@@ -20372,7 +20434,7 @@
   "pool_instrument_map": {
     "module_id": "pool_instrument_map_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:19.978Z",
+    "generated_at": "2026-07-09T11:55:11.331Z",
     "rows": [
       {
         "pool_id": "a_share_a_share",
@@ -21317,7 +21379,7 @@
   "pool_mapping_report": {
     "module_id": "pool_mapping_report_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:19.978Z",
+    "generated_at": "2026-07-09T11:55:11.331Z",
     "total_pool_count": 67,
     "direct_index_count": 0,
     "direct_etf_count": 22,
@@ -21369,7 +21431,7 @@
   "signal_quality_report": {
     "module_id": "signal_quality_report_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.108Z",
+    "generated_at": "2026-07-09T11:55:11.452Z",
     "total_pool_count": 67,
     "mapped_pool_count": 62,
     "direct_evidence_count": 22,
@@ -21392,7 +21454,7 @@
   "pool_signal_quality": {
     "module_id": "pool_signal_quality_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.108Z",
+    "generated_at": "2026-07-09T11:55:11.452Z",
     "rows": [
       {
         "pool_id": "a_share_a_share",
@@ -22538,7 +22600,7 @@
   "evening_observation_summary": {
     "module_id": "evening_observation_summary_v0_10_57",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.354Z",
+    "generated_at": "2026-07-09T11:55:11.636Z",
     "observation_state": "observe_only",
     "data_readiness": "62/67 market mapped; quality guardrail active",
     "direct_evidence_ratio": 0.3284,
@@ -22877,7 +22939,7 @@
   "pool_observation_scores": {
     "module_id": "pool_observation_scores_v0_10_57",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.354Z",
+    "generated_at": "2026-07-09T11:55:11.636Z",
     "rows": [
       {
         "pool_id": "a_share_communication_electronics",
@@ -24761,7 +24823,7 @@
   "observation_candidate_ledger": {
     "module_id": "observation_candidate_ledger_v0_10_57",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.354Z",
+    "generated_at": "2026-07-09T11:55:11.636Z",
     "rows": [
       {
         "as_of": "2026-07-09",
@@ -24883,7 +24945,7 @@
   "score_calibration_report": {
     "module_id": "score_calibration_report_v0_10_57",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.354Z",
+    "generated_at": "2026-07-09T11:55:11.636Z",
     "strong_count": 10,
     "moderate_count": 12,
     "weak_count": 0,
@@ -24924,9 +24986,9 @@
     ]
   },
   "candidate_review_schedule": {
-    "module_id": "candidate_review_schedule_v0_10_57",
+    "module_id": "candidate_review_schedule_v0_10_59",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T11:47:20.354Z",
+    "generated_at": "2026-07-09T11:55:11.676Z",
     "candidate_count": 5,
     "pending_t1_count": 5,
     "pending_t3_count": 5,
@@ -24950,6 +25012,512 @@
       "observe_only",
       "Review dates schedule evidence checks only.",
       "Future outcomes remain pending until their due date and source data are available."
+    ],
+    "reviewed_count": 0,
+    "pending_count": 20,
+    "unavailable_count": 0,
+    "insufficient_count": 0,
+    "next_due_reviews": [
+      {
+        "date": "2026-07-10",
+        "horizon": "T+1",
+        "count": 5
+      }
+    ]
+  },
+  "candidate_outcome_reviews": {
+    "module_id": "candidate_outcome_reviews_v0_10_59",
+    "as_of": "2026-07-09",
+    "generated_at": "2026-07-09T11:55:11.676Z",
+    "rows": [
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-10",
+        "horizon": "T+1",
+        "pool_id": "a_share_ai_computer",
+        "pool_name": "AI计算机",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.6024,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-10; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-12",
+        "horizon": "T+3",
+        "pool_id": "a_share_ai_computer",
+        "pool_name": "AI计算机",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.6024,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-12; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-14",
+        "horizon": "T+5",
+        "pool_id": "a_share_ai_computer",
+        "pool_name": "AI计算机",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.6024,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-14; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-29",
+        "horizon": "T+20",
+        "pool_id": "a_share_ai_computer",
+        "pool_name": "AI计算机",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.6024,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-29; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-10",
+        "horizon": "T+1",
+        "pool_id": "a_share_bank_insurance",
+        "pool_name": "Bank and Insurance",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 79.5424,
+        "original_direction": "outward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-10; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-12",
+        "horizon": "T+3",
+        "pool_id": "a_share_bank_insurance",
+        "pool_name": "Bank and Insurance",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 79.5424,
+        "original_direction": "outward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-12; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-14",
+        "horizon": "T+5",
+        "pool_id": "a_share_bank_insurance",
+        "pool_name": "Bank and Insurance",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 79.5424,
+        "original_direction": "outward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-14; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-29",
+        "horizon": "T+20",
+        "pool_id": "a_share_bank_insurance",
+        "pool_name": "Bank and Insurance",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 79.5424,
+        "original_direction": "outward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-29; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-10",
+        "horizon": "T+1",
+        "pool_id": "a_share_brokerage",
+        "pool_name": "券商",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.8904,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-10; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-12",
+        "horizon": "T+3",
+        "pool_id": "a_share_brokerage",
+        "pool_name": "券商",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.8904,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-12; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-14",
+        "horizon": "T+5",
+        "pool_id": "a_share_brokerage",
+        "pool_name": "券商",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.8904,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-14; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-29",
+        "horizon": "T+20",
+        "pool_id": "a_share_brokerage",
+        "pool_name": "券商",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.8904,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-29; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-10",
+        "horizon": "T+1",
+        "pool_id": "a_share_communication_electronics",
+        "pool_name": "通信电子",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 89,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-10; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-12",
+        "horizon": "T+3",
+        "pool_id": "a_share_communication_electronics",
+        "pool_name": "通信电子",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 89,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-12; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-14",
+        "horizon": "T+5",
+        "pool_id": "a_share_communication_electronics",
+        "pool_name": "通信电子",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 89,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-14; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-29",
+        "horizon": "T+20",
+        "pool_id": "a_share_communication_electronics",
+        "pool_name": "通信电子",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 89,
+        "original_direction": "inward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-29; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-10",
+        "horizon": "T+1",
+        "pool_id": "a_share_semiconductor",
+        "pool_name": "半导体",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.492,
+        "original_direction": "outward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-10; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-12",
+        "horizon": "T+3",
+        "pool_id": "a_share_semiconductor",
+        "pool_name": "半导体",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.492,
+        "original_direction": "outward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-12; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-14",
+        "horizon": "T+5",
+        "pool_id": "a_share_semiconductor",
+        "pool_name": "半导体",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.492,
+        "original_direction": "outward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-14; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      },
+      {
+        "candidate_as_of": "2026-07-09",
+        "review_as_of": "2026-07-29",
+        "horizon": "T+20",
+        "pool_id": "a_share_semiconductor",
+        "pool_name": "半导体",
+        "original_observation_tier": "strong_observe",
+        "original_observation_score": 81.492,
+        "original_direction": "outward",
+        "original_capped_confidence": 0.75,
+        "original_evidence_quality": "high",
+        "original_proxy_risk": "none",
+        "review_status": "pending",
+        "outcome_available": false,
+        "observed_return": null,
+        "benchmark_return": null,
+        "relative_return": null,
+        "direction_result": "unavailable",
+        "confidence_result": "not_reviewed",
+        "evidence_result": "not_reviewed",
+        "review_note": "Scheduled for 2026-07-29; review date has not arrived.",
+        "boundary": "observe_only; outcome review only"
+      }
+    ]
+  },
+  "outcome_review_report": {
+    "module_id": "outcome_review_report_v0_10_59",
+    "as_of": "2026-07-09",
+    "generated_at": "2026-07-09T11:55:11.676Z",
+    "total_candidates": 5,
+    "due_review_count": 0,
+    "reviewed_count": 0,
+    "pending_count": 20,
+    "unavailable_count": 0,
+    "insufficient_count": 0,
+    "aligned_count": 0,
+    "opposite_count": 0,
+    "neutral_count": 0,
+    "reviewed_horizons": [],
+    "next_due_reviews": [
+      {
+        "date": "2026-07-10",
+        "horizon": "T+1",
+        "count": 5
+      }
+    ],
+    "boundary_notes": [
+      "observe_only",
+      "Future review dates remain pending.",
+      "Observed returns are calculated only from archived market close values.",
+      "Missing market levels or history never produce fabricated outcomes."
     ]
   },
   "source_files_used": [
