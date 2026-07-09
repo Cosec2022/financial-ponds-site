@@ -1,7 +1,7 @@
 {
   "module_id": "pool_flow_signals_v0_10_51",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T16:25:01.050Z",
+  "generated_at": "2026-07-09T16:38:59.072Z",
   "source_files_used": [
     "pool_instrument_map.json",
     "etf_flow_leaderboard.json"

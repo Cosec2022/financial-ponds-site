@@ -42,6 +42,7 @@ const files = [
   ["data/candidate_review_schedule.json", "application/json; charset=utf-8"],
   ["data/candidate_outcome_reviews.json", "application/json; charset=utf-8"],
   ["data/outcome_review_report.json", "application/json; charset=utf-8"],
+  ["data/candidate_due_review_verification.json", "application/json; charset=utf-8"],
   ["data/candidate_price_basis.json", "application/json; charset=utf-8"],
   ["data/review_readiness_report.json", "application/json; charset=utf-8"],
   ["data/candidate_review_history.json", "application/json; charset=utf-8"],

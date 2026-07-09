@@ -24,17 +24,18 @@ const candidateStateModel = await readJsonOptional(resolve(dataDir, "candidate_s
 const candidateReviewSchedule = await readJsonOptional(resolve(dataDir, "candidate_review_schedule.json"));
 const candidateOutcomeReviews = await readJsonOptional(resolve(dataDir, "candidate_outcome_reviews.json"));
 const outcomeReviewReport = await readJsonOptional(resolve(dataDir, "outcome_review_report.json"));
+const candidateDueReviewVerification = await readJsonOptional(resolve(dataDir, "candidate_due_review_verification.json"));
 const candidatePriceBasis = await readJsonOptional(resolve(dataDir, "candidate_price_basis.json"));
 const reviewReadinessReport = await readJsonOptional(resolve(dataDir, "review_readiness_report.json"));
 const candidateReviewHistory = await readJsonOptional(resolve(dataDir, "candidate_review_history.json"));
 const candidateReviewAnalytics = await readJsonOptional(resolve(dataDir, "candidate_review_analytics.json"));
-const asOf = observation.as_of ?? coverage.as_of ?? flowChannel.as_of;
+const asOf = process.env.AS_OF ?? outcomeReviewReport?.as_of ?? observation.as_of ?? coverage.as_of ?? flowChannel.as_of;
 if (!asOf) throw new Error("Cannot archive observation snapshot without as_of");
 
 await mkdir(historyDir, { recursive: true });
 
 const archive = {
-  module_id: "observation_archive_v0_10_62",
+  module_id: "observation_archive_v0_10_63",
   as_of: asOf,
   generated_at: new Date().toISOString(),
   observation_snapshot: observation,
@@ -56,6 +57,7 @@ const archive = {
   candidate_review_schedule: candidateReviewSchedule,
   candidate_outcome_reviews: candidateOutcomeReviews,
   outcome_review_report: outcomeReviewReport,
+  candidate_due_review_verification: candidateDueReviewVerification,
   candidate_price_basis: candidatePriceBasis,
   review_readiness_report: reviewReadinessReport,
   candidate_review_history: candidateReviewHistory,
@@ -75,7 +77,7 @@ const available = await availableArchives();
 const latestIndex = available.findIndex((item) => item.as_of === asOf);
 const previous = latestIndex > 0 ? available[latestIndex - 1] : null;
 const pointer = {
-  module_id: "latest_observation_pointer_v0_10_62",
+  module_id: "latest_observation_pointer_v0_10_63",
   latest_as_of: asOf,
   latest_path: `financial-pond/data/history/observations/${asOf}.json`,
   previous_as_of: previous?.as_of ?? null,

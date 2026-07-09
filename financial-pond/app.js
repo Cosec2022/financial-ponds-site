@@ -200,7 +200,7 @@ function renderReviewSchedule() {
   `;
   document.getElementById("outcomeReviewLine").textContent = `Outcome Review: reviewed ${outcome.reviewed_count ?? 0} / pending ${outcome.pending_count ?? 0} / next due ${nextOutcomeDue(outcome)}`;
   document.getElementById("reviewReadinessLine").textContent = `Review Readiness: ready ${readiness.baseline_available_count ?? 0} / missing basis ${readiness.baseline_missing_count ?? 0} / next due ${readiness.next_due_date ?? "--"}`;
-  document.getElementById("reviewAnalyticsLine").textContent = `Review Analytics: reviewed ${analytics.total_reviewed ?? 0} / state sample ${escapeHtml(analytics.status ?? "not loaded")}`;
+  document.getElementById("reviewAnalyticsLine").textContent = `Review Analytics: due reviews ${outcome.due_review_count ?? 0} / reviewed ${analytics.reviewed_rows ?? outcome.reviewed_count ?? 0} / pending ${analytics.pending_rows ?? outcome.pending_count ?? 0} / unavailable ${analytics.unavailable_rows ?? outcome.unavailable_count ?? 0} / next due ${nextOutcomeDue(outcome)}`;
 }
 
 function renderCollapsedDetails() {

@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.10.63 - Explicit due review verification
+
+- Bumped site and framework package versions to `0.10.63`.
+- Added `candidate_due_review_verification.json`.
+- T+1/T+3 review rows now explicitly record whether they are due, whether
+  required market data exists, whether review completed, and why unavailable
+  rows were not reviewed.
+- Candidate review history now persists review due date, reviewed data date,
+  baseline price, review price, absolute return, benchmark return, excess
+  return, and unavailable reason when applicable.
+- Review analytics now separates reviewed, pending, unavailable, and
+  insufficient-sample rows.
+
+Important boundary:
+
+- Due rows with missing prices become explicit unavailable rows.
+- Unavailable rows are not counted as wins or losses.
+- Future outcomes remain pending and are not fabricated.
+
 ## v0.10.62 - Candidate state review analytics
 
 - Bumped site and framework package versions to `0.10.62`.

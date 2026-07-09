@@ -11,29 +11,29 @@
 - Direct evidence covers 33% of observed pools.
 - Proxy evidence covers 60% and carries high aggregate proxy risk.
 - 62 momentum and 62 liquidity observations are available.
-- 10 pools meet the strict direct-evidence strong observation gate.
+- 2 pools meet the strict direct-evidence strong observation gate.
 
 ## Top Observation Pools
 - **通信电子** | strong_observe | inward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
-- **券商** | strong_observe | inward
+  - high evidence via direct_etf; 3/3 core observations available; delta stable.
+- **券商** | moderate_observe | inward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
-- **AI计算机** | strong_observe | inward
+  - high evidence via direct_etf; 3/3 core observations available; delta stable.
+- **AI计算机** | moderate_observe | inward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
-- **半导体** | strong_observe | outward
+  - high evidence via direct_etf; 3/3 core observations available; delta stable.
+- **半导体** | moderate_observe | outward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
-- **Bank and Insurance** | strong_observe | outward
+  - high evidence via direct_etf; 3/3 core observations available; delta stable.
+- **Bank and Insurance** | moderate_observe | outward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
+  - high evidence via direct_etf; 3/3 core observations available; delta stable.
 
 ## Caution / Low Quality Pools
 - **Media**: sector_proxy with loose proxy; high proxy risk; flow unavailable

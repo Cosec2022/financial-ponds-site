@@ -9,15 +9,17 @@ const generatedAt = new Date().toISOString();
 const minSample = 3;
 const horizons = ["T+1", "T+3"];
 const reviewed = reviewRows(history.rows ?? []);
-const insufficientRows = (history.rows ?? []).flatMap((row) => horizons.map((horizon) => ({ row, horizon, result: resultFor(row, horizon) })))
-  .filter(({ result }) => result?.review_status === "insufficient_data");
+const reviewChecks = (history.rows ?? []).flatMap((row) => horizons.map((horizon) => ({ row, horizon, result: resultFor(row, horizon) })));
+const pendingRows = reviewChecks.filter(({ result }) => result?.review_status === "pending_not_due");
+const unavailableRows = reviewChecks.filter(({ result }) => String(result?.review_status ?? "").startsWith("unavailable_"));
+const insufficientRows = reviewChecks.filter(({ result }) => result?.review_status === "skipped_invalid_baseline");
 const stateUniverse = unique((history.rows ?? []).map((row) => row.candidate_state).filter(Boolean));
 const riskUniverse = unique((history.rows ?? []).map((row) => row.risk_gate_status).filter(Boolean));
 const overheatBucketUniverse = unique((history.rows ?? []).map((row) => scoreBucket(row.overheat_score)));
 const majorBucketUniverse = unique((history.rows ?? []).map((row) => scoreBucket(row.major_wave_score)));
 
 const analytics = {
-  module_id: "candidate_review_analytics_v0_10_62",
+  module_id: "candidate_review_analytics_v0_10_63",
   as_of: history.as_of ?? report.as_of,
   generated_at: generatedAt,
   status: reviewed.length >= minSample ? "analytics_available" : "insufficient_sample",
@@ -28,6 +30,10 @@ const analytics = {
     reviewed_filter: "review_status reviewed and outcome_available true with numeric observed_return"
   },
   total_reviewed: reviewed.length,
+  reviewed_rows: reviewed.length,
+  pending_rows: pendingRows.length,
+  unavailable_rows: unavailableRows.length,
+  insufficient_sample_rows: reviewed.length < minSample ? reviewed.length : 0,
   insufficient_review_rows: insufficientRows.length,
   win_rate_absolute: rateOrInsufficient(reviewed, (row) => row.observed_return > 0),
   win_rate_vs_benchmark: rateOrInsufficient(reviewed.filter((row) => Number.isFinite(row.relative_return)), (row) => row.relative_return > 0),
