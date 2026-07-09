@@ -6,6 +6,7 @@ cd "$project_root"
 
 export AS_OF="${1:-$(date +%F)}"
 
+node scripts/build-pool-instrument-map.mjs
 node scripts/build-flow-channel.mjs
 node scripts/build-market-signal-channel.mjs
 node scripts/build-data-coverage-report.mjs

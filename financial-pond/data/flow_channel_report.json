@@ -1,18 +1,19 @@
 {
   "module_id": "flow_channel_report_v0_10_51",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T00:09:07.837Z",
+  "generated_at": "2026-07-09T00:17:54.884Z",
   "source_files_used": [
+    "pool_instrument_map.json",
     "etf_flow_leaderboard.json"
   ],
   "source_row_count": 11,
-  "mapped_pool_count": 11,
+  "mapped_pool_count": 22,
   "unmapped_row_count": 0,
   "source_backed_flow_count": 0,
-  "estimated_from_source_count": 11,
-  "missing_flow_count": 56,
-  "coverage_ratio": 0.1642,
-  "mapping_method": "exact observation_snapshot.rows[].sector_id to etf_flow_leaderboard.rows[].sector_id; prefixed placeholder pools remain missing",
+  "estimated_from_source_count": 22,
+  "missing_flow_count": 45,
+  "coverage_ratio": 0.3284,
+  "mapping_method": "direct_etf rows from pool_instrument_map.json mapped by instrument_code; proxy flow remains missing",
   "unmapped_examples": [],
   "boundary_notes": [
     "Flow channel uses representative ETF estimated_flow from provider-backed artifacts when available.",

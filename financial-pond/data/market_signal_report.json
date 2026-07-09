@@ -1,44 +1,45 @@
 {
-  "module_id": "market_signal_report_v0_10_53",
+  "module_id": "market_signal_report_v0_10_54",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T00:09:07.880Z",
+  "generated_at": "2026-07-09T00:17:54.960Z",
   "source_files_used": [
+    "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
   ],
   "source_row_count": 11,
-  "mapped_pool_count": 11,
-  "unmapped_pool_count": 56,
-  "momentum_signal_count": 11,
-  "liquidity_signal_count": 11,
-  "missing_momentum_count": 56,
-  "missing_liquidity_count": 56,
-  "coverage_ratio": 0.1642,
-  "mapping_method": "exact observation pool sector_id to the latest a_share_etf_daily.csv sector_id",
+  "mapped_pool_count": 62,
+  "unmapped_pool_count": 5,
+  "momentum_signal_count": 62,
+  "liquidity_signal_count": 62,
+  "missing_momentum_count": 5,
+  "missing_liquidity_count": 5,
+  "coverage_ratio": 0.9254,
+  "mapping_method": "pool_instrument_map instrument_code to the latest a_share_etf_daily.csv fund_code",
   "unmapped_examples": [
     {
       "pool_id": "a_share_a_share",
       "pool_name": "a_share",
-      "reason": "No representative ETF market row matched this observation pool."
+      "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_a_share_agriculture",
-      "pool_name": "a_share_agriculture",
-      "reason": "No representative ETF market row matched this observation pool."
+      "pool_id": "a_share_btc",
+      "pool_name": "btc",
+      "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_a_share_ai_computer",
-      "pool_name": "a_share_ai_computer",
-      "reason": "No representative ETF market row matched this observation pool."
+      "pool_id": "a_share_gold",
+      "pool_name": "gold",
+      "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_a_share_bank_insurance",
-      "pool_name": "a_share_bank_insurance",
-      "reason": "No representative ETF market row matched this observation pool."
+      "pool_id": "a_share_sp500",
+      "pool_name": "sp500",
+      "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_a_share_basic_chemicals",
-      "pool_name": "a_share_basic_chemicals",
-      "reason": "No representative ETF market row matched this observation pool."
+      "pool_id": "a_share_us_equity",
+      "pool_name": "us_equity",
+      "reason": "No defensible instrument is present in the current provider export."
     }
   ],
   "boundary_notes": [

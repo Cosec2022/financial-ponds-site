@@ -6,6 +6,7 @@ dist_root="$project_root/dist"
 
 rm -rf "$dist_root"
 mkdir -p "$dist_root/server"
+node "$project_root/scripts/build-pool-instrument-map.mjs"
 node "$project_root/scripts/build-flow-channel.mjs"
 node "$project_root/scripts/build-market-signal-channel.mjs"
 node "$project_root/scripts/build-data-coverage-report.mjs"

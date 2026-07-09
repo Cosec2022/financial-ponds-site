@@ -6,32 +6,37 @@ const dataDir = resolve(root, "financial-pond", "data");
 const sourceRelativePath = "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv";
 const snapshotPath = resolve(dataDir, "observation_snapshot.json");
 const snapshot = JSON.parse(await readFile(snapshotPath, "utf8"));
+const instrumentMap = JSON.parse(await readFile(resolve(dataDir, "pool_instrument_map.json"), "utf8"));
 const sourceRows = parseCsv(await readFile(resolve(root, sourceRelativePath), "utf8"));
 const latestSourceDate = [...new Set(sourceRows.map((row) => row.date).filter(Boolean))].sort().at(-1) ?? null;
 const latestRows = sourceRows.filter((row) => row.date === latestSourceDate);
-const sourceBySector = new Map(latestRows.map((row) => [row.sector_id, row]));
+const sourceByCode = new Map(latestRows.map((row) => [String(row.fund_code), row]));
+const mappingByPool = new Map((instrumentMap.rows ?? []).map((row) => [row.pool_id, row]));
 const asOf = process.env.AS_OF ?? new Date().toISOString().slice(0, 10);
 
 snapshot.as_of = asOf;
 for (const row of snapshot.rows ?? []) row.as_of = asOf;
 
-const signals = (snapshot.rows ?? []).map((pool) => marketSignal(pool, sourceBySector.get(pool.sector_id)));
+const signals = (snapshot.rows ?? []).map((pool) => {
+  const mapping = mappingByPool.get(pool.pool_id);
+  return marketSignal(pool, mapping, sourceByCode.get(String(mapping?.instrument_code ?? "")));
+});
 const momentumCount = signals.filter((row) => isAvailable(row.momentum_status)).length;
 const liquidityCount = signals.filter((row) => isAvailable(row.liquidity_status)).length;
 const unmapped = signals.filter((row) => !isAvailable(row.momentum_status) && !isAvailable(row.liquidity_status));
 const generatedAt = new Date().toISOString();
 const signalFile = {
-  module_id: "pool_market_signals_v0_10_53",
+  module_id: "pool_market_signals_v0_10_54",
   as_of: asOf,
   generated_at: generatedAt,
-  source_files_used: [sourceRelativePath],
+  source_files_used: ["financial-pond/data/pool_instrument_map.json", sourceRelativePath],
   rows: signals
 };
 const report = {
-  module_id: "market_signal_report_v0_10_53",
+  module_id: "market_signal_report_v0_10_54",
   as_of: asOf,
   generated_at: generatedAt,
-  source_files_used: [sourceRelativePath],
+  source_files_used: ["financial-pond/data/pool_instrument_map.json", sourceRelativePath],
   source_row_count: latestRows.length,
   mapped_pool_count: signals.length - unmapped.length,
   unmapped_pool_count: unmapped.length,
@@ -40,7 +45,7 @@ const report = {
   missing_momentum_count: signals.length - momentumCount,
   missing_liquidity_count: signals.length - liquidityCount,
   coverage_ratio: signals.length ? round((momentumCount + liquidityCount) / (signals.length * 2)) : 0,
-  mapping_method: "exact observation pool sector_id to the latest a_share_etf_daily.csv sector_id",
+  mapping_method: "pool_instrument_map instrument_code to the latest a_share_etf_daily.csv fund_code",
   unmapped_examples: unmapped.slice(0, 5).map((row) => ({
     pool_id: row.pool_id,
     pool_name: row.pool_name,
@@ -61,7 +66,7 @@ await writeFile(resolve(dataDir, "pool_market_signals.json"), `${JSON.stringify(
 await writeFile(resolve(dataDir, "market_signal_report.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
 console.log(`Market signal channel written: momentum=${momentumCount}, liquidity=${liquidityCount}`);
 
-function marketSignal(pool, source) {
+function marketSignal(pool, mapping, source) {
   const base = {
     pool_id: pool.pool_id,
     pool_name: pool.pool_name,
@@ -79,7 +84,13 @@ function marketSignal(pool, source) {
     evidence_count: 0,
     freshness: freshnessFor(latestSourceDate, asOf),
     boundary: "source unavailable; observe_only",
-    reason: "No representative ETF market row matched this observation pool."
+    reason: mapping?.mapping_method ?? "No instrument mapping is available for this observation pool.",
+    mapping_status: mapping?.mapping_status ?? "unmapped",
+    mapping_confidence: mapping?.mapping_confidence ?? 0,
+    mapping_method: mapping?.mapping_method ?? "No mapping available.",
+    proxy_level: mapping?.proxy_level ?? "none",
+    instrument_code: mapping?.instrument_code ?? null,
+    instrument_name: mapping?.instrument_name ?? null
   };
   if (!source) return base;
 
@@ -87,21 +98,24 @@ function marketSignal(pool, source) {
   const amount = numberOrNull(source.amount);
   const turnover = numberOrNull(source.turnover);
   const liquidityValue = amount ?? turnover;
+  const direct = ["direct_index", "direct_etf"].includes(mapping.mapping_status);
+  const status = direct ? "derived_from_market" : "estimated_from_source";
+  const confidenceScale = mapping.mapping_status === "broad_proxy" ? 0.45 : mapping.mapping_confidence;
   return {
     ...base,
-    momentum_status: pctChange === null ? "missing" : "derived_from_market",
+    momentum_status: pctChange === null ? "missing" : status,
     momentum_value: pctChange,
     momentum_direction: directionFor(pctChange),
-    momentum_confidence: pctChange === null ? 0 : 0.64,
+    momentum_confidence: pctChange === null ? 0 : round(0.68 * confidenceScale),
     momentum_source_type: pctChange === null ? "source_unavailable" : "provider_daily_pct_change",
-    liquidity_status: liquidityValue === null ? "missing" : "derived_from_market",
+    liquidity_status: liquidityValue === null ? "missing" : status,
     liquidity_value: liquidityValue,
     liquidity_direction: liquidityDirection(amount, latestRows),
-    liquidity_confidence: liquidityValue === null ? 0 : 0.61,
+    liquidity_confidence: liquidityValue === null ? 0 : round(0.64 * confidenceScale),
     liquidity_source_type: amount !== null ? "provider_daily_amount" : "provider_daily_turnover",
     evidence_count: [source.close, source.pct_change, source.amount, source.turnover].filter((value) => numberOrNull(value) !== null).length,
-    boundary: "derived from market price/volume; not trading signal; observe_only",
-    reason: "Exact sector mapping to the latest available representative ETF market row.",
+    boundary: `${direct ? "derived" : "estimated"} from mapped market price/volume; not trading signal; observe_only`,
+    reason: mapping.mapping_method,
     source_date: source.date,
     fund_code: source.fund_code,
     fund_name: source.fund_name
@@ -142,11 +156,22 @@ function signal(slot, status, value, direction, sourceType, market) {
     trace_id: `market.channel.${slot}.${market.pool_id}`,
     trace_status: available ? "available" : "missing",
     formula: slot === "price_momentum" ? "latest representative ETF daily pct_change" : "latest representative ETF amount; turnover fallback",
-    variables: slot === "price_momentum" ? { pct_change: value } : { amount_or_turnover: value },
+    variables: {
+      ...(slot === "price_momentum" ? { pct_change: value } : { amount_or_turnover: value }),
+      instrument_code: market.instrument_code,
+      mapping_method: market.mapping_method,
+      proxy_level: market.proxy_level
+    },
     calculation: available ? `observed value = ${value}` : "source unavailable",
     reality_note: available ? "derived from market price/volume" : "source unavailable",
     boundary: market.boundary,
-    reason: market.reason
+    reason: market.reason,
+    instrument_used: {
+      code: market.instrument_code,
+      name: market.instrument_name
+    },
+    mapping_method: market.mapping_method,
+    proxy_level: market.proxy_level
   };
 }
 

@@ -34,6 +34,7 @@ const state = {
   coverage: null,
   flowChannel: null,
   marketChannel: null,
+  mappingReport: null,
   delta: null,
   pointer: null,
   pools: [],
@@ -293,8 +294,8 @@ function importantGaps(pool) {
   const gaps = [];
   const status = (key) => displaySignalStatus(pool.signals[key], key);
   if (!["real", "estimated"].includes(status("flow"))) gaps.push("missing real flow");
-  if (!["real", "estimated", "derived"].includes(status("price_momentum"))) gaps.push("missing momentum");
-  if (!["real", "estimated", "derived"].includes(status("liquidity"))) gaps.push("missing liquidity");
+  if (!["real", "estimated", "estimated_from_source", "derived", "derived_from_market"].includes(status("price_momentum"))) gaps.push("missing momentum");
+  if (!["real", "estimated", "estimated_from_source", "derived", "derived_from_market"].includes(status("liquidity"))) gaps.push("missing liquidity");
   if (status("rotation") === "insufficient") gaps.push("rotation insufficient");
   if (["planned", "missing"].includes(status("valuation")) || ["planned", "missing"].includes(status("fundamental"))) gaps.push("valuation/fundamental planned");
   if (status("risk") === "derived") gaps.push("risk derived");
@@ -322,13 +323,14 @@ function renderCoverageStrip() {
     el.innerHTML = `
       <div class="coverage-head"><span>Data Coverage</span><strong>--</strong></div>
       <div class="coverage-counts">data_coverage_report not loaded</div>
-      <div class="coverage-gaps">Flow Channel unavailable. Market Channel unavailable.</div>
+      <div class="coverage-gaps">Flow Channel unavailable. Market Channel unavailable. Mapping unavailable.</div>
     `;
     return;
   }
   const gaps = asArray(report.priority_gaps).slice(0, 3);
   const flow = state.flowChannel ?? report.flow_channel ?? {};
   const market = state.marketChannel ?? report.market_channel ?? {};
+  const mapping = state.mappingReport ?? {};
   const baseline = state.delta?.baseline_state ?? (state.pointer?.latest_as_of ? "today archived / insufficient history" : "insufficient history");
   el.innerHTML = `
     <div class="coverage-head"><span>Data Coverage</span><strong>${pct(report.coverage_ratio)}</strong></div>
@@ -338,6 +340,7 @@ function renderCoverageStrip() {
     <div class="coverage-gaps">
       <span>Flow Channel: source_backed ${flow.source_backed_flow_count ?? 0} / estimated ${flow.estimated_from_source_count ?? 0} / missing ${flow.missing_flow_count ?? 0}</span>
       <span>Market Channel: momentum ${market.momentum_signal_count ?? 0} / liquidity ${market.liquidity_signal_count ?? 0} / missing ${(market.missing_momentum_count ?? 0) + (market.missing_liquidity_count ?? 0)}</span>
+      <span>Mapping: mapped ${(mapping.total_pool_count ?? 0) - (mapping.unmapped_count ?? 0)} / proxy ${(mapping.sector_proxy_count ?? 0) + (mapping.broad_proxy_count ?? 0)} / unmapped ${mapping.unmapped_count ?? 0}</span>
       <span>Daily Delta: Baseline: ${escapeHtml(baseline)}</span>
       ${gaps.length ? gaps.map((gap) => `<span>${escapeHtml(gap.priority_label ?? gap.signal_type)} ${gap.affected_pool_count ?? 0}</span>`).join("") : "<span>no priority data gap</span>"}
     </div>
@@ -635,7 +638,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, delta, pointer] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, mappingReport, delta, pointer] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
@@ -644,6 +647,7 @@ async function init() {
     readJson("./data/data_coverage_report.json", null),
     readJson("./data/flow_channel_report.json", null),
     readJson("./data/market_signal_report.json", null),
+    readJson("./data/pool_mapping_report.json", null),
     readJson("./data/daily_delta_report.json", null),
     readJson("./data/history/latest_observation_pointer.json", null)
   ]);
@@ -655,6 +659,7 @@ async function init() {
   state.coverage = coverage;
   state.flowChannel = flowChannel;
   state.marketChannel = marketChannel;
+  state.mappingReport = mappingReport;
   state.delta = delta;
   state.pointer = pointer;
   state.pools = extractPools(snapshot);

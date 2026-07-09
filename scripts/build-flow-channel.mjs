@@ -11,14 +11,20 @@ const snapshotPath = resolve(dataDir, "observation_snapshot.json");
 const leaderboardPath = resolve(dataDir, sourceFile);
 const snapshot = await readJson(snapshotPath);
 const leaderboard = await readJson(leaderboardPath, null);
+const instrumentMap = await readJson(resolve(dataDir, "pool_instrument_map.json"), null);
 const asOf = process.env.AS_OF ?? snapshot?.as_of ?? leaderboard?.as_of ?? "unknown";
 snapshot.as_of = asOf;
 for (const row of snapshot?.rows ?? []) row.as_of = asOf;
 const upstream = await readJson(resolve(modelOutputDir, asOf, upstreamFile), null);
 
 const sourceRows = Array.isArray(leaderboard?.rows) ? leaderboard.rows : [];
-const sourceBySector = new Map(sourceRows.map((row) => [String(row.sector_id ?? ""), row]));
-const flowSignals = (Array.isArray(snapshot?.rows) ? snapshot.rows : []).map((pool) => poolFlowSignal(pool, sourceBySector.get(String(pool.sector_id ?? ""))));
+const sourceByCode = new Map(sourceRows.map((row) => [String(row.fund_code ?? ""), row]));
+const mappingByPool = new Map((instrumentMap?.rows ?? []).map((row) => [row.pool_id, row]));
+const flowSignals = (Array.isArray(snapshot?.rows) ? snapshot.rows : []).map((pool) => {
+  const mapping = mappingByPool.get(pool.pool_id);
+  const source = mapping?.mapping_status === "direct_etf" ? sourceByCode.get(String(mapping.instrument_code)) : null;
+  return poolFlowSignal(pool, source, mapping);
+});
 const mappedSignals = flowSignals.filter((row) => row.flow_status === "source_backed" || row.flow_status === "estimated_from_source");
 const mappedSourceIds = new Set(mappedSignals.map((row) => String(row.sector_id ?? "")));
 const unmappedRows = sourceRows.filter((row) => !mappedSourceIds.has(String(row.sector_id ?? "")));
@@ -46,7 +52,7 @@ const flowReport = {
   estimated_from_source_count: estimatedCount,
   missing_flow_count: missingCount,
   coverage_ratio: flowSignals.length ? round((sourceBackedCount + estimatedCount) / flowSignals.length) : 0,
-  mapping_method: "exact observation_snapshot.rows[].sector_id to etf_flow_leaderboard.rows[].sector_id; prefixed placeholder pools remain missing",
+  mapping_method: "direct_etf rows from pool_instrument_map.json mapped by instrument_code; proxy flow remains missing",
   unmapped_examples: unmappedRows.slice(0, 5).map((row) => ({
     sector_id: row.sector_id,
     name: row.name,
@@ -78,12 +84,12 @@ async function readJson(path, fallback) {
 }
 
 function sourceFilesUsed() {
-  const files = [sourceFile];
+  const files = ["pool_instrument_map.json", sourceFile];
   if (upstream) files.push(`tools/financial-pond-framework/model_outputs/${asOf}/${upstreamFile}`);
   return files;
 }
 
-function poolFlowSignal(pool, source) {
+function poolFlowSignal(pool, source, mapping) {
   const existing = pool.signals?.flow ?? {};
   if (!source) {
     return {
@@ -100,7 +106,9 @@ function poolFlowSignal(pool, source) {
       evidence_count: 0,
       freshness: asOf === snapshot?.as_of ? "current_snapshot" : "unknown",
       boundary: leaderboard ? "source unavailable for this pool" : "source unavailable",
-      reason: leaderboard ? "No provider-backed representative ETF row matched this observation pool." : "Flow source file is not available."
+      reason: mapping && !["direct_etf", "direct_index"].includes(mapping.mapping_status)
+        ? "Instrument proxy is not used for flow because the relationship is not direct."
+        : leaderboard ? "No provider-backed representative ETF row matched this observation pool." : "Flow source file is not available."
     };
   }
 

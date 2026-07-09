@@ -17,7 +17,7 @@ const counts = rows.reduce((acc, row) => {
 }, {});
 
 const report = {
-  module_id: "daily_delta_report_v0_10_53",
+  module_id: "daily_delta_report_v0_10_54",
   as_of: latestArchive.as_of,
   generated_at: new Date().toISOString(),
   comparison_available: comparisonAvailable,
@@ -40,7 +40,7 @@ const report = {
 };
 
 const poolSignals = {
-  module_id: "pool_delta_signals_v0_10_53",
+  module_id: "pool_delta_signals_v0_10_54",
   as_of: latestArchive.as_of,
   generated_at: report.generated_at,
   comparison_available: comparisonAvailable,
@@ -140,7 +140,7 @@ async function updateHistory(report) {
   if (index >= 0) history[index] = snapshot;
   else history.push(snapshot);
   history.sort((a, b) => a.as_of.localeCompare(b.as_of));
-  await writeFile(historyPath, `${JSON.stringify({ module_id: "daily_delta_history_v0_10_53", history }, null, 2)}\n`, "utf8");
+  await writeFile(historyPath, `${JSON.stringify({ module_id: "daily_delta_history_v0_10_54", history }, null, 2)}\n`, "utf8");
 }
 
 async function readJson(path) {

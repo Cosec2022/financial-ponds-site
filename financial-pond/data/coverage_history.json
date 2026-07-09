@@ -1,5 +1,5 @@
 {
-  "module_id": "coverage_history_v0_10_53",
+  "module_id": "coverage_history_v0_10_54",
   "history": [
     {
       "as_of": "2026-07-08",
@@ -43,6 +43,28 @@
       "planned_count": 108,
       "insufficient_count": 61,
       "coverage_ratio": 0.3713,
+      "observed_pool_count": 67
+    },
+    {
+      "as_of": "2026-07-09",
+      "real_count": 0,
+      "estimated_count": 22,
+      "derived_count": 210,
+      "missing_count": 135,
+      "planned_count": 108,
+      "insufficient_count": 61,
+      "coverage_ratio": 0.4328,
+      "observed_pool_count": 67
+    },
+    {
+      "as_of": "2026-07-09",
+      "real_count": 0,
+      "estimated_count": 102,
+      "derived_count": 210,
+      "missing_count": 55,
+      "planned_count": 108,
+      "insufficient_count": 61,
+      "coverage_ratio": 0.5821,
       "observed_pool_count": 67
     }
   ]

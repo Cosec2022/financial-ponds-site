@@ -35,7 +35,7 @@ const totalSignalCells = rows.length * signalMap.length;
 const coverageRatio = totalSignalCells ? round((totals.real + totals.estimated + totals.derived) / totalSignalCells) : 0;
 
 const report = {
-  module_id: "data_coverage_report_v0_10_53",
+  module_id: "data_coverage_report_v0_10_54",
   as_of: snapshot.as_of,
   generated_at: new Date().toISOString(),
   observed_pool_count: rows.length,
@@ -104,7 +104,8 @@ function signalStatus(signal, publicKey) {
   const reality = signal?.reality ?? signal?.status ?? signal?.trace_status ?? "missing";
   const value = numberOrNull(signal?.value ?? signal?.score);
   if (reality === "real_provider" || reality === "source_backed") return "real";
-  if (publicKey === "flow" && ["real_provider_derived", "estimated_from_source"].includes(reality) && value !== null) return "estimated";
+  if (reality === "estimated_from_source" && value !== null) return "estimated";
+  if (publicKey === "flow" && reality === "real_provider_derived" && value !== null) return "estimated";
   if (["real_provider_derived", "manual_seed", "derived_from_market"].includes(reality)) return "derived";
   if (reality === "planned") return "planned";
   if (reality === "insufficient_history") return "insufficient";
@@ -202,7 +203,7 @@ async function updateHistory(report) {
   }
   const last = history.at(-1);
   if (!last || JSON.stringify(last) !== JSON.stringify(snapshot)) history.push(snapshot);
-  await writeFile(historyPath, `${JSON.stringify({ module_id: "coverage_history_v0_10_53", history }, null, 2)}\n`, "utf8");
+  await writeFile(historyPath, `${JSON.stringify({ module_id: "coverage_history_v0_10_54", history }, null, 2)}\n`, "utf8");
 }
 
 async function readJson(path, fallback) {

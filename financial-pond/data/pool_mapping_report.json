@@ -1,0 +1,52 @@
+{
+  "module_id": "pool_mapping_report_v0_10_54",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T00:17:54.781Z",
+  "total_pool_count": 67,
+  "direct_index_count": 0,
+  "direct_etf_count": 22,
+  "sector_proxy_count": 40,
+  "broad_proxy_count": 0,
+  "unmapped_count": 5,
+  "mapping_coverage_ratio": 0.9254,
+  "high_confidence_count": 22,
+  "low_confidence_count": 16,
+  "unmapped_examples": [
+    {
+      "pool_id": "a_share_a_share",
+      "pool_name": "a_share",
+      "mapping_status": "unmapped",
+      "reason": "No defensible instrument is present in the current provider export."
+    },
+    {
+      "pool_id": "a_share_btc",
+      "pool_name": "btc",
+      "mapping_status": "unavailable",
+      "reason": "No defensible instrument is present in the current provider export."
+    },
+    {
+      "pool_id": "a_share_gold",
+      "pool_name": "gold",
+      "mapping_status": "unavailable",
+      "reason": "No defensible instrument is present in the current provider export."
+    },
+    {
+      "pool_id": "a_share_sp500",
+      "pool_name": "sp500",
+      "mapping_status": "unavailable",
+      "reason": "No defensible instrument is present in the current provider export."
+    },
+    {
+      "pool_id": "a_share_us_equity",
+      "pool_name": "us_equity",
+      "mapping_status": "unavailable",
+      "reason": "No defensible instrument is present in the current provider export."
+    }
+  ],
+  "boundary_notes": [
+    "Mappings are reviewed semantic links to instruments present in the provider export.",
+    "Sector proxies are observation estimates and carry lower confidence than direct ETF mappings.",
+    "Cross-asset and broad pools remain unavailable when the current provider export has no defensible instrument.",
+    "No mapping is treated as an execution instruction; observe_only remains in force."
+  ]
+}

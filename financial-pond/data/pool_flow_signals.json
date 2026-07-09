@@ -1,8 +1,9 @@
 {
   "module_id": "pool_flow_signals_v0_10_51",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T00:09:07.837Z",
+  "generated_at": "2026-07-09T00:17:54.884Z",
   "source_files_used": [
+    "pool_instrument_map.json",
     "etf_flow_leaderboard.json"
   ],
   "rows": [
@@ -19,7 +20,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_agriculture",
@@ -34,37 +35,43 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_ai_computer",
       "pool_name": "a_share_ai_computer",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
-      "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_status": "estimated_from_source",
+      "flow_value": -86184262.656,
+      "flow_direction": "negative",
+      "flow_magnitude": 0.1141,
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "159819",
+      "fund_name": "人工智能ETF易方达",
+      "amount": 807496409.361,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_bank_insurance",
       "pool_name": "a_share_bank_insurance",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
+      "flow_status": "estimated_from_source",
+      "flow_value": 0,
+      "flow_direction": "zero",
       "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "512800",
+      "fund_name": "银行ETF华宝",
+      "amount": 785232565,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_basic_chemicals",
@@ -79,7 +86,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_beauty_care",
@@ -94,22 +101,25 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_brokerage",
       "pool_name": "a_share_brokerage",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
+      "flow_status": "estimated_from_source",
+      "flow_value": 0,
+      "flow_direction": "zero",
       "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "512000",
+      "fund_name": "券商ETF华宝",
+      "amount": 1253277254,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_building_materials",
@@ -124,7 +134,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_coal",
@@ -139,22 +149,25 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_communication_electronics",
       "pool_name": "a_share_communication_electronics",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
-      "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_status": "estimated_from_source",
+      "flow_value": -755486096.896,
+      "flow_direction": "negative",
+      "flow_magnitude": 1,
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "515880",
+      "fund_name": "通信ETF国泰",
+      "amount": 4810678792,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_construction",
@@ -169,37 +182,43 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_consumer",
       "pool_name": "a_share_consumer",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
-      "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_status": "estimated_from_source",
+      "flow_value": -25000000,
+      "flow_direction": "negative",
+      "flow_magnitude": 0.0331,
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "159928",
+      "fund_name": "消费ETF汇添富",
+      "amount": 240678474.244,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_defense_military",
       "pool_name": "a_share_defense_military",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
+      "flow_status": "estimated_from_source",
+      "flow_value": 0,
+      "flow_direction": "zero",
       "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "512660",
+      "fund_name": "军工ETF国泰",
+      "amount": 277735779,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_environmental_protection",
@@ -214,7 +233,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_food_beverage",
@@ -229,22 +248,25 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_healthcare_pharma",
       "pool_name": "a_share_healthcare_pharma",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
+      "flow_status": "estimated_from_source",
+      "flow_value": 0,
+      "flow_direction": "zero",
       "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "512010",
+      "fund_name": "医药ETF易方达",
+      "amount": 516761665,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_home_appliances",
@@ -259,7 +281,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_light_manufacturing",
@@ -274,7 +296,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_machinery",
@@ -289,7 +311,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_media",
@@ -304,22 +326,25 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_new_energy_ev",
       "pool_name": "a_share_new_energy_ev",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
-      "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_status": "estimated_from_source",
+      "flow_value": -6880000,
+      "flow_direction": "negative",
+      "flow_magnitude": 0.0091,
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "515030",
+      "fund_name": "新能源车ETF华夏",
+      "amount": 171662510,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_nonferrous_metals",
@@ -334,7 +359,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_petroleum_petrochemical",
@@ -349,37 +374,43 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_real_estate_infra",
       "pool_name": "a_share_real_estate_infra",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
+      "flow_status": "estimated_from_source",
+      "flow_value": 0,
+      "flow_direction": "zero",
       "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "512200",
+      "fund_name": "房地产ETF南方",
+      "amount": 78165826,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_resources_materials",
       "pool_name": "a_share_resources_materials",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
+      "flow_status": "estimated_from_source",
+      "flow_value": 0,
+      "flow_direction": "zero",
       "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "512400",
+      "fund_name": "有色金属ETF南方",
+      "amount": 797936585,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_retail",
@@ -394,22 +425,25 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_semiconductor",
       "pool_name": "a_share_semiconductor",
-      "flow_status": "missing",
-      "flow_value": null,
-      "flow_direction": "neutral",
+      "flow_status": "estimated_from_source",
+      "flow_value": 0,
+      "flow_direction": "zero",
       "flow_magnitude": 0,
-      "flow_confidence": 0,
-      "source_type": "not_mapped",
+      "flow_confidence": 0.72,
+      "source_type": "akshare_provider_estimated_flow",
       "source_file": "etf_flow_leaderboard.json",
-      "evidence_count": 0,
-      "freshness": "current_snapshot",
-      "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "evidence_count": 4,
+      "freshness": "stale",
+      "boundary": "source-backed estimate",
+      "fund_code": "512480",
+      "fund_name": "半导体ETF国联安",
+      "amount": 1945067169,
+      "reason": "Representative ETF estimated_flow from AKShare provider-backed flow artifacts."
     },
     {
       "pool_id": "a_share_a_share_social_services",
@@ -424,7 +458,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_steel",
@@ -439,7 +473,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_textile_apparel",
@@ -454,7 +488,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_transportation",
@@ -469,7 +503,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_a_share_utilities",
@@ -484,7 +518,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_agriculture",
@@ -499,7 +533,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_ai_computer",
@@ -550,7 +584,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_beauty_care",
@@ -565,7 +599,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_brokerage",
@@ -598,7 +632,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_building_materials",
@@ -613,7 +647,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_coal",
@@ -628,7 +662,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_communication_electronics",
@@ -661,7 +695,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_consumer",
@@ -712,7 +746,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_food_beverage",
@@ -727,7 +761,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_gold",
@@ -742,7 +776,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_healthcare_pharma",
@@ -775,7 +809,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_light_manufacturing",
@@ -790,7 +824,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_machinery",
@@ -805,7 +839,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_media",
@@ -820,7 +854,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_new_energy_ev",
@@ -853,7 +887,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_petroleum_petrochemical",
@@ -868,7 +902,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_real_estate_infra",
@@ -919,7 +953,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_semiconductor",
@@ -952,7 +986,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_sp500",
@@ -967,7 +1001,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_steel",
@@ -982,7 +1016,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_textile_apparel",
@@ -997,7 +1031,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_transportation",
@@ -1012,7 +1046,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_us_equity",
@@ -1027,7 +1061,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     },
     {
       "pool_id": "a_share_utilities",
@@ -1042,7 +1076,7 @@
       "evidence_count": 0,
       "freshness": "current_snapshot",
       "boundary": "source unavailable for this pool",
-      "reason": "No provider-backed representative ETF row matched this observation pool."
+      "reason": "Instrument proxy is not used for flow because the relationship is not direct."
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "module_id": "daily_delta_history_v0_10_53",
+  "module_id": "daily_delta_history_v0_10_54",
   "history": [
     {
       "as_of": "2026-07-08",
@@ -18,8 +18,8 @@
       "latest_as_of": "2026-07-09",
       "previous_as_of": "2026-07-08",
       "observed_pool_count": 67,
-      "changed_pool_count": 56,
-      "improved_data_count": 11,
+      "changed_pool_count": 5,
+      "improved_data_count": 62,
       "new_signal_count": 0,
       "insufficient_history_count": 0,
       "stable_pool_count": 0,
