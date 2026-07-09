@@ -42,6 +42,7 @@ const requiredFiles = [
   ["candidate_price_basis.json", validateCandidatePriceBasis],
   ["review_readiness_report.json", (json) => json.module_id === "review_readiness_report_v0_10_61" && readinessStates.has(json.readiness_state) && json.candidate_count === json.baseline_available_count + json.baseline_missing_count],
   ["candidate_review_history.json", validateCandidateReviewHistory],
+  ["candidate_review_analytics.json", validateCandidateReviewAnalytics],
   ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_55" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel) && Boolean(json.market_channel) && Boolean(json.quality)],
   ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_55" && Array.isArray(json.history)],
   ["history/latest_observation_pointer.json", validatePointer],
@@ -72,7 +73,7 @@ const candidateStates = new Set(["Noise", "Pulse", "Early Right", "Major Candida
 const riskGateStatuses = new Set(["pass", "caution", "block", "insufficient_data"]);
 
 function validatePointer(json) {
-  return json.module_id === "latest_observation_pointer_v0_10_61"
+  return json.module_id === "latest_observation_pointer_v0_10_62"
     && Boolean(json.latest_as_of)
     && json.latest_path === `financial-pond/data/history/observations/${json.latest_as_of}.json`
     && json.available_snapshot_count >= 1;
@@ -166,6 +167,37 @@ function validateCandidateReviewHistory(json) {
     && json.rows.every((row) => validateStateFields(row) && row.boundary?.includes("observe_only"));
 }
 
+function validateCandidateReviewAnalytics(json) {
+  const metricOk = (value) => typeof value === "number" || value === "insufficient_sample";
+  const groupOk = (row) => Boolean(row.group)
+    && typeof row.sample_size === "number"
+    && ["available", "insufficient_sample"].includes(row.sample_status)
+    && metricOk(row.win_rate_absolute)
+    && metricOk(row.win_rate_vs_benchmark)
+    && metricOk(row.average_return)
+    && metricOk(row.average_excess_return);
+  return json.module_id === "candidate_review_analytics_v0_10_62"
+    && ["analytics_available", "insufficient_sample"].includes(json.status)
+    && typeof json.total_reviewed === "number"
+    && metricOk(json.win_rate_absolute)
+    && metricOk(json.win_rate_vs_benchmark)
+    && metricOk(json.average_return)
+    && metricOk(json.average_excess_return)
+    && typeof json.failed_pulse_count === "number"
+    && metricOk(json.overheated_failure_rate)
+    && metricOk(json.confirmed_trend_continuation_rate)
+    && metricOk(json.early_right_continuation_rate)
+    && Array.isArray(json.by_candidate_state)
+    && Array.isArray(json.by_risk_gate_status)
+    && Array.isArray(json.by_overheat_score_bucket)
+    && Array.isArray(json.by_major_wave_score_bucket)
+    && json.by_candidate_state.every(groupOk)
+    && json.by_risk_gate_status.every(groupOk)
+    && json.by_overheat_score_bucket.every(groupOk)
+    && json.by_major_wave_score_bucket.every(groupOk)
+    && json.boundary_notes?.includes("observe_only");
+}
+
 function validateStateFields(row) {
   const overheatValid = typeof row.overheat_score === "number" || row.overheat_score === "unavailable";
   const majorValid = typeof row.major_wave_score === "number" || row.major_wave_score === "unavailable";
@@ -209,7 +241,7 @@ for (const [fileName, validate] of requiredFiles) {
 try {
   const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
   const archive = JSON.parse(await readFile(resolve(root, pointer.latest_path), "utf8"));
-  if (archive.module_id !== "observation_archive_v0_10_61" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_state_model || !archive.candidate_review_schedule || !archive.candidate_outcome_reviews || !archive.outcome_review_report || !archive.candidate_price_basis || !archive.review_readiness_report || !archive.candidate_review_history) failures.push(`${pointer.latest_path}: archive contract check failed`);
+  if (archive.module_id !== "observation_archive_v0_10_62" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_state_model || !archive.candidate_review_schedule || !archive.candidate_outcome_reviews || !archive.outcome_review_report || !archive.candidate_price_basis || !archive.review_readiness_report || !archive.candidate_review_history || !archive.candidate_review_analytics) failures.push(`${pointer.latest_path}: archive contract check failed`);
 } catch (error) {
   failures.push(`history/observations archive: ${error.message}`);
 }

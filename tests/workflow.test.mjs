@@ -108,6 +108,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(assetBuilder, /data\/candidate_price_basis\.json/);
   assert.match(assetBuilder, /data\/review_readiness_report\.json/);
   assert.match(assetBuilder, /data\/candidate_review_history\.json/);
+  assert.match(assetBuilder, /data\/candidate_review_analytics\.json/);
   assert.match(assetBuilder, /data\/history\/latest_observation_pointer\.json/);
   assert.match(assetBuilder, /data\/daily_delta_report\.json/);
   assert.match(assetBuilder, /data\/pool_delta_signals\.json/);
@@ -145,6 +146,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(dataValidator, /candidate_price_basis\.json/);
   assert.match(dataValidator, /review_readiness_report\.json/);
   assert.match(dataValidator, /candidate_review_history\.json/);
+  assert.match(dataValidator, /candidate_review_analytics\.json/);
   assert.match(dataValidator, /history\/latest_observation_pointer\.json/);
   assert.match(dataValidator, /daily_delta_report\.json/);
   assert.match(dataValidator, /pool_delta_signals\.json/);
@@ -156,6 +158,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(outcomeEngine, /candidate_state/);
   assert.match(outcomeEngine, /major_wave_score/);
   assert.match(outcomeEngine, /risk_gate_status/);
+  assert.match(outcomeEngine, /benchmark_return/);
   assert.doesNotMatch(workflow, /npm run a-share:daily\s*$/m);
 });
 
@@ -168,6 +171,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.match(daily, /build-candidate-price-basis\.mjs/);
   assert.match(daily, /build-candidate-state-model\.mjs/);
   assert.match(daily, /build-candidate-outcome-reviews\.mjs/);
+  assert.match(daily, /build-candidate-review-analytics\.mjs/);
   assert.ok(daily.indexOf("build-pool-instrument-map.mjs") < daily.indexOf("build-market-signal-channel.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("build-signal-quality-report.mjs"));
   assert.ok(daily.indexOf("build-signal-quality-report.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
@@ -176,8 +180,9 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-candidate-price-basis.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
   assert.ok(daily.indexOf("build-candidate-price-basis.mjs") < daily.indexOf("build-candidate-state-model.mjs"));
   assert.ok(daily.indexOf("build-candidate-state-model.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
+  assert.ok(daily.indexOf("build-candidate-outcome-reviews.mjs") < daily.indexOf("build-candidate-review-analytics.mjs"));
   assert.ok(daily.indexOf("build-evening-observation-summary.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
-  assert.ok(daily.lastIndexOf("archive-observation-snapshot.mjs") > daily.indexOf("build-evening-observation-summary.mjs"));
+  assert.ok(daily.lastIndexOf("archive-observation-snapshot.mjs") > daily.indexOf("build-candidate-review-analytics.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("build-data-coverage-report.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });

@@ -1,6 +1,6 @@
 # Right-Side Major-Wave Model
 
-Version: v0.10.61
+Version: v0.10.62
 
 ## Purpose
 
@@ -69,3 +69,11 @@ The risk gate returns one of:
 
 This model is `observe_only`. It is not investment advice and does not create
 execution recommendations.
+
+## Review Analytics
+
+v0.10.62 adds `candidate_review_analytics.json`. It reads
+`candidate_review_history.json` and summarizes only reviewed T+1/T+3 outcomes
+with available returns. Pending, unavailable, and insufficient-data review rows
+are excluded from rate calculations. Groups with too few reviewed samples are
+reported as `insufficient_sample`.

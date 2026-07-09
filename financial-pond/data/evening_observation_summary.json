@@ -1,7 +1,7 @@
 {
   "module_id": "evening_observation_summary_v0_10_61",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T16:15:51.775Z",
+  "generated_at": "2026-07-09T16:25:01.413Z",
   "observation_state": "observe_only",
   "data_readiness": "62/67 market mapped; quality guardrail active",
   "direct_evidence_ratio": 0.3284,

@@ -1,0 +1,149 @@
+{
+  "module_id": "candidate_review_analytics_v0_10_62",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T16:25:01.494Z",
+  "status": "insufficient_sample",
+  "source_files_used": [
+    "financial-pond/data/candidate_review_history.json"
+  ],
+  "sample_policy": {
+    "horizons": [
+      "T+1",
+      "T+3"
+    ],
+    "minimum_sample_size": 3,
+    "reviewed_filter": "review_status reviewed and outcome_available true with numeric observed_return"
+  },
+  "total_reviewed": 0,
+  "insufficient_review_rows": 0,
+  "win_rate_absolute": "insufficient_sample",
+  "win_rate_vs_benchmark": "insufficient_sample",
+  "average_return": "insufficient_sample",
+  "average_excess_return": "insufficient_sample",
+  "failed_pulse_count": 0,
+  "overheated_failure_rate": "insufficient_sample",
+  "confirmed_trend_continuation_rate": "insufficient_sample",
+  "early_right_continuation_rate": "insufficient_sample",
+  "by_candidate_state": [
+    {
+      "group": "Confirmed Trend",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    },
+    {
+      "group": "Overheated",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    }
+  ],
+  "by_risk_gate_status": [
+    {
+      "group": "caution",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    },
+    {
+      "group": "pass",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    }
+  ],
+  "by_overheat_score_bucket": [
+    {
+      "group": "0-24",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    },
+    {
+      "group": "25-49",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    },
+    {
+      "group": "50-74",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    },
+    {
+      "group": "75-100",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    }
+  ],
+  "by_major_wave_score_bucket": [
+    {
+      "group": "75-100",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    }
+  ],
+  "boundary_notes": [
+    "observe_only",
+    "Analytics use reviewed outcomes only.",
+    "Pending, unavailable, and insufficient_data rows are excluded from rates.",
+    "Small samples are marked insufficient_sample instead of producing false precision."
+  ]
+}

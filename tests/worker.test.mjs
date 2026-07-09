@@ -9,7 +9,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
-  assert.match(html, /v0\.10\.61 Observation Dashboard/);
+  assert.match(html, /v0\.10\.62 Observation Dashboard/);
   assert.match(html, /Today Status/);
   assert.match(html, /Observation Candidates/);
   assert.match(html, /Selected Candidate/);
@@ -17,6 +17,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /Review Schedule/);
   assert.match(html, /Outcome Review/);
   assert.match(html, /Review Readiness/);
+  assert.match(html, /Review Analytics/);
   assert.match(html, /Major Wave/);
   assert.match(html, /Risk Gate/);
   assert.match(html, /observe_only/);
@@ -205,13 +206,13 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const pointer = await worker.fetch(request("/data/history/latest_observation_pointer.json"), {});
   assert.equal(pointer.status, 200);
   const pointerJson = await pointer.json();
-  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_61");
+  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_62");
   assert.ok(pointerJson.latest_path.endsWith(`${pointerJson.latest_as_of}.json`));
 
   const archive = await worker.fetch(request(`/data/history/observations/${pointerJson.latest_as_of}.json`), {});
   assert.equal(archive.status, 200);
   const archiveJson = await archive.json();
-  assert.equal(archiveJson.module_id, "observation_archive_v0_10_61");
+  assert.equal(archiveJson.module_id, "observation_archive_v0_10_62");
   assert.equal(archiveJson.as_of, pointerJson.latest_as_of);
   assert.ok(archiveJson.observation_snapshot);
   assert.ok(archiveJson.data_coverage_report);
@@ -235,6 +236,7 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.ok(archiveJson.candidate_price_basis);
   assert.ok(archiveJson.review_readiness_report);
   assert.ok(archiveJson.candidate_review_history);
+  assert.ok(archiveJson.candidate_review_analytics);
 
   const flowChannel = await worker.fetch(request("/data/flow_channel_report.json"), {});
   assert.equal(flowChannel.status, 200);
@@ -376,6 +378,17 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(reviewHistoryJson.module_id, "candidate_review_history_v0_10_61");
   assert.ok(reviewHistoryJson.rows.every(hasCandidateStateFields));
   assert.ok(reviewHistoryJson.rows.every((row) => row.t1_review_result && row.t3_review_result && row.boundary.includes("observe_only")));
+
+  const reviewAnalytics = await worker.fetch(request("/data/candidate_review_analytics.json"), {});
+  assert.equal(reviewAnalytics.status, 200);
+  const reviewAnalyticsJson = await reviewAnalytics.json();
+  assert.equal(reviewAnalyticsJson.module_id, "candidate_review_analytics_v0_10_62");
+  assert.equal(reviewAnalyticsJson.total_reviewed, outcomeReviewsJson.rows.filter((row) => row.review_status === "reviewed" && row.outcome_available === true && ["T+1", "T+3"].includes(row.horizon)).length);
+  assert.equal(reviewAnalyticsJson.total_reviewed, 0);
+  assert.equal(reviewAnalyticsJson.status, "insufficient_sample");
+  assert.equal(reviewAnalyticsJson.win_rate_absolute, "insufficient_sample");
+  assert.ok(reviewAnalyticsJson.by_candidate_state.every((row) => row.sample_status === "insufficient_sample"));
+  assert.ok(reviewAnalyticsJson.boundary_notes.includes("observe_only"));
 
   const eveningReport = await worker.fetch(request("/data/evening_report.md"), {});
   assert.equal(eveningReport.status, 200);

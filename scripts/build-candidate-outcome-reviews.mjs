@@ -243,6 +243,8 @@ function buildReviewHistory(reviewRows) {
       review_status: row.review_status,
       outcome_available: row.outcome_available,
       observed_return: row.observed_return,
+      benchmark_return: row.benchmark_return,
+      relative_return: row.relative_return,
       direction_result: row.direction_result
     };
     if (row.horizon === "T+1") item.t1_review_result = result;

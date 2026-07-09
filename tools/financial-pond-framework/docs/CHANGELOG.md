@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.10.62 - Candidate state review analytics
+
+- Bumped site and framework package versions to `0.10.62`.
+- Added `candidate_review_analytics.json`.
+- Review analytics summarize available T+1/T+3 reviewed outcomes by:
+  candidate state, risk gate, overheat score bucket, and major-wave score
+  bucket.
+- Metrics include reviewed count, absolute and benchmark-relative win rates,
+  average return, average excess return, pulse failure count, overheated
+  failure rate, and continuation rates.
+
+Important boundary:
+
+- Pending, unavailable, and insufficient-data reviews are excluded from rates.
+- Small samples are marked `insufficient_sample`.
+- No missing or future outcomes are fabricated.
+
 ## v0.10.61 - Right-side major-wave model artifacts
 
 - Bumped site and framework package versions to `0.10.61`.

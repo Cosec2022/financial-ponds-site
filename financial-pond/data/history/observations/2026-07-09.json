@@ -1,7 +1,7 @@
 {
-  "module_id": "observation_archive_v0_10_61",
+  "module_id": "observation_archive_v0_10_62",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T16:15:51.868Z",
+  "generated_at": "2026-07-09T16:25:01.540Z",
   "observation_snapshot": {
     "module_id": "observation_snapshot_v0_10_48",
     "as_of": "2026-07-09",
@@ -14438,7 +14438,7 @@
     "quality_guardrail": {
       "module_id": "signal_quality_report_v0_10_55",
       "as_of": "2026-07-09",
-      "generated_at": "2026-07-09T16:15:51.490Z",
+      "generated_at": "2026-07-09T16:25:01.132Z",
       "total_pool_count": 67,
       "mapped_pool_count": 62,
       "direct_evidence_count": 22,
@@ -14462,7 +14462,7 @@
   "data_coverage_report": {
     "module_id": "data_coverage_report_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.532Z",
+    "generated_at": "2026-07-09T16:25:01.172Z",
     "observed_pool_count": 67,
     "total_signal_cells": 536,
     "real_count": 0,
@@ -15932,7 +15932,7 @@
   "flow_channel_report": {
     "module_id": "flow_channel_report_v0_10_51",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.398Z",
+    "generated_at": "2026-07-09T16:25:01.050Z",
     "source_files_used": [
       "pool_instrument_map.json",
       "etf_flow_leaderboard.json"
@@ -15955,7 +15955,7 @@
   "pool_flow_signals": {
     "module_id": "pool_flow_signals_v0_10_51",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.398Z",
+    "generated_at": "2026-07-09T16:25:01.050Z",
     "source_files_used": [
       "pool_instrument_map.json",
       "etf_flow_leaderboard.json"
@@ -17037,7 +17037,7 @@
   "market_signal_report": {
     "module_id": "market_signal_report_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.446Z",
+    "generated_at": "2026-07-09T16:25:01.092Z",
     "source_files_used": [
       "financial-pond/data/pool_instrument_map.json",
       "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
@@ -17089,7 +17089,7 @@
   "pool_market_signals": {
     "module_id": "pool_market_signals_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.446Z",
+    "generated_at": "2026-07-09T16:25:01.092Z",
     "source_files_used": [
       "financial-pond/data/pool_instrument_map.json",
       "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
@@ -21178,7 +21178,7 @@
   "pool_instrument_map": {
     "module_id": "pool_instrument_map_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.361Z",
+    "generated_at": "2026-07-09T16:25:01.014Z",
     "rows": [
       {
         "pool_id": "a_share_a_share",
@@ -22123,7 +22123,7 @@
   "pool_mapping_report": {
     "module_id": "pool_mapping_report_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.361Z",
+    "generated_at": "2026-07-09T16:25:01.014Z",
     "total_pool_count": 67,
     "direct_index_count": 0,
     "direct_etf_count": 22,
@@ -22175,7 +22175,7 @@
   "signal_quality_report": {
     "module_id": "signal_quality_report_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.490Z",
+    "generated_at": "2026-07-09T16:25:01.132Z",
     "total_pool_count": 67,
     "mapped_pool_count": 62,
     "direct_evidence_count": 22,
@@ -22198,7 +22198,7 @@
   "pool_signal_quality": {
     "module_id": "pool_signal_quality_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.490Z",
+    "generated_at": "2026-07-09T16:25:01.132Z",
     "rows": [
       {
         "pool_id": "a_share_a_share",
@@ -23344,7 +23344,7 @@
   "evening_observation_summary": {
     "module_id": "evening_observation_summary_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.775Z",
+    "generated_at": "2026-07-09T16:25:01.413Z",
     "observation_state": "observe_only",
     "data_readiness": "62/67 market mapped; quality guardrail active",
     "direct_evidence_ratio": 0.3284,
@@ -23725,7 +23725,7 @@
   "pool_observation_scores": {
     "module_id": "pool_observation_scores_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.775Z",
+    "generated_at": "2026-07-09T16:25:01.413Z",
     "rows": [
       {
         "pool_id": "a_share_communication_electronics",
@@ -25649,7 +25649,7 @@
   "observation_candidate_ledger": {
     "module_id": "observation_candidate_ledger_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.775Z",
+    "generated_at": "2026-07-09T16:25:01.413Z",
     "rows": [
       {
         "as_of": "2026-07-09",
@@ -25811,7 +25811,7 @@
   "score_calibration_report": {
     "module_id": "score_calibration_report_v0_10_57",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.682Z",
+    "generated_at": "2026-07-09T16:25:01.322Z",
     "strong_count": 10,
     "moderate_count": 12,
     "weak_count": 0,
@@ -25854,7 +25854,7 @@
   "candidate_state_model": {
     "module_id": "candidate_state_model_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.775Z",
+    "generated_at": "2026-07-09T16:25:01.413Z",
     "status": "state_model_available",
     "candidate_count": 5,
     "states_distribution": {
@@ -25947,7 +25947,7 @@
   "candidate_review_schedule": {
     "module_id": "candidate_review_schedule_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.820Z",
+    "generated_at": "2026-07-09T16:25:01.453Z",
     "candidate_count": 5,
     "pending_t1_count": 5,
     "pending_t3_count": 5,
@@ -25987,7 +25987,7 @@
   "candidate_outcome_reviews": {
     "module_id": "candidate_outcome_reviews_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.820Z",
+    "generated_at": "2026-07-09T16:25:01.453Z",
     "rows": [
       {
         "candidate_as_of": "2026-07-09",
@@ -26614,7 +26614,7 @@
   "outcome_review_report": {
     "module_id": "outcome_review_report_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.820Z",
+    "generated_at": "2026-07-09T16:25:01.453Z",
     "total_candidates": 5,
     "due_review_count": 0,
     "reviewed_count": 0,
@@ -26642,7 +26642,7 @@
   "candidate_price_basis": {
     "module_id": "candidate_price_basis_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.775Z",
+    "generated_at": "2026-07-09T16:25:01.413Z",
     "rows": [
       {
         "candidate_as_of": "2026-07-09",
@@ -26794,7 +26794,7 @@
   "review_readiness_report": {
     "module_id": "review_readiness_report_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.726Z",
+    "generated_at": "2026-07-09T16:25:01.363Z",
     "candidate_count": 5,
     "next_due_date": "2026-07-10",
     "next_due_horizon": "T+1",
@@ -26817,7 +26817,7 @@
   "candidate_review_history": {
     "module_id": "candidate_review_history_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T16:15:51.820Z",
+    "generated_at": "2026-07-09T16:25:01.453Z",
     "rows": [
       {
         "as_of": "2026-07-09",
@@ -26839,6 +26839,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t3_review_result": {
@@ -26846,6 +26848,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t5_review_result": {
@@ -26853,6 +26857,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t20_review_result": {
@@ -26860,6 +26866,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "outcome_status": "pending",
@@ -26891,6 +26899,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t3_review_result": {
@@ -26898,6 +26908,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t5_review_result": {
@@ -26905,6 +26917,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t20_review_result": {
@@ -26912,6 +26926,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "outcome_status": "pending",
@@ -26943,6 +26959,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t3_review_result": {
@@ -26950,6 +26968,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t5_review_result": {
@@ -26957,6 +26977,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t20_review_result": {
@@ -26964,6 +26986,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "outcome_status": "pending",
@@ -26995,6 +27019,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t3_review_result": {
@@ -27002,6 +27028,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t5_review_result": {
@@ -27009,6 +27037,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t20_review_result": {
@@ -27016,6 +27046,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "outcome_status": "pending",
@@ -27047,6 +27079,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t3_review_result": {
@@ -27054,6 +27088,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t5_review_result": {
@@ -27061,6 +27097,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "t20_review_result": {
@@ -27068,6 +27106,8 @@
           "review_status": "pending",
           "outcome_available": false,
           "observed_return": null,
+          "benchmark_return": null,
+          "relative_return": null,
           "direction_result": "unavailable"
         },
         "outcome_status": "pending",
@@ -27084,6 +27124,155 @@
       "observe_only",
       "History preserves candidate-date model state and review status.",
       "Future horizons remain pending until due date and source data are available."
+    ]
+  },
+  "candidate_review_analytics": {
+    "module_id": "candidate_review_analytics_v0_10_62",
+    "as_of": "2026-07-09",
+    "generated_at": "2026-07-09T16:25:01.494Z",
+    "status": "insufficient_sample",
+    "source_files_used": [
+      "financial-pond/data/candidate_review_history.json"
+    ],
+    "sample_policy": {
+      "horizons": [
+        "T+1",
+        "T+3"
+      ],
+      "minimum_sample_size": 3,
+      "reviewed_filter": "review_status reviewed and outcome_available true with numeric observed_return"
+    },
+    "total_reviewed": 0,
+    "insufficient_review_rows": 0,
+    "win_rate_absolute": "insufficient_sample",
+    "win_rate_vs_benchmark": "insufficient_sample",
+    "average_return": "insufficient_sample",
+    "average_excess_return": "insufficient_sample",
+    "failed_pulse_count": 0,
+    "overheated_failure_rate": "insufficient_sample",
+    "confirmed_trend_continuation_rate": "insufficient_sample",
+    "early_right_continuation_rate": "insufficient_sample",
+    "by_candidate_state": [
+      {
+        "group": "Confirmed Trend",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      },
+      {
+        "group": "Overheated",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      }
+    ],
+    "by_risk_gate_status": [
+      {
+        "group": "caution",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      },
+      {
+        "group": "pass",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      }
+    ],
+    "by_overheat_score_bucket": [
+      {
+        "group": "0-24",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      },
+      {
+        "group": "25-49",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      },
+      {
+        "group": "50-74",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      },
+      {
+        "group": "75-100",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      }
+    ],
+    "by_major_wave_score_bucket": [
+      {
+        "group": "75-100",
+        "sample_size": 0,
+        "sample_status": "insufficient_sample",
+        "total_reviewed": 0,
+        "win_rate_absolute": "insufficient_sample",
+        "win_rate_vs_benchmark": "insufficient_sample",
+        "average_return": "insufficient_sample",
+        "average_excess_return": "insufficient_sample",
+        "continuation_rate": "insufficient_sample",
+        "failure_rate": "insufficient_sample"
+      }
+    ],
+    "boundary_notes": [
+      "observe_only",
+      "Analytics use reviewed outcomes only.",
+      "Pending, unavailable, and insufficient_data rows are excluded from rates.",
+      "Small samples are marked insufficient_sample instead of producing false precision."
     ]
   },
   "source_files_used": [

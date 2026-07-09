@@ -17,6 +17,7 @@ node scripts/build-evening-observation-summary.mjs
 node scripts/build-candidate-price-basis.mjs
 node scripts/build-candidate-state-model.mjs
 node scripts/build-candidate-outcome-reviews.mjs
+node scripts/build-candidate-review-analytics.mjs
 node scripts/archive-observation-snapshot.mjs
 npm run validate:data
 
