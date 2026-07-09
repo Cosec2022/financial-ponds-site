@@ -37,6 +37,8 @@ const state = {
   mappingReport: null,
   qualityReport: null,
   eveningSummary: null,
+  candidateLedger: null,
+  candidateSchedule: null,
   delta: null,
   pointer: null,
   pools: [],
@@ -384,6 +386,33 @@ function renderEveningSummary() {
   `;
 }
 
+function renderObservationCandidates() {
+  const el = document.getElementById("observationCandidates");
+  if (!el) return;
+  const latestAsOf = state.candidateLedger?.as_of;
+  const rows = asArray(state.candidateLedger?.rows)
+    .filter((row) => !latestAsOf || row.as_of === latestAsOf)
+    .sort((a, b) => b.observation_score - a.observation_score)
+    .slice(0, 3);
+  if (!state.candidateLedger) {
+    el.innerHTML = `
+      <div class="coverage-head"><span>Observation Candidates</span><strong>observe_only</strong></div>
+      <div class="coverage-counts">observation_candidate_ledger not loaded</div>
+    `;
+    return;
+  }
+  const schedule = state.candidateSchedule ?? {};
+  el.innerHTML = `
+    <div class="coverage-head"><span>Observation Candidates</span><strong>top ${state.candidateSchedule?.candidate_count ?? rows.length} / pending review / observe_only</strong></div>
+    <div class="coverage-counts">
+      ${rows.map((row) => `${escapeHtml(row.pool_name)} · ${escapeHtml(row.observation_tier)} · ${fmt(row.observation_score)} · ${escapeHtml(row.evidence_quality)} · proxy ${escapeHtml(row.proxy_risk)} · ${escapeHtml(row.review_status)}`).join(" · ")}
+    </div>
+    <div class="coverage-gaps">
+      <span>Review Status: T+1 ${schedule.pending_t1_count ?? 0} / T+3 ${schedule.pending_t3_count ?? 0} / T+5 ${schedule.pending_t5_count ?? 0} / T+20 ${schedule.pending_t20_count ?? 0} pending</span>
+    </div>
+  `;
+}
+
 function renderPools() {
   const el = document.getElementById("poolList");
   const pools = visiblePools();
@@ -654,6 +683,7 @@ function render() {
   renderSummaryStrip();
   renderCoverageStrip();
   renderEveningSummary();
+  renderObservationCandidates();
   renderTabs();
   renderPools();
   renderMain();
@@ -670,7 +700,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, mappingReport, qualityReport, eveningSummary, delta, pointer] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, mappingReport, qualityReport, eveningSummary, candidateLedger, candidateSchedule, delta, pointer] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
@@ -682,6 +712,8 @@ async function init() {
     readJson("./data/pool_mapping_report.json", null),
     readJson("./data/signal_quality_report.json", null),
     readJson("./data/evening_observation_summary.json", null),
+    readJson("./data/observation_candidate_ledger.json", null),
+    readJson("./data/candidate_review_schedule.json", null),
     readJson("./data/daily_delta_report.json", null),
     readJson("./data/history/latest_observation_pointer.json", null)
   ]);
@@ -696,6 +728,8 @@ async function init() {
   state.mappingReport = mappingReport;
   state.qualityReport = qualityReport;
   state.eveningSummary = eveningSummary;
+  state.candidateLedger = candidateLedger;
+  state.candidateSchedule = candidateSchedule;
   state.delta = delta;
   state.pointer = pointer;
   state.pools = extractPools(snapshot);

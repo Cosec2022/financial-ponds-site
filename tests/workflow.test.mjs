@@ -98,6 +98,9 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(assetBuilder, /data\/evening_observation_summary\.json/);
   assert.match(assetBuilder, /data\/pool_observation_scores\.json/);
   assert.match(assetBuilder, /data\/evening_report\.md/);
+  assert.match(assetBuilder, /data\/observation_candidate_ledger\.json/);
+  assert.match(assetBuilder, /data\/score_calibration_report\.json/);
+  assert.match(assetBuilder, /data\/candidate_review_schedule\.json/);
   assert.match(assetBuilder, /data\/history\/latest_observation_pointer\.json/);
   assert.match(assetBuilder, /data\/daily_delta_report\.json/);
   assert.match(assetBuilder, /data\/pool_delta_signals\.json/);
@@ -126,6 +129,9 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(dataValidator, /evening_observation_summary\.json/);
   assert.match(dataValidator, /pool_observation_scores\.json/);
   assert.match(dataValidator, /evening_report\.md/);
+  assert.match(dataValidator, /observation_candidate_ledger\.json/);
+  assert.match(dataValidator, /score_calibration_report\.json/);
+  assert.match(dataValidator, /candidate_review_schedule\.json/);
   assert.match(dataValidator, /history\/latest_observation_pointer\.json/);
   assert.match(dataValidator, /daily_delta_report\.json/);
   assert.match(dataValidator, /pool_delta_signals\.json/);

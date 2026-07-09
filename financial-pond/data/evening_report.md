@@ -11,10 +11,14 @@
 - Direct evidence covers 33% of observed pools.
 - Proxy evidence covers 60% and carries high aggregate proxy risk.
 - 62 momentum and 62 liquidity observations are available.
-- 22 pools meet the strict direct-evidence strong observation gate.
+- 12 pools meet the strict direct-evidence strong observation gate.
 
 ## Top Observation Pools
 - **Communication and Electronics** | strong_observe | outward
+  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
+  - evidence high; proxy risk none; capped confidence 0.75
+  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
+- **Resources and Materials** | strong_observe | neutral
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
@@ -22,25 +26,21 @@
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
-- **Consumer** | strong_observe | outward
-  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
-  - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
-- **新能源车** | strong_observe | outward
-  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
-  - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
 - **Bank and Insurance** | strong_observe | neutral
+  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
+  - evidence high; proxy risk none; capped confidence 0.75
+  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
+- **券商** | strong_observe | neutral
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta improved_data.
 
 ## Caution / Low Quality Pools
-- **Agriculture**: sector_proxy with loose proxy; high proxy risk; flow unavailable
-- **Environmental Protection**: sector_proxy with loose proxy; high proxy risk; flow unavailable
-- **Light Manufacturing**: sector_proxy with loose proxy; high proxy risk; flow unavailable
-- **Machinery**: sector_proxy with loose proxy; high proxy risk; flow unavailable
 - **Media**: sector_proxy with loose proxy; high proxy risk; flow unavailable
+- **Environmental Protection**: sector_proxy with loose proxy; high proxy risk; flow unavailable
+- **Machinery**: sector_proxy with loose proxy; high proxy risk; flow unavailable
+- **Utilities**: sector_proxy with loose proxy; high proxy risk; flow unavailable
+- **Agriculture**: sector_proxy with loose proxy; high proxy risk; flow unavailable
 
 ## Main Data Gaps
 - flow: 45 pools; connect mapped provider flow source

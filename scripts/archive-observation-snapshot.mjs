@@ -18,13 +18,16 @@ const poolSignalQuality = await readJson(resolve(dataDir, "pool_signal_quality.j
 const eveningObservationSummary = await readJsonOptional(resolve(dataDir, "evening_observation_summary.json"));
 const poolObservationScores = await readJsonOptional(resolve(dataDir, "pool_observation_scores.json"));
 const eveningReport = await readTextOptional(resolve(dataDir, "evening_report.md"));
+const observationCandidateLedger = await readJsonOptional(resolve(dataDir, "observation_candidate_ledger.json"));
+const scoreCalibrationReport = await readJsonOptional(resolve(dataDir, "score_calibration_report.json"));
+const candidateReviewSchedule = await readJsonOptional(resolve(dataDir, "candidate_review_schedule.json"));
 const asOf = observation.as_of ?? coverage.as_of ?? flowChannel.as_of;
 if (!asOf) throw new Error("Cannot archive observation snapshot without as_of");
 
 await mkdir(historyDir, { recursive: true });
 
 const archive = {
-  module_id: "observation_archive_v0_10_56",
+  module_id: "observation_archive_v0_10_57",
   as_of: asOf,
   generated_at: new Date().toISOString(),
   observation_snapshot: observation,
@@ -40,6 +43,9 @@ const archive = {
   evening_observation_summary: eveningObservationSummary,
   pool_observation_scores: poolObservationScores,
   evening_report: eveningReport,
+  observation_candidate_ledger: observationCandidateLedger,
+  score_calibration_report: scoreCalibrationReport,
+  candidate_review_schedule: candidateReviewSchedule,
   source_files_used: sourceFilesUsed(flowChannel, poolFlowSignals, marketSignalReport, poolMarketSignals),
   boundary_notes: [
     "Daily archive is observation-only and keeps the observe_only boundary.",
@@ -55,7 +61,7 @@ const available = await availableArchives();
 const latestIndex = available.findIndex((item) => item.as_of === asOf);
 const previous = latestIndex > 0 ? available[latestIndex - 1] : null;
 const pointer = {
-  module_id: "latest_observation_pointer_v0_10_56",
+  module_id: "latest_observation_pointer_v0_10_57",
   latest_as_of: asOf,
   latest_path: `financial-pond/data/history/observations/${asOf}.json`,
   previous_as_of: previous?.as_of ?? null,

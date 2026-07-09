@@ -40,13 +40,13 @@ const mainCaution = qualityReport.proxy_risk_level === "high"
   : "Evidence quality remains mixed; review pool-level boundaries.";
 
 const scoresFile = {
-  module_id: "pool_observation_scores_v0_10_56",
+  module_id: "pool_observation_scores_v0_10_57",
   as_of: snapshot.as_of,
   generated_at: generatedAt,
   rows
 };
 const summary = {
-  module_id: "evening_observation_summary_v0_10_56",
+  module_id: "evening_observation_summary_v0_10_57",
   as_of: snapshot.as_of,
   generated_at: generatedAt,
   observation_state: "observe_only",
@@ -80,6 +80,8 @@ const summary = {
 await writeJson("pool_observation_scores.json", scoresFile);
 await writeJson("evening_observation_summary.json", summary);
 await writeFile(resolve(dataDir, "evening_report.md"), markdownReport(summary), "utf8");
+await writeCalibrationReport(rows, tierCounts, generatedAt);
+await writeCandidateLedger(summary.top_observation_pools, generatedAt);
 console.log(`Evening observation summary written: top=${summary.top_observation_pools.length}, strong=${tierCounts.strong_observe ?? 0}`);
 
 function scorePool(pool) {
@@ -90,21 +92,21 @@ function scorePool(pool) {
   const momentum = pool.signals?.price_momentum ?? {};
   const liquidity = pool.signals?.liquidity ?? {};
   const cappedConfidence = average([quality.capped_momentum_confidence, quality.capped_liquidity_confidence]);
-  let score = qualityReward(quality.evidence_quality);
-  if (["direct_index", "direct_etf"].includes(mapping.mapping_status)) score += 15;
-  if (mapping.mapping_status === "sector_proxy") score -= 8;
-  if (mapping.mapping_status === "broad_proxy") score -= 14;
-  score += available(momentum.reality) ? 10 : -8;
-  score += available(liquidity.reality) ? 10 : -8;
-  score += available(flow.reality) ? 15 : -12;
-  score += deltaReward(delta.review_flag);
-  score += cappedConfidence * 20;
-  score += numberOrZero(pool.vector_forecast?.magnitude) * 5;
-  score -= proxyPenalty(quality.proxy_risk);
-  if (capApplied(momentum) || capApplied(liquidity)) score -= 5;
-  if (delta.review_flag === "insufficient_history") score -= 10;
-  if (["unmapped", "unavailable"].includes(mapping.mapping_status)) score -= 25;
-  score = round(Math.max(0, Math.min(100, score)));
+  const magnitude = numberOrZero(pool.vector_forecast?.magnitude);
+  const flowScore = available(flow.reality) ? round(10 + Math.min(magnitude, 1) * 8) : 0;
+  const momentumScore = available(momentum.reality) ? round(6 + Math.min(Math.abs(numberOrZero(momentum.value)) / 3, 1) * 6) : 0;
+  const liquidityScore = available(liquidity.reality) ? (liquidity.label === "above_median" ? 10 : 6) : 0;
+  const qualityScore = qualityReward(quality.evidence_quality) + (["direct_index", "direct_etf"].includes(mapping.mapping_status) ? 8 : 0);
+  const deltaScore = deltaReward(delta.review_flag);
+  const confidenceScore = round(cappedConfidence * 16);
+  const proxyPenaltyScore = proxyPenalty(quality.proxy_risk) + (mapping.mapping_status === "broad_proxy" ? 6 : 0);
+  let missingDataPenalty = [flow, momentum, liquidity].filter((signal) => !available(signal.reality)).length * 10;
+  if (capApplied(momentum) || capApplied(liquidity)) missingDataPenalty += 4;
+  if (delta.review_flag === "insufficient_history") missingDataPenalty += 8;
+  if (["unmapped", "unavailable"].includes(mapping.mapping_status)) missingDataPenalty += 20;
+  const score = round(Math.max(0, Math.min(100,
+    flowScore + momentumScore + liquidityScore + qualityScore + deltaScore + confidenceScore - proxyPenaltyScore - missingDataPenalty
+  )));
 
   return {
     pool_id: pool.pool_id,
@@ -112,7 +114,7 @@ function scorePool(pool) {
     observation_score: score,
     observation_tier: observationTier(score, quality, cappedConfidence),
     direction: pool.vector_forecast?.direction ?? "neutral",
-    magnitude: numberOrZero(pool.vector_forecast?.magnitude),
+    magnitude,
     confidence: numberOrZero(pool.vector_forecast?.confidence),
     capped_confidence: cappedConfidence,
     flow_status: flow.reality ?? "missing",
@@ -123,14 +125,25 @@ function scorePool(pool) {
     delta_flag: delta.review_flag ?? "insufficient_history",
     main_reason: mainReason(mapping, quality, flow, momentum, liquidity, delta),
     caution_reason: cautionReason(mapping, quality, flow, delta),
+    flow_score: flowScore,
+    momentum_score: momentumScore,
+    liquidity_score: liquidityScore,
+    quality_score: qualityScore,
+    delta_score: deltaScore,
+    confidence_score: confidenceScore,
+    proxy_penalty: proxyPenaltyScore,
+    missing_data_penalty: missingDataPenalty,
+    final_score: score,
     boundary: "observe_only; observation priority only"
   };
 }
 
 function observationTier(score, quality, cappedConfidence) {
-  if (score >= 70 && quality.evidence_quality === "high" && quality.proxy_risk === "none" && cappedConfidence >= 0.6) return "strong_observe";
-  if (score >= 45 && quality.evidence_quality !== "unavailable") return "moderate_observe";
-  if (score >= 20 && quality.evidence_quality !== "unavailable") return "weak_observe";
+  const momentumAvailable = available(quality.momentum_status);
+  const liquidityAvailable = available(quality.liquidity_status);
+  if (score >= 77 && quality.evidence_quality === "high" && ["none", "low"].includes(quality.proxy_risk) && cappedConfidence >= 0.55 && momentumAvailable && liquidityAvailable) return "strong_observe";
+  if (score >= 55 && ["high", "medium"].includes(quality.evidence_quality) && cappedConfidence >= 0.4 && (momentumAvailable || liquidityAvailable)) return "moderate_observe";
+  if (score >= 35 && quality.evidence_quality !== "unavailable" && (momentumAvailable || liquidityAvailable)) return "weak_observe";
   return "insufficient";
 }
 
@@ -185,6 +198,140 @@ ${gaps || "- No unresolved gap recorded."}
 - insufficient outcome history
 - no source-backed hard flow yet
 `;
+}
+
+async function writeCalibrationReport(scoreRows, counts, timestamp) {
+  const scores = scoreRows.map((row) => row.final_score).sort((a, b) => a - b);
+  const strongRows = scoreRows.filter((row) => row.observation_tier === "strong_observe");
+  const suspiciousFlags = [];
+  if ((counts.moderate_observe ?? 0) === 0) suspiciousFlags.push("moderate_count_zero");
+  if ((counts.strong_observe ?? 0) > 15) suspiciousFlags.push("strong_count_above_15");
+  if (strongRows.some((row) => row.proxy_risk === "high")) suspiciousFlags.push("high_proxy_risk_tiered_strong");
+  if (strongRows.some((row) => row.capped_confidence < 0.5)) suspiciousFlags.push("low_capped_confidence_tiered_strong");
+  const report = {
+    module_id: "score_calibration_report_v0_10_57",
+    as_of: snapshot.as_of,
+    generated_at: timestamp,
+    strong_count: counts.strong_observe ?? 0,
+    moderate_count: counts.moderate_observe ?? 0,
+    weak_count: counts.weak_observe ?? 0,
+    insufficient_count: counts.insufficient ?? 0,
+    score_min: scores.at(0) ?? 0,
+    score_max: scores.at(-1) ?? 0,
+    score_median: median(scores),
+    score_distribution: [
+      distributionBucket(scoreRows, "77-100", 77, 101),
+      distributionBucket(scoreRows, "55-76.9999", 55, 77),
+      distributionBucket(scoreRows, "35-54.9999", 35, 55),
+      distributionBucket(scoreRows, "0-34.9999", 0, 35)
+    ],
+    threshold_rules: {
+      strong_observe: "final_score >= 77; high evidence; proxy risk none/low; capped confidence >= 0.55; momentum and liquidity available",
+      moderate_observe: "final_score >= 55; high/medium evidence; capped confidence >= 0.40; momentum or liquidity available",
+      weak_observe: "final_score >= 35; usable evidence and at least one market observation",
+      insufficient: "below calibrated gates, unavailable mapping, or insufficient usable evidence"
+    },
+    suspicious_distribution_flags: suspiciousFlags,
+    calibration_notes: [
+      "Score components are persisted per pool for audit.",
+      "Magnitude and market confirmation separate direct-evidence pools that previously shared one coarse score.",
+      "Proxy and missing-data penalties prevent coverage quantity from becoming strong evidence.",
+      "Tiers express observation priority only."
+    ]
+  };
+  await writeJson("score_calibration_report.json", report);
+}
+
+async function writeCandidateLedger(candidates, timestamp) {
+  const ledgerPath = resolve(dataDir, "observation_candidate_ledger.json");
+  const existing = await readJsonOptional(ledgerPath, { rows: [] });
+  const retained = (existing.rows ?? []).filter((row) => row.as_of !== snapshot.as_of).map(updateReviewStatus);
+  const current = candidates.map((row) => {
+    const due = {
+      review_t1_due: dueDate(snapshot.as_of, 1),
+      review_t3_due: dueDate(snapshot.as_of, 3),
+      review_t5_due: dueDate(snapshot.as_of, 5),
+      review_t20_due: dueDate(snapshot.as_of, 20)
+    };
+    return {
+      as_of: snapshot.as_of,
+      pool_id: row.pool_id,
+      pool_name: row.pool_name,
+      observation_tier: row.observation_tier,
+      observation_score: row.observation_score,
+      direction: row.direction,
+      magnitude: row.magnitude,
+      capped_confidence: row.capped_confidence,
+      flow_status: row.flow_status,
+      momentum_status: row.momentum_status,
+      liquidity_status: row.liquidity_status,
+      evidence_quality: row.evidence_quality,
+      proxy_risk: row.proxy_risk,
+      main_reason: row.main_reason,
+      caution_reason: row.caution_reason,
+      boundary: "observe_only; review candidate only",
+      ...due,
+      review_status: row.capped_confidence > 0 ? "pending" : "insufficient_data"
+    };
+  });
+  const ledger = {
+    module_id: "observation_candidate_ledger_v0_10_57",
+    as_of: snapshot.as_of,
+    generated_at: timestamp,
+    rows: [...retained, ...current].sort((a, b) => a.as_of.localeCompare(b.as_of) || b.observation_score - a.observation_score)
+  };
+  const pending = current.filter((row) => ["pending", "review_due"].includes(row.review_status));
+  const schedule = {
+    module_id: "candidate_review_schedule_v0_10_57",
+    as_of: snapshot.as_of,
+    generated_at: timestamp,
+    candidate_count: current.length,
+    pending_t1_count: pending.length,
+    pending_t3_count: pending.length,
+    pending_t5_count: pending.length,
+    pending_t20_count: pending.length,
+    next_review_dates: {
+      t1: uniqueDates(pending.map((row) => row.review_t1_due)),
+      t3: uniqueDates(pending.map((row) => row.review_t3_due)),
+      t5: uniqueDates(pending.map((row) => row.review_t5_due)),
+      t20: uniqueDates(pending.map((row) => row.review_t20_due))
+    },
+    boundary_notes: [
+      "observe_only",
+      "Review dates schedule evidence checks only.",
+      "Future outcomes remain pending until their due date and source data are available."
+    ]
+  };
+  await writeJson("observation_candidate_ledger.json", ledger);
+  await writeJson("candidate_review_schedule.json", schedule);
+}
+
+function updateReviewStatus(row) {
+  if (["reviewed", "insufficient_data"].includes(row.review_status)) return row;
+  return { ...row, review_status: snapshot.as_of >= row.review_t1_due ? "review_due" : "pending" };
+}
+
+function distributionBucket(rows, label, min, max) {
+  return {
+    range: label,
+    count: rows.filter((row) => row.final_score >= min && row.final_score < max).length
+  };
+}
+
+function median(values) {
+  if (!values.length) return 0;
+  const middle = Math.floor(values.length / 2);
+  return values.length % 2 ? values[middle] : round((values[middle - 1] + values[middle]) / 2);
+}
+
+function dueDate(asOf, days) {
+  const date = new Date(`${asOf}T00:00:00.000Z`);
+  date.setUTCDate(date.getUTCDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function uniqueDates(values) {
+  return [...new Set(values)].sort();
 }
 
 function uniqueSemantic(items) {
@@ -245,6 +392,14 @@ function formatRatio(value) {
 
 async function readJson(file) {
   return JSON.parse(await readFile(resolve(dataDir, file), "utf8"));
+}
+
+async function readJsonOptional(path, fallback) {
+  try {
+    return JSON.parse(await readFile(path, "utf8"));
+  } catch {
+    return fallback;
+  }
 }
 
 async function writeJson(file, value) {

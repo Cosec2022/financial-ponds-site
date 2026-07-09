@@ -18,6 +18,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /Mapping/);
   assert.match(html, /Quality/);
   assert.match(html, /Evening Summary/);
+  assert.match(html, /Observation Candidates/);
   assert.match(html, /Daily Delta/);
   assert.match(html, /Baseline/);
   assert.match(html, /Signal Health/);
@@ -216,13 +217,13 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const pointer = await worker.fetch(request("/data/history/latest_observation_pointer.json"), {});
   assert.equal(pointer.status, 200);
   const pointerJson = await pointer.json();
-  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_56");
+  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_57");
   assert.ok(pointerJson.latest_path.endsWith(`${pointerJson.latest_as_of}.json`));
 
   const archive = await worker.fetch(request(`/data/history/observations/${pointerJson.latest_as_of}.json`), {});
   assert.equal(archive.status, 200);
   const archiveJson = await archive.json();
-  assert.equal(archiveJson.module_id, "observation_archive_v0_10_56");
+  assert.equal(archiveJson.module_id, "observation_archive_v0_10_57");
   assert.equal(archiveJson.as_of, pointerJson.latest_as_of);
   assert.ok(archiveJson.observation_snapshot);
   assert.ok(archiveJson.data_coverage_report);
@@ -237,6 +238,9 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.ok(archiveJson.evening_observation_summary);
   assert.ok(archiveJson.pool_observation_scores);
   assert.match(archiveJson.evening_report, /# Evening Observation Summary/);
+  assert.ok(archiveJson.observation_candidate_ledger);
+  assert.ok(archiveJson.score_calibration_report);
+  assert.ok(archiveJson.candidate_review_schedule);
 
   const flowChannel = await worker.fetch(request("/data/flow_channel_report.json"), {});
   assert.equal(flowChannel.status, 200);
@@ -293,14 +297,38 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const eveningSummary = await worker.fetch(request("/data/evening_observation_summary.json"), {});
   assert.equal(eveningSummary.status, 200);
   const eveningSummaryJson = await eveningSummary.json();
-  assert.equal(eveningSummaryJson.module_id, "evening_observation_summary_v0_10_56");
+  assert.equal(eveningSummaryJson.module_id, "evening_observation_summary_v0_10_57");
   assert.ok(eveningSummaryJson.top_observation_pools.every((row) => row.boundary.includes("observe_only")));
 
   const observationScores = await worker.fetch(request("/data/pool_observation_scores.json"), {});
   assert.equal(observationScores.status, 200);
   const observationScoresJson = await observationScores.json();
-  assert.equal(observationScoresJson.module_id, "pool_observation_scores_v0_10_56");
+  assert.equal(observationScoresJson.module_id, "pool_observation_scores_v0_10_57");
   assert.ok(observationScoresJson.rows.length >= 1);
+  assert.ok(observationScoresJson.rows.every((row) => ["flow_score", "momentum_score", "liquidity_score", "quality_score", "delta_score", "confidence_score", "proxy_penalty", "missing_data_penalty", "final_score"].every((field) => typeof row[field] === "number")));
+
+  const candidateLedger = await worker.fetch(request("/data/observation_candidate_ledger.json"), {});
+  assert.equal(candidateLedger.status, 200);
+  const candidateLedgerJson = await candidateLedger.json();
+  assert.equal(candidateLedgerJson.module_id, "observation_candidate_ledger_v0_10_57");
+  assert.ok(candidateLedgerJson.rows.every((row) => row.boundary.includes("observe_only")));
+
+  const calibration = await worker.fetch(request("/data/score_calibration_report.json"), {});
+  assert.equal(calibration.status, 200);
+  const calibrationJson = await calibration.json();
+  assert.equal(calibrationJson.module_id, "score_calibration_report_v0_10_57");
+  const flags = new Set(calibrationJson.suspicious_distribution_flags);
+  if (calibrationJson.moderate_count === 0) assert.ok(flags.has("moderate_count_zero"));
+  if (calibrationJson.strong_count > 15) assert.ok(flags.has("strong_count_above_15"));
+  const strongRows = observationScoresJson.rows.filter((row) => row.observation_tier === "strong_observe");
+  if (strongRows.some((row) => row.proxy_risk === "high")) assert.ok(flags.has("high_proxy_risk_tiered_strong"));
+  if (strongRows.some((row) => row.capped_confidence < 0.5)) assert.ok(flags.has("low_capped_confidence_tiered_strong"));
+
+  const reviewSchedule = await worker.fetch(request("/data/candidate_review_schedule.json"), {});
+  assert.equal(reviewSchedule.status, 200);
+  const reviewScheduleJson = await reviewSchedule.json();
+  assert.equal(reviewScheduleJson.module_id, "candidate_review_schedule_v0_10_57");
+  assert.ok(reviewScheduleJson.candidate_count >= 1);
 
   const eveningReport = await worker.fetch(request("/data/evening_report.md"), {});
   assert.equal(eveningReport.status, 200);

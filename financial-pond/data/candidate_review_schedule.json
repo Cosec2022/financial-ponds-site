@@ -1,0 +1,29 @@
+{
+  "module_id": "candidate_review_schedule_v0_10_57",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T00:52:46.369Z",
+  "candidate_count": 5,
+  "pending_t1_count": 5,
+  "pending_t3_count": 5,
+  "pending_t5_count": 5,
+  "pending_t20_count": 5,
+  "next_review_dates": {
+    "t1": [
+      "2026-07-10"
+    ],
+    "t3": [
+      "2026-07-12"
+    ],
+    "t5": [
+      "2026-07-14"
+    ],
+    "t20": [
+      "2026-07-29"
+    ]
+  },
+  "boundary_notes": [
+    "observe_only",
+    "Review dates schedule evidence checks only.",
+    "Future outcomes remain pending until their due date and source data are available."
+  ]
+}

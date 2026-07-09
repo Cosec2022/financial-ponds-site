@@ -31,8 +31,11 @@ const requiredFiles = [
   ["pool_market_signals.json", (json) => json.module_id === "pool_market_signals_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateMarketSignal)],
   ["signal_quality_report.json", (json) => json.module_id === "signal_quality_report_v0_10_55" && json.confidence_cap_applied_count >= 1],
   ["pool_signal_quality.json", (json) => json.module_id === "pool_signal_quality_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateSignalQuality)],
-  ["evening_observation_summary.json", (json) => json.module_id === "evening_observation_summary_v0_10_56" && json.observation_state === "observe_only" && Array.isArray(json.top_observation_pools) && json.top_observation_pools.every((row) => row.boundary?.includes("observe_only"))],
-  ["pool_observation_scores.json", (json) => json.module_id === "pool_observation_scores_v0_10_56" && Array.isArray(json.rows) && json.rows.every(validateObservationScore)],
+  ["evening_observation_summary.json", (json) => json.module_id === "evening_observation_summary_v0_10_57" && json.observation_state === "observe_only" && Array.isArray(json.top_observation_pools) && json.top_observation_pools.every((row) => row.boundary?.includes("observe_only"))],
+  ["pool_observation_scores.json", (json) => json.module_id === "pool_observation_scores_v0_10_57" && Array.isArray(json.rows) && json.rows.every(validateObservationScore)],
+  ["observation_candidate_ledger.json", (json) => json.module_id === "observation_candidate_ledger_v0_10_57" && Array.isArray(json.rows) && json.rows.every(validateCandidate)],
+  ["score_calibration_report.json", (json) => json.module_id === "score_calibration_report_v0_10_57" && Array.isArray(json.suspicious_distribution_flags) && Array.isArray(json.score_distribution)],
+  ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_57" && json.candidate_count >= 1 && Boolean(json.next_review_dates)],
   ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_55" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel) && Boolean(json.market_channel) && Boolean(json.quality)],
   ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_55" && Array.isArray(json.history)],
   ["history/latest_observation_pointer.json", validatePointer],
@@ -54,9 +57,10 @@ const proxyRisks = new Set(["none", "low", "medium", "high"]);
 const boundaries = new Set(["observe_only", "manual_review", "blocked"]);
 const deltaFlags = new Set(["insufficient_history", "changed", "stable", "improved_data", "new_signal", "confidence_change"]);
 const observationTiers = new Set(["strong_observe", "moderate_observe", "weak_observe", "insufficient"]);
+const reviewStatuses = new Set(["pending", "review_due", "reviewed", "insufficient_data"]);
 
 function validatePointer(json) {
-  return json.module_id === "latest_observation_pointer_v0_10_56"
+  return json.module_id === "latest_observation_pointer_v0_10_57"
     && Boolean(json.latest_as_of)
     && json.latest_path === `financial-pond/data/history/observations/${json.latest_as_of}.json`
     && json.available_snapshot_count >= 1;
@@ -89,7 +93,16 @@ function validateSignalQuality(row) {
 function validateObservationScore(row) {
   return observationTiers.has(row.observation_tier)
     && typeof row.observation_score === "number"
+    && ["flow_score", "momentum_score", "liquidity_score", "quality_score", "delta_score", "confidence_score", "proxy_penalty", "missing_data_penalty", "final_score"].every((field) => typeof row[field] === "number")
     && row.boundary?.includes("observe_only");
+}
+
+function validateCandidate(row) {
+  return observationTiers.has(row.observation_tier)
+    && reviewStatuses.has(row.review_status)
+    && row.boundary?.includes("observe_only")
+    && Boolean(row.review_t1_due)
+    && Boolean(row.review_t20_due);
 }
 
 function validateObservationRow(row) {
@@ -122,7 +135,7 @@ for (const [fileName, validate] of requiredFiles) {
 try {
   const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
   const archive = JSON.parse(await readFile(resolve(root, pointer.latest_path), "utf8"));
-  if (archive.module_id !== "observation_archive_v0_10_56" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report) failures.push(`${pointer.latest_path}: archive contract check failed`);
+  if (archive.module_id !== "observation_archive_v0_10_57" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_review_schedule) failures.push(`${pointer.latest_path}: archive contract check failed`);
 } catch (error) {
   failures.push(`history/observations archive: ${error.message}`);
 }

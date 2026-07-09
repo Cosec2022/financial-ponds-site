@@ -1,0 +1,43 @@
+{
+  "module_id": "score_calibration_report_v0_10_57",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T00:52:46.369Z",
+  "strong_count": 12,
+  "moderate_count": 10,
+  "weak_count": 10,
+  "insufficient_count": 35,
+  "score_min": 0,
+  "score_max": 84.06,
+  "score_median": 27.18,
+  "score_distribution": [
+    {
+      "range": "77-100",
+      "count": 12
+    },
+    {
+      "range": "55-76.9999",
+      "count": 10
+    },
+    {
+      "range": "35-54.9999",
+      "count": 10
+    },
+    {
+      "range": "0-34.9999",
+      "count": 35
+    }
+  ],
+  "threshold_rules": {
+    "strong_observe": "final_score >= 77; high evidence; proxy risk none/low; capped confidence >= 0.55; momentum and liquidity available",
+    "moderate_observe": "final_score >= 55; high/medium evidence; capped confidence >= 0.40; momentum or liquidity available",
+    "weak_observe": "final_score >= 35; usable evidence and at least one market observation",
+    "insufficient": "below calibrated gates, unavailable mapping, or insufficient usable evidence"
+  },
+  "suspicious_distribution_flags": [],
+  "calibration_notes": [
+    "Score components are persisted per pool for audit.",
+    "Magnitude and market confirmation separate direct-evidence pools that previously shared one coarse score.",
+    "Proxy and missing-data penalties prevent coverage quantity from becoming strong evidence.",
+    "Tiers express observation priority only."
+  ]
+}
