@@ -31,6 +31,8 @@ const requiredFiles = [
   ["pool_market_signals.json", (json) => json.module_id === "pool_market_signals_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateMarketSignal)],
   ["signal_quality_report.json", (json) => json.module_id === "signal_quality_report_v0_10_55" && json.confidence_cap_applied_count >= 1],
   ["pool_signal_quality.json", (json) => json.module_id === "pool_signal_quality_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateSignalQuality)],
+  ["evening_observation_summary.json", (json) => json.module_id === "evening_observation_summary_v0_10_56" && json.observation_state === "observe_only" && Array.isArray(json.top_observation_pools) && json.top_observation_pools.every((row) => row.boundary?.includes("observe_only"))],
+  ["pool_observation_scores.json", (json) => json.module_id === "pool_observation_scores_v0_10_56" && Array.isArray(json.rows) && json.rows.every(validateObservationScore)],
   ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_55" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel) && Boolean(json.market_channel) && Boolean(json.quality)],
   ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_55" && Array.isArray(json.history)],
   ["history/latest_observation_pointer.json", validatePointer],
@@ -51,9 +53,10 @@ const evidenceQualities = new Set(["high", "medium", "low", "unavailable"]);
 const proxyRisks = new Set(["none", "low", "medium", "high"]);
 const boundaries = new Set(["observe_only", "manual_review", "blocked"]);
 const deltaFlags = new Set(["insufficient_history", "changed", "stable", "improved_data", "new_signal", "confidence_change"]);
+const observationTiers = new Set(["strong_observe", "moderate_observe", "weak_observe", "insufficient"]);
 
 function validatePointer(json) {
-  return json.module_id === "latest_observation_pointer_v0_10_55"
+  return json.module_id === "latest_observation_pointer_v0_10_56"
     && Boolean(json.latest_as_of)
     && json.latest_path === `financial-pond/data/history/observations/${json.latest_as_of}.json`
     && json.available_snapshot_count >= 1;
@@ -81,6 +84,12 @@ function validateSignalQuality(row) {
     && proxyRisks.has(row.proxy_risk)
     && row.capped_momentum_confidence <= row.raw_momentum_confidence
     && row.capped_liquidity_confidence <= row.raw_liquidity_confidence;
+}
+
+function validateObservationScore(row) {
+  return observationTiers.has(row.observation_tier)
+    && typeof row.observation_score === "number"
+    && row.boundary?.includes("observe_only");
 }
 
 function validateObservationRow(row) {
@@ -113,9 +122,18 @@ for (const [fileName, validate] of requiredFiles) {
 try {
   const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
   const archive = JSON.parse(await readFile(resolve(root, pointer.latest_path), "utf8"));
-  if (archive.module_id !== "observation_archive_v0_10_55" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality) failures.push(`${pointer.latest_path}: archive contract check failed`);
+  if (archive.module_id !== "observation_archive_v0_10_56" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report) failures.push(`${pointer.latest_path}: archive contract check failed`);
 } catch (error) {
   failures.push(`history/observations archive: ${error.message}`);
+}
+
+try {
+  const markdown = await readFile(resolve(root, "financial-pond", "data", "evening_report.md"), "utf8");
+  for (const heading of ["# Evening Observation Summary", "## Observation State", "## Data Readiness", "## What Improved Today", "## Top Observation Pools", "## Caution / Low Quality Pools", "## Main Data Gaps", "## Boundary"]) {
+    if (!markdown.includes(heading)) failures.push(`evening_report.md: missing ${heading}`);
+  }
+} catch (error) {
+  failures.push(`evening_report.md: ${error.message}`);
 }
 
 if (failures.length) {

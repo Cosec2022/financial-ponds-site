@@ -95,6 +95,9 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(assetBuilder, /data\/pool_mapping_report\.json/);
   assert.match(assetBuilder, /data\/signal_quality_report\.json/);
   assert.match(assetBuilder, /data\/pool_signal_quality\.json/);
+  assert.match(assetBuilder, /data\/evening_observation_summary\.json/);
+  assert.match(assetBuilder, /data\/pool_observation_scores\.json/);
+  assert.match(assetBuilder, /data\/evening_report\.md/);
   assert.match(assetBuilder, /data\/history\/latest_observation_pointer\.json/);
   assert.match(assetBuilder, /data\/daily_delta_report\.json/);
   assert.match(assetBuilder, /data\/pool_delta_signals\.json/);
@@ -120,6 +123,9 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(dataValidator, /pool_mapping_report\.json/);
   assert.match(dataValidator, /signal_quality_report\.json/);
   assert.match(dataValidator, /pool_signal_quality\.json/);
+  assert.match(dataValidator, /evening_observation_summary\.json/);
+  assert.match(dataValidator, /pool_observation_scores\.json/);
+  assert.match(dataValidator, /evening_report\.md/);
   assert.match(dataValidator, /history\/latest_observation_pointer\.json/);
   assert.match(dataValidator, /daily_delta_report\.json/);
   assert.match(dataValidator, /pool_delta_signals\.json/);
@@ -133,9 +139,12 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.match(daily, /build-market-signal-channel\.mjs/);
   assert.match(daily, /build-pool-instrument-map\.mjs/);
   assert.match(daily, /build-signal-quality-report\.mjs/);
+  assert.match(daily, /build-evening-observation-summary\.mjs/);
   assert.ok(daily.indexOf("build-pool-instrument-map.mjs") < daily.indexOf("build-market-signal-channel.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("build-signal-quality-report.mjs"));
   assert.ok(daily.indexOf("build-signal-quality-report.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
+  assert.ok(daily.indexOf("build-daily-delta-report.mjs") < daily.indexOf("build-evening-observation-summary.mjs"));
+  assert.ok(daily.lastIndexOf("archive-observation-snapshot.mjs") > daily.indexOf("build-evening-observation-summary.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("build-data-coverage-report.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });

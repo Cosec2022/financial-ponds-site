@@ -36,6 +36,7 @@ const state = {
   marketChannel: null,
   mappingReport: null,
   qualityReport: null,
+  eveningSummary: null,
   delta: null,
   pointer: null,
   pools: [],
@@ -359,6 +360,30 @@ function renderHeader() {
   setText("executionBadge", boundaryLabel(firstDefined(state.snapshot?.execution_state, state.snapshot?.boundary, "observe_only")));
 }
 
+function renderEveningSummary() {
+  const el = document.getElementById("eveningSummary");
+  if (!el) return;
+  const summary = state.eveningSummary;
+  if (!summary) {
+    el.innerHTML = `
+      <div class="coverage-head"><span>Evening Summary</span><strong>observe_only</strong></div>
+      <div class="coverage-counts">evening_observation_summary not loaded</div>
+    `;
+    return;
+  }
+  const pools = asArray(summary.top_observation_pools).slice(0, 3);
+  el.innerHTML = `
+    <div class="coverage-head"><span>Evening Summary</span><strong>${escapeHtml(summary.observation_state ?? "observe_only")}</strong></div>
+    <div class="coverage-counts">
+      ${pools.length ? pools.map((pool) => `${escapeHtml(pool.pool_name)} · ${escapeHtml(pool.observation_tier)}`).join(" · ") : "No observation pool available."}
+    </div>
+    <div class="coverage-gaps">
+      <span>${escapeHtml(summary.main_caution ?? "Evidence quality review required.")}</span>
+      <a href="./data/evening_report.md">evening_report.md</a>
+    </div>
+  `;
+}
+
 function renderPools() {
   const el = document.getElementById("poolList");
   const pools = visiblePools();
@@ -628,6 +653,7 @@ function render() {
   renderHeader();
   renderSummaryStrip();
   renderCoverageStrip();
+  renderEveningSummary();
   renderTabs();
   renderPools();
   renderMain();
@@ -644,7 +670,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, mappingReport, qualityReport, delta, pointer] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, mappingReport, qualityReport, eveningSummary, delta, pointer] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
@@ -655,6 +681,7 @@ async function init() {
     readJson("./data/market_signal_report.json", null),
     readJson("./data/pool_mapping_report.json", null),
     readJson("./data/signal_quality_report.json", null),
+    readJson("./data/evening_observation_summary.json", null),
     readJson("./data/daily_delta_report.json", null),
     readJson("./data/history/latest_observation_pointer.json", null)
   ]);
@@ -668,6 +695,7 @@ async function init() {
   state.marketChannel = marketChannel;
   state.mappingReport = mappingReport;
   state.qualityReport = qualityReport;
+  state.eveningSummary = eveningSummary;
   state.delta = delta;
   state.pointer = pointer;
   state.pools = extractPools(snapshot);

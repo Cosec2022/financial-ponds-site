@@ -15,13 +15,16 @@ const poolInstrumentMap = await readJson(resolve(dataDir, "pool_instrument_map.j
 const poolMappingReport = await readJson(resolve(dataDir, "pool_mapping_report.json"));
 const signalQualityReport = await readJson(resolve(dataDir, "signal_quality_report.json"));
 const poolSignalQuality = await readJson(resolve(dataDir, "pool_signal_quality.json"));
+const eveningObservationSummary = await readJsonOptional(resolve(dataDir, "evening_observation_summary.json"));
+const poolObservationScores = await readJsonOptional(resolve(dataDir, "pool_observation_scores.json"));
+const eveningReport = await readTextOptional(resolve(dataDir, "evening_report.md"));
 const asOf = observation.as_of ?? coverage.as_of ?? flowChannel.as_of;
 if (!asOf) throw new Error("Cannot archive observation snapshot without as_of");
 
 await mkdir(historyDir, { recursive: true });
 
 const archive = {
-  module_id: "observation_archive_v0_10_55",
+  module_id: "observation_archive_v0_10_56",
   as_of: asOf,
   generated_at: new Date().toISOString(),
   observation_snapshot: observation,
@@ -34,6 +37,9 @@ const archive = {
   pool_mapping_report: poolMappingReport,
   signal_quality_report: signalQualityReport,
   pool_signal_quality: poolSignalQuality,
+  evening_observation_summary: eveningObservationSummary,
+  pool_observation_scores: poolObservationScores,
+  evening_report: eveningReport,
   source_files_used: sourceFilesUsed(flowChannel, poolFlowSignals, marketSignalReport, poolMarketSignals),
   boundary_notes: [
     "Daily archive is observation-only and keeps the observe_only boundary.",
@@ -49,7 +55,7 @@ const available = await availableArchives();
 const latestIndex = available.findIndex((item) => item.as_of === asOf);
 const previous = latestIndex > 0 ? available[latestIndex - 1] : null;
 const pointer = {
-  module_id: "latest_observation_pointer_v0_10_55",
+  module_id: "latest_observation_pointer_v0_10_56",
   latest_as_of: asOf,
   latest_path: `financial-pond/data/history/observations/${asOf}.json`,
   previous_as_of: previous?.as_of ?? null,
@@ -77,4 +83,20 @@ function sourceFilesUsed(...reports) {
 
 async function readJson(path) {
   return JSON.parse(await readFile(path, "utf8"));
+}
+
+async function readJsonOptional(path) {
+  try {
+    return await readJson(path);
+  } catch {
+    return null;
+  }
+}
+
+async function readTextOptional(path) {
+  try {
+    return await readFile(path, "utf8");
+  } catch {
+    return null;
+  }
 }

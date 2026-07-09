@@ -17,6 +17,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /Market Channel/);
   assert.match(html, /Mapping/);
   assert.match(html, /Quality/);
+  assert.match(html, /Evening Summary/);
   assert.match(html, /Daily Delta/);
   assert.match(html, /Baseline/);
   assert.match(html, /Signal Health/);
@@ -215,13 +216,13 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const pointer = await worker.fetch(request("/data/history/latest_observation_pointer.json"), {});
   assert.equal(pointer.status, 200);
   const pointerJson = await pointer.json();
-  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_55");
+  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_56");
   assert.ok(pointerJson.latest_path.endsWith(`${pointerJson.latest_as_of}.json`));
 
   const archive = await worker.fetch(request(`/data/history/observations/${pointerJson.latest_as_of}.json`), {});
   assert.equal(archive.status, 200);
   const archiveJson = await archive.json();
-  assert.equal(archiveJson.module_id, "observation_archive_v0_10_55");
+  assert.equal(archiveJson.module_id, "observation_archive_v0_10_56");
   assert.equal(archiveJson.as_of, pointerJson.latest_as_of);
   assert.ok(archiveJson.observation_snapshot);
   assert.ok(archiveJson.data_coverage_report);
@@ -233,6 +234,9 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.ok(archiveJson.pool_mapping_report);
   assert.ok(archiveJson.signal_quality_report);
   assert.ok(archiveJson.pool_signal_quality);
+  assert.ok(archiveJson.evening_observation_summary);
+  assert.ok(archiveJson.pool_observation_scores);
+  assert.match(archiveJson.evening_report, /# Evening Observation Summary/);
 
   const flowChannel = await worker.fetch(request("/data/flow_channel_report.json"), {});
   assert.equal(flowChannel.status, 200);
@@ -285,6 +289,22 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const poolQualityJson = await poolQuality.json();
   assert.equal(poolQualityJson.module_id, "pool_signal_quality_v0_10_55");
   assert.ok(poolQualityJson.rows.every((row) => row.capped_momentum_confidence <= row.raw_momentum_confidence));
+
+  const eveningSummary = await worker.fetch(request("/data/evening_observation_summary.json"), {});
+  assert.equal(eveningSummary.status, 200);
+  const eveningSummaryJson = await eveningSummary.json();
+  assert.equal(eveningSummaryJson.module_id, "evening_observation_summary_v0_10_56");
+  assert.ok(eveningSummaryJson.top_observation_pools.every((row) => row.boundary.includes("observe_only")));
+
+  const observationScores = await worker.fetch(request("/data/pool_observation_scores.json"), {});
+  assert.equal(observationScores.status, 200);
+  const observationScoresJson = await observationScores.json();
+  assert.equal(observationScoresJson.module_id, "pool_observation_scores_v0_10_56");
+  assert.ok(observationScoresJson.rows.length >= 1);
+
+  const eveningReport = await worker.fetch(request("/data/evening_report.md"), {});
+  assert.equal(eveningReport.status, 200);
+  assert.match(await eveningReport.text(), /# Evening Observation Summary/);
 
   const delta = await worker.fetch(request("/data/daily_delta_report.json"), {});
   assert.equal(delta.status, 200);

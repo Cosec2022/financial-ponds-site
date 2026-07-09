@@ -13,6 +13,8 @@ node scripts/build-signal-quality-report.mjs
 node scripts/build-data-coverage-report.mjs
 node scripts/archive-observation-snapshot.mjs
 node scripts/build-daily-delta-report.mjs
+node scripts/build-evening-observation-summary.mjs
+node scripts/archive-observation-snapshot.mjs
 npm run validate:data
 
 echo "Financial Ponds daily persistence complete"
