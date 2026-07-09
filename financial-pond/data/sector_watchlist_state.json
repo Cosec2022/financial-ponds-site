@@ -1,35 +1,36 @@
 {
   "module_id": "sector_watchlist_state_v0_10_45",
-  "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T13:18:56.707Z",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T11:38:12.062Z",
   "status": "watchlist_state_available",
   "guidance_state": "not_ready",
-  "headline": "观察清单状态：0 个确认观察，3 个冲突复核，0 个资金流单线候选；当前 not_ready，不是交易指令。",
+  "headline": "观察清单状态：2 个确认观察，1 个冲突复核，0 个资金流单线候选；当前 not_ready，不是交易指令。",
   "rows": [
     {
-      "sector_id": "ai_computer",
-      "name": "AI计算机",
-      "watch_state": "conflict_review",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "manual_review",
-      "evidence_summary": "state=conflict_review · daily=priority_watch · ETF flow rank=10 · rotation=领先延续 · conflict=manual review",
+      "sector_id": "brokerage",
+      "name": "券商",
+      "watch_state": "confirmed_watch",
+      "previous_state": "conflict_review",
+      "state_change": "upgraded",
+      "priority_level": "high",
+      "evidence_summary": "state=confirmed_watch · daily=priority_watch · ETF flow rank=2 · rotation=领先延续",
       "positive_evidence": [
+        "ETF estimated_flow 为正，流排名 2。",
         "日结论分层为 priority_watch。",
         "轮动标签偏强：领先延续。",
+        "资金量价 review 分数偏正。",
+        "三模块标签偏正：合理且改善。",
+        "ETF estimated_flow positive; rank 2.",
         "daily tier priority_watch.",
-        "rotation strong: 领先延续."
+        "rotation strong: 领先延续.",
+        "flow review score positive."
       ],
       "negative_evidence": [
-        "ETF estimated_flow 为负。",
-        "估值/基本面仍包含手工种子。",
-        "ETF estimated_flow negative."
+        "估值/基本面仍包含手工种子。"
       ],
-      "conflict_evidence": [
-        "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
-      ],
+      "conflict_evidence": [],
       "upgrade_conditions": [
-        "Resolve attribution conflicts.",
+        "Maintain positive evidence without new conflicts.",
         "Confirm ETF flow and rotation persistence on the next run.",
         "ETF readiness must leave watch-only/not-ready state before execution language."
       ],
@@ -40,24 +41,59 @@
       "manual_review_required": true
     },
     {
-      "sector_id": "brokerage",
-      "name": "券商",
-      "watch_state": "conflict_review",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "manual_review",
-      "evidence_summary": "state=conflict_review · daily=priority_watch · ETF flow rank=1 · rotation=领先延续 · conflict=manual review",
+      "sector_id": "communication_electronics",
+      "name": "通信电子",
+      "watch_state": "confirmed_watch",
+      "previous_state": "blocked_execution",
+      "state_change": "upgraded",
+      "priority_level": "high",
+      "evidence_summary": "state=confirmed_watch · daily=priority_watch · ETF flow rank=1 · rotation=领先延续",
       "positive_evidence": [
+        "ETF estimated_flow 为正，流排名 1。",
         "日结论分层为 priority_watch。",
         "轮动标签偏强：领先延续。",
+        "资金量价 review 分数偏正。",
+        "三模块标签偏正：合理且改善。",
+        "ETF estimated_flow positive; rank 1.",
         "daily tier priority_watch.",
-        "rotation strong: 领先延续."
+        "rotation strong: 领先延续.",
+        "flow review score positive."
       ],
       "negative_evidence": [
         "估值/基本面仍包含手工种子。"
       ],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "name": "新能源车",
+      "watch_state": "conflict_review",
+      "previous_state": "avoid_watch",
+      "state_change": "upgraded",
+      "priority_level": "manual_review",
+      "evidence_summary": "state=conflict_review · daily=avoid_watch · ETF flow rank=7 · rotation=弱势延续 · conflict=manual review",
+      "positive_evidence": [
+        "ETF estimated_flow 为正，流排名 7。",
+        "ETF estimated_flow positive; rank 7."
+      ],
+      "negative_evidence": [
+        "日结论分层为 avoid_watch。",
+        "估值/基本面仍包含手工种子。",
+        "daily tier avoid_watch.",
+        "rotation weak: 弱势延续."
+      ],
       "conflict_evidence": [
-        "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
+        "正向 ETF 份额变化流与偏弱/回避日结论不一致，需要人工复核。"
       ],
       "upgrade_conditions": [
         "Resolve attribution conflicts.",
@@ -73,30 +109,28 @@
     {
       "sector_id": "semiconductor",
       "name": "半导体",
-      "watch_state": "conflict_review",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "manual_review",
-      "evidence_summary": "state=conflict_review · daily=confirm_next · ETF flow rank=5 · rotation=领先延续 · conflict=manual review",
+      "watch_state": "deteriorating_watch",
+      "previous_state": "conflict_review",
+      "state_change": "downgraded",
+      "priority_level": "risk_review",
+      "evidence_summary": "state=deteriorating_watch · daily=confirm_next · ETF flow rank=10 · rotation=单日观察",
       "positive_evidence": [
         "日结论分层为 confirm_next。",
-        "轮动标签偏强：领先延续。",
-        "daily tier confirm_next.",
-        "rotation strong: 领先延续."
+        "daily tier confirm_next."
       ],
       "negative_evidence": [
-        "估值/基本面仍包含手工种子。"
+        "ETF estimated_flow 为负。",
+        "估值/基本面仍包含手工种子。",
+        "ETF estimated_flow negative."
       ],
-      "conflict_evidence": [
-        "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
-      ],
+      "conflict_evidence": [],
       "upgrade_conditions": [
-        "Resolve attribution conflicts.",
+        "Maintain positive evidence without new conflicts.",
         "Confirm ETF flow and rotation persistence on the next run.",
         "ETF readiness must leave watch-only/not-ready state before execution language."
       ],
       "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+        "Further negative flow or weak module label keeps the row in risk review."
       ],
       "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
       "manual_review_required": true
@@ -105,8 +139,8 @@
       "sector_id": "basic_chemicals",
       "name": "基础化工",
       "watch_state": "avoid_watch",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "avoid_watch",
+      "state_change": "unchanged",
       "priority_level": "low",
       "evidence_summary": "state=avoid_watch · daily=avoid_watch · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -133,8 +167,8 @@
       "sector_id": "building_materials",
       "name": "建筑材料",
       "watch_state": "avoid_watch",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "avoid_watch",
+      "state_change": "unchanged",
       "priority_level": "low",
       "evidence_summary": "state=avoid_watch · daily=avoid_watch · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -158,49 +192,20 @@
       "manual_review_required": true
     },
     {
-      "sector_id": "new_energy_ev",
-      "name": "新能源车",
+      "sector_id": "real_estate_infra",
+      "name": "地产基建",
       "watch_state": "avoid_watch",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "avoid_watch",
+      "state_change": "unchanged",
       "priority_level": "low",
       "evidence_summary": "state=avoid_watch · daily=avoid_watch · ETF flow rank=8 · rotation=弱势延续",
       "positive_evidence": [],
       "negative_evidence": [
         "ETF estimated_flow 为负。",
         "日结论分层为 avoid_watch。",
-        "资金量价 review 分数偏弱。",
-        "估值/基本面仍包含手工种子。",
-        "ETF estimated_flow negative.",
-        "daily tier avoid_watch.",
-        "rotation weak: 弱势延续.",
-        "flow review score weak."
-      ],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Remain in avoid_watch until flow, rotation, or module evidence improves."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "real_estate_infra",
-      "name": "地产基建",
-      "watch_state": "avoid_watch",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "low",
-      "evidence_summary": "state=avoid_watch · daily=avoid_watch · ETF flow rank=3 · rotation=弱势延续",
-      "positive_evidence": [],
-      "negative_evidence": [
-        "日结论分层为 avoid_watch。",
         "估值/基本面仍包含手工种子。",
         "三模块风险标签：便宜但基本面弱。",
+        "ETF estimated_flow negative.",
         "daily tier avoid_watch.",
         "rotation weak: 弱势延续.",
         "module risk label: 便宜但基本面弱."
@@ -221,8 +226,8 @@
       "sector_id": "retail",
       "name": "商贸零售",
       "watch_state": "avoid_watch",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "avoid_watch",
+      "state_change": "unchanged",
       "priority_level": "low",
       "evidence_summary": "state=avoid_watch · daily=avoid_watch · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -249,8 +254,8 @@
       "sector_id": "steel",
       "name": "钢铁",
       "watch_state": "avoid_watch",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "avoid_watch",
+      "state_change": "unchanged",
       "priority_level": "low",
       "evidence_summary": "state=avoid_watch · daily=avoid_watch · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -274,12 +279,776 @@
       "manual_review_required": true
     },
     {
+      "sector_id": "ai_computer",
+      "name": "AI计算机",
+      "watch_state": "blocked_execution",
+      "previous_state": "conflict_review",
+      "state_change": "downgraded",
+      "priority_level": "medium",
+      "evidence_summary": "state=blocked_execution · daily=confirm_next · ETF flow rank=4 · rotation=领先延续",
+      "positive_evidence": [
+        "ETF estimated_flow 为正，流排名 4。",
+        "日结论分层为 confirm_next。",
+        "轮动标签偏强：领先延续。",
+        "ETF estimated_flow positive; rank 4.",
+        "daily tier confirm_next.",
+        "rotation strong: 领先延续."
+      ],
+      "negative_evidence": [
+        "估值/基本面仍包含手工种子。"
+      ],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "name": "医药医疗",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "medium",
+      "evidence_summary": "state=blocked_execution · daily=confirm_next · ETF flow rank=3 · rotation=--",
+      "positive_evidence": [
+        "ETF estimated_flow 为正，流排名 3。",
+        "日结论分层为 confirm_next。",
+        "ETF estimated_flow positive; rank 3.",
+        "daily tier confirm_next."
+      ],
+      "negative_evidence": [
+        "估值/基本面仍包含手工种子。"
+      ],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share",
+      "name": "a_share",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_agriculture",
+      "name": "a_share_agriculture",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_ai_computer",
+      "name": "a_share_ai_computer",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_bank_insurance",
+      "name": "a_share_bank_insurance",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_basic_chemicals",
+      "name": "a_share_basic_chemicals",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_beauty_care",
+      "name": "a_share_beauty_care",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_brokerage",
+      "name": "a_share_brokerage",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_building_materials",
+      "name": "a_share_building_materials",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_coal",
+      "name": "a_share_coal",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_communication_electronics",
+      "name": "a_share_communication_electronics",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_construction",
+      "name": "a_share_construction",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_consumer",
+      "name": "a_share_consumer",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_defense_military",
+      "name": "a_share_defense_military",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_environmental_protection",
+      "name": "a_share_environmental_protection",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_food_beverage",
+      "name": "a_share_food_beverage",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_healthcare_pharma",
+      "name": "a_share_healthcare_pharma",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_home_appliances",
+      "name": "a_share_home_appliances",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_light_manufacturing",
+      "name": "a_share_light_manufacturing",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_machinery",
+      "name": "a_share_machinery",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_media",
+      "name": "a_share_media",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_new_energy_ev",
+      "name": "a_share_new_energy_ev",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_nonferrous_metals",
+      "name": "a_share_nonferrous_metals",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_petroleum_petrochemical",
+      "name": "a_share_petroleum_petrochemical",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_real_estate_infra",
+      "name": "a_share_real_estate_infra",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_resources_materials",
+      "name": "a_share_resources_materials",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_retail",
+      "name": "a_share_retail",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_semiconductor",
+      "name": "a_share_semiconductor",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_social_services",
+      "name": "a_share_social_services",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_steel",
+      "name": "a_share_steel",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_textile_apparel",
+      "name": "a_share_textile_apparel",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_transportation",
+      "name": "a_share_transportation",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "a_share_utilities",
+      "name": "a_share_utilities",
+      "watch_state": "blocked_execution",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
+      "positive_evidence": [],
+      "negative_evidence": [],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
       "sector_id": "agriculture",
       "name": "Agriculture",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "medium",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
       "negative_evidence": [
@@ -301,742 +1070,17 @@
       "sector_id": "bank_insurance",
       "name": "Bank and Insurance",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "medium",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=7 · rotation=--",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
+      "priority_level": "background",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=11 · rotation=弱势",
       "positive_evidence": [],
       "negative_evidence": [
-        "估值/基本面仍包含手工种子。"
+        "ETF estimated_flow 为负。",
+        "估值/基本面仍包含手工种子。",
+        "ETF estimated_flow negative.",
+        "rotation weak: 弱势."
       ],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "healthcare_pharma",
-      "name": "Healthcare and Pharma",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "medium",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=2 · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [
-        "估值/基本面仍包含手工种子。"
-      ],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share",
-      "name": "a_share",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_agriculture",
-      "name": "a_share_agriculture",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_ai_computer",
-      "name": "a_share_ai_computer",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_bank_insurance",
-      "name": "a_share_bank_insurance",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_basic_chemicals",
-      "name": "a_share_basic_chemicals",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_beauty_care",
-      "name": "a_share_beauty_care",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_brokerage",
-      "name": "a_share_brokerage",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_building_materials",
-      "name": "a_share_building_materials",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_coal",
-      "name": "a_share_coal",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_communication_electronics",
-      "name": "a_share_communication_electronics",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_construction",
-      "name": "a_share_construction",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_consumer",
-      "name": "a_share_consumer",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_defense_military",
-      "name": "a_share_defense_military",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_environmental_protection",
-      "name": "a_share_environmental_protection",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_food_beverage",
-      "name": "a_share_food_beverage",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_healthcare_pharma",
-      "name": "a_share_healthcare_pharma",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_home_appliances",
-      "name": "a_share_home_appliances",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_light_manufacturing",
-      "name": "a_share_light_manufacturing",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_machinery",
-      "name": "a_share_machinery",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_media",
-      "name": "a_share_media",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_new_energy_ev",
-      "name": "a_share_new_energy_ev",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_nonferrous_metals",
-      "name": "a_share_nonferrous_metals",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_petroleum_petrochemical",
-      "name": "a_share_petroleum_petrochemical",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_real_estate_infra",
-      "name": "a_share_real_estate_infra",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_resources_materials",
-      "name": "a_share_resources_materials",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_retail",
-      "name": "a_share_retail",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_semiconductor",
-      "name": "a_share_semiconductor",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_social_services",
-      "name": "a_share_social_services",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_steel",
-      "name": "a_share_steel",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_textile_apparel",
-      "name": "a_share_textile_apparel",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_transportation",
-      "name": "a_share_transportation",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "a_share_utilities",
-      "name": "a_share_utilities",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
-      "positive_evidence": [],
-      "negative_evidence": [],
       "conflict_evidence": [],
       "upgrade_conditions": [
         "Maintain positive evidence without new conflicts.",
@@ -1053,8 +1097,8 @@
       "sector_id": "beauty_care",
       "name": "Beauty Care",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1077,8 +1121,8 @@
       "sector_id": "btc",
       "name": "btc",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1099,8 +1143,8 @@
       "sector_id": "coal",
       "name": "Coal",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1120,40 +1164,11 @@
       "manual_review_required": true
     },
     {
-      "sector_id": "communication_electronics",
-      "name": "Communication and Electronics",
-      "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
-      "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=11 · rotation=弱势",
-      "positive_evidence": [],
-      "negative_evidence": [
-        "ETF estimated_flow 为负。",
-        "资金量价 review 分数偏弱。",
-        "估值/基本面仍包含手工种子。",
-        "ETF estimated_flow negative.",
-        "rotation weak: 弱势.",
-        "flow review score weak."
-      ],
-      "conflict_evidence": [],
-      "upgrade_conditions": [
-        "Maintain positive evidence without new conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
       "sector_id": "construction",
       "name": "Construction",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1176,15 +1191,16 @@
       "sector_id": "consumer",
       "name": "Consumer",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=9 · rotation=--",
-      "positive_evidence": [],
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=6 · rotation=--",
+      "positive_evidence": [
+        "ETF estimated_flow 为正，流排名 6。",
+        "ETF estimated_flow positive; rank 6."
+      ],
       "negative_evidence": [
-        "ETF estimated_flow 为负。",
-        "估值/基本面仍包含手工种子。",
-        "ETF estimated_flow negative."
+        "估值/基本面仍包含手工种子。"
       ],
       "conflict_evidence": [],
       "upgrade_conditions": [
@@ -1200,13 +1216,18 @@
     },
     {
       "sector_id": "defense_military",
-      "name": "Defense and Military",
+      "name": "军工",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=6 · rotation=--",
-      "positive_evidence": [],
+      "evidence_summary": "state=blocked_execution · daily=confirm_next · ETF flow rank=5 · rotation=--",
+      "positive_evidence": [
+        "ETF estimated_flow 为正，流排名 5。",
+        "日结论分层为 confirm_next。",
+        "ETF estimated_flow positive; rank 5.",
+        "daily tier confirm_next."
+      ],
       "negative_evidence": [
         "估值/基本面仍包含手工种子。"
       ],
@@ -1226,8 +1247,8 @@
       "sector_id": "environmental_protection",
       "name": "Environmental Protection",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1250,8 +1271,8 @@
       "sector_id": "food_beverage",
       "name": "Food and Beverage",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1274,8 +1295,8 @@
       "sector_id": "gold",
       "name": "gold",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1296,8 +1317,8 @@
       "sector_id": "home_appliances",
       "name": "Home Appliances",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1320,8 +1341,8 @@
       "sector_id": "light_manufacturing",
       "name": "Light Manufacturing",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1344,8 +1365,8 @@
       "sector_id": "machinery",
       "name": "Machinery",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1368,8 +1389,8 @@
       "sector_id": "media",
       "name": "Media",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1392,8 +1413,8 @@
       "sector_id": "nonferrous_metals",
       "name": "Nonferrous Metals",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1416,8 +1437,8 @@
       "sector_id": "petroleum_petrochemical",
       "name": "Petroleum and Petrochemical",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1440,13 +1461,15 @@
       "sector_id": "resources_materials",
       "name": "Resources and Materials",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=4 · rotation=--",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=9 · rotation=--",
       "positive_evidence": [],
       "negative_evidence": [
-        "估值/基本面仍包含手工种子。"
+        "ETF estimated_flow 为负。",
+        "估值/基本面仍包含手工种子。",
+        "ETF estimated_flow negative."
       ],
       "conflict_evidence": [],
       "upgrade_conditions": [
@@ -1464,8 +1487,8 @@
       "sector_id": "social_services",
       "name": "Social Services",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1488,8 +1511,8 @@
       "sector_id": "sp500",
       "name": "sp500",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1510,8 +1533,8 @@
       "sector_id": "textile_apparel",
       "name": "Textile and Apparel",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1534,8 +1557,8 @@
       "sector_id": "transportation",
       "name": "Transportation",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1558,8 +1581,8 @@
       "sector_id": "us_equity",
       "name": "us_equity",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1580,8 +1603,8 @@
       "sector_id": "utilities",
       "name": "Utilities",
       "watch_state": "blocked_execution",
-      "previous_state": null,
-      "state_change": "new",
+      "previous_state": "blocked_execution",
+      "state_change": "unchanged",
       "priority_level": "background",
       "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=-- · rotation=--",
       "positive_evidence": [],
@@ -1602,35 +1625,36 @@
     }
   ],
   "groups": {
-    "confirmed_watch": [],
-    "conflict_review": [
-      "ai_computer",
+    "confirmed_watch": [
       "brokerage",
-      "semiconductor"
+      "communication_electronics"
+    ],
+    "conflict_review": [
+      "new_energy_ev"
     ],
     "flow_only_candidate": [],
     "rotation_only_candidate": [],
-    "deteriorating_watch": [],
+    "deteriorating_watch": [
+      "semiconductor"
+    ],
     "avoid_watch": [
       "basic_chemicals",
       "building_materials",
-      "new_energy_ev",
       "real_estate_infra",
       "retail",
       "steel"
     ],
     "blocked_execution": [
-      "ai_computer",
       "brokerage",
+      "communication_electronics",
+      "new_energy_ev",
       "semiconductor",
       "basic_chemicals",
       "building_materials",
-      "new_energy_ev",
       "real_estate_infra",
       "retail",
       "steel",
-      "agriculture",
-      "bank_insurance",
+      "ai_computer",
       "healthcare_pharma",
       "a_share",
       "a_share_agriculture",
@@ -1664,10 +1688,11 @@
       "a_share_textile_apparel",
       "a_share_transportation",
       "a_share_utilities",
+      "agriculture",
+      "bank_insurance",
       "beauty_care",
       "btc",
       "coal",
-      "communication_electronics",
       "construction",
       "consumer",
       "defense_military",

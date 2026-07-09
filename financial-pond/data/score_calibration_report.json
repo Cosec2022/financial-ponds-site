@@ -1,30 +1,30 @@
 {
   "module_id": "score_calibration_report_v0_10_57",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T00:52:46.369Z",
-  "strong_count": 12,
-  "moderate_count": 10,
-  "weak_count": 10,
-  "insufficient_count": 35,
+  "generated_at": "2026-07-09T11:38:14.383Z",
+  "strong_count": 10,
+  "moderate_count": 12,
+  "weak_count": 0,
+  "insufficient_count": 45,
   "score_min": 0,
-  "score_max": 84.06,
-  "score_median": 27.18,
+  "score_max": 89,
+  "score_median": 27.84,
   "score_distribution": [
     {
       "range": "77-100",
-      "count": 12
+      "count": 10
     },
     {
       "range": "55-76.9999",
-      "count": 10
+      "count": 12
     },
     {
       "range": "35-54.9999",
-      "count": 10
+      "count": 0
     },
     {
       "range": "0-34.9999",
-      "count": 35
+      "count": 45
     }
   ],
   "threshold_rules": {

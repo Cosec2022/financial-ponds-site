@@ -2,13 +2,13 @@
   "doctor_id": "akshare_etf_bridge_doctor_v0_10_24",
   "provider": "akshare",
   "status": "ok",
-  "started_at": "2026-07-08T13:17:44.568089+00:00",
-  "finished_at": "2026-07-08T13:17:45.356075+00:00",
+  "started_at": "2026-07-09T11:36:23.163600+00:00",
+  "finished_at": "2026-07-09T11:36:23.695115+00:00",
   "checks": [
     {
       "id": "python_runtime",
       "status": "ok",
-      "detail": "3.10.6 (v3.10.6:9c7b4bd164, Aug  1 2022, 17:13:48) [Clang 13.0.0 (clang-1300.0.29.30)]"
+      "detail": "3.10.20 (main, Jun 16 2026, 21:01:32) [GCC 13.3.0]"
     },
     {
       "id": "akshare_import",

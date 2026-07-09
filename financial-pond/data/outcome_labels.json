@@ -2413,6 +2413,2418 @@
       "due_date": "2026-07-28",
       "status": "pending",
       "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share",
+      "pool_name": "a_share",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share",
+      "pool_name": "a_share",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share",
+      "pool_name": "a_share",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share",
+      "pool_name": "a_share",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_agriculture",
+      "pool_name": "a_share_agriculture",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_agriculture",
+      "pool_name": "a_share_agriculture",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_agriculture",
+      "pool_name": "a_share_agriculture",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_agriculture",
+      "pool_name": "a_share_agriculture",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_ai_computer",
+      "pool_name": "a_share_ai_computer",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_ai_computer",
+      "pool_name": "a_share_ai_computer",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_ai_computer",
+      "pool_name": "a_share_ai_computer",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_ai_computer",
+      "pool_name": "a_share_ai_computer",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_bank_insurance",
+      "pool_name": "a_share_bank_insurance",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_bank_insurance",
+      "pool_name": "a_share_bank_insurance",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_bank_insurance",
+      "pool_name": "a_share_bank_insurance",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_bank_insurance",
+      "pool_name": "a_share_bank_insurance",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_basic_chemicals",
+      "pool_name": "a_share_basic_chemicals",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_basic_chemicals",
+      "pool_name": "a_share_basic_chemicals",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_basic_chemicals",
+      "pool_name": "a_share_basic_chemicals",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_basic_chemicals",
+      "pool_name": "a_share_basic_chemicals",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_beauty_care",
+      "pool_name": "a_share_beauty_care",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_beauty_care",
+      "pool_name": "a_share_beauty_care",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_beauty_care",
+      "pool_name": "a_share_beauty_care",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_beauty_care",
+      "pool_name": "a_share_beauty_care",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_brokerage",
+      "pool_name": "a_share_brokerage",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_brokerage",
+      "pool_name": "a_share_brokerage",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_brokerage",
+      "pool_name": "a_share_brokerage",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_brokerage",
+      "pool_name": "a_share_brokerage",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_building_materials",
+      "pool_name": "a_share_building_materials",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_building_materials",
+      "pool_name": "a_share_building_materials",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_building_materials",
+      "pool_name": "a_share_building_materials",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_building_materials",
+      "pool_name": "a_share_building_materials",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_coal",
+      "pool_name": "a_share_coal",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_coal",
+      "pool_name": "a_share_coal",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_coal",
+      "pool_name": "a_share_coal",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_coal",
+      "pool_name": "a_share_coal",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_communication_electronics",
+      "pool_name": "a_share_communication_electronics",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_communication_electronics",
+      "pool_name": "a_share_communication_electronics",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_communication_electronics",
+      "pool_name": "a_share_communication_electronics",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_communication_electronics",
+      "pool_name": "a_share_communication_electronics",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_construction",
+      "pool_name": "a_share_construction",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_construction",
+      "pool_name": "a_share_construction",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_construction",
+      "pool_name": "a_share_construction",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_construction",
+      "pool_name": "a_share_construction",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_consumer",
+      "pool_name": "a_share_consumer",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_consumer",
+      "pool_name": "a_share_consumer",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_consumer",
+      "pool_name": "a_share_consumer",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_consumer",
+      "pool_name": "a_share_consumer",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_defense_military",
+      "pool_name": "a_share_defense_military",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_defense_military",
+      "pool_name": "a_share_defense_military",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_defense_military",
+      "pool_name": "a_share_defense_military",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_defense_military",
+      "pool_name": "a_share_defense_military",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_environmental_protection",
+      "pool_name": "a_share_environmental_protection",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_environmental_protection",
+      "pool_name": "a_share_environmental_protection",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_environmental_protection",
+      "pool_name": "a_share_environmental_protection",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_environmental_protection",
+      "pool_name": "a_share_environmental_protection",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_food_beverage",
+      "pool_name": "a_share_food_beverage",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_food_beverage",
+      "pool_name": "a_share_food_beverage",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_food_beverage",
+      "pool_name": "a_share_food_beverage",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_food_beverage",
+      "pool_name": "a_share_food_beverage",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_healthcare_pharma",
+      "pool_name": "a_share_healthcare_pharma",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_healthcare_pharma",
+      "pool_name": "a_share_healthcare_pharma",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_healthcare_pharma",
+      "pool_name": "a_share_healthcare_pharma",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_healthcare_pharma",
+      "pool_name": "a_share_healthcare_pharma",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_home_appliances",
+      "pool_name": "a_share_home_appliances",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_home_appliances",
+      "pool_name": "a_share_home_appliances",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_home_appliances",
+      "pool_name": "a_share_home_appliances",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_home_appliances",
+      "pool_name": "a_share_home_appliances",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_light_manufacturing",
+      "pool_name": "a_share_light_manufacturing",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_light_manufacturing",
+      "pool_name": "a_share_light_manufacturing",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_light_manufacturing",
+      "pool_name": "a_share_light_manufacturing",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_light_manufacturing",
+      "pool_name": "a_share_light_manufacturing",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_machinery",
+      "pool_name": "a_share_machinery",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_machinery",
+      "pool_name": "a_share_machinery",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_machinery",
+      "pool_name": "a_share_machinery",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_machinery",
+      "pool_name": "a_share_machinery",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_media",
+      "pool_name": "a_share_media",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_media",
+      "pool_name": "a_share_media",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_media",
+      "pool_name": "a_share_media",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_media",
+      "pool_name": "a_share_media",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_new_energy_ev",
+      "pool_name": "a_share_new_energy_ev",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_new_energy_ev",
+      "pool_name": "a_share_new_energy_ev",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_new_energy_ev",
+      "pool_name": "a_share_new_energy_ev",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_new_energy_ev",
+      "pool_name": "a_share_new_energy_ev",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_nonferrous_metals",
+      "pool_name": "a_share_nonferrous_metals",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_nonferrous_metals",
+      "pool_name": "a_share_nonferrous_metals",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_nonferrous_metals",
+      "pool_name": "a_share_nonferrous_metals",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_nonferrous_metals",
+      "pool_name": "a_share_nonferrous_metals",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_petroleum_petrochemical",
+      "pool_name": "a_share_petroleum_petrochemical",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_petroleum_petrochemical",
+      "pool_name": "a_share_petroleum_petrochemical",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_petroleum_petrochemical",
+      "pool_name": "a_share_petroleum_petrochemical",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_petroleum_petrochemical",
+      "pool_name": "a_share_petroleum_petrochemical",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_real_estate_infra",
+      "pool_name": "a_share_real_estate_infra",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_real_estate_infra",
+      "pool_name": "a_share_real_estate_infra",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_real_estate_infra",
+      "pool_name": "a_share_real_estate_infra",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_real_estate_infra",
+      "pool_name": "a_share_real_estate_infra",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_resources_materials",
+      "pool_name": "a_share_resources_materials",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_resources_materials",
+      "pool_name": "a_share_resources_materials",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_resources_materials",
+      "pool_name": "a_share_resources_materials",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_resources_materials",
+      "pool_name": "a_share_resources_materials",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_retail",
+      "pool_name": "a_share_retail",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_retail",
+      "pool_name": "a_share_retail",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_retail",
+      "pool_name": "a_share_retail",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_retail",
+      "pool_name": "a_share_retail",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_semiconductor",
+      "pool_name": "a_share_semiconductor",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_semiconductor",
+      "pool_name": "a_share_semiconductor",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_semiconductor",
+      "pool_name": "a_share_semiconductor",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_semiconductor",
+      "pool_name": "a_share_semiconductor",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_social_services",
+      "pool_name": "a_share_social_services",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_social_services",
+      "pool_name": "a_share_social_services",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_social_services",
+      "pool_name": "a_share_social_services",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_social_services",
+      "pool_name": "a_share_social_services",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_steel",
+      "pool_name": "a_share_steel",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_steel",
+      "pool_name": "a_share_steel",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_steel",
+      "pool_name": "a_share_steel",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_steel",
+      "pool_name": "a_share_steel",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_textile_apparel",
+      "pool_name": "a_share_textile_apparel",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_textile_apparel",
+      "pool_name": "a_share_textile_apparel",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_textile_apparel",
+      "pool_name": "a_share_textile_apparel",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_textile_apparel",
+      "pool_name": "a_share_textile_apparel",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_transportation",
+      "pool_name": "a_share_transportation",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_transportation",
+      "pool_name": "a_share_transportation",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_transportation",
+      "pool_name": "a_share_transportation",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_transportation",
+      "pool_name": "a_share_transportation",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_utilities",
+      "pool_name": "a_share_utilities",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_utilities",
+      "pool_name": "a_share_utilities",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_utilities",
+      "pool_name": "a_share_utilities",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_a_share_utilities",
+      "pool_name": "a_share_utilities",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_agriculture",
+      "pool_name": "Agriculture",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_agriculture",
+      "pool_name": "Agriculture",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_agriculture",
+      "pool_name": "Agriculture",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_agriculture",
+      "pool_name": "Agriculture",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "Bank and Insurance",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "Bank and Insurance",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "Bank and Insurance",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "Bank and Insurance",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_basic_chemicals",
+      "pool_name": "基础化工",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_basic_chemicals",
+      "pool_name": "基础化工",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_basic_chemicals",
+      "pool_name": "基础化工",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_basic_chemicals",
+      "pool_name": "基础化工",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_beauty_care",
+      "pool_name": "Beauty Care",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_beauty_care",
+      "pool_name": "Beauty Care",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_beauty_care",
+      "pool_name": "Beauty Care",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_beauty_care",
+      "pool_name": "Beauty Care",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_btc",
+      "pool_name": "btc",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_btc",
+      "pool_name": "btc",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_btc",
+      "pool_name": "btc",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_btc",
+      "pool_name": "btc",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_building_materials",
+      "pool_name": "建筑材料",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_building_materials",
+      "pool_name": "建筑材料",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_building_materials",
+      "pool_name": "建筑材料",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_building_materials",
+      "pool_name": "建筑材料",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_coal",
+      "pool_name": "Coal",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_coal",
+      "pool_name": "Coal",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_coal",
+      "pool_name": "Coal",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_coal",
+      "pool_name": "Coal",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_construction",
+      "pool_name": "Construction",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_construction",
+      "pool_name": "Construction",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_construction",
+      "pool_name": "Construction",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_construction",
+      "pool_name": "Construction",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_consumer",
+      "pool_name": "Consumer",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_consumer",
+      "pool_name": "Consumer",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_consumer",
+      "pool_name": "Consumer",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_consumer",
+      "pool_name": "Consumer",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_defense_military",
+      "pool_name": "军工",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_defense_military",
+      "pool_name": "军工",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_defense_military",
+      "pool_name": "军工",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_defense_military",
+      "pool_name": "军工",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_environmental_protection",
+      "pool_name": "Environmental Protection",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_environmental_protection",
+      "pool_name": "Environmental Protection",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_environmental_protection",
+      "pool_name": "Environmental Protection",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_environmental_protection",
+      "pool_name": "Environmental Protection",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_food_beverage",
+      "pool_name": "Food and Beverage",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_food_beverage",
+      "pool_name": "Food and Beverage",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_food_beverage",
+      "pool_name": "Food and Beverage",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_food_beverage",
+      "pool_name": "Food and Beverage",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_gold",
+      "pool_name": "gold",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_gold",
+      "pool_name": "gold",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_gold",
+      "pool_name": "gold",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_gold",
+      "pool_name": "gold",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "医药医疗",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "医药医疗",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "医药医疗",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "医药医疗",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_home_appliances",
+      "pool_name": "Home Appliances",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_home_appliances",
+      "pool_name": "Home Appliances",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_home_appliances",
+      "pool_name": "Home Appliances",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_home_appliances",
+      "pool_name": "Home Appliances",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_light_manufacturing",
+      "pool_name": "Light Manufacturing",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_light_manufacturing",
+      "pool_name": "Light Manufacturing",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_light_manufacturing",
+      "pool_name": "Light Manufacturing",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_light_manufacturing",
+      "pool_name": "Light Manufacturing",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_machinery",
+      "pool_name": "Machinery",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_machinery",
+      "pool_name": "Machinery",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_machinery",
+      "pool_name": "Machinery",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_machinery",
+      "pool_name": "Machinery",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_media",
+      "pool_name": "Media",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_media",
+      "pool_name": "Media",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_media",
+      "pool_name": "Media",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_media",
+      "pool_name": "Media",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_new_energy_ev",
+      "pool_name": "新能源车",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_new_energy_ev",
+      "pool_name": "新能源车",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_new_energy_ev",
+      "pool_name": "新能源车",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_new_energy_ev",
+      "pool_name": "新能源车",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_nonferrous_metals",
+      "pool_name": "Nonferrous Metals",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_nonferrous_metals",
+      "pool_name": "Nonferrous Metals",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_nonferrous_metals",
+      "pool_name": "Nonferrous Metals",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_nonferrous_metals",
+      "pool_name": "Nonferrous Metals",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_petroleum_petrochemical",
+      "pool_name": "Petroleum and Petrochemical",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_petroleum_petrochemical",
+      "pool_name": "Petroleum and Petrochemical",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_petroleum_petrochemical",
+      "pool_name": "Petroleum and Petrochemical",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_petroleum_petrochemical",
+      "pool_name": "Petroleum and Petrochemical",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_real_estate_infra",
+      "pool_name": "地产基建",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_real_estate_infra",
+      "pool_name": "地产基建",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_real_estate_infra",
+      "pool_name": "地产基建",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_real_estate_infra",
+      "pool_name": "地产基建",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_resources_materials",
+      "pool_name": "Resources and Materials",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_resources_materials",
+      "pool_name": "Resources and Materials",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_resources_materials",
+      "pool_name": "Resources and Materials",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_resources_materials",
+      "pool_name": "Resources and Materials",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_retail",
+      "pool_name": "商贸零售",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_retail",
+      "pool_name": "商贸零售",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_retail",
+      "pool_name": "商贸零售",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_retail",
+      "pool_name": "商贸零售",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "available"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_social_services",
+      "pool_name": "Social Services",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_social_services",
+      "pool_name": "Social Services",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_social_services",
+      "pool_name": "Social Services",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_social_services",
+      "pool_name": "Social Services",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_sp500",
+      "pool_name": "sp500",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_sp500",
+      "pool_name": "sp500",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_sp500",
+      "pool_name": "sp500",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_sp500",
+      "pool_name": "sp500",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_steel",
+      "pool_name": "钢铁",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_steel",
+      "pool_name": "钢铁",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_steel",
+      "pool_name": "钢铁",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_steel",
+      "pool_name": "钢铁",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_textile_apparel",
+      "pool_name": "Textile and Apparel",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_textile_apparel",
+      "pool_name": "Textile and Apparel",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_textile_apparel",
+      "pool_name": "Textile and Apparel",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_textile_apparel",
+      "pool_name": "Textile and Apparel",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_transportation",
+      "pool_name": "Transportation",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_transportation",
+      "pool_name": "Transportation",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_transportation",
+      "pool_name": "Transportation",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_transportation",
+      "pool_name": "Transportation",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_us_equity",
+      "pool_name": "us_equity",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_us_equity",
+      "pool_name": "us_equity",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_us_equity",
+      "pool_name": "us_equity",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_us_equity",
+      "pool_name": "us_equity",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_utilities",
+      "pool_name": "Utilities",
+      "horizon": "T+1",
+      "due_date": "2026-07-10",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_utilities",
+      "pool_name": "Utilities",
+      "horizon": "T+3",
+      "due_date": "2026-07-12",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_utilities",
+      "pool_name": "Utilities",
+      "horizon": "T+5",
+      "due_date": "2026-07-14",
+      "status": "pending",
+      "trace_status": "missing"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_utilities",
+      "pool_name": "Utilities",
+      "horizon": "T+20",
+      "due_date": "2026-07-29",
+      "status": "pending",
+      "trace_status": "missing"
     }
   ]
 }
