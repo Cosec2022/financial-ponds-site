@@ -1,6 +1,6 @@
 # Right-Side Major-Wave Model
 
-Version: v0.10.63
+Version: v0.10.64
 
 ## Purpose
 

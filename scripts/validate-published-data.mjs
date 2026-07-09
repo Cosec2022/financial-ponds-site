@@ -38,7 +38,7 @@ const requiredFiles = [
   ["candidate_state_model.json", validateCandidateStateModel],
   ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_63" && json.candidate_count >= 1 && Boolean(json.next_review_dates) && Array.isArray(json.next_due_reviews)],
   ["candidate_outcome_reviews.json", validateOutcomeReviews],
-  ["outcome_review_report.json", (json) => json.module_id === "outcome_review_report_v0_10_63" && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && typeof json.unavailable_count === "number" && Array.isArray(json.next_due_reviews)],
+  ["outcome_review_report.json", (json) => json.module_id === "outcome_review_report_v0_10_64" && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && typeof json.unavailable_count === "number" && Boolean(json.unavailable_by_reason) && Array.isArray(json.next_due_reviews)],
   ["candidate_due_review_verification.json", validateDueReviewVerification],
   ["candidate_price_basis.json", validateCandidatePriceBasis],
   ["review_readiness_report.json", (json) => json.module_id === "review_readiness_report_v0_10_61" && readinessStates.has(json.readiness_state) && json.candidate_count === json.baseline_available_count + json.baseline_missing_count],
@@ -74,7 +74,7 @@ const candidateStates = new Set(["Noise", "Pulse", "Early Right", "Major Candida
 const riskGateStatuses = new Set(["pass", "caution", "block", "insufficient_data"]);
 
 function validatePointer(json) {
-  return json.module_id === "latest_observation_pointer_v0_10_63"
+  return json.module_id === "latest_observation_pointer_v0_10_64"
     && Boolean(json.latest_as_of)
     && json.latest_path === `financial-pond/data/history/observations/${json.latest_as_of}.json`
     && json.available_snapshot_count >= 1;
@@ -121,7 +121,7 @@ function validateCandidate(row) {
 }
 
 function validateOutcomeReviews(json) {
-  return json.module_id === "candidate_outcome_reviews_v0_10_63"
+  return json.module_id === "candidate_outcome_reviews_v0_10_64"
     && Array.isArray(json.rows)
     && json.rows.every((row) => {
       const future = row.review_as_of > json.as_of;
@@ -163,7 +163,7 @@ function validateCandidateStateModel(json) {
 }
 
 function validateCandidateReviewHistory(json) {
-  return json.module_id === "candidate_review_history_v0_10_63"
+  return json.module_id === "candidate_review_history_v0_10_64"
     && Array.isArray(json.rows)
     && json.rows.length >= 1
     && json.rows.every((row) => validateStateFields(row) && Array.isArray(row.due_review_verifications) && row.boundary?.includes("observe_only"));
@@ -178,12 +178,13 @@ function validateCandidateReviewAnalytics(json) {
     && metricOk(row.win_rate_vs_benchmark)
     && metricOk(row.average_return)
     && metricOk(row.average_excess_return);
-  return json.module_id === "candidate_review_analytics_v0_10_63"
+  return json.module_id === "candidate_review_analytics_v0_10_64"
     && ["analytics_available", "insufficient_sample"].includes(json.status)
     && typeof json.total_reviewed === "number"
     && json.reviewed_rows === json.total_reviewed
     && typeof json.pending_rows === "number"
     && typeof json.unavailable_rows === "number"
+    && validateUnavailableBreakdown(json.unavailable_by_reason)
     && typeof json.insufficient_sample_rows === "number"
     && metricOk(json.win_rate_absolute)
     && metricOk(json.win_rate_vs_benchmark)
@@ -205,22 +206,38 @@ function validateCandidateReviewAnalytics(json) {
 }
 
 function validateDueReviewVerification(json) {
-  return json.module_id === "candidate_due_review_verification_v0_10_63"
+  return json.module_id === "candidate_due_review_verification_v0_10_64"
     && typeof json.due_review_count === "number"
     && typeof json.reviewed_count === "number"
     && typeof json.pending_count === "number"
     && typeof json.unavailable_count === "number"
+    && validateUnavailableBreakdown(json.unavailable_by_reason)
     && Array.isArray(json.rows)
     && json.rows.every((row) => {
       const unavailable = String(row.review_status).startsWith("unavailable_");
+      const dueDiagnosticsOk = !row.is_due || (
+        Boolean(row.symbol || row.review_status === "skipped_invalid_baseline")
+        && "latest_available_price_date" in row
+      );
       return ["T+1", "T+3"].includes(row.review_horizon)
+        && Boolean(row.name)
+        && Boolean(row.as_of)
+        && Boolean(row.review_due_date)
+        && Boolean(row.expected_review_price_date)
         && typeof row.is_due === "boolean"
         && typeof row.required_market_data_exists === "boolean"
         && typeof row.review_completed === "boolean"
         && outcomeReviewStatuses.has(row.review_status)
         && (!unavailable || Boolean(row.unavailable_reason))
+        && Boolean(row.diagnostic_note)
+        && dueDiagnosticsOk
         && row.boundary?.includes("observe_only");
     });
+}
+
+function validateUnavailableBreakdown(value) {
+  return Boolean(value)
+    && ["unavailable_market_closed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_data_stale", "skipped_invalid_baseline"].every((key) => typeof value[key] === "number");
 }
 
 function validateOutcomeAvailability(row) {
@@ -281,7 +298,7 @@ for (const [fileName, validate] of requiredFiles) {
 try {
   const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
   const archive = JSON.parse(await readFile(resolve(root, pointer.latest_path), "utf8"));
-  if (archive.module_id !== "observation_archive_v0_10_63" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_state_model || !archive.candidate_review_schedule || !archive.candidate_outcome_reviews || !archive.outcome_review_report || !archive.candidate_due_review_verification || !archive.candidate_price_basis || !archive.review_readiness_report || !archive.candidate_review_history || !archive.candidate_review_analytics) failures.push(`${pointer.latest_path}: archive contract check failed`);
+  if (archive.module_id !== "observation_archive_v0_10_64" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_state_model || !archive.candidate_review_schedule || !archive.candidate_outcome_reviews || !archive.outcome_review_report || !archive.candidate_due_review_verification || !archive.candidate_price_basis || !archive.review_readiness_report || !archive.candidate_review_history || !archive.candidate_review_analytics) failures.push(`${pointer.latest_path}: archive contract check failed`);
 } catch (error) {
   failures.push(`history/observations archive: ${error.message}`);
 }

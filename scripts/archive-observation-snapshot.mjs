@@ -35,7 +35,7 @@ if (!asOf) throw new Error("Cannot archive observation snapshot without as_of");
 await mkdir(historyDir, { recursive: true });
 
 const archive = {
-  module_id: "observation_archive_v0_10_63",
+  module_id: "observation_archive_v0_10_64",
   as_of: asOf,
   generated_at: new Date().toISOString(),
   observation_snapshot: observation,
@@ -77,7 +77,7 @@ const available = await availableArchives();
 const latestIndex = available.findIndex((item) => item.as_of === asOf);
 const previous = latestIndex > 0 ? available[latestIndex - 1] : null;
 const pointer = {
-  module_id: "latest_observation_pointer_v0_10_63",
+  module_id: "latest_observation_pointer_v0_10_64",
   latest_as_of: asOf,
   latest_path: `financial-pond/data/history/observations/${asOf}.json`,
   previous_as_of: previous?.as_of ?? null,

@@ -200,7 +200,8 @@ function renderReviewSchedule() {
   `;
   document.getElementById("outcomeReviewLine").textContent = `Outcome Review: reviewed ${outcome.reviewed_count ?? 0} / pending ${outcome.pending_count ?? 0} / next due ${nextOutcomeDue(outcome)}`;
   document.getElementById("reviewReadinessLine").textContent = `Review Readiness: ready ${readiness.baseline_available_count ?? 0} / missing basis ${readiness.baseline_missing_count ?? 0} / next due ${readiness.next_due_date ?? "--"}`;
-  document.getElementById("reviewAnalyticsLine").textContent = `Review Analytics: due reviews ${outcome.due_review_count ?? 0} / reviewed ${analytics.reviewed_rows ?? outcome.reviewed_count ?? 0} / pending ${analytics.pending_rows ?? outcome.pending_count ?? 0} / unavailable ${analytics.unavailable_rows ?? outcome.unavailable_count ?? 0} / next due ${nextOutcomeDue(outcome)}`;
+  const unavailable = analytics.unavailable_by_reason ?? outcome.unavailable_by_reason ?? {};
+  document.getElementById("reviewAnalyticsLine").textContent = `Review Analytics: due reviews ${outcome.due_review_count ?? 0} / reviewed ${analytics.reviewed_rows ?? outcome.reviewed_count ?? 0} / pending ${analytics.pending_rows ?? outcome.pending_count ?? 0} / unavailable ${analytics.unavailable_rows ?? outcome.unavailable_count ?? 0} / market closed ${unavailable.unavailable_market_closed ?? 0} / stale ${unavailable.unavailable_data_stale ?? 0} / missing price ${unavailable.unavailable_missing_price ?? 0} / missing benchmark ${unavailable.unavailable_missing_benchmark ?? 0} / invalid baseline ${unavailable.skipped_invalid_baseline ?? 0} / next due ${nextOutcomeDue(outcome)}`;
 }
 
 function renderCollapsedDetails() {

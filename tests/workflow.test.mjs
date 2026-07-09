@@ -159,6 +159,14 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(outcomeEngine, /candidate_review_history\.json/);
   assert.match(outcomeEngine, /candidate_due_review_verification\.json/);
   assert.match(outcomeEngine, /unavailable_missing_price/);
+  assert.match(outcomeEngine, /unavailable_missing_benchmark/);
+  assert.match(outcomeEngine, /unavailable_market_closed/);
+  assert.match(outcomeEngine, /unavailable_data_stale/);
+  assert.match(outcomeEngine, /skipped_invalid_baseline/);
+  assert.match(outcomeEngine, /isTodayBeforeMarketClose/);
+  assert.match(outcomeEngine, /benchmarkRow/);
+  assert.match(outcomeEngine, /diagnostic_note/);
+  assert.match(outcomeEngine, /unavailable_by_reason/);
   assert.match(outcomeEngine, /pending_not_due/);
   assert.match(outcomeEngine, /candidate_state/);
   assert.match(outcomeEngine, /major_wave_score/);

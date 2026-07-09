@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.10.64 - Due review unavailability diagnostics
+
+- Bumped site and framework package versions to `0.10.64`.
+- Added unavailable reason breakdowns to due review verification, outcome
+  reporting, review analytics, and the dashboard line.
+- Due T+1/T+3 rows now persist symbol, expected review price date, latest
+  available price date, benchmark diagnostics, unavailable reason, and a short
+  diagnostic note.
+- Outcome review logic now separates market-not-closed, stale provider data,
+  missing candidate price, missing benchmark price, and invalid baselines.
+- Re-runs can move the same due row from unavailable to reviewed once real
+  candidate and benchmark prices are available, without duplicating rows.
+
+Important boundary:
+
+- Unavailable and pending rows are not counted as wins or losses.
+- Future outcomes remain pending and are not fabricated.
+
 ## v0.10.63 - Explicit due review verification
 
 - Bumped site and framework package versions to `0.10.63`.

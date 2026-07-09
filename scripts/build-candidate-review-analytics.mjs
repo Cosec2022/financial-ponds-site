@@ -13,13 +13,14 @@ const reviewChecks = (history.rows ?? []).flatMap((row) => horizons.map((horizon
 const pendingRows = reviewChecks.filter(({ result }) => result?.review_status === "pending_not_due");
 const unavailableRows = reviewChecks.filter(({ result }) => String(result?.review_status ?? "").startsWith("unavailable_"));
 const insufficientRows = reviewChecks.filter(({ result }) => result?.review_status === "skipped_invalid_baseline");
+const unavailableStatuses = ["unavailable_market_closed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_data_stale", "skipped_invalid_baseline"];
 const stateUniverse = unique((history.rows ?? []).map((row) => row.candidate_state).filter(Boolean));
 const riskUniverse = unique((history.rows ?? []).map((row) => row.risk_gate_status).filter(Boolean));
 const overheatBucketUniverse = unique((history.rows ?? []).map((row) => scoreBucket(row.overheat_score)));
 const majorBucketUniverse = unique((history.rows ?? []).map((row) => scoreBucket(row.major_wave_score)));
 
 const analytics = {
-  module_id: "candidate_review_analytics_v0_10_63",
+  module_id: "candidate_review_analytics_v0_10_64",
   as_of: history.as_of ?? report.as_of,
   generated_at: generatedAt,
   status: reviewed.length >= minSample ? "analytics_available" : "insufficient_sample",
@@ -32,7 +33,8 @@ const analytics = {
   total_reviewed: reviewed.length,
   reviewed_rows: reviewed.length,
   pending_rows: pendingRows.length,
-  unavailable_rows: unavailableRows.length,
+  unavailable_rows: unavailableRows.length + insufficientRows.length,
+  unavailable_by_reason: countUnavailableByReason(reviewChecks.map(({ result }) => result).filter(Boolean)),
   insufficient_sample_rows: reviewed.length < minSample ? reviewed.length : 0,
   insufficient_review_rows: insufficientRows.length,
   win_rate_absolute: rateOrInsufficient(reviewed, (row) => row.observed_return > 0),
@@ -50,7 +52,7 @@ const analytics = {
   boundary_notes: [
     "observe_only",
     "Analytics use reviewed outcomes only.",
-    "Pending, unavailable, and insufficient_data rows are excluded from rates.",
+    "Pending and unavailable rows are excluded from rates.",
     "Small samples are marked insufficient_sample instead of producing false precision."
   ]
 };
@@ -110,6 +112,13 @@ function groupSummary(rows, field, universe = []) {
 
 function unique(values) {
   return [...new Set(values)].sort();
+}
+
+function countUnavailableByReason(rows) {
+  return unavailableStatuses.reduce((counts, status) => {
+    counts[status] = rows.filter((row) => row.review_status === status).length;
+    return counts;
+  }, {});
 }
 
 function rateOrInsufficient(rows, predicate) {
