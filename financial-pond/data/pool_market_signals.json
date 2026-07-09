@@ -1,7 +1,7 @@
 {
-  "module_id": "pool_market_signals_v0_10_54",
+  "module_id": "pool_market_signals_v0_10_55",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T00:17:54.960Z",
+  "generated_at": "2026-07-09T00:24:33.685Z",
   "source_files_used": [
     "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
@@ -30,7 +30,28 @@
       "mapping_method": "No defensible instrument is present in the current provider export.",
       "proxy_level": "none",
       "instrument_code": null,
-      "instrument_name": null
+      "instrument_name": null,
+      "raw_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "confidence_cap": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "capped_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "momentum_raw_confidence": 0,
+      "liquidity_raw_confidence": 0,
+      "momentum_confidence_cap": 0,
+      "liquidity_confidence_cap": 0,
+      "momentum_capped_confidence": 0,
+      "liquidity_capped_confidence": 0,
+      "evidence_quality": "unavailable",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "No usable mapping; confidence capped at 0."
     },
     {
       "pool_id": "a_share_a_share_agriculture",
@@ -38,12 +59,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -58,7 +79,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_a_share_ai_computer",
@@ -66,12 +108,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": 1.84,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 807496409.361,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -86,7 +128,28 @@
       "instrument_name": "人工智能ETF易方达",
       "source_date": "2026-07-08",
       "fund_code": "159819",
-      "fund_name": "人工智能ETF易方达"
+      "fund_name": "人工智能ETF易方达",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_bank_insurance",
@@ -94,12 +157,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": 1.45,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 785232565,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -114,7 +177,28 @@
       "instrument_name": "银行ETF华宝",
       "source_date": "2026-07-08",
       "fund_code": "512800",
-      "fund_name": "银行ETF华宝"
+      "fund_name": "银行ETF华宝",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_basic_chemicals",
@@ -122,12 +206,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -142,7 +226,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_beauty_care",
@@ -150,12 +255,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -170,7 +275,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_brokerage",
@@ -178,12 +304,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -1.3,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 1253277254,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -198,7 +324,28 @@
       "instrument_name": "券商ETF华宝",
       "source_date": "2026-07-08",
       "fund_code": "512000",
-      "fund_name": "券商ETF华宝"
+      "fund_name": "券商ETF华宝",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_building_materials",
@@ -206,12 +353,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": 0.51,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 78165826,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -226,7 +373,28 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512200",
-      "fund_name": "房地产ETF南方"
+      "fund_name": "房地产ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_coal",
@@ -234,12 +402,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -254,7 +422,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_communication_electronics",
@@ -262,12 +451,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -0.53,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 4810678792,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -282,7 +471,28 @@
       "instrument_name": "通信ETF国泰",
       "source_date": "2026-07-08",
       "fund_code": "515880",
-      "fund_name": "通信ETF国泰"
+      "fund_name": "通信ETF国泰",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_construction",
@@ -290,12 +500,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": 0.51,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 78165826,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -310,7 +520,28 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512200",
-      "fund_name": "房地产ETF南方"
+      "fund_name": "房地产ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_consumer",
@@ -318,12 +549,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -338,7 +569,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_defense_military",
@@ -346,12 +598,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -2.01,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 277735779,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -366,7 +618,28 @@
       "instrument_name": "军工ETF国泰",
       "source_date": "2026-07-08",
       "fund_code": "512660",
-      "fund_name": "军工ETF国泰"
+      "fund_name": "军工ETF国泰",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_environmental_protection",
@@ -374,12 +647,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -5.29,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 171662510,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -394,7 +667,28 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-08",
       "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏"
+      "fund_name": "新能源车ETF华夏",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_a_share_food_beverage",
@@ -402,12 +696,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -422,7 +716,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_healthcare_pharma",
@@ -430,12 +745,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -1.41,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 516761665,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -450,7 +765,28 @@
       "instrument_name": "医药ETF易方达",
       "source_date": "2026-07-08",
       "fund_code": "512010",
-      "fund_name": "医药ETF易方达"
+      "fund_name": "医药ETF易方达",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_home_appliances",
@@ -458,12 +794,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -478,7 +814,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_light_manufacturing",
@@ -486,12 +843,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -506,7 +863,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_a_share_machinery",
@@ -514,12 +892,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -5.29,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 171662510,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -534,7 +912,28 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-08",
       "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏"
+      "fund_name": "新能源车ETF华夏",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_a_share_media",
@@ -542,12 +941,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": 1.84,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 807496409.361,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -562,7 +961,28 @@
       "instrument_name": "人工智能ETF易方达",
       "source_date": "2026-07-08",
       "fund_code": "159819",
-      "fund_name": "人工智能ETF易方达"
+      "fund_name": "人工智能ETF易方达",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_a_share_new_energy_ev",
@@ -570,12 +990,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -5.29,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 171662510,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -590,7 +1010,28 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-08",
       "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏"
+      "fund_name": "新能源车ETF华夏",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_nonferrous_metals",
@@ -598,12 +1039,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -618,7 +1059,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_petroleum_petrochemical",
@@ -626,12 +1088,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -646,7 +1108,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_real_estate_infra",
@@ -654,12 +1137,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": 0.51,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 78165826,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -674,7 +1157,28 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512200",
-      "fund_name": "房地产ETF南方"
+      "fund_name": "房地产ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_resources_materials",
@@ -682,12 +1186,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -702,7 +1206,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_retail",
@@ -710,12 +1235,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -730,7 +1255,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_semiconductor",
@@ -738,12 +1284,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": 0.22,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 1945067169,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -758,7 +1304,28 @@
       "instrument_name": "半导体ETF国联安",
       "source_date": "2026-07-08",
       "fund_code": "512480",
-      "fund_name": "半导体ETF国联安"
+      "fund_name": "半导体ETF国联安",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_a_share_social_services",
@@ -766,12 +1333,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -786,7 +1353,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_a_share_steel",
@@ -794,12 +1382,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -814,7 +1402,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_textile_apparel",
@@ -822,12 +1431,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -842,7 +1451,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_a_share_transportation",
@@ -850,12 +1480,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": 0.51,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 78165826,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -870,7 +1500,28 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512200",
-      "fund_name": "房地产ETF南方"
+      "fund_name": "房地产ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_a_share_utilities",
@@ -878,12 +1529,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -5.29,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 171662510,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -898,7 +1549,28 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-08",
       "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏"
+      "fund_name": "新能源车ETF华夏",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_agriculture",
@@ -906,12 +1578,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -926,7 +1598,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_ai_computer",
@@ -934,12 +1627,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": 1.84,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 807496409.361,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -954,7 +1647,28 @@
       "instrument_name": "人工智能ETF易方达",
       "source_date": "2026-07-08",
       "fund_code": "159819",
-      "fund_name": "人工智能ETF易方达"
+      "fund_name": "人工智能ETF易方达",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_bank_insurance",
@@ -962,12 +1676,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": 1.45,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 785232565,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -982,7 +1696,28 @@
       "instrument_name": "银行ETF华宝",
       "source_date": "2026-07-08",
       "fund_code": "512800",
-      "fund_name": "银行ETF华宝"
+      "fund_name": "银行ETF华宝",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_basic_chemicals",
@@ -990,12 +1725,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1010,7 +1745,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_beauty_care",
@@ -1018,12 +1774,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1038,7 +1794,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_brokerage",
@@ -1046,12 +1823,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -1.3,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 1253277254,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1066,7 +1843,28 @@
       "instrument_name": "券商ETF华宝",
       "source_date": "2026-07-08",
       "fund_code": "512000",
-      "fund_name": "券商ETF华宝"
+      "fund_name": "券商ETF华宝",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_btc",
@@ -1091,7 +1889,28 @@
       "mapping_method": "No defensible instrument is present in the current provider export.",
       "proxy_level": "none",
       "instrument_code": null,
-      "instrument_name": null
+      "instrument_name": null,
+      "raw_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "confidence_cap": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "capped_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "momentum_raw_confidence": 0,
+      "liquidity_raw_confidence": 0,
+      "momentum_confidence_cap": 0,
+      "liquidity_confidence_cap": 0,
+      "momentum_capped_confidence": 0,
+      "liquidity_capped_confidence": 0,
+      "evidence_quality": "unavailable",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "No usable mapping; confidence capped at 0."
     },
     {
       "pool_id": "a_share_building_materials",
@@ -1099,12 +1918,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": 0.51,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 78165826,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1119,7 +1938,28 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512200",
-      "fund_name": "房地产ETF南方"
+      "fund_name": "房地产ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_coal",
@@ -1127,12 +1967,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1147,7 +1987,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_communication_electronics",
@@ -1155,12 +2016,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -0.53,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 4810678792,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1175,7 +2036,28 @@
       "instrument_name": "通信ETF国泰",
       "source_date": "2026-07-08",
       "fund_code": "515880",
-      "fund_name": "通信ETF国泰"
+      "fund_name": "通信ETF国泰",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_construction",
@@ -1183,12 +2065,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": 0.51,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 78165826,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1203,7 +2085,28 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512200",
-      "fund_name": "房地产ETF南方"
+      "fund_name": "房地产ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_consumer",
@@ -1211,12 +2114,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1231,7 +2134,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_defense_military",
@@ -1239,12 +2163,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -2.01,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 277735779,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1259,7 +2183,28 @@
       "instrument_name": "军工ETF国泰",
       "source_date": "2026-07-08",
       "fund_code": "512660",
-      "fund_name": "军工ETF国泰"
+      "fund_name": "军工ETF国泰",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_environmental_protection",
@@ -1267,12 +2212,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -5.29,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 171662510,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1287,7 +2232,28 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-08",
       "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏"
+      "fund_name": "新能源车ETF华夏",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_food_beverage",
@@ -1295,12 +2261,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1315,7 +2281,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_gold",
@@ -1340,7 +2327,28 @@
       "mapping_method": "No defensible instrument is present in the current provider export.",
       "proxy_level": "none",
       "instrument_code": null,
-      "instrument_name": null
+      "instrument_name": null,
+      "raw_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "confidence_cap": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "capped_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "momentum_raw_confidence": 0,
+      "liquidity_raw_confidence": 0,
+      "momentum_confidence_cap": 0,
+      "liquidity_confidence_cap": 0,
+      "momentum_capped_confidence": 0,
+      "liquidity_capped_confidence": 0,
+      "evidence_quality": "unavailable",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "No usable mapping; confidence capped at 0."
     },
     {
       "pool_id": "a_share_healthcare_pharma",
@@ -1348,12 +2356,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -1.41,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 516761665,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1368,7 +2376,28 @@
       "instrument_name": "医药ETF易方达",
       "source_date": "2026-07-08",
       "fund_code": "512010",
-      "fund_name": "医药ETF易方达"
+      "fund_name": "医药ETF易方达",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_home_appliances",
@@ -1376,12 +2405,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1396,7 +2425,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_light_manufacturing",
@@ -1404,12 +2454,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1424,7 +2474,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_machinery",
@@ -1432,12 +2503,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -5.29,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 171662510,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1452,7 +2523,28 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-08",
       "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏"
+      "fund_name": "新能源车ETF华夏",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_media",
@@ -1460,12 +2552,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": 1.84,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 807496409.361,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1480,7 +2572,28 @@
       "instrument_name": "人工智能ETF易方达",
       "source_date": "2026-07-08",
       "fund_code": "159819",
-      "fund_name": "人工智能ETF易方达"
+      "fund_name": "人工智能ETF易方达",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_new_energy_ev",
@@ -1488,12 +2601,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -5.29,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 171662510,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1508,7 +2621,28 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-08",
       "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏"
+      "fund_name": "新能源车ETF华夏",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_nonferrous_metals",
@@ -1516,12 +2650,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1536,7 +2670,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_petroleum_petrochemical",
@@ -1544,12 +2699,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1564,7 +2719,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_real_estate_infra",
@@ -1572,12 +2748,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": 0.51,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 78165826,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1592,7 +2768,28 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512200",
-      "fund_name": "房地产ETF南方"
+      "fund_name": "房地产ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_resources_materials",
@@ -1600,12 +2797,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1620,7 +2817,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_retail",
@@ -1628,12 +2846,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1648,7 +2866,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_semiconductor",
@@ -1656,12 +2895,12 @@
       "momentum_status": "derived_from_market",
       "momentum_value": 0.22,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.6392,
+      "momentum_confidence": 0.75,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "derived_from_market",
       "liquidity_value": 1945067169,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.6016,
+      "liquidity_confidence": 0.75,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1676,7 +2915,28 @@
       "instrument_name": "半导体ETF国联安",
       "source_date": "2026-07-08",
       "fund_code": "512480",
-      "fund_name": "半导体ETF国联安"
+      "fund_name": "半导体ETF国联安",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "capped_confidence": {
+        "momentum": 0.75,
+        "liquidity": 0.75
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.75,
+      "liquidity_confidence_cap": 0.75,
+      "momentum_capped_confidence": 0.75,
+      "liquidity_capped_confidence": 0.75,
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75."
     },
     {
       "pool_id": "a_share_social_services",
@@ -1684,12 +2944,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1704,7 +2964,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_sp500",
@@ -1729,7 +3010,28 @@
       "mapping_method": "No defensible instrument is present in the current provider export.",
       "proxy_level": "none",
       "instrument_code": null,
-      "instrument_name": null
+      "instrument_name": null,
+      "raw_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "confidence_cap": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "capped_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "momentum_raw_confidence": 0,
+      "liquidity_raw_confidence": 0,
+      "momentum_confidence_cap": 0,
+      "liquidity_confidence_cap": 0,
+      "momentum_capped_confidence": 0,
+      "liquidity_capped_confidence": 0,
+      "evidence_quality": "unavailable",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "No usable mapping; confidence capped at 0."
     },
     {
       "pool_id": "a_share_steel",
@@ -1737,12 +3039,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -2.94,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 797936585,
       "liquidity_direction": "above_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1757,7 +3059,28 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512400",
-      "fund_name": "有色金属ETF南方"
+      "fund_name": "有色金属ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_textile_apparel",
@@ -1765,12 +3088,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -0.79,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.4556,
+      "momentum_confidence": 0.6,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 240678474.244,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.4288,
+      "liquidity_confidence": 0.6,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1785,7 +3108,28 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-08",
       "fund_code": "159928",
-      "fund_name": "消费ETF汇添富"
+      "fund_name": "消费ETF汇添富",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "capped_confidence": {
+        "momentum": 0.6,
+        "liquidity": 0.6
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.6,
+      "liquidity_confidence_cap": 0.6,
+      "momentum_capped_confidence": 0.6,
+      "liquidity_capped_confidence": 0.6,
+      "evidence_quality": "medium",
+      "proxy_risk": "medium",
+      "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6."
     },
     {
       "pool_id": "a_share_transportation",
@@ -1793,12 +3137,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": 0.51,
       "momentum_direction": "positive",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 78165826,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1813,7 +3157,28 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-08",
       "fund_code": "512200",
-      "fund_name": "房地产ETF南方"
+      "fund_name": "房地产ETF南方",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     },
     {
       "pool_id": "a_share_us_equity",
@@ -1838,7 +3203,28 @@
       "mapping_method": "No defensible instrument is present in the current provider export.",
       "proxy_level": "none",
       "instrument_code": null,
-      "instrument_name": null
+      "instrument_name": null,
+      "raw_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "confidence_cap": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "capped_confidence": {
+        "momentum": 0,
+        "liquidity": 0
+      },
+      "momentum_raw_confidence": 0,
+      "liquidity_raw_confidence": 0,
+      "momentum_confidence_cap": 0,
+      "liquidity_confidence_cap": 0,
+      "momentum_capped_confidence": 0,
+      "liquidity_capped_confidence": 0,
+      "evidence_quality": "unavailable",
+      "proxy_risk": "none",
+      "confidence_cap_reason": "No usable mapping; confidence capped at 0."
     },
     {
       "pool_id": "a_share_utilities",
@@ -1846,12 +3232,12 @@
       "momentum_status": "estimated_from_source",
       "momentum_value": -5.29,
       "momentum_direction": "negative",
-      "momentum_confidence": 0.3264,
+      "momentum_confidence": 0.45,
       "momentum_source_type": "provider_daily_pct_change",
       "liquidity_status": "estimated_from_source",
       "liquidity_value": 171662510,
       "liquidity_direction": "below_median",
-      "liquidity_confidence": 0.3072,
+      "liquidity_confidence": 0.45,
       "liquidity_source_type": "provider_daily_amount",
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "evidence_count": 4,
@@ -1866,7 +3252,32 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-08",
       "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏"
+      "fund_name": "新能源车ETF华夏",
+      "raw_confidence": {
+        "momentum": 0.82,
+        "liquidity": 0.78
+      },
+      "confidence_cap": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "capped_confidence": {
+        "momentum": 0.45,
+        "liquidity": 0.45
+      },
+      "momentum_raw_confidence": 0.82,
+      "liquidity_raw_confidence": 0.78,
+      "momentum_confidence_cap": 0.45,
+      "liquidity_confidence_cap": 0.45,
+      "momentum_capped_confidence": 0.45,
+      "liquidity_capped_confidence": 0.45,
+      "evidence_quality": "low",
+      "proxy_risk": "high",
+      "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45."
     }
-  ]
+  ],
+  "quality_guardrail": {
+    "module_id": "signal_quality_report_v0_10_55",
+    "confidence_cap_applied_count": 124
+  }
 }

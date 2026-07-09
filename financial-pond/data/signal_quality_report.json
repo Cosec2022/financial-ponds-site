@@ -1,0 +1,23 @@
+{
+  "module_id": "signal_quality_report_v0_10_55",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T00:24:33.723Z",
+  "total_pool_count": 67,
+  "mapped_pool_count": 62,
+  "direct_evidence_count": 22,
+  "proxy_evidence_count": 40,
+  "unmapped_count": 5,
+  "direct_evidence_ratio": 0.3284,
+  "proxy_evidence_ratio": 0.597,
+  "proxy_risk_level": "high",
+  "confidence_cap_applied_count": 124,
+  "high_quality_signal_count": 22,
+  "medium_quality_signal_count": 24,
+  "low_quality_signal_count": 16,
+  "boundary_notes": [
+    "Coverage quantity is reported separately from evidence quality.",
+    "Confidence caps only reduce source confidence; they never increase it.",
+    "Sector and broad proxies remain estimates with explicit proxy risk.",
+    "Unavailable mappings retain zero confidence and the observe_only boundary."
+  ]
+}

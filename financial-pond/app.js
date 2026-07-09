@@ -35,6 +35,7 @@ const state = {
   flowChannel: null,
   marketChannel: null,
   mappingReport: null,
+  qualityReport: null,
   delta: null,
   pointer: null,
   pools: [],
@@ -323,7 +324,7 @@ function renderCoverageStrip() {
     el.innerHTML = `
       <div class="coverage-head"><span>Data Coverage</span><strong>--</strong></div>
       <div class="coverage-counts">data_coverage_report not loaded</div>
-      <div class="coverage-gaps">Flow Channel unavailable. Market Channel unavailable. Mapping unavailable.</div>
+      <div class="coverage-gaps">Flow Channel unavailable. Market Channel unavailable. Mapping unavailable. Quality unavailable.</div>
     `;
     return;
   }
@@ -331,6 +332,7 @@ function renderCoverageStrip() {
   const flow = state.flowChannel ?? report.flow_channel ?? {};
   const market = state.marketChannel ?? report.market_channel ?? {};
   const mapping = state.mappingReport ?? {};
+  const quality = state.qualityReport ?? report.quality ?? {};
   const baseline = state.delta?.baseline_state ?? (state.pointer?.latest_as_of ? "today archived / insufficient history" : "insufficient history");
   el.innerHTML = `
     <div class="coverage-head"><span>Data Coverage</span><strong>${pct(report.coverage_ratio)}</strong></div>
@@ -341,6 +343,7 @@ function renderCoverageStrip() {
       <span>Flow Channel: source_backed ${flow.source_backed_flow_count ?? 0} / estimated ${flow.estimated_from_source_count ?? 0} / missing ${flow.missing_flow_count ?? 0}</span>
       <span>Market Channel: momentum ${market.momentum_signal_count ?? 0} / liquidity ${market.liquidity_signal_count ?? 0} / missing ${(market.missing_momentum_count ?? 0) + (market.missing_liquidity_count ?? 0)}</span>
       <span>Mapping: mapped ${(mapping.total_pool_count ?? 0) - (mapping.unmapped_count ?? 0)} / proxy ${(mapping.sector_proxy_count ?? 0) + (mapping.broad_proxy_count ?? 0)} / unmapped ${mapping.unmapped_count ?? 0}</span>
+      <span>Quality: high ${quality.high_quality_signal_count ?? 0} / medium ${quality.medium_quality_signal_count ?? 0} / low ${quality.low_quality_signal_count ?? 0} / proxy risk ${quality.proxy_risk_level ?? "--"}</span>
       <span>Daily Delta: Baseline: ${escapeHtml(baseline)}</span>
       ${gaps.length ? gaps.map((gap) => `<span>${escapeHtml(gap.priority_label ?? gap.signal_type)} ${gap.affected_pool_count ?? 0}</span>`).join("") : "<span>no priority data gap</span>"}
     </div>
@@ -405,6 +408,9 @@ function renderToday(pool) {
       <article><span>direction</span><strong>${escapeHtml(v.direction)}</strong></article>
       <article><span>magnitude</span><strong>${pct(v.magnitude)}</strong></article>
       <article><span>confidence</span><strong>${fmt(v.confidence)}</strong></article>
+      <article><span>evidence_quality</span><strong>${escapeHtml(pool.signals.price_momentum?.evidence_quality ?? "unavailable")}</strong></article>
+      <article><span>proxy_risk</span><strong>${escapeHtml(pool.signals.price_momentum?.proxy_risk ?? "none")}</strong></article>
+      <article><span>confidence cap</span><strong>${fmt(pool.signals.price_momentum?.confidence_cap)}</strong></article>
       <article><span>boundary</span><strong>${escapeHtml(boundaryLabel(v.boundary))}</strong></article>
     </section>
     <section class="health-section">
@@ -638,7 +644,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, mappingReport, delta, pointer] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, mappingReport, qualityReport, delta, pointer] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
@@ -648,6 +654,7 @@ async function init() {
     readJson("./data/flow_channel_report.json", null),
     readJson("./data/market_signal_report.json", null),
     readJson("./data/pool_mapping_report.json", null),
+    readJson("./data/signal_quality_report.json", null),
     readJson("./data/daily_delta_report.json", null),
     readJson("./data/history/latest_observation_pointer.json", null)
   ]);
@@ -660,6 +667,7 @@ async function init() {
   state.flowChannel = flowChannel;
   state.marketChannel = marketChannel;
   state.mappingReport = mappingReport;
+  state.qualityReport = qualityReport;
   state.delta = delta;
   state.pointer = pointer;
   state.pools = extractPools(snapshot);

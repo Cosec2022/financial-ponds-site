@@ -1,7 +1,7 @@
 {
-  "module_id": "daily_delta_report_v0_10_54",
+  "module_id": "daily_delta_report_v0_10_55",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T00:17:55.092Z",
+  "generated_at": "2026-07-09T00:24:33.849Z",
   "comparison_available": true,
   "latest_as_of": "2026-07-09",
   "previous_as_of": "2026-07-08",
@@ -11,6 +11,7 @@
   "changed_pool_count": 5,
   "improved_data_count": 62,
   "new_signal_count": 0,
+  "confidence_change_count": 0,
   "insufficient_history_count": 0,
   "stable_pool_count": 0,
   "baseline_state": "today archived / previous available",

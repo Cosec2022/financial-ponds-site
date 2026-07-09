@@ -28,6 +28,7 @@ const priorityOrder = [
 const snapshot = JSON.parse(await readFile(resolve(dataDir, "observation_snapshot.json"), "utf8"));
 const flowChannel = await readJson(resolve(dataDir, "flow_channel_report.json"), null);
 const marketChannel = await readJson(resolve(dataDir, "market_signal_report.json"), null);
+const qualityReport = await readJson(resolve(dataDir, "signal_quality_report.json"), null);
 const pools = Array.isArray(snapshot.rows) ? snapshot.rows : [];
 const rows = pools.map(poolCoverageRow);
 const totals = countStatuses(rows);
@@ -35,7 +36,7 @@ const totalSignalCells = rows.length * signalMap.length;
 const coverageRatio = totalSignalCells ? round((totals.real + totals.estimated + totals.derived) / totalSignalCells) : 0;
 
 const report = {
-  module_id: "data_coverage_report_v0_10_54",
+  module_id: "data_coverage_report_v0_10_55",
   as_of: snapshot.as_of,
   generated_at: new Date().toISOString(),
   observed_pool_count: rows.length,
@@ -59,6 +60,12 @@ const report = {
     missing_momentum_count: marketChannel.missing_momentum_count ?? 0,
     missing_liquidity_count: marketChannel.missing_liquidity_count ?? 0,
     coverage_ratio: marketChannel.coverage_ratio ?? 0
+  } : null,
+  quality: qualityReport ? {
+    direct_evidence_ratio: qualityReport.direct_evidence_ratio ?? 0,
+    proxy_evidence_ratio: qualityReport.proxy_evidence_ratio ?? 0,
+    high_quality_signal_count: qualityReport.high_quality_signal_count ?? 0,
+    low_quality_signal_count: qualityReport.low_quality_signal_count ?? 0
   } : null,
   top_missing_signal_types: topMissingSignalTypes(rows),
   top_missing_pools: [...rows].sort((a, b) => a.coverage_score - b.coverage_score).slice(0, 10).map((row) => ({
@@ -203,7 +210,7 @@ async function updateHistory(report) {
   }
   const last = history.at(-1);
   if (!last || JSON.stringify(last) !== JSON.stringify(snapshot)) history.push(snapshot);
-  await writeFile(historyPath, `${JSON.stringify({ module_id: "coverage_history_v0_10_54", history }, null, 2)}\n`, "utf8");
+  await writeFile(historyPath, `${JSON.stringify({ module_id: "coverage_history_v0_10_55", history }, null, 2)}\n`, "utf8");
 }
 
 async function readJson(path, fallback) {

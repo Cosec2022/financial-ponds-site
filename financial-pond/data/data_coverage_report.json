@@ -1,7 +1,7 @@
 {
-  "module_id": "data_coverage_report_v0_10_54",
+  "module_id": "data_coverage_report_v0_10_55",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T00:17:55.000Z",
+  "generated_at": "2026-07-09T00:24:33.761Z",
   "observed_pool_count": 67,
   "total_signal_cells": 536,
   "real_count": 0,
@@ -23,6 +23,12 @@
     "missing_momentum_count": 5,
     "missing_liquidity_count": 5,
     "coverage_ratio": 0.9254
+  },
+  "quality": {
+    "direct_evidence_ratio": 0.3284,
+    "proxy_evidence_ratio": 0.597,
+    "high_quality_signal_count": 22,
+    "low_quality_signal_count": 16
   },
   "top_missing_signal_types": [
     {

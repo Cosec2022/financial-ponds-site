@@ -79,7 +79,11 @@
             "pct_change": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unmapped",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -90,7 +94,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unmapped"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -107,7 +119,11 @@
             "amount_or_turnover": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unmapped",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -118,7 +134,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unmapped"
         },
         "rotation": {
           "slot": "rotation",
@@ -268,7 +292,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Agriculture represented cautiously by the available broad consumer instrument.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -279,7 +307,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Agriculture represented cautiously by the available broad consumer instrument.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -296,7 +332,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Agriculture represented cautiously by the available broad consumer instrument.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -307,7 +347,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Agriculture represented cautiously by the available broad consumer instrument.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -457,7 +505,11 @@
             "pct_change": 1.84,
             "instrument_code": "159819",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 1.84",
           "reality_note": "derived from market price/volume",
@@ -468,7 +520,15 @@
             "name": "人工智能ETF易方达"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -485,7 +545,11 @@
             "amount_or_turnover": 807496409.361,
             "instrument_code": "159819",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 807496409.361",
           "reality_note": "derived from market price/volume",
@@ -496,7 +560,15 @@
             "name": "人工智能ETF易方达"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -646,7 +718,11 @@
             "pct_change": 1.45,
             "instrument_code": "512800",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 1.45",
           "reality_note": "derived from market price/volume",
@@ -657,7 +733,15 @@
             "name": "银行ETF华宝"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -674,7 +758,11 @@
             "amount_or_turnover": 785232565,
             "instrument_code": "512800",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 785232565",
           "reality_note": "derived from market price/volume",
@@ -685,7 +773,15 @@
             "name": "银行ETF华宝"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -835,7 +931,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Basic chemicals share the available materials-cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -846,7 +946,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Basic chemicals share the available materials-cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -863,7 +971,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Basic chemicals share the available materials-cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -874,7 +986,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Basic chemicals share the available materials-cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -1024,7 +1144,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Beauty care is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -1035,7 +1159,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Beauty care is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -1052,7 +1184,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Beauty care is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -1063,7 +1199,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Beauty care is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -1213,7 +1357,11 @@
             "pct_change": -1.3,
             "instrument_code": "512000",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -1.3",
           "reality_note": "derived from market price/volume",
@@ -1224,7 +1372,15 @@
             "name": "券商ETF华宝"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -1241,7 +1397,11 @@
             "amount_or_turnover": 1253277254,
             "instrument_code": "512000",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 1253277254",
           "reality_note": "derived from market price/volume",
@@ -1252,7 +1412,15 @@
             "name": "券商ETF华宝"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -1402,7 +1570,11 @@
             "pct_change": 0.51,
             "instrument_code": "512200",
             "mapping_method": "Building materials share the available real-estate and infrastructure cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 0.51",
           "reality_note": "derived from market price/volume",
@@ -1413,7 +1585,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Building materials share the available real-estate and infrastructure cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -1430,7 +1610,11 @@
             "amount_or_turnover": 78165826,
             "instrument_code": "512200",
             "mapping_method": "Building materials share the available real-estate and infrastructure cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 78165826",
           "reality_note": "derived from market price/volume",
@@ -1441,7 +1625,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Building materials share the available real-estate and infrastructure cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -1591,7 +1783,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Coal is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -1602,7 +1798,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Coal is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -1619,7 +1823,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Coal is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -1630,7 +1838,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Coal is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -1780,7 +1996,11 @@
             "pct_change": -0.53,
             "instrument_code": "515880",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -0.53",
           "reality_note": "derived from market price/volume",
@@ -1791,7 +2011,15 @@
             "name": "通信ETF国泰"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -1808,7 +2036,11 @@
             "amount_or_turnover": 4810678792,
             "instrument_code": "515880",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 4810678792",
           "reality_note": "derived from market price/volume",
@@ -1819,7 +2051,15 @@
             "name": "通信ETF国泰"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -1969,7 +2209,11 @@
             "pct_change": 0.51,
             "instrument_code": "512200",
             "mapping_method": "Construction shares the available real-estate and infrastructure cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 0.51",
           "reality_note": "derived from market price/volume",
@@ -1980,7 +2224,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Construction shares the available real-estate and infrastructure cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -1997,7 +2249,11 @@
             "amount_or_turnover": 78165826,
             "instrument_code": "512200",
             "mapping_method": "Construction shares the available real-estate and infrastructure cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 78165826",
           "reality_note": "derived from market price/volume",
@@ -2008,7 +2264,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Construction shares the available real-estate and infrastructure cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -2158,7 +2422,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -2169,7 +2437,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -2186,7 +2462,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -2197,7 +2477,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -2347,7 +2635,11 @@
             "pct_change": -2.01,
             "instrument_code": "512660",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -2.01",
           "reality_note": "derived from market price/volume",
@@ -2358,7 +2650,15 @@
             "name": "军工ETF国泰"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -2375,7 +2675,11 @@
             "amount_or_turnover": 277735779,
             "instrument_code": "512660",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 277735779",
           "reality_note": "derived from market price/volume",
@@ -2386,7 +2690,15 @@
             "name": "军工ETF国泰"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -2536,7 +2848,11 @@
             "pct_change": -5.29,
             "instrument_code": "515030",
             "mapping_method": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -5.29",
           "reality_note": "derived from market price/volume",
@@ -2547,7 +2863,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -2564,7 +2888,11 @@
             "amount_or_turnover": 171662510,
             "instrument_code": "515030",
             "mapping_method": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 171662510",
           "reality_note": "derived from market price/volume",
@@ -2575,7 +2903,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -2725,7 +3061,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Food and beverage is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -2736,7 +3076,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Food and beverage is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -2753,7 +3101,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Food and beverage is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -2764,7 +3116,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Food and beverage is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -2914,7 +3274,11 @@
             "pct_change": -1.41,
             "instrument_code": "512010",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -1.41",
           "reality_note": "derived from market price/volume",
@@ -2925,7 +3289,15 @@
             "name": "医药ETF易方达"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -2942,7 +3314,11 @@
             "amount_or_turnover": 516761665,
             "instrument_code": "512010",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 516761665",
           "reality_note": "derived from market price/volume",
@@ -2953,7 +3329,15 @@
             "name": "医药ETF易方达"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -3103,7 +3487,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Home appliances is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -3114,7 +3502,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Home appliances is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -3131,7 +3527,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Home appliances is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -3142,7 +3542,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Home appliances is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -3292,7 +3700,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -3303,7 +3715,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -3320,7 +3740,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -3331,7 +3755,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -3481,7 +3913,11 @@
             "pct_change": -5.29,
             "instrument_code": "515030",
             "mapping_method": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -5.29",
           "reality_note": "derived from market price/volume",
@@ -3492,7 +3928,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -3509,7 +3953,11 @@
             "amount_or_turnover": 171662510,
             "instrument_code": "515030",
             "mapping_method": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 171662510",
           "reality_note": "derived from market price/volume",
@@ -3520,7 +3968,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -3670,7 +4126,11 @@
             "pct_change": 1.84,
             "instrument_code": "159819",
             "mapping_method": "Media uses the available AI and computer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 1.84",
           "reality_note": "derived from market price/volume",
@@ -3681,7 +4141,15 @@
             "name": "人工智能ETF易方达"
           },
           "mapping_method": "Media uses the available AI and computer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -3698,7 +4166,11 @@
             "amount_or_turnover": 807496409.361,
             "instrument_code": "159819",
             "mapping_method": "Media uses the available AI and computer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 807496409.361",
           "reality_note": "derived from market price/volume",
@@ -3709,7 +4181,15 @@
             "name": "人工智能ETF易方达"
           },
           "mapping_method": "Media uses the available AI and computer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -3859,7 +4339,11 @@
             "pct_change": -5.29,
             "instrument_code": "515030",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -5.29",
           "reality_note": "derived from market price/volume",
@@ -3870,7 +4354,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -3887,7 +4379,11 @@
             "amount_or_turnover": 171662510,
             "instrument_code": "515030",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 171662510",
           "reality_note": "derived from market price/volume",
@@ -3898,7 +4394,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -4048,7 +4552,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Nonferrous metals is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -4059,7 +4567,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Nonferrous metals is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -4076,7 +4592,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Nonferrous metals is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -4087,7 +4607,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Nonferrous metals is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -4237,7 +4765,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -4248,7 +4780,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -4265,7 +4805,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -4276,7 +4820,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -4426,7 +4978,11 @@
             "pct_change": 0.51,
             "instrument_code": "512200",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 0.51",
           "reality_note": "derived from market price/volume",
@@ -4437,7 +4993,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -4454,7 +5018,11 @@
             "amount_or_turnover": 78165826,
             "instrument_code": "512200",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 78165826",
           "reality_note": "derived from market price/volume",
@@ -4465,7 +5033,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -4615,7 +5191,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -4626,7 +5206,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -4643,7 +5231,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -4654,7 +5246,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -4804,7 +5404,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Retail is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -4815,7 +5419,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Retail is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -4832,7 +5444,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Retail is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -4843,7 +5459,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Retail is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -4993,7 +5617,11 @@
             "pct_change": 0.22,
             "instrument_code": "512480",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 0.22",
           "reality_note": "derived from market price/volume",
@@ -5004,7 +5632,15 @@
             "name": "半导体ETF国联安"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -5021,7 +5657,11 @@
             "amount_or_turnover": 1945067169,
             "instrument_code": "512480",
             "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 1945067169",
           "reality_note": "derived from market price/volume",
@@ -5032,7 +5672,15 @@
             "name": "半导体ETF国联安"
           },
           "mapping_method": "normalized legacy a_share_ sector prefix, then exact sector match",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -5182,7 +5830,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Social services uses the available consumer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -5193,7 +5845,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Social services uses the available consumer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -5210,7 +5870,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Social services uses the available consumer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -5221,7 +5885,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Social services uses the available consumer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -5371,7 +6043,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Steel is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -5382,7 +6058,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Steel is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -5399,7 +6083,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Steel is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -5410,7 +6098,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Steel is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -5560,7 +6256,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Textile and apparel is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -5571,7 +6271,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Textile and apparel is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -5588,7 +6296,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Textile and apparel is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -5599,7 +6311,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Textile and apparel is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -5749,7 +6469,11 @@
             "pct_change": 0.51,
             "instrument_code": "512200",
             "mapping_method": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 0.51",
           "reality_note": "derived from market price/volume",
@@ -5760,7 +6484,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -5777,7 +6509,11 @@
             "amount_or_turnover": 78165826,
             "instrument_code": "512200",
             "mapping_method": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 78165826",
           "reality_note": "derived from market price/volume",
@@ -5788,7 +6524,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -5938,7 +6682,11 @@
             "pct_change": -5.29,
             "instrument_code": "515030",
             "mapping_method": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -5.29",
           "reality_note": "derived from market price/volume",
@@ -5949,7 +6697,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -5966,7 +6722,11 @@
             "amount_or_turnover": 171662510,
             "instrument_code": "515030",
             "mapping_method": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 171662510",
           "reality_note": "derived from market price/volume",
@@ -5977,7 +6737,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -6127,7 +6895,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Agriculture represented cautiously by the available broad consumer instrument.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -6138,7 +6910,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Agriculture represented cautiously by the available broad consumer instrument.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -6155,7 +6935,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Agriculture represented cautiously by the available broad consumer instrument.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -6166,7 +6950,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Agriculture represented cautiously by the available broad consumer instrument.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -6316,7 +7108,11 @@
             "pct_change": 1.84,
             "instrument_code": "159819",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 1.84",
           "reality_note": "derived from market price/volume",
@@ -6327,7 +7123,15 @@
             "name": "人工智能ETF易方达"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -6344,7 +7148,11 @@
             "amount_or_turnover": 807496409.361,
             "instrument_code": "159819",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 807496409.361",
           "reality_note": "derived from market price/volume",
@@ -6355,7 +7163,15 @@
             "name": "人工智能ETF易方达"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -6515,7 +7331,11 @@
             "pct_change": 1.45,
             "instrument_code": "512800",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 1.45",
           "reality_note": "derived from market price/volume",
@@ -6526,7 +7346,15 @@
             "name": "银行ETF华宝"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -6543,7 +7371,11 @@
             "amount_or_turnover": 785232565,
             "instrument_code": "512800",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 785232565",
           "reality_note": "derived from market price/volume",
@@ -6554,7 +7386,15 @@
             "name": "银行ETF华宝"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -6710,7 +7550,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Basic chemicals share the available materials-cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -6721,7 +7565,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Basic chemicals share the available materials-cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -6738,7 +7590,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Basic chemicals share the available materials-cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -6749,7 +7605,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Basic chemicals share the available materials-cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -6903,7 +7767,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Beauty care is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -6914,7 +7782,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Beauty care is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -6931,7 +7807,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Beauty care is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -6942,7 +7822,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Beauty care is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -7092,7 +7980,11 @@
             "pct_change": -1.3,
             "instrument_code": "512000",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -1.3",
           "reality_note": "derived from market price/volume",
@@ -7103,7 +7995,15 @@
             "name": "券商ETF华宝"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -7120,7 +8020,11 @@
             "amount_or_turnover": 1253277254,
             "instrument_code": "512000",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 1253277254",
           "reality_note": "derived from market price/volume",
@@ -7131,7 +8035,15 @@
             "name": "券商ETF华宝"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -7291,7 +8203,11 @@
             "pct_change": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unavailable",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -7302,7 +8218,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unavailable"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -7319,7 +8243,11 @@
             "amount_or_turnover": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unavailable",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -7330,7 +8258,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unavailable"
         },
         "rotation": {
           "slot": "rotation",
@@ -7480,7 +8416,11 @@
             "pct_change": 0.51,
             "instrument_code": "512200",
             "mapping_method": "Building materials share the available real-estate and infrastructure cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 0.51",
           "reality_note": "derived from market price/volume",
@@ -7491,7 +8431,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Building materials share the available real-estate and infrastructure cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -7508,7 +8456,11 @@
             "amount_or_turnover": 78165826,
             "instrument_code": "512200",
             "mapping_method": "Building materials share the available real-estate and infrastructure cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 78165826",
           "reality_note": "derived from market price/volume",
@@ -7519,7 +8471,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Building materials share the available real-estate and infrastructure cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -7673,7 +8633,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Coal is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -7684,7 +8648,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Coal is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -7701,7 +8673,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Coal is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -7712,7 +8688,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Coal is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -7862,7 +8846,11 @@
             "pct_change": -0.53,
             "instrument_code": "515880",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -0.53",
           "reality_note": "derived from market price/volume",
@@ -7873,7 +8861,15 @@
             "name": "通信ETF国泰"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -7890,7 +8886,11 @@
             "amount_or_turnover": 4810678792,
             "instrument_code": "515880",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 4810678792",
           "reality_note": "derived from market price/volume",
@@ -7901,7 +8901,15 @@
             "name": "通信ETF国泰"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -8057,7 +9065,11 @@
             "pct_change": 0.51,
             "instrument_code": "512200",
             "mapping_method": "Construction shares the available real-estate and infrastructure cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 0.51",
           "reality_note": "derived from market price/volume",
@@ -8068,7 +9080,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Construction shares the available real-estate and infrastructure cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -8085,7 +9105,11 @@
             "amount_or_turnover": 78165826,
             "instrument_code": "512200",
             "mapping_method": "Construction shares the available real-estate and infrastructure cycle instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 78165826",
           "reality_note": "derived from market price/volume",
@@ -8096,7 +9120,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Construction shares the available real-estate and infrastructure cycle instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -8246,7 +9278,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -8257,7 +9293,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -8274,7 +9318,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -8285,7 +9333,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -8441,7 +9497,11 @@
             "pct_change": -2.01,
             "instrument_code": "512660",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -2.01",
           "reality_note": "derived from market price/volume",
@@ -8452,7 +9512,15 @@
             "name": "军工ETF国泰"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -8469,7 +9537,11 @@
             "amount_or_turnover": 277735779,
             "instrument_code": "512660",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 277735779",
           "reality_note": "derived from market price/volume",
@@ -8480,7 +9552,15 @@
             "name": "军工ETF国泰"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -8636,7 +9716,11 @@
             "pct_change": -5.29,
             "instrument_code": "515030",
             "mapping_method": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -5.29",
           "reality_note": "derived from market price/volume",
@@ -8647,7 +9731,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -8664,7 +9756,11 @@
             "amount_or_turnover": 171662510,
             "instrument_code": "515030",
             "mapping_method": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 171662510",
           "reality_note": "derived from market price/volume",
@@ -8675,7 +9771,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -8825,7 +9929,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Food and beverage is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -8836,7 +9944,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Food and beverage is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -8853,7 +9969,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Food and beverage is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -8864,7 +9984,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Food and beverage is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -9014,7 +10142,11 @@
             "pct_change": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unavailable",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -9025,7 +10157,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unavailable"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -9042,7 +10182,11 @@
             "amount_or_turnover": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unavailable",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -9053,7 +10197,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unavailable"
         },
         "rotation": {
           "slot": "rotation",
@@ -9203,7 +10355,11 @@
             "pct_change": -1.41,
             "instrument_code": "512010",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -1.41",
           "reality_note": "derived from market price/volume",
@@ -9214,7 +10370,15 @@
             "name": "医药ETF易方达"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -9231,7 +10395,11 @@
             "amount_or_turnover": 516761665,
             "instrument_code": "512010",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 516761665",
           "reality_note": "derived from market price/volume",
@@ -9242,7 +10410,15 @@
             "name": "医药ETF易方达"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -9398,7 +10574,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Home appliances is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -9409,7 +10589,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Home appliances is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -9426,7 +10614,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Home appliances is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -9437,7 +10629,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Home appliances is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -9587,7 +10787,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -9598,7 +10802,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -9615,7 +10827,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -9626,7 +10842,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -9776,7 +11000,11 @@
             "pct_change": -5.29,
             "instrument_code": "515030",
             "mapping_method": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -5.29",
           "reality_note": "derived from market price/volume",
@@ -9787,7 +11015,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -9804,7 +11040,11 @@
             "amount_or_turnover": 171662510,
             "instrument_code": "515030",
             "mapping_method": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 171662510",
           "reality_note": "derived from market price/volume",
@@ -9815,7 +11055,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -9965,7 +11213,11 @@
             "pct_change": 1.84,
             "instrument_code": "159819",
             "mapping_method": "Media uses the available AI and computer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 1.84",
           "reality_note": "derived from market price/volume",
@@ -9976,7 +11228,15 @@
             "name": "人工智能ETF易方达"
           },
           "mapping_method": "Media uses the available AI and computer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -9993,7 +11253,11 @@
             "amount_or_turnover": 807496409.361,
             "instrument_code": "159819",
             "mapping_method": "Media uses the available AI and computer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 807496409.361",
           "reality_note": "derived from market price/volume",
@@ -10004,7 +11268,15 @@
             "name": "人工智能ETF易方达"
           },
           "mapping_method": "Media uses the available AI and computer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -10154,7 +11426,11 @@
             "pct_change": -5.29,
             "instrument_code": "515030",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -5.29",
           "reality_note": "derived from market price/volume",
@@ -10165,7 +11441,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -10182,7 +11466,11 @@
             "amount_or_turnover": 171662510,
             "instrument_code": "515030",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 171662510",
           "reality_note": "derived from market price/volume",
@@ -10193,7 +11481,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -10353,7 +11649,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Nonferrous metals is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -10364,7 +11664,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Nonferrous metals is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -10381,7 +11689,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Nonferrous metals is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -10392,7 +11704,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Nonferrous metals is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -10542,7 +11862,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -10553,7 +11877,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -10570,7 +11902,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -10581,7 +11917,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -10731,7 +12075,11 @@
             "pct_change": 0.51,
             "instrument_code": "512200",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 0.51",
           "reality_note": "derived from market price/volume",
@@ -10742,7 +12090,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -10759,7 +12115,11 @@
             "amount_or_turnover": 78165826,
             "instrument_code": "512200",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 78165826",
           "reality_note": "derived from market price/volume",
@@ -10770,7 +12130,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -10930,7 +12298,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -10941,7 +12313,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -10958,7 +12338,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -10969,7 +12353,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -11125,7 +12517,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Retail is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -11136,7 +12532,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Retail is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -11153,7 +12557,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Retail is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -11164,7 +12572,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Retail is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -11318,7 +12734,11 @@
             "pct_change": 0.22,
             "instrument_code": "512480",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 0.22",
           "reality_note": "derived from market price/volume",
@@ -11329,7 +12749,15 @@
             "name": "半导体ETF国联安"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -11346,7 +12774,11 @@
             "amount_or_turnover": 1945067169,
             "instrument_code": "512480",
             "mapping_method": "exact sector_id match to provider ETF instrument",
-            "proxy_level": "exact"
+            "proxy_level": "exact",
+            "mapping_status": "direct_etf",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.75,
+            "capped_confidence": 0.75
           },
           "calculation": "observed value = 1945067169",
           "reality_note": "derived from market price/volume",
@@ -11357,7 +12789,15 @@
             "name": "半导体ETF国联安"
           },
           "mapping_method": "exact sector_id match to provider ETF instrument",
-          "proxy_level": "exact"
+          "proxy_level": "exact",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.75,
+          "capped_confidence": 0.75,
+          "confidence": 0.75,
+          "evidence_quality": "high",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "direct_etf with proxy_level exact; maximum confidence 0.75.",
+          "mapping_status": "direct_etf"
         },
         "rotation": {
           "slot": "rotation",
@@ -11517,7 +12957,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Social services uses the available consumer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -11528,7 +12972,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Social services uses the available consumer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -11545,7 +12997,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Social services uses the available consumer instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -11556,7 +13012,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Social services uses the available consumer instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -11706,7 +13170,11 @@
             "pct_change": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unavailable",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -11717,7 +13185,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unavailable"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -11734,7 +13210,11 @@
             "amount_or_turnover": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unavailable",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -11745,7 +13225,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unavailable"
         },
         "rotation": {
           "slot": "rotation",
@@ -11895,7 +13383,11 @@
             "pct_change": -2.94,
             "instrument_code": "512400",
             "mapping_method": "Steel is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -2.94",
           "reality_note": "derived from market price/volume",
@@ -11906,7 +13398,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Steel is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -11923,7 +13423,11 @@
             "amount_or_turnover": 797936585,
             "instrument_code": "512400",
             "mapping_method": "Steel is represented by the available resources and materials instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 797936585",
           "reality_note": "derived from market price/volume",
@@ -11934,7 +13438,15 @@
             "name": "有色金属ETF南方"
           },
           "mapping_method": "Steel is represented by the available resources and materials instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -12088,7 +13600,11 @@
             "pct_change": -0.79,
             "instrument_code": "159928",
             "mapping_method": "Textile and apparel is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = -0.79",
           "reality_note": "derived from market price/volume",
@@ -12099,7 +13615,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Textile and apparel is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -12116,7 +13640,11 @@
             "amount_or_turnover": 240678474.244,
             "instrument_code": "159928",
             "mapping_method": "Textile and apparel is represented by the available consumer instrument.",
-            "proxy_level": "close"
+            "proxy_level": "close",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.6,
+            "capped_confidence": 0.6
           },
           "calculation": "observed value = 240678474.244",
           "reality_note": "derived from market price/volume",
@@ -12127,7 +13655,15 @@
             "name": "消费ETF汇添富"
           },
           "mapping_method": "Textile and apparel is represented by the available consumer instrument.",
-          "proxy_level": "close"
+          "proxy_level": "close",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.6,
+          "capped_confidence": 0.6,
+          "confidence": 0.6,
+          "evidence_quality": "medium",
+          "proxy_risk": "medium",
+          "confidence_cap_reason": "sector_proxy with proxy_level close; maximum confidence 0.6.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -12277,7 +13813,11 @@
             "pct_change": 0.51,
             "instrument_code": "512200",
             "mapping_method": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 0.51",
           "reality_note": "derived from market price/volume",
@@ -12288,7 +13828,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -12305,7 +13853,11 @@
             "amount_or_turnover": 78165826,
             "instrument_code": "512200",
             "mapping_method": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 78165826",
           "reality_note": "derived from market price/volume",
@@ -12316,7 +13868,15 @@
             "name": "房地产ETF南方"
           },
           "mapping_method": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -12466,7 +14026,11 @@
             "pct_change": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unavailable",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -12477,7 +14041,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unavailable"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -12494,7 +14066,11 @@
             "amount_or_turnover": null,
             "instrument_code": null,
             "mapping_method": "No defensible instrument is present in the current provider export.",
-            "proxy_level": "none"
+            "proxy_level": "none",
+            "mapping_status": "unavailable",
+            "raw_confidence": 0,
+            "confidence_cap": 0,
+            "capped_confidence": 0
           },
           "calculation": "source unavailable",
           "reality_note": "source unavailable",
@@ -12505,7 +14081,15 @@
             "name": null
           },
           "mapping_method": "No defensible instrument is present in the current provider export.",
-          "proxy_level": "none"
+          "proxy_level": "none",
+          "raw_confidence": 0,
+          "confidence_cap": 0,
+          "capped_confidence": 0,
+          "confidence": 0,
+          "evidence_quality": "unavailable",
+          "proxy_risk": "none",
+          "confidence_cap_reason": "No usable mapping; confidence capped at 0.",
+          "mapping_status": "unavailable"
         },
         "rotation": {
           "slot": "rotation",
@@ -12655,7 +14239,11 @@
             "pct_change": -5.29,
             "instrument_code": "515030",
             "mapping_method": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.82,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = -5.29",
           "reality_note": "derived from market price/volume",
@@ -12666,7 +14254,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.82,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "liquidity": {
           "slot": "liquidity",
@@ -12683,7 +14279,11 @@
             "amount_or_turnover": 171662510,
             "instrument_code": "515030",
             "mapping_method": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
-            "proxy_level": "loose"
+            "proxy_level": "loose",
+            "mapping_status": "sector_proxy",
+            "raw_confidence": 0.78,
+            "confidence_cap": 0.45,
+            "capped_confidence": 0.45
           },
           "calculation": "observed value = 171662510",
           "reality_note": "derived from market price/volume",
@@ -12694,7 +14294,15 @@
             "name": "新能源车ETF华夏"
           },
           "mapping_method": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
-          "proxy_level": "loose"
+          "proxy_level": "loose",
+          "raw_confidence": 0.78,
+          "confidence_cap": 0.45,
+          "capped_confidence": 0.45,
+          "confidence": 0.45,
+          "evidence_quality": "low",
+          "proxy_risk": "high",
+          "confidence_cap_reason": "sector_proxy with proxy_level loose; maximum confidence 0.45.",
+          "mapping_status": "sector_proxy"
         },
         "rotation": {
           "slot": "rotation",
@@ -12810,5 +14418,28 @@
     "missing_momentum_count": 5,
     "missing_liquidity_count": 5,
     "coverage_ratio": 0.9254
+  },
+  "quality_guardrail": {
+    "module_id": "signal_quality_report_v0_10_55",
+    "as_of": "2026-07-09",
+    "generated_at": "2026-07-09T00:24:33.723Z",
+    "total_pool_count": 67,
+    "mapped_pool_count": 62,
+    "direct_evidence_count": 22,
+    "proxy_evidence_count": 40,
+    "unmapped_count": 5,
+    "direct_evidence_ratio": 0.3284,
+    "proxy_evidence_ratio": 0.597,
+    "proxy_risk_level": "high",
+    "confidence_cap_applied_count": 124,
+    "high_quality_signal_count": 22,
+    "medium_quality_signal_count": 24,
+    "low_quality_signal_count": 16,
+    "boundary_notes": [
+      "Coverage quantity is reported separately from evidence quality.",
+      "Confidence caps only reduce source confidence; they never increase it.",
+      "Sector and broad proxies remain estimates with explicit proxy risk.",
+      "Unavailable mappings retain zero confidence and the observe_only boundary."
+    ]
   }
 }

@@ -28,13 +28,15 @@ const requiredFiles = [
   ["pool_instrument_map.json", (json) => json.module_id === "pool_instrument_map_v0_10_54" && Array.isArray(json.rows) && json.rows.every(validateInstrumentMapping)],
   ["pool_mapping_report.json", (json) => json.module_id === "pool_mapping_report_v0_10_54" && json.total_pool_count >= 1 && json.mapping_coverage_ratio > 0],
   ["market_signal_report.json", (json) => json.module_id === "market_signal_report_v0_10_54" && json.source_files_used.includes("financial-pond/data/pool_instrument_map.json") && json.mapped_pool_count >= 1],
-  ["pool_market_signals.json", (json) => json.module_id === "pool_market_signals_v0_10_54" && Array.isArray(json.rows) && json.rows.every(validateMarketSignal)],
-  ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_54" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel) && Boolean(json.market_channel)],
-  ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_54" && Array.isArray(json.history)],
+  ["pool_market_signals.json", (json) => json.module_id === "pool_market_signals_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateMarketSignal)],
+  ["signal_quality_report.json", (json) => json.module_id === "signal_quality_report_v0_10_55" && json.confidence_cap_applied_count >= 1],
+  ["pool_signal_quality.json", (json) => json.module_id === "pool_signal_quality_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateSignalQuality)],
+  ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_55" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel) && Boolean(json.market_channel) && Boolean(json.quality)],
+  ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_55" && Array.isArray(json.history)],
   ["history/latest_observation_pointer.json", validatePointer],
-  ["daily_delta_report.json", (json) => json.module_id === "daily_delta_report_v0_10_54" && typeof json.comparison_available === "boolean" && Boolean(json.baseline_state)],
-  ["pool_delta_signals.json", (json) => json.module_id === "pool_delta_signals_v0_10_54" && Array.isArray(json.rows) && json.rows.every((row) => deltaFlags.has(row.review_flag))],
-  ["daily_delta_history.json", (json) => json.module_id === "daily_delta_history_v0_10_54" && Array.isArray(json.history)],
+  ["daily_delta_report.json", (json) => json.module_id === "daily_delta_report_v0_10_55" && typeof json.comparison_available === "boolean" && Boolean(json.baseline_state)],
+  ["pool_delta_signals.json", (json) => json.module_id === "pool_delta_signals_v0_10_55" && Array.isArray(json.rows) && json.rows.every((row) => deltaFlags.has(row.review_flag))],
+  ["daily_delta_history.json", (json) => json.module_id === "daily_delta_history_v0_10_55" && Array.isArray(json.history)],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];
@@ -45,11 +47,13 @@ const flowStatuses = new Set(["source_backed", "estimated_from_source", "derived
 const marketStatuses = new Set(["source_backed", "derived_from_market", "estimated_from_source", "missing", "unavailable"]);
 const mappingStatuses = new Set(["direct_index", "direct_etf", "sector_proxy", "broad_proxy", "unmapped", "unavailable"]);
 const proxyLevels = new Set(["exact", "close", "loose", "broad", "none"]);
+const evidenceQualities = new Set(["high", "medium", "low", "unavailable"]);
+const proxyRisks = new Set(["none", "low", "medium", "high"]);
 const boundaries = new Set(["observe_only", "manual_review", "blocked"]);
-const deltaFlags = new Set(["insufficient_history", "changed", "stable", "improved_data", "new_signal"]);
+const deltaFlags = new Set(["insufficient_history", "changed", "stable", "improved_data", "new_signal", "confidence_change"]);
 
 function validatePointer(json) {
-  return json.module_id === "latest_observation_pointer_v0_10_54"
+  return json.module_id === "latest_observation_pointer_v0_10_55"
     && Boolean(json.latest_as_of)
     && json.latest_path === `financial-pond/data/history/observations/${json.latest_as_of}.json`
     && json.available_snapshot_count >= 1;
@@ -67,7 +71,16 @@ function validateMarketSignal(row) {
   return marketStatuses.has(row.momentum_status)
     && marketStatuses.has(row.liquidity_status)
     && Boolean(row.pool_id)
-    && Boolean(row.boundary);
+    && Boolean(row.boundary)
+    && row.capped_confidence?.momentum <= row.raw_confidence?.momentum
+    && row.capped_confidence?.liquidity <= row.raw_confidence?.liquidity;
+}
+
+function validateSignalQuality(row) {
+  return evidenceQualities.has(row.evidence_quality)
+    && proxyRisks.has(row.proxy_risk)
+    && row.capped_momentum_confidence <= row.raw_momentum_confidence
+    && row.capped_liquidity_confidence <= row.raw_liquidity_confidence;
 }
 
 function validateObservationRow(row) {
@@ -100,7 +113,7 @@ for (const [fileName, validate] of requiredFiles) {
 try {
   const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
   const archive = JSON.parse(await readFile(resolve(root, pointer.latest_path), "utf8"));
-  if (archive.module_id !== "observation_archive_v0_10_54" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report) failures.push(`${pointer.latest_path}: archive contract check failed`);
+  if (archive.module_id !== "observation_archive_v0_10_55" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality) failures.push(`${pointer.latest_path}: archive contract check failed`);
 } catch (error) {
   failures.push(`history/observations archive: ${error.message}`);
 }

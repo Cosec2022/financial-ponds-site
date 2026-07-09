@@ -100,18 +100,17 @@ function marketSignal(pool, mapping, source) {
   const liquidityValue = amount ?? turnover;
   const direct = ["direct_index", "direct_etf"].includes(mapping.mapping_status);
   const status = direct ? "derived_from_market" : "estimated_from_source";
-  const confidenceScale = mapping.mapping_status === "broad_proxy" ? 0.45 : mapping.mapping_confidence;
   return {
     ...base,
     momentum_status: pctChange === null ? "missing" : status,
     momentum_value: pctChange,
     momentum_direction: directionFor(pctChange),
-    momentum_confidence: pctChange === null ? 0 : round(0.68 * confidenceScale),
+    momentum_confidence: pctChange === null ? 0 : 0.82,
     momentum_source_type: pctChange === null ? "source_unavailable" : "provider_daily_pct_change",
     liquidity_status: liquidityValue === null ? "missing" : status,
     liquidity_value: liquidityValue,
     liquidity_direction: liquidityDirection(amount, latestRows),
-    liquidity_confidence: liquidityValue === null ? 0 : round(0.64 * confidenceScale),
+    liquidity_confidence: liquidityValue === null ? 0 : 0.78,
     liquidity_source_type: amount !== null ? "provider_daily_amount" : "provider_daily_turnover",
     evidence_count: [source.close, source.pct_change, source.amount, source.turnover].filter((value) => numberOrNull(value) !== null).length,
     boundary: `${direct ? "derived" : "estimated"} from mapped market price/volume; not trading signal; observe_only`,
