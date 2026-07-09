@@ -12,6 +12,7 @@ const state = {
   scores: null,
   outcomeReviews: null,
   outcomeReport: null,
+  reviewReadiness: null,
   selectedPoolId: null
 };
 
@@ -174,6 +175,7 @@ function renderReviewSchedule() {
   const el = document.getElementById("reviewSchedule");
   const schedule = state.schedule ?? {};
   const outcome = state.outcomeReport ?? {};
+  const readiness = state.reviewReadiness ?? {};
   el.innerHTML = `
     <div class="review-counts">
       ${countCell("T+1 pending", schedule.pending_t1_count ?? 0)}
@@ -188,6 +190,7 @@ function renderReviewSchedule() {
     </div>
   `;
   document.getElementById("outcomeReviewLine").textContent = `Outcome Review: reviewed ${outcome.reviewed_count ?? 0} / pending ${outcome.pending_count ?? 0} / next due ${nextOutcomeDue(outcome)}`;
+  document.getElementById("reviewReadinessLine").textContent = `Review Readiness: ready ${readiness.baseline_available_count ?? 0} / missing basis ${readiness.baseline_missing_count ?? 0} / next due ${readiness.next_due_date ?? "--"}`;
 }
 
 function renderCollapsedDetails() {
@@ -281,7 +284,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport] = await Promise.all([
+  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport, reviewReadiness] = await Promise.all([
     readJson("./data/evening_observation_summary.json"),
     readJson("./data/observation_candidate_ledger.json", { rows: [] }),
     readJson("./data/candidate_review_schedule.json", {}),
@@ -294,9 +297,10 @@ async function init() {
     readJson("./data/pool_mapping_report.json", {}),
     readJson("./data/pool_observation_scores.json", { rows: [] }),
     readJson("./data/candidate_outcome_reviews.json", { rows: [] }),
-    readJson("./data/outcome_review_report.json", {})
+    readJson("./data/outcome_review_report.json", {}),
+    readJson("./data/review_readiness_report.json", {})
   ]);
-  Object.assign(state, { summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport });
+  Object.assign(state, { summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport, reviewReadiness });
   state.selectedPoolId = rowsForToday()[0]?.pool_id ?? null;
   renderTodayStatus();
   renderCandidates();

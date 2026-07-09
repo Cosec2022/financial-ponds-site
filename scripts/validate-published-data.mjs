@@ -35,9 +35,11 @@ const requiredFiles = [
   ["pool_observation_scores.json", (json) => json.module_id === "pool_observation_scores_v0_10_57" && Array.isArray(json.rows) && json.rows.every(validateObservationScore)],
   ["observation_candidate_ledger.json", (json) => json.module_id === "observation_candidate_ledger_v0_10_57" && Array.isArray(json.rows) && json.rows.every(validateCandidate)],
   ["score_calibration_report.json", (json) => json.module_id === "score_calibration_report_v0_10_57" && Array.isArray(json.suspicious_distribution_flags) && Array.isArray(json.score_distribution)],
-  ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_59" && json.candidate_count >= 1 && Boolean(json.next_review_dates) && Array.isArray(json.next_due_reviews)],
+  ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_60" && json.candidate_count >= 1 && Boolean(json.next_review_dates) && Array.isArray(json.next_due_reviews)],
   ["candidate_outcome_reviews.json", validateOutcomeReviews],
-  ["outcome_review_report.json", (json) => json.module_id === "outcome_review_report_v0_10_59" && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && Array.isArray(json.next_due_reviews)],
+  ["outcome_review_report.json", (json) => json.module_id === "outcome_review_report_v0_10_60" && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && Array.isArray(json.next_due_reviews)],
+  ["candidate_price_basis.json", validateCandidatePriceBasis],
+  ["review_readiness_report.json", (json) => json.module_id === "review_readiness_report_v0_10_60" && readinessStates.has(json.readiness_state) && json.candidate_count === json.baseline_available_count + json.baseline_missing_count],
   ["data_coverage_report.json", (json) => json.module_id === "data_coverage_report_v0_10_55" && Array.isArray(json.pools) && Array.isArray(json.priority_gaps) && json.total_signal_cells >= json.observed_pool_count && Boolean(json.flow_channel) && Boolean(json.market_channel) && Boolean(json.quality)],
   ["coverage_history.json", (json) => json.module_id === "coverage_history_v0_10_55" && Array.isArray(json.history)],
   ["history/latest_observation_pointer.json", validatePointer],
@@ -63,9 +65,10 @@ const reviewStatuses = new Set(["pending", "review_due", "reviewed", "insufficie
 const outcomeReviewStatuses = new Set(["pending", "due", "reviewed", "unavailable", "insufficient_data"]);
 const outcomeHorizons = new Set(["T+1", "T+3", "T+5", "T+20"]);
 const directionResults = new Set(["aligned", "opposite", "neutral", "unavailable"]);
+const readinessStates = new Set(["ready", "partially_ready", "not_ready"]);
 
 function validatePointer(json) {
-  return json.module_id === "latest_observation_pointer_v0_10_59"
+  return json.module_id === "latest_observation_pointer_v0_10_60"
     && Boolean(json.latest_as_of)
     && json.latest_path === `financial-pond/data/history/observations/${json.latest_as_of}.json`
     && json.available_snapshot_count >= 1;
@@ -111,7 +114,7 @@ function validateCandidate(row) {
 }
 
 function validateOutcomeReviews(json) {
-  return json.module_id === "candidate_outcome_reviews_v0_10_59"
+  return json.module_id === "candidate_outcome_reviews_v0_10_60"
     && Array.isArray(json.rows)
     && json.rows.every((row) => {
       const future = row.review_as_of > json.as_of;
@@ -127,6 +130,18 @@ function validateOutcomeReviews(json) {
         && directionResults.has(row.direction_result)
         && row.boundary?.includes("observe_only")
         && futureSafe;
+    });
+}
+
+function validateCandidatePriceBasis(json) {
+  return json.module_id === "candidate_price_basis_v0_10_60"
+    && Array.isArray(json.rows)
+    && json.rows.length >= 1
+    && json.rows.every((row) => {
+      const validPrice = row.baseline_available
+        ? typeof row.baseline_price === "number" && row.baseline_price > 0 && Boolean(row.baseline_price_field)
+        : row.baseline_price === null;
+      return Boolean(row.pool_id) && row.boundary?.includes("observe_only") && validPrice;
     });
 }
 
@@ -160,7 +175,7 @@ for (const [fileName, validate] of requiredFiles) {
 try {
   const pointer = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8"));
   const archive = JSON.parse(await readFile(resolve(root, pointer.latest_path), "utf8"));
-  if (archive.module_id !== "observation_archive_v0_10_59" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_review_schedule || !archive.candidate_outcome_reviews || !archive.outcome_review_report) failures.push(`${pointer.latest_path}: archive contract check failed`);
+  if (archive.module_id !== "observation_archive_v0_10_60" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_review_schedule || !archive.candidate_outcome_reviews || !archive.outcome_review_report || !archive.candidate_price_basis || !archive.review_readiness_report) failures.push(`${pointer.latest_path}: archive contract check failed`);
 } catch (error) {
   failures.push(`history/observations archive: ${error.message}`);
 }

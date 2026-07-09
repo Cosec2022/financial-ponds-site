@@ -9,13 +9,14 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
-  assert.match(html, /v0\.10\.59 Observation Dashboard/);
+  assert.match(html, /v0\.10\.60 Observation Dashboard/);
   assert.match(html, /Today Status/);
   assert.match(html, /Observation Candidates/);
   assert.match(html, /Selected Candidate/);
   assert.match(html, /Evidence Quality/);
   assert.match(html, /Review Schedule/);
   assert.match(html, /Outcome Review/);
+  assert.match(html, /Review Readiness/);
   assert.match(html, /observe_only/);
   assert.match(html, /Advanced Diagnostics/);
   assert.doesNotMatch(html, /资金池塘图谱/);
@@ -202,13 +203,13 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const pointer = await worker.fetch(request("/data/history/latest_observation_pointer.json"), {});
   assert.equal(pointer.status, 200);
   const pointerJson = await pointer.json();
-  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_59");
+  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_60");
   assert.ok(pointerJson.latest_path.endsWith(`${pointerJson.latest_as_of}.json`));
 
   const archive = await worker.fetch(request(`/data/history/observations/${pointerJson.latest_as_of}.json`), {});
   assert.equal(archive.status, 200);
   const archiveJson = await archive.json();
-  assert.equal(archiveJson.module_id, "observation_archive_v0_10_59");
+  assert.equal(archiveJson.module_id, "observation_archive_v0_10_60");
   assert.equal(archiveJson.as_of, pointerJson.latest_as_of);
   assert.ok(archiveJson.observation_snapshot);
   assert.ok(archiveJson.data_coverage_report);
@@ -228,6 +229,8 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.ok(archiveJson.candidate_review_schedule);
   assert.ok(archiveJson.candidate_outcome_reviews);
   assert.ok(archiveJson.outcome_review_report);
+  assert.ok(archiveJson.candidate_price_basis);
+  assert.ok(archiveJson.review_readiness_report);
 
   const flowChannel = await worker.fetch(request("/data/flow_channel_report.json"), {});
   assert.equal(flowChannel.status, 200);
@@ -314,13 +317,13 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const reviewSchedule = await worker.fetch(request("/data/candidate_review_schedule.json"), {});
   assert.equal(reviewSchedule.status, 200);
   const reviewScheduleJson = await reviewSchedule.json();
-  assert.equal(reviewScheduleJson.module_id, "candidate_review_schedule_v0_10_59");
+  assert.equal(reviewScheduleJson.module_id, "candidate_review_schedule_v0_10_60");
   assert.ok(reviewScheduleJson.candidate_count >= 1);
 
   const outcomeReviews = await worker.fetch(request("/data/candidate_outcome_reviews.json"), {});
   assert.equal(outcomeReviews.status, 200);
   const outcomeReviewsJson = await outcomeReviews.json();
-  assert.equal(outcomeReviewsJson.module_id, "candidate_outcome_reviews_v0_10_59");
+  assert.equal(outcomeReviewsJson.module_id, "candidate_outcome_reviews_v0_10_60");
   assert.ok(outcomeReviewsJson.rows.length >= 4);
   for (const row of outcomeReviewsJson.rows) {
     if (row.review_as_of > outcomeReviewsJson.as_of) {
@@ -336,8 +339,21 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const outcomeReport = await worker.fetch(request("/data/outcome_review_report.json"), {});
   assert.equal(outcomeReport.status, 200);
   const outcomeReportJson = await outcomeReport.json();
-  assert.equal(outcomeReportJson.module_id, "outcome_review_report_v0_10_59");
+  assert.equal(outcomeReportJson.module_id, "outcome_review_report_v0_10_60");
   assert.equal(typeof outcomeReportJson.pending_count, "number");
+
+  const priceBasis = await worker.fetch(request("/data/candidate_price_basis.json"), {});
+  assert.equal(priceBasis.status, 200);
+  const priceBasisJson = await priceBasis.json();
+  assert.equal(priceBasisJson.module_id, "candidate_price_basis_v0_10_60");
+  assert.ok(priceBasisJson.rows.length >= candidateLedgerJson.rows.length);
+  assert.ok(priceBasisJson.rows.every((row) => row.boundary.includes("observe_only")));
+
+  const reviewReadiness = await worker.fetch(request("/data/review_readiness_report.json"), {});
+  assert.equal(reviewReadiness.status, 200);
+  const reviewReadinessJson = await reviewReadiness.json();
+  assert.equal(reviewReadinessJson.module_id, "review_readiness_report_v0_10_60");
+  assert.equal(reviewReadinessJson.baseline_available_count + reviewReadinessJson.baseline_missing_count, reviewReadinessJson.next_due_candidate_count);
 
   const eveningReport = await worker.fetch(request("/data/evening_report.md"), {});
   assert.equal(eveningReport.status, 200);

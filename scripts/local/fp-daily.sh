@@ -14,6 +14,7 @@ node scripts/build-data-coverage-report.mjs
 node scripts/archive-observation-snapshot.mjs
 node scripts/build-daily-delta-report.mjs
 node scripts/build-evening-observation-summary.mjs
+node scripts/build-candidate-price-basis.mjs
 node scripts/build-candidate-outcome-reviews.mjs
 node scripts/archive-observation-snapshot.mjs
 npm run validate:data

@@ -1,0 +1,23 @@
+{
+  "module_id": "review_readiness_report_v0_10_60",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T12:06:04.742Z",
+  "candidate_count": 5,
+  "next_due_date": "2026-07-10",
+  "next_due_horizon": "T+1",
+  "next_due_candidate_count": 5,
+  "baseline_available_count": 5,
+  "baseline_missing_count": 0,
+  "mapped_candidate_count": 5,
+  "unmapped_candidate_count": 0,
+  "expected_reviewable_count": 5,
+  "expected_unavailable_count": 0,
+  "readiness_state": "ready",
+  "missing_basis_examples": [],
+  "boundary_notes": [
+    "observe_only",
+    "Readiness describes price-basis availability only.",
+    "A baseline price does not create a future outcome.",
+    "Missing close, amount, volume, or turnover values remain null."
+  ]
+}

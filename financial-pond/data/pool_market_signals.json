@@ -1,7 +1,7 @@
 {
   "module_id": "pool_market_signals_v0_10_55",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T11:55:11.411Z",
+  "generated_at": "2026-07-09T12:06:04.469Z",
   "source_files_used": [
     "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
@@ -79,6 +79,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -129,6 +141,18 @@
       "instrument_name": "人工智能ETF易方达",
       "source_date": "2026-07-09",
       "market_close": 2.185,
+      "price_close": 2.185,
+      "price_date": "2026-07-09",
+      "amount": 1083559059.655,
+      "volume": null,
+      "turnover": 4.6,
+      "raw_market_fields": {
+        "close": 2.185,
+        "pct_change": 6.48,
+        "amount": 1083559059.655,
+        "volume": null,
+        "turnover": 4.6
+      },
       "fund_code": "159819",
       "fund_name": "人工智能ETF易方达",
       "raw_confidence": {
@@ -179,6 +203,18 @@
       "instrument_name": "银行ETF华宝",
       "source_date": "2026-07-09",
       "market_close": 0.761,
+      "price_close": 0.761,
+      "price_date": "2026-07-09",
+      "amount": 813588827,
+      "volume": null,
+      "turnover": 7.7,
+      "raw_market_fields": {
+        "close": 0.761,
+        "pct_change": -1.17,
+        "amount": 813588827,
+        "volume": null,
+        "turnover": 7.7
+      },
       "fund_code": "512800",
       "fund_name": "银行ETF华宝",
       "raw_confidence": {
@@ -229,6 +265,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -279,6 +327,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -329,6 +389,18 @@
       "instrument_name": "券商ETF华宝",
       "source_date": "2026-07-09",
       "market_close": 0.542,
+      "price_close": 0.542,
+      "price_date": "2026-07-09",
+      "amount": 1393908958,
+      "volume": null,
+      "turnover": 3.51,
+      "raw_market_fields": {
+        "close": 0.542,
+        "pct_change": 2.26,
+        "amount": 1393908958,
+        "volume": null,
+        "turnover": 3.51
+      },
       "fund_code": "512000",
       "fund_name": "券商ETF华宝",
       "raw_confidence": {
@@ -379,6 +451,18 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.189,
+      "price_close": 1.189,
+      "price_date": "2026-07-09",
+      "amount": 79824550,
+      "volume": null,
+      "turnover": 2.61,
+      "raw_market_fields": {
+        "close": 1.189,
+        "pct_change": 1.02,
+        "amount": 79824550,
+        "volume": null,
+        "turnover": 2.61
+      },
       "fund_code": "512200",
       "fund_name": "房地产ETF南方",
       "raw_confidence": {
@@ -429,6 +513,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -479,6 +575,18 @@
       "instrument_name": "通信ETF国泰",
       "source_date": "2026-07-09",
       "market_close": 0.807,
+      "price_close": 0.807,
+      "price_date": "2026-07-09",
+      "amount": 7102781938,
+      "volume": null,
+      "turnover": 13.37,
+      "raw_market_fields": {
+        "close": 0.807,
+        "pct_change": 6.61,
+        "amount": 7102781938,
+        "volume": null,
+        "turnover": 13.37
+      },
       "fund_code": "515880",
       "fund_name": "通信ETF国泰",
       "raw_confidence": {
@@ -529,6 +637,18 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.189,
+      "price_close": 1.189,
+      "price_date": "2026-07-09",
+      "amount": 79824550,
+      "volume": null,
+      "turnover": 2.61,
+      "raw_market_fields": {
+        "close": 1.189,
+        "pct_change": 1.02,
+        "amount": 79824550,
+        "volume": null,
+        "turnover": 2.61
+      },
       "fund_code": "512200",
       "fund_name": "房地产ETF南方",
       "raw_confidence": {
@@ -579,6 +699,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -629,6 +761,18 @@
       "instrument_name": "军工ETF国泰",
       "source_date": "2026-07-09",
       "market_close": 1.243,
+      "price_close": 1.243,
+      "price_date": "2026-07-09",
+      "amount": 353464296,
+      "volume": null,
+      "turnover": 5.31,
+      "raw_market_fields": {
+        "close": 1.243,
+        "pct_change": 1.97,
+        "amount": 353464296,
+        "volume": null,
+        "turnover": 5.31
+      },
       "fund_code": "512660",
       "fund_name": "军工ETF国泰",
       "raw_confidence": {
@@ -679,6 +823,18 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-09",
       "market_close": 1.714,
+      "price_close": 1.714,
+      "price_date": "2026-07-09",
+      "amount": 214913322,
+      "volume": null,
+      "turnover": 7.77,
+      "raw_market_fields": {
+        "close": 1.714,
+        "pct_change": -0.35,
+        "amount": 214913322,
+        "volume": null,
+        "turnover": 7.77
+      },
       "fund_code": "515030",
       "fund_name": "新能源车ETF华夏",
       "raw_confidence": {
@@ -729,6 +885,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -779,6 +947,18 @@
       "instrument_name": "医药ETF易方达",
       "source_date": "2026-07-09",
       "market_close": 0.356,
+      "price_close": 0.356,
+      "price_date": "2026-07-09",
+      "amount": 560774637,
+      "volume": null,
+      "turnover": 3.24,
+      "raw_market_fields": {
+        "close": 0.356,
+        "pct_change": 2.01,
+        "amount": 560774637,
+        "volume": null,
+        "turnover": 3.24
+      },
       "fund_code": "512010",
       "fund_name": "医药ETF易方达",
       "raw_confidence": {
@@ -829,6 +1009,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -879,6 +1071,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -929,6 +1133,18 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-09",
       "market_close": 1.714,
+      "price_close": 1.714,
+      "price_date": "2026-07-09",
+      "amount": 214913322,
+      "volume": null,
+      "turnover": 7.77,
+      "raw_market_fields": {
+        "close": 1.714,
+        "pct_change": -0.35,
+        "amount": 214913322,
+        "volume": null,
+        "turnover": 7.77
+      },
       "fund_code": "515030",
       "fund_name": "新能源车ETF华夏",
       "raw_confidence": {
@@ -979,6 +1195,18 @@
       "instrument_name": "人工智能ETF易方达",
       "source_date": "2026-07-09",
       "market_close": 2.185,
+      "price_close": 2.185,
+      "price_date": "2026-07-09",
+      "amount": 1083559059.655,
+      "volume": null,
+      "turnover": 4.6,
+      "raw_market_fields": {
+        "close": 2.185,
+        "pct_change": 6.48,
+        "amount": 1083559059.655,
+        "volume": null,
+        "turnover": 4.6
+      },
       "fund_code": "159819",
       "fund_name": "人工智能ETF易方达",
       "raw_confidence": {
@@ -1029,6 +1257,18 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-09",
       "market_close": 1.714,
+      "price_close": 1.714,
+      "price_date": "2026-07-09",
+      "amount": 214913322,
+      "volume": null,
+      "turnover": 7.77,
+      "raw_market_fields": {
+        "close": 1.714,
+        "pct_change": -0.35,
+        "amount": 214913322,
+        "volume": null,
+        "turnover": 7.77
+      },
       "fund_code": "515030",
       "fund_name": "新能源车ETF华夏",
       "raw_confidence": {
@@ -1079,6 +1319,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -1129,6 +1381,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -1179,6 +1443,18 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.189,
+      "price_close": 1.189,
+      "price_date": "2026-07-09",
+      "amount": 79824550,
+      "volume": null,
+      "turnover": 2.61,
+      "raw_market_fields": {
+        "close": 1.189,
+        "pct_change": 1.02,
+        "amount": 79824550,
+        "volume": null,
+        "turnover": 2.61
+      },
       "fund_code": "512200",
       "fund_name": "房地产ETF南方",
       "raw_confidence": {
@@ -1229,6 +1505,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -1279,6 +1567,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -1329,6 +1629,18 @@
       "instrument_name": "半导体ETF国联安",
       "source_date": "2026-07-09",
       "market_close": 1.471,
+      "price_close": 1.471,
+      "price_date": "2026-07-09",
+      "amount": 2594965472,
+      "volume": null,
+      "turnover": 10.95,
+      "raw_market_fields": {
+        "close": 1.471,
+        "pct_change": 9.86,
+        "amount": 2594965472,
+        "volume": null,
+        "turnover": 10.95
+      },
       "fund_code": "512480",
       "fund_name": "半导体ETF国联安",
       "raw_confidence": {
@@ -1379,6 +1691,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -1429,6 +1753,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -1479,6 +1815,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -1529,6 +1877,18 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.189,
+      "price_close": 1.189,
+      "price_date": "2026-07-09",
+      "amount": 79824550,
+      "volume": null,
+      "turnover": 2.61,
+      "raw_market_fields": {
+        "close": 1.189,
+        "pct_change": 1.02,
+        "amount": 79824550,
+        "volume": null,
+        "turnover": 2.61
+      },
       "fund_code": "512200",
       "fund_name": "房地产ETF南方",
       "raw_confidence": {
@@ -1579,6 +1939,18 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-09",
       "market_close": 1.714,
+      "price_close": 1.714,
+      "price_date": "2026-07-09",
+      "amount": 214913322,
+      "volume": null,
+      "turnover": 7.77,
+      "raw_market_fields": {
+        "close": 1.714,
+        "pct_change": -0.35,
+        "amount": 214913322,
+        "volume": null,
+        "turnover": 7.77
+      },
       "fund_code": "515030",
       "fund_name": "新能源车ETF华夏",
       "raw_confidence": {
@@ -1629,6 +2001,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -1679,6 +2063,18 @@
       "instrument_name": "人工智能ETF易方达",
       "source_date": "2026-07-09",
       "market_close": 2.185,
+      "price_close": 2.185,
+      "price_date": "2026-07-09",
+      "amount": 1083559059.655,
+      "volume": null,
+      "turnover": 4.6,
+      "raw_market_fields": {
+        "close": 2.185,
+        "pct_change": 6.48,
+        "amount": 1083559059.655,
+        "volume": null,
+        "turnover": 4.6
+      },
       "fund_code": "159819",
       "fund_name": "人工智能ETF易方达",
       "raw_confidence": {
@@ -1729,6 +2125,18 @@
       "instrument_name": "银行ETF华宝",
       "source_date": "2026-07-09",
       "market_close": 0.761,
+      "price_close": 0.761,
+      "price_date": "2026-07-09",
+      "amount": 813588827,
+      "volume": null,
+      "turnover": 7.7,
+      "raw_market_fields": {
+        "close": 0.761,
+        "pct_change": -1.17,
+        "amount": 813588827,
+        "volume": null,
+        "turnover": 7.7
+      },
       "fund_code": "512800",
       "fund_name": "银行ETF华宝",
       "raw_confidence": {
@@ -1779,6 +2187,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -1829,6 +2249,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -1879,6 +2311,18 @@
       "instrument_name": "券商ETF华宝",
       "source_date": "2026-07-09",
       "market_close": 0.542,
+      "price_close": 0.542,
+      "price_date": "2026-07-09",
+      "amount": 1393908958,
+      "volume": null,
+      "turnover": 3.51,
+      "raw_market_fields": {
+        "close": 0.542,
+        "pct_change": 2.26,
+        "amount": 1393908958,
+        "volume": null,
+        "turnover": 3.51
+      },
       "fund_code": "512000",
       "fund_name": "券商ETF华宝",
       "raw_confidence": {
@@ -1975,6 +2419,18 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.189,
+      "price_close": 1.189,
+      "price_date": "2026-07-09",
+      "amount": 79824550,
+      "volume": null,
+      "turnover": 2.61,
+      "raw_market_fields": {
+        "close": 1.189,
+        "pct_change": 1.02,
+        "amount": 79824550,
+        "volume": null,
+        "turnover": 2.61
+      },
       "fund_code": "512200",
       "fund_name": "房地产ETF南方",
       "raw_confidence": {
@@ -2025,6 +2481,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -2075,6 +2543,18 @@
       "instrument_name": "通信ETF国泰",
       "source_date": "2026-07-09",
       "market_close": 0.807,
+      "price_close": 0.807,
+      "price_date": "2026-07-09",
+      "amount": 7102781938,
+      "volume": null,
+      "turnover": 13.37,
+      "raw_market_fields": {
+        "close": 0.807,
+        "pct_change": 6.61,
+        "amount": 7102781938,
+        "volume": null,
+        "turnover": 13.37
+      },
       "fund_code": "515880",
       "fund_name": "通信ETF国泰",
       "raw_confidence": {
@@ -2125,6 +2605,18 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.189,
+      "price_close": 1.189,
+      "price_date": "2026-07-09",
+      "amount": 79824550,
+      "volume": null,
+      "turnover": 2.61,
+      "raw_market_fields": {
+        "close": 1.189,
+        "pct_change": 1.02,
+        "amount": 79824550,
+        "volume": null,
+        "turnover": 2.61
+      },
       "fund_code": "512200",
       "fund_name": "房地产ETF南方",
       "raw_confidence": {
@@ -2175,6 +2667,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -2225,6 +2729,18 @@
       "instrument_name": "军工ETF国泰",
       "source_date": "2026-07-09",
       "market_close": 1.243,
+      "price_close": 1.243,
+      "price_date": "2026-07-09",
+      "amount": 353464296,
+      "volume": null,
+      "turnover": 5.31,
+      "raw_market_fields": {
+        "close": 1.243,
+        "pct_change": 1.97,
+        "amount": 353464296,
+        "volume": null,
+        "turnover": 5.31
+      },
       "fund_code": "512660",
       "fund_name": "军工ETF国泰",
       "raw_confidence": {
@@ -2275,6 +2791,18 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-09",
       "market_close": 1.714,
+      "price_close": 1.714,
+      "price_date": "2026-07-09",
+      "amount": 214913322,
+      "volume": null,
+      "turnover": 7.77,
+      "raw_market_fields": {
+        "close": 1.714,
+        "pct_change": -0.35,
+        "amount": 214913322,
+        "volume": null,
+        "turnover": 7.77
+      },
       "fund_code": "515030",
       "fund_name": "新能源车ETF华夏",
       "raw_confidence": {
@@ -2325,6 +2853,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -2421,6 +2961,18 @@
       "instrument_name": "医药ETF易方达",
       "source_date": "2026-07-09",
       "market_close": 0.356,
+      "price_close": 0.356,
+      "price_date": "2026-07-09",
+      "amount": 560774637,
+      "volume": null,
+      "turnover": 3.24,
+      "raw_market_fields": {
+        "close": 0.356,
+        "pct_change": 2.01,
+        "amount": 560774637,
+        "volume": null,
+        "turnover": 3.24
+      },
       "fund_code": "512010",
       "fund_name": "医药ETF易方达",
       "raw_confidence": {
@@ -2471,6 +3023,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -2521,6 +3085,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -2571,6 +3147,18 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-09",
       "market_close": 1.714,
+      "price_close": 1.714,
+      "price_date": "2026-07-09",
+      "amount": 214913322,
+      "volume": null,
+      "turnover": 7.77,
+      "raw_market_fields": {
+        "close": 1.714,
+        "pct_change": -0.35,
+        "amount": 214913322,
+        "volume": null,
+        "turnover": 7.77
+      },
       "fund_code": "515030",
       "fund_name": "新能源车ETF华夏",
       "raw_confidence": {
@@ -2621,6 +3209,18 @@
       "instrument_name": "人工智能ETF易方达",
       "source_date": "2026-07-09",
       "market_close": 2.185,
+      "price_close": 2.185,
+      "price_date": "2026-07-09",
+      "amount": 1083559059.655,
+      "volume": null,
+      "turnover": 4.6,
+      "raw_market_fields": {
+        "close": 2.185,
+        "pct_change": 6.48,
+        "amount": 1083559059.655,
+        "volume": null,
+        "turnover": 4.6
+      },
       "fund_code": "159819",
       "fund_name": "人工智能ETF易方达",
       "raw_confidence": {
@@ -2671,6 +3271,18 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-09",
       "market_close": 1.714,
+      "price_close": 1.714,
+      "price_date": "2026-07-09",
+      "amount": 214913322,
+      "volume": null,
+      "turnover": 7.77,
+      "raw_market_fields": {
+        "close": 1.714,
+        "pct_change": -0.35,
+        "amount": 214913322,
+        "volume": null,
+        "turnover": 7.77
+      },
       "fund_code": "515030",
       "fund_name": "新能源车ETF华夏",
       "raw_confidence": {
@@ -2721,6 +3333,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -2771,6 +3395,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -2821,6 +3457,18 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.189,
+      "price_close": 1.189,
+      "price_date": "2026-07-09",
+      "amount": 79824550,
+      "volume": null,
+      "turnover": 2.61,
+      "raw_market_fields": {
+        "close": 1.189,
+        "pct_change": 1.02,
+        "amount": 79824550,
+        "volume": null,
+        "turnover": 2.61
+      },
       "fund_code": "512200",
       "fund_name": "房地产ETF南方",
       "raw_confidence": {
@@ -2871,6 +3519,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -2921,6 +3581,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -2971,6 +3643,18 @@
       "instrument_name": "半导体ETF国联安",
       "source_date": "2026-07-09",
       "market_close": 1.471,
+      "price_close": 1.471,
+      "price_date": "2026-07-09",
+      "amount": 2594965472,
+      "volume": null,
+      "turnover": 10.95,
+      "raw_market_fields": {
+        "close": 1.471,
+        "pct_change": 9.86,
+        "amount": 2594965472,
+        "volume": null,
+        "turnover": 10.95
+      },
       "fund_code": "512480",
       "fund_name": "半导体ETF国联安",
       "raw_confidence": {
@@ -3021,6 +3705,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -3117,6 +3813,18 @@
       "instrument_name": "有色金属ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.745,
+      "price_close": 1.745,
+      "price_date": "2026-07-09",
+      "amount": 1204320293,
+      "volume": null,
+      "turnover": 5.55,
+      "raw_market_fields": {
+        "close": 1.745,
+        "pct_change": -0.29,
+        "amount": 1204320293,
+        "volume": null,
+        "turnover": 5.55
+      },
       "fund_code": "512400",
       "fund_name": "有色金属ETF南方",
       "raw_confidence": {
@@ -3167,6 +3875,18 @@
       "instrument_name": "消费ETF汇添富",
       "source_date": "2026-07-09",
       "market_close": 0.618,
+      "price_close": 0.618,
+      "price_date": "2026-07-09",
+      "amount": 283347154.54,
+      "volume": null,
+      "turnover": 1.96,
+      "raw_market_fields": {
+        "close": 0.618,
+        "pct_change": -1.12,
+        "amount": 283347154.54,
+        "volume": null,
+        "turnover": 1.96
+      },
       "fund_code": "159928",
       "fund_name": "消费ETF汇添富",
       "raw_confidence": {
@@ -3217,6 +3937,18 @@
       "instrument_name": "房地产ETF南方",
       "source_date": "2026-07-09",
       "market_close": 1.189,
+      "price_close": 1.189,
+      "price_date": "2026-07-09",
+      "amount": 79824550,
+      "volume": null,
+      "turnover": 2.61,
+      "raw_market_fields": {
+        "close": 1.189,
+        "pct_change": 1.02,
+        "amount": 79824550,
+        "volume": null,
+        "turnover": 2.61
+      },
       "fund_code": "512200",
       "fund_name": "房地产ETF南方",
       "raw_confidence": {
@@ -3313,6 +4045,18 @@
       "instrument_name": "新能源车ETF华夏",
       "source_date": "2026-07-09",
       "market_close": 1.714,
+      "price_close": 1.714,
+      "price_date": "2026-07-09",
+      "amount": 214913322,
+      "volume": null,
+      "turnover": 7.77,
+      "raw_market_fields": {
+        "close": 1.714,
+        "pct_change": -0.35,
+        "amount": 214913322,
+        "volume": null,
+        "turnover": 7.77
+      },
       "fund_code": "515030",
       "fund_name": "新能源车ETF华夏",
       "raw_confidence": {

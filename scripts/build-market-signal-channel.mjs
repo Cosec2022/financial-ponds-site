@@ -117,6 +117,18 @@ function marketSignal(pool, mapping, source) {
     reason: mapping.mapping_method,
     source_date: source.date,
     market_close: numberOrNull(source.close),
+    price_close: numberOrNull(source.close),
+    price_date: source.date ?? null,
+    amount,
+    volume: numberOrNull(source.volume),
+    turnover,
+    raw_market_fields: {
+      close: numberOrNull(source.close),
+      pct_change: pctChange,
+      amount,
+      volume: numberOrNull(source.volume),
+      turnover
+    },
     fund_code: source.fund_code,
     fund_name: source.fund_name
   };

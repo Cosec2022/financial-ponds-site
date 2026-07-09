@@ -7,8 +7,10 @@ const historyDir = resolve(dataDir, "history", "observations");
 const ledger = await readJson(resolve(dataDir, "observation_candidate_ledger.json"));
 const schedule = await readJson(resolve(dataDir, "candidate_review_schedule.json"));
 const currentMarket = await readJson(resolve(dataDir, "pool_market_signals.json"));
+const priceBasis = await readJson(resolve(dataDir, "candidate_price_basis.json"));
 const currentAsOf = schedule.as_of ?? currentMarket.as_of;
 const archives = await readArchives();
+const basisByCandidate = new Map((priceBasis.rows ?? []).map((row) => [`${row.candidate_as_of}|${row.pool_id}`, row]));
 const generatedAt = new Date().toISOString();
 const horizons = [
   ["T+1", "review_t1_due"],
@@ -30,7 +32,7 @@ const directionCounts = countBy(rows, "direction_result");
 const dueReviewCount = rows.filter((row) => row.review_as_of <= currentAsOf && row.review_status !== "pending").length;
 const nextDueReviews = nextDue(rows);
 const report = {
-  module_id: "outcome_review_report_v0_10_59",
+  module_id: "outcome_review_report_v0_10_60",
   as_of: currentAsOf,
   generated_at: generatedAt,
   total_candidates: (ledger.rows ?? []).length,
@@ -52,7 +54,7 @@ const report = {
   ]
 };
 const output = {
-  module_id: "candidate_outcome_reviews_v0_10_59",
+  module_id: "candidate_outcome_reviews_v0_10_60",
   as_of: currentAsOf,
   generated_at: generatedAt,
   rows
@@ -89,19 +91,26 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
   };
 
   if (!reviewAsOf || reviewAsOf > currentAsOf) return base;
-  const originalArchive = archives.get(candidate.as_of);
+  const basis = basisByCandidate.get(`${candidate.as_of}|${candidate.pool_id}`);
   const reviewArchive = archives.get(reviewAsOf);
-  if (!originalArchive || !reviewArchive) {
+  if (!reviewArchive) {
     return {
       ...base,
       review_status: "insufficient_data",
-      review_note: "A required observation archive is missing for the candidate or review date."
+      review_note: "The exact review-date observation archive is missing."
     };
   }
 
-  const originalMarket = marketRow(originalArchive, candidate.pool_id);
+  if (!basis?.baseline_available) {
+    return {
+      ...base,
+      review_status: "unavailable",
+      review_note: "Candidate price basis is unavailable; no return was calculated."
+    };
+  }
+
   const reviewMarket = marketRow(reviewArchive, candidate.pool_id);
-  if (!originalMarket || !reviewMarket) {
+  if (!reviewMarket) {
     return {
       ...base,
       review_status: "unavailable",
@@ -109,13 +118,13 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
     };
   }
 
-  const originalClose = numberOrNull(originalMarket.market_close);
-  const reviewClose = numberOrNull(reviewMarket.market_close);
+  const originalClose = numberOrNull(basis.baseline_price);
+  const reviewClose = numberOrNull(reviewMarket.price_close ?? reviewMarket.market_close);
   if (originalClose === null || reviewClose === null || originalClose <= 0) {
     return {
       ...base,
       review_status: "insufficient_data",
-      review_note: "Archived market rows exist, but exact close levels are insufficient for return calculation."
+      review_note: "Candidate basis or review market row lacks an exact close level."
     };
   }
 
@@ -129,7 +138,7 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
     direction_result: directionResult,
     confidence_result: directionResult === "aligned" ? "supported" : directionResult === "opposite" ? "not_supported" : "neutral",
     evidence_result: `${candidate.evidence_quality}_evidence_reviewed`,
-    review_note: "Observed return calculated from archived mapped-instrument close values; benchmark data is unavailable.",
+    review_note: `Observed return calculated from candidate price basis (${basis.baseline_as_of}) and archived review close; benchmark data is unavailable.`,
     boundary: "observe_only; reviewed observation outcome"
   };
 }
@@ -159,7 +168,7 @@ function nextDue(reviewRows) {
 async function updateSchedule(reportValue) {
   const updated = {
     ...schedule,
-    module_id: "candidate_review_schedule_v0_10_59",
+    module_id: "candidate_review_schedule_v0_10_60",
     generated_at: generatedAt,
     reviewed_count: reportValue.reviewed_count,
     pending_count: reportValue.pending_count,
