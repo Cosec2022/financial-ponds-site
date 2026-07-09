@@ -21,7 +21,7 @@ const availableCount = currentRows.filter((row) => row.baseline_available).lengt
 const mappedCount = currentRows.filter((row) => !["unmapped", "unavailable"].includes(row.mapping_status)).length;
 const nextDue = nextDueReview(schedule);
 const report = {
-  module_id: "review_readiness_report_v0_10_60",
+  module_id: "review_readiness_report_v0_10_61",
   as_of: ledger.as_of,
   generated_at: generatedAt,
   candidate_count: currentRows.length,
@@ -49,7 +49,7 @@ const report = {
   ]
 };
 const output = {
-  module_id: "candidate_price_basis_v0_10_60",
+  module_id: "candidate_price_basis_v0_10_61",
   as_of: ledger.as_of,
   generated_at: generatedAt,
   rows
@@ -86,6 +86,15 @@ function buildBasis(candidate) {
     baseline_available: available,
     source_file: market?.source_file ?? null,
     source_type: market?.momentum_source_type ?? "source_unavailable",
+    candidate_score: candidate.observation_score ?? null,
+    candidate_state: candidate.candidate_state ?? null,
+    overheat_score: candidate.overheat_score ?? null,
+    major_wave_score: candidate.major_wave_score ?? null,
+    risk_gate_status: candidate.risk_gate_status ?? null,
+    state_reason: candidate.state_reason ?? null,
+    overheat_reason: candidate.overheat_reason ?? null,
+    major_wave_reason: candidate.major_wave_reason ?? null,
+    risk_gate_reason: candidate.risk_gate_reason ?? null,
     boundary: available
       ? "candidate-day mapped instrument close preserved; observe_only"
       : "exact candidate-day close unavailable; baseline not available; observe_only"

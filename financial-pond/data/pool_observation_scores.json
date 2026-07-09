@@ -1,7 +1,7 @@
 {
-  "module_id": "pool_observation_scores_v0_10_57",
+  "module_id": "pool_observation_scores_v0_10_61",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T12:06:04.702Z",
+  "generated_at": "2026-07-09T16:15:51.775Z",
   "rows": [
     {
       "pool_id": "a_share_communication_electronics",
@@ -29,7 +29,15 @@
       "proxy_penalty": 0,
       "missing_data_penalty": 4,
       "final_score": 89,
-      "boundary": "observe_only; observation priority only"
+      "boundary": "observe_only; observation priority only",
+      "candidate_state": "Overheated",
+      "overheat_score": 74,
+      "major_wave_score": 85,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+      "risk_gate_reason": "overheat guardrail active"
     },
     {
       "pool_id": "a_share_a_share_communication_electronics",
@@ -85,7 +93,15 @@
       "proxy_penalty": 0,
       "missing_data_penalty": 4,
       "final_score": 81.8904,
-      "boundary": "observe_only; observation priority only"
+      "boundary": "observe_only; observation priority only",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 14,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable"
     },
     {
       "pool_id": "a_share_a_share_brokerage",
@@ -141,7 +157,15 @@
       "proxy_penalty": 0,
       "missing_data_penalty": 4,
       "final_score": 81.6024,
-      "boundary": "observe_only; observation priority only"
+      "boundary": "observe_only; observation priority only",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 38,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable"
     },
     {
       "pool_id": "a_share_a_share_ai_computer",
@@ -197,7 +221,15 @@
       "proxy_penalty": 0,
       "missing_data_penalty": 4,
       "final_score": 81.492,
-      "boundary": "observe_only; observation priority only"
+      "boundary": "observe_only; observation priority only",
+      "candidate_state": "Overheated",
+      "overheat_score": 80,
+      "major_wave_score": 78,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+      "risk_gate_reason": "overheat guardrail active"
     },
     {
       "pool_id": "a_share_a_share_semiconductor",
@@ -253,7 +285,15 @@
       "proxy_penalty": 0,
       "missing_data_penalty": 4,
       "final_score": 79.5424,
-      "boundary": "observe_only; observation priority only"
+      "boundary": "observe_only; observation priority only",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 18,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable"
     },
     {
       "pool_id": "a_share_a_share_bank_insurance",

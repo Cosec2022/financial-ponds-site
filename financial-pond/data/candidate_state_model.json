@@ -1,0 +1,93 @@
+{
+  "module_id": "candidate_state_model_v0_10_61",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T16:15:51.775Z",
+  "status": "state_model_available",
+  "candidate_count": 5,
+  "states_distribution": {
+    "Overheated": 2,
+    "Confirmed Trend": 3
+  },
+  "risk_gate_distribution": {
+    "caution": 2,
+    "pass": 3
+  },
+  "rows": [
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "candidate_state": "Overheated",
+      "overheat_score": 74,
+      "major_wave_score": 85,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 14,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 38,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "candidate_state": "Overheated",
+      "overheat_score": 80,
+      "major_wave_score": 78,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-09",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "Bank and Insurance",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 18,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    }
+  ],
+  "model_notes": [
+    "Classification uses only candidate-date artifacts and prior archives.",
+    "Outcome reviews are not used to classify current candidates.",
+    "Overheat penalties do not remove candidates; they label late-stage risk.",
+    "Major wave score expresses observation quality, not a trading instruction."
+  ]
+}

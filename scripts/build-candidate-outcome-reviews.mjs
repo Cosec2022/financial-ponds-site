@@ -32,7 +32,7 @@ const directionCounts = countBy(rows, "direction_result");
 const dueReviewCount = rows.filter((row) => row.review_as_of <= currentAsOf && row.review_status !== "pending").length;
 const nextDueReviews = nextDue(rows);
 const report = {
-  module_id: "outcome_review_report_v0_10_60",
+  module_id: "outcome_review_report_v0_10_61",
   as_of: currentAsOf,
   generated_at: generatedAt,
   total_candidates: (ledger.rows ?? []).length,
@@ -54,14 +54,26 @@ const report = {
   ]
 };
 const output = {
-  module_id: "candidate_outcome_reviews_v0_10_60",
+  module_id: "candidate_outcome_reviews_v0_10_61",
   as_of: currentAsOf,
   generated_at: generatedAt,
   rows
 };
+const reviewHistory = {
+  module_id: "candidate_review_history_v0_10_61",
+  as_of: currentAsOf,
+  generated_at: generatedAt,
+  rows: buildReviewHistory(rows),
+  boundary_notes: [
+    "observe_only",
+    "History preserves candidate-date model state and review status.",
+    "Future horizons remain pending until due date and source data are available."
+  ]
+};
 
 await writeJson(resolve(dataDir, "candidate_outcome_reviews.json"), output);
 await writeJson(resolve(dataDir, "outcome_review_report.json"), report);
+await writeJson(resolve(dataDir, "candidate_review_history.json"), reviewHistory);
 await updateSchedule(report);
 console.log(`Candidate outcome reviews written: reviewed=${report.reviewed_count}, pending=${report.pending_count}, due=${report.due_review_count}`);
 
@@ -78,6 +90,14 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
     original_capped_confidence: candidate.capped_confidence,
     original_evidence_quality: candidate.evidence_quality,
     original_proxy_risk: candidate.proxy_risk,
+    candidate_state: candidate.candidate_state ?? "Noise",
+    overheat_score: valueOrUnavailable(candidate.overheat_score),
+    major_wave_score: valueOrUnavailable(candidate.major_wave_score),
+    risk_gate_status: candidate.risk_gate_status ?? "insufficient_data",
+    state_reason: candidate.state_reason ?? "State unavailable.",
+    overheat_reason: candidate.overheat_reason ?? "Overheat unavailable.",
+    major_wave_reason: candidate.major_wave_reason ?? "Major-wave unavailable.",
+    risk_gate_reason: candidate.risk_gate_reason ?? "Risk gate unavailable.",
     review_status: "pending",
     outcome_available: false,
     observed_return: null,
@@ -115,6 +135,14 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
       ...base,
       review_status: "unavailable",
       review_note: "Mapped market data is unavailable for the candidate or review date."
+    };
+  }
+  const reviewPriceDate = reviewMarket.price_date ?? reviewMarket.source_date ?? reviewArchive.as_of;
+  if (!reviewPriceDate || reviewPriceDate < reviewAsOf) {
+    return {
+      ...base,
+      review_status: "insufficient_data",
+      review_note: "Review-date archive exists, but mapped market close is stale for the due date."
     };
   }
 
@@ -168,7 +196,7 @@ function nextDue(reviewRows) {
 async function updateSchedule(reportValue) {
   const updated = {
     ...schedule,
-    module_id: "candidate_review_schedule_v0_10_60",
+    module_id: "candidate_review_schedule_v0_10_61",
     generated_at: generatedAt,
     reviewed_count: reportValue.reviewed_count,
     pending_count: reportValue.pending_count,
@@ -177,6 +205,55 @@ async function updateSchedule(reportValue) {
     next_due_reviews: reportValue.next_due_reviews
   };
   await writeJson(resolve(dataDir, "candidate_review_schedule.json"), updated);
+}
+
+function buildReviewHistory(reviewRows) {
+  const grouped = new Map();
+  for (const row of reviewRows) {
+    const basis = basisByCandidate.get(`${row.candidate_as_of}|${row.pool_id}`) ?? {};
+    const key = `${row.candidate_as_of}|${row.pool_id}`;
+    if (!grouped.has(key)) {
+      grouped.set(key, {
+        as_of: row.candidate_as_of,
+        symbol: basis.instrument_code ?? null,
+        name: row.pool_name,
+        pool_id: row.pool_id,
+        baseline_price: basis.baseline_price ?? null,
+        candidate_score: row.original_observation_score,
+        candidate_state: row.candidate_state,
+        overheat_score: row.overheat_score,
+        major_wave_score: row.major_wave_score,
+        risk_gate_status: row.risk_gate_status,
+        state_reason: row.state_reason,
+        overheat_reason: row.overheat_reason,
+        major_wave_reason: row.major_wave_reason,
+        risk_gate_reason: row.risk_gate_reason,
+        t1_review_result: null,
+        t3_review_result: null,
+        t5_review_result: null,
+        t20_review_result: null,
+        outcome_status: "pending",
+        review_notes: [],
+        boundary: "observe_only; review history only"
+      });
+    }
+    const item = grouped.get(key);
+    const result = {
+      review_as_of: row.review_as_of,
+      review_status: row.review_status,
+      outcome_available: row.outcome_available,
+      observed_return: row.observed_return,
+      direction_result: row.direction_result
+    };
+    if (row.horizon === "T+1") item.t1_review_result = result;
+    if (row.horizon === "T+3") item.t3_review_result = result;
+    if (row.horizon === "T+5") item.t5_review_result = result;
+    if (row.horizon === "T+20") item.t20_review_result = result;
+    item.review_notes.push(`${row.horizon}: ${row.review_note}`);
+    if (row.review_status === "reviewed") item.outcome_status = "reviewed";
+    else if (item.outcome_status !== "reviewed" && ["unavailable", "insufficient_data"].includes(row.review_status)) item.outcome_status = row.review_status;
+  }
+  return [...grouped.values()].sort((a, b) => a.as_of.localeCompare(b.as_of) || a.pool_id.localeCompare(b.pool_id));
 }
 
 async function readArchives() {
@@ -205,6 +282,11 @@ function numberOrNull(value) {
   if (value === null || value === undefined || value === "") return null;
   const number = Number(value);
   return Number.isFinite(number) ? number : null;
+}
+
+function valueOrUnavailable(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : "unavailable";
 }
 
 function round(value) {

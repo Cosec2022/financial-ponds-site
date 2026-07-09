@@ -1,7 +1,7 @@
 {
-  "module_id": "candidate_price_basis_v0_10_60",
+  "module_id": "candidate_price_basis_v0_10_61",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T12:06:04.742Z",
+  "generated_at": "2026-07-09T16:15:51.775Z",
   "rows": [
     {
       "candidate_as_of": "2026-07-09",
@@ -21,6 +21,15 @@
       "baseline_available": true,
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "source_type": "provider_daily_pct_change",
+      "candidate_score": 81.6024,
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 38,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
       "boundary": "candidate-day mapped instrument close preserved; observe_only"
     },
     {
@@ -41,6 +50,15 @@
       "baseline_available": true,
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "source_type": "provider_daily_pct_change",
+      "candidate_score": 79.5424,
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 18,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
       "boundary": "candidate-day mapped instrument close preserved; observe_only"
     },
     {
@@ -61,6 +79,15 @@
       "baseline_available": true,
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "source_type": "provider_daily_pct_change",
+      "candidate_score": 81.8904,
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 14,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
       "boundary": "candidate-day mapped instrument close preserved; observe_only"
     },
     {
@@ -81,6 +108,15 @@
       "baseline_available": true,
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "source_type": "provider_daily_pct_change",
+      "candidate_score": 89,
+      "candidate_state": "Overheated",
+      "overheat_score": 74,
+      "major_wave_score": 85,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+      "risk_gate_reason": "overheat guardrail active",
       "boundary": "candidate-day mapped instrument close preserved; observe_only"
     },
     {
@@ -101,6 +137,15 @@
       "baseline_available": true,
       "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
       "source_type": "provider_daily_pct_change",
+      "candidate_score": 81.492,
+      "candidate_state": "Overheated",
+      "overheat_score": 80,
+      "major_wave_score": 78,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+      "risk_gate_reason": "overheat guardrail active",
       "boundary": "candidate-day mapped instrument close preserved; observe_only"
     }
   ]

@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.10.61 - Right-side major-wave model artifacts
+
+- Bumped site and framework package versions to `0.10.61`.
+- Added a formal candidate state model artifact for observation candidates.
+- Candidate rows now separate early right-side opportunity, major wave
+  candidate, overheated strength, and risk-gated candidates.
+- Persisted `candidate_state`, `overheat_score`, `major_wave_score`, and
+  `risk_gate_status` through candidate outputs, price basis, outcome reviews,
+  and review history.
+- Added `candidate_state_model.json` and `candidate_review_history.json`.
+
+Important boundary:
+
+- Candidate state uses only candidate-date and prior observation artifacts.
+- Future outcomes are not used to classify current candidates.
+- The model remains `observe_only` and does not produce execution advice.
+
 ## v0.10.48 - Observation data backbone and workbench
 
 - Bumped site and framework package versions to `0.10.48`.

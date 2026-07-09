@@ -1,7 +1,7 @@
 {
-  "module_id": "observation_archive_v0_10_60",
+  "module_id": "observation_archive_v0_10_61",
   "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T12:06:04.832Z",
+  "generated_at": "2026-07-09T16:15:51.868Z",
   "observation_snapshot": {
     "module_id": "observation_snapshot_v0_10_48",
     "as_of": "2026-07-09",
@@ -14438,7 +14438,7 @@
     "quality_guardrail": {
       "module_id": "signal_quality_report_v0_10_55",
       "as_of": "2026-07-09",
-      "generated_at": "2026-07-09T12:06:04.510Z",
+      "generated_at": "2026-07-09T16:15:51.490Z",
       "total_pool_count": 67,
       "mapped_pool_count": 62,
       "direct_evidence_count": 22,
@@ -14462,7 +14462,7 @@
   "data_coverage_report": {
     "module_id": "data_coverage_report_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.551Z",
+    "generated_at": "2026-07-09T16:15:51.532Z",
     "observed_pool_count": 67,
     "total_signal_cells": 536,
     "real_count": 0,
@@ -15932,7 +15932,7 @@
   "flow_channel_report": {
     "module_id": "flow_channel_report_v0_10_51",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.427Z",
+    "generated_at": "2026-07-09T16:15:51.398Z",
     "source_files_used": [
       "pool_instrument_map.json",
       "etf_flow_leaderboard.json"
@@ -15955,7 +15955,7 @@
   "pool_flow_signals": {
     "module_id": "pool_flow_signals_v0_10_51",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.427Z",
+    "generated_at": "2026-07-09T16:15:51.398Z",
     "source_files_used": [
       "pool_instrument_map.json",
       "etf_flow_leaderboard.json"
@@ -17037,7 +17037,7 @@
   "market_signal_report": {
     "module_id": "market_signal_report_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.469Z",
+    "generated_at": "2026-07-09T16:15:51.446Z",
     "source_files_used": [
       "financial-pond/data/pool_instrument_map.json",
       "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
@@ -17089,7 +17089,7 @@
   "pool_market_signals": {
     "module_id": "pool_market_signals_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.469Z",
+    "generated_at": "2026-07-09T16:15:51.446Z",
     "source_files_used": [
       "financial-pond/data/pool_instrument_map.json",
       "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"
@@ -21178,7 +21178,7 @@
   "pool_instrument_map": {
     "module_id": "pool_instrument_map_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.390Z",
+    "generated_at": "2026-07-09T16:15:51.361Z",
     "rows": [
       {
         "pool_id": "a_share_a_share",
@@ -22123,7 +22123,7 @@
   "pool_mapping_report": {
     "module_id": "pool_mapping_report_v0_10_54",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.390Z",
+    "generated_at": "2026-07-09T16:15:51.361Z",
     "total_pool_count": 67,
     "direct_index_count": 0,
     "direct_etf_count": 22,
@@ -22175,7 +22175,7 @@
   "signal_quality_report": {
     "module_id": "signal_quality_report_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.510Z",
+    "generated_at": "2026-07-09T16:15:51.490Z",
     "total_pool_count": 67,
     "mapped_pool_count": 62,
     "direct_evidence_count": 22,
@@ -22198,7 +22198,7 @@
   "pool_signal_quality": {
     "module_id": "pool_signal_quality_v0_10_55",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.510Z",
+    "generated_at": "2026-07-09T16:15:51.490Z",
     "rows": [
       {
         "pool_id": "a_share_a_share",
@@ -23342,9 +23342,9 @@
     ]
   },
   "evening_observation_summary": {
-    "module_id": "evening_observation_summary_v0_10_57",
+    "module_id": "evening_observation_summary_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.702Z",
+    "generated_at": "2026-07-09T16:15:51.775Z",
     "observation_state": "observe_only",
     "data_readiness": "62/67 market mapped; quality guardrail active",
     "direct_evidence_ratio": 0.3284,
@@ -23358,7 +23358,8 @@
       "Direct evidence covers 33% of observed pools.",
       "Proxy evidence covers 60% and carries high aggregate proxy risk.",
       "62 momentum and 62 liquidity observations are available.",
-      "10 pools meet the strict direct-evidence strong observation gate."
+      "10 pools meet the strict direct-evidence strong observation gate.",
+      "Right-side states: Overheated 2, Confirmed Trend 3."
     ],
     "top_observation_pools": [
       {
@@ -23387,7 +23388,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 89,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active"
       },
       {
         "pool_id": "a_share_brokerage",
@@ -23415,7 +23424,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 81.8904,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       },
       {
         "pool_id": "a_share_ai_computer",
@@ -23443,7 +23460,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 81.6024,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       },
       {
         "pool_id": "a_share_semiconductor",
@@ -23471,7 +23496,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 81.492,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active"
       },
       {
         "pool_id": "a_share_bank_insurance",
@@ -23499,7 +23532,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 79.5424,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       }
     ],
     "caution_pools": [
@@ -23677,13 +23718,14 @@
       "not investment advice",
       "insufficient outcome history",
       "no source-backed hard flow yet",
-      "Observation scores express review priority only."
+      "Observation scores express review priority only.",
+      "Right-side state is observation-only and excludes future outcomes."
     ]
   },
   "pool_observation_scores": {
-    "module_id": "pool_observation_scores_v0_10_57",
+    "module_id": "pool_observation_scores_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.702Z",
+    "generated_at": "2026-07-09T16:15:51.775Z",
     "rows": [
       {
         "pool_id": "a_share_communication_electronics",
@@ -23711,7 +23753,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 89,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active"
       },
       {
         "pool_id": "a_share_a_share_communication_electronics",
@@ -23767,7 +23817,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 81.8904,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       },
       {
         "pool_id": "a_share_a_share_brokerage",
@@ -23823,7 +23881,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 81.6024,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       },
       {
         "pool_id": "a_share_a_share_ai_computer",
@@ -23879,7 +23945,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 81.492,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active"
       },
       {
         "pool_id": "a_share_a_share_semiconductor",
@@ -23935,7 +24009,15 @@
         "proxy_penalty": 0,
         "missing_data_penalty": 4,
         "final_score": 79.5424,
-        "boundary": "observe_only; observation priority only"
+        "boundary": "observe_only; observation priority only",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       },
       {
         "pool_id": "a_share_a_share_bank_insurance",
@@ -25565,9 +25647,9 @@
   },
   "evening_report": "# Evening Observation Summary\n\n## Observation State\n- observe_only\n\n## Data Readiness\n- 62/67 market mapped; quality guardrail active\n- Direct evidence 33%; proxy evidence 60%.\n\n## What Improved Today\n- Direct evidence covers 33% of observed pools.\n- Proxy evidence covers 60% and carries high aggregate proxy risk.\n- 62 momentum and 62 liquidity observations are available.\n- 10 pools meet the strict direct-evidence strong observation gate.\n\n## Top Observation Pools\n- **通信电子** | strong_observe | inward\n  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market\n  - evidence high; proxy risk none; capped confidence 0.75\n  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.\n- **券商** | strong_observe | inward\n  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market\n  - evidence high; proxy risk none; capped confidence 0.75\n  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.\n- **AI计算机** | strong_observe | inward\n  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market\n  - evidence high; proxy risk none; capped confidence 0.75\n  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.\n- **半导体** | strong_observe | outward\n  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market\n  - evidence high; proxy risk none; capped confidence 0.75\n  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.\n- **Bank and Insurance** | strong_observe | outward\n  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market\n  - evidence high; proxy risk none; capped confidence 0.75\n  - high evidence via direct_etf; 3/3 core observations available; delta improved_data.\n\n## Caution / Low Quality Pools\n- **Media**: sector_proxy with loose proxy; high proxy risk; flow unavailable\n- **Agriculture**: sector_proxy with loose proxy; high proxy risk; flow unavailable\n- **Light Manufacturing**: sector_proxy with loose proxy; high proxy risk; flow unavailable\n- **Social Services**: sector_proxy with loose proxy; high proxy risk; flow unavailable\n- **Transportation**: sector_proxy with loose proxy; high proxy risk; flow unavailable\n\n## Main Data Gaps\n- flow: 45 pools; connect mapped provider flow source\n- momentum: 5 pools; connect momentum confirmation\n- liquidity: 5 pools; connect liquidity confirmation\n- rotation: 60 pools; collect more rotation evidence\n- valuation: 36 pools; connect valuation\n\n## Boundary\n- observe_only\n- not investment advice\n- insufficient outcome history\n- no source-backed hard flow yet\n",
   "observation_candidate_ledger": {
-    "module_id": "observation_candidate_ledger_v0_10_57",
+    "module_id": "observation_candidate_ledger_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.702Z",
+    "generated_at": "2026-07-09T16:15:51.775Z",
     "rows": [
       {
         "as_of": "2026-07-09",
@@ -25590,7 +25672,15 @@
         "review_t3_due": "2026-07-12",
         "review_t5_due": "2026-07-14",
         "review_t20_due": "2026-07-29",
-        "review_status": "pending"
+        "review_status": "pending",
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active"
       },
       {
         "as_of": "2026-07-09",
@@ -25613,7 +25703,15 @@
         "review_t3_due": "2026-07-12",
         "review_t5_due": "2026-07-14",
         "review_t20_due": "2026-07-29",
-        "review_status": "pending"
+        "review_status": "pending",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       },
       {
         "as_of": "2026-07-09",
@@ -25636,7 +25734,15 @@
         "review_t3_due": "2026-07-12",
         "review_t5_due": "2026-07-14",
         "review_t20_due": "2026-07-29",
-        "review_status": "pending"
+        "review_status": "pending",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       },
       {
         "as_of": "2026-07-09",
@@ -25659,7 +25765,15 @@
         "review_t3_due": "2026-07-12",
         "review_t5_due": "2026-07-14",
         "review_t20_due": "2026-07-29",
-        "review_status": "pending"
+        "review_status": "pending",
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active"
       },
       {
         "as_of": "2026-07-09",
@@ -25682,14 +25796,22 @@
         "review_t3_due": "2026-07-12",
         "review_t5_due": "2026-07-14",
         "review_t20_due": "2026-07-29",
-        "review_status": "pending"
+        "review_status": "pending",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable"
       }
     ]
   },
   "score_calibration_report": {
     "module_id": "score_calibration_report_v0_10_57",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.702Z",
+    "generated_at": "2026-07-09T16:15:51.682Z",
     "strong_count": 10,
     "moderate_count": 12,
     "weak_count": 0,
@@ -25729,10 +25851,103 @@
       "Tiers express observation priority only."
     ]
   },
-  "candidate_review_schedule": {
-    "module_id": "candidate_review_schedule_v0_10_60",
+  "candidate_state_model": {
+    "module_id": "candidate_state_model_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.789Z",
+    "generated_at": "2026-07-09T16:15:51.775Z",
+    "status": "state_model_available",
+    "candidate_count": 5,
+    "states_distribution": {
+      "Overheated": 2,
+      "Confirmed Trend": 3
+    },
+    "risk_gate_distribution": {
+      "caution": 2,
+      "pass": 3
+    },
+    "rows": [
+      {
+        "as_of": "2026-07-09",
+        "pool_id": "a_share_communication_electronics",
+        "pool_name": "通信电子",
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active",
+        "boundary": "observe_only; right-side model classification only"
+      },
+      {
+        "as_of": "2026-07-09",
+        "pool_id": "a_share_brokerage",
+        "pool_name": "券商",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
+        "boundary": "observe_only; right-side model classification only"
+      },
+      {
+        "as_of": "2026-07-09",
+        "pool_id": "a_share_ai_computer",
+        "pool_name": "AI计算机",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
+        "boundary": "observe_only; right-side model classification only"
+      },
+      {
+        "as_of": "2026-07-09",
+        "pool_id": "a_share_semiconductor",
+        "pool_name": "半导体",
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active",
+        "boundary": "observe_only; right-side model classification only"
+      },
+      {
+        "as_of": "2026-07-09",
+        "pool_id": "a_share_bank_insurance",
+        "pool_name": "Bank and Insurance",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
+        "boundary": "observe_only; right-side model classification only"
+      }
+    ],
+    "model_notes": [
+      "Classification uses only candidate-date artifacts and prior archives.",
+      "Outcome reviews are not used to classify current candidates.",
+      "Overheat penalties do not remove candidates; they label late-stage risk.",
+      "Major wave score expresses observation quality, not a trading instruction."
+    ]
+  },
+  "candidate_review_schedule": {
+    "module_id": "candidate_review_schedule_v0_10_61",
+    "as_of": "2026-07-09",
+    "generated_at": "2026-07-09T16:15:51.820Z",
     "candidate_count": 5,
     "pending_t1_count": 5,
     "pending_t3_count": 5,
@@ -25770,9 +25985,9 @@
     ]
   },
   "candidate_outcome_reviews": {
-    "module_id": "candidate_outcome_reviews_v0_10_60",
+    "module_id": "candidate_outcome_reviews_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.789Z",
+    "generated_at": "2026-07-09T16:15:51.820Z",
     "rows": [
       {
         "candidate_as_of": "2026-07-09",
@@ -25786,6 +26001,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25809,6 +26032,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25832,6 +26063,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25855,6 +26094,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25878,6 +26125,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25901,6 +26156,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25924,6 +26187,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25947,6 +26218,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25970,6 +26249,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -25993,6 +26280,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26016,6 +26311,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26039,6 +26342,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26062,6 +26373,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26085,6 +26404,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26108,6 +26435,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26131,6 +26466,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26154,6 +26497,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26177,6 +26528,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26200,6 +26559,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26223,6 +26590,14 @@
         "original_capped_confidence": 0.75,
         "original_evidence_quality": "high",
         "original_proxy_risk": "none",
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active",
         "review_status": "pending",
         "outcome_available": false,
         "observed_return": null,
@@ -26237,9 +26612,9 @@
     ]
   },
   "outcome_review_report": {
-    "module_id": "outcome_review_report_v0_10_60",
+    "module_id": "outcome_review_report_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.789Z",
+    "generated_at": "2026-07-09T16:15:51.820Z",
     "total_candidates": 5,
     "due_review_count": 0,
     "reviewed_count": 0,
@@ -26265,9 +26640,9 @@
     ]
   },
   "candidate_price_basis": {
-    "module_id": "candidate_price_basis_v0_10_60",
+    "module_id": "candidate_price_basis_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.742Z",
+    "generated_at": "2026-07-09T16:15:51.775Z",
     "rows": [
       {
         "candidate_as_of": "2026-07-09",
@@ -26287,6 +26662,15 @@
         "baseline_available": true,
         "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
         "source_type": "provider_daily_pct_change",
+        "candidate_score": 81.6024,
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "boundary": "candidate-day mapped instrument close preserved; observe_only"
       },
       {
@@ -26307,6 +26691,15 @@
         "baseline_available": true,
         "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
         "source_type": "provider_daily_pct_change",
+        "candidate_score": 79.5424,
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "boundary": "candidate-day mapped instrument close preserved; observe_only"
       },
       {
@@ -26327,6 +26720,15 @@
         "baseline_available": true,
         "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
         "source_type": "provider_daily_pct_change",
+        "candidate_score": 81.8904,
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
         "boundary": "candidate-day mapped instrument close preserved; observe_only"
       },
       {
@@ -26347,6 +26749,15 @@
         "baseline_available": true,
         "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
         "source_type": "provider_daily_pct_change",
+        "candidate_score": 89,
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active",
         "boundary": "candidate-day mapped instrument close preserved; observe_only"
       },
       {
@@ -26367,14 +26778,23 @@
         "baseline_available": true,
         "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
         "source_type": "provider_daily_pct_change",
+        "candidate_score": 81.492,
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active",
         "boundary": "candidate-day mapped instrument close preserved; observe_only"
       }
     ]
   },
   "review_readiness_report": {
-    "module_id": "review_readiness_report_v0_10_60",
+    "module_id": "review_readiness_report_v0_10_61",
     "as_of": "2026-07-09",
-    "generated_at": "2026-07-09T12:06:04.742Z",
+    "generated_at": "2026-07-09T16:15:51.726Z",
     "candidate_count": 5,
     "next_due_date": "2026-07-10",
     "next_due_horizon": "T+1",
@@ -26392,6 +26812,278 @@
       "Readiness describes price-basis availability only.",
       "A baseline price does not create a future outcome.",
       "Missing close, amount, volume, or turnover values remain null."
+    ]
+  },
+  "candidate_review_history": {
+    "module_id": "candidate_review_history_v0_10_61",
+    "as_of": "2026-07-09",
+    "generated_at": "2026-07-09T16:15:51.820Z",
+    "rows": [
+      {
+        "as_of": "2026-07-09",
+        "symbol": "159819",
+        "name": "AI计算机",
+        "pool_id": "a_share_ai_computer",
+        "baseline_price": 2.185,
+        "candidate_score": 81.6024,
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
+        "t1_review_result": {
+          "review_as_of": "2026-07-10",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t3_review_result": {
+          "review_as_of": "2026-07-12",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t5_review_result": {
+          "review_as_of": "2026-07-14",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t20_review_result": {
+          "review_as_of": "2026-07-29",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "outcome_status": "pending",
+        "review_notes": [
+          "T+1: Scheduled for 2026-07-10; review date has not arrived.",
+          "T+3: Scheduled for 2026-07-12; review date has not arrived.",
+          "T+5: Scheduled for 2026-07-14; review date has not arrived.",
+          "T+20: Scheduled for 2026-07-29; review date has not arrived."
+        ],
+        "boundary": "observe_only; review history only"
+      },
+      {
+        "as_of": "2026-07-09",
+        "symbol": "512800",
+        "name": "Bank and Insurance",
+        "pool_id": "a_share_bank_insurance",
+        "baseline_price": 0.761,
+        "candidate_score": 79.5424,
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 18,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
+        "t1_review_result": {
+          "review_as_of": "2026-07-10",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t3_review_result": {
+          "review_as_of": "2026-07-12",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t5_review_result": {
+          "review_as_of": "2026-07-14",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t20_review_result": {
+          "review_as_of": "2026-07-29",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "outcome_status": "pending",
+        "review_notes": [
+          "T+1: Scheduled for 2026-07-10; review date has not arrived.",
+          "T+3: Scheduled for 2026-07-12; review date has not arrived.",
+          "T+5: Scheduled for 2026-07-14; review date has not arrived.",
+          "T+20: Scheduled for 2026-07-29; review date has not arrived."
+        ],
+        "boundary": "observe_only; review history only"
+      },
+      {
+        "as_of": "2026-07-09",
+        "symbol": "512000",
+        "name": "券商",
+        "pool_id": "a_share_brokerage",
+        "baseline_price": 0.542,
+        "candidate_score": 81.8904,
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 14,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass",
+        "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+        "overheat_reason": "No strong overheat flag.",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+        "risk_gate_reason": "direct evidence and capped confidence usable",
+        "t1_review_result": {
+          "review_as_of": "2026-07-10",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t3_review_result": {
+          "review_as_of": "2026-07-12",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t5_review_result": {
+          "review_as_of": "2026-07-14",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t20_review_result": {
+          "review_as_of": "2026-07-29",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "outcome_status": "pending",
+        "review_notes": [
+          "T+1: Scheduled for 2026-07-10; review date has not arrived.",
+          "T+3: Scheduled for 2026-07-12; review date has not arrived.",
+          "T+5: Scheduled for 2026-07-14; review date has not arrived.",
+          "T+20: Scheduled for 2026-07-29; review date has not arrived."
+        ],
+        "boundary": "observe_only; review history only"
+      },
+      {
+        "as_of": "2026-07-09",
+        "symbol": "515880",
+        "name": "通信电子",
+        "pool_id": "a_share_communication_electronics",
+        "baseline_price": 0.807,
+        "candidate_score": 89,
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 85,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "elevated short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 85.",
+        "risk_gate_reason": "overheat guardrail active",
+        "t1_review_result": {
+          "review_as_of": "2026-07-10",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t3_review_result": {
+          "review_as_of": "2026-07-12",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t5_review_result": {
+          "review_as_of": "2026-07-14",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t20_review_result": {
+          "review_as_of": "2026-07-29",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "outcome_status": "pending",
+        "review_notes": [
+          "T+1: Scheduled for 2026-07-10; review date has not arrived.",
+          "T+3: Scheduled for 2026-07-12; review date has not arrived.",
+          "T+5: Scheduled for 2026-07-14; review date has not arrived.",
+          "T+20: Scheduled for 2026-07-29; review date has not arrived."
+        ],
+        "boundary": "observe_only; review history only"
+      },
+      {
+        "as_of": "2026-07-09",
+        "symbol": "512480",
+        "name": "半导体",
+        "pool_id": "a_share_semiconductor",
+        "baseline_price": 1.471,
+        "candidate_score": 81.492,
+        "candidate_state": "Overheated",
+        "overheat_score": 80,
+        "major_wave_score": 78,
+        "risk_gate_status": "caution",
+        "state_reason": "Overheated: high evidence; direct mapped instrument.",
+        "overheat_reason": "large short-term move; turnover spike; strength without hard flow",
+        "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 78.",
+        "risk_gate_reason": "overheat guardrail active",
+        "t1_review_result": {
+          "review_as_of": "2026-07-10",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t3_review_result": {
+          "review_as_of": "2026-07-12",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t5_review_result": {
+          "review_as_of": "2026-07-14",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "t20_review_result": {
+          "review_as_of": "2026-07-29",
+          "review_status": "pending",
+          "outcome_available": false,
+          "observed_return": null,
+          "direction_result": "unavailable"
+        },
+        "outcome_status": "pending",
+        "review_notes": [
+          "T+1: Scheduled for 2026-07-10; review date has not arrived.",
+          "T+3: Scheduled for 2026-07-12; review date has not arrived.",
+          "T+5: Scheduled for 2026-07-14; review date has not arrived.",
+          "T+20: Scheduled for 2026-07-29; review date has not arrived."
+        ],
+        "boundary": "observe_only; review history only"
+      }
+    ],
+    "boundary_notes": [
+      "observe_only",
+      "History preserves candidate-date model state and review status.",
+      "Future horizons remain pending until due date and source data are available."
     ]
   },
   "source_files_used": [

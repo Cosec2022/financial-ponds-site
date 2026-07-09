@@ -78,6 +78,7 @@ function renderCandidates() {
       <span class="candidate-cell">Tier · Score<strong>${escapeHtml(row.observation_tier)} · ${fmt(row.observation_score)}</strong></span>
       <span class="candidate-cell">Direction · Confidence<strong>${escapeHtml(row.direction)} · ${fmt(row.capped_confidence)}</strong></span>
       <span class="candidate-cell">Evidence · Proxy Risk<strong>${escapeHtml(row.evidence_quality)} · ${escapeHtml(row.proxy_risk)}</strong></span>
+      <span class="candidate-cell">State · Risk Gate<strong>${escapeHtml(row.candidate_state ?? "Noise")} · ${escapeHtml(row.risk_gate_status ?? "insufficient_data")}</strong></span>
     </button>
   `).join("");
 
@@ -121,6 +122,10 @@ function renderSelectedCandidate() {
     </div>
     <div class="detail-metrics">
       ${metric("Observation Score", candidate.observation_score)}
+      ${metric("State", candidate.candidate_state)}
+      ${metric("Overheat", candidate.overheat_score)}
+      ${metric("Major Wave", candidate.major_wave_score)}
+      ${metric("Risk Gate", candidate.risk_gate_status)}
       ${metric("Direction", candidate.direction)}
       ${metric("Capped Confidence", candidate.capped_confidence)}
       ${metric("Review Status", candidate.review_status)}
@@ -134,6 +139,8 @@ function renderSelectedCandidate() {
     <div class="reason-grid">
       <div class="reason-block"><strong>Main reason</strong><br>${escapeHtml(candidate.main_reason)}</div>
       <div class="reason-block caution"><strong>Caution</strong><br>${escapeHtml(candidate.caution_reason || "No additional caution recorded.")}</div>
+      <div class="reason-block"><strong>Major Wave</strong><br>${escapeHtml(candidate.major_wave_reason || "No major-wave reason recorded.")}</div>
+      <div class="reason-block caution"><strong>Overheat / Risk Gate</strong><br>${escapeHtml(`${candidate.overheat_reason || "No overheat reason recorded."} ${candidate.risk_gate_reason || ""}`.trim())}</div>
     </div>
     <div class="component-grid">
       ${components.map(([label, value, penalty]) => `
