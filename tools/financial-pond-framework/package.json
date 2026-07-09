@@ -1,6 +1,6 @@
 {
   "name": "financial-pond-framework",
-  "version": "0.10.52",
+  "version": "0.10.53",
   "description": "Config-driven financial pond graph framework for cross-asset and sector ETF analysis.",
   "type": "module",
   "scripts": {

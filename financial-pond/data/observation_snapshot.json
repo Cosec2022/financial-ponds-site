@@ -1,6 +1,6 @@
 {
   "module_id": "observation_snapshot_v0_10_48",
-  "as_of": "2026-07-08",
+  "as_of": "2026-07-09",
   "generated_at": "2026-07-08T13:18:57.468Z",
   "status": "observation_snapshot_available",
   "execution_state": "blocked",
@@ -16,16 +16,17 @@
     "risk"
   ],
   "counts": {
-    "missing": 148,
+    "missing": 168,
     "insufficient_history": 61,
     "planned": 108,
-    "real_provider_derived": 146,
+    "real_provider_derived": 104,
     "manual_seed": 62,
-    "estimated_from_source": 11
+    "estimated_from_source": 11,
+    "derived_from_market": 22
   },
   "rows": [
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share",
       "pool_name": "a_share",
@@ -68,20 +69,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -178,7 +197,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_agriculture",
       "pool_name": "a_share_agriculture",
@@ -221,20 +240,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_agriculture",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_agriculture",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_agriculture",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_agriculture",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -331,7 +368,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_ai_computer",
       "pool_name": "a_share_ai_computer",
@@ -374,20 +411,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_ai_computer",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_ai_computer",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_ai_computer",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_ai_computer",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -484,7 +539,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_bank_insurance",
       "pool_name": "a_share_bank_insurance",
@@ -527,20 +582,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_bank_insurance",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_bank_insurance",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_bank_insurance",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_bank_insurance",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -637,7 +710,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_basic_chemicals",
       "pool_name": "a_share_basic_chemicals",
@@ -680,20 +753,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_basic_chemicals",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_basic_chemicals",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_basic_chemicals",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_basic_chemicals",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -790,7 +881,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_beauty_care",
       "pool_name": "a_share_beauty_care",
@@ -833,20 +924,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_beauty_care",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_beauty_care",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_beauty_care",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_beauty_care",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -943,7 +1052,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_brokerage",
       "pool_name": "a_share_brokerage",
@@ -986,20 +1095,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_brokerage",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_brokerage",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_brokerage",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_brokerage",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -1096,7 +1223,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_building_materials",
       "pool_name": "a_share_building_materials",
@@ -1139,20 +1266,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_building_materials",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_building_materials",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_building_materials",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_building_materials",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -1249,7 +1394,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_coal",
       "pool_name": "a_share_coal",
@@ -1292,20 +1437,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_coal",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_coal",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_coal",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_coal",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -1402,7 +1565,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_communication_electronics",
       "pool_name": "a_share_communication_electronics",
@@ -1445,20 +1608,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_communication_electronics",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_communication_electronics",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_communication_electronics",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_communication_electronics",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -1555,7 +1736,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_construction",
       "pool_name": "a_share_construction",
@@ -1598,20 +1779,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_construction",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_construction",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_construction",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_construction",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -1708,7 +1907,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_consumer",
       "pool_name": "a_share_consumer",
@@ -1751,20 +1950,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_consumer",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_consumer",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_consumer",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_consumer",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -1861,7 +2078,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_defense_military",
       "pool_name": "a_share_defense_military",
@@ -1904,20 +2121,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_defense_military",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_defense_military",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_defense_military",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_defense_military",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -2014,7 +2249,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_environmental_protection",
       "pool_name": "a_share_environmental_protection",
@@ -2057,20 +2292,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_environmental_protection",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_environmental_protection",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_environmental_protection",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_environmental_protection",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -2167,7 +2420,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_food_beverage",
       "pool_name": "a_share_food_beverage",
@@ -2210,20 +2463,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_food_beverage",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_food_beverage",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_food_beverage",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_food_beverage",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -2320,7 +2591,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_healthcare_pharma",
       "pool_name": "a_share_healthcare_pharma",
@@ -2363,20 +2634,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_healthcare_pharma",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_healthcare_pharma",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_healthcare_pharma",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_healthcare_pharma",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -2473,7 +2762,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_home_appliances",
       "pool_name": "a_share_home_appliances",
@@ -2516,20 +2805,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_home_appliances",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_home_appliances",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_home_appliances",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_home_appliances",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -2626,7 +2933,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_light_manufacturing",
       "pool_name": "a_share_light_manufacturing",
@@ -2669,20 +2976,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_light_manufacturing",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_light_manufacturing",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_light_manufacturing",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_light_manufacturing",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -2779,7 +3104,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_machinery",
       "pool_name": "a_share_machinery",
@@ -2822,20 +3147,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_machinery",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_machinery",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_machinery",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_machinery",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -2932,7 +3275,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_media",
       "pool_name": "a_share_media",
@@ -2975,20 +3318,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_media",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_media",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_media",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_media",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -3085,7 +3446,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_new_energy_ev",
       "pool_name": "a_share_new_energy_ev",
@@ -3128,20 +3489,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_new_energy_ev",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_new_energy_ev",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_new_energy_ev",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_new_energy_ev",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -3238,7 +3617,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_nonferrous_metals",
       "pool_name": "a_share_nonferrous_metals",
@@ -3281,20 +3660,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_nonferrous_metals",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_nonferrous_metals",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_nonferrous_metals",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_nonferrous_metals",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -3391,7 +3788,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_petroleum_petrochemical",
       "pool_name": "a_share_petroleum_petrochemical",
@@ -3434,20 +3831,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_petroleum_petrochemical",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_petroleum_petrochemical",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_petroleum_petrochemical",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_petroleum_petrochemical",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -3544,7 +3959,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_real_estate_infra",
       "pool_name": "a_share_real_estate_infra",
@@ -3587,20 +4002,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_real_estate_infra",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_real_estate_infra",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_real_estate_infra",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_real_estate_infra",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -3697,7 +4130,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_resources_materials",
       "pool_name": "a_share_resources_materials",
@@ -3740,20 +4173,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_resources_materials",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_resources_materials",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_resources_materials",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_resources_materials",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -3850,7 +4301,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_retail",
       "pool_name": "a_share_retail",
@@ -3893,20 +4344,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_retail",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_retail",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_retail",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_retail",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -4003,7 +4472,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_semiconductor",
       "pool_name": "a_share_semiconductor",
@@ -4046,20 +4515,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_semiconductor",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_semiconductor",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_semiconductor",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_semiconductor",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -4156,7 +4643,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_social_services",
       "pool_name": "a_share_social_services",
@@ -4199,20 +4686,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_social_services",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_social_services",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_social_services",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_social_services",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -4309,7 +4814,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_steel",
       "pool_name": "a_share_steel",
@@ -4352,20 +4857,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_steel",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_steel",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_steel",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_steel",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -4462,7 +4985,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_textile_apparel",
       "pool_name": "a_share_textile_apparel",
@@ -4505,20 +5028,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_textile_apparel",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_textile_apparel",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_textile_apparel",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_textile_apparel",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -4615,7 +5156,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_transportation",
       "pool_name": "a_share_transportation",
@@ -4658,20 +5199,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_transportation",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_transportation",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_transportation",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_transportation",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -4768,7 +5327,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_a_share_utilities",
       "pool_name": "a_share_utilities",
@@ -4811,20 +5370,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.a_share_utilities",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_a_share_utilities",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.a_share_utilities",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_a_share_utilities",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -4921,7 +5498,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_agriculture",
       "pool_name": "Agriculture",
@@ -4963,21 +5540,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.agriculture",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_agriculture",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.agriculture",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_agriculture",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -5033,7 +5628,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -5074,7 +5669,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_ai_computer",
       "pool_name": "AI计算机",
@@ -5114,23 +5709,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.23639999999999997,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.ai_computer",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 1.84,
+          "score": 1.84,
+          "label": "positive",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_ai_computer",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": 1.84
+          },
+          "calculation": "observed value = 1.84",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.ai_computer",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 807496409.361,
+          "score": 807496409.361,
+          "label": "above_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_ai_computer",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 807496409.361
+          },
+          "calculation": "observed value = 807496409.361",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -5185,8 +5798,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "derived",
         "news": "derived",
         "valuation": "seed",
@@ -5237,7 +5850,7 @@
       "review_status": "conflict_review"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_bank_insurance",
       "pool_name": "Bank and Insurance",
@@ -5277,23 +5890,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.11283333333333334,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.bank_insurance",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 1.45,
+          "score": 1.45,
+          "label": "positive",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_bank_insurance",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": 1.45
+          },
+          "calculation": "observed value = 1.45",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.bank_insurance",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 785232565,
+          "score": 785232565,
+          "label": "above_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_bank_insurance",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 785232565
+          },
+          "calculation": "observed value = 785232565",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -5348,8 +5979,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -5396,7 +6027,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_basic_chemicals",
       "pool_name": "基础化工",
@@ -5438,21 +6069,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.basic_chemicals",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_basic_chemicals",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.basic_chemicals",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_basic_chemicals",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -5508,7 +6157,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -5553,7 +6202,7 @@
       "review_status": "avoid_watch"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_beauty_care",
       "pool_name": "Beauty Care",
@@ -5595,21 +6244,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.beauty_care",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_beauty_care",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.beauty_care",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_beauty_care",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -5665,7 +6332,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -5706,7 +6373,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_brokerage",
       "pool_name": "券商",
@@ -5746,23 +6413,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.1536666666666667,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.brokerage",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": -1.3,
+          "score": -1.3,
+          "label": "negative",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_brokerage",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": -1.3
+          },
+          "calculation": "observed value = -1.3",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.brokerage",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 1253277254,
+          "score": 1253277254,
+          "label": "above_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_brokerage",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 1253277254
+          },
+          "calculation": "observed value = 1253277254",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -5817,8 +6502,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "derived",
         "news": "derived",
         "valuation": "seed",
@@ -5869,7 +6554,7 @@
       "review_status": "conflict_review"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_btc",
       "pool_name": "btc",
@@ -5912,20 +6597,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.btc",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_btc",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.btc",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_btc",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -6022,7 +6725,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_building_materials",
       "pool_name": "建筑材料",
@@ -6064,21 +6767,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.building_materials",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_building_materials",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.building_materials",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_building_materials",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -6134,7 +6855,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -6179,7 +6900,7 @@
       "review_status": "avoid_watch"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_coal",
       "pool_name": "Coal",
@@ -6221,21 +6942,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.coal",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_coal",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.coal",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_coal",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -6291,7 +7030,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -6332,7 +7071,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_communication_electronics",
       "pool_name": "Communication and Electronics",
@@ -6372,23 +7111,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.22703333333333334,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.communication_electronics",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": -0.53,
+          "score": -0.53,
+          "label": "negative",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_communication_electronics",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": -0.53
+          },
+          "calculation": "observed value = -0.53",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.communication_electronics",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 4810678792,
+          "score": 4810678792,
+          "label": "above_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_communication_electronics",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 4810678792
+          },
+          "calculation": "observed value = 4810678792",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -6443,8 +7200,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "derived",
         "news": "derived",
         "valuation": "seed",
@@ -6491,7 +7248,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_construction",
       "pool_name": "Construction",
@@ -6533,21 +7290,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.construction",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_construction",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.construction",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_construction",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -6603,7 +7378,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -6644,7 +7419,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_consumer",
       "pool_name": "Consumer",
@@ -6684,23 +7459,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": -0.14423333333333335,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.consumer",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": -0.79,
+          "score": -0.79,
+          "label": "negative",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_consumer",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": -0.79
+          },
+          "calculation": "observed value = -0.79",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.consumer",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 240678474.244,
+          "score": 240678474.244,
+          "label": "below_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_consumer",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 240678474.244
+          },
+          "calculation": "observed value = 240678474.244",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -6755,8 +7548,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -6803,7 +7596,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_defense_military",
       "pool_name": "Defense and Military",
@@ -6843,23 +7636,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": -0.11043333333333331,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.defense_military",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": -2.01,
+          "score": -2.01,
+          "label": "negative",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_defense_military",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": -2.01
+          },
+          "calculation": "observed value = -2.01",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.defense_military",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 277735779,
+          "score": 277735779,
+          "label": "below_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_defense_military",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 277735779
+          },
+          "calculation": "observed value = 277735779",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -6914,8 +7725,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -6962,7 +7773,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_environmental_protection",
       "pool_name": "Environmental Protection",
@@ -7004,21 +7815,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.environmental_protection",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_environmental_protection",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.environmental_protection",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_environmental_protection",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -7074,7 +7903,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -7115,7 +7944,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_food_beverage",
       "pool_name": "Food and Beverage",
@@ -7157,21 +7986,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.food_beverage",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_food_beverage",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.food_beverage",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_food_beverage",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -7227,7 +8074,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -7268,7 +8115,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_gold",
       "pool_name": "gold",
@@ -7311,20 +8158,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.gold",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_gold",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.gold",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_gold",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -7421,7 +8286,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_healthcare_pharma",
       "pool_name": "Healthcare and Pharma",
@@ -7461,23 +8326,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": -0.06443333333333333,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.healthcare_pharma",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": -1.41,
+          "score": -1.41,
+          "label": "negative",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_healthcare_pharma",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": -1.41
+          },
+          "calculation": "observed value = -1.41",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.healthcare_pharma",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 516761665,
+          "score": 516761665,
+          "label": "below_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_healthcare_pharma",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 516761665
+          },
+          "calculation": "observed value = 516761665",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -7532,8 +8415,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -7580,7 +8463,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_home_appliances",
       "pool_name": "Home Appliances",
@@ -7622,21 +8505,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.home_appliances",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_home_appliances",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.home_appliances",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_home_appliances",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -7692,7 +8593,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -7733,7 +8634,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_light_manufacturing",
       "pool_name": "Light Manufacturing",
@@ -7775,21 +8676,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.light_manufacturing",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_light_manufacturing",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.light_manufacturing",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_light_manufacturing",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -7845,7 +8764,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -7886,7 +8805,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_machinery",
       "pool_name": "Machinery",
@@ -7928,21 +8847,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.machinery",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_machinery",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.machinery",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_machinery",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -7998,7 +8935,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -8039,7 +8976,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_media",
       "pool_name": "Media",
@@ -8081,21 +9018,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.media",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_media",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.media",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_media",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -8151,7 +9106,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -8192,7 +9147,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_new_energy_ev",
       "pool_name": "新能源车",
@@ -8232,23 +9187,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": -0.4133333333333334,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.new_energy_ev",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": -5.29,
+          "score": -5.29,
+          "label": "negative",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_new_energy_ev",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": -5.29
+          },
+          "calculation": "observed value = -5.29",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.new_energy_ev",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 171662510,
+          "score": 171662510,
+          "label": "below_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_new_energy_ev",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 171662510
+          },
+          "calculation": "observed value = 171662510",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -8303,8 +9276,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "derived",
         "news": "derived",
         "valuation": "seed",
@@ -8355,7 +9328,7 @@
       "review_status": "avoid_watch"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_nonferrous_metals",
       "pool_name": "Nonferrous Metals",
@@ -8397,21 +9370,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.nonferrous_metals",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_nonferrous_metals",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.nonferrous_metals",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_nonferrous_metals",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -8467,7 +9458,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -8508,7 +9499,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_petroleum_petrochemical",
       "pool_name": "Petroleum and Petrochemical",
@@ -8550,21 +9541,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.petroleum_petrochemical",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_petroleum_petrochemical",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.petroleum_petrochemical",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_petroleum_petrochemical",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -8620,7 +9629,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -8661,7 +9670,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_real_estate_infra",
       "pool_name": "地产基建",
@@ -8701,23 +9710,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": -0.2279,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.real_estate_infra",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 0.51,
+          "score": 0.51,
+          "label": "positive",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_real_estate_infra",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": 0.51
+          },
+          "calculation": "observed value = 0.51",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.real_estate_infra",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 78165826,
+          "score": 78165826,
+          "label": "below_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_real_estate_infra",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 78165826
+          },
+          "calculation": "observed value = 78165826",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -8772,8 +9799,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "derived",
         "news": "derived",
         "valuation": "seed",
@@ -8824,7 +9851,7 @@
       "review_status": "avoid_watch"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_resources_materials",
       "pool_name": "Resources and Materials",
@@ -8864,23 +9891,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": -0.07406666666666667,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.resources_materials",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": -2.94,
+          "score": -2.94,
+          "label": "negative",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_resources_materials",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": -2.94
+          },
+          "calculation": "observed value = -2.94",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.resources_materials",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 797936585,
+          "score": 797936585,
+          "label": "above_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_resources_materials",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 797936585
+          },
+          "calculation": "observed value = 797936585",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -8935,8 +9980,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -8983,7 +10028,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_retail",
       "pool_name": "商贸零售",
@@ -9025,21 +10070,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.retail",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_retail",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.retail",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_retail",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -9095,7 +10158,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -9140,7 +10203,7 @@
       "review_status": "avoid_watch"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_semiconductor",
       "pool_name": "半导体",
@@ -9180,23 +10243,41 @@
         },
         "price_momentum": {
           "slot": "price_momentum",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.23953333333333338,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.semiconductor",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 0.22,
+          "score": 0.22,
+          "label": "positive",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_pct_change",
+          "trace_id": "market.channel.price_momentum.a_share_semiconductor",
+          "trace_status": "available",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": 0.22
+          },
+          "calculation": "observed value = 0.22",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
-          "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.semiconductor",
-          "trace_status": "available"
+          "reality": "derived_from_market",
+          "value": 1945067169,
+          "score": 1945067169,
+          "label": "above_median",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "provider_daily_amount",
+          "trace_id": "market.channel.liquidity.a_share_semiconductor",
+          "trace_status": "available",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": 1945067169
+          },
+          "calculation": "observed value = 1945067169",
+          "reality_note": "derived from market price/volume",
+          "boundary": "derived from market price/volume; not trading signal; observe_only",
+          "reason": "Exact sector mapping to the latest available representative ETF market row."
         },
         "rotation": {
           "slot": "rotation",
@@ -9251,8 +10332,8 @@
       },
       "signal_matrix_row": {
         "flow": "estimated_from_source",
-        "price_momentum": "derived",
-        "liquidity": "derived",
+        "price_momentum": "derived_from_market",
+        "liquidity": "derived_from_market",
         "rotation": "derived",
         "news": "derived",
         "valuation": "seed",
@@ -9303,7 +10384,7 @@
       "review_status": "conflict_review"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_social_services",
       "pool_name": "Social Services",
@@ -9345,21 +10426,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.social_services",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_social_services",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.social_services",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_social_services",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -9415,7 +10514,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -9456,7 +10555,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_sp500",
       "pool_name": "sp500",
@@ -9499,20 +10598,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.sp500",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_sp500",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.sp500",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_sp500",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -9609,7 +10726,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_steel",
       "pool_name": "钢铁",
@@ -9651,21 +10768,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.steel",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_steel",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.steel",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_steel",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -9721,7 +10856,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -9766,7 +10901,7 @@
       "review_status": "avoid_watch"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_textile_apparel",
       "pool_name": "Textile and Apparel",
@@ -9808,21 +10943,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.textile_apparel",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_textile_apparel",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.textile_apparel",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_textile_apparel",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -9878,7 +11031,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -9919,7 +11072,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_transportation",
       "pool_name": "Transportation",
@@ -9961,21 +11114,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.transportation",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_transportation",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.transportation",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_transportation",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -10031,7 +11202,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -10072,7 +11243,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_us_equity",
       "pool_name": "us_equity",
@@ -10115,20 +11286,38 @@
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.us_equity",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_us_equity",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
           "reality": "missing",
           "value": null,
           "score": null,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.us_equity",
-          "trace_status": "available"
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_us_equity",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -10225,7 +11414,7 @@
       "review_status": "blocked_execution"
     },
     {
-      "as_of": "2026-07-08",
+      "as_of": "2026-07-09",
       "universe": "a_share",
       "pool_id": "a_share_utilities",
       "pool_name": "Utilities",
@@ -10267,21 +11456,39 @@
           "slot": "price_momentum",
           "reality": "missing",
           "value": null,
-          "score": 0,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_confirmation.utilities",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.price_momentum.a_share_utilities",
+          "trace_status": "missing",
+          "formula": "latest representative ETF daily pct_change",
+          "variables": {
+            "pct_change": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "liquidity": {
           "slot": "liquidity",
-          "reality": "real_provider_derived",
+          "reality": "missing",
           "value": null,
-          "score": 0.175,
-          "label": "planned",
-          "source_file": "sector_flow_review.json",
-          "trace_id": "flow.market_liquidity.utilities",
-          "trace_status": "available"
+          "score": null,
+          "label": "neutral",
+          "source_file": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+          "source_type": "source_unavailable",
+          "trace_id": "market.channel.liquidity.a_share_utilities",
+          "trace_status": "missing",
+          "formula": "latest representative ETF amount; turnover fallback",
+          "variables": {
+            "amount_or_turnover": null
+          },
+          "calculation": "source unavailable",
+          "reality_note": "source unavailable",
+          "boundary": "source unavailable; observe_only",
+          "reason": "No representative ETF market row matched this observation pool."
         },
         "rotation": {
           "slot": "rotation",
@@ -10337,7 +11544,7 @@
       "signal_matrix_row": {
         "flow": "missing",
         "price_momentum": "missing",
-        "liquidity": "derived",
+        "liquidity": "missing",
         "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
@@ -10388,6 +11595,14 @@
     "source_backed_flow_count": 0,
     "estimated_from_source_count": 11,
     "missing_flow_count": 56,
+    "coverage_ratio": 0.1642
+  },
+  "market_channel": {
+    "module_id": "market_signal_report_v0_10_53",
+    "momentum_signal_count": 11,
+    "liquidity_signal_count": 11,
+    "missing_momentum_count": 56,
+    "missing_liquidity_count": 56,
     "coverage_ratio": 0.1642
   }
 }

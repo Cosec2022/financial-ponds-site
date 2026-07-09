@@ -17,7 +17,7 @@ const counts = rows.reduce((acc, row) => {
 }, {});
 
 const report = {
-  module_id: "daily_delta_report_v0_10_52",
+  module_id: "daily_delta_report_v0_10_53",
   as_of: latestArchive.as_of,
   generated_at: new Date().toISOString(),
   comparison_available: comparisonAvailable,
@@ -27,6 +27,8 @@ const report = {
   previous_path: pointer.previous_path,
   observed_pool_count: rows.length,
   changed_pool_count: counts.changed ?? 0,
+  improved_data_count: counts.improved_data ?? 0,
+  new_signal_count: counts.new_signal ?? 0,
   insufficient_history_count: counts.insufficient_history ?? 0,
   stable_pool_count: counts.stable ?? 0,
   baseline_state: comparisonAvailable ? "today archived / previous available" : "today archived / insufficient history",
@@ -38,7 +40,7 @@ const report = {
 };
 
 const poolSignals = {
-  module_id: "pool_delta_signals_v0_10_52",
+  module_id: "pool_delta_signals_v0_10_53",
   as_of: latestArchive.as_of,
   generated_at: report.generated_at,
   comparison_available: comparisonAvailable,
@@ -53,6 +55,10 @@ console.log(`Daily delta report written: comparison_available=${comparisonAvaila
 function poolDelta(latest, previous, comparisonAvailable) {
   const latestFlow = latest.signals?.flow ?? {};
   const previousFlow = previous?.signals?.flow ?? {};
+  const latestMomentum = latest.signals?.price_momentum ?? {};
+  const previousMomentum = previous?.signals?.price_momentum ?? {};
+  const latestLiquidity = latest.signals?.liquidity ?? {};
+  const previousLiquidity = previous?.signals?.liquidity ?? {};
   if (!comparisonAvailable || !previous) {
     return {
       pool_id: latest.pool_id,
@@ -60,6 +66,10 @@ function poolDelta(latest, previous, comparisonAvailable) {
       review_flag: "insufficient_history",
       latest_flow_status: latestFlow.reality ?? "missing",
       previous_flow_status: null,
+      latest_momentum_status: latestMomentum.reality ?? "missing",
+      previous_momentum_status: null,
+      latest_liquidity_status: latestLiquidity.reality ?? "missing",
+      previous_liquidity_status: null,
       flow_value_delta: null,
       direction_delta: null,
       confidence_delta: null,
@@ -73,18 +83,35 @@ function poolDelta(latest, previous, comparisonAvailable) {
   const directionDelta = latest.vector_forecast?.direction === previous.vector_forecast?.direction ? "same" : "changed";
   const confidenceDelta = round((numberOrNull(latest.vector_forecast?.confidence) ?? 0) - (numberOrNull(previous.vector_forecast?.confidence) ?? 0));
   const changed = latestFlow.reality !== previousFlow.reality || valueDelta !== 0 || directionDelta === "changed";
+  const gainedMomentum = gainedMarketSignal(previousMomentum, latestMomentum);
+  const gainedLiquidity = gainedMarketSignal(previousLiquidity, latestLiquidity);
+  const reviewFlag = gainedMomentum && gainedLiquidity ? "improved_data" : gainedMomentum || gainedLiquidity ? "new_signal" : changed ? "changed" : "stable";
   return {
     pool_id: latest.pool_id,
     pool_name: latest.pool_name,
-    review_flag: changed ? "changed" : "stable",
+    review_flag: reviewFlag,
     latest_flow_status: latestFlow.reality ?? "missing",
     previous_flow_status: previousFlow.reality ?? "missing",
+    latest_momentum_status: latestMomentum.reality ?? "missing",
+    previous_momentum_status: previousMomentum.reality ?? "missing",
+    latest_liquidity_status: latestLiquidity.reality ?? "missing",
+    previous_liquidity_status: previousLiquidity.reality ?? "missing",
     flow_value_delta: valueDelta,
     direction_delta: directionDelta,
     confidence_delta: confidenceDelta,
     boundary: "observe_only",
-    reason: changed ? "One or more observation fields changed versus previous archive." : "No compared observation field changed versus previous archive."
+    reason: gainedMomentum || gainedLiquidity
+      ? "Market-backed observation coverage improved versus the previous archive."
+      : changed ? "One or more observation fields changed versus previous archive." : "No compared observation field changed versus previous archive."
   };
+}
+
+function gainedMarketSignal(previous, latest) {
+  const previousAvailable = numberOrNull(previous?.value) !== null
+    && ["real_provider", "real_provider_derived", "source_backed", "derived_from_market", "estimated_from_source"].includes(previous?.reality);
+  const latestAvailable = numberOrNull(latest?.value) !== null
+    && ["source_backed", "derived_from_market", "estimated_from_source"].includes(latest?.reality);
+  return !previousAvailable && latestAvailable;
 }
 
 async function updateHistory(report) {
@@ -103,6 +130,8 @@ async function updateHistory(report) {
     previous_as_of: report.previous_as_of,
     observed_pool_count: report.observed_pool_count,
     changed_pool_count: report.changed_pool_count,
+    improved_data_count: report.improved_data_count,
+    new_signal_count: report.new_signal_count,
     insufficient_history_count: report.insufficient_history_count,
     stable_pool_count: report.stable_pool_count,
     baseline_state: report.baseline_state
@@ -111,7 +140,7 @@ async function updateHistory(report) {
   if (index >= 0) history[index] = snapshot;
   else history.push(snapshot);
   history.sort((a, b) => a.as_of.localeCompare(b.as_of));
-  await writeFile(historyPath, `${JSON.stringify({ module_id: "daily_delta_history_v0_10_52", history }, null, 2)}\n`, "utf8");
+  await writeFile(historyPath, `${JSON.stringify({ module_id: "daily_delta_history_v0_10_53", history }, null, 2)}\n`, "utf8");
 }
 
 async function readJson(path) {
@@ -119,6 +148,7 @@ async function readJson(path) {
 }
 
 function numberOrNull(value) {
+  if (value === null || value === undefined || value === "") return null;
   const number = Number(value);
   return Number.isFinite(number) ? number : null;
 }

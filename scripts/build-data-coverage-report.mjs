@@ -27,6 +27,7 @@ const priorityOrder = [
 
 const snapshot = JSON.parse(await readFile(resolve(dataDir, "observation_snapshot.json"), "utf8"));
 const flowChannel = await readJson(resolve(dataDir, "flow_channel_report.json"), null);
+const marketChannel = await readJson(resolve(dataDir, "market_signal_report.json"), null);
 const pools = Array.isArray(snapshot.rows) ? snapshot.rows : [];
 const rows = pools.map(poolCoverageRow);
 const totals = countStatuses(rows);
@@ -34,7 +35,7 @@ const totalSignalCells = rows.length * signalMap.length;
 const coverageRatio = totalSignalCells ? round((totals.real + totals.estimated + totals.derived) / totalSignalCells) : 0;
 
 const report = {
-  module_id: "data_coverage_report_v0_10_52",
+  module_id: "data_coverage_report_v0_10_53",
   as_of: snapshot.as_of,
   generated_at: new Date().toISOString(),
   observed_pool_count: rows.length,
@@ -51,6 +52,13 @@ const report = {
     estimated_from_source_count: flowChannel.estimated_from_source_count ?? 0,
     missing_flow_count: flowChannel.missing_flow_count ?? 0,
     coverage_ratio: flowChannel.coverage_ratio ?? 0
+  } : null,
+  market_channel: marketChannel ? {
+    momentum_signal_count: marketChannel.momentum_signal_count ?? 0,
+    liquidity_signal_count: marketChannel.liquidity_signal_count ?? 0,
+    missing_momentum_count: marketChannel.missing_momentum_count ?? 0,
+    missing_liquidity_count: marketChannel.missing_liquidity_count ?? 0,
+    coverage_ratio: marketChannel.coverage_ratio ?? 0
   } : null,
   top_missing_signal_types: topMissingSignalTypes(rows),
   top_missing_pools: [...rows].sort((a, b) => a.coverage_score - b.coverage_score).slice(0, 10).map((row) => ({
@@ -97,7 +105,7 @@ function signalStatus(signal, publicKey) {
   const value = numberOrNull(signal?.value ?? signal?.score);
   if (reality === "real_provider" || reality === "source_backed") return "real";
   if (publicKey === "flow" && ["real_provider_derived", "estimated_from_source"].includes(reality) && value !== null) return "estimated";
-  if (reality === "real_provider_derived" || reality === "manual_seed") return "derived";
+  if (["real_provider_derived", "manual_seed", "derived_from_market"].includes(reality)) return "derived";
   if (reality === "planned") return "planned";
   if (reality === "insufficient_history") return "insufficient";
   if (reality === "unavailable") return "missing";
@@ -107,7 +115,7 @@ function signalStatus(signal, publicKey) {
 function mainGapFor(statuses) {
   for (const [id, label] of priorityOrder) {
     if (id === "flow" && !["real", "estimated"].includes(statuses.flow)) return { id: "missing source-backed flow", next: "connect mapped provider flow source" };
-    if (["momentum", "liquidity"].includes(id) && !["real", "estimated"].includes(statuses[id])) return { id: `missing ${label}`, next: `connect ${label}` };
+    if (["momentum", "liquidity"].includes(id) && !["real", "estimated", "derived"].includes(statuses[id])) return { id: `missing ${label}`, next: `connect ${label}` };
     if (id === "rotation" && ["missing", "planned", "insufficient"].includes(statuses.rotation)) return { id: "rotation insufficient", next: "collect more rotation evidence" };
     if (["valuation", "fundamental", "news"].includes(id) && ["missing", "planned"].includes(statuses[id])) return { id: `${label} planned`, next: `connect ${label}` };
     if (id === "risk" && statuses.risk !== "real") return { id: "risk derived", next: "connect reviewed risk boundary" };
@@ -159,7 +167,7 @@ function priorityGaps(rows) {
 function gapMatches(key, row) {
   const status = row[`${key}_status`];
   if (key === "flow") return !["real", "estimated"].includes(status);
-  if (["momentum", "liquidity"].includes(key)) return !["real", "estimated"].includes(status);
+  if (["momentum", "liquidity"].includes(key)) return !["real", "estimated", "derived"].includes(status);
   if (key === "rotation") return ["missing", "planned", "insufficient"].includes(status);
   if (["valuation", "fundamental", "news"].includes(key)) return ["missing", "planned"].includes(status);
   if (key === "risk") return status !== "real";
@@ -194,7 +202,7 @@ async function updateHistory(report) {
   }
   const last = history.at(-1);
   if (!last || JSON.stringify(last) !== JSON.stringify(snapshot)) history.push(snapshot);
-  await writeFile(historyPath, `${JSON.stringify({ module_id: "coverage_history_v0_10_52", history }, null, 2)}\n`, "utf8");
+  await writeFile(historyPath, `${JSON.stringify({ module_id: "coverage_history_v0_10_53", history }, null, 2)}\n`, "utf8");
 }
 
 async function readJson(path, fallback) {

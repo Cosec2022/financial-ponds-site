@@ -14,6 +14,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(html, /Observation State/);
   assert.match(html, /Data Coverage/);
   assert.match(html, /Flow Channel/);
+  assert.match(html, /Market Channel/);
   assert.match(html, /Daily Delta/);
   assert.match(html, /Baseline/);
   assert.match(html, /Signal Health/);
@@ -168,6 +169,8 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(observationJson.status, "observation_snapshot_available");
   assert.ok(observationJson.rows.length >= 1);
   assert.ok(observationJson.rows.some((row) => row.signals?.flow?.reality === "estimated_from_source" || row.signals?.flow?.reality === "source_backed"));
+  assert.ok(observationJson.rows.some((row) => row.signals?.price_momentum?.reality === "derived_from_market"));
+  assert.ok(observationJson.rows.some((row) => row.signals?.liquidity?.reality === "derived_from_market"));
   assert.ok(observationJson.rows.every((row) => ["flow", "price_momentum", "liquidity", "rotation", "news", "valuation", "fundamental", "risk"].every((slot) => row.signals?.[slot]?.reality)));
 
   const manualReview = await worker.fetch(request("/data/manual_review_log.json"), {});
@@ -190,34 +193,38 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const coverage = await worker.fetch(request("/data/data_coverage_report.json"), {});
   assert.equal(coverage.status, 200);
   const coverageJson = await coverage.json();
-  assert.equal(coverageJson.module_id, "data_coverage_report_v0_10_52");
+  assert.equal(coverageJson.module_id, "data_coverage_report_v0_10_53");
   assert.ok(Array.isArray(coverageJson.pools));
   assert.ok(coverageJson.total_signal_cells >= coverageJson.observed_pool_count);
   assert.ok(Array.isArray(coverageJson.priority_gaps));
   assert.ok(coverageJson.estimated_count >= coverageJson.flow_channel.estimated_from_source_count);
   assert.ok(coverageJson.pools.some((row) => row.flow_status === "estimated"));
+  assert.ok(coverageJson.market_channel.momentum_signal_count >= 1);
+  assert.ok(coverageJson.market_channel.liquidity_signal_count >= 1);
 
   const coverageHistory = await worker.fetch(request("/data/coverage_history.json"), {});
   assert.equal(coverageHistory.status, 200);
   const coverageHistoryJson = await coverageHistory.json();
-  assert.equal(coverageHistoryJson.module_id, "coverage_history_v0_10_52");
+  assert.equal(coverageHistoryJson.module_id, "coverage_history_v0_10_53");
   assert.ok(Array.isArray(coverageHistoryJson.history));
 
   const pointer = await worker.fetch(request("/data/history/latest_observation_pointer.json"), {});
   assert.equal(pointer.status, 200);
   const pointerJson = await pointer.json();
-  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_52");
+  assert.equal(pointerJson.module_id, "latest_observation_pointer_v0_10_53");
   assert.ok(pointerJson.latest_path.endsWith(`${pointerJson.latest_as_of}.json`));
 
   const archive = await worker.fetch(request(`/data/history/observations/${pointerJson.latest_as_of}.json`), {});
   assert.equal(archive.status, 200);
   const archiveJson = await archive.json();
-  assert.equal(archiveJson.module_id, "observation_archive_v0_10_52");
+  assert.equal(archiveJson.module_id, "observation_archive_v0_10_53");
   assert.equal(archiveJson.as_of, pointerJson.latest_as_of);
   assert.ok(archiveJson.observation_snapshot);
   assert.ok(archiveJson.data_coverage_report);
   assert.ok(archiveJson.flow_channel_report);
   assert.ok(archiveJson.pool_flow_signals);
+  assert.ok(archiveJson.market_signal_report);
+  assert.ok(archiveJson.pool_market_signals);
 
   const flowChannel = await worker.fetch(request("/data/flow_channel_report.json"), {});
   assert.equal(flowChannel.status, 200);
@@ -231,16 +238,29 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(poolFlowSignalsJson.module_id, "pool_flow_signals_v0_10_51");
   assert.ok(poolFlowSignalsJson.rows.some((row) => row.flow_status === "estimated_from_source" || row.flow_status === "source_backed"));
 
+  const marketChannel = await worker.fetch(request("/data/market_signal_report.json"), {});
+  assert.equal(marketChannel.status, 200);
+  const marketChannelJson = await marketChannel.json();
+  assert.equal(marketChannelJson.module_id, "market_signal_report_v0_10_53");
+  assert.ok(marketChannelJson.momentum_signal_count >= 1);
+  assert.ok(marketChannelJson.liquidity_signal_count >= 1);
+
+  const poolMarketSignals = await worker.fetch(request("/data/pool_market_signals.json"), {});
+  assert.equal(poolMarketSignals.status, 200);
+  const poolMarketSignalsJson = await poolMarketSignals.json();
+  assert.equal(poolMarketSignalsJson.module_id, "pool_market_signals_v0_10_53");
+  assert.ok(poolMarketSignalsJson.rows.some((row) => row.momentum_status === "derived_from_market"));
+
   const delta = await worker.fetch(request("/data/daily_delta_report.json"), {});
   assert.equal(delta.status, 200);
   const deltaJson = await delta.json();
-  assert.equal(deltaJson.module_id, "daily_delta_report_v0_10_52");
+  assert.equal(deltaJson.module_id, "daily_delta_report_v0_10_53");
   assert.equal(typeof deltaJson.comparison_available, "boolean");
 
   const deltaHistory = await worker.fetch(request("/data/daily_delta_history.json"), {});
   assert.equal(deltaHistory.status, 200);
   const deltaHistoryJson = await deltaHistory.json();
-  assert.equal(deltaHistoryJson.module_id, "daily_delta_history_v0_10_52");
+  assert.equal(deltaHistoryJson.module_id, "daily_delta_history_v0_10_53");
   assert.ok(deltaHistoryJson.history.length >= 1);
 
   const pondMap = await worker.fetch(request("/data/pond_map.json"), {});

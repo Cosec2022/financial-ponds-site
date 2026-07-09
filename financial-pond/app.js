@@ -14,6 +14,7 @@ const REALITY_SHORT = {
   real_provider_derived: "derived",
   source_backed: "source_backed",
   estimated_from_source: "estimated_from_source",
+  derived_from_market: "derived_from_market",
   manual_seed: "seed",
   mock: "mock",
   fixture: "mock",
@@ -32,6 +33,7 @@ const state = {
   readiness: null,
   coverage: null,
   flowChannel: null,
+  marketChannel: null,
   delta: null,
   pointer: null,
   pools: [],
@@ -90,6 +92,7 @@ function displaySignalStatus(signal, key) {
   if (reality === "real_provider") return "real";
   if (reality === "source_backed") return "source_backed";
   if (reality === "estimated_from_source") return "estimated_from_source";
+  if (reality === "derived_from_market") return "derived_from_market";
   if (key === "flow" && reality === "real_provider_derived" && numberOrNull(signalValue(signal)) !== null) return "estimated";
   if (reality === "real_provider_derived") return "derived";
   if (reality === "manual_seed") return "derived";
@@ -216,17 +219,23 @@ function generatedTrace(pool, metric) {
     trace_status: traceStatus,
     title: `${pool.label} / ${SIGNAL_LABELS[metric] ?? metric}`,
     result: `${SIGNAL_LABELS[metric] ?? metric} = ${fmt(value)}`,
-    formula: formulaFor(metric),
-    variables: [
+    formula: firstDefined(signal.formula, formulaFor(metric)),
+    variables: signal.variables ? Object.entries(signal.variables).map(([symbol, item]) => ({
+      symbol,
+      name: symbol,
+      value: fmt(item),
+      source_field: symbol,
+      reality
+    })) : [
       { symbol: "Y", name: SIGNAL_LABELS[metric] ?? metric, value: fmt(value), source_field: metric, reality },
       { symbol: "status", name: "data reality", value: reality, source_field: "signals", reality }
     ],
-    calculation: value === null
+    calculation: signal.calculation ? [signal.calculation] : value === null
       ? [`${metric} = --`, `status = ${reality}`]
       : [`read ${metric} = ${fmt(value)}`, `status = ${reality}`, `output ${SIGNAL_LABELS[metric] ?? metric} = ${fmt(value)}`],
     sources: [source],
-    reality,
-    boundary: pool.vector.boundary ?? "observe_only"
+    reality: firstDefined(signal.reality_note, reality),
+    boundary: firstDefined(signal.boundary, pool.vector.boundary, "observe_only")
   };
 }
 
@@ -313,12 +322,13 @@ function renderCoverageStrip() {
     el.innerHTML = `
       <div class="coverage-head"><span>Data Coverage</span><strong>--</strong></div>
       <div class="coverage-counts">data_coverage_report not loaded</div>
-      <div class="coverage-gaps">Flow Channel unavailable.</div>
+      <div class="coverage-gaps">Flow Channel unavailable. Market Channel unavailable.</div>
     `;
     return;
   }
   const gaps = asArray(report.priority_gaps).slice(0, 3);
   const flow = state.flowChannel ?? report.flow_channel ?? {};
+  const market = state.marketChannel ?? report.market_channel ?? {};
   const baseline = state.delta?.baseline_state ?? (state.pointer?.latest_as_of ? "today archived / insufficient history" : "insufficient history");
   el.innerHTML = `
     <div class="coverage-head"><span>Data Coverage</span><strong>${pct(report.coverage_ratio)}</strong></div>
@@ -327,6 +337,7 @@ function renderCoverageStrip() {
     </div>
     <div class="coverage-gaps">
       <span>Flow Channel: source_backed ${flow.source_backed_flow_count ?? 0} / estimated ${flow.estimated_from_source_count ?? 0} / missing ${flow.missing_flow_count ?? 0}</span>
+      <span>Market Channel: momentum ${market.momentum_signal_count ?? 0} / liquidity ${market.liquidity_signal_count ?? 0} / missing ${(market.missing_momentum_count ?? 0) + (market.missing_liquidity_count ?? 0)}</span>
       <span>Daily Delta: Baseline: ${escapeHtml(baseline)}</span>
       ${gaps.length ? gaps.map((gap) => `<span>${escapeHtml(gap.priority_label ?? gap.signal_type)} ${gap.affected_pool_count ?? 0}</span>`).join("") : "<span>no priority data gap</span>"}
     </div>
@@ -624,7 +635,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, delta, pointer] = await Promise.all([
+  const [snapshot, outcomes, explainability, vault, readiness, coverage, flowChannel, marketChannel, delta, pointer] = await Promise.all([
     readJson("./data/observation_snapshot.json", null),
     readJson("./data/outcome_labels.json", { pending: [], labels: [] }),
     readJson("./data/index_explainability.json", { indexes: [] }),
@@ -632,6 +643,7 @@ async function init() {
     readJson("./data/etf_decision_readiness.json", null),
     readJson("./data/data_coverage_report.json", null),
     readJson("./data/flow_channel_report.json", null),
+    readJson("./data/market_signal_report.json", null),
     readJson("./data/daily_delta_report.json", null),
     readJson("./data/history/latest_observation_pointer.json", null)
   ]);
@@ -642,6 +654,7 @@ async function init() {
   state.readiness = readiness;
   state.coverage = coverage;
   state.flowChannel = flowChannel;
+  state.marketChannel = marketChannel;
   state.delta = delta;
   state.pointer = pointer;
   state.pools = extractPools(snapshot);

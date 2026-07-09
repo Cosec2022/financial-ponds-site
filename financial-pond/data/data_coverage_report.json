@@ -1,20 +1,27 @@
 {
-  "module_id": "data_coverage_report_v0_10_52",
-  "as_of": "2026-07-08",
-  "generated_at": "2026-07-08T16:03:54.503Z",
+  "module_id": "data_coverage_report_v0_10_53",
+  "as_of": "2026-07-09",
+  "generated_at": "2026-07-09T00:09:07.916Z",
   "observed_pool_count": 67,
   "total_signal_cells": 536,
   "real_count": 0,
   "estimated_count": 11,
-  "derived_count": 208,
+  "derived_count": 188,
   "planned_count": 108,
-  "missing_count": 148,
+  "missing_count": 168,
   "insufficient_count": 61,
-  "coverage_ratio": 0.4086,
+  "coverage_ratio": 0.3713,
   "flow_channel": {
     "source_backed_flow_count": 0,
     "estimated_from_source_count": 11,
     "missing_flow_count": 56,
+    "coverage_ratio": 0.1642
+  },
+  "market_channel": {
+    "momentum_signal_count": 11,
+    "liquidity_signal_count": 11,
+    "missing_momentum_count": 56,
+    "missing_liquidity_count": 56,
     "coverage_ratio": 0.1642
   },
   "top_missing_signal_types": [
@@ -41,10 +48,10 @@
     },
     {
       "signal_type": "liquidity",
-      "missing_count": 36,
+      "missing_count": 56,
       "planned_count": 0,
       "insufficient_count": 0,
-      "total_gap_count": 36
+      "total_gap_count": 56
     },
     {
       "signal_type": "news",
@@ -157,7 +164,7 @@
     {
       "signal_type": "momentum",
       "priority_label": "momentum confirmation",
-      "affected_pool_count": 67,
+      "affected_pool_count": 56,
       "sample_pools": [
         "a_share",
         "a_share_agriculture",
@@ -170,7 +177,7 @@
     {
       "signal_type": "liquidity",
       "priority_label": "liquidity confirmation",
-      "affected_pool_count": 67,
+      "affected_pool_count": 56,
       "sample_pools": [
         "a_share",
         "a_share_agriculture",
@@ -831,13 +838,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -856,8 +863,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "risk derived",
+      "next_data_need": "connect reviewed risk boundary"
     },
     {
       "pool_id": "a_share_bank_insurance",
@@ -874,8 +881,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "rotation insufficient",
+      "next_data_need": "collect more rotation evidence"
     },
     {
       "pool_id": "a_share_basic_chemicals",
@@ -885,13 +892,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -903,13 +910,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -928,8 +935,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "risk derived",
+      "next_data_need": "connect reviewed risk boundary"
     },
     {
       "pool_id": "a_share_btc",
@@ -957,13 +964,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -975,13 +982,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1000,8 +1007,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "risk derived",
+      "next_data_need": "connect reviewed risk boundary"
     },
     {
       "pool_id": "a_share_construction",
@@ -1011,13 +1018,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1036,8 +1043,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "rotation insufficient",
+      "next_data_need": "collect more rotation evidence"
     },
     {
       "pool_id": "a_share_defense_military",
@@ -1054,8 +1061,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "rotation insufficient",
+      "next_data_need": "collect more rotation evidence"
     },
     {
       "pool_id": "a_share_environmental_protection",
@@ -1065,13 +1072,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1083,13 +1090,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1126,8 +1133,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "rotation insufficient",
+      "next_data_need": "collect more rotation evidence"
     },
     {
       "pool_id": "a_share_home_appliances",
@@ -1137,13 +1144,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1155,13 +1162,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1173,13 +1180,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1191,13 +1198,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1216,8 +1223,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "risk derived",
+      "next_data_need": "connect reviewed risk boundary"
     },
     {
       "pool_id": "a_share_nonferrous_metals",
@@ -1227,13 +1234,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1245,13 +1252,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1270,8 +1277,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "risk derived",
+      "next_data_need": "connect reviewed risk boundary"
     },
     {
       "pool_id": "a_share_resources_materials",
@@ -1288,8 +1295,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 0.875,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "rotation insufficient",
+      "next_data_need": "collect more rotation evidence"
     },
     {
       "pool_id": "a_share_retail",
@@ -1299,13 +1306,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1324,8 +1331,8 @@
       "fundamental_status": "derived",
       "risk_status": "derived",
       "coverage_score": 1,
-      "main_gap": "missing momentum confirmation",
-      "next_data_need": "connect momentum confirmation"
+      "main_gap": "risk derived",
+      "next_data_need": "connect reviewed risk boundary"
     },
     {
       "pool_id": "a_share_social_services",
@@ -1335,13 +1342,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1371,13 +1378,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1389,13 +1396,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1407,13 +1414,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     },
@@ -1443,13 +1450,13 @@
       "confidence": 0.0131,
       "flow_status": "missing",
       "momentum_status": "missing",
-      "liquidity_status": "derived",
+      "liquidity_status": "missing",
       "rotation_status": "insufficient",
       "news_status": "derived",
       "valuation_status": "derived",
       "fundamental_status": "derived",
       "risk_status": "derived",
-      "coverage_score": 0.625,
+      "coverage_score": 0.5,
       "main_gap": "missing source-backed flow",
       "next_data_need": "connect mapped provider flow source"
     }

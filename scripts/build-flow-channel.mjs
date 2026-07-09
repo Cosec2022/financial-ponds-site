@@ -11,7 +11,9 @@ const snapshotPath = resolve(dataDir, "observation_snapshot.json");
 const leaderboardPath = resolve(dataDir, sourceFile);
 const snapshot = await readJson(snapshotPath);
 const leaderboard = await readJson(leaderboardPath, null);
-const asOf = snapshot?.as_of ?? leaderboard?.as_of ?? "unknown";
+const asOf = process.env.AS_OF ?? snapshot?.as_of ?? leaderboard?.as_of ?? "unknown";
+snapshot.as_of = asOf;
+for (const row of snapshot?.rows ?? []) row.as_of = asOf;
 const upstream = await readJson(resolve(modelOutputDir, asOf, upstreamFile), null);
 
 const sourceRows = Array.isArray(leaderboard?.rows) ? leaderboard.rows : [];
