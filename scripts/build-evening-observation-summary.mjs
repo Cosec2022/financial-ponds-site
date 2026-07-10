@@ -1,8 +1,10 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { loadTradingCalendar, tradingSessionTarget } from "./lib/trading-calendar.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const dataDir = resolve(root, "financial-pond", "data");
+const tradingCalendar = await loadTradingCalendar();
 const [snapshot, marketReport, mappingFile, qualityFile, qualityReport, coverageReport, deltaFile, deltaReport] = await Promise.all([
   readJson("observation_snapshot.json"),
   readJson("market_signal_report.json"),
@@ -245,14 +247,9 @@ async function writeCalibrationReport(scoreRows, counts, timestamp) {
 async function writeCandidateLedger(candidates, timestamp) {
   const ledgerPath = resolve(dataDir, "observation_candidate_ledger.json");
   const existing = await readJsonOptional(ledgerPath, { rows: [] });
-  const retained = (existing.rows ?? []).filter((row) => row.as_of !== snapshot.as_of).map(updateReviewStatus);
+  const retained = (existing.rows ?? []).filter((row) => row.as_of !== snapshot.as_of).map(migrateReviewSchedule);
   const current = candidates.map((row) => {
-    const due = {
-      review_t1_due: dueDate(snapshot.as_of, 1),
-      review_t3_due: dueDate(snapshot.as_of, 3),
-      review_t5_due: dueDate(snapshot.as_of, 5),
-      review_t20_due: dueDate(snapshot.as_of, 20)
-    };
+    const due = reviewSchedule(snapshot.as_of);
     return {
       as_of: snapshot.as_of,
       pool_id: row.pool_id,
@@ -271,6 +268,8 @@ async function writeCandidateLedger(candidates, timestamp) {
       caution_reason: row.caution_reason,
       boundary: "observe_only; review candidate only",
       ...due,
+      review_policy_version: "review_policy_v0_10_65",
+      review_calendar_version: tradingCalendar.calendar_version,
       review_status: row.capped_confidence > 0 ? "pending" : "insufficient_data"
     };
   });
@@ -306,9 +305,27 @@ async function writeCandidateLedger(candidates, timestamp) {
   await writeJson("candidate_review_schedule.json", schedule);
 }
 
-function updateReviewStatus(row) {
+function migrateReviewSchedule(row) {
   if (["reviewed", "insufficient_data"].includes(row.review_status)) return row;
-  return { ...row, review_status: snapshot.as_of >= row.review_t1_due ? "review_due" : "pending" };
+  const migrated = reviewSchedule(row.as_of);
+  const changed = ["t1", "t3", "t5", "t20"].some((key) => row[`review_${key}_due`] !== migrated[`review_${key}_due`]);
+  return {
+    ...row,
+    ...migrated,
+    review_policy_version: "review_policy_v0_10_65",
+    review_calendar_version: tradingCalendar.calendar_version,
+    review_schedule_migration: {
+      applied: changed,
+      migrated_at_as_of: snapshot.as_of,
+      previous_due_dates: changed ? {
+        t1: row.review_t1_due,
+        t3: row.review_t3_due,
+        t5: row.review_t5_due,
+        t20: row.review_t20_due
+      } : null
+    },
+    review_status: migrated.review_t1_due && snapshot.as_of >= migrated.review_t1_due ? "review_due" : "pending"
+  };
 }
 
 function distributionBucket(rows, label, min, max) {
@@ -324,10 +341,16 @@ function median(values) {
   return values.length % 2 ? values[middle] : round((values[middle - 1] + values[middle]) / 2);
 }
 
-function dueDate(asOf, days) {
-  const date = new Date(`${asOf}T00:00:00.000Z`);
-  date.setUTCDate(date.getUTCDate() + days);
-  return date.toISOString().slice(0, 10);
+function reviewSchedule(signalDate) {
+  const result = {};
+  for (const horizon of [1, 3, 5, 20]) {
+    const target = tradingSessionTarget(tradingCalendar, signalDate, horizon);
+    result[`review_t${horizon}_due`] = target.effective_review_date;
+    result[`review_t${horizon}_legacy_calendar_target`] = target.legacy_calendar_target_date;
+    result[`review_t${horizon}_calendar_known`] = target.calendar_known;
+    result[`review_t${horizon}_calendar_unknown_reason`] = target.calendar_unknown_reason;
+  }
+  return result;
 }
 
 function uniqueDates(values) {

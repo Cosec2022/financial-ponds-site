@@ -66,7 +66,8 @@ const boundaries = new Set(["observe_only", "manual_review", "blocked"]);
 const deltaFlags = new Set(["insufficient_history", "changed", "stable", "improved_data", "new_signal", "confidence_change"]);
 const observationTiers = new Set(["strong_observe", "moderate_observe", "weak_observe", "insufficient"]);
 const reviewStatuses = new Set(["pending", "review_due", "reviewed", "insufficient_data"]);
-const outcomeReviewStatuses = new Set(["pending_not_due", "reviewed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_market_closed", "unavailable_data_stale", "skipped_invalid_baseline"]);
+const outcomeReviewStatuses = new Set(["pending", "reviewed", "unavailable", "skipped"]);
+const outcomeReviewReasons = new Set(["pending_not_due", "pending_market_open", "awaiting_eod_data", "stale_data", "missing_price", "missing_benchmark", "calendar_unknown", "invalid_baseline"]);
 const outcomeHorizons = new Set(["T+1", "T+3", "T+5", "T+20"]);
 const directionResults = new Set(["aligned", "opposite", "neutral", "unavailable"]);
 const readinessStates = new Set(["ready", "partially_ready", "not_ready"]);
@@ -126,7 +127,8 @@ function validateOutcomeReviews(json) {
     && json.rows.every((row) => {
       const future = row.review_as_of > json.as_of;
       const futureSafe = !future || (
-        row.review_status === "pending_not_due"
+        row.review_status === "pending"
+        && row.review_reason === "pending_not_due"
         && row.outcome_available === false
         && row.observed_return === null
         && row.benchmark_return === null
@@ -134,6 +136,7 @@ function validateOutcomeReviews(json) {
       );
       return outcomeHorizons.has(row.horizon)
         && outcomeReviewStatuses.has(row.review_status)
+        && (row.review_status === "reviewed" ? row.review_reason === null : outcomeReviewReasons.has(row.review_reason))
         && directionResults.has(row.direction_result)
         && validateStateFields(row)
         && row.boundary?.includes("observe_only")
@@ -214,9 +217,9 @@ function validateDueReviewVerification(json) {
     && validateUnavailableBreakdown(json.unavailable_by_reason)
     && Array.isArray(json.rows)
     && json.rows.every((row) => {
-      const unavailable = String(row.review_status).startsWith("unavailable_");
+      const unavailable = ["unavailable", "skipped"].includes(row.review_status);
       const dueDiagnosticsOk = !row.is_due || (
-        Boolean(row.symbol || row.review_status === "skipped_invalid_baseline")
+        Boolean(row.symbol || row.review_reason === "invalid_baseline")
         && "latest_available_price_date" in row
       );
       return ["T+1", "T+3"].includes(row.review_horizon)
@@ -228,6 +231,7 @@ function validateDueReviewVerification(json) {
         && typeof row.required_market_data_exists === "boolean"
         && typeof row.review_completed === "boolean"
         && outcomeReviewStatuses.has(row.review_status)
+        && (row.review_status === "reviewed" ? row.review_reason === null : outcomeReviewReasons.has(row.review_reason))
         && (!unavailable || Boolean(row.unavailable_reason))
         && Boolean(row.diagnostic_note)
         && dueDiagnosticsOk
@@ -237,7 +241,7 @@ function validateDueReviewVerification(json) {
 
 function validateUnavailableBreakdown(value) {
   return Boolean(value)
-    && ["unavailable_market_closed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_data_stale", "skipped_invalid_baseline"].every((key) => typeof value[key] === "number");
+    && ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"].every((key) => typeof value[key] === "number");
 }
 
 function validateOutcomeAvailability(row) {
@@ -247,7 +251,7 @@ function validateOutcomeAvailability(row) {
       && typeof row.review_price === "number"
       && typeof row.absolute_return === "number";
   }
-  if (String(row.review_status).startsWith("unavailable_")) {
+  if (["unavailable", "skipped"].includes(row.review_status)) {
     return row.outcome_available === false
       && row.review_completed === false
       && Boolean(row.unavailable_reason);

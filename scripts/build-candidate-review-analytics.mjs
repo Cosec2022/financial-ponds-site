@@ -10,10 +10,10 @@ const minSample = 3;
 const horizons = ["T+1", "T+3"];
 const reviewed = reviewRows(history.rows ?? []);
 const reviewChecks = (history.rows ?? []).flatMap((row) => horizons.map((horizon) => ({ row, horizon, result: resultFor(row, horizon) })));
-const pendingRows = reviewChecks.filter(({ result }) => result?.review_status === "pending_not_due");
-const unavailableRows = reviewChecks.filter(({ result }) => String(result?.review_status ?? "").startsWith("unavailable_"));
-const insufficientRows = reviewChecks.filter(({ result }) => result?.review_status === "skipped_invalid_baseline");
-const unavailableStatuses = ["unavailable_market_closed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_data_stale", "skipped_invalid_baseline"];
+const pendingRows = reviewChecks.filter(({ result }) => result?.review_status === "pending");
+const unavailableRows = reviewChecks.filter(({ result }) => result?.review_status === "unavailable");
+const insufficientRows = reviewChecks.filter(({ result }) => result?.review_status === "skipped");
+const unavailableReasons = ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"];
 const stateUniverse = unique((history.rows ?? []).map((row) => row.candidate_state).filter(Boolean));
 const riskUniverse = unique((history.rows ?? []).map((row) => row.risk_gate_status).filter(Boolean));
 const overheatBucketUniverse = unique((history.rows ?? []).map((row) => scoreBucket(row.overheat_score)));
@@ -115,8 +115,8 @@ function unique(values) {
 }
 
 function countUnavailableByReason(rows) {
-  return unavailableStatuses.reduce((counts, status) => {
-    counts[status] = rows.filter((row) => row.review_status === status).length;
+  return unavailableReasons.reduce((counts, reason) => {
+    counts[reason] = rows.filter((row) => row.review_reason === reason).length;
     return counts;
   }, {});
 }
