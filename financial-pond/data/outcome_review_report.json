@@ -1,16 +1,16 @@
 {
   "module_id": "outcome_review_report_v0_10_64",
   "as_of": "2026-07-10",
-  "generated_at": "2026-07-09T16:56:12.117Z",
+  "generated_at": "2026-07-10T11:35:20.537Z",
   "total_candidates": 10,
   "due_review_count": 5,
   "reviewed_count": 0,
   "pending_count": 35,
   "unavailable_count": 5,
   "unavailable_by_reason": {
-    "unavailable_market_closed": 5,
+    "unavailable_market_closed": 0,
     "unavailable_missing_price": 0,
-    "unavailable_missing_benchmark": 0,
+    "unavailable_missing_benchmark": 5,
     "unavailable_data_stale": 0,
     "skipped_invalid_baseline": 0
   },

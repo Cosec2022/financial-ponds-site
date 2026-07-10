@@ -1,14 +1,14 @@
 {
   "module_id": "score_calibration_report_v0_10_57",
-  "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T16:56:11.913Z",
+  "as_of": "2026-07-10",
+  "generated_at": "2026-07-10T11:35:20.326Z",
   "strong_count": 2,
   "moderate_count": 20,
   "weak_count": 0,
   "insufficient_count": 45,
   "score_min": 0,
-  "score_max": 81,
-  "score_median": 21.84,
+  "score_max": 78.02,
+  "score_median": 24.14,
   "score_distribution": [
     {
       "range": "77-100",

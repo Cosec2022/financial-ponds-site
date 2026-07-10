@@ -1,7 +1,7 @@
 {
   "module_id": "pool_instrument_map_v0_10_54",
-  "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T16:56:11.560Z",
+  "as_of": "2026-07-10",
+  "generated_at": "2026-07-10T11:35:19.957Z",
   "rows": [
     {
       "pool_id": "a_share_a_share",
@@ -467,7 +467,7 @@
     },
     {
       "pool_id": "a_share_ai_computer",
-      "pool_name": "AI计算机",
+      "pool_name": "AI and Computer",
       "instrument_type": "etf",
       "instrument_code": "159819",
       "instrument_name": "人工智能ETF易方达",
@@ -579,7 +579,7 @@
     },
     {
       "pool_id": "a_share_communication_electronics",
-      "pool_name": "通信电子",
+      "pool_name": "Communication and Electronics",
       "instrument_type": "etf",
       "instrument_code": "515880",
       "instrument_name": "通信ETF国泰",
@@ -677,7 +677,7 @@
     },
     {
       "pool_id": "a_share_healthcare_pharma",
-      "pool_name": "医药医疗",
+      "pool_name": "Healthcare and Pharma",
       "instrument_type": "etf",
       "instrument_code": "512010",
       "instrument_name": "医药ETF易方达",

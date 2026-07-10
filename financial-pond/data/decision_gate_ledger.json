@@ -1,11 +1,11 @@
 {
   "module_id": "decision_gate_ledger_v0_10_46",
-  "as_of": "2026-07-09",
-  "generated_at": "2026-07-09T11:38:12.211Z",
+  "as_of": "2026-07-10",
+  "generated_at": "2026-07-10T11:35:17.843Z",
   "status": "gate_ledger_available",
   "guidance_state": "not_ready",
   "execution_state": "blocked",
-  "headline": "Decision gate ledger: 3 block, 2 warn; provider gates pass but execution remains blocked; guidance_state=not_ready.",
+  "headline": "Decision gate ledger: 3 block, 3 warn; provider gates pass but execution remains blocked; guidance_state=not_ready.",
   "gates": [
     {
       "gate_id": "provider_run",
@@ -26,7 +26,8 @@
         "dates": [
           "2026-07-07",
           "2026-07-08",
-          "2026-07-09"
+          "2026-07-09",
+          "2026-07-10"
         ],
         "status": "flow_gate_ready"
       },
@@ -57,11 +58,12 @@
       "gate_id": "attribution_conflict",
       "label": "Attribution conflicts",
       "status": "warn",
-      "reading": "1 attribution conflict(s) require review.",
+      "reading": "2 attribution conflict(s) require review.",
       "evidence": {
-        "conflict_count": 1,
+        "conflict_count": 2,
         "conflict_ids": [
-          "positive_flow_weak_daily_tier"
+          "etf_flow_leader_differs_from_daily_leader",
+          "strong_rotation_zero_or_negative_flow"
         ]
       },
       "next_action": "Resolve or annotate attribution conflicts before relaxing readiness."
@@ -70,10 +72,12 @@
       "gate_id": "watchlist_conflict_review",
       "label": "Watchlist conflict review",
       "status": "warn",
-      "reading": "1 watchlist row(s) are in conflict_review.",
+      "reading": "3 watchlist row(s) are in conflict_review.",
       "evidence": {
-        "conflict_review_count": 1,
+        "conflict_review_count": 3,
         "sectors": [
+          "brokerage",
+          "defense_military",
           "new_energy_ev"
         ]
       },
@@ -82,14 +86,11 @@
     {
       "gate_id": "confirmed_watch_available",
       "label": "Confirmed watch rows",
-      "status": "pass",
-      "reading": "2 confirmed_watch row(s) are available.",
+      "status": "warn",
+      "reading": "No confirmed_watch rows are available.",
       "evidence": {
-        "confirmed_watch_count": 2,
-        "sectors": [
-          "brokerage",
-          "communication_electronics"
-        ]
+        "confirmed_watch_count": 0,
+        "sectors": []
       },
       "next_action": "Keep confirmed rows separate from conflict and single-line evidence rows."
     },
@@ -107,9 +108,9 @@
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
-      "reading": "Rotation sample depth is 5/3.",
+      "reading": "Rotation sample depth is 6/3.",
       "evidence": {
-        "sample_days": 5,
+        "sample_days": 6,
         "min_sample_days": 3,
         "trend_state": "trend_confirmed"
       },
@@ -175,15 +176,22 @@
       "gate_id": "attribution_conflict",
       "label": "Attribution conflicts",
       "status": "warn",
-      "reading": "1 attribution conflict(s) require review.",
+      "reading": "2 attribution conflict(s) require review.",
       "next_action": "Resolve or annotate attribution conflicts before relaxing readiness."
     },
     {
       "gate_id": "watchlist_conflict_review",
       "label": "Watchlist conflict review",
       "status": "warn",
-      "reading": "1 watchlist row(s) are in conflict_review.",
+      "reading": "3 watchlist row(s) are in conflict_review.",
       "next_action": "Review conflict rows before changing model thresholds."
+    },
+    {
+      "gate_id": "confirmed_watch_available",
+      "label": "Confirmed watch rows",
+      "status": "warn",
+      "reading": "No confirmed_watch rows are available.",
+      "next_action": "Keep confirmed rows separate from conflict and single-line evidence rows."
     }
   ],
   "passes": [
@@ -216,17 +224,10 @@
       "next_action": "Keep representative ETF mappings and provider observations complete."
     },
     {
-      "gate_id": "confirmed_watch_available",
-      "label": "Confirmed watch rows",
-      "status": "pass",
-      "reading": "2 confirmed_watch row(s) are available.",
-      "next_action": "Keep confirmed rows separate from conflict and single-line evidence rows."
-    },
-    {
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
-      "reading": "Rotation sample depth is 5/3.",
+      "reading": "Rotation sample depth is 6/3.",
       "next_action": "Continue daily history accumulation."
     },
     {
