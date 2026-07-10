@@ -69,6 +69,8 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(workflow, /Persist published data/);
   assert.match(workflow, /git add financial-pond\/data/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/data\/provider_exports\/\*\.csv/);
+  assert.match(workflow, /a_share_benchmark_daily\.json/);
+  assert.match(workflow, /a_share_benchmark_history_/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_runs\/akshare_etf_bridge_\*\.json/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_validation\/akshare_etf_bridge_validation\.json/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_inspection\/akshare_etf_bridge_inspection\.json/);
@@ -175,6 +177,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(outcomeEngine, /major_wave_score/);
   assert.match(outcomeEngine, /risk_gate_status/);
   assert.match(outcomeEngine, /benchmark_return/);
+  assert.doesNotMatch(outcomeEngine, /benchmark\.baseline_price\) \?\? benchmarkClose/);
   assert.doesNotMatch(workflow, /npm run a-share:daily\s*$/m);
 });
 

@@ -1,6 +1,6 @@
 {
   "name": "financial-pond-framework",
-  "version": "0.10.64",
+  "version": "0.10.65",
   "description": "Config-driven financial pond graph framework for cross-asset and sector ETF analysis.",
   "type": "module",
   "scripts": {
@@ -15,6 +15,8 @@
     "a-share:daily:ci": "node src/tools/a_share_daily_ci.mjs",
     "scheduler:a-share": "node src/scheduler/run_a_share_daily.mjs",
     "provider:akshare": "python3 providers/akshare_etf_bridge/export_a_share_etf_daily.py",
+    "provider:benchmark": "python3 providers/akshare_etf_bridge/fetch_benchmark_history.py",
+    "provider:benchmark:test": "python3 -m unittest providers/akshare_etf_bridge/test_fetch_benchmark_history.py",
     "provider:akshare:fixture": "python3 providers/akshare_etf_bridge/export_a_share_etf_daily.py --fixture",
     "provider:akshare:doctor": "python3 providers/akshare_etf_bridge/doctor.py",
     "provider:akshare:doctor:probe": "python3 providers/akshare_etf_bridge/doctor.py --probe-endpoint",

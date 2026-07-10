@@ -11,6 +11,9 @@ test("A-share daily CI runs graph cycle before sector flow review", async () => 
 
   assert.match(source, /runner_id: "a_share_daily_ci_v0_10_27"/);
   assert.ok(source.indexOf('"akshare_provider_doctor"') < source.indexOf('"akshare_etf_snapshot"'));
+  assert.ok(source.indexOf('"akshare_etf_snapshot"') < source.indexOf('"a_share_benchmark_exact_date"'));
+  assert.match(source, /fetch_benchmark_history\.py/);
+  assert.match(source, /--allow-failure/);
   assert.ok(source.indexOf('"graph_cycle"') > source.indexOf('"news_intelligence"'));
   assert.ok(source.indexOf('"graph_cycle"') < source.indexOf('"sector_flow_review"'));
   assert.ok(source.indexOf('"sector_module_review"') < source.indexOf('"etf_decision_readiness"'));

@@ -20,7 +20,7 @@ const overheatBucketUniverse = unique((history.rows ?? []).map((row) => scoreBuc
 const majorBucketUniverse = unique((history.rows ?? []).map((row) => scoreBucket(row.major_wave_score)));
 
 const analytics = {
-  module_id: "candidate_review_analytics_v0_10_64",
+  module_id: "candidate_review_analytics_v0_10_65",
   as_of: history.as_of ?? report.as_of,
   generated_at: generatedAt,
   status: reviewed.length >= minSample ? "analytics_available" : "insufficient_sample",

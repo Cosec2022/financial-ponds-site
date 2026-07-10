@@ -1,8 +1,10 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { benchmarkMappingRow, loadBenchmarkConfig } from "./lib/benchmark-proxy.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const dataDir = resolve(root, "financial-pond", "data");
+const benchmarkConfig = await loadBenchmarkConfig();
 const snapshot = JSON.parse(await readFile(resolve(dataDir, "observation_snapshot.json"), "utf8"));
 const leaderboard = JSON.parse(await readFile(resolve(dataDir, "etf_flow_leaderboard.json"), "utf8"));
 const asOf = process.env.AS_OF ?? new Date().toISOString().slice(0, 10);
@@ -76,6 +78,7 @@ await writeFile(resolve(dataDir, "pool_mapping_report.json"), `${JSON.stringify(
 console.log(`Pool instrument mapping written: mapped=${mapped.length}, unmapped=${report.unmapped_count}`);
 
 function buildMapping(pool) {
+  if (pool.pool_id === benchmarkConfig.pool_id) return benchmarkMappingRow(benchmarkConfig);
   const semanticId = normalizeSectorId(pool.sector_id);
   const direct = instruments.get(semanticId);
   if (direct) {

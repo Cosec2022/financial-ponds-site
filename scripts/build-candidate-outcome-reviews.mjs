@@ -2,6 +2,7 @@ import { readdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { loadTradingCalendar, tradingSessionTarget } from "./lib/trading-calendar.mjs";
 import { REVIEW_POLICY_VERSION, classifyReview, exactDatePrice, preserveReviewedOutcomes, shanghaiClock } from "./lib/review-policy.mjs";
+import { loadBenchmarkConfig } from "./lib/benchmark-proxy.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const dataDir = resolve(root, "financial-pond", "data");
@@ -12,6 +13,7 @@ const currentMarket = await readJson(resolve(dataDir, "pool_market_signals.json"
 const priceBasis = await readJson(resolve(dataDir, "candidate_price_basis.json"));
 const previousOutcome = await readJsonOptional(resolve(dataDir, "candidate_outcome_reviews.json"), { rows: [] });
 const tradingCalendar = await loadTradingCalendar();
+const benchmarkConfig = await loadBenchmarkConfig();
 const reviewNow = new Date(process.env.REVIEW_NOW ?? Date.now());
 const currentAsOf = process.env.AS_OF ?? maxDate(schedule.as_of, shanghaiClock(reviewNow).date);
 const archives = await readArchives();
@@ -41,9 +43,10 @@ const dueReviewCount = rows.filter((row) => row.is_due).length;
 const nextDueReviews = nextDue(rows);
 const unavailableByReason = countUnavailableByReason(rows);
 const report = {
-  module_id: "outcome_review_report_v0_10_64",
+  module_id: "outcome_review_report_v0_10_65",
   as_of: currentAsOf,
   generated_at: generatedAt,
+  benchmark_proxy: benchmarkDisclosure(),
   total_candidates: (ledger.rows ?? []).length,
   due_review_count: dueReviewCount,
   reviewed_count: statusCounts.reviewed ?? 0,
@@ -64,9 +67,10 @@ const report = {
   ]
 };
 const output = {
-  module_id: "candidate_outcome_reviews_v0_10_64",
+  module_id: "candidate_outcome_reviews_v0_10_65",
   as_of: currentAsOf,
   generated_at: generatedAt,
+  benchmark_proxy: benchmarkDisclosure(),
   review_policy_version: REVIEW_POLICY_VERSION,
   review_calendar_version: tradingCalendar.calendar_version,
   migration_audit: {
@@ -76,9 +80,10 @@ const output = {
   rows
 };
 const reviewHistory = {
-  module_id: "candidate_review_history_v0_10_64",
+  module_id: "candidate_review_history_v0_10_65",
   as_of: currentAsOf,
   generated_at: generatedAt,
+  benchmark_proxy: benchmarkDisclosure(),
   rows: buildReviewHistory(rows),
   boundary_notes: [
     "observe_only",
@@ -89,6 +94,7 @@ const reviewHistory = {
 const dueVerificationRows = rows.filter((row) => ["T+1", "T+3"].includes(row.horizon)).map((row) => ({
   as_of: row.candidate_as_of,
   candidate_as_of: row.candidate_as_of,
+  signal_date: row.signal_date,
   symbol: row.symbol,
   name: row.instrument_name ?? row.pool_name,
   pool_id: row.pool_id,
@@ -96,11 +102,15 @@ const dueVerificationRows = rows.filter((row) => ["T+1", "T+3"].includes(row.hor
   due_date: row.review_as_of,
   review_due_date: row.review_as_of,
   review_horizon: row.horizon,
+  horizon_trading_sessions: row.horizon_trading_sessions,
+  legacy_calendar_target_date: row.legacy_calendar_target_date,
+  effective_review_date: row.effective_review_date,
   expected_review_price_date: row.expected_review_price_date,
   latest_available_price_date: row.latest_available_price_date,
   is_due: row.is_due,
   required_market_data_exists: row.required_market_data_exists,
   review_completed: row.review_completed,
+  outcome_available: row.outcome_available,
   review_status: row.review_status,
   review_reason: row.review_reason,
   reviewed_at_data_date: row.reviewed_at_data_date,
@@ -124,9 +134,10 @@ const dueVerificationRows = rows.filter((row) => ["T+1", "T+3"].includes(row.hor
   boundary: "observe_only; due review verification only"
 }));
 const dueVerification = {
-  module_id: "candidate_due_review_verification_v0_10_64",
+  module_id: "candidate_due_review_verification_v0_10_65",
   as_of: currentAsOf,
   generated_at: generatedAt,
+  benchmark_proxy: benchmarkDisclosure(),
   due_review_count: dueVerificationRows.filter((row) => row.is_due).length,
   reviewed_count: dueVerificationRows.filter((row) => row.review_status === "reviewed").length,
   pending_count: dueVerificationRows.filter((row) => row.review_status === "pending").length,
@@ -192,13 +203,13 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
     reviewed_at_data_date: null,
     expected_review_price_date: effectiveReviewDate,
     latest_available_price_date: null,
-    benchmark_symbol: null,
-    benchmark_type: null,
+    benchmark_symbol: benchmarkConfig.symbol,
+    benchmark_type: benchmarkConfig.benchmark_type,
     benchmark_baseline_date: null,
     benchmark_baseline_close: null,
     benchmark_review_date: null,
     benchmark_review_close: null,
-    benchmark_mapping_status: null,
+    benchmark_mapping_status: "missing",
     benchmark_source: null,
     benchmark_missing_field: null,
     benchmark_latest_available_date: null,
@@ -234,11 +245,10 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
   const benchmarkReviewRow = benchmarkRow(reviewArchive);
   const benchmarkBaseline = exactDatePrice(benchmarkBaselineRow, candidate.as_of);
   const benchmarkReview = exactDatePrice(benchmarkReviewRow, effectiveReviewDate);
-  const benchmarkMapping = benchmarkBaselineRow ?? benchmarkReviewRow;
-  const benchmarkMappingAvailable = Boolean(
-    benchmarkMapping?.instrument_code
-    && !["unmapped", "unavailable"].includes(benchmarkMapping?.mapping_status)
-  );
+  const benchmarkMapping = [benchmarkBaselineRow, benchmarkReviewRow].find((row) =>
+    row?.instrument_code === benchmarkConfig.symbol && row?.mapping_status === "mapped"
+  ) ?? null;
+  const benchmarkMappingAvailable = Boolean(benchmarkConfig.symbol && benchmarkConfig.pool_id);
   const policy = classifyReview({
     calendarKnown: target.calendar_known,
     effectiveReviewDate,
@@ -251,13 +261,13 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
     benchmarkReviewExactDateAvailable: benchmarkReview.exact
   });
   const benchmarkFields = {
-    benchmark_symbol: benchmarkMapping?.instrument_code ?? null,
-    benchmark_type: benchmarkMapping?.benchmark_type ?? null,
+    benchmark_symbol: benchmarkMapping?.instrument_code ?? benchmarkConfig.symbol,
+    benchmark_type: benchmarkMapping?.benchmark_type ?? benchmarkConfig.benchmark_type,
     benchmark_baseline_date: benchmarkBaseline.date,
     benchmark_baseline_close: benchmarkBaseline.exact ? benchmarkBaseline.close : null,
     benchmark_review_date: benchmarkReview.date,
     benchmark_review_close: benchmarkReview.exact ? benchmarkReview.close : null,
-    benchmark_mapping_status: benchmarkMapping?.mapping_status ?? null,
+    benchmark_mapping_status: benchmarkMapping?.mapping_status ?? "mapped",
     benchmark_source: benchmarkMapping?.source_file ?? null,
     benchmark_latest_available_date: benchmarkReview.date,
     benchmark_missing_field: benchmarkMissingField({ benchmarkMappingAvailable, benchmarkBaseline, benchmarkReview })
@@ -379,7 +389,11 @@ function buildReviewHistory(reviewRows) {
     }
     const item = grouped.get(key);
     const result = {
+      signal_date: row.signal_date,
       review_horizon: row.horizon,
+      horizon_trading_sessions: row.horizon_trading_sessions,
+      legacy_calendar_target_date: row.legacy_calendar_target_date,
+      effective_review_date: row.effective_review_date,
       review_due_date: row.review_as_of,
       reviewed_at_data_date: row.reviewed_at_data_date,
       expected_review_price_date: row.expected_review_price_date,
@@ -418,8 +432,12 @@ function buildReviewHistory(reviewRows) {
     if (["T+1", "T+3"].includes(row.horizon)) {
       item.due_review_verifications.push({
         as_of: row.candidate_as_of,
+        signal_date: row.signal_date,
         due_date: row.review_as_of,
         review_horizon: row.horizon,
+        horizon_trading_sessions: row.horizon_trading_sessions,
+        legacy_calendar_target_date: row.legacy_calendar_target_date,
+        effective_review_date: row.effective_review_date,
         expected_review_price_date: row.expected_review_price_date,
         latest_available_price_date: row.latest_available_price_date,
         is_due: row.is_due,
@@ -449,7 +467,17 @@ function isUnavailableStatus(status) {
 }
 
 function benchmarkRow(archive) {
-  return (archive?.pool_market_signals?.rows ?? []).find((row) => row.pool_id === "a_share_a_share") ?? null;
+  return (archive?.pool_market_signals?.rows ?? []).find((row) => row.pool_id === benchmarkConfig.pool_id) ?? null;
+}
+
+function benchmarkDisclosure() {
+  return {
+    display_label: benchmarkConfig.display_label,
+    symbol: benchmarkConfig.symbol,
+    benchmark_type: benchmarkConfig.benchmark_type,
+    role: benchmarkConfig.role,
+    disclosure: benchmarkConfig.disclosure
+  };
 }
 
 function benchmarkMissingField({ benchmarkMappingAvailable, benchmarkBaseline, benchmarkReview }) {

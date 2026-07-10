@@ -65,3 +65,20 @@ test("reviewed outcomes are preserved once and pending rows remain migratable", 
   assert.equal(migrated[0].migration_guard, "preserved_reviewed_outcome");
   assert.equal(migrated[1].effective_review_date, "2026-07-13");
 });
+
+test("both benchmark dates must be exact before a review can be reviewed", () => {
+  const base = {
+    calendarKnown: true,
+    effectiveReviewDate: "2026-07-10",
+    now: "2026-07-11T01:00:00Z",
+    datasetLatestDate: "2026-07-10",
+    candidateBaselineValid: true,
+    candidateExactDateAvailable: true,
+    benchmarkMappingAvailable: true,
+    benchmarkBaselineExactDateAvailable: true,
+    benchmarkReviewExactDateAvailable: true
+  };
+  assert.equal(classifyReview({ ...base, benchmarkBaselineExactDateAvailable: false }).review_reason, "missing_benchmark");
+  assert.equal(classifyReview({ ...base, benchmarkReviewExactDateAvailable: false }).review_reason, "missing_benchmark");
+  assert.equal(classifyReview(base).review_status, "reviewed");
+});

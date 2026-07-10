@@ -38,7 +38,7 @@ const requiredFiles = [
   ["candidate_state_model.json", validateCandidateStateModel],
   ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_63" && json.candidate_count >= 1 && Boolean(json.next_review_dates) && Array.isArray(json.next_due_reviews)],
   ["candidate_outcome_reviews.json", validateOutcomeReviews],
-  ["outcome_review_report.json", (json) => json.module_id === "outcome_review_report_v0_10_64" && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && typeof json.unavailable_count === "number" && Boolean(json.unavailable_by_reason) && Array.isArray(json.next_due_reviews)],
+  ["outcome_review_report.json", (json) => json.module_id === "outcome_review_report_v0_10_65" && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && typeof json.unavailable_count === "number" && Boolean(json.unavailable_by_reason) && Array.isArray(json.next_due_reviews)],
   ["candidate_due_review_verification.json", validateDueReviewVerification],
   ["candidate_price_basis.json", validateCandidatePriceBasis],
   ["review_readiness_report.json", (json) => json.module_id === "review_readiness_report_v0_10_61" && readinessStates.has(json.readiness_state) && json.candidate_count === json.baseline_available_count + json.baseline_missing_count],
@@ -58,7 +58,7 @@ const signalSlots = ["flow", "price_momentum", "liquidity", "rotation", "news", 
 const signalReality = new Set(["real_provider", "real_provider_derived", "source_backed", "estimated_from_source", "derived_from_market", "manual_seed", "mock", "fixture", "missing", "planned", "insufficient_history", "unavailable"]);
 const flowStatuses = new Set(["source_backed", "estimated_from_source", "derived", "missing", "unavailable"]);
 const marketStatuses = new Set(["source_backed", "derived_from_market", "estimated_from_source", "missing", "unavailable"]);
-const mappingStatuses = new Set(["direct_index", "direct_etf", "sector_proxy", "broad_proxy", "unmapped", "unavailable"]);
+const mappingStatuses = new Set(["mapped", "direct_index", "direct_etf", "sector_proxy", "broad_proxy", "unmapped", "unavailable"]);
 const proxyLevels = new Set(["exact", "close", "loose", "broad", "none"]);
 const evidenceQualities = new Set(["high", "medium", "low", "unavailable"]);
 const proxyRisks = new Set(["none", "low", "medium", "high"]);
@@ -117,12 +117,12 @@ function validateCandidate(row) {
     && reviewStatuses.has(row.review_status)
     && validateStateFields(row)
     && row.boundary?.includes("observe_only")
-    && Boolean(row.review_t1_due)
-    && Boolean(row.review_t20_due);
+    && Boolean(row.review_t1_due || row.review_t1_calendar_known === false)
+    && Boolean(row.review_t20_due || row.review_t20_calendar_known === false);
 }
 
 function validateOutcomeReviews(json) {
-  return json.module_id === "candidate_outcome_reviews_v0_10_64"
+  return json.module_id === "candidate_outcome_reviews_v0_10_65"
     && Array.isArray(json.rows)
     && json.rows.every((row) => {
       const future = row.review_as_of > json.as_of;
@@ -136,7 +136,7 @@ function validateOutcomeReviews(json) {
       );
       return outcomeHorizons.has(row.horizon)
         && outcomeReviewStatuses.has(row.review_status)
-        && (row.review_status === "reviewed" ? row.review_reason === null : outcomeReviewReasons.has(row.review_reason))
+        && (row.review_status === "reviewed" ? (row.review_reason === null || (row.migration_guard === "preserved_reviewed_outcome" && row.review_reason === undefined)) : outcomeReviewReasons.has(row.review_reason))
         && directionResults.has(row.direction_result)
         && validateStateFields(row)
         && row.boundary?.includes("observe_only")
@@ -166,7 +166,7 @@ function validateCandidateStateModel(json) {
 }
 
 function validateCandidateReviewHistory(json) {
-  return json.module_id === "candidate_review_history_v0_10_64"
+  return json.module_id === "candidate_review_history_v0_10_65"
     && Array.isArray(json.rows)
     && json.rows.length >= 1
     && json.rows.every((row) => validateStateFields(row) && Array.isArray(row.due_review_verifications) && row.boundary?.includes("observe_only"));
@@ -181,7 +181,7 @@ function validateCandidateReviewAnalytics(json) {
     && metricOk(row.win_rate_vs_benchmark)
     && metricOk(row.average_return)
     && metricOk(row.average_excess_return);
-  return json.module_id === "candidate_review_analytics_v0_10_64"
+  return json.module_id === "candidate_review_analytics_v0_10_65"
     && ["analytics_available", "insufficient_sample"].includes(json.status)
     && typeof json.total_reviewed === "number"
     && json.reviewed_rows === json.total_reviewed
@@ -209,7 +209,7 @@ function validateCandidateReviewAnalytics(json) {
 }
 
 function validateDueReviewVerification(json) {
-  return json.module_id === "candidate_due_review_verification_v0_10_64"
+  return json.module_id === "candidate_due_review_verification_v0_10_65"
     && typeof json.due_review_count === "number"
     && typeof json.reviewed_count === "number"
     && typeof json.pending_count === "number"
@@ -225,8 +225,8 @@ function validateDueReviewVerification(json) {
       return ["T+1", "T+3"].includes(row.review_horizon)
         && Boolean(row.name)
         && Boolean(row.as_of)
-        && Boolean(row.review_due_date)
-        && Boolean(row.expected_review_price_date)
+        && Boolean(row.review_due_date || row.review_reason === "calendar_unknown")
+        && Boolean(row.expected_review_price_date || row.review_reason === "calendar_unknown")
         && typeof row.is_due === "boolean"
         && typeof row.required_market_data_exists === "boolean"
         && typeof row.review_completed === "boolean"

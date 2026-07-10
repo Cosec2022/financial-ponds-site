@@ -42,6 +42,15 @@
     "real_estate_infra_etf_flow"
   ],
   "universe_review_status": "initial_candidates_review_before_enabling",
+  "benchmark": {
+    "pool_id": "a_share_a_share",
+    "symbol": "510300",
+    "role": "broad_market_proxy",
+    "benchmark_type": "etf_proxy",
+    "collection_path": "independent_exact_date_history",
+    "timezone": "Asia/Shanghai",
+    "price_field": "close"
+  },
   "representative_etfs": [
     {
       "sector_id": "brokerage",

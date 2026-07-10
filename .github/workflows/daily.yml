@@ -95,7 +95,9 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add financial-pond/data
           git add tools/financial-pond-framework/data/provider_exports/*.csv
+          git add tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json || true
           git add tools/financial-pond-framework/model_outputs/provider_runs/akshare_etf_bridge_*.json
+          git add tools/financial-pond-framework/model_outputs/provider_runs/a_share_benchmark_history_*.json || true
           git add tools/financial-pond-framework/model_outputs/provider_validation/akshare_etf_bridge_validation.json
           git add tools/financial-pond-framework/model_outputs/provider_inspection/akshare_etf_bridge_inspection.json
           git add tools/financial-pond-framework/model_outputs/provider_inspection/akshare_etf_bridge_inspection.md

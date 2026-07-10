@@ -40,6 +40,7 @@ python3 -m pip show akshare >/dev/null 2>&1 || python3 -m pip install -r provide
 
 npm run provider:akshare:doctor
 npm run provider:akshare -- --as-of "$AS_OF"
+run_noncritical "benchmark exact-date $AS_OF" npm run provider:benchmark -- --date "$AS_OF" --allow-failure
 npm run provider:akshare:validate
 npm run provider:akshare:inspect
 npm run provider:akshare:to-flow -- --as-of "$AS_OF"
@@ -69,6 +70,10 @@ npm run observation:snapshot -- --as-of "$AS_OF"
 npm run data:vault -- --as-of "$AS_OF"
 
 cd "$ROOT"
+
+if [ -f "tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json" ]; then
+  npm run benchmark:archive -- "$AS_OF"
+fi
 
 echo "== publish json =="
 copy_if_exists() {
