@@ -1,13 +1,17 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { benchmarkMarketRow, loadBenchmarkConfig } from "./lib/benchmark-proxy.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const dataDir = resolve(root, "financial-pond", "data");
+const benchmarkConfig = await loadBenchmarkConfig();
+const benchmarkStorePath = resolve(root, "tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json");
 const sourceRelativePath = "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv";
 const snapshotPath = resolve(dataDir, "observation_snapshot.json");
 const snapshot = JSON.parse(await readFile(snapshotPath, "utf8"));
 const instrumentMap = JSON.parse(await readFile(resolve(dataDir, "pool_instrument_map.json"), "utf8"));
 const sourceRows = parseCsv(await readFile(resolve(root, sourceRelativePath), "utf8"));
+const benchmarkStore = await readJsonOptional(benchmarkStorePath, { rows: [] });
 const latestSourceDate = [...new Set(sourceRows.map((row) => row.date).filter(Boolean))].sort().at(-1) ?? null;
 const latestRows = sourceRows.filter((row) => row.date === latestSourceDate);
 const sourceByCode = new Map(latestRows.map((row) => [String(row.fund_code), row]));
@@ -19,6 +23,10 @@ for (const row of snapshot.rows ?? []) row.as_of = asOf;
 
 const signals = (snapshot.rows ?? []).map((pool) => {
   const mapping = mappingByPool.get(pool.pool_id);
+  if (pool.pool_id === benchmarkConfig.pool_id) {
+    const exact = (benchmarkStore.rows ?? []).find((row) => row.symbol === benchmarkConfig.symbol && row.date === asOf);
+    return benchmarkMarketRow(benchmarkConfig, exact) ?? marketSignal(pool, mapping, null);
+  }
   return marketSignal(pool, mapping, sourceByCode.get(String(mapping?.instrument_code ?? "")));
 });
 const momentumCount = signals.filter((row) => isAvailable(row.momentum_status)).length;
@@ -29,14 +37,14 @@ const signalFile = {
   module_id: "pool_market_signals_v0_10_54",
   as_of: asOf,
   generated_at: generatedAt,
-  source_files_used: ["financial-pond/data/pool_instrument_map.json", sourceRelativePath],
+  source_files_used: ["financial-pond/data/pool_instrument_map.json", sourceRelativePath, "tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json"],
   rows: signals
 };
 const report = {
   module_id: "market_signal_report_v0_10_54",
   as_of: asOf,
   generated_at: generatedAt,
-  source_files_used: ["financial-pond/data/pool_instrument_map.json", sourceRelativePath],
+  source_files_used: ["financial-pond/data/pool_instrument_map.json", sourceRelativePath, "tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json"],
   source_row_count: latestRows.length,
   mapped_pool_count: signals.length - unmapped.length,
   unmapped_pool_count: unmapped.length,
@@ -206,6 +214,14 @@ function splitCsvLine(line) {
   }
   values.push(current);
   return values;
+}
+
+async function readJsonOptional(path, fallback) {
+  try {
+    return JSON.parse(await readFile(path, "utf8"));
+  } catch {
+    return fallback;
+  }
 }
 
 function freshnessFor(sourceDate, observationDate) {

@@ -1,5 +1,8 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { loadTradingCalendar, tradingSessionTarget } from "./lib/trading-calendar.mjs";
+import { REVIEW_POLICY_VERSION, classifyReview, exactDatePrice, preserveReviewedOutcomes, shanghaiClock } from "./lib/review-policy.mjs";
+import { loadBenchmarkConfig } from "./lib/benchmark-proxy.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const dataDir = resolve(root, "financial-pond", "data");
@@ -8,11 +11,15 @@ const ledger = await readJson(resolve(dataDir, "observation_candidate_ledger.jso
 const schedule = await readJson(resolve(dataDir, "candidate_review_schedule.json"));
 const currentMarket = await readJson(resolve(dataDir, "pool_market_signals.json"));
 const priceBasis = await readJson(resolve(dataDir, "candidate_price_basis.json"));
-const currentAsOf = process.env.AS_OF ?? maxDate(schedule.as_of, hongKongDate());
+const previousOutcome = await readJsonOptional(resolve(dataDir, "candidate_outcome_reviews.json"), { rows: [] });
+const tradingCalendar = await loadTradingCalendar();
+const benchmarkConfig = await loadBenchmarkConfig();
+const reviewNow = new Date(process.env.REVIEW_NOW ?? Date.now());
+const currentAsOf = process.env.AS_OF ?? maxDate(schedule.as_of, shanghaiClock(reviewNow).date);
 const archives = await readArchives();
 const basisByCandidate = new Map((priceBasis.rows ?? []).map((row) => [`${row.candidate_as_of}|${row.pool_id}`, row]));
 const generatedAt = new Date().toISOString();
-const unavailableStatuses = ["unavailable_market_closed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_data_stale", "skipped_invalid_baseline"];
+const unavailableReasons = ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"];
 const horizons = [
   ["T+1", "review_t1_due"],
   ["T+3", "review_t3_due"],
@@ -20,30 +27,33 @@ const horizons = [
   ["T+20", "review_t20_due"]
 ];
 
-const rows = (ledger.rows ?? []).flatMap((candidate) =>
+const calculatedRows = (ledger.rows ?? []).flatMap((candidate) =>
   horizons.map(([horizon, dueField]) => reviewCandidate(candidate, horizon, candidate[dueField]))
 ).sort((a, b) =>
   a.candidate_as_of.localeCompare(b.candidate_as_of)
   || a.pool_id.localeCompare(b.pool_id)
   || horizonDays(a.horizon) - horizonDays(b.horizon)
 );
+const rows = preserveReviewedOutcomes(previousOutcome.rows ?? [], calculatedRows);
+const preservedReviewedCount = rows.filter((row) => row.migration_guard === "preserved_reviewed_outcome").length;
 
 const statusCounts = countBy(rows, "review_status");
 const directionCounts = countBy(rows, "direction_result");
-const dueReviewCount = rows.filter((row) => row.review_as_of <= currentAsOf && row.review_status !== "pending_not_due").length;
+const dueReviewCount = rows.filter((row) => row.is_due).length;
 const nextDueReviews = nextDue(rows);
 const unavailableByReason = countUnavailableByReason(rows);
 const report = {
-  module_id: "outcome_review_report_v0_10_64",
+  module_id: "outcome_review_report_v0_10_65",
   as_of: currentAsOf,
   generated_at: generatedAt,
+  benchmark_proxy: benchmarkDisclosure(),
   total_candidates: (ledger.rows ?? []).length,
   due_review_count: dueReviewCount,
   reviewed_count: statusCounts.reviewed ?? 0,
-  pending_count: statusCounts.pending_not_due ?? 0,
-  unavailable_count: unavailableCount(rows),
+  pending_count: statusCounts.pending ?? 0,
+  unavailable_count: (statusCounts.unavailable ?? 0) + (statusCounts.skipped ?? 0),
   unavailable_by_reason: unavailableByReason,
-  insufficient_count: statusCounts.skipped_invalid_baseline ?? 0,
+  insufficient_count: statusCounts.skipped ?? 0,
   aligned_count: directionCounts.aligned ?? 0,
   opposite_count: directionCounts.opposite ?? 0,
   neutral_count: directionCounts.neutral ?? 0,
@@ -57,15 +67,23 @@ const report = {
   ]
 };
 const output = {
-  module_id: "candidate_outcome_reviews_v0_10_64",
+  module_id: "candidate_outcome_reviews_v0_10_65",
   as_of: currentAsOf,
   generated_at: generatedAt,
+  benchmark_proxy: benchmarkDisclosure(),
+  review_policy_version: REVIEW_POLICY_VERSION,
+  review_calendar_version: tradingCalendar.calendar_version,
+  migration_audit: {
+    preserved_reviewed_count: preservedReviewedCount,
+    rule: "Previously reviewed outcomes are preserved by signal_date, pool_id, and horizon."
+  },
   rows
 };
 const reviewHistory = {
-  module_id: "candidate_review_history_v0_10_64",
+  module_id: "candidate_review_history_v0_10_65",
   as_of: currentAsOf,
   generated_at: generatedAt,
+  benchmark_proxy: benchmarkDisclosure(),
   rows: buildReviewHistory(rows),
   boundary_notes: [
     "observe_only",
@@ -76,6 +94,7 @@ const reviewHistory = {
 const dueVerificationRows = rows.filter((row) => ["T+1", "T+3"].includes(row.horizon)).map((row) => ({
   as_of: row.candidate_as_of,
   candidate_as_of: row.candidate_as_of,
+  signal_date: row.signal_date,
   symbol: row.symbol,
   name: row.instrument_name ?? row.pool_name,
   pool_id: row.pool_id,
@@ -83,16 +102,29 @@ const dueVerificationRows = rows.filter((row) => ["T+1", "T+3"].includes(row.hor
   due_date: row.review_as_of,
   review_due_date: row.review_as_of,
   review_horizon: row.horizon,
+  horizon_trading_sessions: row.horizon_trading_sessions,
+  legacy_calendar_target_date: row.legacy_calendar_target_date,
+  effective_review_date: row.effective_review_date,
   expected_review_price_date: row.expected_review_price_date,
   latest_available_price_date: row.latest_available_price_date,
   is_due: row.is_due,
   required_market_data_exists: row.required_market_data_exists,
   review_completed: row.review_completed,
+  outcome_available: row.outcome_available,
   review_status: row.review_status,
+  review_reason: row.review_reason,
   reviewed_at_data_date: row.reviewed_at_data_date,
   baseline_price: row.baseline_price,
   review_price: row.review_price,
   benchmark_symbol: row.benchmark_symbol,
+  benchmark_type: row.benchmark_type,
+  benchmark_baseline_date: row.benchmark_baseline_date,
+  benchmark_baseline_close: row.benchmark_baseline_close,
+  benchmark_review_date: row.benchmark_review_date,
+  benchmark_review_close: row.benchmark_review_close,
+  benchmark_mapping_status: row.benchmark_mapping_status,
+  benchmark_source: row.benchmark_source,
+  benchmark_missing_field: row.benchmark_missing_field,
   benchmark_latest_available_date: row.benchmark_latest_available_date,
   absolute_return: row.absolute_return,
   benchmark_return: row.benchmark_return,
@@ -102,13 +134,14 @@ const dueVerificationRows = rows.filter((row) => ["T+1", "T+3"].includes(row.hor
   boundary: "observe_only; due review verification only"
 }));
 const dueVerification = {
-  module_id: "candidate_due_review_verification_v0_10_64",
+  module_id: "candidate_due_review_verification_v0_10_65",
   as_of: currentAsOf,
   generated_at: generatedAt,
+  benchmark_proxy: benchmarkDisclosure(),
   due_review_count: dueVerificationRows.filter((row) => row.is_due).length,
   reviewed_count: dueVerificationRows.filter((row) => row.review_status === "reviewed").length,
-  pending_count: dueVerificationRows.filter((row) => row.review_status === "pending_not_due").length,
-  unavailable_count: dueVerificationRows.filter((row) => isUnavailableStatus(row.review_status)).length,
+  pending_count: dueVerificationRows.filter((row) => row.review_status === "pending").length,
+  unavailable_count: dueVerificationRows.filter((row) => ["unavailable", "skipped"].includes(row.review_status)).length,
   unavailable_by_reason: countUnavailableByReason(dueVerificationRows),
   expected_review_price_date: currentAsOf,
   latest_available_price_date: latestPriceDate(currentMarket?.rows ?? []),
@@ -128,9 +161,20 @@ await updateSchedule(report);
 console.log(`Candidate outcome reviews written: reviewed=${report.reviewed_count}, pending=${report.pending_count}, due=${report.due_review_count}`);
 
 function reviewCandidate(candidate, horizon, reviewAsOf) {
+  const horizonSessions = horizonDays(horizon);
+  const target = tradingSessionTarget(tradingCalendar, candidate.as_of, horizonSessions);
+  const effectiveReviewDate = target.effective_review_date;
   const base = {
     candidate_as_of: candidate.as_of,
-    review_as_of: reviewAsOf,
+    signal_date: candidate.as_of,
+    review_as_of: effectiveReviewDate,
+    effective_review_date: effectiveReviewDate,
+    legacy_calendar_target_date: target.legacy_calendar_target_date,
+    horizon_trading_sessions: horizonSessions,
+    review_policy_version: REVIEW_POLICY_VERSION,
+    review_calendar_version: tradingCalendar.calendar_version,
+    calendar_known: target.calendar_known,
+    calendar_unknown_reason: target.calendar_unknown_reason,
     horizon,
     pool_id: candidate.pool_id,
     pool_name: candidate.pool_name,
@@ -150,134 +194,118 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
     risk_gate_reason: candidate.risk_gate_reason ?? "Risk gate unavailable.",
     symbol: null,
     instrument_name: null,
-    review_status: "pending_not_due",
+    review_status: "pending",
+    review_reason: target.calendar_known ? "pending_not_due" : "calendar_unknown",
     outcome_available: false,
     review_completed: false,
-    is_due: Boolean(reviewAsOf && reviewAsOf <= currentAsOf),
+    is_due: Boolean(effectiveReviewDate && effectiveReviewDate <= currentAsOf),
     required_market_data_exists: false,
     reviewed_at_data_date: null,
-    expected_review_price_date: reviewAsOf ?? null,
+    expected_review_price_date: effectiveReviewDate,
     latest_available_price_date: null,
-    benchmark_symbol: null,
+    benchmark_symbol: benchmarkConfig.symbol,
+    benchmark_type: benchmarkConfig.benchmark_type,
+    benchmark_baseline_date: null,
+    benchmark_baseline_close: null,
+    benchmark_review_date: null,
+    benchmark_review_close: null,
+    benchmark_mapping_status: "missing",
+    benchmark_source: null,
+    benchmark_missing_field: null,
     benchmark_latest_available_date: null,
     baseline_price: null,
     review_price: null,
     absolute_return: null,
     excess_return: null,
     unavailable_reason: null,
-    diagnostic_note: reviewAsOf ? "Review is scheduled for a future date." : "Review due date is unavailable.",
+    diagnostic_note: target.calendar_known ? "Review state is determined by the effective trading-session date." : "Trading calendar does not cover the requested review target.",
     observed_return: null,
     benchmark_return: null,
     relative_return: null,
     direction_result: "unavailable",
     confidence_result: "not_reviewed",
     evidence_result: "not_reviewed",
-    review_note: `Scheduled for ${reviewAsOf}; review date has not arrived.`,
+    review_note: effectiveReviewDate ? `Scheduled for trading session ${effectiveReviewDate}.` : "Review target is outside calendar coverage.",
     boundary: "observe_only; outcome review only"
   };
 
-  if (!reviewAsOf || reviewAsOf > currentAsOf) return base;
   const basis = basisByCandidate.get(`${candidate.as_of}|${candidate.pool_id}`);
   const basisPrice = numberOrNull(basis?.baseline_price);
-  const basisValid = Boolean(basis?.baseline_available && basisPrice !== null && basisPrice > 0);
+  const basisValid = Boolean(basis?.baseline_available && basis?.baseline_as_of === candidate.as_of && basisPrice !== null && basisPrice > 0);
   const basisFields = {
     symbol: basis?.instrument_code ?? null,
     instrument_name: basis?.instrument_name ?? candidate.pool_name,
     baseline_price: basisPrice
   };
-  if (!basisValid) {
-    return unavailable(base, "skipped_invalid_baseline", "Candidate baseline price is invalid or unavailable.", {
-      ...basisFields,
-      diagnostic_note: "Baseline is malformed, so no review return can be calculated."
-    });
-  }
-
-  const reviewArchive = archives.get(reviewAsOf);
-  if (isTodayBeforeMarketClose(reviewAsOf)) {
-    return unavailable(base, "unavailable_market_closed", "Expected review date is today and the market has not closed yet.", {
-      ...basisFields,
-      latest_available_price_date: latestPriceDate(currentMarket?.rows ?? []),
-      diagnostic_note: "Wait for market close and provider refresh before calculating the due review."
-    });
-  }
-
-  if (!reviewArchive) {
-    const status = isWeekend(reviewAsOf) ? "unavailable_market_closed" : "unavailable_missing_price";
-    const reason = isWeekend(reviewAsOf)
-      ? "Review date falls on a weekend; market data is unavailable."
-      : "No review-date market price archive is available.";
-    return unavailable(base, status, reason, {
-      ...basisFields,
-      latest_available_price_date: latestPriceDate(currentMarket?.rows ?? []),
-      diagnostic_note: isWeekend(reviewAsOf)
-        ? "The expected review date is not a trading day."
-        : "No archive exists for the expected review date."
-    });
-  }
-
+  const baselineArchive = archives.get(candidate.as_of);
+  const reviewArchive = effectiveReviewDate ? archives.get(effectiveReviewDate) : null;
   const reviewMarket = marketRow(reviewArchive, candidate.pool_id);
-  if (!reviewMarket) {
-    return unavailable(base, "unavailable_missing_price", "Mapped market price is missing for the due date.", {
+  const candidateReview = exactDatePrice(reviewMarket, effectiveReviewDate);
+  const benchmarkBaselineRow = benchmarkRow(baselineArchive);
+  const benchmarkReviewRow = benchmarkRow(reviewArchive);
+  const benchmarkBaseline = exactDatePrice(benchmarkBaselineRow, candidate.as_of);
+  const benchmarkReview = exactDatePrice(benchmarkReviewRow, effectiveReviewDate);
+  const benchmarkMapping = [benchmarkBaselineRow, benchmarkReviewRow].find((row) =>
+    row?.instrument_code === benchmarkConfig.symbol && row?.mapping_status === "mapped"
+  ) ?? null;
+  const benchmarkMappingAvailable = Boolean(benchmarkConfig.symbol && benchmarkConfig.pool_id);
+  const policy = classifyReview({
+    calendarKnown: target.calendar_known,
+    effectiveReviewDate,
+    now: reviewNow,
+    datasetLatestDate: latestPriceDate(currentMarket?.rows ?? []),
+    candidateBaselineValid: basisValid,
+    candidateExactDateAvailable: candidateReview.exact,
+    benchmarkMappingAvailable,
+    benchmarkBaselineExactDateAvailable: benchmarkBaseline.exact,
+    benchmarkReviewExactDateAvailable: benchmarkReview.exact
+  });
+  const benchmarkFields = {
+    benchmark_symbol: benchmarkMapping?.instrument_code ?? benchmarkConfig.symbol,
+    benchmark_type: benchmarkMapping?.benchmark_type ?? benchmarkConfig.benchmark_type,
+    benchmark_baseline_date: benchmarkBaseline.date,
+    benchmark_baseline_close: benchmarkBaseline.exact ? benchmarkBaseline.close : null,
+    benchmark_review_date: benchmarkReview.date,
+    benchmark_review_close: benchmarkReview.exact ? benchmarkReview.close : null,
+    benchmark_mapping_status: benchmarkMapping?.mapping_status ?? "mapped",
+    benchmark_source: benchmarkMapping?.source_file ?? null,
+    benchmark_latest_available_date: benchmarkReview.date,
+    benchmark_missing_field: benchmarkMissingField({ benchmarkMappingAvailable, benchmarkBaseline, benchmarkReview })
+  };
+
+  if (policy.review_status !== "reviewed") {
+    const note = reasonText(policy.review_reason);
+    return {
+      ...base,
       ...basisFields,
-      latest_available_price_date: latestPriceDate(reviewArchive.pool_market_signals?.rows ?? []),
-      diagnostic_note: "The review archive exists but does not contain this candidate instrument."
-    });
-  }
-  const reviewPriceDate = reviewMarket.price_date ?? reviewMarket.source_date ?? reviewArchive.as_of;
-  if (!reviewPriceDate || reviewPriceDate < reviewAsOf) {
-    return unavailable(base, "unavailable_data_stale", "Provider latest price date is before the expected review date.", {
-      ...basisFields,
-      required_market_data_exists: true,
-      reviewed_at_data_date: reviewPriceDate,
-      latest_available_price_date: reviewPriceDate,
-      diagnostic_note: "Provider data exists, but it is stale for this due review."
-    });
+      ...benchmarkFields,
+      ...policy,
+      required_market_data_exists: candidateReview.exact,
+      reviewed_at_data_date: candidateReview.exact ? candidateReview.date : null,
+      latest_available_price_date: latestPriceDate(currentMarket?.rows ?? []),
+      review_price: candidateReview.exact ? candidateReview.close : null,
+      unavailable_reason: policy.review_status === "pending" ? null : note,
+      diagnostic_note: note,
+      review_note: note
+    };
   }
 
-  const reviewClose = numberOrNull(reviewMarket.price_close ?? reviewMarket.market_close);
-  if (reviewClose === null || reviewClose <= 0) {
-    return unavailable(base, "unavailable_missing_price", "Review market row lacks an exact close level.", {
-      ...basisFields,
-      required_market_data_exists: true,
-      reviewed_at_data_date: reviewPriceDate,
-      latest_available_price_date: reviewPriceDate,
-      diagnostic_note: "Provider has the expected date row, but the candidate close price is missing."
-    });
-  }
-
-  const benchmark = benchmarkRow(reviewArchive);
-  const benchmarkDate = benchmark?.price_date ?? benchmark?.source_date ?? null;
-  const benchmarkClose = numberOrNull(benchmark?.price_close ?? benchmark?.market_close);
-  if (!benchmark || !benchmarkDate || benchmarkDate < reviewAsOf || benchmarkClose === null || benchmarkClose <= 0) {
-    return unavailable(base, "unavailable_missing_benchmark", "Candidate review price exists, but benchmark price is unavailable.", {
-      ...basisFields,
-      required_market_data_exists: true,
-      reviewed_at_data_date: reviewPriceDate,
-      latest_available_price_date: reviewPriceDate,
-      review_price: reviewClose,
-      benchmark_symbol: benchmark?.instrument_code ?? benchmark?.pool_id ?? null,
-      benchmark_latest_available_date: benchmarkDate,
-      diagnostic_note: "Candidate price is present; benchmark is missing, so excess return is not calculated."
-    });
-  }
-
-  const observedReturn = round(reviewClose / basisPrice - 1);
-  const benchmarkBasis = numberOrNull(benchmark.baseline_price) ?? benchmarkClose;
-  const benchmarkReturn = round(benchmarkClose / benchmarkBasis - 1);
+  const observedReturn = round(candidateReview.close / basisPrice - 1);
+  const benchmarkReturn = round(benchmarkReview.close / benchmarkBaseline.close - 1);
   const excessReturn = round(observedReturn - benchmarkReturn);
   const directionResult = directionResultFor(candidate.direction, observedReturn);
   return {
     ...base,
     ...basisFields,
+    ...benchmarkFields,
     review_status: "reviewed",
+    review_reason: null,
     outcome_available: true,
     review_completed: true,
     required_market_data_exists: true,
-    reviewed_at_data_date: reviewPriceDate,
-    latest_available_price_date: reviewPriceDate,
-    review_price: reviewClose,
-    benchmark_symbol: benchmark.instrument_code ?? benchmark.pool_id ?? null,
-    benchmark_latest_available_date: benchmarkDate,
+    reviewed_at_data_date: candidateReview.date,
+    latest_available_price_date: candidateReview.date,
+    review_price: candidateReview.close,
     absolute_return: observedReturn,
     benchmark_return: benchmarkReturn,
     excess_return: excessReturn,
@@ -287,20 +315,8 @@ function reviewCandidate(candidate, horizon, reviewAsOf) {
     confidence_result: directionResult === "aligned" ? "supported" : directionResult === "opposite" ? "not_supported" : "neutral",
     evidence_result: `${candidate.evidence_quality}_evidence_reviewed`,
     diagnostic_note: "Candidate and benchmark review prices are available.",
-    review_note: `Observed return calculated from candidate price basis (${basis.baseline_as_of}) and archived review close.`,
+    review_note: `Observed return calculated from exact-date candidate and benchmark archives (${candidate.as_of} to ${effectiveReviewDate}).`,
     boundary: "observe_only; reviewed observation outcome"
-  };
-}
-
-function unavailable(base, status, note, extra = {}) {
-  return {
-    ...base,
-    ...extra,
-    review_status: status,
-    outcome_available: false,
-    review_completed: false,
-    unavailable_reason: note,
-    review_note: note
   };
 }
 
@@ -316,7 +332,7 @@ function directionResultFor(direction, observedReturn) {
 }
 
 function nextDue(reviewRows) {
-  const future = reviewRows.filter((row) => row.review_status === "pending_not_due");
+  const future = reviewRows.filter((row) => row.review_status === "pending");
   const earliest = future.map((row) => row.review_as_of).filter(Boolean).sort().at(0);
   if (!earliest) return [];
   return horizons.map(([horizon]) => ({
@@ -373,7 +389,11 @@ function buildReviewHistory(reviewRows) {
     }
     const item = grouped.get(key);
     const result = {
+      signal_date: row.signal_date,
       review_horizon: row.horizon,
+      horizon_trading_sessions: row.horizon_trading_sessions,
+      legacy_calendar_target_date: row.legacy_calendar_target_date,
+      effective_review_date: row.effective_review_date,
       review_due_date: row.review_as_of,
       reviewed_at_data_date: row.reviewed_at_data_date,
       expected_review_price_date: row.expected_review_price_date,
@@ -381,6 +401,14 @@ function buildReviewHistory(reviewRows) {
       baseline_price: row.baseline_price,
       review_price: row.review_price,
       benchmark_symbol: row.benchmark_symbol,
+      benchmark_type: row.benchmark_type,
+      benchmark_baseline_date: row.benchmark_baseline_date,
+      benchmark_baseline_close: row.benchmark_baseline_close,
+      benchmark_review_date: row.benchmark_review_date,
+      benchmark_review_close: row.benchmark_review_close,
+      benchmark_mapping_status: row.benchmark_mapping_status,
+      benchmark_source: row.benchmark_source,
+      benchmark_missing_field: row.benchmark_missing_field,
       benchmark_latest_available_date: row.benchmark_latest_available_date,
       absolute_return: row.absolute_return,
       benchmark_return: row.benchmark_return,
@@ -389,6 +417,7 @@ function buildReviewHistory(reviewRows) {
       diagnostic_note: row.diagnostic_note,
       review_as_of: row.review_as_of,
       review_status: row.review_status,
+      review_reason: row.review_reason,
       outcome_available: row.outcome_available,
       observed_return: row.observed_return,
       benchmark_return: row.benchmark_return,
@@ -403,14 +432,19 @@ function buildReviewHistory(reviewRows) {
     if (["T+1", "T+3"].includes(row.horizon)) {
       item.due_review_verifications.push({
         as_of: row.candidate_as_of,
+        signal_date: row.signal_date,
         due_date: row.review_as_of,
         review_horizon: row.horizon,
+        horizon_trading_sessions: row.horizon_trading_sessions,
+        legacy_calendar_target_date: row.legacy_calendar_target_date,
+        effective_review_date: row.effective_review_date,
         expected_review_price_date: row.expected_review_price_date,
         latest_available_price_date: row.latest_available_price_date,
         is_due: row.is_due,
         required_market_data_exists: row.required_market_data_exists,
         review_completed: row.review_completed,
         review_status: row.review_status,
+        review_reason: row.review_reason,
         unavailable_reason: row.unavailable_reason,
         diagnostic_note: row.diagnostic_note
       });
@@ -421,25 +455,49 @@ function buildReviewHistory(reviewRows) {
   return [...grouped.values()].sort((a, b) => a.as_of.localeCompare(b.as_of) || a.pool_id.localeCompare(b.pool_id));
 }
 
-function unavailableCount(rows) {
-  return rows.filter((row) => isUnavailableStatus(row.review_status)).length;
-}
-
 function countUnavailableByReason(rows) {
-  return unavailableStatuses.reduce((counts, status) => {
-    counts[status] = rows.filter((row) => row.review_status === status).length;
+  return unavailableReasons.reduce((counts, reason) => {
+    counts[reason] = rows.filter((row) => row.review_reason === reason).length;
     return counts;
   }, {});
 }
 
 function isUnavailableStatus(status) {
-  return unavailableStatuses.includes(status);
+  return ["unavailable", "skipped"].includes(status);
 }
 
 function benchmarkRow(archive) {
-  return (archive?.pool_market_signals?.rows ?? []).find((row) =>
-    row.pool_id === "a_share_a_share" && numberOrNull(row.price_close ?? row.market_close) !== null
-  ) ?? null;
+  return (archive?.pool_market_signals?.rows ?? []).find((row) => row.pool_id === benchmarkConfig.pool_id) ?? null;
+}
+
+function benchmarkDisclosure() {
+  return {
+    display_label: benchmarkConfig.display_label,
+    symbol: benchmarkConfig.symbol,
+    benchmark_type: benchmarkConfig.benchmark_type,
+    role: benchmarkConfig.role,
+    disclosure: benchmarkConfig.disclosure
+  };
+}
+
+function benchmarkMissingField({ benchmarkMappingAvailable, benchmarkBaseline, benchmarkReview }) {
+  if (!benchmarkMappingAvailable) return "benchmark_mapping";
+  if (!benchmarkBaseline.exact) return benchmarkBaseline.date ? "benchmark_baseline_date_or_close" : "benchmark_baseline";
+  if (!benchmarkReview.exact) return benchmarkReview.date ? "benchmark_review_date_or_close" : "benchmark_review";
+  return null;
+}
+
+function reasonText(reason) {
+  return ({
+    pending_not_due: "Effective trading-session review date has not arrived.",
+    pending_market_open: "Effective review session is still open in Asia/Shanghai.",
+    awaiting_eod_data: "Market has closed; awaiting exact-date end-of-day provider data.",
+    stale_data: "Provider data has not reached the effective review date.",
+    missing_price: "Dataset covers the effective date, but the candidate exact-date close is missing.",
+    missing_benchmark: "Benchmark mapping, signal-date baseline, or effective-date close is missing.",
+    calendar_unknown: "Trading calendar does not cover the requested review target.",
+    invalid_baseline: "Candidate signal-date baseline is invalid or not exact-date."
+  })[reason] ?? "Review is unavailable.";
 }
 
 function latestPriceDate(rows) {
@@ -472,35 +530,6 @@ function maxDate(...dates) {
   return dates.filter(Boolean).sort().at(-1);
 }
 
-function isWeekend(dateString) {
-  const day = new Date(`${dateString}T00:00:00.000Z`).getUTCDay();
-  return day === 0 || day === 6;
-}
-
-function isTodayBeforeMarketClose(dateString) {
-  if (dateString !== hongKongDate()) return false;
-  const parts = new Intl.DateTimeFormat("en-GB", {
-    timeZone: "Asia/Hong_Kong",
-    hour: "2-digit",
-    minute: "2-digit",
-    hourCycle: "h23"
-  }).formatToParts(new Date());
-  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  const minutes = Number(byType.hour) * 60 + Number(byType.minute);
-  return minutes < 16 * 60;
-}
-
-function hongKongDate() {
-  const parts = new Intl.DateTimeFormat("en-CA", {
-    timeZone: "Asia/Hong_Kong",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit"
-  }).formatToParts(new Date());
-  const byType = Object.fromEntries(parts.map((part) => [part.type, part.value]));
-  return `${byType.year}-${byType.month}-${byType.day}`;
-}
-
 function numberOrNull(value) {
   if (value === null || value === undefined || value === "") return null;
   const number = Number(value);
@@ -518,6 +547,14 @@ function round(value) {
 
 async function readJson(path) {
   return JSON.parse(await readFile(path, "utf8"));
+}
+
+async function readJsonOptional(path, fallback) {
+  try {
+    return await readJson(path);
+  } catch {
+    return fallback;
+  }
 }
 
 async function writeJson(path, value) {

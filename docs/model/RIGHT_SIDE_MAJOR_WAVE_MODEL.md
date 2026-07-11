@@ -1,6 +1,6 @@
 # Right-Side Major-Wave Model
 
-Version: v0.10.64
+Version: v0.10.65
 
 ## Purpose
 
@@ -77,3 +77,20 @@ v0.10.62 adds `candidate_review_analytics.json`. It reads
 with available returns. Pending, unavailable, and insufficient-data review rows
 are excluded from rate calculations. Groups with too few reviewed samples are
 reported as `insufficient_sample`.
+
+## Review Policy v0.10.65
+
+- Review horizons count explicit A-share trading sessions, not calendar days.
+- Output separates `review_status` (`pending`, `reviewed`, `unavailable`,
+  `skipped`) from `review_reason`.
+- Candidate and benchmark prices must match the signal/effective review dates
+  exactly; latest-close fallback is prohibited.
+- `510300` is the configured operational A-share benchmark ETF proxy. It is
+  not the complete A-share market.
+- Existing reviewed outcomes are preserved; unfinished rows remain migratable.
+
+The versioned calendar currently covers `2026-07-01` through `2026-08-31`.
+Dates outside that range fail closed as `calendar_unknown`. Before the covered
+range is exhausted, maintainers must review the official SSE closure calendar,
+extend the explicit session allowlist in a new calendar version, and rerun the
+fixed-time calendar tests. v0.10.65 does not yet automate this expiry warning.

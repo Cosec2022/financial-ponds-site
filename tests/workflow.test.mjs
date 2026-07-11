@@ -69,6 +69,8 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(workflow, /Persist published data/);
   assert.match(workflow, /git add financial-pond\/data/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/data\/provider_exports\/\*\.csv/);
+  assert.match(workflow, /a_share_benchmark_daily\.json/);
+  assert.match(workflow, /a_share_benchmark_history_/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_runs\/akshare_etf_bridge_\*\.json/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_validation\/akshare_etf_bridge_validation\.json/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_inspection\/akshare_etf_bridge_inspection\.json/);
@@ -158,20 +160,24 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(outcomeEngine, /basis\.baseline_price/);
   assert.match(outcomeEngine, /candidate_review_history\.json/);
   assert.match(outcomeEngine, /candidate_due_review_verification\.json/);
-  assert.match(outcomeEngine, /unavailable_missing_price/);
-  assert.match(outcomeEngine, /unavailable_missing_benchmark/);
-  assert.match(outcomeEngine, /unavailable_market_closed/);
-  assert.match(outcomeEngine, /unavailable_data_stale/);
-  assert.match(outcomeEngine, /skipped_invalid_baseline/);
-  assert.match(outcomeEngine, /isTodayBeforeMarketClose/);
+  assert.match(outcomeEngine, /missing_price/);
+  assert.match(outcomeEngine, /missing_benchmark/);
+  assert.match(outcomeEngine, /awaiting_eod_data/);
+  assert.match(outcomeEngine, /stale_data/);
+  assert.match(outcomeEngine, /invalid_baseline/);
+  assert.match(outcomeEngine, /classifyReview/);
   assert.match(outcomeEngine, /benchmarkRow/);
   assert.match(outcomeEngine, /diagnostic_note/);
   assert.match(outcomeEngine, /unavailable_by_reason/);
   assert.match(outcomeEngine, /pending_not_due/);
+  assert.match(outcomeEngine, /legacy_calendar_target_date/);
+  assert.match(outcomeEngine, /effective_review_date/);
+  assert.match(outcomeEngine, /preserveReviewedOutcomes/);
   assert.match(outcomeEngine, /candidate_state/);
   assert.match(outcomeEngine, /major_wave_score/);
   assert.match(outcomeEngine, /risk_gate_status/);
   assert.match(outcomeEngine, /benchmark_return/);
+  assert.doesNotMatch(outcomeEngine, /benchmark\.baseline_price\) \?\? benchmarkClose/);
   assert.doesNotMatch(workflow, /npm run a-share:daily\s*$/m);
 });
 
@@ -198,4 +204,25 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.lastIndexOf("archive-observation-snapshot.mjs") > daily.indexOf("build-candidate-review-analytics.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("build-data-coverage-report.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
+});
+
+test("v0.10.65 release UI and documentation expose the review contract", async () => {
+  const [index, app, changelog, modelDoc, sitePackage, frameworkPackage] = await Promise.all([
+    readFile("financial-pond/index.html", "utf8"),
+    readFile("financial-pond/app.js", "utf8"),
+    readFile("tools/financial-pond-framework/docs/CHANGELOG.md", "utf8"),
+    readFile("docs/model/RIGHT_SIDE_MAJOR_WAVE_MODEL.md", "utf8"),
+    readFile("package.json", "utf8"),
+    readFile("tools/financial-pond-framework/package.json", "utf8")
+  ]);
+  assert.match(index, /v0\.10\.65 Observation Dashboard/);
+  assert.equal(JSON.parse(sitePackage).version, "0.10.65");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.65");
+  assert.match(changelog, /v0\.10\.65/);
+  assert.match(modelDoc, /Version: v0\.10\.65/);
+  assert.match(app, /A-share benchmark proxy: 510300/);
+  assert.match(app, /not the complete A-share market/);
+  for (const reason of ["pending_not_due", "pending_market_open", "awaiting_eod_data", "stale_data", "missing_price", "missing_benchmark", "calendar_unknown", "invalid_baseline"]) {
+    assert.match(app, new RegExp(reason));
+  }
 });

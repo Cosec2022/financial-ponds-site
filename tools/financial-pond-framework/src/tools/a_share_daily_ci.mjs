@@ -26,6 +26,13 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "a_share_benchmark_exact_date", "python3", [
+    "providers/akshare_etf_bridge/fetch_benchmark_history.py",
+    "--date",
+    asOf,
+    "--allow-failure"
+  ], { rootDir, allowFailure: true });
+
   const waterLevel = await runStep(summary, "a_share_water_level_real", "python3", [
     "providers/a_share_water_level/export_a_share_water_level.py",
     "--as-of",
