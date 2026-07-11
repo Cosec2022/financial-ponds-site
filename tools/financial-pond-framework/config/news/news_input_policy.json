@@ -1,0 +1,5 @@
+{
+  "schema_version": "news_input_policy_v1",
+  "news_input_mode": "narrative_display_only",
+  "description": "RSS and search narratives are retained for display and review. They never enter graph scoring. Only a future verified_fact_channel may supply separately validated facts."
+}
