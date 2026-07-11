@@ -17,7 +17,8 @@
     "history:labels": "node scripts/build-daily-outcome-label-ledger.mjs",
     "history:coverage": "node scripts/history-cli.mjs coverage",
     "history:inspect": "node scripts/history-cli.mjs inspect",
-    "history:compare": "node scripts/history-cli.mjs compare"
+    "history:compare": "node scripts/history-cli.mjs compare",
+    "history:import-committed": "node scripts/import-committed-historical-snapshots.mjs"
   },
   "devDependencies": {
     "wrangler": "4.102.0"
