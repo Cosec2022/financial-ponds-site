@@ -12,10 +12,16 @@
     "fp:daily": "bash scripts/local/fp-daily.sh",
     "fp:today": "bash scripts/local/fp-today-full-update.sh",
     "fp:summary": "node scripts/local/fp-progress-summary.mjs",
-    "benchmark:archive": "node scripts/apply-benchmark-to-archives.mjs"
+    "benchmark:archive": "node scripts/apply-benchmark-to-archives.mjs",
+    "history:snapshot": "node scripts/build-daily-longitudinal-archive.mjs",
+    "history:labels": "node scripts/build-daily-outcome-label-ledger.mjs",
+    "history:coverage": "node scripts/history-cli.mjs coverage",
+    "history:inspect": "node scripts/history-cli.mjs inspect",
+    "history:compare": "node scripts/history-cli.mjs compare",
+    "history:import-committed": "node scripts/import-committed-historical-snapshots.mjs"
   },
   "devDependencies": {
     "wrangler": "4.102.0"
   },
-  "version": "0.10.66"
+  "version": "0.10.67"
 }

@@ -197,6 +197,9 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-daily-delta-report.mjs") < daily.indexOf("build-evening-observation-summary.mjs"));
   assert.ok(daily.indexOf("build-evening-observation-summary.mjs") < daily.indexOf("build-candidate-price-basis.mjs"));
   assert.ok(daily.indexOf("build-candidate-price-basis.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
+  assert.ok(daily.indexOf("build-daily-longitudinal-archive.mjs") > daily.indexOf("build-candidate-state-model.mjs"));
+  assert.ok(daily.indexOf("build-daily-outcome-label-ledger.mjs") > daily.indexOf("build-candidate-outcome-reviews.mjs"));
+  assert.ok(daily.indexOf("build-longitudinal-coverage-report.mjs") > daily.indexOf("build-daily-outcome-label-ledger.mjs"));
   assert.ok(daily.indexOf("build-candidate-price-basis.mjs") < daily.indexOf("build-candidate-state-model.mjs"));
   assert.ok(daily.indexOf("build-candidate-state-model.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
   assert.ok(daily.indexOf("build-candidate-outcome-reviews.mjs") < daily.indexOf("build-candidate-review-analytics.mjs"));
@@ -206,7 +209,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.66 release UI preserves review contract and adds display-only brief", async () => {
+test("v0.10.67 release preserves review contract and adds display-only brief", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -217,8 +220,8 @@ test("v0.10.66 release UI preserves review contract and adds display-only brief"
   ]);
   assert.match(index, /v0\.10\.66 Observation Dashboard/);
   assert.match(index, /Market Penetration Brief/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.66");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.66");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.67");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.67");
   assert.match(changelog, /v0\.10\.65/);
   assert.match(modelDoc, /Version: v0\.10\.65/);
   assert.match(app, /A-share benchmark proxy: 510300/);
