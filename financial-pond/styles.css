@@ -266,6 +266,14 @@ summary {
   text-decoration: none;
 }
 .empty { color: var(--muted); font-size: 13px; }
+.brief-zone { margin-top: 14px; }
+.brief-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.brief-item { overflow-wrap: anywhere; font-size: 12px; line-height: 1.5; }
+.brief-item a { color: var(--blue); }
+.brief-meta { color: var(--muted); font-size: 12px; }
+.tag { display: inline-block; padding: 2px 5px; border-radius: 4px; font-size: 10px; font-weight: 800; }
+.tag.candidate { background: var(--amber-soft); color: var(--amber); }
+.tag.narrative { background: var(--blue-soft); color: var(--blue); }
 
 @media (max-width: 980px) {
   .status-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -284,6 +292,6 @@ summary {
   .status-item:nth-child(2n) { border-right: 0; }
   .status-item:nth-last-child(-n+2) { border-bottom: 0; }
   .detail-metrics, .quality-counts, .review-counts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .signal-row, .reason-grid, .quality-facts, .review-facts { grid-template-columns: 1fr; }
+  .signal-row, .reason-grid, .quality-facts, .review-facts, .brief-columns { grid-template-columns: 1fr; }
   .component-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

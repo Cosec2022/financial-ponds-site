@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.10.66 - Market Penetration Brief MVP
+
+- Quarantined RSS/search narratives from graph scoring; they remain display-only.
+- Added a versioned daily Market Penetration Brief, source registry, deterministic
+  market observations, media-narrative grouping, and explicit hypotheses.
+- Verified facts remain empty until a primary-source verification adapter exists.
+
 ## v0.10.65 - Trading-session reviews and explicit benchmark proxy
 
 - Bumped site and framework package versions to `0.10.65`.
