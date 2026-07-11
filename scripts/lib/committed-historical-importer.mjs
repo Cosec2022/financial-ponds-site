@@ -48,6 +48,6 @@ export async function importCommittedHistoricalSnapshots({ rootDir, from, to, dr
 }
 
 function gitReader(rootDir) {
-  const run = (...args) => execFileSync("git", args, { cwd: rootDir, encoding: "utf8" }).trim();
+  const run = (...args) => execFileSync("git", args, { cwd: rootDir, encoding: "utf8", maxBuffer: 32 * 1024 * 1024 }).trim();
   return { commit: () => run("rev-parse", "HEAD"), listPaths: () => run("ls-tree", "-r", "--name-only", "HEAD").split("\n").filter(Boolean), readBlob: (path) => run("show", `HEAD:${path}`), blobId: (path) => run("rev-parse", `HEAD:${path}`) };
 }
