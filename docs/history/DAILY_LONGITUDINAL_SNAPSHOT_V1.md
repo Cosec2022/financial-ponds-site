@@ -5,3 +5,5 @@
 Snapshots distinguish `null`, missing, and numeric zero. Mapping is `direct`, `sector_proxy`, or `missing`; flow reality is `real`, `estimated`, `proxy`, `manual_seed`, `mock`, `derived_from_non_real`, or `missing`.
 
 `finality_status` is `provisional`, `final`, or `corrected`. A later replay/backtest result is a separate outcome-label record and must never overwrite this snapshot.
+
+The daily workflow writes the immutable snapshot before it appends due outcome labels. This preserves the model state that was published at the time and prevents lookahead.
