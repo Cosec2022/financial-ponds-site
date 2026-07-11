@@ -22,9 +22,10 @@ export function buildDailyLongitudinalSnapshot(input) {
   const marketByPool = byPool(input.pool_market_signals?.rows);
   const flowByPool = byPool(input.pool_flow_signals?.rows);
   const stateByPool = byPool(input.candidate_state_model?.rows);
-  const candidateByPool = byPool(input.observation_candidate_ledger?.rows);
+  const candidateByPool = indexedByPool(input.observation_candidate_ledger?.rows);
+  const top5ByPool = indexedByPool(input.evening_observation_summary?.top_observation_pools);
   const pools = [...(input.observation_snapshot?.rows ?? [])].sort((a, b) => String(a.pool_id).localeCompare(String(b.pool_id)));
-  const rows = pools.map((pool, index) => buildRow({ pool, index, total: pools.length, score: scoreByPool.get(pool.pool_id), mapping: mappingByPool.get(pool.pool_id), market: marketByPool.get(pool.pool_id), flow: flowByPool.get(pool.pool_id), state: stateByPool.get(pool.pool_id), candidate: candidateByPool.get(pool.pool_id) }));
+  const rows = pools.map((pool) => buildRow({ pool, score: scoreByPool.get(pool.pool_id), mapping: mappingByPool.get(pool.pool_id), market: marketByPool.get(pool.pool_id), flow: flowByPool.get(pool.pool_id), state: stateByPool.get(pool.pool_id), candidate: candidateByPool.get(pool.pool_id), top5: top5ByPool.get(pool.pool_id) }));
   const header = {
     schema_version: SNAPSHOT_SCHEMA_VERSION,
     snapshot_id: input.snapshot_id ?? `${asOf}:${input.model_version ?? "unknown"}:${finalityStatus}`,
@@ -51,7 +52,7 @@ export function buildDailyLongitudinalSnapshot(input) {
   return { ...header, content_hash: contentHash(header) };
 }
 
-function buildRow({ pool, index, total, score = {}, mapping = {}, market = {}, flow = {}, state = {}, candidate = {} }) {
+function buildRow({ pool, score = {}, mapping = {}, market = {}, flow = {}, state = {}, candidate = {}, top5 = {} }) {
   const flowReality = normalizeReality(flow.flow_status, flow.source_type);
   const mappingType = mapping.mapping_status === "direct_etf" || mapping.mapping_status === "direct_index" ? "direct" : mapping.mapping_status === "unmapped" ? "missing" : "sector_proxy";
   const featureValues = {
@@ -100,8 +101,10 @@ function buildRow({ pool, index, total, score = {}, mapping = {}, market = {}, f
     absolute_strength: nullable(pool.vector_forecast?.magnitude),
     component_scores: componentScores(score),
     final_score: nullable(score.final_score ?? score.observation_score),
-    rank: Number.isFinite(index) ? index + 1 : null,
-    percentile: total ? Number((((total - index) / total) * 100).toFixed(4)) : null,
+    rank: explicitRank(pool.rank ?? score.rank),
+    rank_source: rankSource(pool.rank ?? score.rank, pool.rank !== undefined ? "observation_snapshot.rows[].rank" : "pool_observation_scores.rows[].rank"),
+    rank_missing_reason: rankMissingReason(pool.rank ?? score.rank),
+    percentile: nullable(score.percentile ?? pool.percentile),
     direction: score.direction ?? pool.vector_forecast?.direction ?? "neutral",
     persistence: pool.signals?.rotation?.label ?? null,
     major_wave_score: nullable(state.major_wave_score ?? score.major_wave_score),
@@ -110,7 +113,11 @@ function buildRow({ pool, index, total, score = {}, mapping = {}, market = {}, f
     overheat_state: state.overheat_score === null || state.overheat_score === undefined ? null : state.overheat_score > 0 ? "flagged" : "clear",
     risk_state: state.risk_gate_status ?? score.risk_gate_status ?? null,
     candidate_qualified: Boolean(candidate.pool_id),
-    candidate_rank: candidate.pool_id ? null : null,
+    candidate_rank: candidate.pool_id ? explicitRank(candidate.candidate_rank ?? candidate._published_position) : null,
+    candidate_rank_source: candidate.pool_id ? (candidate.candidate_rank !== undefined ? "observation_candidate_ledger.rows[].candidate_rank" : "observation_candidate_ledger.rows published order") : null,
+    candidate_rank_missing_reason: candidate.pool_id ? (candidate.candidate_rank !== undefined || candidate._published_position ? null : "candidate_rank_unavailable_in_published_source") : "not_candidate",
+    published_top5_position: top5.pool_id ? top5._published_position : null,
+    published_top5_position_source: top5.pool_id ? "evening_observation_summary.top_observation_pools published order" : null,
     candidate_reasons: candidate.pool_id ? [candidate.main_reason].filter(Boolean) : [],
     rejection_reasons: candidate.pool_id ? [] : [score.observation_tier ?? "not_candidate"],
     data_complete: missingFields.length === 0,
@@ -124,6 +131,10 @@ function buildRow({ pool, index, total, score = {}, mapping = {}, market = {}, f
 
 function componentScores(score) { return Object.fromEntries(["flow_score", "momentum_score", "liquidity_score", "quality_score", "delta_score", "confidence_score", "proxy_penalty", "missing_data_penalty"].map((key) => [key, nullable(score?.[key]) ])); }
 function byPool(rows = []) { return new Map(rows.map((row) => [row.pool_id, row])); }
+function indexedByPool(rows = []) { return new Map(rows.map((row, index) => [row.pool_id, { ...row, _published_position: index + 1 }])); }
+function explicitRank(value) { return Number.isInteger(value) && value > 0 ? value : null; }
+function rankSource(value, source) { return explicitRank(value) === null ? null : source; }
+function rankMissingReason(value) { return explicitRank(value) === null ? "rank_unavailable_in_published_source" : null; }
 function nullable(value) { return typeof value === "number" && Number.isFinite(value) ? value : null; }
 function required(value, name) { if (!value) throw new Error(`Missing required ${name}`); return value; }
 function normalizeReality(status, source) { if (["source_backed", "real", "derived_from_market"].includes(status)) return "real"; if (status === "estimated_from_source") return "estimated"; if (status === "mock" || source === "config/mock_scores") return "mock"; if (status === "manual_seed") return "manual_seed"; if (status === "proxy") return "proxy"; if (status === "derived_from_non_real") return "derived_from_non_real"; return "missing"; }
