@@ -13,7 +13,8 @@
     "fp:today": "bash scripts/local/fp-today-full-update.sh",
     "fp:summary": "node scripts/local/fp-progress-summary.mjs",
     "benchmark:archive": "node scripts/apply-benchmark-to-archives.mjs",
-    "history:snapshot": "node scripts/build-daily-longitudinal-archive.mjs"
+    "history:snapshot": "node scripts/build-daily-longitudinal-archive.mjs",
+    "history:labels": "node scripts/build-daily-outcome-label-ledger.mjs"
   },
   "devDependencies": {
     "wrangler": "4.102.0"
