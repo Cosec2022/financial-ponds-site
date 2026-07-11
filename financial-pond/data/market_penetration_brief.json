@@ -1,0 +1,502 @@
+{
+  "schema_version": "market_penetration_brief_v1",
+  "as_of": "2026-07-10",
+  "generated_at": "2026-07-10T11:35:15.902Z",
+  "coverage_window": {
+    "as_of": "2026-07-10",
+    "market_source_date": "2026-07-10",
+    "narrative_window": "2026-07-10"
+  },
+  "source_status": [
+    {
+      "source_id": "a_share_market_archive",
+      "status": "available",
+      "source_date": "2026-07-10",
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "detail": "Published market signal archive; provider-origin quality is retained per fact."
+    },
+    {
+      "source_id": "legacy_google_news_rss",
+      "status": "available",
+      "source_date": "2026-07-10",
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "detail": "Media narratives only; never verified automatically or scored by the graph."
+    }
+  ],
+  "market_facts": [
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_defense_military:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_defense_military exact-date representative instrument close was observed.",
+      "observed_value": 1.281,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "512660",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "derived_from_market",
+      "observed_return": 3.06
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_defense_military:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "军工 exact-date representative instrument close was observed.",
+      "observed_value": 1.281,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "512660",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "derived_from_market",
+      "observed_return": 3.06
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_agriculture:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_agriculture exact-date representative instrument close was observed.",
+      "observed_value": 0.632,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "159928",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_beauty_care:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_beauty_care exact-date representative instrument close was observed.",
+      "observed_value": 0.632,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "159928",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_building_materials:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_building_materials exact-date representative instrument close was observed.",
+      "observed_value": 1.216,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "512200",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_construction:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_construction exact-date representative instrument close was observed.",
+      "observed_value": 1.216,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "512200",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_consumer:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_consumer exact-date representative instrument close was observed.",
+      "observed_value": 0.632,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "159928",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "derived_from_market",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_food_beverage:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_food_beverage exact-date representative instrument close was observed.",
+      "observed_value": 0.632,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "159928",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_home_appliances:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_home_appliances exact-date representative instrument close was observed.",
+      "observed_value": 0.632,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "159928",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_light_manufacturing:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_light_manufacturing exact-date representative instrument close was observed.",
+      "observed_value": 0.632,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "159928",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_real_estate_infra:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_real_estate_infra exact-date representative instrument close was observed.",
+      "observed_value": 1.216,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "512200",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "derived_from_market",
+      "observed_return": 2.27
+    },
+    {
+      "fact_id": "market:2026-07-10:a_share_a_share_retail:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "a_share_retail exact-date representative instrument close was observed.",
+      "observed_value": 0.632,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "159928",
+      "observation_time": "2026-07-10",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-10",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 2.27
+    }
+  ],
+  "official_fact_candidates": [],
+  "media_narratives": [
+    {
+      "narrative_id": "media:2026-07-10:0:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:1:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:2:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:3:99fff302",
+      "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "2024 chinese stimulus package basics how it s impacting chinese",
+      "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:4:574cf1a",
+      "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "pboc csrc all in on boosting growth chinadailyhk",
+      "duplicate_group": "pboc csrc all in on boosting growth chinadailyhk",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:5:cf909931",
+      "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "ai chip stocks just had their best half year ever",
+      "duplicate_group": "ai chip stocks just had their best half year ever",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:6:f8cc1d8f",
+      "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
+      "duplicate_group": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:7:3b2c40b6",
+      "title": "Bitcoin Price Jumps Amid Peace Talks, Risk Appetite Ignites Rally - CryptoRank",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8zc0QtTjhIRjBSNTB5Y21nS2FVYW05NlEwQWNqd29iOGlFem1wVlZlUXAzM2Zma2lyUElsa25VQVNxMEw5MTVyUWM0U0VGOVMxUExVTVpJcTlNdnM5c2FCTkN6bFNjX0tsdll1OVJn?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "bitcoin price jumps amid peace talks risk appetite ignites rally",
+      "duplicate_group": "bitcoin price jumps amid peace talks risk appetite ignites rally",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:8:5d781e32",
+      "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-10T11:35:15.902Z",
+      "normalized_topic": "us cpi preview jobs shock turns inflation into a live",
+      "duplicate_group": "us cpi preview jobs shock turns inflation into a live",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    }
+  ],
+  "unsupported_narratives": [
+    {
+      "narrative_id": "media:2026-07-10:0:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:1:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:2:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:3:99fff302",
+      "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
+      "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
+      "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:4:574cf1a",
+      "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+      "rss_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5",
+      "duplicate_group": "pboc csrc all in on boosting growth chinadailyhk",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:5:cf909931",
+      "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
+      "rss_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5",
+      "duplicate_group": "ai chip stocks just had their best half year ever",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:6:f8cc1d8f",
+      "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
+      "rss_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5",
+      "duplicate_group": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:7:3b2c40b6",
+      "title": "Bitcoin Price Jumps Amid Peace Talks, Risk Appetite Ignites Rally - CryptoRank",
+      "rss_url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8zc0QtTjhIRjBSNTB5Y21nS2FVYW05NlEwQWNqd29iOGlFem1wVlZlUXAzM2Zma2lyUElsa25VQVNxMEw5MTVyUWM0U0VGOVMxUExVTVpJcTlNdnM5c2FCTkN6bFNjX0tsdll1OVJn?oc=5",
+      "duplicate_group": "bitcoin price jumps amid peace talks risk appetite ignites rally",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-10:8:5d781e32",
+      "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
+      "rss_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5",
+      "duplicate_group": "us cpi preview jobs shock turns inflation into a live",
+      "evidence_status": "media_narrative",
+      "stale": false
+    }
+  ],
+  "repeated_or_stale_items": [
+    {
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "count": 3,
+      "titles": [
+        "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+        "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+        "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters"
+      ],
+      "evidence_status": "repeated_media_narrative"
+    }
+  ],
+  "unexplained_moves": [],
+  "possible_3_20_session_implications": [
+    {
+      "implication_id": "hypothesis:market:2026-07-10:a_share_a_share_defense_military:close",
+      "kind": "hypothesis",
+      "statement": "512660 showed an observed daily change; assess persistence over 3–20 sessions with independent price, flow, and breadth evidence.",
+      "related_fact_ids": [
+        "market:2026-07-10:a_share_a_share_defense_military:close"
+      ],
+      "horizon": "3_20_sessions",
+      "status": "not_a_fact"
+    },
+    {
+      "implication_id": "hypothesis:market:2026-07-10:a_share_defense_military:close",
+      "kind": "hypothesis",
+      "statement": "512660 showed an observed daily change; assess persistence over 3–20 sessions with independent price, flow, and breadth evidence.",
+      "related_fact_ids": [
+        "market:2026-07-10:a_share_defense_military:close"
+      ],
+      "horizon": "3_20_sessions",
+      "status": "not_a_fact"
+    },
+    {
+      "implication_id": "hypothesis:market:2026-07-10:a_share_a_share_agriculture:close",
+      "kind": "hypothesis",
+      "statement": "159928 showed an observed daily change; assess persistence over 3–20 sessions with independent price, flow, and breadth evidence.",
+      "related_fact_ids": [
+        "market:2026-07-10:a_share_a_share_agriculture:close"
+      ],
+      "horizon": "3_20_sessions",
+      "status": "not_a_fact"
+    },
+    {
+      "implication_id": "hypothesis:market:2026-07-10:a_share_a_share_beauty_care:close",
+      "kind": "hypothesis",
+      "statement": "159928 showed an observed daily change; assess persistence over 3–20 sessions with independent price, flow, and breadth evidence.",
+      "related_fact_ids": [
+        "market:2026-07-10:a_share_a_share_beauty_care:close"
+      ],
+      "horizon": "3_20_sessions",
+      "status": "not_a_fact"
+    },
+    {
+      "implication_id": "hypothesis:market:2026-07-10:a_share_a_share_building_materials:close",
+      "kind": "hypothesis",
+      "statement": "512200 showed an observed daily change; assess persistence over 3–20 sessions with independent price, flow, and breadth evidence.",
+      "related_fact_ids": [
+        "market:2026-07-10:a_share_a_share_building_materials:close"
+      ],
+      "horizon": "3_20_sessions",
+      "status": "not_a_fact"
+    }
+  ],
+  "verified_facts": [],
+  "warnings": [
+    "Verified facts are intentionally empty in v0.10.66 until a primary-source ingestion and verification adapter is enabled.",
+    "Media narratives are candidates for investigation, not facts, scores, or trading instructions."
+  ]
+}

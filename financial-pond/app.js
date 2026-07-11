@@ -14,6 +14,7 @@ const state = {
   outcomeReport: null,
   reviewReadiness: null,
   reviewAnalytics: null,
+  marketPenetrationBrief: null,
   selectedPoolId: null
 };
 
@@ -207,6 +208,19 @@ function renderReviewSchedule() {
   document.getElementById("reviewAnalyticsLine").textContent = `Review Analytics: ${benchmarkLabel} (${benchmarkDisclosure}) / due reviews ${outcome.due_review_count ?? 0} / reviewed ${analytics.reviewed_rows ?? outcome.reviewed_count ?? 0} / pending ${analytics.pending_rows ?? outcome.pending_count ?? 0} / unavailable ${analytics.unavailable_rows ?? outcome.unavailable_count ?? 0} / pending_not_due ${reasons.pending_not_due} / pending_market_open ${reasons.pending_market_open} / awaiting_eod_data ${reasons.awaiting_eod_data} / stale_data ${reasons.stale_data ?? unavailable.stale_data ?? 0} / missing_price ${reasons.missing_price ?? unavailable.missing_price ?? 0} / missing_benchmark ${reasons.missing_benchmark ?? unavailable.missing_benchmark ?? 0} / calendar_unknown ${reasons.calendar_unknown ?? unavailable.calendar_unknown ?? 0} / invalid_baseline ${reasons.invalid_baseline ?? unavailable.invalid_baseline ?? 0} / next due ${nextOutcomeDue(outcome)}`;
 }
 
+function renderMarketPenetrationBrief() {
+  const el = document.getElementById("marketPenetrationBrief");
+  const brief = state.marketPenetrationBrief;
+  if (!brief) { el.innerHTML = `<div class="empty">Brief unavailable: source_unavailable.</div>`; return; }
+  const facts = (brief.market_facts ?? []).slice(0, 5);
+  const narratives = (brief.media_narratives ?? []).slice(0, 5);
+  el.innerHTML = `
+    <p class="caution-line">Facts, media narratives, and hypotheses are separate. This module does not change observation ranking.</p>
+    <div class="brief-columns"><div><h3>今天真正发生了什么</h3>${facts.length ? facts.map((fact) => `<p class="brief-item"><span class="tag candidate">${escapeHtml(fact.verification_status)}</span> ${escapeHtml(fact.fact_text)} <a href="${escapeHtml(fact.source)}">source</a></p>`).join("") : `<p class="empty">No exact-date market facts.</p>`}</div>
+    <div><h3>金融媒体主要在讲什么</h3>${narratives.length ? narratives.map((item) => `<p class="brief-item"><span class="tag narrative">narrative</span> ${escapeHtml(item.title)} ${item.rss_url ? `<a href="${escapeHtml(item.rss_url)}">source</a>` : ""}</p>`).join("") : `<p class="empty">No media narratives.</p>`}</div></div>
+    <p class="brief-meta">Verified facts: ${brief.verified_facts?.length ?? 0} · Unsupported narratives: ${brief.unsupported_narratives?.length ?? 0} · Hypotheses: ${brief.possible_3_20_session_implications?.length ?? 0}</p>`;
+}
+
 function reviewReasonCounts(rows) {
   const counts = Object.fromEntries([
     "pending_not_due", "pending_market_open", "awaiting_eod_data", "stale_data",
@@ -318,7 +332,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport, reviewReadiness, reviewAnalytics] = await Promise.all([
+  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport, reviewReadiness, reviewAnalytics, marketPenetrationBrief] = await Promise.all([
     readJson("./data/evening_observation_summary.json"),
     readJson("./data/observation_candidate_ledger.json", { rows: [] }),
     readJson("./data/candidate_review_schedule.json", {}),
@@ -333,15 +347,17 @@ async function init() {
     readJson("./data/candidate_outcome_reviews.json", { rows: [] }),
     readJson("./data/outcome_review_report.json", {}),
     readJson("./data/review_readiness_report.json", {}),
-    readJson("./data/candidate_review_analytics.json", {})
+    readJson("./data/candidate_review_analytics.json", {}),
+    readJson("./data/market_penetration_brief.json", null)
   ]);
-  Object.assign(state, { summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport, reviewReadiness, reviewAnalytics });
+  Object.assign(state, { summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, outcomeReviews, outcomeReport, reviewReadiness, reviewAnalytics, marketPenetrationBrief });
   state.selectedPoolId = rowsForToday()[0]?.pool_id ?? null;
   renderTodayStatus();
   renderCandidates();
   renderSelectedCandidate();
   renderEvidenceQuality();
   renderReviewSchedule();
+  renderMarketPenetrationBrief();
   renderCollapsedDetails();
 }
 

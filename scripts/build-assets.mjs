@@ -54,6 +54,7 @@ const files = [
   ["data/pool_delta_signals.json", "application/json; charset=utf-8"],
   ["data/daily_delta_history.json", "application/json; charset=utf-8"],
   ["data/news_review.json", "application/json; charset=utf-8"],
+  ["data/market_penetration_brief.json", "application/json; charset=utf-8"],
   ["data/pond_map.json", "application/json; charset=utf-8"],
 ];
 

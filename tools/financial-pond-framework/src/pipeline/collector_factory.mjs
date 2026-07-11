@@ -6,6 +6,7 @@ import { LocalCsvCollector } from "../collectors/local_csv_collector.mjs";
 import { HttpJsonCollector } from "../collectors/http_json_collector.mjs";
 import { RssNewsCollector } from "../collectors/rss_news_collector.mjs";
 import { NewsSearchCollector } from "../collectors/news_search_collector.mjs";
+import { normalizeNewsInputPolicy, narrativeMayEnterGraph } from "../news/news_input_policy.mjs";
 
 export async function buildCollectorsFromConfig(rootDir) {
   const hardDataConfig = await readJsonFile(path.join(rootDir, "config", "collectors", "hard_data_sources.json"));
@@ -13,6 +14,8 @@ export async function buildCollectorsFromConfig(rootDir) {
   const searchConfig = await readJsonFile(path.join(rootDir, "config", "news", "search_queries.json"));
   const newsRules = await readJsonFile(path.join(rootDir, "config", "news", "news_rules.json"));
   const normalization = await readJsonFile(path.join(rootDir, "config", "model", "normalization_profiles.json"));
+  const rawNewsInputPolicy = await readJsonFile(path.join(rootDir, "config", "news", "news_input_policy.json")).catch(() => null);
+  const newsInputPolicy = normalizeNewsInputPolicy(rawNewsInputPolicy);
 
   const collectors = [];
 
@@ -44,7 +47,7 @@ export async function buildCollectorsFromConfig(rootDir) {
     }));
   }
 
-  if (rssConfig.sources.some((source) => source.enabled)) {
+  if (narrativeMayEnterGraph(newsInputPolicy) && rssConfig.sources.some((source) => source.enabled)) {
     collectors.push(new RssNewsCollector({
       rootDir,
       sources: rssConfig.sources,
@@ -52,7 +55,7 @@ export async function buildCollectorsFromConfig(rootDir) {
     }));
   }
 
-  if ((searchConfig.queries ?? []).some((query) => query.enabled)) {
+  if (narrativeMayEnterGraph(newsInputPolicy) && (searchConfig.queries ?? []).some((query) => query.enabled)) {
     collectors.push(new NewsSearchCollector({
       rootDir,
       searchConfig,
