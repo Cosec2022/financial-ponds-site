@@ -51,6 +51,7 @@ const requiredFiles = [
   ["pool_delta_signals.json", (json) => json.module_id === "pool_delta_signals_v0_10_55" && Array.isArray(json.rows) && json.rows.every((row) => deltaFlags.has(row.review_flag))],
   ["daily_delta_history.json", (json) => json.module_id === "daily_delta_history_v0_10_55" && Array.isArray(json.history)],
   ["news_review.json", (json) => Array.isArray(json.interpretation_boundary)],
+  ["market_penetration_brief.json", validateMarketPenetrationBrief],
   ["pond_map.json", (json) => json.schema_version === "pond_map_v2_adaptive_graph"]
 ];
 
@@ -74,6 +75,25 @@ const directionResults = new Set(["aligned", "opposite", "neutral", "unavailable
 const readinessStates = new Set(["ready", "partially_ready", "not_ready"]);
 const candidateStates = new Set(["Noise", "Pulse", "Early Right", "Major Candidate", "Confirmed Trend", "Overheated", "Cooling", "Failed"]);
 const riskGateStatuses = new Set(["pass", "caution", "block", "insufficient_data"]);
+
+function validateMarketPenetrationBrief(json) {
+  return json.schema_version === "market_penetration_brief_v1"
+    && Boolean(json.as_of)
+    && Boolean(json.generated_at)
+    && Boolean(json.coverage_window)
+    && Array.isArray(json.source_status)
+    && Array.isArray(json.market_facts)
+    && Array.isArray(json.official_fact_candidates)
+    && Array.isArray(json.media_narratives)
+    && Array.isArray(json.unsupported_narratives)
+    && Array.isArray(json.repeated_or_stale_items)
+    && Array.isArray(json.unexplained_moves)
+    && Array.isArray(json.possible_3_20_session_implications)
+    && Array.isArray(json.verified_facts)
+    && Array.isArray(json.warnings)
+    && json.media_narratives.every((item) => item.verification_status === "candidate" && item.evidence_status === "media_narrative")
+    && json.possible_3_20_session_implications.every((item) => item.kind === "hypothesis" && item.status === "not_a_fact");
+}
 
 function validatePointer(json) {
   return json.module_id === "latest_observation_pointer_v0_10_64"

@@ -1,0 +1,17 @@
+{
+  "schema_version": "market_penetration_source_registry_v1",
+  "sources": [
+    {"source_id":"cn_state_council","source_name":"State Council of the People's Republic of China","source_type":"official_policy","official_domain":"gov.cn","markets":["a_share"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"pboc","source_name":"People's Bank of China","source_type":"central_bank","official_domain":"pbc.gov.cn","markets":["a_share","cny"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"csrc","source_name":"China Securities Regulatory Commission","source_type":"regulator","official_domain":"csrc.gov.cn","markets":["a_share"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"sse","source_name":"Shanghai Stock Exchange","source_type":"exchange","official_domain":"sse.com.cn","markets":["a_share"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"szse","source_name":"Shenzhen Stock Exchange","source_type":"exchange","official_domain":"szse.cn","markets":["a_share"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"fed","source_name":"Federal Reserve","source_type":"central_bank","official_domain":"federalreserve.gov","markets":["us_equity","rates","fx"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"bls","source_name":"U.S. Bureau of Labor Statistics","source_type":"official_data","official_domain":"bls.gov","markets":["us_equity","rates"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"bea","source_name":"U.S. Bureau of Economic Analysis","source_type":"official_data","official_domain":"bea.gov","markets":["us_equity"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"us_treasury","source_name":"U.S. Treasury","source_type":"official_data","official_domain":"treasury.gov","markets":["rates","fx"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"eia","source_name":"U.S. Energy Information Administration","source_type":"official_data","official_domain":"eia.gov","markets":["commodities"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"ecb","source_name":"European Central Bank","source_type":"central_bank","official_domain":"ecb.europa.eu","markets":["rates","fx"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false},
+    {"source_id":"boj","source_name":"Bank of Japan","source_type":"central_bank","official_domain":"boj.or.jp","markets":["rates","fx"],"trust_tier":"official","ingestion_method":"registry_only","enabled":false,"auto_verification_allowed":false}
+  ]
+}
