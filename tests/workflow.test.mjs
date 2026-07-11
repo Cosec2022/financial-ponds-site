@@ -205,3 +205,24 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("build-data-coverage-report.mjs"));
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
+
+test("v0.10.65 release UI and documentation expose the review contract", async () => {
+  const [index, app, changelog, modelDoc, sitePackage, frameworkPackage] = await Promise.all([
+    readFile("financial-pond/index.html", "utf8"),
+    readFile("financial-pond/app.js", "utf8"),
+    readFile("tools/financial-pond-framework/docs/CHANGELOG.md", "utf8"),
+    readFile("docs/model/RIGHT_SIDE_MAJOR_WAVE_MODEL.md", "utf8"),
+    readFile("package.json", "utf8"),
+    readFile("tools/financial-pond-framework/package.json", "utf8")
+  ]);
+  assert.match(index, /v0\.10\.65 Observation Dashboard/);
+  assert.equal(JSON.parse(sitePackage).version, "0.10.65");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.65");
+  assert.match(changelog, /v0\.10\.65/);
+  assert.match(modelDoc, /Version: v0\.10\.65/);
+  assert.match(app, /A-share benchmark proxy: 510300/);
+  assert.match(app, /not the complete A-share market/);
+  for (const reason of ["pending_not_due", "pending_market_open", "awaiting_eod_data", "stale_data", "missing_price", "missing_benchmark", "calendar_unknown", "invalid_baseline"]) {
+    assert.match(app, new RegExp(reason));
+  }
+});

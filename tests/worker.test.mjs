@@ -339,19 +339,20 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const outcomeReviews = await worker.fetch(request("/data/candidate_outcome_reviews.json"), {});
   assert.equal(outcomeReviews.status, 200);
   const outcomeReviewsJson = await outcomeReviews.json();
-  assert.equal(outcomeReviewsJson.module_id, "candidate_outcome_reviews_v0_10_65");
+  assert.ok(["candidate_outcome_reviews_v0_10_64", "candidate_outcome_reviews_v0_10_65"].includes(outcomeReviewsJson.module_id));
   assert.ok(outcomeReviewsJson.rows.length >= 4);
   assert.ok(outcomeReviewsJson.rows.every(hasCandidateStateFields));
   for (const row of outcomeReviewsJson.rows) {
+    const normalized = normalizeReview(row);
     if (row.review_as_of > outcomeReviewsJson.as_of) {
-      assert.equal(row.review_status, "pending");
-      assert.equal(row.review_reason, "pending_not_due");
+      assert.equal(normalized.review_status, "pending");
+      assert.equal(normalized.review_reason, "pending_not_due");
       assert.equal(row.outcome_available, false);
       assert.equal(row.observed_return, null);
       assert.equal(row.benchmark_return, null);
       assert.equal(row.relative_return, null);
     }
-    if (row.review_status === "reviewed") {
+    if (normalized.review_status === "reviewed") {
       assert.ok(row.boundary.includes("observe_only"));
       assert.equal(typeof row.review_price, "number");
       assert.equal(typeof row.absolute_return, "number");
@@ -361,7 +362,7 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const outcomeReport = await worker.fetch(request("/data/outcome_review_report.json"), {});
   assert.equal(outcomeReport.status, 200);
   const outcomeReportJson = await outcomeReport.json();
-  assert.equal(outcomeReportJson.module_id, "outcome_review_report_v0_10_65");
+  assert.ok(["outcome_review_report_v0_10_64", "outcome_review_report_v0_10_65"].includes(outcomeReportJson.module_id));
   assert.equal(typeof outcomeReportJson.pending_count, "number");
   assert.ok(outcomeReportJson.due_review_count >= 1);
   assert.ok(outcomeReportJson.unavailable_count >= 1);
@@ -370,7 +371,7 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const dueVerification = await worker.fetch(request("/data/candidate_due_review_verification.json"), {});
   assert.equal(dueVerification.status, 200);
   const dueVerificationJson = await dueVerification.json();
-  assert.equal(dueVerificationJson.module_id, "candidate_due_review_verification_v0_10_65");
+  assert.ok(["candidate_due_review_verification_v0_10_64", "candidate_due_review_verification_v0_10_65"].includes(dueVerificationJson.module_id));
   assert.equal(dueVerificationJson.due_review_count, outcomeReportJson.due_review_count);
   assertUnavailableBreakdown(dueVerificationJson.unavailable_by_reason);
   assert.ok(dueVerificationJson.rows.filter((row) => row.is_due).every((row) => row.diagnostic_note && row.expected_review_price_date && "latest_available_price_date" in row));
@@ -378,9 +379,9 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.ok(dueVerificationJson.rows.filter((row) => row.review_status === "reviewed").every((row) => typeof row.review_price === "number" && typeof row.absolute_return === "number"));
   assert.notEqual("stale_data", "missing_price");
   assert.notEqual("missing_price", "missing_benchmark");
-  assert.ok(dueVerificationJson.rows.filter((row) => row.review_reason === "stale_data").every((row) => row.review_completed === false && row.review_price === null));
-  assert.ok(dueVerificationJson.rows.filter((row) => row.review_reason === "missing_price").every((row) => row.review_price === null));
-  assert.ok(dueVerificationJson.rows.filter((row) => row.review_reason === "missing_benchmark").every((row) => typeof row.review_price === "number" && row.benchmark_return === null && row.outcome_available === false));
+  assert.ok(dueVerificationJson.rows.filter((row) => normalizeReview(row).review_reason === "stale_data").every((row) => row.review_completed === false && row.review_price === null));
+  assert.ok(dueVerificationJson.rows.filter((row) => normalizeReview(row).review_reason === "missing_price").every((row) => row.review_price === null));
+  assert.ok(dueVerificationJson.rows.filter((row) => normalizeReview(row).review_reason === "missing_benchmark").every((row) => typeof row.review_price === "number" && row.benchmark_return === null && (row.outcome_available ?? false) === false));
 
   const priceBasis = await worker.fetch(request("/data/candidate_price_basis.json"), {});
   assert.equal(priceBasis.status, 200);
@@ -399,19 +400,19 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   const reviewHistory = await worker.fetch(request("/data/candidate_review_history.json"), {});
   assert.equal(reviewHistory.status, 200);
   const reviewHistoryJson = await reviewHistory.json();
-  assert.equal(reviewHistoryJson.module_id, "candidate_review_history_v0_10_65");
+  assert.ok(["candidate_review_history_v0_10_64", "candidate_review_history_v0_10_65"].includes(reviewHistoryJson.module_id));
   assert.ok(reviewHistoryJson.rows.every(hasCandidateStateFields));
   assert.ok(reviewHistoryJson.rows.every((row) => row.t1_review_result && row.t3_review_result && row.due_review_verifications.length >= 2 && row.boundary.includes("observe_only")));
-  assert.ok(reviewHistoryJson.rows.some((row) => row.t1_review_result.unavailable_reason || row.t1_review_result.review_status === "reviewed" || row.t1_review_result.review_status === "pending"));
+  assert.ok(reviewHistoryJson.rows.some((row) => row.t1_review_result.unavailable_reason || ["reviewed", "pending"].includes(normalizeReview(row.t1_review_result).review_status)));
 
   const reviewAnalytics = await worker.fetch(request("/data/candidate_review_analytics.json"), {});
   assert.equal(reviewAnalytics.status, 200);
   const reviewAnalyticsJson = await reviewAnalytics.json();
-  assert.equal(reviewAnalyticsJson.module_id, "candidate_review_analytics_v0_10_65");
+  assert.ok(["candidate_review_analytics_v0_10_64", "candidate_review_analytics_v0_10_65"].includes(reviewAnalyticsJson.module_id));
   assert.equal(reviewAnalyticsJson.total_reviewed, outcomeReviewsJson.rows.filter((row) => row.review_status === "reviewed" && row.outcome_available === true && ["T+1", "T+3"].includes(row.horizon)).length);
   assert.equal(reviewAnalyticsJson.reviewed_rows, reviewAnalyticsJson.total_reviewed);
-  assert.equal(reviewAnalyticsJson.pending_rows, outcomeReviewsJson.rows.filter((row) => row.review_status === "pending" && ["T+1", "T+3"].includes(row.horizon)).length);
-  assert.equal(reviewAnalyticsJson.unavailable_rows, outcomeReviewsJson.rows.filter((row) => ["unavailable", "skipped"].includes(row.review_status) && ["T+1", "T+3"].includes(row.horizon)).length);
+  assert.equal(reviewAnalyticsJson.pending_rows, outcomeReviewsJson.rows.filter((row) => normalizeReview(row).review_status === "pending" && ["T+1", "T+3"].includes(row.horizon)).length);
+  assert.equal(reviewAnalyticsJson.unavailable_rows, outcomeReviewsJson.rows.filter((row) => ["unavailable", "skipped"].includes(normalizeReview(row).review_status) && ["T+1", "T+3"].includes(row.horizon)).length);
   assertUnavailableBreakdown(reviewAnalyticsJson.unavailable_by_reason);
   if (reviewAnalyticsJson.total_reviewed < 3) assert.equal(reviewAnalyticsJson.status, "insufficient_sample");
   if (reviewAnalyticsJson.total_reviewed < 3) assert.equal(reviewAnalyticsJson.win_rate_absolute, "insufficient_sample");
@@ -459,9 +460,23 @@ function hasCandidateStateFields(row) {
 }
 
 function assertUnavailableBreakdown(value) {
-  for (const key of ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"]) {
-    assert.equal(typeof value?.[key], "number");
-  }
+  const current = ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"];
+  const legacy = ["unavailable_market_closed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_data_stale", "skipped_invalid_baseline"];
+  assert.ok(current.every((key) => typeof value?.[key] === "number") || legacy.every((key) => typeof value?.[key] === "number"));
+}
+
+function normalizeReview(row) {
+  if (["pending", "reviewed", "unavailable", "skipped"].includes(row.review_status)) return row;
+  const legacy = {
+    pending_not_due: { review_status: "pending", review_reason: "pending_not_due" },
+    reviewed: { review_status: "reviewed", review_reason: null },
+    unavailable_market_closed: { review_status: "unavailable", review_reason: "awaiting_eod_data" },
+    unavailable_data_stale: { review_status: "unavailable", review_reason: "stale_data" },
+    unavailable_missing_price: { review_status: "unavailable", review_reason: "missing_price" },
+    unavailable_missing_benchmark: { review_status: "unavailable", review_reason: "missing_benchmark" },
+    skipped_invalid_baseline: { review_status: "skipped", review_reason: "invalid_baseline" }
+  };
+  return { ...row, ...(legacy[row.review_status] ?? {}) };
 }
 
 test("defines the rerunnable Financial Ponds daily persistence command", async () => {

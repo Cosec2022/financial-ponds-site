@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { tradingSessionTarget, validateTradingCalendar } from "../scripts/lib/trading-calendar.mjs";
+import { loadTradingCalendar, tradingSessionTarget, validateTradingCalendar } from "../scripts/lib/trading-calendar.mjs";
 import { classifyReview, exactDatePrice, preserveReviewedOutcomes } from "../scripts/lib/review-policy.mjs";
 
 const calendar = validateTradingCalendar({
@@ -81,4 +81,11 @@ test("both benchmark dates must be exact before a review can be reviewed", () =>
   assert.equal(classifyReview({ ...base, benchmarkBaselineExactDateAvailable: false }).review_reason, "missing_benchmark");
   assert.equal(classifyReview({ ...base, benchmarkReviewExactDateAvailable: false }).review_reason, "missing_benchmark");
   assert.equal(classifyReview(base).review_status, "reviewed");
+});
+
+test("production calendar covers the current T+20 target", async () => {
+  const production = await loadTradingCalendar();
+  assert.equal(production.covered_date_range.start, "2026-07-01");
+  assert.equal(production.covered_date_range.end, "2026-08-31");
+  assert.equal(tradingSessionTarget(production, "2026-07-10", 20).effective_review_date, "2026-08-07");
 });

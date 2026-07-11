@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.10.65 - Trading-session reviews and explicit benchmark proxy
+
+- Bumped site and framework package versions to `0.10.65`.
+- Replaced calendar-day T+N scheduling with a versioned explicit A-share
+  trading-session calendar and fail-closed `calendar_unknown` behavior.
+- Split outcome state into `review_status` and `review_reason`, covering
+  pending market-open/EOD states, stale data, missing candidate or benchmark
+  prices, unknown calendar coverage, and invalid baselines.
+- Enforced exact-date candidate and benchmark prices for delayed reruns and
+  removed the benchmark-review-close baseline fallback.
+- Configured `510300` as an operational broad-market ETF proxy, not as the
+  complete A-share market.
+- Added an independent, bounded-retry exact-date benchmark collector that
+  preserves last-known-good archives on provider failure.
+- The dashboard displays the benchmark disclosure and all eight review reasons.
+
+Important boundary:
+
+- The trading calendar covers `2026-07-01` through `2026-08-31`; out-of-range
+  reviews fail closed. Calendar-expiry alerting remains a documented follow-up.
+- Provider failures never authorize manual benchmark price entry.
+
 ## v0.10.64 - Due review unavailability diagnostics
 
 - Bumped site and framework package versions to `0.10.64`.

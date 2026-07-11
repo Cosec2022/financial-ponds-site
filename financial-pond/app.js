@@ -200,9 +200,31 @@ function renderReviewSchedule() {
   `;
   document.getElementById("outcomeReviewLine").textContent = `Outcome Review: reviewed ${outcome.reviewed_count ?? 0} / pending ${outcome.pending_count ?? 0} / next due ${nextOutcomeDue(outcome)}`;
   document.getElementById("reviewReadinessLine").textContent = `Review Readiness: ready ${readiness.baseline_available_count ?? 0} / missing basis ${readiness.baseline_missing_count ?? 0} / next due ${readiness.next_due_date ?? "--"}`;
+  const reasons = reviewReasonCounts(state.outcomeReviews?.rows ?? []);
   const unavailable = analytics.unavailable_by_reason ?? outcome.unavailable_by_reason ?? {};
   const benchmarkLabel = outcome.benchmark_proxy?.display_label ?? "A-share benchmark proxy: 510300";
-  document.getElementById("reviewAnalyticsLine").textContent = `Review Analytics: ${benchmarkLabel} / due reviews ${outcome.due_review_count ?? 0} / reviewed ${analytics.reviewed_rows ?? outcome.reviewed_count ?? 0} / pending ${analytics.pending_rows ?? outcome.pending_count ?? 0} / unavailable ${analytics.unavailable_rows ?? outcome.unavailable_count ?? 0} / stale ${unavailable.stale_data ?? 0} / missing price ${unavailable.missing_price ?? 0} / missing benchmark ${unavailable.missing_benchmark ?? 0} / invalid baseline ${unavailable.invalid_baseline ?? 0} / next due ${nextOutcomeDue(outcome)}`;
+  const benchmarkDisclosure = outcome.benchmark_proxy?.disclosure ?? "Operational ETF proxy; not the complete A-share market.";
+  document.getElementById("reviewAnalyticsLine").textContent = `Review Analytics: ${benchmarkLabel} (${benchmarkDisclosure}) / due reviews ${outcome.due_review_count ?? 0} / reviewed ${analytics.reviewed_rows ?? outcome.reviewed_count ?? 0} / pending ${analytics.pending_rows ?? outcome.pending_count ?? 0} / unavailable ${analytics.unavailable_rows ?? outcome.unavailable_count ?? 0} / pending_not_due ${reasons.pending_not_due} / pending_market_open ${reasons.pending_market_open} / awaiting_eod_data ${reasons.awaiting_eod_data} / stale_data ${reasons.stale_data ?? unavailable.stale_data ?? 0} / missing_price ${reasons.missing_price ?? unavailable.missing_price ?? 0} / missing_benchmark ${reasons.missing_benchmark ?? unavailable.missing_benchmark ?? 0} / calendar_unknown ${reasons.calendar_unknown ?? unavailable.calendar_unknown ?? 0} / invalid_baseline ${reasons.invalid_baseline ?? unavailable.invalid_baseline ?? 0} / next due ${nextOutcomeDue(outcome)}`;
+}
+
+function reviewReasonCounts(rows) {
+  const counts = Object.fromEntries([
+    "pending_not_due", "pending_market_open", "awaiting_eod_data", "stale_data",
+    "missing_price", "missing_benchmark", "calendar_unknown", "invalid_baseline"
+  ].map((reason) => [reason, 0]));
+  const legacy = {
+    pending_not_due: "pending_not_due",
+    unavailable_market_closed: "awaiting_eod_data",
+    unavailable_data_stale: "stale_data",
+    unavailable_missing_price: "missing_price",
+    unavailable_missing_benchmark: "missing_benchmark",
+    skipped_invalid_baseline: "invalid_baseline"
+  };
+  for (const row of rows) {
+    const reason = row.review_reason ?? legacy[row.review_status];
+    if (reason in counts) counts[reason] += 1;
+  }
+  return counts;
 }
 
 function renderCollapsedDetails() {

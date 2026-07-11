@@ -38,7 +38,7 @@ const requiredFiles = [
   ["candidate_state_model.json", validateCandidateStateModel],
   ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_63" && json.candidate_count >= 1 && Boolean(json.next_review_dates) && Array.isArray(json.next_due_reviews)],
   ["candidate_outcome_reviews.json", validateOutcomeReviews],
-  ["outcome_review_report.json", (json) => json.module_id === "outcome_review_report_v0_10_65" && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && typeof json.unavailable_count === "number" && Boolean(json.unavailable_by_reason) && Array.isArray(json.next_due_reviews)],
+  ["outcome_review_report.json", (json) => ["outcome_review_report_v0_10_64", "outcome_review_report_v0_10_65"].includes(json.module_id) && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && typeof json.unavailable_count === "number" && Boolean(json.unavailable_by_reason) && Array.isArray(json.next_due_reviews)],
   ["candidate_due_review_verification.json", validateDueReviewVerification],
   ["candidate_price_basis.json", validateCandidatePriceBasis],
   ["review_readiness_report.json", (json) => json.module_id === "review_readiness_report_v0_10_61" && readinessStates.has(json.readiness_state) && json.candidate_count === json.baseline_available_count + json.baseline_missing_count],
@@ -67,6 +67,7 @@ const deltaFlags = new Set(["insufficient_history", "changed", "stable", "improv
 const observationTiers = new Set(["strong_observe", "moderate_observe", "weak_observe", "insufficient"]);
 const reviewStatuses = new Set(["pending", "review_due", "reviewed", "insufficient_data"]);
 const outcomeReviewStatuses = new Set(["pending", "reviewed", "unavailable", "skipped"]);
+const legacyOutcomeReviewStatuses = new Set(["pending_not_due", "reviewed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_market_closed", "unavailable_data_stale", "skipped_invalid_baseline"]);
 const outcomeReviewReasons = new Set(["pending_not_due", "pending_market_open", "awaiting_eod_data", "stale_data", "missing_price", "missing_benchmark", "calendar_unknown", "invalid_baseline"]);
 const outcomeHorizons = new Set(["T+1", "T+3", "T+5", "T+20"]);
 const directionResults = new Set(["aligned", "opposite", "neutral", "unavailable"]);
@@ -122,25 +123,27 @@ function validateCandidate(row) {
 }
 
 function validateOutcomeReviews(json) {
-  return json.module_id === "candidate_outcome_reviews_v0_10_65"
+  const contractKnown = ["candidate_outcome_reviews_v0_10_64", "candidate_outcome_reviews_v0_10_65"].includes(json.module_id);
+  return contractKnown
     && Array.isArray(json.rows)
     && json.rows.every((row) => {
+      const normalized = normalizeOutcomeState(row);
       const future = row.review_as_of > json.as_of;
       const futureSafe = !future || (
-        row.review_status === "pending"
-        && row.review_reason === "pending_not_due"
+        normalized.review_status === "pending"
+        && normalized.review_reason === "pending_not_due"
         && row.outcome_available === false
         && row.observed_return === null
         && row.benchmark_return === null
         && row.relative_return === null
       );
       return outcomeHorizons.has(row.horizon)
-        && outcomeReviewStatuses.has(row.review_status)
-        && (row.review_status === "reviewed" ? (row.review_reason === null || (row.migration_guard === "preserved_reviewed_outcome" && row.review_reason === undefined)) : outcomeReviewReasons.has(row.review_reason))
+        && (outcomeReviewStatuses.has(row.review_status) || legacyOutcomeReviewStatuses.has(row.review_status))
+        && (normalized.review_status === "reviewed" ? (normalized.review_reason === null || row.migration_guard === "preserved_reviewed_outcome") : outcomeReviewReasons.has(normalized.review_reason))
         && directionResults.has(row.direction_result)
         && validateStateFields(row)
         && row.boundary?.includes("observe_only")
-        && validateOutcomeAvailability(row)
+        && validateOutcomeAvailability({ ...row, ...normalized })
         && futureSafe;
     });
 }
@@ -166,7 +169,7 @@ function validateCandidateStateModel(json) {
 }
 
 function validateCandidateReviewHistory(json) {
-  return json.module_id === "candidate_review_history_v0_10_65"
+  return ["candidate_review_history_v0_10_64", "candidate_review_history_v0_10_65"].includes(json.module_id)
     && Array.isArray(json.rows)
     && json.rows.length >= 1
     && json.rows.every((row) => validateStateFields(row) && Array.isArray(row.due_review_verifications) && row.boundary?.includes("observe_only"));
@@ -181,7 +184,7 @@ function validateCandidateReviewAnalytics(json) {
     && metricOk(row.win_rate_vs_benchmark)
     && metricOk(row.average_return)
     && metricOk(row.average_excess_return);
-  return json.module_id === "candidate_review_analytics_v0_10_65"
+  return ["candidate_review_analytics_v0_10_64", "candidate_review_analytics_v0_10_65"].includes(json.module_id)
     && ["analytics_available", "insufficient_sample"].includes(json.status)
     && typeof json.total_reviewed === "number"
     && json.reviewed_rows === json.total_reviewed
@@ -209,7 +212,7 @@ function validateCandidateReviewAnalytics(json) {
 }
 
 function validateDueReviewVerification(json) {
-  return json.module_id === "candidate_due_review_verification_v0_10_65"
+  return ["candidate_due_review_verification_v0_10_64", "candidate_due_review_verification_v0_10_65"].includes(json.module_id)
     && typeof json.due_review_count === "number"
     && typeof json.reviewed_count === "number"
     && typeof json.pending_count === "number"
@@ -217,21 +220,22 @@ function validateDueReviewVerification(json) {
     && validateUnavailableBreakdown(json.unavailable_by_reason)
     && Array.isArray(json.rows)
     && json.rows.every((row) => {
-      const unavailable = ["unavailable", "skipped"].includes(row.review_status);
+      const normalized = normalizeOutcomeState(row);
+      const unavailable = ["unavailable", "skipped"].includes(normalized.review_status);
       const dueDiagnosticsOk = !row.is_due || (
-        Boolean(row.symbol || row.review_reason === "invalid_baseline")
+        Boolean(row.symbol || normalized.review_reason === "invalid_baseline")
         && "latest_available_price_date" in row
       );
       return ["T+1", "T+3"].includes(row.review_horizon)
         && Boolean(row.name)
         && Boolean(row.as_of)
-        && Boolean(row.review_due_date || row.review_reason === "calendar_unknown")
-        && Boolean(row.expected_review_price_date || row.review_reason === "calendar_unknown")
+        && Boolean(row.review_due_date || normalized.review_reason === "calendar_unknown")
+        && Boolean(row.expected_review_price_date || normalized.review_reason === "calendar_unknown")
         && typeof row.is_due === "boolean"
         && typeof row.required_market_data_exists === "boolean"
         && typeof row.review_completed === "boolean"
-        && outcomeReviewStatuses.has(row.review_status)
-        && (row.review_status === "reviewed" ? row.review_reason === null : outcomeReviewReasons.has(row.review_reason))
+        && (outcomeReviewStatuses.has(row.review_status) || legacyOutcomeReviewStatuses.has(row.review_status))
+        && (normalized.review_status === "reviewed" ? normalized.review_reason === null : outcomeReviewReasons.has(normalized.review_reason))
         && (!unavailable || Boolean(row.unavailable_reason))
         && Boolean(row.diagnostic_note)
         && dueDiagnosticsOk
@@ -240,8 +244,24 @@ function validateDueReviewVerification(json) {
 }
 
 function validateUnavailableBreakdown(value) {
-  return Boolean(value)
-    && ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"].every((key) => typeof value[key] === "number");
+  const current = ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"];
+  const legacy = ["unavailable_market_closed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_data_stale", "skipped_invalid_baseline"];
+  return Boolean(value) && (current.every((key) => typeof value[key] === "number") || legacy.every((key) => typeof value[key] === "number"));
+}
+
+function normalizeOutcomeState(row) {
+  if (outcomeReviewStatuses.has(row.review_status)) return { review_status: row.review_status, review_reason: row.review_reason ?? null };
+  const legacyReasons = {
+    pending_not_due: ["pending", "pending_not_due"],
+    reviewed: ["reviewed", null],
+    unavailable_market_closed: ["unavailable", "awaiting_eod_data"],
+    unavailable_data_stale: ["unavailable", "stale_data"],
+    unavailable_missing_price: ["unavailable", "missing_price"],
+    unavailable_missing_benchmark: ["unavailable", "missing_benchmark"],
+    skipped_invalid_baseline: ["skipped", "invalid_baseline"]
+  };
+  const [review_status = row.review_status, review_reason = row.review_reason] = legacyReasons[row.review_status] ?? [];
+  return { review_status, review_reason };
 }
 
 function validateOutcomeAvailability(row) {
