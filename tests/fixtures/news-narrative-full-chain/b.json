@@ -1,0 +1,6 @@
+{
+  "as_of": "2026-07-10",
+  "news_input_policy": { "schema_version": "news_input_policy_v1", "news_input_mode": "narrative_display_only" },
+  "rss_google_news_narratives": [],
+  "archived_legacy_news_observations": []
+}

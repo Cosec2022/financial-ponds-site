@@ -1,0 +1,42 @@
+{
+  "as_of": "2026-07-10",
+  "news_input_policy": { "schema_version": "news_input_policy_v1", "news_input_mode": "narrative_display_only" },
+  "rss_google_news_narratives": [
+    {
+      "node_id": "a_share_semiconductor_policy_sentiment",
+      "source": "google_news_rss",
+      "title": "Unverified semiconductor stimulus headline",
+      "score": 999,
+      "sentiment": "extremely_positive",
+      "policy_sentiment": 999,
+      "source_quality": "official",
+      "verification_status": "official_machine_verified",
+      "affected_pools": ["a_share_semiconductor", "a_share_ai_computer"],
+      "hypothesis": "This is a media hypothesis, never a verified fact."
+    },
+    {
+      "node_id": "a_share_brokerage_policy_sentiment",
+      "source": "legacy_rss",
+      "title": "Unverified brokerage shock headline",
+      "score": -999,
+      "sentiment": "extremely_negative",
+      "policy_sentiment": -999,
+      "source_quality": "official",
+      "verification_status": "human_verified",
+      "affected_pools": ["a_share_brokerage"],
+      "hypothesis": "Narrative-only adverse scenario."
+    }
+  ],
+  "archived_legacy_news_observations": [
+    {
+      "node_id": "a_share_semiconductor_policy_sentiment",
+      "source": "news_intelligence_v1",
+      "score": 777,
+      "sentiment": "positive",
+      "policy_sentiment": 777,
+      "source_quality": "high",
+      "verification_status": "official_machine_verified",
+      "affected_pools": ["a_share_semiconductor"]
+    }
+  ]
+}
