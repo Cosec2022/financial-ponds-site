@@ -27,12 +27,13 @@ test("news intelligence is an independent module that writes observations and re
   assert.ok(payload.observations.some((item) => item.node_id === "semiconductor_policy_news"));
 });
 
-test("sector flow review can read news observations without changing core graph", async () => {
+test("sector flow review keeps news observations as display-only narrative context", async () => {
   const rootDir = await tempProjectRoot();
   await runNewsIntelligence({ rootDir, asOf: "2026-07-02", fixture: true });
 
-  const result = await runSectorFlowReview({ rootDir, asOf: "2026-07-02" });
+  const result = await runSectorFlowReview({ rootDir, asOf: "2026-07-02", fixture: false });
   const semiconductor = result.payload.sector_reviews.find((item) => item.sector_id === "semiconductor");
-  assert.ok(semiconductor.components.policy_sentiment.available);
-  assert.ok(semiconductor.components.policy_sentiment.nodes.some((node) => node.node_id === "semiconductor_policy_news"));
+  assert.equal(semiconductor.components.policy_sentiment.available, false);
+  assert.ok(result.payload.narrative_context.length > 0);
+  assert.equal(result.payload.narrative_context.every((item) => item.display_only), true);
 });

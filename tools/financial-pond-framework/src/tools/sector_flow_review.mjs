@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { readJsonFile } from "../core/config_loader.mjs";
 import { atomicWriteFile, jsonContent } from "../storage/atomic_write.mjs";
 import { evaluateSectorFlows, observationsFromMockScores } from "../model/flow_engine.mjs";
+import { filterNewsForSectorScoring, normalizeNewsInputPolicy } from "../news/news_input_policy.mjs";
 
 const rootDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 
@@ -13,17 +14,20 @@ export async function runSectorFlowReview({
   scenarioPath,
   fixture = false
 }) {
-  const [sectorCatalog, flowConfig, flexibleRiskFactors] = await Promise.all([
+  const [sectorCatalog, flowConfig, flexibleRiskFactors, rawNewsInputPolicy] = await Promise.all([
     readJsonFile(path.join(rootDir, "config", "sector_catalog", "a_share_industry_etfs.json")),
     readJsonFile(path.join(rootDir, "config", "model", "flow_engine_v0_9.json")),
-    readJsonFile(path.join(rootDir, "config", "model", "flexible_risk_factors.json"))
+    readJsonFile(path.join(rootDir, "config", "model", "flexible_risk_factors.json")),
+    readJsonFile(path.join(rootDir, "config", "news", "news_input_policy.json")).catch(() => null)
   ]);
+  const newsInputPolicy = normalizeNewsInputPolicy(rawNewsInputPolicy);
 
   const scenario = await loadScenario({ rootDir, scenarioPath, fixture });
   const resolvedAsOf = asOf ?? scenario?.as_of ?? await latestObservationDate(rootDir) ?? new Date().toISOString().slice(0, 10);
-  const observations = fixture
+  const observationInput = fixture
     ? await loadFixtureObservations({ rootDir, asOf: resolvedAsOf })
-    : await loadObservationFile({ rootDir, asOf: resolvedAsOf });
+    : await loadObservationFile({ rootDir, asOf: resolvedAsOf, newsInputPolicy });
+  const observations = Array.isArray(observationInput) ? observationInput : observationInput.observations;
 
   const review = evaluateSectorFlows({
     observations,
@@ -37,6 +41,7 @@ export async function runSectorFlowReview({
     as_of: resolvedAsOf,
     generated_at: new Date().toISOString(),
     ...review,
+    narrative_context: Array.isArray(observationInput) ? [] : observationInput.narrative_context,
     data_availability: dataAvailability,
     safety_boundary: [
       "This is a sector-flow review, not a trading instruction.",
@@ -86,7 +91,7 @@ async function loadFixtureObservations({ rootDir, asOf }) {
   return observationsFromMockScores({ mockScores, asOf });
 }
 
-async function loadObservationFile({ rootDir, asOf }) {
+async function loadObservationFile({ rootDir, asOf, newsInputPolicy }) {
   const filePath = path.join(rootDir, "observations", asOf, "node_observations.json");
   const providerFlowPath = path.join(rootDir, "observations", asOf, "provider_flow_observations.json");
   const aShareWaterPath = path.join(rootDir, "observations", asOf, "a_share_water_observations.json");
@@ -132,7 +137,10 @@ async function loadObservationFile({ rootDir, asOf }) {
   // Provider-flow observations are appended after the normal cycle output so
   // reviewed provider data can override same-day mock sector proxies during the
   // flow review. The main graph snapshot remains unchanged.
-  return [...baseObservations, ...providerFlowObservations, ...aShareWaterObservations, ...newsObservations];
+  return {
+    observations: [...baseObservations, ...providerFlowObservations, ...aShareWaterObservations, ...filterNewsForSectorScoring(newsInputPolicy, newsObservations)],
+    narrative_context: newsObservations.map((item) => ({ node_id: item.node_id, source: item.source ?? "news_intelligence_v1", event_count: item.value ?? 0, display_only: true }))
+  };
 }
 
 function buildDataAvailability(rows) {

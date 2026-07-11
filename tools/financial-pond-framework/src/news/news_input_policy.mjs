@@ -19,3 +19,7 @@ export function verifiedFactMayEnterGraph(policy, observation) {
     && observation?.source === "verified_fact_channel"
     && ["official_machine_verified", "human_verified"].includes(observation?.verification_status);
 }
+
+export function filterNewsForSectorScoring(policy, observations = []) {
+  return observations.filter((observation) => verifiedFactMayEnterGraph(policy, observation));
+}

@@ -1,10 +1,17 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { NARRATIVE_DISPLAY_ONLY, VERIFIED_FACT_CHANNEL, narrativeMayEnterGraph, normalizeNewsInputPolicy, verifiedFactMayEnterGraph } from "../src/news/news_input_policy.mjs";
+import { NARRATIVE_DISPLAY_ONLY, VERIFIED_FACT_CHANNEL, filterNewsForSectorScoring, narrativeMayEnterGraph, normalizeNewsInputPolicy, verifiedFactMayEnterGraph } from "../src/news/news_input_policy.mjs";
 
 test("legacy RSS narratives fail closed outside graph scoring", () => {
   assert.equal(normalizeNewsInputPolicy(null).news_input_mode, NARRATIVE_DISPLAY_ONLY);
   assert.equal(narrativeMayEnterGraph(normalizeNewsInputPolicy({ news_input_mode: VERIFIED_FACT_CHANNEL })), false);
+});
+
+test("legacy archived narratives with scores never enter sector scoring", () => {
+  const legacy = { source: "news_intelligence_v1", verification_status: "official_machine_verified", score: 99, sentiment: "positive" };
+  assert.deepEqual(filterNewsForSectorScoring({ news_input_mode: NARRATIVE_DISPLAY_ONLY }, [legacy]), []);
+  assert.deepEqual(filterNewsForSectorScoring({ news_input_mode: "unknown" }, [legacy]), []);
+  assert.deepEqual(filterNewsForSectorScoring({ news_input_mode: VERIFIED_FACT_CHANNEL }, [legacy]), []);
 });
 
 test("only separately verified fact-channel fixtures can be eligible for future graph input", () => {
