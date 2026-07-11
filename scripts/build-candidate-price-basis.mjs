@@ -1,5 +1,6 @@
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { compareReviewDue } from "./lib/review-due-sort.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const dataDir = resolve(root, "financial-pond", "data");
@@ -102,11 +103,11 @@ function buildBasis(candidate) {
 }
 
 function nextDueReview(scheduleValue) {
-  const fromOutcome = (scheduleValue.next_due_reviews ?? []).slice().sort((a, b) => a.date.localeCompare(b.date))[0];
+  const fromOutcome = (scheduleValue.next_due_reviews ?? []).slice().sort(compareReviewDue)[0];
   if (fromOutcome) return fromOutcome;
   const candidates = Object.entries(scheduleValue.next_review_dates ?? {}).flatMap(([key, dates]) =>
     (dates ?? []).map((date) => ({ date, horizon: key.toUpperCase().replace("T", "T+"), count: scheduleValue.candidate_count ?? 0 }))
-  ).sort((a, b) => a.date.localeCompare(b.date));
+  ).sort(compareReviewDue);
   return candidates[0] ?? { date: null, horizon: null, count: 0 };
 }
 

@@ -9,7 +9,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
-  assert.match(html, /v0\.10\.64 Observation Dashboard/);
+  assert.match(html, /v0\.10\.65 Observation Dashboard/);
   assert.match(html, /Today Status/);
   assert.match(html, /Observation Candidates/);
   assert.match(html, /Selected Candidate/);

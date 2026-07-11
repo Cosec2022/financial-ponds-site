@@ -2,6 +2,7 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { loadTradingCalendar, tradingSessionTarget, validateTradingCalendar } from "../scripts/lib/trading-calendar.mjs";
 import { classifyReview, exactDatePrice, preserveReviewedOutcomes } from "../scripts/lib/review-policy.mjs";
+import { compareNullableIsoDate, compareReviewDue } from "../scripts/lib/review-due-sort.mjs";
 
 const calendar = validateTradingCalendar({
   calendar_version: "fixture-v1",
@@ -23,6 +24,17 @@ test("calendar coverage unknown fails closed", () => {
   assert.equal(result.calendar_known, false);
   assert.equal(result.calendar_unknown_reason, "target_outside_coverage");
   assert.deepEqual(classifyReview({ calendarKnown: false }), { review_status: "unavailable", review_reason: "calendar_unknown", outcome_available: false });
+});
+
+test("review due sorting keeps calendar-unknown null targets without inventing a date", () => {
+  const rows = [
+    { date: null, signal_date: "2026-09-02", pool_id: "z", horizon_trading_sessions: 3, horizon: "T+3" },
+    { date: "2026-08-07", signal_date: "2026-07-10", pool_id: "b", horizon_trading_sessions: 20, horizon: "T+20" },
+    { date: null, signal_date: "2026-09-01", pool_id: "a", horizon_trading_sessions: 1, horizon: "T+1" }
+  ].sort(compareReviewDue);
+  assert.deepEqual(rows.map((row) => row.date), ["2026-08-07", null, null]);
+  assert.deepEqual(rows.slice(1).map((row) => row.pool_id), ["a", "z"]);
+  assert.throws(() => compareNullableIsoDate("2026-02-30", null), /Expected nullable ISO date/);
 });
 
 test("review state machine uses injected Shanghai timestamps", () => {
