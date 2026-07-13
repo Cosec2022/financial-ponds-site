@@ -8,12 +8,14 @@ function parseArgs(argv) {
   const args = {
     asOf: new Date().toISOString().slice(0, 10),
     fixture: false,
-    ci: false
+    ci: false,
+    historical: false
   };
   for (let index = 0; index < argv.length; index += 1) {
     if (argv[index] === "--as-of") args.asOf = argv[index + 1];
     if (argv[index] === "--fixture") args.fixture = true;
     if (argv[index] === "--ci") args.ci = true;
+    if (argv[index] === "--historical") args.historical = true;
   }
   return args;
 }

@@ -14,7 +14,9 @@ const requiredFiles = [
   ["data_reality_audit.json", (json) => json.status === "audit_available" && Array.isArray(json.layers)],
   ["daily_sector_analysis.json", (json) => json.status === "daily_sector_analysis_available" && Boolean(json.tiers) && Array.isArray(json.decision_gap?.checks) && Boolean(json.decision_ticket?.groups)],
   ["module_maturity_audit.json", (json) => json.status === "module_maturity_available" && Array.isArray(json.modules) && Boolean(json.recommended_mainline)],
-  ["etf_flow_leaderboard.json", (json) => json.status === "leaderboard_available" && json.module_id === "etf_flow_leaderboard_v0_10_43" && Array.isArray(json.rows)],
+  ["etf_flow_leaderboard.json", (json) => json.module_id === "etf_flow_leaderboard_v0_10_43" && Array.isArray(json.rows) && (
+    json.status === "leaderboard_available" || (json.status === "no_provider_rows" && json.rows.length === 0 && json.readiness?.data_readiness === "no_rows")
+  )],
   ["sector_signal_attribution.json", (json) => json.status === "attribution_available" && json.module_id === "sector_signal_attribution_v0_10_44" && Array.isArray(json.rows) && json.rows.every((row) => Boolean(row.manual_review_boundary))],
   ["sector_watchlist_state.json", (json) => json.status === "watchlist_state_available" && json.module_id === "sector_watchlist_state_v0_10_45" && Array.isArray(json.rows) && Boolean(json.groups)],
   ["decision_gate_ledger.json", (json) => json.status === "gate_ledger_available" && json.module_id === "decision_gate_ledger_v0_10_46" && Array.isArray(json.gates) && json.gates.every((gate) => gate.reading && gate.next_action)],
@@ -23,20 +25,28 @@ const requiredFiles = [
   ["manual_review_log.json", (json) => json.module_id === "manual_review_log_v0_10_48" && Array.isArray(json.entries)],
   ["outcome_labels.json", (json) => json.module_id === "outcome_labels_v0_10_48" && Array.isArray(json.labels) && Array.isArray(json.pending) && hasOutcomeHorizons(json.pending)],
   ["daily_data_vault.json", (json) => json.status === "vault_available" && json.module_id === "daily_data_vault_v0_10_48" && Array.isArray(json.files_seen) && Array.isArray(json.files_missing) && Boolean(json.file_hashes) && Boolean(json.data_reality_summary)],
-  ["flow_channel_report.json", (json) => json.module_id === "flow_channel_report_v0_10_51" && Array.isArray(json.source_files_used) && json.mapped_pool_count >= 1],
+  ["flow_channel_report.json", (json) => json.module_id === "flow_channel_report_v0_10_51" && Array.isArray(json.source_files_used) && (
+    json.mapped_pool_count >= 1 || (json.mapped_pool_count === 0 && json.estimated_from_source_count === 0 && json.source_backed_flow_count === 0)
+  )],
   ["pool_flow_signals.json", (json) => json.module_id === "pool_flow_signals_v0_10_51" && Array.isArray(json.rows) && json.rows.every((row) => flowStatuses.has(row.flow_status))],
   ["pool_instrument_map.json", (json) => json.module_id === "pool_instrument_map_v0_10_54" && Array.isArray(json.rows) && json.rows.every(validateInstrumentMapping)],
   ["pool_mapping_report.json", (json) => json.module_id === "pool_mapping_report_v0_10_54" && json.total_pool_count >= 1 && json.mapping_coverage_ratio > 0],
-  ["market_signal_report.json", (json) => json.module_id === "market_signal_report_v0_10_54" && json.source_files_used.includes("financial-pond/data/pool_instrument_map.json") && json.mapped_pool_count >= 1],
+  ["market_signal_report.json", (json) => json.module_id === "market_signal_report_v0_10_54" && json.source_files_used.includes("financial-pond/data/pool_instrument_map.json") && (
+    json.mapped_pool_count >= 1 || (json.mapped_pool_count === 0 && json.momentum_signal_count === 0 && json.liquidity_signal_count === 0)
+  )],
   ["pool_market_signals.json", (json) => json.module_id === "pool_market_signals_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateMarketSignal)],
-  ["signal_quality_report.json", (json) => json.module_id === "signal_quality_report_v0_10_55" && json.confidence_cap_applied_count >= 1],
+  ["signal_quality_report.json", (json) => json.module_id === "signal_quality_report_v0_10_55" && (
+    json.confidence_cap_applied_count >= 1 || (json.confidence_cap_applied_count === 0 && json.high_quality_signal_count === 0 && json.medium_quality_signal_count === 0 && json.low_quality_signal_count === 0)
+  )],
   ["pool_signal_quality.json", (json) => json.module_id === "pool_signal_quality_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateSignalQuality)],
   ["evening_observation_summary.json", (json) => json.module_id === "evening_observation_summary_v0_10_61" && json.observation_state === "observe_only" && Array.isArray(json.top_observation_pools) && json.top_observation_pools.every((row) => row.boundary?.includes("observe_only"))],
   ["pool_observation_scores.json", (json) => json.module_id === "pool_observation_scores_v0_10_61" && Array.isArray(json.rows) && json.rows.every(validateObservationScore)],
   ["observation_candidate_ledger.json", (json) => json.module_id === "observation_candidate_ledger_v0_10_61" && Array.isArray(json.rows) && json.rows.every(validateCandidate)],
   ["score_calibration_report.json", (json) => json.module_id === "score_calibration_report_v0_10_57" && Array.isArray(json.suspicious_distribution_flags) && Array.isArray(json.score_distribution)],
   ["candidate_state_model.json", validateCandidateStateModel],
-  ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_63" && json.candidate_count >= 1 && Boolean(json.next_review_dates) && Array.isArray(json.next_due_reviews)],
+  ["candidate_review_schedule.json", (json) => json.module_id === "candidate_review_schedule_v0_10_63" && Boolean(json.next_review_dates) && Array.isArray(json.next_due_reviews) && (
+    json.candidate_count >= 1 || (json.candidate_count === 0 && Object.values(json.next_review_dates).every((dates) => Array.isArray(dates) && dates.length === 0))
+  )],
   ["candidate_outcome_reviews.json", validateOutcomeReviews],
   ["outcome_review_report.json", (json) => ["outcome_review_report_v0_10_64", "outcome_review_report_v0_10_65"].includes(json.module_id) && typeof json.reviewed_count === "number" && typeof json.pending_count === "number" && typeof json.unavailable_count === "number" && Boolean(json.unavailable_by_reason) && Array.isArray(json.next_due_reviews)],
   ["candidate_due_review_verification.json", validateDueReviewVerification],

@@ -1,45 +1,45 @@
 {
   "module_id": "pool_mapping_report_v0_10_54",
-  "as_of": "2026-07-10",
-  "generated_at": "2026-07-10T11:35:19.957Z",
+  "as_of": "2026-07-13",
+  "generated_at": "2026-07-13T16:57:14.075Z",
   "total_pool_count": 67,
   "direct_index_count": 0,
-  "direct_etf_count": 22,
-  "sector_proxy_count": 40,
+  "direct_etf_count": 0,
+  "sector_proxy_count": 0,
   "broad_proxy_count": 0,
-  "unmapped_count": 5,
-  "mapping_coverage_ratio": 0.9254,
-  "high_confidence_count": 22,
-  "low_confidence_count": 16,
+  "unmapped_count": 66,
+  "mapping_coverage_ratio": 0.0149,
+  "high_confidence_count": 1,
+  "low_confidence_count": 0,
   "unmapped_examples": [
     {
-      "pool_id": "a_share_a_share",
-      "pool_name": "a_share",
+      "pool_id": "a_share_a_share_agriculture",
+      "pool_name": "a_share_agriculture",
       "mapping_status": "unmapped",
       "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_btc",
-      "pool_name": "btc",
-      "mapping_status": "unavailable",
+      "pool_id": "a_share_a_share_ai_computer",
+      "pool_name": "a_share_ai_computer",
+      "mapping_status": "unmapped",
       "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_gold",
-      "pool_name": "gold",
-      "mapping_status": "unavailable",
+      "pool_id": "a_share_a_share_bank_insurance",
+      "pool_name": "a_share_bank_insurance",
+      "mapping_status": "unmapped",
       "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_sp500",
-      "pool_name": "sp500",
-      "mapping_status": "unavailable",
+      "pool_id": "a_share_a_share_basic_chemicals",
+      "pool_name": "a_share_basic_chemicals",
+      "mapping_status": "unmapped",
       "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_us_equity",
-      "pool_name": "us_equity",
-      "mapping_status": "unavailable",
+      "pool_id": "a_share_a_share_beauty_care",
+      "pool_name": "a_share_beauty_care",
+      "mapping_status": "unmapped",
       "reason": "No defensible instrument is present in the current provider export."
     }
   ],

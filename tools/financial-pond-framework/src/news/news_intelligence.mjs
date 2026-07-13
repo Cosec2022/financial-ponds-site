@@ -9,7 +9,8 @@ export async function runNewsIntelligence({
   rootDir,
   asOf = new Date().toISOString().slice(0, 10),
   fixture = false,
-  ci = false
+  ci = false,
+  historical = false
 }) {
   const [config, appConfig] = await Promise.all([
     readJsonFile(path.join(rootDir, "config", "news", "news_daily_v1.json")),
@@ -17,7 +18,7 @@ export async function runNewsIntelligence({
   ]);
   const registry = buildRegistry(appConfig);
 
-  const collection = await collectNewsItems({ config, asOf, fixture, ci });
+  const collection = await collectNewsItems({ config, asOf, fixture, ci, historical });
   const analysis = analyseNewsItems({
     config,
     registry,
@@ -54,7 +55,7 @@ export async function runNewsIntelligence({
   };
 }
 
-async function collectNewsItems({ config, asOf, fixture, ci }) {
+async function collectNewsItems({ config, asOf, fixture, ci, historical }) {
   if (fixture) {
     return {
       items: normalizeFixtureItems(config.fixture_items ?? []),
@@ -91,7 +92,8 @@ async function collectNewsItems({ config, asOf, fixture, ci }) {
     }
   }
 
-  if (!items.length && ci) {
+  const filtered = historical ? filterHistoricalNewsItems(items, asOf) : { items, excluded_after_cutoff: 0, excluded_missing_timestamp: 0 };
+  if (!filtered.items.length && ci && !historical) {
     return {
       items: normalizeFixtureItems(config.fixture_items ?? []),
       meta: {
@@ -104,12 +106,38 @@ async function collectNewsItems({ config, asOf, fixture, ci }) {
   }
 
   return {
-    items,
+    items: filtered.items,
     meta: {
-      mode: "real",
+      mode: historical ? "historical_backfill" : "real",
       fallback_used: false,
-      errors
+      errors,
+      historical_cutoff_as_of: historical ? asOf : null,
+      excluded_after_cutoff: filtered.excluded_after_cutoff,
+      excluded_missing_timestamp: filtered.excluded_missing_timestamp
     }
+  };
+}
+
+export function filterHistoricalNewsItems(items, asOf) {
+  let excludedAfterCutoff = 0;
+  let excludedMissingTimestamp = 0;
+  const filtered = (items ?? []).filter((item) => {
+    const timestamp = item.published_at ?? item.pubDate ?? null;
+    const date = timestamp ? new Date(timestamp) : null;
+    if (!date || Number.isNaN(date.getTime())) {
+      excludedMissingTimestamp += 1;
+      return false;
+    }
+    if (date.toISOString().slice(0, 10) > asOf) {
+      excludedAfterCutoff += 1;
+      return false;
+    }
+    return true;
+  });
+  return {
+    items: filtered,
+    excluded_after_cutoff: excludedAfterCutoff,
+    excluded_missing_timestamp: excludedMissingTimestamp
   };
 }
 

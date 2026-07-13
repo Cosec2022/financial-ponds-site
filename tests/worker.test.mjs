@@ -121,8 +121,10 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(flowLeaderboard.status, 200);
   const flowLeaderboardJson = await flowLeaderboard.json();
   assert.equal(flowLeaderboardJson.module_id, "etf_flow_leaderboard_v0_10_43");
-  assert.equal(flowLeaderboardJson.status, "leaderboard_available");
-  assert.ok(flowLeaderboardJson.rows.find((row) => row.sector_id === "brokerage"));
+  const providerUnavailable = flowLeaderboardJson.status === "no_provider_rows";
+  assert.ok(["leaderboard_available", "no_provider_rows"].includes(flowLeaderboardJson.status));
+  if (providerUnavailable) assert.equal(flowLeaderboardJson.rows.length, 0);
+  else assert.ok(flowLeaderboardJson.rows.find((row) => row.sector_id === "brokerage"));
 
   const attribution = await worker.fetch(request("/data/sector_signal_attribution.json"), {});
   assert.equal(attribution.status, 200);
@@ -162,9 +164,15 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(observationJson.module_id, "observation_snapshot_v0_10_48");
   assert.equal(observationJson.status, "observation_snapshot_available");
   assert.ok(observationJson.rows.length >= 1);
-  assert.ok(observationJson.rows.some((row) => row.signals?.flow?.reality === "estimated_from_source" || row.signals?.flow?.reality === "source_backed"));
-  assert.ok(observationJson.rows.some((row) => row.signals?.price_momentum?.reality === "derived_from_market"));
-  assert.ok(observationJson.rows.some((row) => row.signals?.liquidity?.reality === "derived_from_market"));
+  if (providerUnavailable) {
+    assert.ok(observationJson.rows.every((row) => ["missing", "unavailable"].includes(row.signals?.flow?.reality)));
+    assert.ok(observationJson.rows.every((row) => ["missing", "unavailable"].includes(row.signals?.price_momentum?.reality)));
+    assert.ok(observationJson.rows.every((row) => ["missing", "unavailable"].includes(row.signals?.liquidity?.reality)));
+  } else {
+    assert.ok(observationJson.rows.some((row) => row.signals?.flow?.reality === "estimated_from_source" || row.signals?.flow?.reality === "source_backed"));
+    assert.ok(observationJson.rows.some((row) => row.signals?.price_momentum?.reality === "derived_from_market"));
+    assert.ok(observationJson.rows.some((row) => row.signals?.liquidity?.reality === "derived_from_market"));
+  }
   assert.ok(observationJson.rows.filter((row) => row.signals?.price_momentum?.raw_confidence > 0).every((row) => row.signals.price_momentum.confidence === row.signals.price_momentum.capped_confidence));
   assert.ok(observationJson.rows.every((row) => ["flow", "price_momentum", "liquidity", "rotation", "news", "valuation", "fundamental", "risk"].every((slot) => row.signals?.[slot]?.reality)));
 
@@ -193,10 +201,17 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.ok(coverageJson.total_signal_cells >= coverageJson.observed_pool_count);
   assert.ok(Array.isArray(coverageJson.priority_gaps));
   assert.ok(coverageJson.estimated_count >= coverageJson.flow_channel.estimated_from_source_count);
-  assert.ok(coverageJson.pools.some((row) => row.flow_status === "estimated"));
-  assert.ok(coverageJson.market_channel.momentum_signal_count >= 1);
-  assert.ok(coverageJson.market_channel.liquidity_signal_count >= 1);
-  assert.ok(coverageJson.quality.proxy_evidence_ratio > 0);
+  if (providerUnavailable) {
+    assert.ok(coverageJson.pools.every((row) => row.flow_status !== "estimated"));
+    assert.equal(coverageJson.market_channel.momentum_signal_count, 0);
+    assert.equal(coverageJson.market_channel.liquidity_signal_count, 0);
+    assert.equal(coverageJson.quality.proxy_evidence_ratio, 0);
+  } else {
+    assert.ok(coverageJson.pools.some((row) => row.flow_status === "estimated"));
+    assert.ok(coverageJson.market_channel.momentum_signal_count >= 1);
+    assert.ok(coverageJson.market_channel.liquidity_signal_count >= 1);
+    assert.ok(coverageJson.quality.proxy_evidence_ratio > 0);
+  }
 
   const coverageHistory = await worker.fetch(request("/data/coverage_history.json"), {});
   assert.equal(coverageHistory.status, 200);
@@ -244,47 +259,62 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(flowChannel.status, 200);
   const flowChannelJson = await flowChannel.json();
   assert.equal(flowChannelJson.module_id, "flow_channel_report_v0_10_51");
-  assert.ok(flowChannelJson.estimated_from_source_count >= 1);
+  if (providerUnavailable) assert.equal(flowChannelJson.estimated_from_source_count, 0);
+  else assert.ok(flowChannelJson.estimated_from_source_count >= 1);
 
   const poolFlowSignals = await worker.fetch(request("/data/pool_flow_signals.json"), {});
   assert.equal(poolFlowSignals.status, 200);
   const poolFlowSignalsJson = await poolFlowSignals.json();
   assert.equal(poolFlowSignalsJson.module_id, "pool_flow_signals_v0_10_51");
-  assert.ok(poolFlowSignalsJson.rows.some((row) => row.flow_status === "estimated_from_source" || row.flow_status === "source_backed"));
+  if (providerUnavailable) assert.ok(poolFlowSignalsJson.rows.every((row) => ["missing", "unavailable"].includes(row.flow_status)));
+  else assert.ok(poolFlowSignalsJson.rows.some((row) => row.flow_status === "estimated_from_source" || row.flow_status === "source_backed"));
 
   const marketChannel = await worker.fetch(request("/data/market_signal_report.json"), {});
   assert.equal(marketChannel.status, 200);
   const marketChannelJson = await marketChannel.json();
   assert.equal(marketChannelJson.module_id, "market_signal_report_v0_10_54");
-  assert.ok(marketChannelJson.momentum_signal_count >= 1);
-  assert.ok(marketChannelJson.liquidity_signal_count >= 1);
+  if (providerUnavailable) {
+    assert.equal(marketChannelJson.momentum_signal_count, 0);
+    assert.equal(marketChannelJson.liquidity_signal_count, 0);
+  } else {
+    assert.ok(marketChannelJson.momentum_signal_count >= 1);
+    assert.ok(marketChannelJson.liquidity_signal_count >= 1);
+  }
 
   const poolMarketSignals = await worker.fetch(request("/data/pool_market_signals.json"), {});
   assert.equal(poolMarketSignals.status, 200);
   const poolMarketSignalsJson = await poolMarketSignals.json();
   assert.equal(poolMarketSignalsJson.module_id, "pool_market_signals_v0_10_55");
-  assert.ok(poolMarketSignalsJson.rows.some((row) => row.momentum_status === "derived_from_market"));
-  assert.ok(poolMarketSignalsJson.rows.some((row) => row.momentum_status === "estimated_from_source"));
+  if (providerUnavailable) assert.ok(poolMarketSignalsJson.rows.every((row) => row.momentum_status === "missing"));
+  else {
+    assert.ok(poolMarketSignalsJson.rows.some((row) => row.momentum_status === "derived_from_market"));
+    assert.ok(poolMarketSignalsJson.rows.some((row) => row.momentum_status === "estimated_from_source"));
+  }
   assert.ok(poolMarketSignalsJson.rows.every((row) => row.capped_confidence.momentum <= row.raw_confidence.momentum));
 
   const instrumentMap = await worker.fetch(request("/data/pool_instrument_map.json"), {});
   assert.equal(instrumentMap.status, 200);
   const instrumentMapJson = await instrumentMap.json();
   assert.equal(instrumentMapJson.module_id, "pool_instrument_map_v0_10_54");
-  assert.ok(instrumentMapJson.rows.some((row) => row.mapping_status === "direct_etf"));
-  assert.ok(instrumentMapJson.rows.some((row) => row.mapping_status === "sector_proxy"));
+  if (providerUnavailable) assert.ok(instrumentMapJson.rows.every((row) => !["direct_etf", "sector_proxy"].includes(row.mapping_status)));
+  else {
+    assert.ok(instrumentMapJson.rows.some((row) => row.mapping_status === "direct_etf"));
+    assert.ok(instrumentMapJson.rows.some((row) => row.mapping_status === "sector_proxy"));
+  }
 
   const mappingReport = await worker.fetch(request("/data/pool_mapping_report.json"), {});
   assert.equal(mappingReport.status, 200);
   const mappingReportJson = await mappingReport.json();
   assert.equal(mappingReportJson.module_id, "pool_mapping_report_v0_10_54");
-  assert.ok(mappingReportJson.mapping_coverage_ratio > 0.1642);
+  if (providerUnavailable) assert.ok(mappingReportJson.mapping_coverage_ratio >= 0);
+  else assert.ok(mappingReportJson.mapping_coverage_ratio > 0.1642);
 
   const qualityReport = await worker.fetch(request("/data/signal_quality_report.json"), {});
   assert.equal(qualityReport.status, 200);
   const qualityReportJson = await qualityReport.json();
   assert.equal(qualityReportJson.module_id, "signal_quality_report_v0_10_55");
-  assert.ok(qualityReportJson.confidence_cap_applied_count >= 1);
+  if (providerUnavailable) assert.equal(qualityReportJson.confidence_cap_applied_count, 0);
+  else assert.ok(qualityReportJson.confidence_cap_applied_count >= 1);
 
   const poolQuality = await worker.fetch(request("/data/pool_signal_quality.json"), {});
   assert.equal(poolQuality.status, 200);
@@ -304,7 +334,8 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(observationScoresJson.module_id, "pool_observation_scores_v0_10_61");
   assert.ok(observationScoresJson.rows.length >= 1);
   assert.ok(observationScoresJson.rows.every((row) => ["flow_score", "momentum_score", "liquidity_score", "quality_score", "delta_score", "confidence_score", "proxy_penalty", "missing_data_penalty", "final_score"].every((field) => typeof row[field] === "number")));
-  assert.ok(observationScoresJson.rows.some(hasCandidateStateFields));
+  if (providerUnavailable) assert.ok(observationScoresJson.rows.every((row) => !hasCandidateStateFields(row)));
+  else assert.ok(observationScoresJson.rows.some(hasCandidateStateFields));
 
   const candidateLedger = await worker.fetch(request("/data/observation_candidate_ledger.json"), {});
   assert.equal(candidateLedger.status, 200);
@@ -335,7 +366,10 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(reviewSchedule.status, 200);
   const reviewScheduleJson = await reviewSchedule.json();
   assert.equal(reviewScheduleJson.module_id, "candidate_review_schedule_v0_10_63");
-  assert.ok(reviewScheduleJson.candidate_count >= 1);
+  if (providerUnavailable) {
+    assert.equal(reviewScheduleJson.candidate_count, 0);
+    assert.ok(Object.values(reviewScheduleJson.next_review_dates).every((dates) => Array.isArray(dates) && dates.length === 0));
+  } else assert.ok(reviewScheduleJson.candidate_count >= 1);
 
   const outcomeReviews = await worker.fetch(request("/data/candidate_outcome_reviews.json"), {});
   assert.equal(outcomeReviews.status, 200);

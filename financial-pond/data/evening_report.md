@@ -4,49 +4,30 @@
 - observe_only
 
 ## Data Readiness
-- 62/67 market mapped; quality guardrail active
-- Direct evidence 33%; proxy evidence 60%.
+- 0/67 market mapped; quality guardrail active
+- Direct evidence 0%; proxy evidence 0%.
 
 ## What Improved Today
-- Direct evidence covers 33% of observed pools.
-- Proxy evidence covers 60% and carries high aggregate proxy risk.
-- 62 momentum and 62 liquidity observations are available.
-- 2 pools meet the strict direct-evidence strong observation gate.
+- Direct evidence covers 0% of observed pools.
+- Proxy evidence covers 0% and carries none aggregate proxy risk.
+- 0 momentum and 0 liquidity observations are available.
+- 0 pools meet the strict direct-evidence strong observation gate.
 
 ## Top Observation Pools
-- **新能源车** | strong_observe | inward
-  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
-  - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **AI and Computer** | moderate_observe | neutral
-  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
-  - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **Communication and Electronics** | moderate_observe | neutral
-  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
-  - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **半导体** | moderate_observe | neutral
-  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
-  - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **Healthcare and Pharma** | moderate_observe | neutral
-  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
-  - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta changed.
+- No pool meets the current observation threshold.
 
 ## Caution / Low Quality Pools
-- **Media**: sector_proxy with loose proxy; high proxy risk; flow unavailable
-- **Environmental Protection**: sector_proxy with loose proxy; high proxy risk; flow unavailable
-- **Machinery**: sector_proxy with loose proxy; high proxy risk; flow unavailable
-- **Utilities**: sector_proxy with loose proxy; high proxy risk; flow unavailable
-- **Agriculture**: sector_proxy with loose proxy; high proxy risk; flow unavailable
+- **a_share**: flow unavailable
+- **Agriculture**: flow unavailable; instrument unavailable
+- **AI计算机**: flow unavailable; instrument unavailable
+- **Bank and Insurance**: flow unavailable; instrument unavailable
+- **基础化工**: flow unavailable; instrument unavailable
 
 ## Main Data Gaps
-- flow: 45 pools; connect mapped provider flow source
-- momentum: 5 pools; connect momentum confirmation
-- liquidity: 5 pools; connect liquidity confirmation
-- rotation: 61 pools; collect more rotation evidence
+- flow: 67 pools; connect mapped provider flow source
+- momentum: 67 pools; connect momentum confirmation
+- liquidity: 67 pools; connect liquidity confirmation
+- rotation: 59 pools; collect more rotation evidence
 - valuation: 36 pools; connect valuation
 
 ## Boundary

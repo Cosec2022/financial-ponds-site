@@ -1,10 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { mkdtemp, cp, readFile } from "node:fs/promises";
+import { mkdtemp, cp, mkdir, readFile, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { runNewsIntelligence } from "../src/news/news_intelligence.mjs";
+import { filterHistoricalNewsItems, runNewsIntelligence } from "../src/news/news_intelligence.mjs";
 import { runSectorFlowReview } from "../src/tools/sector_flow_review.mjs";
+import { buildEtfFlowLeaderboard } from "../src/tools/etf_flow_leaderboard.mjs";
 
 async function tempProjectRoot() {
   const outputRoot = await mkdtemp(path.join(tmpdir(), "news-intel-"));
@@ -25,6 +26,26 @@ test("news intelligence is an independent module that writes observations and re
   const payload = JSON.parse(await readFile(result.observationsPath, "utf8"));
   assert.equal(payload.source, "news_intelligence_v1");
   assert.ok(payload.observations.some((item) => item.node_id === "semiconductor_policy_news"));
+});
+
+test("historical news filtering excludes later and undated items without a fixture fallback", () => {
+  const result = filterHistoricalNewsItems([
+    { title: "before", published_at: "2026-07-13T08:00:00Z" },
+    { title: "after", published_at: "2026-07-14T00:00:00Z" },
+    { title: "undated" }
+  ], "2026-07-13");
+  assert.deepEqual(result.items.map((item) => item.title), ["before"]);
+  assert.equal(result.excluded_after_cutoff, 1);
+  assert.equal(result.excluded_missing_timestamp, 1);
+});
+
+test("ETF leaderboard retains the requested date when only a stale inspection exists", async () => {
+  const rootDir = await tempProjectRoot();
+  await mkdir(path.join(rootDir, "model_outputs", "provider_inspection"), { recursive: true });
+  await writeFile(path.join(rootDir, "model_outputs", "provider_inspection", "akshare_etf_bridge_inspection.json"), JSON.stringify({ as_of: "2026-07-10", row_findings: [] }));
+  const result = await buildEtfFlowLeaderboard({ rootDir, asOf: "2026-07-13" });
+  assert.equal(result.as_of, "2026-07-13");
+  assert.equal(result.status, "no_provider_rows");
 });
 
 test("sector flow review keeps news observations as display-only narrative context", async () => {

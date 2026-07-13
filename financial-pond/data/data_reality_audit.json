@@ -1,10 +1,10 @@
 {
-  "as_of": "2026-07-10",
-  "generated_at": "2026-07-10T11:35:17.245Z",
+  "as_of": "2026-07-13",
+  "generated_at": "2026-07-13T16:51:35.445Z",
   "module_id": "data_reality_audit_v0_1",
   "status": "audit_available",
   "overall_reality": "mixed_non_real",
-  "headline": "当前页面含 6 个非真实或来源未验证层。模型结构可看，市场结论不可直接用。",
+  "headline": "当前页面含 7 个非真实或来源未验证层。模型结构可看，市场结论不可直接用。",
   "layers": [
     {
       "id": "akshare_provider_doctor",
@@ -25,35 +25,23 @@
     {
       "id": "akshare_provider_run",
       "name": "AKShare真实数据探测",
-      "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-10.json",
-      "as_of": "2026-07-10",
-      "generated_at": "2026-07-10T11:35:07.330652+00:00",
-      "reality": "provider_run_ok",
-      "confidence_for_market_use": "medium",
-      "counts": {
-        "records": 11,
-        "warnings": 1,
-        "errors": 0
-      },
-      "errors": [],
-      "warnings": [
-        "Optional AKShare endpoint failed: fund_etf_scale_szse: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
-      ],
-      "reading": "AKShare real provider completed with 11 rows. Flow review still needs observed-source coverage checks."
+      "source_file": "model_outputs/provider_runs/akshare_etf_bridge_<date>.json",
+      "as_of": null,
+      "generated_at": null,
+      "reality": "provider_not_run",
+      "confidence_for_market_use": "low",
+      "reading": "当前日期没有 AKShare real provider run status。先跑 provider，再谈真实资金量价。"
     },
     {
       "id": "flow_price",
       "name": "资金量价",
       "source_file": "sector_flow_review.json",
-      "as_of": "2026-07-10",
-      "generated_at": "2026-07-10T11:35:16.104Z",
+      "as_of": "2026-07-13",
+      "generated_at": "2026-07-13T16:51:35.189Z",
       "reality": "mock",
       "confidence_for_market_use": "low",
       "source_counts": {
-        "akshare_provider_flow_observations": 33,
-        "mock_observation_collector": 87,
-        "a_share_water_level_provider": 62,
-        "news_intelligence_v1": 39,
+        "mock_observation_collector": 221,
         "string_node": 100
       },
       "counts": {
@@ -67,13 +55,13 @@
       "id": "news",
       "name": "新闻层",
       "source_file": "news_review.json",
-      "as_of": "2026-07-10",
-      "generated_at": "2026-07-10T11:35:15.902Z",
+      "as_of": "2026-07-13",
+      "generated_at": "2026-07-13T16:50:14.057Z",
       "reality": "unknown",
       "confidence_for_market_use": "low",
       "counts": {
-        "collected_items": 24,
-        "matched_events": 9,
+        "collected_items": 27,
+        "matched_events": 11,
         "observations": 11,
         "affected_sectors": 8
       },
@@ -83,8 +71,8 @@
       "id": "sector_modules",
       "name": "估值/基本面/资金量价三模块",
       "source_file": "sector_module_review.json",
-      "as_of": "2026-07-10",
-      "generated_at": "2026-07-10T11:35:16.242Z",
+      "as_of": "2026-07-13",
+      "generated_at": "2026-07-13T16:50:14.645Z",
       "reality": "manual_seed",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -96,7 +84,9 @@
         "sectors": 31,
         "provider_mapped_representative_sectors": 11,
         "framework_only_sectors": 20,
-        "wait_for_confirmation": 26,
+        "balanced_candidate": 2,
+        "wait_for_confirmation": 22,
+        "expensive_momentum": 2,
         "value_trap_risk": 5
       },
       "reading": "估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。"
@@ -105,8 +95,8 @@
       "id": "etf_decision_readiness",
       "name": "ETF行动准备度",
       "source_file": "etf_decision_readiness.json",
-      "as_of": "2026-07-10",
-      "generated_at": "2026-07-10T11:35:16.282Z",
+      "as_of": "2026-07-13",
+      "generated_at": "2026-07-13T16:50:14.746Z",
       "reality": "decision_gate_blocked",
       "confidence_for_market_use": "low",
       "counts": {
@@ -122,22 +112,30 @@
       },
       "blockers": [
         {
+          "id": "provider_run_missing",
+          "reading": "AKShare 真实 provider 今天还没有确认跑通。"
+        },
+        {
           "id": "non_real_flow_source",
           "reading": "行业资金量价仍来自 mock、fixture 或未验证来源。"
+        },
+        {
+          "id": "true_flow_coverage_low",
+          "reading": "真实 ETF 直接资金流覆盖不足。"
         },
         {
           "id": "manual_valuation_fundamental",
           "reading": "估值和基本面模块仍包含手工种子输入。"
         }
       ],
-      "reading": "暂不能指导买入 ETF：行业资金量价仍来自 mock、fixture 或未验证来源。"
+      "reading": "暂不能指导买入 ETF：AKShare 真实 provider 今天还没有确认跑通。"
     },
     {
       "id": "sector_rotation",
       "name": "行业轮动",
       "source_file": "sector_rotation_intelligence.json",
-      "as_of": "2026-07-10",
-      "generated_at": "2026-07-10T11:35:16.143Z",
+      "as_of": "2026-07-13",
+      "generated_at": "2026-07-13T16:50:14.310Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -156,8 +154,8 @@
       "id": "general_pool_analysis",
       "name": "通用池模型",
       "source_file": "general_pool_analysis.json",
-      "as_of": "2026-07-10",
-      "generated_at": "2026-07-10T11:35:16.908Z",
+      "as_of": "2026-07-13",
+      "generated_at": "2026-07-13T16:51:35.264Z",
       "reality": "contract_output_source_unverified",
       "confidence_for_market_use": "low",
       "counts": {
@@ -171,8 +169,8 @@
       "id": "rotation_history",
       "name": "轮动历史",
       "source_file": "sector_rotation_history.json",
-      "as_of": "2026-07-10",
-      "generated_at": "2026-07-10T11:35:16.206Z",
+      "as_of": "2026-07-13",
+      "generated_at": "2026-07-13T16:50:14.607Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -185,10 +183,11 @@
     }
   ],
   "warnings": [
+    "AKShare真实数据探测: 当前日期没有 AKShare real provider run status。先跑 provider，再谈真实资金量价。",
     "资金量价: 模型组件可运行，但当前资金量价节点来自 mock/fixture 来源，不能当作真实市场信号。",
     "新闻层: 新闻层来源不明。",
     "估值/基本面/资金量价三模块: 估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。",
-    "ETF行动准备度: 暂不能指导买入 ETF：行业资金量价仍来自 mock、fixture 或未验证来源。",
+    "ETF行动准备度: 暂不能指导买入 ETF：AKShare 真实 provider 今天还没有确认跑通。",
     "行业轮动: 该层是解释层，上游仍含非真实输入，因此只能看结构，不能当真实市场结论。",
     "通用池模型: 通用池模型契约可用，但当前发布 JSON 没有携带可验证 provider source，不能视为实时真实行情判断。",
     "轮动历史: 该层是解释层，上游仍含非真实输入，因此只能看结构，不能当真实市场结论。"

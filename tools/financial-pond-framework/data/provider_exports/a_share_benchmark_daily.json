@@ -1,0 +1,27 @@
+{
+  "module_id": "a_share_benchmark_daily_v0_10_65",
+  "benchmark": {
+    "config_id": "a_share_benchmark_proxy_v1",
+    "pool_id": "a_share_a_share",
+    "symbol": "510300",
+    "instrument_name": "A-share benchmark ETF proxy 510300",
+    "role": "broad_market_proxy",
+    "benchmark_type": "etf_proxy",
+    "market": "A-share",
+    "timezone": "Asia/Shanghai",
+    "price_field": "close",
+    "display_label": "A-share benchmark proxy: 510300",
+    "disclosure": "Operational ETF proxy; not the complete A-share market."
+  },
+  "last_success_timestamp": "2026-07-13T16:47:06.661029+00:00",
+  "rows": [
+    {
+      "date": "2026-07-13",
+      "symbol": "510300",
+      "close": 4.744,
+      "source_provider": "eastmoney",
+      "source_endpoint": "fund_etf_hist_em-compatible exact-date kline",
+      "collected_at": "2026-07-13T16:47:06.661029+00:00"
+    }
+  ]
+}

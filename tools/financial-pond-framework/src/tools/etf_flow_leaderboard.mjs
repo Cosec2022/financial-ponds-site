@@ -60,7 +60,9 @@ export async function buildEtfFlowLeaderboard({ rootDir = defaultRootDir, asOf }
     .sort((a, b) => (a.estimated_flow_rank ?? 999) - (b.estimated_flow_rank ?? 999) || (a.amount_rank ?? 999) - (b.amount_rank ?? 999));
 
   return {
-    as_of: observations?.as_of ?? inspection?.as_of ?? asOf,
+    // A stale inspection may explain why the selected date has no provider
+    // rows, but it must never change the requested publication date.
+    as_of: asOf,
     generated_at: new Date().toISOString(),
     module_id: "etf_flow_leaderboard_v0_10_43",
     status: rows.length ? "leaderboard_available" : "no_provider_rows",

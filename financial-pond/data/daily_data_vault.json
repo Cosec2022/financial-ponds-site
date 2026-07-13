@@ -1,104 +1,104 @@
 {
   "module_id": "daily_data_vault_v0_10_48",
-  "as_of": "2026-07-10",
-  "collected_at": "2026-07-10T11:35:18.530Z",
+  "as_of": "2026-07-13",
+  "collected_at": "2026-07-13T16:51:35.850Z",
   "status": "vault_available",
   "files_seen": [
     {
       "path": "financial-pond/data/dashboard.json",
       "kind": "json",
       "bytes": 480115,
-      "sha256": "568e00b48c9feefd62b3e6400f764fd8964d529e06d66dbe19d3ef9aa55c41a9"
+      "sha256": "d48fedab3127cca83a1fe65d7fa54eea4179a053d9634bdcd01ae552f43191a5"
     },
     {
       "path": "financial-pond/data/general_pool_analysis.json",
       "kind": "json",
       "bytes": 187680,
-      "sha256": "3fe14eb8c83bb89550a0c2879c02edfd8d2ef0b03b90dfc3997eae6433f1bbeb"
+      "sha256": "f4025872e4ed26c19efa49d92fddc9d62fd6a055929ae565970a6f971b67f81c"
     },
     {
       "path": "financial-pond/data/sector_flow_review.json",
       "kind": "json",
-      "bytes": 116654,
-      "sha256": "77389198ee52101919824fcbb80cf0d08b24d7b85c80654723d97e77b433cccf"
+      "bytes": 116248,
+      "sha256": "829eb9efd360e5edcb0dd27bc4c008a5c0ad44d0ef2e5fd992f4824867bbd8bf"
     },
     {
       "path": "financial-pond/data/sector_rotation_intelligence.json",
       "kind": "json",
-      "bytes": 23229,
-      "sha256": "58187af11f166a82214398708279f80384f7f1468f352c8b0805730dd067f512"
+      "bytes": 22977,
+      "sha256": "7820368198e2b289649e35db76f18b46141f128726f92e7bb467937f71d0e7bf"
     },
     {
       "path": "financial-pond/data/sector_rotation_history.json",
       "kind": "json",
-      "bytes": 34546,
-      "sha256": "67242363c2dc650c81b2bba5cde1e12a01f47e7eab68e80e1f1f34eebb58e78a"
+      "bytes": 39313,
+      "sha256": "896d5196e34492bd8e4faf85443663013418d28907db776450fd74bd6e24a1ff"
     },
     {
       "path": "financial-pond/data/sector_module_review.json",
       "kind": "json",
-      "bytes": 74267,
-      "sha256": "ff841374bf7bf1bdb10a56a3c07b6938b7af7bd91f44d045c2301b19403abb2e"
+      "bytes": 74064,
+      "sha256": "23000d4cf7562a568279ba2228ff860b4dd7d41ecdcd3ce00198100f90172cb9"
     },
     {
       "path": "financial-pond/data/etf_decision_readiness.json",
       "kind": "json",
-      "bytes": 55171,
-      "sha256": "49765b6e48f2f2c3e8e1056cc38e58e5f97655e5ea20ce7b540ab3e49f87c7b5"
+      "bytes": 55089,
+      "sha256": "376cc48dbf628b760f79211ae82e8fb62dee507444a47c626b79c365ac0ff0a3"
     },
     {
       "path": "financial-pond/data/data_reality_audit.json",
       "kind": "json",
-      "bytes": 7836,
-      "sha256": "fa6b8fde3e00ca98f8db8b458f83532d9cfebdf370ad77bc8b31f1fb18c2c9a9"
+      "bytes": 7802,
+      "sha256": "bc9873370e3d4ddc1a74e3a66b6a12598d5d66189c6b668d7b17c581ca805930"
     },
     {
       "path": "financial-pond/data/daily_sector_analysis.json",
       "kind": "json",
-      "bytes": 35765,
-      "sha256": "a8db09ede44262bde42e058bb96a72f406cd1300635e49ba9e8fa1732a369c3e"
+      "bytes": 26978,
+      "sha256": "18eabf538504dfc830c63321ca3e0d0da375cc84439d0b12e20a86b2b68b20fb"
     },
     {
       "path": "financial-pond/data/module_maturity_audit.json",
       "kind": "json",
       "bytes": 29034,
-      "sha256": "9ae19c93c39b2e18e369952ac266b3993e3e0b795a2b8f5f47406976d4f05ce8"
+      "sha256": "7fe7daaec63797c937040c3eb700da8c2f86083b715d3ec31593c02684b49339"
     },
     {
       "path": "financial-pond/data/etf_flow_leaderboard.json",
       "kind": "json",
-      "bytes": 5800,
-      "sha256": "64e0bb2098eb8981fa02bcdededa9809252ae50d95b26f3c3bcff961dac5709e"
+      "bytes": 5702,
+      "sha256": "b2ed399321fbe4fe1293f80d473b8ba84c72f3e0c59c3ef8a5a8af4061dea22e"
     },
     {
       "path": "financial-pond/data/sector_signal_attribution.json",
       "kind": "json",
-      "bytes": 57607,
-      "sha256": "b914d1b2a7b91afcc8aa20b324ee34e9fe5ef852e5495fda819e324752782e4d"
+      "bytes": 57234,
+      "sha256": "fb5787f6e679fbafc4ffe6437e7589a43570f5aaa749a652f4cab2ba977a8846"
     },
     {
       "path": "financial-pond/data/sector_watchlist_state.json",
       "kind": "json",
-      "bytes": 73837,
-      "sha256": "bd272641705457c53abd9c0b03de1a1659b04cc00cbbe1d817b5c22c4264ca1e"
+      "bytes": 72620,
+      "sha256": "6b677f0cd920ada917eb4f3008f39cbc943340b7ef5f9ca969b4484849536a38"
     },
     {
       "path": "financial-pond/data/decision_gate_ledger.json",
       "kind": "json",
-      "bytes": 9614,
-      "sha256": "8f5b34b65e896fecf00b8bb21f227154655cbfe39b1c51a1a5639b9ba8c6652a"
+      "bytes": 9682,
+      "sha256": "356bd8281e296abd6846451d8ee8ec09b51c315651b1d3151122a972e8fd9652"
     },
     {
       "path": "financial-pond/data/index_explainability.json",
       "kind": "json",
-      "bytes": 706692,
-      "sha256": "f3fa1540316ddbe4acf9156bbcc5f508ecf302f757c0ded69715f1822b1f93d2"
+      "bytes": 692202,
+      "sha256": "e2ec5c3830e3f7ab3dcbab5a0cfef650cb4c32494c82f0057d2aada95ebf113a"
     },
     {
       "path": "financial-pond/data/observation_snapshot.json",
       "kind": "json",
-      "bytes": 331294,
-      "sha256": "ef3bd8065bdc8c3c6ec0e44e92a7eef74248e5045cd3daa1cf80d984973345a9"
+      "bytes": 328120,
+      "sha256": "eca25b9b8704ea9e7d20db13208265531ded8a062103cfbe650145bf8b9bebf1"
     },
     {
       "path": "financial-pond/data/manual_review_log.json",
@@ -109,20 +109,20 @@
     {
       "path": "financial-pond/data/outcome_labels.json",
       "kind": "json",
-      "bytes": 195465,
-      "sha256": "566080d3bac0d725b4ee8c81d80aa5f7f1b658bbc3d552ff9e31dad7a43ad87b"
+      "bytes": 260500,
+      "sha256": "05da787cd25dd8bd34250cff37003ccc8d7d654998d0ff9e358e77e371607ba3"
     },
     {
       "path": "financial-pond/data/daily_data_vault.json",
       "kind": "json",
-      "bytes": 22088,
-      "sha256": "50c02ad30e4a302118546403e8c814e12b38e92068fdb03fac2316a9f23a6fee"
+      "bytes": 21563,
+      "sha256": "4980f74994c7b9271f9f57583446f43abe34b995c63a466e5fc7745b59f93cd4"
     },
     {
       "path": "financial-pond/data/news_review.json",
       "kind": "json",
-      "bytes": 52486,
-      "sha256": "6fcc907e052955b4801969f9607dcbf0025238fb346b36d106948a2dc37bc78d"
+      "bytes": 47403,
+      "sha256": "13a07affa049e1595574190f19aad8825485e6da73df876ce9b96df9a7103de1"
     },
     {
       "path": "financial-pond/data/pond_map.json",
@@ -131,106 +131,100 @@
       "sha256": "39a410acd8b9c2c71cd7317ccb5fbc22b98e7b87aa33bc6efe9e8921a77c258b"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_flow_review.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_flow_review.json",
       "kind": "json",
-      "bytes": 116248,
-      "sha256": "829eb9efd360e5edcb0dd27bc4c008a5c0ad44d0ef2e5fd992f4824867bbd8bf"
+      "bytes": 112612,
+      "sha256": "dc0b1c2173b35d7b66e51c63d2969c8a82ecd8b08704429dc1e38cd3cb9e5aad"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_rotation_intelligence.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_rotation_intelligence.json",
       "kind": "json",
-      "bytes": 22977,
-      "sha256": "7820368198e2b289649e35db76f18b46141f128726f92e7bb467937f71d0e7bf"
+      "bytes": 22596,
+      "sha256": "8332f73af32d2275a96149c65c24907a3ae87586d4a2431b742bac765fac793f"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_rotation_history.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_rotation_history.json",
       "kind": "json",
-      "bytes": 39313,
-      "sha256": "896d5196e34492bd8e4faf85443663013418d28907db776450fd74bd6e24a1ff"
+      "bytes": 44076,
+      "sha256": "8a71db2c8dd99a251e279bfce381e11d5958e0c239b214c2c1a55c69a4ef734d"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_module_review.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_module_review.json",
       "kind": "json",
-      "bytes": 74064,
-      "sha256": "23000d4cf7562a568279ba2228ff860b4dd7d41ecdcd3ce00198100f90172cb9"
+      "bytes": 73131,
+      "sha256": "a47b02d72dcbed72bb6331b6431bfa94f3e311a2de11397e08945fd84d52f4d4"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/etf_decision_readiness.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/etf_decision_readiness.json",
       "kind": "json",
-      "bytes": 55089,
-      "sha256": "376cc48dbf628b760f79211ae82e8fb62dee507444a47c626b79c365ac0ff0a3"
+      "bytes": 55800,
+      "sha256": "8cb3cbc8e1c68b475c394907d9f2d82b9a6bf9db412e5ab14aaf2902022b234c"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/data_reality_audit.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/data_reality_audit.json",
       "kind": "json",
-      "bytes": 7802,
-      "sha256": "bc9873370e3d4ddc1a74e3a66b6a12598d5d66189c6b668d7b17c581ca805930"
+      "bytes": 7788,
+      "sha256": "da7a02687f8c865a58519e2916f7a9a5fea7b0f1b8b8a8310ae30e97929ef8d5"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/daily_sector_analysis.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/daily_sector_analysis.json",
       "kind": "json",
-      "bytes": 26978,
-      "sha256": "18eabf538504dfc830c63321ca3e0d0da375cc84439d0b12e20a86b2b68b20fb"
+      "bytes": 35588,
+      "sha256": "dbaec4b9404596bf83ac69aa2ca0c25d74aa70f8b94090935fc946532e685ab5"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/module_maturity_audit.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/module_maturity_audit.json",
       "kind": "json",
       "bytes": 29034,
-      "sha256": "7fe7daaec63797c937040c3eb700da8c2f86083b715d3ec31593c02684b49339"
+      "sha256": "67ed549700cf886ae7cd48c8617e73868385a2e9ac631959b118475cf6b1a151"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/etf_flow_leaderboard.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/etf_flow_leaderboard.json",
       "kind": "json",
-      "bytes": 5702,
-      "sha256": "b2ed399321fbe4fe1293f80d473b8ba84c72f3e0c59c3ef8a5a8af4061dea22e"
+      "bytes": 718,
+      "sha256": "1dd41a4ec7d8131179b4b588ac6f1d26267dd05e09589940a13d8fd225807eeb"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_signal_attribution.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_signal_attribution.json",
       "kind": "json",
-      "bytes": 57234,
-      "sha256": "fb5787f6e679fbafc4ffe6437e7589a43570f5aaa749a652f4cab2ba977a8846"
+      "bytes": 57519,
+      "sha256": "497aeec1491b131377d67c989c78766553afc14f3399b6155e5491c7d5964a42"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_watchlist_state.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_watchlist_state.json",
       "kind": "json",
-      "bytes": 72620,
-      "sha256": "6b677f0cd920ada917eb4f3008f39cbc943340b7ef5f9ca969b4484849536a38"
+      "bytes": 74003,
+      "sha256": "8b33b465f11548306d7b45e7c84fa1438328ab3c131fda8960b335f4f3685848"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/decision_gate_ledger.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/decision_gate_ledger.json",
       "kind": "json",
-      "bytes": 9682,
-      "sha256": "356bd8281e296abd6846451d8ee8ec09b51c315651b1d3151122a972e8fd9652"
+      "bytes": 9591,
+      "sha256": "34321d0a6cb46bb26bd4de3e8818839144c3ef2b5ef699e9a42b1f5a9f0dd1ae"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/index_explainability.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/index_explainability.json",
       "kind": "json",
-      "bytes": 692202,
-      "sha256": "e2ec5c3830e3f7ab3dcbab5a0cfef650cb4c32494c82f0057d2aada95ebf113a"
+      "bytes": 653245,
+      "sha256": "881beff3a8e73db8af96cfdd026203d364f0a1e2829b655fc9befe920a1ee735"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/observation_snapshot.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/observation_snapshot.json",
       "kind": "json",
-      "bytes": 331294,
-      "sha256": "ef3bd8065bdc8c3c6ec0e44e92a7eef74248e5045cd3daa1cf80d984973345a9"
+      "bytes": 328120,
+      "sha256": "eca25b9b8704ea9e7d20db13208265531ded8a062103cfbe650145bf8b9bebf1"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/akshare_provider_flow_observations.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/news_review.json",
       "kind": "json",
-      "bytes": 21738,
-      "sha256": "52be2d0e503062ed9c55d1149ab022c54fc0c0e09312e1b7d7d72c42bd786b86"
+      "bytes": 60808,
+      "sha256": "d7107a5d4158235b2b94b9c64979679d542920a6c242ff85ee98b10fc01b7338"
     },
     {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/news_review.json",
-      "kind": "json",
-      "bytes": 47403,
-      "sha256": "13a07affa049e1595574190f19aad8825485e6da73df876ce9b96df9a7103de1"
-    },
-    {
-      "path": "tools/financial-pond-framework/model_outputs/2026-07-10/general_pool_analysis.json",
+      "path": "tools/financial-pond-framework/model_outputs/2026-07-13/general_pool_analysis.json",
       "kind": "json",
       "bytes": 187680,
-      "sha256": "f4025872e4ed26c19efa49d92fddc9d62fd6a055929ae565970a6f971b67f81c"
+      "sha256": "80c24f6fce20b476b2c4a2643e197b2ffcee03b3ef9f6cb1f5866bed9d5dc596"
     },
     {
       "path": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
@@ -251,46 +245,47 @@
       "sha256": "97947759841c5db156947bee7b107f9e6792499c1ac43d5fef7abe93a64dfe47"
     }
   ],
-  "files_missing": [],
+  "files_missing": [
+    "tools/financial-pond-framework/model_outputs/2026-07-13/akshare_provider_flow_observations.json"
+  ],
   "file_hashes": {
-    "financial-pond/data/dashboard.json": "568e00b48c9feefd62b3e6400f764fd8964d529e06d66dbe19d3ef9aa55c41a9",
-    "financial-pond/data/general_pool_analysis.json": "3fe14eb8c83bb89550a0c2879c02edfd8d2ef0b03b90dfc3997eae6433f1bbeb",
-    "financial-pond/data/sector_flow_review.json": "77389198ee52101919824fcbb80cf0d08b24d7b85c80654723d97e77b433cccf",
-    "financial-pond/data/sector_rotation_intelligence.json": "58187af11f166a82214398708279f80384f7f1468f352c8b0805730dd067f512",
-    "financial-pond/data/sector_rotation_history.json": "67242363c2dc650c81b2bba5cde1e12a01f47e7eab68e80e1f1f34eebb58e78a",
-    "financial-pond/data/sector_module_review.json": "ff841374bf7bf1bdb10a56a3c07b6938b7af7bd91f44d045c2301b19403abb2e",
-    "financial-pond/data/etf_decision_readiness.json": "49765b6e48f2f2c3e8e1056cc38e58e5f97655e5ea20ce7b540ab3e49f87c7b5",
-    "financial-pond/data/data_reality_audit.json": "fa6b8fde3e00ca98f8db8b458f83532d9cfebdf370ad77bc8b31f1fb18c2c9a9",
-    "financial-pond/data/daily_sector_analysis.json": "a8db09ede44262bde42e058bb96a72f406cd1300635e49ba9e8fa1732a369c3e",
-    "financial-pond/data/module_maturity_audit.json": "9ae19c93c39b2e18e369952ac266b3993e3e0b795a2b8f5f47406976d4f05ce8",
-    "financial-pond/data/etf_flow_leaderboard.json": "64e0bb2098eb8981fa02bcdededa9809252ae50d95b26f3c3bcff961dac5709e",
-    "financial-pond/data/sector_signal_attribution.json": "b914d1b2a7b91afcc8aa20b324ee34e9fe5ef852e5495fda819e324752782e4d",
-    "financial-pond/data/sector_watchlist_state.json": "bd272641705457c53abd9c0b03de1a1659b04cc00cbbe1d817b5c22c4264ca1e",
-    "financial-pond/data/decision_gate_ledger.json": "8f5b34b65e896fecf00b8bb21f227154655cbfe39b1c51a1a5639b9ba8c6652a",
-    "financial-pond/data/index_explainability.json": "f3fa1540316ddbe4acf9156bbcc5f508ecf302f757c0ded69715f1822b1f93d2",
-    "financial-pond/data/observation_snapshot.json": "ef3bd8065bdc8c3c6ec0e44e92a7eef74248e5045cd3daa1cf80d984973345a9",
+    "financial-pond/data/dashboard.json": "d48fedab3127cca83a1fe65d7fa54eea4179a053d9634bdcd01ae552f43191a5",
+    "financial-pond/data/general_pool_analysis.json": "f4025872e4ed26c19efa49d92fddc9d62fd6a055929ae565970a6f971b67f81c",
+    "financial-pond/data/sector_flow_review.json": "829eb9efd360e5edcb0dd27bc4c008a5c0ad44d0ef2e5fd992f4824867bbd8bf",
+    "financial-pond/data/sector_rotation_intelligence.json": "7820368198e2b289649e35db76f18b46141f128726f92e7bb467937f71d0e7bf",
+    "financial-pond/data/sector_rotation_history.json": "896d5196e34492bd8e4faf85443663013418d28907db776450fd74bd6e24a1ff",
+    "financial-pond/data/sector_module_review.json": "23000d4cf7562a568279ba2228ff860b4dd7d41ecdcd3ce00198100f90172cb9",
+    "financial-pond/data/etf_decision_readiness.json": "376cc48dbf628b760f79211ae82e8fb62dee507444a47c626b79c365ac0ff0a3",
+    "financial-pond/data/data_reality_audit.json": "bc9873370e3d4ddc1a74e3a66b6a12598d5d66189c6b668d7b17c581ca805930",
+    "financial-pond/data/daily_sector_analysis.json": "18eabf538504dfc830c63321ca3e0d0da375cc84439d0b12e20a86b2b68b20fb",
+    "financial-pond/data/module_maturity_audit.json": "7fe7daaec63797c937040c3eb700da8c2f86083b715d3ec31593c02684b49339",
+    "financial-pond/data/etf_flow_leaderboard.json": "b2ed399321fbe4fe1293f80d473b8ba84c72f3e0c59c3ef8a5a8af4061dea22e",
+    "financial-pond/data/sector_signal_attribution.json": "fb5787f6e679fbafc4ffe6437e7589a43570f5aaa749a652f4cab2ba977a8846",
+    "financial-pond/data/sector_watchlist_state.json": "6b677f0cd920ada917eb4f3008f39cbc943340b7ef5f9ca969b4484849536a38",
+    "financial-pond/data/decision_gate_ledger.json": "356bd8281e296abd6846451d8ee8ec09b51c315651b1d3151122a972e8fd9652",
+    "financial-pond/data/index_explainability.json": "e2ec5c3830e3f7ab3dcbab5a0cfef650cb4c32494c82f0057d2aada95ebf113a",
+    "financial-pond/data/observation_snapshot.json": "eca25b9b8704ea9e7d20db13208265531ded8a062103cfbe650145bf8b9bebf1",
     "financial-pond/data/manual_review_log.json": "313d4fbbef61d574d1bf5c58a92bab4e3ada1b41a0352ecfb48fefb63c19d47e",
-    "financial-pond/data/outcome_labels.json": "566080d3bac0d725b4ee8c81d80aa5f7f1b658bbc3d552ff9e31dad7a43ad87b",
-    "financial-pond/data/daily_data_vault.json": "50c02ad30e4a302118546403e8c814e12b38e92068fdb03fac2316a9f23a6fee",
-    "financial-pond/data/news_review.json": "6fcc907e052955b4801969f9607dcbf0025238fb346b36d106948a2dc37bc78d",
+    "financial-pond/data/outcome_labels.json": "05da787cd25dd8bd34250cff37003ccc8d7d654998d0ff9e358e77e371607ba3",
+    "financial-pond/data/daily_data_vault.json": "4980f74994c7b9271f9f57583446f43abe34b995c63a466e5fc7745b59f93cd4",
+    "financial-pond/data/news_review.json": "13a07affa049e1595574190f19aad8825485e6da73df876ce9b96df9a7103de1",
     "financial-pond/data/pond_map.json": "39a410acd8b9c2c71cd7317ccb5fbc22b98e7b87aa33bc6efe9e8921a77c258b",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/sector_flow_review.json": "829eb9efd360e5edcb0dd27bc4c008a5c0ad44d0ef2e5fd992f4824867bbd8bf",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/sector_rotation_intelligence.json": "7820368198e2b289649e35db76f18b46141f128726f92e7bb467937f71d0e7bf",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/sector_rotation_history.json": "896d5196e34492bd8e4faf85443663013418d28907db776450fd74bd6e24a1ff",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/sector_module_review.json": "23000d4cf7562a568279ba2228ff860b4dd7d41ecdcd3ce00198100f90172cb9",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/etf_decision_readiness.json": "376cc48dbf628b760f79211ae82e8fb62dee507444a47c626b79c365ac0ff0a3",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/data_reality_audit.json": "bc9873370e3d4ddc1a74e3a66b6a12598d5d66189c6b668d7b17c581ca805930",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/daily_sector_analysis.json": "18eabf538504dfc830c63321ca3e0d0da375cc84439d0b12e20a86b2b68b20fb",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/module_maturity_audit.json": "7fe7daaec63797c937040c3eb700da8c2f86083b715d3ec31593c02684b49339",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/etf_flow_leaderboard.json": "b2ed399321fbe4fe1293f80d473b8ba84c72f3e0c59c3ef8a5a8af4061dea22e",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/sector_signal_attribution.json": "fb5787f6e679fbafc4ffe6437e7589a43570f5aaa749a652f4cab2ba977a8846",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/sector_watchlist_state.json": "6b677f0cd920ada917eb4f3008f39cbc943340b7ef5f9ca969b4484849536a38",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/decision_gate_ledger.json": "356bd8281e296abd6846451d8ee8ec09b51c315651b1d3151122a972e8fd9652",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/index_explainability.json": "e2ec5c3830e3f7ab3dcbab5a0cfef650cb4c32494c82f0057d2aada95ebf113a",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/observation_snapshot.json": "ef3bd8065bdc8c3c6ec0e44e92a7eef74248e5045cd3daa1cf80d984973345a9",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/akshare_provider_flow_observations.json": "52be2d0e503062ed9c55d1149ab022c54fc0c0e09312e1b7d7d72c42bd786b86",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/news_review.json": "13a07affa049e1595574190f19aad8825485e6da73df876ce9b96df9a7103de1",
-    "tools/financial-pond-framework/model_outputs/2026-07-10/general_pool_analysis.json": "f4025872e4ed26c19efa49d92fddc9d62fd6a055929ae565970a6f971b67f81c",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/sector_flow_review.json": "dc0b1c2173b35d7b66e51c63d2969c8a82ecd8b08704429dc1e38cd3cb9e5aad",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/sector_rotation_intelligence.json": "8332f73af32d2275a96149c65c24907a3ae87586d4a2431b742bac765fac793f",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/sector_rotation_history.json": "8a71db2c8dd99a251e279bfce381e11d5958e0c239b214c2c1a55c69a4ef734d",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/sector_module_review.json": "a47b02d72dcbed72bb6331b6431bfa94f3e311a2de11397e08945fd84d52f4d4",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/etf_decision_readiness.json": "8cb3cbc8e1c68b475c394907d9f2d82b9a6bf9db412e5ab14aaf2902022b234c",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/data_reality_audit.json": "da7a02687f8c865a58519e2916f7a9a5fea7b0f1b8b8a8310ae30e97929ef8d5",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/daily_sector_analysis.json": "dbaec4b9404596bf83ac69aa2ca0c25d74aa70f8b94090935fc946532e685ab5",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/module_maturity_audit.json": "67ed549700cf886ae7cd48c8617e73868385a2e9ac631959b118475cf6b1a151",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/etf_flow_leaderboard.json": "1dd41a4ec7d8131179b4b588ac6f1d26267dd05e09589940a13d8fd225807eeb",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/sector_signal_attribution.json": "497aeec1491b131377d67c989c78766553afc14f3399b6155e5491c7d5964a42",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/sector_watchlist_state.json": "8b33b465f11548306d7b45e7c84fa1438328ab3c131fda8960b335f4f3685848",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/decision_gate_ledger.json": "34321d0a6cb46bb26bd4de3e8818839144c3ef2b5ef699e9a42b1f5a9f0dd1ae",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/index_explainability.json": "881beff3a8e73db8af96cfdd026203d364f0a1e2829b655fc9befe920a1ee735",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/observation_snapshot.json": "eca25b9b8704ea9e7d20db13208265531ded8a062103cfbe650145bf8b9bebf1",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/news_review.json": "d7107a5d4158235b2b94b9c64979679d542920a6c242ff85ee98b10fc01b7338",
+    "tools/financial-pond-framework/model_outputs/2026-07-13/general_pool_analysis.json": "80c24f6fce20b476b2c4a2643e197b2ffcee03b3ef9f6cb1f5866bed9d5dc596",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv": "333c4be8982b58eae7eacbc2d886fd09bdbdcdb83387edb0542684637fd6d5be",
     "tools/financial-pond-framework/data/provider_exports/a_share_sector_flow.csv": "c1810501d19ed165e5107c0f7244626e3bec440213bb0cf93a35cbe71870d575",
     "tools/financial-pond-framework/data/provider_exports/a_share_water_level.csv": "97947759841c5db156947bee7b107f9e6792499c1ac43d5fef7abe93a64dfe47"
@@ -300,97 +295,97 @@
       "file": "financial-pond/data/dashboard.json",
       "module_id": "dashboard",
       "status": "available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/general_pool_analysis.json",
       "module_id": "general_pool_analysis_v0_10_11",
       "status": "analysis_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/sector_flow_review.json",
       "module_id": "sector_flow_review",
       "status": "available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/sector_rotation_intelligence.json",
       "module_id": "sector_rotation_intelligence_v0_10_5",
       "status": "rotation_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/sector_rotation_history.json",
       "module_id": "sector_rotation_history_v0_10_19",
       "status": "history_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/sector_module_review.json",
       "module_id": "sector_module_review_v0_1",
       "status": "module_review_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/etf_decision_readiness.json",
       "module_id": "etf_decision_readiness_v0_2",
       "status": "readiness_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/data_reality_audit.json",
       "module_id": "data_reality_audit_v0_1",
       "status": "audit_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/daily_sector_analysis.json",
       "module_id": "daily_sector_analysis_v0_10_42",
       "status": "daily_sector_analysis_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/module_maturity_audit.json",
       "module_id": "module_maturity_audit_v0_10_39",
       "status": "module_maturity_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/etf_flow_leaderboard.json",
       "module_id": "etf_flow_leaderboard_v0_10_43",
       "status": "leaderboard_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/sector_signal_attribution.json",
       "module_id": "sector_signal_attribution_v0_10_44",
       "status": "attribution_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/sector_watchlist_state.json",
       "module_id": "sector_watchlist_state_v0_10_45",
       "status": "watchlist_state_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/decision_gate_ledger.json",
       "module_id": "decision_gate_ledger_v0_10_46",
       "status": "gate_ledger_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/index_explainability.json",
       "module_id": "index_explainability_v0_10_47",
       "status": "index_explainability_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/observation_snapshot.json",
       "module_id": "observation_snapshot_v0_10_48",
       "status": "observation_snapshot_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
       "file": "financial-pond/data/manual_review_log.json",
@@ -408,13 +403,13 @@
       "file": "financial-pond/data/daily_data_vault.json",
       "module_id": "daily_data_vault_v0_10_48",
       "status": "vault_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
       "file": "financial-pond/data/news_review.json",
       "module_id": "news_daily_v1",
       "status": "news_available",
-      "as_of": "2026-07-09"
+      "as_of": "2026-07-10"
     },
     {
       "file": "financial-pond/data/pond_map.json",
@@ -423,113 +418,109 @@
       "as_of": "2026-07-02"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_flow_review.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_flow_review.json",
       "module_id": "sector_flow_review",
       "status": "available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_rotation_intelligence.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_rotation_intelligence.json",
       "module_id": "sector_rotation_intelligence_v0_10_5",
       "status": "rotation_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_rotation_history.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_rotation_history.json",
       "module_id": "sector_rotation_history_v0_10_19",
       "status": "history_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_module_review.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_module_review.json",
       "module_id": "sector_module_review_v0_1",
       "status": "module_review_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/etf_decision_readiness.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/etf_decision_readiness.json",
       "module_id": "etf_decision_readiness_v0_2",
       "status": "readiness_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/data_reality_audit.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/data_reality_audit.json",
       "module_id": "data_reality_audit_v0_1",
       "status": "audit_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/daily_sector_analysis.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/daily_sector_analysis.json",
       "module_id": "daily_sector_analysis_v0_10_42",
       "status": "daily_sector_analysis_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/module_maturity_audit.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/module_maturity_audit.json",
       "module_id": "module_maturity_audit_v0_10_39",
       "status": "module_maturity_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/etf_flow_leaderboard.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/etf_flow_leaderboard.json",
       "module_id": "etf_flow_leaderboard_v0_10_43",
-      "status": "leaderboard_available",
-      "as_of": "2026-07-10"
+      "status": "no_provider_rows",
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_signal_attribution.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_signal_attribution.json",
       "module_id": "sector_signal_attribution_v0_10_44",
       "status": "attribution_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/sector_watchlist_state.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/sector_watchlist_state.json",
       "module_id": "sector_watchlist_state_v0_10_45",
       "status": "watchlist_state_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/decision_gate_ledger.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/decision_gate_ledger.json",
       "module_id": "decision_gate_ledger_v0_10_46",
       "status": "gate_ledger_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/index_explainability.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/index_explainability.json",
       "module_id": "index_explainability_v0_10_47",
       "status": "index_explainability_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/observation_snapshot.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/observation_snapshot.json",
       "module_id": "observation_snapshot_v0_10_48",
       "status": "observation_snapshot_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/akshare_provider_flow_observations.json",
-      "module_id": "akshare_provider_flow_observations",
-      "status": "available",
-      "as_of": "2026-07-10"
-    },
-    {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/news_review.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/news_review.json",
       "module_id": "news_daily_v1",
       "status": "news_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     },
     {
-      "file": "tools/financial-pond-framework/model_outputs/2026-07-10/general_pool_analysis.json",
+      "file": "tools/financial-pond-framework/model_outputs/2026-07-13/general_pool_analysis.json",
       "module_id": "general_pool_analysis_v0_10_11",
       "status": "analysis_available",
-      "as_of": "2026-07-10"
+      "as_of": "2026-07-13"
     }
   ],
-  "missing_modules": [],
+  "missing_modules": [
+    "akshare_provider_flow_observations"
+  ],
   "data_reality_summary": {
     "provider_csv_files": 3,
-    "json_files": 38,
-    "missing_files": 0,
+    "json_files": 37,
+    "missing_files": 1,
     "vault_reality": "real_provider_derived",
     "audit_status": "audit_available"
   }
