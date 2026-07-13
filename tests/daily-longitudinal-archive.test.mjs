@@ -11,9 +11,9 @@ test("immutable archive is idempotent, revisions changes, and rebuilds its index
   const rootDir = await mkdtemp(path.join(tmpdir(), "daily-history-"));
   t.after(() => rm(rootDir, { recursive: true, force: true }));
   const first = await appendImmutableSnapshot({ rootDir, snapshot });
-  const same = await appendImmutableSnapshot({ rootDir, snapshot });
+  const same = await appendImmutableSnapshot({ rootDir, snapshot: { ...snapshot, generated_at: "later" } });
   const changed = await appendImmutableSnapshot({ rootDir, snapshot: { ...snapshot, rows: [{ pool_id: "a" }, { pool_id: "b", final_score: 2 }] }, correctionReason: "provider correction" });
-  assert.equal(first.created, true); assert.equal(same.created, false); assert.equal(changed.record.revision, 2); assert.equal(changed.record.supersedes_snapshot_id, first.record.snapshot_id);
+  assert.equal(first.created, true); assert.equal(same.created, false, "execution timestamp alone does not create a revision"); assert.equal(changed.record.revision, 2); assert.equal(changed.record.supersedes_snapshot_id, first.record.snapshot_id);
   const index = await rebuildDailyIndex({ rootDir });
   assert.equal(index.records.length, 2);
   assert.equal(JSON.parse(await readFile(path.join(rootDir, "financial-pond/data/history/daily/index.json"), "utf8")).current_by_date["2026-07-10"].revision, 2);

@@ -37,7 +37,7 @@ await mkdir(historyDir, { recursive: true });
 const archive = {
   module_id: "observation_archive_v0_10_64",
   as_of: asOf,
-  generated_at: new Date().toISOString(),
+  generated_at: process.env.GENERATED_AT ?? new Date().toISOString(),
   observation_snapshot: observation,
   data_coverage_report: coverage,
   flow_channel_report: flowChannel,

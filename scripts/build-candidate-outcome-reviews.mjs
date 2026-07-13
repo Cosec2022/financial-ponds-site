@@ -14,11 +14,13 @@ const priceBasis = await readJson(resolve(dataDir, "candidate_price_basis.json")
 const previousOutcome = await readJsonOptional(resolve(dataDir, "candidate_outcome_reviews.json"), { rows: [] });
 const tradingCalendar = await loadTradingCalendar();
 const benchmarkConfig = await loadBenchmarkConfig();
-const reviewNow = new Date(process.env.REVIEW_NOW ?? Date.now());
-const currentAsOf = process.env.AS_OF ?? maxDate(schedule.as_of, shanghaiClock(reviewNow).date);
+const currentAsOf = process.env.AS_OF ?? maxDate(schedule.as_of, shanghaiClock(new Date()).date);
+// Reviews describe the snapshot's knowledge frontier. Replaying an older AS_OF
+// must never let the wall clock turn a future review into an in-session one.
+const reviewNow = new Date(process.env.REVIEW_NOW ?? process.env.GENERATED_AT ?? `${currentAsOf}T16:00:00+08:00`);
 const archives = await readArchives();
 const basisByCandidate = new Map((priceBasis.rows ?? []).map((row) => [`${row.candidate_as_of}|${row.pool_id}`, row]));
-const generatedAt = new Date().toISOString();
+const generatedAt = process.env.GENERATED_AT ?? new Date().toISOString();
 const unavailableReasons = ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"];
 const horizons = [
   ["T+1", "review_t1_due"],

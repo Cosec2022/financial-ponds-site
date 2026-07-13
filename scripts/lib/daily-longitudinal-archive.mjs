@@ -49,5 +49,5 @@ export async function snapshotsForDate(dayDir) {
 }
 
 function compact(record) { return { snapshot_id: record.snapshot_id, as_of: record.as_of, revision: record.revision, finality_status: record.finality_status, content_hash: record.content_hash, supersedes_snapshot_id: record.supersedes_snapshot_id, correction_reason: record.correction_reason, row_count: record.row_count, model_version: record.model_version, path: `financial-pond/data/history/daily/${record.as_of}/${safe(record.snapshot_id)}.json` }; }
-function withoutMutableFields(snapshot) { const { content_hash, checksum, snapshot_id, revision, supersedes_snapshot_id, correction_reason, ...content } = snapshot; return content; }
+function withoutMutableFields(snapshot) { const { content_hash, checksum, snapshot_id, revision, supersedes_snapshot_id, correction_reason, generated_at, ...content } = snapshot; return content; }
 function safe(id) { return String(id).replace(/[^A-Za-z0-9._-]/g, "_"); }

@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.10.68 - Deterministic daily CI boundary
+
+- Fixed historical daily replays so outcome-review status is evaluated at the
+  published `AS_OF` knowledge frontier rather than the machine wall clock.
+- Split daily data generation from site/Worker assembly (`build:data` and
+  `build:site`) so the CI daily workflow does not regenerate persistence data.
+- Fixed immutable longitudinal snapshot identity to ignore execution-only
+  `generated_at` changes; a real business-payload change still creates exactly
+  one revision.
+- Added one workflow time context (`AS_OF`, `GENERATED_AT`, `REVIEW_NOW`) and
+  separated CI build, artifact validation, published-data validation, and tests.
+
 ## v0.10.66 - Market Penetration Brief MVP
 
 - Quarantined RSS/search narratives from graph scoring; they remain display-only.

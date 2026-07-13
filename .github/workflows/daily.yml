@@ -34,17 +34,29 @@ jobs:
           python-version: "3.10"
 
       - name: Install site dependencies
-        run: npm ci
+        run: |
+          set -euo pipefail
+          npm ci
 
       - name: Install A-share provider dependencies
         run: |
+          set -euo pipefail
           python -m pip install --upgrade pip
           python -m pip install -r tools/financial-pond-framework/providers/requirements.txt
+
+      - name: Set daily time context
+        run: |
+          set -euo pipefail
+          AS_OF="$(TZ=Asia/Hong_Kong date +%F)"
+          GENERATED_AT="$(TZ=UTC date +%Y-%m-%dT%H:%M:%SZ)"
+          echo "AS_OF=$AS_OF" >> "$GITHUB_ENV"
+          echo "GENERATED_AT=$GENERATED_AT" >> "$GITHUB_ENV"
+          echo "REVIEW_NOW=${AS_OF}T16:00:00+08:00" >> "$GITHUB_ENV"
 
       - name: Run Financial Ponds A-share daily cycle
         working-directory: tools/financial-pond-framework
         run: |
-          AS_OF="$(date +%F)"
+          set -euo pipefail
           npm test
           npm run provider:akshare:doctor
           npm run a-share:daily:ci -- --as-of "$AS_OF"
@@ -80,30 +92,56 @@ jobs:
           cp "model_outputs/$AS_OF/news_review.json" ../../financial-pond/data/news_review.json
 
       - name: Build daily persistence
-        run: npm run fp:daily
-
-      - name: Build and test Worker
         run: |
-          npm run build
+          set -euo pipefail
+          npm run fp:daily
+
+      - name: Build site and Worker
+        run: |
+          set -euo pipefail
+          npm run build:site
+
+      - name: Validate Worker artifact
+        run: |
+          set -euo pipefail
           npm run validate
+
+      - name: Validate published data
+        run: |
+          set -euo pipefail
           npm run validate:data
+
+      - name: Run tests
+        run: |
+          set -euo pipefail
           npm test
 
       - name: Persist published data
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add financial-pond/data
           git add tools/financial-pond-framework/data/provider_exports/*.csv
-          git add tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json || true
+          if [[ -f tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json ]]; then
+            git add tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json
+          fi
           git add tools/financial-pond-framework/model_outputs/provider_runs/akshare_etf_bridge_*.json
-          git add tools/financial-pond-framework/model_outputs/provider_runs/a_share_benchmark_history_*.json || true
+          if compgen -G "tools/financial-pond-framework/model_outputs/provider_runs/a_share_benchmark_history_*.json" > /dev/null; then
+            git add tools/financial-pond-framework/model_outputs/provider_runs/a_share_benchmark_history_*.json
+          fi
           git add tools/financial-pond-framework/model_outputs/provider_validation/akshare_etf_bridge_validation.json
           git add tools/financial-pond-framework/model_outputs/provider_inspection/akshare_etf_bridge_inspection.json
           git add tools/financial-pond-framework/model_outputs/provider_inspection/akshare_etf_bridge_inspection.md
-          git commit -m "chore(data): update financial ponds daily data" || echo "No data changes to commit"
-          git push || echo "Data commit push skipped or unavailable"
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(data): update financial ponds daily data"
+            git push
+          else
+            echo "No data changes to commit"
+          fi
 
       - name: Deploy to Cloudflare
         if: ${{ env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' }}
-        run: npx wrangler@4.102.0 deploy
+        run: |
+          set -euo pipefail
+          npx wrangler@4.102.0 deploy

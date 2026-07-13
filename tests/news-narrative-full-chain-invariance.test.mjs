@@ -83,6 +83,19 @@ async function fullCandidateChain(tempRoot, fixture) {
   await mkdir(observationDir, { recursive: true });
   await writeFile(path.join(observationDir, "news_observations.json"), `${JSON.stringify({ observations: allNarratives(fixture) }, null, 2)}\n`);
   await run("bash", ["scripts/local/fp-daily.sh", asOf], root);
+  const persistenceFiles = [
+    "financial-pond/data/history/daily/index.json",
+    "financial-pond/data/history/latest_observation_pointer.json",
+    "financial-pond/data/outcome_labels.json",
+    "financial-pond/data/candidate_outcome_reviews.json"
+  ];
+  const persistenceBeforeSiteBuild = await Promise.all(persistenceFiles.map((file) => readFile(path.join(root, file), "utf8")));
+  await run("npm", ["run", "build:site"], root);
+  assert.deepEqual(
+    await Promise.all(persistenceFiles.map((file) => readFile(path.join(root, file), "utf8"))),
+    persistenceBeforeSiteBuild,
+    "site build does not mutate daily history, outcome ledger, pointer, or review data"
+  );
   const names = ["pool_observation_scores.json", "evening_observation_summary.json", "observation_candidate_ledger.json", "candidate_state_model.json", "candidate_outcome_reviews.json", "candidate_due_review_verification.json", "candidate_review_history.json", "candidate_review_analytics.json"];
   const output = Object.fromEntries(await Promise.all(names.map(async (name) => [name, await json(path.join(root, "financial-pond/data", name))])));
   return canonicalModelOutput(output);
@@ -123,4 +136,4 @@ async function json(file) { return JSON.parse(await readFile(file, "utf8")); }
 function assertCanonicalEqual(actual, expected, label) { assert.equal(JSON.stringify(sortKeys(withoutGeneratedAt(actual))), JSON.stringify(sortKeys(withoutGeneratedAt(expected))), label); }
 function sortKeys(value) { if (Array.isArray(value)) return value.map(sortKeys); if (value && typeof value === "object") return Object.fromEntries(Object.keys(value).sort().map((key) => [key, sortKeys(value[key])])); return value; }
 function withoutGeneratedAt(value) { if (Array.isArray(value)) return value.map(withoutGeneratedAt); if (value && typeof value === "object") return Object.fromEntries(Object.entries(value).filter(([key]) => key !== "generated_at").map(([key, child]) => [key, withoutGeneratedAt(child)])); return value; }
-function run(command, args, cwd) { return new Promise((resolve, reject) => { const child = spawn(command, args, { cwd, env: { ...process.env, AS_OF: asOf }, stdio: "pipe" }); let stderr = ""; child.stderr.on("data", (chunk) => { stderr += chunk; }); child.on("error", reject); child.on("close", (code) => code === 0 ? resolve() : reject(new Error(`${command} ${args.join(" ")} failed (${code}): ${stderr}`))); }); }
+function run(command, args, cwd) { return new Promise((resolve, reject) => { const child = spawn(command, args, { cwd, env: { ...process.env, AS_OF: asOf, GENERATED_AT: "2026-07-10T08:45:00.000Z", REVIEW_NOW: "2026-07-10T16:00:00+08:00" }, stdio: "pipe" }); let stderr = ""; child.stderr.on("data", (chunk) => { stderr += chunk; }); child.on("error", reject); child.on("close", (code) => code === 0 ? resolve() : reject(new Error(`${command} ${args.join(" ")} failed (${code}): ${stderr}`))); }); }

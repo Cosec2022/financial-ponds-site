@@ -49,8 +49,19 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.ok(workflow.indexOf("npm run observation:snapshot") > workflow.indexOf("npm run index:explain"));
   assert.ok(workflow.lastIndexOf("npm run data:vault") > workflow.indexOf("npm run observation:snapshot"));
   assert.match(workflow, /npm run fp:daily/);
-  assert.ok(workflow.indexOf("npm run fp:daily") < workflow.indexOf("npm run build"));
-  assert.ok(workflow.indexOf("npm run validate:data") > workflow.indexOf("npm run build"));
+  assert.match(siteScripts["build:data"], /fp:daily/);
+  assert.equal(siteScripts["build:site"], "bash scripts/build-site.sh");
+  assert.match(workflow, /name: Set daily time context/);
+  assert.match(workflow, /TZ=Asia\/Hong_Kong date \+%F/);
+  assert.match(workflow, /GENERATED_AT=/);
+  assert.ok(workflow.indexOf("npm run fp:daily") < workflow.indexOf("npm run build:site"));
+  assert.ok(workflow.indexOf("npm run validate:data") > workflow.indexOf("npm run build:site"));
+  assert.match(workflow, /name: Build site and Worker/);
+  assert.match(workflow, /name: Validate Worker artifact/);
+  assert.match(workflow, /name: Validate published data/);
+  assert.match(workflow, /name: Run tests/);
+  assert.doesNotMatch(workflow, /Build and test Worker/);
+  assert.doesNotMatch(workflow, /\|\| true/);
   assert.match(workflow, /general_pool_analysis\.json/);
   assert.match(workflow, /sector_rotation_intelligence\.json/);
   assert.match(workflow, /sector_rotation_history\.json/);
@@ -209,7 +220,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.67 release preserves review contract and adds display-only brief", async () => {
+test("v0.10.68 release preserves review contract and adds display-only brief", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -220,8 +231,8 @@ test("v0.10.67 release preserves review contract and adds display-only brief", a
   ]);
   assert.match(index, /v0\.10\.66 Observation Dashboard/);
   assert.match(index, /Market Penetration Brief/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.67");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.67");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.68");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.68");
   assert.match(changelog, /v0\.10\.65/);
   assert.match(modelDoc, /Version: v0\.10\.65/);
   assert.match(app, /A-share benchmark proxy: 510300/);

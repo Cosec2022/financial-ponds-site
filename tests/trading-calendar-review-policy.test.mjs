@@ -49,6 +49,7 @@ test("review state machine uses injected Shanghai timestamps", () => {
     benchmarkReviewExactDateAvailable: true
   };
   assert.equal(classifyReview({ ...base, effectiveReviewDate: "2026-07-13", now: "2026-07-10T08:00:00Z" }).review_reason, "pending_not_due");
+  assert.equal(classifyReview({ ...base, effectiveReviewDate: "2026-07-13", now: "2026-07-10T08:00:00Z", candidateBaselineValid: false }).review_reason, "pending_not_due", "future reviews do not expose future baseline validation");
   assert.equal(classifyReview({ ...base, now: "2026-07-10T06:59:00Z" }).review_reason, "pending_market_open");
   assert.equal(classifyReview({ ...base, now: "2026-07-10T07:01:00Z", datasetLatestDate: "2026-07-09" }).review_reason, "awaiting_eod_data");
   assert.equal(classifyReview({ ...base, now: "2026-07-11T01:00:00Z", datasetLatestDate: "2026-07-09" }).review_reason, "stale_data");

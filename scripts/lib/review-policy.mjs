@@ -13,11 +13,11 @@ export function classifyReview(input) {
     benchmarkReviewExactDateAvailable
   } = input;
   if (!calendarKnown || !effectiveReviewDate) return state("unavailable", "calendar_unknown");
-  if (!candidateBaselineValid) return state("skipped", "invalid_baseline");
 
   const clock = shanghaiClock(now);
   if (effectiveReviewDate > clock.date) return state("pending", "pending_not_due");
   if (effectiveReviewDate === clock.date && clock.minutes < 15 * 60) return state("pending", "pending_market_open");
+  if (!candidateBaselineValid) return state("skipped", "invalid_baseline");
   if ((!datasetLatestDate || datasetLatestDate < effectiveReviewDate) && effectiveReviewDate === clock.date) {
     return state("pending", "awaiting_eod_data");
   }
