@@ -1,7 +1,9 @@
 {
   "status": "ok",
   "errors": [],
-  "warnings": [],
+  "warnings": [
+    "Row-level dates and sector-flow dates differ."
+  ],
   "partial_reasons": [],
   "flow_readiness": {
     "status": "ready_for_manual_review",
@@ -9,9 +11,9 @@
     "empty_flow_columns": []
   },
   "counts": {
-    "row_records": 44,
-    "sector_flow_records": 4,
-    "dates": 4,
+    "row_records": 66,
+    "sector_flow_records": 5,
+    "dates": 6,
     "representative_codes_expected": 11,
     "representative_codes_observed": 11
   },
@@ -19,17 +21,19 @@
     "2026-07-07",
     "2026-07-08",
     "2026-07-09",
-    "2026-07-10"
+    "2026-07-10",
+    "2026-07-13",
+    "2026-07-14"
   ],
   "latest_run": {
-    "path": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-10.json",
+    "path": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-14.json",
     "mode": "real",
-    "as_of": "2026-07-10",
+    "as_of": "2026-07-14",
     "status": "ok",
     "errors": []
   },
   "validator_id": "akshare_etf_bridge_export_validator",
-  "generated_at": "2026-07-10T11:35:14.470390+00:00",
+  "generated_at": "2026-07-14T10:26:49.976111+00:00",
   "row_csv": "data/provider_exports/a_share_etf_daily.csv",
   "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv"
 }

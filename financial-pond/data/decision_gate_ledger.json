@@ -1,19 +1,19 @@
 {
   "module_id": "decision_gate_ledger_v0_10_46",
-  "as_of": "2026-07-13",
-  "generated_at": "2026-07-13T16:51:35.629Z",
+  "as_of": "2026-07-14",
+  "generated_at": "2026-07-14T10:26:53.850Z",
   "status": "gate_ledger_available",
   "guidance_state": "not_ready",
   "execution_state": "blocked",
-  "headline": "Decision gate ledger: 6 block, 3 warn; provider and execution gates are aligned; guidance_state=not_ready.",
+  "headline": "Decision gate ledger: 5 block, 3 warn; provider and execution gates are aligned; guidance_state=not_ready.",
   "gates": [
     {
       "gate_id": "provider_run",
       "label": "Provider run",
-      "status": "block",
-      "reading": "Real provider run is missing or not confirmed.",
+      "status": "pass",
+      "reading": "Real provider run is present for the selected date.",
       "evidence": {
-        "provider_run": "missing_or_not_ok"
+        "provider_run": "real_ok"
       },
       "next_action": "Keep the provider run in the daily path."
     },
@@ -25,7 +25,11 @@
       "evidence": {
         "dates": [
           "2026-07-07",
-          "2026-07-08"
+          "2026-07-08",
+          "2026-07-09",
+          "2026-07-10",
+          "2026-07-13",
+          "2026-07-14"
         ],
         "status": "flow_gate_ready"
       },
@@ -38,7 +42,7 @@
       "reading": "0/11 representative rows have estimated_flow.",
       "evidence": {
         "estimated_flow_rows": 0,
-        "total_rows": 0
+        "total_rows": 11
       },
       "next_action": "Regenerate provider flow observations if coverage drops."
     },
@@ -69,15 +73,14 @@
       "gate_id": "watchlist_conflict_review",
       "label": "Watchlist conflict review",
       "status": "warn",
-      "reading": "6 watchlist row(s) are in conflict_review.",
+      "reading": "5 watchlist row(s) are in conflict_review.",
       "evidence": {
-        "conflict_review_count": 6,
+        "conflict_review_count": 5,
         "sectors": [
           "ai_computer",
           "brokerage",
           "communication_electronics",
-          "defense_military",
-          "new_energy_ev",
+          "resources_materials",
           "semiconductor"
         ]
       },
@@ -108,9 +111,9 @@
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
-      "reading": "Rotation sample depth is 7/3.",
+      "reading": "Rotation sample depth is 8/3.",
       "evidence": {
-        "sample_days": 7,
+        "sample_days": 8,
         "min_sample_days": 3,
         "trend_state": "trend_confirmed"
       },
@@ -149,13 +152,6 @@
     }
   ],
   "blockers": [
-    {
-      "gate_id": "provider_run",
-      "label": "Provider run",
-      "status": "block",
-      "reading": "Real provider run is missing or not confirmed.",
-      "next_action": "Keep the provider run in the daily path."
-    },
     {
       "gate_id": "estimated_flow_coverage",
       "label": "Estimated-flow coverage",
@@ -204,7 +200,7 @@
       "gate_id": "watchlist_conflict_review",
       "label": "Watchlist conflict review",
       "status": "warn",
-      "reading": "6 watchlist row(s) are in conflict_review.",
+      "reading": "5 watchlist row(s) are in conflict_review.",
       "next_action": "Review conflict rows before changing model thresholds."
     },
     {
@@ -217,6 +213,13 @@
   ],
   "passes": [
     {
+      "gate_id": "provider_run",
+      "label": "Provider run",
+      "status": "pass",
+      "reading": "Real provider run is present for the selected date.",
+      "next_action": "Keep the provider run in the daily path."
+    },
+    {
       "gate_id": "provider_history",
       "label": "Provider history",
       "status": "pass",
@@ -227,7 +230,7 @@
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
-      "reading": "Rotation sample depth is 7/3.",
+      "reading": "Rotation sample depth is 8/3.",
       "next_action": "Continue daily history accumulation."
     },
     {
@@ -269,9 +272,9 @@
       "next_action": "Only change this gate after all blocker gates pass."
     },
     {
-      "gate_id": "provider_environment",
-      "label": "AKShare通道",
-      "next_action": "先跑通 AKShare provider，确认本机能取真实 ETF 数据。"
+      "gate_id": "share_change_flow",
+      "label": "份额变化流",
+      "next_action": "CSV 已有上一可用日期 2026-07-13，但 11 只代表 ETF 仍缺 previous_share；检查导出脚本是否从历史 CSV 回填。"
     }
   ],
   "manual_review_boundary": "Explains readiness only; no execution instruction."

@@ -1,9 +1,9 @@
 {
   "module_id": "review_readiness_report_v0_10_61",
-  "as_of": "2026-07-13",
-  "generated_at": "2026-07-14T06:43:49.628Z",
+  "as_of": "2026-07-14",
+  "generated_at": "2026-07-14T10:27:51.289Z",
   "candidate_count": 5,
-  "next_due_date": "2026-07-14",
+  "next_due_date": "2026-07-15",
   "next_due_horizon": "T+1",
   "next_due_candidate_count": 5,
   "baseline_available_count": 5,

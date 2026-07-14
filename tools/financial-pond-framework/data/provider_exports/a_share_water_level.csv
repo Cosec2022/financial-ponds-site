@@ -1,3 +1,4 @@
 date,total_amount,up_count,down_count,flat_count,active_count,breadth_ratio,margin_balance,margin_buy_amount,margin_repay_amount,source_provider,source_endpoint,provider_run_id,collected_at
 2026-07-09,1080000000000,3100,1900,300,5300,0.22641509433962265,,,,akshare,fixture,a_share_water_level_provider_2026-07-09_113808,2026-07-09T11:38:08.644415+00:00
 2026-07-10,1080000000000,3100,1900,300,5300,0.22641509433962265,,,,akshare,fixture,a_share_water_level_provider_2026-07-10_113514,2026-07-10T11:35:14.430406+00:00
+2026-07-14,1080000000000,3100,1900,300,5300,0.22641509433962265,,,,akshare,fixture,a_share_water_level_provider_2026-07-14_102649,2026-07-14T10:26:49.936832+00:00

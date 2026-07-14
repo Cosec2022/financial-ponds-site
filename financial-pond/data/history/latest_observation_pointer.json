@@ -1,8 +1,8 @@
 {
   "module_id": "latest_observation_pointer_v0_10_64",
-  "latest_as_of": "2026-07-13",
-  "latest_path": "financial-pond/data/history/observations/2026-07-13.json",
-  "previous_as_of": "2026-07-10",
-  "previous_path": "financial-pond/data/history/observations/2026-07-10.json",
-  "available_snapshot_count": 4
+  "latest_as_of": "2026-07-14",
+  "latest_path": "financial-pond/data/history/observations/2026-07-14.json",
+  "previous_as_of": "2026-07-13",
+  "previous_path": "financial-pond/data/history/observations/2026-07-13.json",
+  "available_snapshot_count": 5
 }
