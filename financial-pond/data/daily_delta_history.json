@@ -46,12 +46,12 @@
       "latest_as_of": "2026-07-13",
       "previous_as_of": "2026-07-10",
       "observed_pool_count": 67,
-      "changed_pool_count": 5,
+      "changed_pool_count": 47,
       "improved_data_count": 0,
       "new_signal_count": 0,
-      "confidence_change_count": 62,
+      "confidence_change_count": 0,
       "insufficient_history_count": 0,
-      "stable_pool_count": 0,
+      "stable_pool_count": 20,
       "baseline_state": "today archived / previous available"
     }
   ]

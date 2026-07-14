@@ -1,7 +1,7 @@
 {
   "module_id": "flow_channel_report_v0_10_51",
   "as_of": "2026-07-13",
-  "generated_at": "2026-07-14T03:25:38.577Z",
+  "generated_at": "2026-07-14T06:43:49.268Z",
   "source_files_used": [
     "pool_instrument_map.json",
     "etf_flow_leaderboard.json",

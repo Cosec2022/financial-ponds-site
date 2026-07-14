@@ -1,7 +1,7 @@
 {
   "module_id": "market_signal_report_v0_10_54",
   "as_of": "2026-07-13",
-  "generated_at": "2026-07-14T03:25:38.616Z",
+  "generated_at": "2026-07-14T06:43:49.309Z",
   "source_files_used": [
     "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
@@ -13,11 +13,11 @@
   "flow_mapped_count": 0,
   "fully_mapped_count": 0,
   "unmapped_pool_count": 5,
-  "momentum_signal_count": 0,
+  "momentum_signal_count": 62,
   "liquidity_signal_count": 62,
-  "missing_momentum_count": 67,
+  "missing_momentum_count": 5,
   "missing_liquidity_count": 5,
-  "coverage_ratio": 0.4627,
+  "coverage_ratio": 0.9254,
   "mapping_method": "pool_instrument_map instrument_code to exact-or-earlier a_share_etf_daily.csv fund_code; rejects future rows",
   "unmapped_examples": [
     {
