@@ -220,7 +220,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.68 release preserves review contract and adds display-only brief", async () => {
+test("v0.10.69 release preserves review contract and adds display-only brief", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -231,8 +231,8 @@ test("v0.10.68 release preserves review contract and adds display-only brief", a
   ]);
   assert.match(index, /v0\.10\.66 Observation Dashboard/);
   assert.match(index, /Market Penetration Brief/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.68");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.68");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.69");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.69");
   assert.match(changelog, /v0\.10\.65/);
   assert.match(modelDoc, /Version: v0\.10\.65/);
   assert.match(app, /A-share benchmark proxy: 510300/);

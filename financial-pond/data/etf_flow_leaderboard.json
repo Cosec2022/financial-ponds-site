@@ -1,22 +1,179 @@
 {
   "as_of": "2026-07-13",
-  "generated_at": "2026-07-13T16:51:35.144Z",
+  "generated_at": "2026-07-14T03:25:38.306Z",
   "module_id": "etf_flow_leaderboard_v0_10_43",
-  "status": "no_provider_rows",
-  "source": "akshare_provider_inspection",
+  "status": "leaderboard_available",
+  "source": "akshare_provider_flow_observations",
   "readiness": {
-    "provider_flow_readiness": "unknown",
-    "provider_history": null,
-    "data_readiness": "no_rows"
+    "provider_flow_readiness": "baseline_only",
+    "provider_history": {
+      "available_dates": [
+        "2026-07-13"
+      ],
+      "date_count": 1,
+      "current_date": "2026-07-13",
+      "previous_available_date": null,
+      "has_previous_available_date": false,
+      "rows_by_date": {
+        "2026-07-13": 11
+      },
+      "current_rows": 11,
+      "previous_rows": 0
+    },
+    "data_readiness": "baseline_or_inspection_only"
   },
   "counts": {
-    "rows": 0,
+    "rows": 11,
     "positive": 0,
-    "zero": 0,
+    "zero": 11,
     "negative": 0,
-    "enable_candidates": 0
+    "enable_candidates": 11
   },
-  "rows": [],
+  "rows": [
+    {
+      "sector_id": "communication_electronics",
+      "name": "Communication and Electronics",
+      "fund_code": "515880",
+      "fund_name": "Communication ETF candidate",
+      "amount": 4025785595,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 1,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "semiconductor",
+      "name": "Semiconductor",
+      "fund_code": "512480",
+      "fund_name": "Semiconductor ETF candidate",
+      "amount": 2174189014,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 2,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "bank_insurance",
+      "name": "Bank and Insurance",
+      "fund_code": "512800",
+      "fund_name": "Bank ETF candidate",
+      "amount": 1186670038,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 3,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "brokerage",
+      "name": "Brokerage",
+      "fund_code": "512000",
+      "fund_name": "Brokerage ETF candidate",
+      "amount": 1179412000,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 4,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "ai_computer",
+      "name": "AI and Computer",
+      "fund_code": "159819",
+      "fund_name": "AI ETF candidate",
+      "amount": 885645224.663,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 5,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "resources_materials",
+      "name": "Resources and Materials",
+      "fund_code": "512400",
+      "fund_name": "Non-ferrous metals ETF candidate",
+      "amount": 694120149,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 6,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "defense_military",
+      "name": "Defense and Military",
+      "fund_code": "512660",
+      "fund_name": "Defense ETF candidate",
+      "amount": 537688881,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 7,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "name": "Healthcare and Pharma",
+      "fund_code": "512010",
+      "fund_name": "Healthcare ETF candidate",
+      "amount": 503831116,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 8,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "consumer",
+      "name": "Consumer",
+      "fund_code": "159928",
+      "fund_name": "Consumer ETF candidate",
+      "amount": 368710951.451,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 9,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "name": "New Energy Vehicle",
+      "fund_code": "515030",
+      "fund_name": "New energy vehicle ETF candidate",
+      "amount": 146700672,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 10,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "name": "Real Estate and Infrastructure",
+      "fund_code": "512200",
+      "fund_name": "Real estate ETF candidate",
+      "amount": 86463355,
+      "estimated_flow": null,
+      "estimated_flow_direction": "zero",
+      "estimated_flow_rank": null,
+      "amount_rank": 11,
+      "enable_candidate": true,
+      "manual_review_label": "manual_review_required:no_estimated_flow"
+    }
+  ],
   "interpretation_boundary": [
     "Observation-only ETF flow leaderboard.",
     "Rows rank representative ETF estimated flow and amount from AKShare provider outputs.",

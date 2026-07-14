@@ -52,7 +52,7 @@ const summary = {
   as_of: snapshot.as_of,
   generated_at: generatedAt,
   observation_state: "observe_only",
-  data_readiness: `${marketReport.mapped_pool_count}/${marketReport.mapped_pool_count + marketReport.unmapped_pool_count} market mapped; quality guardrail active`,
+  data_readiness: `Market OHLCV mapped: ${marketReport.ohlcv_mapped_count ?? marketReport.mapped_pool_count}/${marketReport.mapped_pool_count + marketReport.unmapped_pool_count}; Flow mapped: ${marketReport.flow_mapped_count ?? 0}; Fully mapped: ${marketReport.fully_mapped_count ?? 0}; quality guardrail active`,
   direct_evidence_ratio: qualityReport.direct_evidence_ratio,
   proxy_evidence_ratio: qualityReport.proxy_evidence_ratio,
   high_quality_count: qualityReport.high_quality_signal_count,

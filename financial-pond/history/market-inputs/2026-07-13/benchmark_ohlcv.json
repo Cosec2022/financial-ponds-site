@@ -1,0 +1,23 @@
+{
+  "instrument_type": "etf",
+  "symbol": "510300",
+  "exchange": "SH",
+  "trade_date": "2026-07-13",
+  "open": 4.802,
+  "high": 4.821,
+  "low": 4.719,
+  "close": 4.744,
+  "volume": 16190530.0,
+  "amount": 7705111563.0,
+  "source_provider": "akshare",
+  "source_endpoint": "fund_etf_hist_em",
+  "fallback_used": false,
+  "fetched_at": "2026-07-14T03:25:34.107018+00:00",
+  "as_of": "2026-07-13",
+  "status": "ok",
+  "missing_fields": [],
+  "error_chain": [],
+  "requested_as_of": "2026-07-13",
+  "date_fallback_used": false,
+  "fallback_reason": null
+}

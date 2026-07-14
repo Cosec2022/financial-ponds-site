@@ -1,17 +1,19 @@
 {
   "module_id": "candidate_state_model_v0_10_61",
   "as_of": "2026-07-13",
-  "generated_at": "2026-07-13T16:57:14.489Z",
+  "generated_at": "2026-07-14T03:25:38.974Z",
   "status": "state_model_available",
-  "candidate_count": 10,
+  "candidate_count": 15,
   "states_distribution": {
     "Overheated": 2,
     "Major Candidate": 4,
-    "Cooling": 4
+    "Cooling": 4,
+    "Noise": 5
   },
   "risk_gate_distribution": {
     "caution": 4,
-    "pass": 6
+    "pass": 6,
+    "insufficient_data": 5
   },
   "rows": [
     {
@@ -152,6 +154,76 @@
       "overheat_reason": "No strong overheat flag.",
       "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
       "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-13",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "candidate_state": "Noise",
+      "overheat_score": 22,
+      "major_wave_score": 79,
+      "risk_gate_status": "insufficient_data",
+      "state_reason": "Noise: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; liquidity support; baseline ready; score 79.",
+      "risk_gate_reason": "market confirmation incomplete",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-13",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "Bank and Insurance",
+      "candidate_state": "Noise",
+      "overheat_score": 8,
+      "major_wave_score": 79,
+      "risk_gate_status": "insufficient_data",
+      "state_reason": "Noise: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; liquidity support; baseline ready; score 79.",
+      "risk_gate_reason": "market confirmation incomplete",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-13",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "candidate_state": "Noise",
+      "overheat_score": 16,
+      "major_wave_score": 79,
+      "risk_gate_status": "insufficient_data",
+      "state_reason": "Noise: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; liquidity support; baseline ready; score 79.",
+      "risk_gate_reason": "market confirmation incomplete",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-13",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "candidate_state": "Noise",
+      "overheat_score": 28,
+      "major_wave_score": 79,
+      "risk_gate_status": "insufficient_data",
+      "state_reason": "Noise: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; liquidity support; baseline ready; score 79.",
+      "risk_gate_reason": "market confirmation incomplete",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-13",
+      "pool_id": "a_share_resources_materials",
+      "pool_name": "Resources and Materials",
+      "candidate_state": "Noise",
+      "overheat_score": 0,
+      "major_wave_score": 79,
+      "risk_gate_status": "insufficient_data",
+      "state_reason": "Noise: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; liquidity support; baseline ready; score 79.",
+      "risk_gate_reason": "market confirmation incomplete",
       "boundary": "observe_only; right-side model classification only"
     }
   ],

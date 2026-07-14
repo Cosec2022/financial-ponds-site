@@ -2,6 +2,17 @@ name: Financial Ponds Daily
 
 on:
   workflow_dispatch:
+    inputs:
+      as_of:
+        description: "Historical business date (YYYY-MM-DD); blank uses Hong Kong today"
+        required: false
+        type: string
+      replay_mode:
+        description: "live, historical_fetch, or offline_snapshot"
+        required: false
+        default: live
+        type: choice
+        options: [live, historical_fetch, offline_snapshot]
   schedule:
     # 16:45 Asia/Hong_Kong, after the A-share close and provider refresh window.
     - cron: "45 8 * * 1-5"
@@ -47,7 +58,8 @@ jobs:
       - name: Set daily time context
         run: |
           set -euo pipefail
-          AS_OF="$(TZ=Asia/Hong_Kong date +%F)"
+          AS_OF="${{ inputs.as_of }}"
+          if [[ -z "$AS_OF" ]]; then AS_OF="$(TZ=Asia/Hong_Kong date +%F)"; fi
           GENERATED_AT="$(TZ=UTC date +%Y-%m-%dT%H:%M:%SZ)"
           echo "AS_OF=$AS_OF" >> "$GITHUB_ENV"
           echo "GENERATED_AT=$GENERATED_AT" >> "$GITHUB_ENV"
@@ -91,6 +103,28 @@ jobs:
           cp "model_outputs/$AS_OF/daily_data_vault.json" ../../financial-pond/data/daily_data_vault.json
           cp "model_outputs/$AS_OF/news_review.json" ../../financial-pond/data/news_review.json
 
+      - name: Archive normalized market inputs
+        if: always()
+        working-directory: tools/financial-pond-framework
+        run: |
+          set -euo pipefail
+          if [[ "${{ inputs.replay_mode }}" == "offline_snapshot" ]]; then
+            npm run provider:history:archive -- --as-of "$AS_OF" --offline
+          elif [[ "${{ inputs.replay_mode }}" == "historical_fetch" ]]; then
+            npm run provider:history:archive -- --as-of "$AS_OF" --refresh-inputs --strict-exact-date
+          else
+            npm run provider:history:archive -- --as-of "$AS_OF"
+          fi
+
+      - name: Upload replayable market inputs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fp-market-inputs-${{ env.AS_OF }}
+          path: financial-pond/history/market-inputs/${{ env.AS_OF }}
+          if-no-files-found: warn
+          retention-days: 14
+
       - name: Build daily persistence
         run: |
           set -euo pipefail
@@ -115,6 +149,16 @@ jobs:
         run: |
           set -euo pipefail
           npm test
+
+      - name: Upload derived Financial Ponds data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fp-derived-${{ env.AS_OF }}
+          path: |
+            financial-pond/data
+            tools/financial-pond-framework/model_outputs/${{ env.AS_OF }}
+          retention-days: 14
 
       - name: Persist published data
         run: |
