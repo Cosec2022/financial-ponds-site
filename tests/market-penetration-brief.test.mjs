@@ -6,6 +6,8 @@ const input = { asOf: "2026-07-10", generatedAt: "2026-07-10T12:00:00.000Z", mar
 
 test("brief keeps media narratives outside verified facts and groups repeats", () => {
   const brief = buildMarketPenetrationBrief(input);
+  assert.equal(brief.schema_version, "market_penetration_report_v2");
+  assert.equal(brief.display_contract.affects_model_scores, false);
   assert.equal(brief.verified_facts.length, 0);
   assert.equal(brief.media_narratives.length, 2);
   assert.equal(brief.repeated_or_stale_items.some((item) => item.count === 2), true);
@@ -18,11 +20,13 @@ test("brief is deterministic and keeps hypotheses separate from facts", () => {
   const second = buildMarketPenetrationBrief(input);
   assert.deepEqual(first, second);
   assert.equal(first.possible_3_20_session_implications[0].kind, "hypothesis");
-  assert.equal(renderMarketPenetrationMarkdown(first).includes("## 8. 哪些变化可能与未来 3–20 个交易日有关"), true);
+  assert.equal(renderMarketPenetrationMarkdown(first).includes("## 3–20 个交易日假设"), true);
+  assert.equal(first.why_market_moved[0].confidence, "unverified");
 });
 
 test("source unavailability and empty unexplained moves are explicit", () => {
   const brief = buildMarketPenetrationBrief({ ...input, marketSignals: { rows: [] }, newsReview: {} });
   assert.equal(brief.source_status[0].status, "source_unavailable");
   assert.deepEqual(brief.unexplained_moves, []);
+  assert.equal(brief.why_market_moved[0].evidence_status, "not_a_causal_claim");
 });

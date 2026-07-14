@@ -12,6 +12,7 @@
     "preview": "npm run build && node scripts/preview.mjs",
     "deploy": "npm run build:site && npx wrangler@4.102.0 deploy",
     "fp:daily": "bash scripts/local/fp-daily.sh",
+    "fp:research": "node scripts/build-market-penetration-ai.mjs",
     "fp:backfill": "node scripts/local/fp-backfill.mjs",
     "fp:today": "bash scripts/local/fp-today-full-update.sh",
     "fp:summary": "node scripts/local/fp-progress-summary.mjs",
@@ -26,5 +27,5 @@
   "devDependencies": {
     "wrangler": "4.102.0"
   },
-  "version": "0.10.70"
+  "version": "0.10.72"
 }

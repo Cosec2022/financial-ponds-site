@@ -85,8 +85,7 @@ const candidateStates = new Set(["Noise", "Pulse", "Early Right", "Major Candida
 const riskGateStatuses = new Set(["pass", "caution", "block", "insufficient_data"]);
 
 function validateMarketPenetrationBrief(json) {
-  return json.schema_version === "market_penetration_brief_v1"
-    && Boolean(json.as_of)
+  const shared = Boolean(json.as_of)
     && Boolean(json.generated_at)
     && Boolean(json.coverage_window)
     && Array.isArray(json.source_status)
@@ -101,6 +100,48 @@ function validateMarketPenetrationBrief(json) {
     && Array.isArray(json.warnings)
     && json.media_narratives.every((item) => item.verification_status === "candidate" && item.evidence_status === "media_narrative")
     && json.possible_3_20_session_implications.every((item) => item.kind === "hypothesis" && item.status === "not_a_fact");
+  if (!shared) return false;
+  if (json.schema_version === "market_penetration_brief_v1") return true;
+  return json.schema_version === "market_penetration_report_v2"
+    && json.display_contract?.mode === "display_only"
+    && json.display_contract?.affects_model_scores === false
+    && Boolean(json.headline)
+    && Boolean(json.market_summary?.market_regime)
+    && Boolean(json.market_summary?.dominant_style)
+    && Boolean(json.market_summary?.capital_state)
+    && Boolean(json.market_summary?.action_boundary)
+    && Array.isArray(json.what_happened)
+    && Array.isArray(json.why_market_moved)
+    && Array.isArray(json.a_share_transmission)
+    && Array.isArray(json.fp_cross_checks)
+    && Array.isArray(json.tomorrow_watch)
+    && ["strengthening", "cooling", "overheated", "weak"].every((key) => Array.isArray(json.sector_state_groups?.[key]))
+    && ["较高", "中等", "偏低"].includes(json.evidence_summary?.reliability)
+    && typeof json.evidence_summary?.total_pool_count === "number"
+    && typeof json.evidence_summary?.market_ohlcv_count === "number"
+    && typeof json.evidence_summary?.flow_available_count === "number"
+    && validateOptionalAiResearch(json);
+}
+
+
+function validateOptionalAiResearch(json) {
+  if (!json.ai_synthesis) return true;
+  if (!["generated", "failed", "unavailable", "skipped"].includes(json.ai_synthesis.status)) return false;
+  if (json.ai_synthesis.affects_model_scores !== false) return false;
+  if (json.ai_synthesis.status !== "generated") return true;
+  if (json.ai_synthesis.web_search_used !== true) return false;
+  if (!Array.isArray(json.research_sources) || json.research_sources.length < 3) return false;
+  const sourceIds = new Set(json.research_sources.map((source) => source.source_id));
+  if (sourceIds.size !== json.research_sources.length) return false;
+  if (!json.research_sources.every((source) => source.source_id && source.title && source.publisher && /^https?:\/\//.test(source.url))) return false;
+  const rows = [
+    ...(json.what_happened ?? []),
+    ...(json.why_market_moved ?? []),
+    ...(json.a_share_transmission ?? []),
+    ...(json.fp_cross_checks ?? []),
+    ...(json.tomorrow_watch ?? [])
+  ];
+  return rows.every((row) => (row.source_ids ?? []).every((id) => sourceIds.has(id)));
 }
 
 function validatePointer(json) {
@@ -353,6 +394,17 @@ try {
   if (archive.module_id !== "observation_archive_v0_10_64" || archive.as_of !== pointer.latest_as_of || !archive.market_signal_report || !archive.pool_market_signals || !archive.pool_instrument_map || !archive.pool_mapping_report || !archive.signal_quality_report || !archive.pool_signal_quality || !archive.evening_observation_summary || !archive.pool_observation_scores || !archive.evening_report || !archive.observation_candidate_ledger || !archive.score_calibration_report || !archive.candidate_state_model || !archive.candidate_review_schedule || !archive.candidate_outcome_reviews || !archive.outcome_review_report || !archive.candidate_due_review_verification || !archive.candidate_price_basis || !archive.review_readiness_report || !archive.candidate_review_history || !archive.candidate_review_analytics) failures.push(`${pointer.latest_path}: archive contract check failed`);
 } catch (error) {
   failures.push(`history/observations archive: ${error.message}`);
+}
+
+
+try {
+  const [pointer, brief] = await Promise.all([
+    readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8").then(JSON.parse),
+    readFile(resolve(root, "financial-pond", "data", "market_penetration_brief.json"), "utf8").then(JSON.parse)
+  ]);
+  if (brief.as_of !== pointer.latest_as_of) failures.push(`market_penetration_brief.json: as_of ${brief.as_of} does not match latest observation ${pointer.latest_as_of}`);
+} catch (error) {
+  failures.push(`market penetration freshness: ${error.message}`);
 }
 
 try {
