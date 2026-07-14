@@ -1,14 +1,14 @@
 {
   "module_id": "score_calibration_report_v0_10_57",
   "as_of": "2026-07-13",
-  "generated_at": "2026-07-14T03:25:38.853Z",
+  "generated_at": "2026-07-14T06:43:49.562Z",
   "strong_count": 0,
-  "moderate_count": 0,
-  "weak_count": 22,
+  "moderate_count": 22,
+  "weak_count": 0,
   "insufficient_count": 45,
   "score_min": 0,
-  "score_max": 49,
-  "score_median": 0.8,
+  "score_max": 73,
+  "score_median": 25.6,
   "score_distribution": [
     {
       "range": "77-100",
@@ -16,11 +16,11 @@
     },
     {
       "range": "55-76.9999",
-      "count": 0
+      "count": 22
     },
     {
       "range": "35-54.9999",
-      "count": 22
+      "count": 0
     },
     {
       "range": "0-34.9999",
@@ -33,9 +33,7 @@
     "weak_observe": "final_score >= 35; usable evidence and at least one market observation",
     "insufficient": "below calibrated gates, unavailable mapping, or insufficient usable evidence"
   },
-  "suspicious_distribution_flags": [
-    "moderate_count_zero"
-  ],
+  "suspicious_distribution_flags": [],
   "calibration_notes": [
     "Score components are persisted per pool for audit.",
     "Magnitude and market confirmation separate direct-evidence pools that previously shared one coarse score.",

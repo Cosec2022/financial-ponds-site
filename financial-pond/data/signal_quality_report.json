@@ -1,7 +1,7 @@
 {
   "module_id": "signal_quality_report_v0_10_55",
   "as_of": "2026-07-13",
-  "generated_at": "2026-07-14T03:25:38.656Z",
+  "generated_at": "2026-07-14T06:43:49.352Z",
   "total_pool_count": 67,
   "mapped_pool_count": 63,
   "direct_evidence_count": 23,
@@ -10,7 +10,7 @@
   "direct_evidence_ratio": 0.3433,
   "proxy_evidence_ratio": 0.597,
   "proxy_risk_level": "high",
-  "confidence_cap_applied_count": 62,
+  "confidence_cap_applied_count": 124,
   "high_quality_signal_count": 22,
   "medium_quality_signal_count": 24,
   "low_quality_signal_count": 16,
