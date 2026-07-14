@@ -123,7 +123,7 @@ function brief(fixture) {
 }
 
 function stripBriefNarratives(value) {
-  const { media_narratives, unsupported_narratives, repeated_or_stale_items, ...model } = value;
+  const { media_narratives, unsupported_narratives, repeated_or_stale_items, why_market_moved, a_share_transmission, ...model } = value;
   return model;
 }
 

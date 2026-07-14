@@ -3,154 +3,152 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Financial Ponds | Observation Dashboard</title>
+    <meta name="description" content="Financial Ponds A股行业观察面板：先看市场结论，再看穿透逻辑、板块状态与复盘证据。">
+    <title>Financial Ponds | A股行业观察面板</title>
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
-    <header class="topbar">
-      <div>
-        <p class="eyebrow">CosecLab · Financial Ponds</p>
-        <h1>v0.10.70 Observation Dashboard</h1>
-        <p class="subline">observe_only · not investment advice · insufficient outcome history</p>
+    <header class="app-header">
+      <a class="brand" href="./" aria-label="Financial Ponds 首页">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>
+          <strong>Financial Ponds</strong>
+          <small>A股行业观察面板</small>
+        </span>
+      </a>
+      <div class="header-meta" aria-label="数据状态">
+        <span>数据日期 <strong id="headerDataDate">--</strong></span>
+        <span class="meta-divider" aria-hidden="true"></span>
+        <span>模式 <strong>observe only</strong></span>
+        <span id="headerFreshness" class="freshness-pill neutral">正在读取</span>
       </div>
-      <span class="state-mark">observe_only</span>
     </header>
 
     <main class="dashboard">
-      <section class="zone status-zone" aria-labelledby="todayStatusTitle">
-        <div class="section-head">
+      <section class="hero-card" aria-labelledby="marketConclusionTitle">
+        <div class="hero-heading">
           <div>
-            <p class="section-kicker">1 · 今日状态</p>
-            <h2 id="todayStatusTitle">Today Status</h2>
+            <p class="section-kicker"><span class="kicker-icon">★</span> 今晚市场结论</p>
+            <h1 id="marketConclusionTitle">正在生成今晚的市场结论…</h1>
           </div>
-          <span class="boundary">observe_only</span>
+          <span class="observe-badge">仅作观察，不构成投资建议</span>
         </div>
-        <div id="todayStatus" class="status-grid">Loading today status.</div>
+        <div id="marketStatusCards" class="market-status-grid" aria-live="polite"></div>
       </section>
 
-      <section class="workspace" aria-label="observation candidates and selected candidate">
-        <section class="zone candidates-zone" aria-labelledby="candidateTitle">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">2 · 今日观察候选</p>
-              <h2 id="candidateTitle">Observation Candidates</h2>
-            </div>
-            <span class="quiet-label">Top 5</span>
+      <section class="panel penetration-panel" aria-labelledby="penetrationTitle">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker"><span class="kicker-icon">↗</span> 核心解释层</p>
+            <h2 id="penetrationTitle">每日市场穿透</h2>
+            <p>把事实、媒体叙事、A股传导和明日验证条件分开显示。</p>
           </div>
-          <div id="candidateList" class="candidate-list">Loading candidates.</div>
+          <div class="section-meta">
+            <span id="briefAsOf">报告日期 --</span>
+            <span id="briefModeBadge" class="display-only-badge">规则解释</span>
+          </div>
+        </div>
+        <div id="briefStaleWarning" class="stale-warning" hidden></div>
+        <div class="penetration-grid">
+          <article class="insight-card">
+            <h3><span class="insight-icon">▤</span> 今天发生了什么</h3>
+            <div id="whatHappened" class="insight-list loading-copy">正在读取市场事实…</div>
+          </article>
+          <article class="insight-card">
+            <h3><span class="insight-icon">◎</span> 市场为什么这样走</h3>
+            <div id="whyMarketMoved" class="driver-list loading-copy">正在读取驱动解释…</div>
+          </article>
+          <article class="insight-card wide-card">
+            <h3><span class="insight-icon">⌁</span> 对A股的传导</h3>
+            <div id="aShareTransmission" class="transmission-list loading-copy">正在生成传导链…</div>
+          </article>
+          <article class="insight-card">
+            <h3><span class="insight-icon">✓</span> FP 如何交叉验证</h3>
+            <div id="fpCrossChecks" class="cross-check-list loading-copy">正在匹配新闻与硬数据…</div>
+          </article>
+          <article class="insight-card">
+            <h3><span class="insight-icon">◉</span> 明天看什么</h3>
+            <div id="tomorrowWatch" class="watch-list loading-copy">正在生成验证条件…</div>
+          </article>
+        </div>
+        <div id="researchSources" class="research-sources" hidden></div>
+      </section>
+
+      <section class="panel" aria-labelledby="sectorMapTitle">
+        <div class="section-heading compact-heading">
+          <div>
+            <p class="section-kicker"><span class="kicker-icon">⌁</span> 一眼看懂强弱阶段</p>
+            <h2 id="sectorMapTitle">板块状态地图</h2>
+          </div>
+          <span class="quiet-note">状态优先于单一分数</span>
+        </div>
+        <div id="sectorStateMap" class="sector-map-grid loading-copy">正在整理板块状态…</div>
+      </section>
+
+      <section class="decision-grid">
+        <section class="panel candidates-panel" aria-labelledby="candidateTitle">
+          <div class="section-heading compact-heading">
+            <div>
+              <p class="section-kicker"><span class="kicker-icon">☆</span> 当前观察优先级</p>
+              <h2 id="candidateTitle">Top 5 候选</h2>
+            </div>
+            <span class="quiet-note">点击行查看技术细节</span>
+          </div>
+          <div id="candidateTable" class="candidate-table loading-copy">正在读取候选…</div>
+          <div id="selectedCandidate" class="selected-candidate" aria-live="polite"></div>
         </section>
 
-        <section class="zone detail-zone" aria-labelledby="selectedTitle">
-          <div class="section-head">
+        <section class="panel evidence-panel" aria-labelledby="evidenceTitle">
+          <div class="section-heading compact-heading">
             <div>
-              <p class="section-kicker">3 · 为什么上榜</p>
-              <h2 id="selectedTitle">Selected Candidate</h2>
+              <p class="section-kicker"><span class="kicker-icon">◆</span> 结论可信度</p>
+              <h2 id="evidenceTitle">证据与复盘</h2>
             </div>
           </div>
-          <div id="selectedCandidate">Selected Candidate: State / Overheat / Major Wave / Risk Gate loading.</div>
+          <div id="evidenceReview" class="loading-copy">正在读取证据质量…</div>
         </section>
       </section>
 
-      <section class="bottom-grid">
-        <section class="zone quality-zone" aria-labelledby="qualityTitle">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">4 · 证据可靠吗</p>
-              <h2 id="qualityTitle">Evidence Quality</h2>
-            </div>
+      <section class="advanced-section" aria-label="高级诊断">
+        <details>
+          <summary>
+            <span><span class="summary-icon">▱</span> 高级诊断（点击展开）</span>
+            <small>原始分项、复盘原因与 JSON</small>
+          </summary>
+          <div class="advanced-grid">
+            <article>
+              <h3>数据健康</h3>
+              <div id="dataHealth" class="detail-content">正在读取…</div>
+            </article>
+            <article>
+              <h3>当前候选信号</h3>
+              <div id="signalDetails" class="detail-content">请选择候选。</div>
+            </article>
+            <article>
+              <h3>复盘详情</h3>
+              <div id="reviewDetails" class="detail-content">正在读取…</div>
+            </article>
           </div>
-          <div id="evidenceQuality">Loading evidence quality.</div>
-        </section>
-
-        <section class="zone review-zone" aria-labelledby="reviewTitle">
-          <div class="section-head">
-            <div>
-              <p class="section-kicker">5 · 什么时候复盘</p>
-              <h2 id="reviewTitle">Review Schedule</h2>
-            </div>
-          </div>
-          <div id="reviewSchedule">Loading review schedule.</div>
-          <div id="outcomeReviewLine" class="caution-line">Outcome Review: loading.</div>
-          <div id="reviewReadinessLine" class="caution-line">Review Readiness: loading.</div>
-          <div id="reviewAnalyticsLine" class="caution-line">Review Analytics: loading.</div>
-        </section>
-      </section>
-
-      <section class="zone brief-zone" aria-labelledby="briefTitle">
-        <div class="section-head"><div><p class="section-kicker">6 · 市场穿透</p><h2 id="briefTitle">Market Penetration Brief</h2></div><span class="boundary">display_only</span></div>
-        <div id="marketPenetrationBrief" class="brief-content">Loading market penetration brief.</div>
-      </section>
-
-      <section class="collapsed-groups" aria-label="collapsed observation details">
-        <details>
-          <summary>Data Health</summary>
-          <div id="dataHealth" class="detail-content">Loading data health.</div>
-        </details>
-        <details>
-          <summary>Signal Details</summary>
-          <div id="signalDetails" class="detail-content">Select a candidate.</div>
-        </details>
-        <details>
-          <summary>Review Details</summary>
-          <div id="reviewDetails" class="detail-content">Loading review details.</div>
-        </details>
-        <details>
-          <summary>Advanced Diagnostics</summary>
-          <div class="diagnostic-links">
-            <a href="./data/dashboard.json">dashboard.json</a>
-            <a href="./data/general_pool_analysis.json">general_pool_analysis.json</a>
-            <a href="./data/sector_flow_review.json">sector_flow_review.json</a>
-            <a href="./data/sector_rotation_intelligence.json">sector_rotation_intelligence.json</a>
-            <a href="./data/sector_rotation_history.json">sector_rotation_history.json</a>
-            <a href="./data/sector_module_review.json">sector_module_review.json</a>
-            <a href="./data/etf_decision_readiness.json">etf_decision_readiness.json</a>
-            <a href="./data/data_reality_audit.json">data_reality_audit.json</a>
-            <a href="./data/daily_sector_analysis.json">daily_sector_analysis.json</a>
-            <a href="./data/module_maturity_audit.json">module_maturity_audit.json</a>
-            <a href="./data/etf_flow_leaderboard.json">etf_flow_leaderboard.json</a>
-            <a href="./data/sector_signal_attribution.json">sector_signal_attribution.json</a>
-            <a href="./data/sector_watchlist_state.json">sector_watchlist_state.json</a>
-            <a href="./data/decision_gate_ledger.json">decision_gate_ledger.json</a>
-            <a href="./data/index_explainability.json">index_explainability.json</a>
-            <a href="./data/observation_snapshot.json">observation_snapshot.json</a>
-            <a href="./data/manual_review_log.json">manual_review_log.json</a>
-            <a href="./data/outcome_labels.json">outcome_labels.json</a>
-            <a href="./data/daily_data_vault.json">daily_data_vault.json</a>
-            <a href="./data/flow_channel_report.json">flow_channel_report.json</a>
-            <a href="./data/pool_flow_signals.json">pool_flow_signals.json</a>
-            <a href="./data/market_signal_report.json">market_signal_report.json</a>
-            <a href="./data/pool_market_signals.json">pool_market_signals.json</a>
-            <a href="./data/pool_instrument_map.json">pool_instrument_map.json</a>
-            <a href="./data/pool_mapping_report.json">pool_mapping_report.json</a>
-            <a href="./data/signal_quality_report.json">signal_quality_report.json</a>
-            <a href="./data/pool_signal_quality.json">pool_signal_quality.json</a>
-            <a href="./data/evening_observation_summary.json">evening_observation_summary.json</a>
-            <a href="./data/pool_observation_scores.json">pool_observation_scores.json</a>
-            <a href="./data/evening_report.md">evening_report.md</a>
-            <a href="./data/observation_candidate_ledger.json">observation_candidate_ledger.json</a>
-            <a href="./data/score_calibration_report.json">score_calibration_report.json</a>
-            <a href="./data/candidate_state_model.json">candidate_state_model.json</a>
-            <a href="./data/candidate_review_schedule.json">candidate_review_schedule.json</a>
-            <a href="./data/candidate_outcome_reviews.json">candidate_outcome_reviews.json</a>
-            <a href="./data/outcome_review_report.json">outcome_review_report.json</a>
-            <a href="./data/candidate_due_review_verification.json">candidate_due_review_verification.json</a>
-            <a href="./data/candidate_price_basis.json">candidate_price_basis.json</a>
-            <a href="./data/review_readiness_report.json">review_readiness_report.json</a>
-            <a href="./data/candidate_review_history.json">candidate_review_history.json</a>
-            <a href="./data/candidate_review_analytics.json">candidate_review_analytics.json</a>
-            <a href="./data/data_coverage_report.json">data_coverage_report.json</a>
-            <a href="./data/coverage_history.json">coverage_history.json</a>
-            <a href="./data/history/observations/">history/observations/</a>
-            <a href="./data/history/latest_observation_pointer.json">latest_observation_pointer.json</a>
-            <a href="./data/daily_delta_report.json">daily_delta_report.json</a>
-            <a href="./data/pool_delta_signals.json">pool_delta_signals.json</a>
-            <a href="./data/daily_delta_history.json">daily_delta_history.json</a>
-            <a href="./data/news_review.json">news_review.json</a>
-            <a href="./data/pond_map.json">pond_map.json</a>
+          <div class="diagnostic-links" aria-label="原始数据链接">
+            <a href="./data/evening_observation_summary.json">晚间总结</a>
+            <a href="./data/market_penetration_brief.json">市场穿透 JSON</a>
+            <a href="./data/observation_candidate_ledger.json">候选台账</a>
+            <a href="./data/pool_observation_scores.json">观察分数</a>
+            <a href="./data/candidate_state_model.json">右侧状态</a>
+            <a href="./data/signal_quality_report.json">证据质量</a>
+            <a href="./data/data_coverage_report.json">数据覆盖</a>
+            <a href="./data/outcome_review_report.json">复盘报告</a>
+            <a href="./data/candidate_review_analytics.json">复盘分析</a>
+            <a href="./data/history/latest_observation_pointer.json">历史指针</a>
           </div>
         </details>
       </section>
     </main>
+
+    <footer class="app-footer">
+      <span>Financial Ponds v0.10.72</span>
+      <span>observe_only · outcome history insufficient</span>
+    </footer>
 
     <script src="./app.js" type="module"></script>
   </body>

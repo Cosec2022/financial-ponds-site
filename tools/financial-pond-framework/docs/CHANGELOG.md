@@ -1,4 +1,19 @@
+## v0.10.72 - Daily AI web-research interpretation layer
+
+- Added optional OpenAI Responses API web search after deterministic FP daily persistence.
+- Added strict structured-output schema, source IDs, source cards, uncertainty disclosure, and fail-open fallback.
+- AI research is display-only and cannot alter scores, ranks, candidate states, risk gates, or review outcomes.
+- Frontend now labels AI-vs-rule explanation mode and exposes clickable research sources.
+
 # Changelog
+
+## v0.10.71 - Decision-oriented dashboard and daily penetration report
+
+- Rebuilt the homepage around a plain-language market conclusion, daily market penetration, sector-state map, Top 5 observation table, and evidence/review panel.
+- Moved raw model fields and review-reason diagnostics into a collapsed advanced section while preserving the observe-only boundary.
+- Upgraded the display-only market penetration artifact to `market_penetration_report_v2`, with deterministic FP cross-checks, tomorrow-watch conditions, evidence summary, and explicit unverified narrative labels.
+- Added the penetration build to the daily persistence chain and fail-closed freshness validation against the latest observation date.
+- Persisted the dated Markdown penetration report alongside daily published data.
 
 ## v0.10.69
 

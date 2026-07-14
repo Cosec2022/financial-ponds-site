@@ -49,12 +49,18 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.ok(workflow.indexOf("npm run observation:snapshot") > workflow.indexOf("npm run index:explain"));
   assert.ok(workflow.lastIndexOf("npm run data:vault") > workflow.indexOf("npm run observation:snapshot"));
   assert.match(workflow, /npm run fp:daily/);
+  assert.equal(siteScripts["fp:research"], "node scripts/build-market-penetration-ai.mjs");
+  assert.match(workflow, /OPENAI_API_KEY: \$\{\{ secrets\.OPENAI_API_KEY \}\}/);
+  assert.match(workflow, /FP_MARKET_RESEARCH_MODEL/);
+  assert.match(workflow, /name: Build AI market penetration \(display only\)/);
+  assert.match(workflow, /npm run fp:research/);
   assert.match(siteScripts["build:data"], /fp:daily/);
   assert.equal(siteScripts["build:site"], "bash scripts/build-site.sh");
   assert.match(workflow, /name: Set daily time context/);
   assert.match(workflow, /TZ=Asia\/Hong_Kong date \+%F/);
   assert.match(workflow, /GENERATED_AT=/);
-  assert.ok(workflow.indexOf("npm run fp:daily") < workflow.indexOf("npm run build:site"));
+  assert.ok(workflow.indexOf("npm run fp:daily") < workflow.indexOf("npm run fp:research"));
+  assert.ok(workflow.indexOf("npm run fp:research") < workflow.indexOf("npm run build:site"));
   assert.ok(workflow.indexOf("npm run validate:data") > workflow.indexOf("npm run build:site"));
   assert.match(workflow, /name: Build site and Worker/);
   assert.match(workflow, /name: Validate Worker artifact/);
@@ -220,7 +226,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.70 release preserves review contract and adds display-only brief", async () => {
+test("v0.10.72 release adds daily AI web research without changing model boundaries", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -229,15 +235,22 @@ test("v0.10.70 release preserves review contract and adds display-only brief", a
     readFile("package.json", "utf8"),
     readFile("tools/financial-pond-framework/package.json", "utf8")
   ]);
-  assert.match(index, /v0\.10\.70 Observation Dashboard/);
-  assert.match(index, /Market Penetration Brief/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.70");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.70");
+  assert.match(index, /Financial Ponds/);
+  assert.match(index, /v0\.10\.72/);
+  assert.match(index, /每日市场穿透/);
+  assert.equal(JSON.parse(sitePackage).version, "0.10.72");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.72");
   assert.match(changelog, /v0\.10\.65/);
   assert.match(modelDoc, /Version: v0\.10\.65/);
   assert.match(app, /A-share benchmark proxy: 510300/);
   assert.match(app, /not the complete A-share market/);
   assert.match(app, /market_penetration_brief\.json/);
+  assert.match(app, /穿透已过期/);
+  assert.match(app, /可跟踪，不追高/);
+  assert.match(app, /AI联网研究/);
+  assert.match(app, /research_sources/);
+  assert.match(index, /briefModeBadge/);
+  assert.match(index, /researchSources/);
   for (const reason of ["pending_not_due", "pending_market_open", "awaiting_eod_data", "stale_data", "missing_price", "missing_benchmark", "calendar_unknown", "invalid_baseline"]) {
     assert.match(app, new RegExp(reason));
   }

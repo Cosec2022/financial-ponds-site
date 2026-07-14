@@ -24,6 +24,7 @@ node scripts/build-daily-outcome-label-ledger.mjs
 node scripts/build-candidate-review-analytics.mjs
 node scripts/build-longitudinal-coverage-report.mjs
 node scripts/archive-observation-snapshot.mjs
+node scripts/build-market-penetration-brief.mjs
 npm run validate:data
 
 echo "Financial Ponds daily persistence complete"

@@ -27,6 +27,9 @@ jobs:
       TZ: Asia/Hong_Kong
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      FP_MARKET_RESEARCH_MODEL: ${{ vars.FP_MARKET_RESEARCH_MODEL || 'gpt-5.6-terra' }}
+      FP_MARKET_RESEARCH_REASONING: ${{ vars.FP_MARKET_RESEARCH_REASONING || 'medium' }}
 
     steps:
       - name: Checkout
@@ -130,6 +133,11 @@ jobs:
           set -euo pipefail
           npm run fp:daily
 
+      - name: Build AI market penetration (display only)
+        run: |
+          set -euo pipefail
+          npm run fp:research
+
       - name: Build site and Worker
         run: |
           set -euo pipefail
@@ -157,6 +165,7 @@ jobs:
           name: fp-derived-${{ env.AS_OF }}
           path: |
             financial-pond/data
+            reports/market-penetration/${{ env.AS_OF }}.md
             tools/financial-pond-framework/model_outputs/${{ env.AS_OF }}
           retention-days: 14
 
@@ -166,6 +175,9 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add financial-pond/data
+          if [[ -f "reports/market-penetration/${AS_OF}.md" ]]; then
+            git add "reports/market-penetration/${AS_OF}.md"
+          fi
           git add tools/financial-pond-framework/data/provider_exports/*.csv
           if [[ -f tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json ]]; then
             git add tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json
