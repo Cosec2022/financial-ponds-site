@@ -229,7 +229,7 @@ test("v0.10.69 release preserves review contract and adds display-only brief", a
     readFile("package.json", "utf8"),
     readFile("tools/financial-pond-framework/package.json", "utf8")
   ]);
-  assert.match(index, /v0\.10\.66 Observation Dashboard/);
+  assert.match(index, /v0\.10\.69 Observation Dashboard/);
   assert.match(index, /Market Penetration Brief/);
   assert.equal(JSON.parse(sitePackage).version, "0.10.69");
   assert.equal(JSON.parse(frameworkPackage).version, "0.10.69");
