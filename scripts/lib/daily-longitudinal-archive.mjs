@@ -8,7 +8,10 @@ export async function appendImmutableSnapshot({ rootDir, snapshot, correctionRea
   await mkdir(dayDir, { recursive: true });
   const existing = await snapshotsForDate(dayDir);
   const canonicalContentHash = contentHash(withoutMutableFields(snapshot));
-  const same = existing.find((item) => item.content_hash === canonicalContentHash);
+  // Compare canonical content as well as the stored hash. Older records used a
+  // shallow timestamp projection, so recomputing keeps them compatible after
+  // the deep operational-metadata normalization below.
+  const same = existing.find((item) => contentHash(withoutMutableFields(item)) === canonicalContentHash);
   if (same) return { record: same, created: false, index: await rebuildDailyIndex({ rootDir }) };
   const prior = existing.at(-1) ?? null;
   const revision = existing.length + 1;
@@ -49,5 +52,29 @@ export async function snapshotsForDate(dayDir) {
 }
 
 function compact(record) { return { snapshot_id: record.snapshot_id, as_of: record.as_of, revision: record.revision, finality_status: record.finality_status, content_hash: record.content_hash, supersedes_snapshot_id: record.supersedes_snapshot_id, correction_reason: record.correction_reason, row_count: record.row_count, model_version: record.model_version, path: `financial-pond/data/history/daily/${record.as_of}/${safe(record.snapshot_id)}.json` }; }
-function withoutMutableFields(snapshot) { const { content_hash, checksum, snapshot_id, revision, supersedes_snapshot_id, correction_reason, generated_at, ...content } = snapshot; return content; }
+function withoutMutableFields(snapshot) {
+  return stripGeneratedAt({
+    ...snapshot,
+    content_hash: undefined,
+    checksum: undefined,
+    snapshot_id: undefined,
+    revision: undefined,
+    supersedes_snapshot_id: undefined,
+    correction_reason: undefined,
+    provenance: undefined,
+    model_commit: undefined,
+    generated_at: undefined
+  });
+}
+
+// A snapshot embeds the daily reports that produced it.  Their timestamps are
+// operational metadata, not historical business facts, so none of them may
+// change an immutable archive revision.
+function stripGeneratedAt(value) {
+  if (Array.isArray(value)) return value.map(stripGeneratedAt);
+  if (!value || typeof value !== "object") return value;
+  return Object.fromEntries(Object.entries(value)
+    .filter(([key, item]) => key !== "generated_at" && item !== undefined)
+    .map(([key, item]) => [key, stripGeneratedAt(item)]));
+}
 function safe(id) { return String(id).replace(/[^A-Za-z0-9._-]/g, "_"); }
