@@ -1,17 +1,25 @@
 {
   "module_id": "candidate_review_schedule_v0_10_63",
   "as_of": "2026-07-13",
-  "generated_at": "2026-07-13T16:57:13Z",
-  "candidate_count": 0,
-  "pending_t1_count": 0,
-  "pending_t3_count": 0,
-  "pending_t5_count": 0,
-  "pending_t20_count": 0,
+  "generated_at": "2026-07-14T03:25:37.967Z",
+  "candidate_count": 5,
+  "pending_t1_count": 5,
+  "pending_t3_count": 5,
+  "pending_t5_count": 5,
+  "pending_t20_count": 5,
   "next_review_dates": {
-    "t1": [],
-    "t3": [],
-    "t5": [],
-    "t20": []
+    "t1": [
+      "2026-07-14"
+    ],
+    "t3": [
+      "2026-07-16"
+    ],
+    "t5": [
+      "2026-07-20"
+    ],
+    "t20": [
+      "2026-08-10"
+    ]
   },
   "boundary_notes": [
     "observe_only",
@@ -19,10 +27,15 @@
     "Future outcomes remain pending until their due date and source data are available."
   ],
   "reviewed_count": 0,
-  "pending_count": 30,
+  "pending_count": 50,
   "unavailable_count": 10,
   "insufficient_count": 0,
   "next_due_reviews": [
+    {
+      "date": "2026-07-14",
+      "horizon": "T+1",
+      "count": 5
+    },
     {
       "date": "2026-07-14",
       "horizon": "T+3",

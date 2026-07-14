@@ -61,7 +61,7 @@ const rows = (marketFile.rows ?? []).map((market) => {
 });
 
 const mappedRows = rows.filter((row) => !["unmapped", "unavailable"].includes(row.mapping_status));
-const directRows = rows.filter((row) => ["direct_index", "direct_etf"].includes(row.mapping_status));
+const directRows = rows.filter((row) => ["mapped", "direct_index", "direct_etf"].includes(row.mapping_status));
 const proxyRows = rows.filter((row) => ["sector_proxy", "broad_proxy"].includes(row.mapping_status));
 const counts = countQuality(rows);
 const generatedAt = new Date().toISOString();

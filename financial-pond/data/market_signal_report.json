@@ -1,21 +1,24 @@
 {
   "module_id": "market_signal_report_v0_10_54",
   "as_of": "2026-07-13",
-  "generated_at": "2026-07-13T16:57:14.149Z",
+  "generated_at": "2026-07-14T03:25:38.616Z",
   "source_files_used": [
     "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
     "tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json"
   ],
   "source_row_count": 11,
-  "mapped_pool_count": 0,
-  "unmapped_pool_count": 67,
+  "mapped_pool_count": 62,
+  "ohlcv_mapped_count": 62,
+  "flow_mapped_count": 0,
+  "fully_mapped_count": 0,
+  "unmapped_pool_count": 5,
   "momentum_signal_count": 0,
-  "liquidity_signal_count": 0,
+  "liquidity_signal_count": 62,
   "missing_momentum_count": 67,
-  "missing_liquidity_count": 67,
-  "coverage_ratio": 0,
-  "mapping_method": "pool_instrument_map instrument_code to the latest a_share_etf_daily.csv fund_code",
+  "missing_liquidity_count": 5,
+  "coverage_ratio": 0.4627,
+  "mapping_method": "pool_instrument_map instrument_code to exact-or-earlier a_share_etf_daily.csv fund_code; rejects future rows",
   "unmapped_examples": [
     {
       "pool_id": "a_share_a_share",
@@ -23,23 +26,23 @@
       "reason": "Independent exact-date benchmark history row."
     },
     {
-      "pool_id": "a_share_a_share_agriculture",
-      "pool_name": "a_share_agriculture",
+      "pool_id": "a_share_btc",
+      "pool_name": "btc",
       "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_a_share_ai_computer",
-      "pool_name": "a_share_ai_computer",
+      "pool_id": "a_share_gold",
+      "pool_name": "gold",
       "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_a_share_bank_insurance",
-      "pool_name": "a_share_bank_insurance",
+      "pool_id": "a_share_sp500",
+      "pool_name": "sp500",
       "reason": "No defensible instrument is present in the current provider export."
     },
     {
-      "pool_id": "a_share_a_share_basic_chemicals",
-      "pool_name": "a_share_basic_chemicals",
+      "pool_id": "a_share_us_equity",
+      "pool_name": "us_equity",
       "reason": "No defensible instrument is present in the current provider export."
     }
   ],

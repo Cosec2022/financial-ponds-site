@@ -1,0 +1,1286 @@
+{
+  "module_id": "market_penetration_diagnostics_v1",
+  "as_of": "2026-07-13",
+  "generated_at": "2026-07-14T03:25:38.616Z",
+  "summary": {
+    "total_slots": 67,
+    "ohlcv_mapped": 62,
+    "flow_mapped": 0,
+    "fully_mapped": 0
+  },
+  "slots": [
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share",
+      "pool_id": "a_share_a_share",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "510300",
+      "mapping_status": "missing_ohlcv",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": null,
+      "available_fields": [],
+      "missing_fields": [
+        "close",
+        "volume",
+        "amount"
+      ],
+      "missing_reason": "Independent exact-date benchmark history row.",
+      "price_volume_ready": false,
+      "flow_ready": false,
+      "usable_for_model": false
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_agriculture",
+      "pool_id": "a_share_a_share_agriculture",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Agriculture represented cautiously by the available broad consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_ai_computer",
+      "pool_id": "a_share_a_share_ai_computer",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159819",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_bank_insurance",
+      "pool_id": "a_share_a_share_bank_insurance",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512800",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_basic_chemicals",
+      "pool_id": "a_share_a_share_basic_chemicals",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Basic chemicals share the available materials-cycle instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_beauty_care",
+      "pool_id": "a_share_a_share_beauty_care",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Beauty care is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_brokerage",
+      "pool_id": "a_share_a_share_brokerage",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512000",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_building_materials",
+      "pool_id": "a_share_a_share_building_materials",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512200",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Building materials share the available real-estate and infrastructure cycle instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_coal",
+      "pool_id": "a_share_a_share_coal",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Coal is represented by the available resources and materials instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_communication_electronics",
+      "pool_id": "a_share_a_share_communication_electronics",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515880",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_construction",
+      "pool_id": "a_share_a_share_construction",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512200",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Construction shares the available real-estate and infrastructure cycle instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_consumer",
+      "pool_id": "a_share_a_share_consumer",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_defense_military",
+      "pool_id": "a_share_a_share_defense_military",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512660",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_environmental_protection",
+      "pool_id": "a_share_a_share_environmental_protection",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515030",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_food_beverage",
+      "pool_id": "a_share_a_share_food_beverage",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Food and beverage is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_healthcare_pharma",
+      "pool_id": "a_share_a_share_healthcare_pharma",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512010",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_home_appliances",
+      "pool_id": "a_share_a_share_home_appliances",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Home appliances is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_light_manufacturing",
+      "pool_id": "a_share_a_share_light_manufacturing",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_machinery",
+      "pool_id": "a_share_a_share_machinery",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515030",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_media",
+      "pool_id": "a_share_a_share_media",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159819",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Media uses the available AI and computer instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_new_energy_ev",
+      "pool_id": "a_share_a_share_new_energy_ev",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515030",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_nonferrous_metals",
+      "pool_id": "a_share_a_share_nonferrous_metals",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Nonferrous metals is represented by the available resources and materials instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_petroleum_petrochemical",
+      "pool_id": "a_share_a_share_petroleum_petrochemical",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_real_estate_infra",
+      "pool_id": "a_share_a_share_real_estate_infra",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512200",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_resources_materials",
+      "pool_id": "a_share_a_share_resources_materials",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_retail",
+      "pool_id": "a_share_a_share_retail",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Retail is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_semiconductor",
+      "pool_id": "a_share_a_share_semiconductor",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512480",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "normalized legacy a_share_ sector prefix, then exact sector match",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_social_services",
+      "pool_id": "a_share_a_share_social_services",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Social services uses the available consumer instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_steel",
+      "pool_id": "a_share_a_share_steel",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Steel is represented by the available resources and materials instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_textile_apparel",
+      "pool_id": "a_share_a_share_textile_apparel",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Textile and apparel is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_transportation",
+      "pool_id": "a_share_a_share_transportation",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512200",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_a_share_utilities",
+      "pool_id": "a_share_a_share_utilities",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515030",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_agriculture",
+      "pool_id": "a_share_agriculture",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Agriculture represented cautiously by the available broad consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_ai_computer",
+      "pool_id": "a_share_ai_computer",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159819",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_bank_insurance",
+      "pool_id": "a_share_bank_insurance",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512800",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_basic_chemicals",
+      "pool_id": "a_share_basic_chemicals",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Basic chemicals share the available materials-cycle instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_beauty_care",
+      "pool_id": "a_share_beauty_care",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Beauty care is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_brokerage",
+      "pool_id": "a_share_brokerage",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512000",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_btc",
+      "pool_id": "a_share_btc",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": null,
+      "mapping_status": "missing_symbol_mapping",
+      "actual_trade_date": null,
+      "source_provider": null,
+      "available_fields": [],
+      "missing_fields": [
+        "close",
+        "volume",
+        "amount"
+      ],
+      "missing_reason": "No defensible instrument is present in the current provider export.",
+      "price_volume_ready": false,
+      "flow_ready": false,
+      "usable_for_model": false
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_building_materials",
+      "pool_id": "a_share_building_materials",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512200",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Building materials share the available real-estate and infrastructure cycle instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_coal",
+      "pool_id": "a_share_coal",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Coal is represented by the available resources and materials instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_communication_electronics",
+      "pool_id": "a_share_communication_electronics",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515880",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_construction",
+      "pool_id": "a_share_construction",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512200",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Construction shares the available real-estate and infrastructure cycle instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_consumer",
+      "pool_id": "a_share_consumer",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_defense_military",
+      "pool_id": "a_share_defense_military",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512660",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_environmental_protection",
+      "pool_id": "a_share_environmental_protection",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515030",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Environmental protection uses the available new-energy instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_food_beverage",
+      "pool_id": "a_share_food_beverage",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Food and beverage is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_gold",
+      "pool_id": "a_share_gold",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": null,
+      "mapping_status": "missing_symbol_mapping",
+      "actual_trade_date": null,
+      "source_provider": null,
+      "available_fields": [],
+      "missing_fields": [
+        "close",
+        "volume",
+        "amount"
+      ],
+      "missing_reason": "No defensible instrument is present in the current provider export.",
+      "price_volume_ready": false,
+      "flow_ready": false,
+      "usable_for_model": false
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_healthcare_pharma",
+      "pool_id": "a_share_healthcare_pharma",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512010",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_home_appliances",
+      "pool_id": "a_share_home_appliances",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Home appliances is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_light_manufacturing",
+      "pool_id": "a_share_light_manufacturing",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Light manufacturing uses the available consumer instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_machinery",
+      "pool_id": "a_share_machinery",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515030",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Machinery uses the available new-energy industrial instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_media",
+      "pool_id": "a_share_media",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159819",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Media uses the available AI and computer instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_new_energy_ev",
+      "pool_id": "a_share_new_energy_ev",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515030",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_nonferrous_metals",
+      "pool_id": "a_share_nonferrous_metals",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Nonferrous metals is represented by the available resources and materials instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_petroleum_petrochemical",
+      "pool_id": "a_share_petroleum_petrochemical",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Petroleum and petrochemical is represented by the available resources and materials instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_real_estate_infra",
+      "pool_id": "a_share_real_estate_infra",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512200",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_resources_materials",
+      "pool_id": "a_share_resources_materials",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_retail",
+      "pool_id": "a_share_retail",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Retail is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_semiconductor",
+      "pool_id": "a_share_semiconductor",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512480",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "exact sector_id match to provider ETF instrument",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_social_services",
+      "pool_id": "a_share_social_services",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Social services uses the available consumer instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_sp500",
+      "pool_id": "a_share_sp500",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": null,
+      "mapping_status": "missing_symbol_mapping",
+      "actual_trade_date": null,
+      "source_provider": null,
+      "available_fields": [],
+      "missing_fields": [
+        "close",
+        "volume",
+        "amount"
+      ],
+      "missing_reason": "No defensible instrument is present in the current provider export.",
+      "price_volume_ready": false,
+      "flow_ready": false,
+      "usable_for_model": false
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_steel",
+      "pool_id": "a_share_steel",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512400",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Steel is represented by the available resources and materials instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_textile_apparel",
+      "pool_id": "a_share_textile_apparel",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "159928",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Textile and apparel is represented by the available consumer instrument.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_transportation",
+      "pool_id": "a_share_transportation",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "512200",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Transportation uses the available infrastructure-linked instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_us_equity",
+      "pool_id": "a_share_us_equity",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": null,
+      "mapping_status": "missing_symbol_mapping",
+      "actual_trade_date": null,
+      "source_provider": null,
+      "available_fields": [],
+      "missing_fields": [
+        "close",
+        "volume",
+        "amount"
+      ],
+      "missing_reason": "No defensible instrument is present in the current provider export.",
+      "price_volume_ready": false,
+      "flow_ready": false,
+      "usable_for_model": false
+    },
+    {
+      "evidence_id": "market:2026-07-13:a_share_utilities",
+      "pool_id": "a_share_utilities",
+      "evidence_type": "representative_etf_market",
+      "representative_symbol": "515030",
+      "mapping_status": "mapped_ohlcv_only",
+      "actual_trade_date": "2026-07-13",
+      "source_provider": "akshare",
+      "available_fields": [
+        "close",
+        "amount",
+        "volume"
+      ],
+      "missing_fields": [],
+      "missing_reason": "Utilities uses the available new-energy instrument as a low-confidence proxy.",
+      "price_volume_ready": true,
+      "flow_ready": false,
+      "usable_for_model": true
+    }
+  ]
+}

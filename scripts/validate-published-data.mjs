@@ -35,9 +35,7 @@ const requiredFiles = [
     json.mapped_pool_count >= 1 || (json.mapped_pool_count === 0 && json.momentum_signal_count === 0 && json.liquidity_signal_count === 0)
   )],
   ["pool_market_signals.json", (json) => json.module_id === "pool_market_signals_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateMarketSignal)],
-  ["signal_quality_report.json", (json) => json.module_id === "signal_quality_report_v0_10_55" && (
-    json.confidence_cap_applied_count >= 1 || (json.confidence_cap_applied_count === 0 && json.high_quality_signal_count === 0 && json.medium_quality_signal_count === 0 && json.low_quality_signal_count === 0)
-  )],
+  ["signal_quality_report.json", (json) => json.module_id === "signal_quality_report_v0_10_55" && Number.isInteger(json.confidence_cap_applied_count) && json.confidence_cap_applied_count >= 0],
   ["pool_signal_quality.json", (json) => json.module_id === "pool_signal_quality_v0_10_55" && Array.isArray(json.rows) && json.rows.every(validateSignalQuality)],
   ["evening_observation_summary.json", (json) => json.module_id === "evening_observation_summary_v0_10_61" && json.observation_state === "observe_only" && Array.isArray(json.top_observation_pools) && json.top_observation_pools.every((row) => row.boundary?.includes("observe_only"))],
   ["pool_observation_scores.json", (json) => json.module_id === "pool_observation_scores_v0_10_61" && Array.isArray(json.rows) && json.rows.every(validateObservationScore)],

@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.10.69
+
+- Added FP-HIST-MKT-01 replayable normalized historical market-input snapshots.
+- Added bounded AKShare Eastmoney/Sina ETF history normalization, offline replay, and split OHLCV versus flow coverage diagnostics.
+
 ## v0.10.68 - Deterministic daily CI boundary
 
 - Fixed historical daily replays so outcome-review status is evaluated at the

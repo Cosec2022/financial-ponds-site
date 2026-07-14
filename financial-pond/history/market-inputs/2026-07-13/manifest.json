@@ -1,0 +1,32 @@
+{
+  "schema_version": "historical_market_input_v1",
+  "as_of": "2026-07-13",
+  "generated_at": "2026-07-14T03:25:34.110702+00:00",
+  "business_payload_hash": "12959aa587690875ea11002f4f164ea7f43b39c21f15b6e4c1fb7ab0734bcfd5",
+  "instruments_expected": 11,
+  "instruments_observed": 11,
+  "source_summary": {
+    "ok": 12,
+    "unavailable": 0,
+    "providers": [
+      "akshare"
+    ]
+  },
+  "missing_summary": {
+    "ok": 0,
+    "unavailable": 0,
+    "providers": []
+  },
+  "files": [
+    "etf_ohlcv.json",
+    "benchmark_ohlcv.json",
+    "share_flow.json",
+    "market_calendar.json",
+    "provider_audit.json"
+  ],
+  "replayable": true,
+  "replay_limitations": [
+    "ETF share flow remains unavailable unless separate historical share source is archived."
+  ],
+  "revision": 6
+}

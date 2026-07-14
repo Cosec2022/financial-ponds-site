@@ -1,4 +1,4 @@
-import { readFile, writeFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { benchmarkMarketRow, loadBenchmarkConfig } from "./lib/benchmark-proxy.mjs";
 
@@ -12,11 +12,11 @@ const snapshot = JSON.parse(await readFile(snapshotPath, "utf8"));
 const instrumentMap = JSON.parse(await readFile(resolve(dataDir, "pool_instrument_map.json"), "utf8"));
 const sourceRows = parseCsv(await readFile(resolve(root, sourceRelativePath), "utf8"));
 const benchmarkStore = await readJsonOptional(benchmarkStorePath, { rows: [] });
-const latestSourceDate = [...new Set(sourceRows.map((row) => row.date).filter(Boolean))].sort().at(-1) ?? null;
+const asOf = process.env.AS_OF ?? new Date().toISOString().slice(0, 10);
+const latestSourceDate = [...new Set(sourceRows.map((row) => row.date).filter((date) => date && date <= asOf))].sort().at(-1) ?? null;
 const latestRows = sourceRows.filter((row) => row.date === latestSourceDate);
 const sourceByCode = new Map(latestRows.map((row) => [String(row.fund_code), row]));
 const mappingByPool = new Map((instrumentMap.rows ?? []).map((row) => [row.pool_id, row]));
-const asOf = process.env.AS_OF ?? new Date().toISOString().slice(0, 10);
 
 snapshot.as_of = asOf;
 for (const row of snapshot.rows ?? []) row.as_of = asOf;
@@ -32,6 +32,9 @@ const signals = (snapshot.rows ?? []).map((pool) => {
 const momentumCount = signals.filter((row) => isAvailable(row.momentum_status)).length;
 const liquidityCount = signals.filter((row) => isAvailable(row.liquidity_status)).length;
 const unmapped = signals.filter((row) => !isAvailable(row.momentum_status) && !isAvailable(row.liquidity_status));
+const ohlcvMapped = signals.filter((row) => isAvailable(row.momentum_status) || isAvailable(row.liquidity_status));
+const flowMapped = signals.filter((row) => row.flow_status === "mapped_ohlcv_and_flow");
+const fullyMapped = signals.filter((row) => row.mapping_status === "direct_etf" && row.flow_status === "mapped_ohlcv_and_flow");
 const generatedAt = new Date().toISOString();
 const signalFile = {
   module_id: "pool_market_signals_v0_10_54",
@@ -47,13 +50,16 @@ const report = {
   source_files_used: ["financial-pond/data/pool_instrument_map.json", sourceRelativePath, "tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json"],
   source_row_count: latestRows.length,
   mapped_pool_count: signals.length - unmapped.length,
+  ohlcv_mapped_count: ohlcvMapped.length,
+  flow_mapped_count: flowMapped.length,
+  fully_mapped_count: fullyMapped.length,
   unmapped_pool_count: unmapped.length,
   momentum_signal_count: momentumCount,
   liquidity_signal_count: liquidityCount,
   missing_momentum_count: signals.length - momentumCount,
   missing_liquidity_count: signals.length - liquidityCount,
   coverage_ratio: signals.length ? round((momentumCount + liquidityCount) / (signals.length * 2)) : 0,
-  mapping_method: "pool_instrument_map instrument_code to the latest a_share_etf_daily.csv fund_code",
+  mapping_method: "pool_instrument_map instrument_code to exact-or-earlier a_share_etf_daily.csv fund_code; rejects future rows",
   unmapped_examples: unmapped.slice(0, 5).map((row) => ({
     pool_id: row.pool_id,
     pool_name: row.pool_name,
@@ -68,10 +74,34 @@ const report = {
   ]
 };
 
+const diagnostics = {
+  module_id: "market_penetration_diagnostics_v1",
+  as_of: asOf,
+  generated_at: generatedAt,
+  summary: { total_slots: signals.length, ohlcv_mapped: ohlcvMapped.length, flow_mapped: flowMapped.length, fully_mapped: fullyMapped.length },
+  slots: signals.map((row) => ({
+    evidence_id: `market:${asOf}:${row.pool_id}`,
+    pool_id: row.pool_id,
+    evidence_type: "representative_etf_market",
+    representative_symbol: row.instrument_code,
+    mapping_status: diagnosticStatus(row),
+    actual_trade_date: row.price_date ?? null,
+    source_provider: row.raw_market_fields ? sourceByCode.get(String(row.instrument_code))?.source_provider ?? null : null,
+    available_fields: Object.entries(row.raw_market_fields ?? {}).filter(([, value]) => numberOrNull(value) !== null).map(([key]) => key),
+    missing_fields: ["close", "volume", "amount"].filter((key) => numberOrNull(row.raw_market_fields?.[key]) === null),
+    missing_reason: row.reason,
+    price_volume_ready: isAvailable(row.momentum_status) || isAvailable(row.liquidity_status),
+    flow_ready: row.flow_status === "mapped_ohlcv_and_flow",
+    usable_for_model: isAvailable(row.momentum_status) || isAvailable(row.liquidity_status)
+  }))
+};
+
 applySignals(snapshot, signals, report);
 await writeFile(snapshotPath, `${JSON.stringify(snapshot, null, 2)}\n`, "utf8");
 await writeFile(resolve(dataDir, "pool_market_signals.json"), `${JSON.stringify(signalFile, null, 2)}\n`, "utf8");
 await writeFile(resolve(dataDir, "market_signal_report.json"), `${JSON.stringify(report, null, 2)}\n`, "utf8");
+await mkdir(resolve(root, "reports", "market-penetration"), { recursive: true });
+await writeFile(resolve(root, "reports", "market-penetration", `${asOf}.json`), `${JSON.stringify(diagnostics, null, 2)}\n`, "utf8");
 console.log(`Market signal channel written: momentum=${momentumCount}, liquidity=${liquidityCount}`);
 
 function marketSignal(pool, mapping, source) {
@@ -138,8 +168,17 @@ function marketSignal(pool, mapping, source) {
       turnover
     },
     fund_code: source.fund_code,
-    fund_name: source.fund_name
+    fund_name: source.fund_name,
+    flow_status: numberOrNull(source.estimated_flow) === null ? "mapped_ohlcv_only" : "mapped_ohlcv_and_flow"
   };
+}
+
+function diagnosticStatus(row) {
+  if (row.price_date && row.price_date > asOf) return "future_data_rejected";
+  if (row.price_date && row.price_date < asOf) return "stale_data";
+  if (row.momentum_status !== "missing" || row.liquidity_status !== "missing") return row.flow_status === "mapped_ohlcv_and_flow" ? "mapped_ohlcv_and_flow" : "mapped_ohlcv_only";
+  if (["unmapped", "unavailable"].includes(row.mapping_status)) return "missing_symbol_mapping";
+  return "missing_ohlcv";
 }
 
 function applySignals(target, rows, channel) {
