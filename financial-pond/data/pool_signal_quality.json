@@ -1,7 +1,7 @@
 {
   "module_id": "pool_signal_quality_v0_10_55",
-  "as_of": "2026-07-14",
-  "generated_at": "2026-07-14T10:27:50.979Z",
+  "as_of": "2026-07-15",
+  "generated_at": "2026-07-15T10:31:37.802Z",
   "rows": [
     {
       "pool_id": "a_share_a_share",
@@ -566,7 +566,7 @@
     },
     {
       "pool_id": "a_share_ai_computer",
-      "pool_name": "AI计算机",
+      "pool_name": "AI and Computer",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -583,7 +583,7 @@
     },
     {
       "pool_id": "a_share_bank_insurance",
-      "pool_name": "Bank and Insurance",
+      "pool_name": "银行保险",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -821,7 +821,7 @@
     },
     {
       "pool_id": "a_share_healthcare_pharma",
-      "pool_name": "医药医疗",
+      "pool_name": "Healthcare and Pharma",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -974,7 +974,7 @@
     },
     {
       "pool_id": "a_share_resources_materials",
-      "pool_name": "资源材料",
+      "pool_name": "Resources and Materials",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,

@@ -1,7 +1,7 @@
 {
   "module_id": "pool_market_signals_v0_10_55",
-  "as_of": "2026-07-14",
-  "generated_at": "2026-07-14T10:27:50.933Z",
+  "as_of": "2026-07-15",
+  "generated_at": "2026-07-15T10:31:37.748Z",
   "source_files_used": [
     "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
@@ -37,10 +37,10 @@
       "instrument_name": "A-share benchmark ETF proxy 510300",
       "benchmark_type": "etf_proxy",
       "benchmark_role": "broad_market_proxy",
-      "source_date": "2026-07-14",
-      "price_date": "2026-07-14",
-      "market_close": 4.837,
-      "price_close": 4.837,
+      "source_date": "2026-07-15",
+      "price_date": "2026-07-15",
+      "market_close": 4.838,
+      "price_close": 4.838,
       "fund_code": "510300",
       "fund_name": "A-share benchmark ETF proxy 510300",
       "raw_confidence": {
@@ -2083,7 +2083,7 @@
     },
     {
       "pool_id": "a_share_ai_computer",
-      "pool_name": "AI计算机",
+      "pool_name": "AI and Computer",
       "momentum_status": "derived_from_market",
       "momentum_value": -3.16,
       "momentum_direction": "negative",
@@ -2146,7 +2146,7 @@
     },
     {
       "pool_id": "a_share_bank_insurance",
-      "pool_name": "Bank and Insurance",
+      "pool_name": "银行保险",
       "momentum_status": "derived_from_market",
       "momentum_value": 0.79,
       "momentum_direction": "positive",
@@ -2994,7 +2994,7 @@
     },
     {
       "pool_id": "a_share_healthcare_pharma",
-      "pool_name": "医药医疗",
+      "pool_name": "Healthcare and Pharma",
       "momentum_status": "derived_from_market",
       "momentum_value": 1.97,
       "momentum_direction": "positive",
@@ -3561,7 +3561,7 @@
     },
     {
       "pool_id": "a_share_resources_materials",
-      "pool_name": "资源材料",
+      "pool_name": "Resources and Materials",
       "momentum_status": "derived_from_market",
       "momentum_value": 0.63,
       "momentum_direction": "positive",

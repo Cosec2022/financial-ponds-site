@@ -1,12 +1,12 @@
 {
-  "as_of": "2026-07-14",
-  "generated_at": "2026-07-14T10:26:51.943Z",
+  "as_of": "2026-07-15",
+  "generated_at": "2026-07-15T10:30:09.955Z",
   "module_id": "news_daily_v1",
   "status": "news_available",
-  "headline": "10 rule-matched news events; strongest mapped pressure is brokerage (1.10).",
+  "headline": "11 rule-matched news events; strongest mapped pressure is brokerage (1.35).",
   "counts": {
     "collected_items": 26,
-    "matched_events": 10,
+    "matched_events": 11,
     "observations": 10,
     "affected_sectors": 7
   },
@@ -22,8 +22,8 @@
     "top_positive_sectors": [
       {
         "sector_id": "brokerage",
-        "score": 1.103,
-        "event_count": 5,
+        "score": 1.35,
+        "event_count": 6,
         "top_events": [
           {
             "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
@@ -72,8 +72,8 @@
       },
       {
         "sector_id": "bank_insurance",
-        "score": 0.743,
-        "event_count": 3,
+        "score": 0.99,
+        "event_count": 4,
         "top_events": [
           {
             "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
@@ -121,8 +121,8 @@
       },
       {
         "sector_id": "real_estate_infra",
-        "score": 0.743,
-        "event_count": 3,
+        "score": 0.99,
+        "event_count": 4,
         "top_events": [
           {
             "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
@@ -323,8 +323,8 @@
     "pressure_buckets": [
       {
         "bucket": "Macro liquidity",
-        "score": 0.428,
-        "event_count": 2,
+        "score": 0.675,
+        "event_count": 3,
         "top_events": [
           {
             "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
@@ -354,6 +354,20 @@
               "consumer"
             ],
             "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
+          },
+          {
+            "title": "PBOC Boosts Support for Hong Kong, Raises Bond Connect Southbound Quota to CNY 800 Billion - finance.biggo.com",
+            "bucket": "Macro liquidity",
+            "channel": "policy_liquidity",
+            "score": 0.248,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HamNyU3N6U1dWTGdtWkVETUNCN09EZ0JFeFppbW9iQTFxN2ZNX3VqODJuMG0xdkNWRkJtRFk3VWt6NTlZVFJJdERPaGJJXzBPVFVwV1R6YlRBQWJocjJ4eFVRTl9Qdi1sVlc1U1BidkZFaFF1Q2c?oc=5"
           }
         ]
       },
@@ -482,8 +496,8 @@
   "sector_news_pressure": [
     {
       "sector_id": "brokerage",
-      "score": 1.103,
-      "event_count": 5,
+      "score": 1.35,
+      "event_count": 6,
       "top_events": [
         {
           "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
@@ -532,8 +546,8 @@
     },
     {
       "sector_id": "bank_insurance",
-      "score": 0.743,
-      "event_count": 3,
+      "score": 0.99,
+      "event_count": 4,
       "top_events": [
         {
           "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
@@ -581,8 +595,8 @@
     },
     {
       "sector_id": "real_estate_infra",
-      "score": 0.743,
-      "event_count": 3,
+      "score": 0.99,
+      "event_count": 4,
       "top_events": [
         {
           "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
@@ -818,8 +832,8 @@
   "pressure_buckets": [
     {
       "bucket": "Macro liquidity",
-      "score": 0.428,
-      "event_count": 2,
+      "score": 0.675,
+      "event_count": 3,
       "top_events": [
         {
           "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
@@ -849,6 +863,20 @@
             "consumer"
           ],
           "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
+        },
+        {
+          "title": "PBOC Boosts Support for Hong Kong, Raises Bond Connect Southbound Quota to CNY 800 Billion - finance.biggo.com",
+          "bucket": "Macro liquidity",
+          "channel": "policy_liquidity",
+          "score": 0.248,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HamNyU3N6U1dWTGdtWkVETUNCN09EZ0JFeFppbW9iQTFxN2ZNX3VqODJuMG0xdkNWRkJtRFk3VWt6NTlZVFJJdERPaGJJXzBPVFVwV1R6YlRBQWJocjJ4eFVRTl9Qdi1sVlc1U1BidkZFaFF1Q2c?oc=5"
         }
       ]
     },
@@ -1115,6 +1143,20 @@
         "consumer"
       ],
       "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
+    },
+    {
+      "title": "PBOC Boosts Support for Hong Kong, Raises Bond Connect Southbound Quota to CNY 800 Billion - finance.biggo.com",
+      "bucket": "Macro liquidity",
+      "channel": "policy_liquidity",
+      "score": 0.248,
+      "direction": "positive",
+      "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+      "affected_sector_ids": [
+        "brokerage",
+        "bank_insurance",
+        "real_estate_infra"
+      ],
+      "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HamNyU3N6U1dWTGdtWkVETUNCN09EZ0JFeFppbW9iQTFxN2ZNX3VqODJuMG0xdkNWRkJtRFk3VWt6NTlZVFJJdERPaGJJXzBPVFVwV1R6YlRBQWJocjJ4eFVRTl9Qdi1sVlc1U1BidkZFaFF1Q2c?oc=5"
     }
   ],
   "interpretation_boundary": [

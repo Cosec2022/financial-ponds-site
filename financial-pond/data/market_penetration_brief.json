@@ -1,71 +1,71 @@
 {
   "schema_version": "market_penetration_report_v2",
-  "as_of": "2026-07-14",
-  "generated_at": "2026-07-14T10:26:51.943Z",
+  "as_of": "2026-07-15",
+  "generated_at": "2026-07-15T10:29:11Z",
   "display_contract": {
     "mode": "display_only",
     "affects_model_scores": false,
     "boundary": "Narratives and interpretation never alter observation ranking."
   },
   "coverage_window": {
-    "as_of": "2026-07-14",
-    "market_source_date": "2026-07-14",
-    "narrative_window": "2026-07-14"
+    "as_of": "2026-07-15",
+    "market_source_date": "2026-07-15",
+    "narrative_window": "2026-07-15"
   },
   "source_status": [
     {
       "source_id": "a_share_market_archive",
       "status": "available",
-      "source_date": "2026-07-14",
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "source_date": "2026-07-15",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "detail": "Published market signal archive; provider-origin quality is retained per fact."
     },
     {
       "source_id": "legacy_google_news_rss",
       "status": "available",
-      "source_date": "2026-07-14",
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "source_date": "2026-07-15",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "detail": "Media narratives only; never verified automatically or scored by the graph."
     }
   ],
-  "headline": "AI计算机、通信电子仍居前，但通信电子、半导体过热风险上升；医药医疗、券商开始具备承接观察价值。",
+  "headline": "半导体、通信电子仍居前，但半导体、通信电子过热风险上升；券商、医药医疗开始具备承接观察价值。",
   "market_summary": {
     "market_regime": "中性偏进攻",
     "dominant_style": "科技成长",
-    "capital_state": "集中轮动",
+    "capital_state": "分化轮动",
     "action_boundary": "可跟踪，不追高"
   },
   "what_happened": [
     {
-      "statement": "今日观察前列为AI计算机、通信电子、半导体，前列分数为73 / 73 / 73。",
+      "statement": "今日观察前列为半导体、通信电子、AI计算机，前列分数为83 / 81.40 / 76.20。",
       "evidence_type": "fp_hard_data",
       "related_pool_ids": [
-        "a_share_ai_computer",
+        "a_share_semiconductor",
         "a_share_communication_electronics",
-        "a_share_semiconductor"
+        "a_share_ai_computer"
       ]
     },
     {
-      "statement": "通信电子、半导体触发过热或风险门提醒，强势与新建仓价值不能直接画等号。",
+      "statement": "半导体、通信电子触发过热或风险门提醒，强势与新建仓价值不能直接画等号。",
       "evidence_type": "fp_risk_state",
       "related_pool_ids": [
-        "a_share_communication_electronics",
-        "a_share_semiconductor"
+        "a_share_semiconductor",
+        "a_share_communication_electronics"
       ]
     },
     {
-      "statement": "医药医疗、券商处于主要候选或早期右侧状态，重点看改善能否延续。",
+      "statement": "券商、医药医疗处于主要候选或早期右侧状态，重点看改善能否延续。",
       "evidence_type": "fp_candidate_state",
       "related_pool_ids": [
-        "a_share_healthcare_pharma",
-        "a_share_brokerage"
+        "a_share_brokerage",
+        "a_share_healthcare_pharma"
       ]
     },
     {
       "statement": "a_share_defense_military的代表工具当日变化为+3.06%，这是精确日期市场观察，不代表未来方向。",
       "evidence_type": "exact_date_market_observation",
       "related_fact_ids": [
-        "market:2026-07-14:a_share_defense_military:close"
+        "market:2026-07-15:a_share_defense_military:close"
       ]
     },
     {
@@ -78,28 +78,28 @@
       "statement": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-14:0:45112ef3",
+      "narrative_id": "media:2026-07-15:0:45112ef3",
       "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
     },
     {
       "statement": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-14:3:99fff302",
+      "narrative_id": "media:2026-07-15:3:99fff302",
       "source_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
     },
     {
       "statement": "A-Shares Plunge in Afternoon Trading; ChiNext Tumbles 4.37%, Shanghai Composite Loses 4,000 Mark for Second Time This Week - finance.biggo.com",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-14:4:f325b1af",
+      "narrative_id": "media:2026-07-15:4:f325b1af",
       "source_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5SUFlWck9uZkFQY1pDUHRNRnl1NHhjU2x6R3RlTXdBOExmeHg1cExSb09HNkp0TklDQm9YdXdLOTVjcUNic1FhRzQ5YzM4bllVZ0VMZGJFek5EaVpEV1AxU09ub1FQczhFa3NqclpNTTliYTdYOWc?oc=5"
     },
     {
       "statement": "TSMC Sales Jump 36% as Memory Stocks Plunge. What It Means for NVIDIA and AMD - AOL.com",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-14:5:96312df0",
+      "narrative_id": "media:2026-07-15:5:96312df0",
       "source_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBiNVE3dEVzWmFyRVBtNWNySTJOeTIxSTMxRkZDT1dlYl84c2pwQTRPRHpaMVF2MHRxeEZkMkFwdjBlX1c4bkd3NWNoUzFnLWhNVGpJSTAySnMwbWp6VW1yZld3ckE0Y2c0NXBvZGxtdTAzUXUydjNNRA?oc=5"
     }
   ],
@@ -115,10 +115,10 @@
     },
     {
       "nodes": [
-        "AI计算机保持观察前列",
-        "趋势仍强但降温",
-        "风险门通过",
-        "观察回落后的承接"
+        "半导体保持观察前列",
+        "强势但过热",
+        "风险门提醒",
+        "等待降温后再确认"
       ],
       "note": "该链条描述模型状态如何转化为观察条件，不是买卖指令。"
     },
@@ -134,13 +134,13 @@
   ],
   "fp_cross_checks": [
     {
-      "pool_id": "a_share_ai_computer",
-      "pool_name": "AI计算机",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
       "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Cooling",
-      "agreement": "数据支持",
-      "interpretation": "价格、流动性与证据质量同时较完整。",
-      "next_watch": "观察回落后的承接"
+      "hard_data_direction": "Overheated",
+      "agreement": "风险提醒",
+      "interpretation": "强度与证据较好，但风险门已有提醒。",
+      "next_watch": "等待降温后再确认"
     },
     {
       "pool_id": "a_share_communication_electronics",
@@ -152,22 +152,13 @@
       "next_watch": "等待降温后再确认"
     },
     {
-      "pool_id": "a_share_semiconductor",
-      "pool_name": "半导体",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
       "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Overheated",
-      "agreement": "风险提醒",
-      "interpretation": "强度与证据较好，但风险门已有提醒。",
-      "next_watch": "等待降温后再确认"
-    },
-    {
-      "pool_id": "a_share_healthcare_pharma",
-      "pool_name": "医药医疗",
-      "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Major Candidate",
+      "hard_data_direction": "Cooling",
       "agreement": "数据支持",
       "interpretation": "价格、流动性与证据质量同时较完整。",
-      "next_watch": "观察持续性与扩散"
+      "next_watch": "观察回落后的承接"
     },
     {
       "pool_id": "a_share_brokerage",
@@ -177,20 +168,29 @@
       "agreement": "数据支持",
       "interpretation": "价格、流动性与证据质量同时较完整。",
       "next_watch": "观察持续性与扩散"
+    },
+    {
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "医药医疗",
+      "narrative_direction": "unverified_or_not_required",
+      "hard_data_direction": "Major Candidate",
+      "agreement": "数据支持",
+      "interpretation": "价格、流动性与证据质量同时较完整。",
+      "next_watch": "观察持续性与扩散"
     }
   ],
   "tomorrow_watch": [
     {
-      "statement": "通信电子、半导体能否降温，同时维持相对强度与成交承接。"
+      "statement": "半导体、通信电子能否降温，同时维持相对强度与成交承接。"
     },
     {
-      "statement": "医药医疗、券商的改善能否连续，并扩散到相关板块。"
+      "statement": "券商、医药医疗的改善能否连续，并扩散到相关板块。"
     },
     {
       "statement": "AI计算机回落后是否出现承接，而不是继续失速。"
     },
     {
-      "statement": "AI计算机能否继续保持前列，同时不触发更高的过热或风险门警告。"
+      "statement": "半导体能否继续保持前列，同时不触发更高的过热或风险门警告。"
     },
     {
       "statement": "复盘数据能否从 pending / unavailable 转为 reviewed；在样本不足前不使用胜率结论。"
@@ -199,21 +199,21 @@
   "sector_state_groups": {
     "strengthening": [
       {
-        "pool_id": "a_share_healthcare_pharma",
-        "pool_name": "医药医疗",
-        "score": 70.94,
-        "candidate_state": "Major Candidate",
-        "overheat_score": 8,
-        "major_wave_score": 100,
-        "risk_gate_status": "pass"
-      },
-      {
         "pool_id": "a_share_brokerage",
         "pool_name": "券商",
-        "score": 70.7,
+        "score": 75.192,
         "candidate_state": "Major Candidate",
         "overheat_score": 14,
         "major_wave_score": 99,
+        "risk_gate_status": "pass"
+      },
+      {
+        "pool_id": "a_share_healthcare_pharma",
+        "pool_name": "医药医疗",
+        "score": 74.2048,
+        "candidate_state": "Major Candidate",
+        "overheat_score": 8,
+        "major_wave_score": 100,
         "risk_gate_status": "pass"
       }
     ],
@@ -221,7 +221,7 @@
       {
         "pool_id": "a_share_ai_computer",
         "pool_name": "AI计算机",
-        "score": 73,
+        "score": 76.2,
         "candidate_state": "Cooling",
         "overheat_score": 32,
         "major_wave_score": 99,
@@ -230,21 +230,21 @@
     ],
     "overheated": [
       {
-        "pool_id": "a_share_communication_electronics",
-        "pool_name": "通信电子",
-        "score": 73,
-        "candidate_state": "Cooling",
-        "overheat_score": 58,
-        "major_wave_score": 83,
+        "pool_id": "a_share_semiconductor",
+        "pool_name": "半导体",
+        "score": 83,
+        "candidate_state": "Overheated",
+        "overheat_score": 88,
+        "major_wave_score": 71,
         "risk_gate_status": "caution"
       },
       {
-        "pool_id": "a_share_semiconductor",
-        "pool_name": "半导体",
-        "score": 73,
-        "candidate_state": "Overheated",
-        "overheat_score": 78,
-        "major_wave_score": 71,
+        "pool_id": "a_share_communication_electronics",
+        "pool_name": "通信电子",
+        "score": 81.3968,
+        "candidate_state": "Cooling",
+        "overheat_score": 58,
+        "major_wave_score": 83,
         "risk_gate_status": "caution"
       }
     ],
@@ -289,12 +289,12 @@
     "proxy_evidence_ratio": 0.597,
     "reviewed_rows": 0,
     "pending_rows": 20,
-    "unavailable_rows": 20,
+    "unavailable_rows": 30,
     "note": "历史复盘样本仍不足，暂不用于胜率判断；pending 和 unavailable 不计入输赢。"
   },
   "market_facts": [
     {
-      "fact_id": "market:2026-07-14:a_share_defense_military:close",
+      "fact_id": "market:2026-07-15:a_share_defense_military:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_defense_military代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_defense_military",
@@ -312,7 +312,7 @@
       "observed_return": 3.06
     },
     {
-      "fact_id": "market:2026-07-14:a_share_defense_military:close",
+      "fact_id": "market:2026-07-15:a_share_defense_military:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "Defense and Military代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_defense_military",
@@ -330,7 +330,7 @@
       "observed_return": 3.06
     },
     {
-      "fact_id": "market:2026-07-14:a_share_agriculture:close",
+      "fact_id": "market:2026-07-15:a_share_agriculture:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_agriculture代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_agriculture",
@@ -348,7 +348,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_beauty_care:close",
+      "fact_id": "market:2026-07-15:a_share_beauty_care:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_beauty_care代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_beauty_care",
@@ -366,7 +366,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_building_materials:close",
+      "fact_id": "market:2026-07-15:a_share_building_materials:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_building_materials代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_building_materials",
@@ -384,7 +384,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_construction:close",
+      "fact_id": "market:2026-07-15:a_share_construction:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_construction代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_construction",
@@ -402,7 +402,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_consumer:close",
+      "fact_id": "market:2026-07-15:a_share_consumer:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "消费代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_consumer",
@@ -420,7 +420,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_food_beverage:close",
+      "fact_id": "market:2026-07-15:a_share_food_beverage:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_food_beverage代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_food_beverage",
@@ -438,7 +438,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_home_appliances:close",
+      "fact_id": "market:2026-07-15:a_share_home_appliances:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_home_appliances代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_home_appliances",
@@ -456,7 +456,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_light_manufacturing:close",
+      "fact_id": "market:2026-07-15:a_share_light_manufacturing:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_light_manufacturing代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_light_manufacturing",
@@ -474,7 +474,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_real_estate_infra:close",
+      "fact_id": "market:2026-07-15:a_share_real_estate_infra:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "地产基建代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_real_estate_infra",
@@ -492,7 +492,7 @@
       "observed_return": 2.27
     },
     {
-      "fact_id": "market:2026-07-14:a_share_retail:close",
+      "fact_id": "market:2026-07-15:a_share_retail:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_retail代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_retail",
@@ -513,13 +513,13 @@
   "official_fact_candidates": [],
   "media_narratives": [
     {
-      "narrative_id": "media:2026-07-14:0:45112ef3",
+      "narrative_id": "media:2026-07-15:0:45112ef3",
       "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
       "source_quality": "media_unverified",
@@ -528,13 +528,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:1:45112ef3",
+      "narrative_id": "media:2026-07-15:1:45112ef3",
       "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
       "source_quality": "media_unverified",
@@ -543,13 +543,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:2:45112ef3",
+      "narrative_id": "media:2026-07-15:2:45112ef3",
       "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
       "source_quality": "media_unverified",
@@ -558,13 +558,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:3:99fff302",
+      "narrative_id": "media:2026-07-15:3:99fff302",
       "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "2024 chinese stimulus package basics how it s impacting chinese",
       "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
       "source_quality": "media_unverified",
@@ -573,13 +573,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:4:f325b1af",
+      "narrative_id": "media:2026-07-15:4:f325b1af",
       "title": "A-Shares Plunge in Afternoon Trading; ChiNext Tumbles 4.37%, Shanghai Composite Loses 4,000 Mark for Second Time This Week - finance.biggo.com",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5SUFlWck9uZkFQY1pDUHRNRnl1NHhjU2x6R3RlTXdBOExmeHg1cExSb09HNkp0TklDQm9YdXdLOTVjcUNic1FhRzQ5YzM4bllVZ0VMZGJFek5EaVpEV1AxU09ub1FQczhFa3NqclpNTTliYTdYOWc?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "a shares plunge in afternoon trading chinext tumbles 4 37",
       "duplicate_group": "a shares plunge in afternoon trading chinext tumbles 4 37",
       "source_quality": "media_unverified",
@@ -588,13 +588,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:5:96312df0",
+      "narrative_id": "media:2026-07-15:5:96312df0",
       "title": "TSMC Sales Jump 36% as Memory Stocks Plunge. What It Means for NVIDIA and AMD - AOL.com",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBiNVE3dEVzWmFyRVBtNWNySTJOeTIxSTMxRkZDT1dlYl84c2pwQTRPRHpaMVF2MHRxeEZkMkFwdjBlX1c4bkd3NWNoUzFnLWhNVGpJSTAySnMwbWp6VW1yZld3ckE0Y2c0NXBvZGxtdTAzUXUydjNNRA?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "tsmc sales jump 36 as memory stocks plunge what it",
       "duplicate_group": "tsmc sales jump 36 as memory stocks plunge what it",
       "source_quality": "media_unverified",
@@ -603,13 +603,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:6:cf909931",
+      "narrative_id": "media:2026-07-15:6:cf909931",
       "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "ai chip stocks just had their best half year ever",
       "duplicate_group": "ai chip stocks just had their best half year ever",
       "source_quality": "media_unverified",
@@ -618,13 +618,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:7:f8cc1d8f",
+      "narrative_id": "media:2026-07-15:7:f8cc1d8f",
       "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
       "duplicate_group": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
       "source_quality": "media_unverified",
@@ -633,13 +633,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:8:27f696da",
+      "narrative_id": "media:2026-07-15:8:27f696da",
       "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "why bitcoin faces a brutal liquidity trap because china s",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
       "source_quality": "media_unverified",
@@ -648,15 +648,30 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:9:27f696da",
+      "narrative_id": "media:2026-07-15:9:27f696da",
       "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-14T10:26:51.943Z",
+      "retrieved_at": "2026-07-15T10:29:11Z",
       "normalized_topic": "why bitcoin faces a brutal liquidity trap because china s",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-15:10:e0b15740",
+      "title": "PBOC Boosts Support for Hong Kong, Raises Bond Connect Southbound Quota to CNY 800 Billion - finance.biggo.com",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HamNyU3N6U1dWTGdtWkVETUNCN09EZ0JFeFppbW9iQTFxN2ZNX3VqODJuMG0xdkNWRkJtRFk3VWt6NTlZVFJJdERPaGJJXzBPVFVwV1R6YlRBQWJocjJ4eFVRTl9Qdi1sVlc1U1BidkZFaFF1Q2c?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-15T10:29:11Z",
+      "normalized_topic": "pboc boosts support for hong kong raises bond connect southbound",
+      "duplicate_group": "pboc boosts support for hong kong raises bond connect southbound",
       "source_quality": "media_unverified",
       "verification_status": "candidate",
       "evidence_status": "media_narrative",
@@ -665,7 +680,7 @@
   ],
   "unsupported_narratives": [
     {
-      "narrative_id": "media:2026-07-14:0:45112ef3",
+      "narrative_id": "media:2026-07-15:0:45112ef3",
       "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
@@ -673,7 +688,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:1:45112ef3",
+      "narrative_id": "media:2026-07-15:1:45112ef3",
       "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
@@ -681,7 +696,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:2:45112ef3",
+      "narrative_id": "media:2026-07-15:2:45112ef3",
       "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
@@ -689,7 +704,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:3:99fff302",
+      "narrative_id": "media:2026-07-15:3:99fff302",
       "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
       "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
@@ -697,7 +712,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:4:f325b1af",
+      "narrative_id": "media:2026-07-15:4:f325b1af",
       "title": "A-Shares Plunge in Afternoon Trading; ChiNext Tumbles 4.37%, Shanghai Composite Loses 4,000 Mark for Second Time This Week - finance.biggo.com",
       "rss_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5SUFlWck9uZkFQY1pDUHRNRnl1NHhjU2x6R3RlTXdBOExmeHg1cExSb09HNkp0TklDQm9YdXdLOTVjcUNic1FhRzQ5YzM4bllVZ0VMZGJFek5EaVpEV1AxU09ub1FQczhFa3NqclpNTTliYTdYOWc?oc=5",
       "duplicate_group": "a shares plunge in afternoon trading chinext tumbles 4 37",
@@ -705,7 +720,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:5:96312df0",
+      "narrative_id": "media:2026-07-15:5:96312df0",
       "title": "TSMC Sales Jump 36% as Memory Stocks Plunge. What It Means for NVIDIA and AMD - AOL.com",
       "rss_url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBiNVE3dEVzWmFyRVBtNWNySTJOeTIxSTMxRkZDT1dlYl84c2pwQTRPRHpaMVF2MHRxeEZkMkFwdjBlX1c4bkd3NWNoUzFnLWhNVGpJSTAySnMwbWp6VW1yZld3ckE0Y2c0NXBvZGxtdTAzUXUydjNNRA?oc=5",
       "duplicate_group": "tsmc sales jump 36 as memory stocks plunge what it",
@@ -713,7 +728,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:6:cf909931",
+      "narrative_id": "media:2026-07-15:6:cf909931",
       "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
       "rss_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5",
       "duplicate_group": "ai chip stocks just had their best half year ever",
@@ -721,7 +736,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:7:f8cc1d8f",
+      "narrative_id": "media:2026-07-15:7:f8cc1d8f",
       "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
       "rss_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5",
       "duplicate_group": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
@@ -729,7 +744,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:8:27f696da",
+      "narrative_id": "media:2026-07-15:8:27f696da",
       "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
@@ -737,10 +752,18 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-14:9:27f696da",
+      "narrative_id": "media:2026-07-15:9:27f696da",
       "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-15:10:e0b15740",
+      "title": "PBOC Boosts Support for Hong Kong, Raises Bond Connect Southbound Quota to CNY 800 Billion - finance.biggo.com",
+      "rss_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5HamNyU3N6U1dWTGdtWkVETUNCN09EZ0JFeFppbW9iQTFxN2ZNX3VqODJuMG0xdkNWRkJtRFk3VWt6NTlZVFJJdERPaGJJXzBPVFVwV1R6YlRBQWJocjJ4eFVRTl9Qdi1sVlc1U1BidkZFaFF1Q2c?oc=5",
+      "duplicate_group": "pboc boosts support for hong kong raises bond connect southbound",
       "evidence_status": "media_narrative",
       "stale": false
     }
@@ -769,51 +792,51 @@
   "unexplained_moves": [],
   "possible_3_20_session_implications": [
     {
-      "implication_id": "hypothesis:market:2026-07-14:a_share_defense_military:close",
+      "implication_id": "hypothesis:market:2026-07-15:a_share_defense_military:close",
       "kind": "hypothesis",
       "statement": "a_share_defense_military出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-14:a_share_defense_military:close"
+        "market:2026-07-15:a_share_defense_military:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
     },
     {
-      "implication_id": "hypothesis:market:2026-07-14:a_share_defense_military:close",
+      "implication_id": "hypothesis:market:2026-07-15:a_share_defense_military:close",
       "kind": "hypothesis",
       "statement": "Defense and Military出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-14:a_share_defense_military:close"
+        "market:2026-07-15:a_share_defense_military:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
     },
     {
-      "implication_id": "hypothesis:market:2026-07-14:a_share_agriculture:close",
+      "implication_id": "hypothesis:market:2026-07-15:a_share_agriculture:close",
       "kind": "hypothesis",
       "statement": "a_share_agriculture出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-14:a_share_agriculture:close"
+        "market:2026-07-15:a_share_agriculture:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
     },
     {
-      "implication_id": "hypothesis:market:2026-07-14:a_share_beauty_care:close",
+      "implication_id": "hypothesis:market:2026-07-15:a_share_beauty_care:close",
       "kind": "hypothesis",
       "statement": "a_share_beauty_care出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-14:a_share_beauty_care:close"
+        "market:2026-07-15:a_share_beauty_care:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
     },
     {
-      "implication_id": "hypothesis:market:2026-07-14:a_share_building_materials:close",
+      "implication_id": "hypothesis:market:2026-07-15:a_share_building_materials:close",
       "kind": "hypothesis",
       "statement": "a_share_building_materials出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-14:a_share_building_materials:close"
+        "market:2026-07-15:a_share_building_materials:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
