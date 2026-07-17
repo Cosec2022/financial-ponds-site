@@ -1,11 +1,11 @@
 {
   "module_id": "decision_gate_ledger_v0_10_46",
   "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:11:48.347Z",
+  "generated_at": "2026-07-17T10:28:04.158Z",
   "status": "gate_ledger_available",
   "guidance_state": "not_ready",
   "execution_state": "blocked",
-  "headline": "Decision gate ledger: 5 block, 3 warn; provider and execution gates are aligned; guidance_state=not_ready.",
+  "headline": "Decision gate ledger: 3 block, 3 warn; provider gates pass but execution remains blocked; guidance_state=not_ready.",
   "gates": [
     {
       "gate_id": "provider_run",
@@ -28,7 +28,6 @@
           "2026-07-08",
           "2026-07-09",
           "2026-07-10",
-          "2026-07-16",
           "2026-07-17"
         ],
         "status": "flow_gate_ready"
@@ -38,10 +37,10 @@
     {
       "gate_id": "estimated_flow_coverage",
       "label": "Estimated-flow coverage",
-      "status": "block",
-      "reading": "0/11 representative rows have estimated_flow.",
+      "status": "pass",
+      "reading": "11/11 representative rows have estimated_flow.",
       "evidence": {
-        "estimated_flow_rows": 0,
+        "estimated_flow_rows": 11,
         "total_rows": 11
       },
       "next_action": "Regenerate provider flow observations if coverage drops."
@@ -49,10 +48,10 @@
     {
       "gate_id": "true_flow_coverage",
       "label": "True-flow coverage",
-      "status": "block",
-      "reading": "True-flow coverage is 0.",
+      "status": "pass",
+      "reading": "True-flow coverage is 1.",
       "evidence": {
-        "true_flow_coverage": 0
+        "true_flow_coverage": 1
       },
       "next_action": "Keep representative ETF mappings and provider observations complete."
     },
@@ -60,11 +59,12 @@
       "gate_id": "attribution_conflict",
       "label": "Attribution conflicts",
       "status": "warn",
-      "reading": "1 attribution conflict(s) require review.",
+      "reading": "2 attribution conflict(s) require review.",
       "evidence": {
-        "conflict_count": 1,
+        "conflict_count": 2,
         "conflict_ids": [
-          "strong_rotation_zero_or_negative_flow"
+          "etf_flow_leader_differs_from_daily_leader",
+          "positive_flow_weak_daily_tier"
         ]
       },
       "next_action": "Resolve or annotate attribution conflicts before relaxing readiness."
@@ -73,13 +73,12 @@
       "gate_id": "watchlist_conflict_review",
       "label": "Watchlist conflict review",
       "status": "warn",
-      "reading": "4 watchlist row(s) are in conflict_review.",
+      "reading": "3 watchlist row(s) are in conflict_review.",
       "evidence": {
-        "conflict_review_count": 4,
+        "conflict_review_count": 3,
         "sectors": [
-          "ai_computer",
-          "brokerage",
           "communication_electronics",
+          "real_estate_infra",
           "semiconductor"
         ]
       },
@@ -152,20 +151,6 @@
   ],
   "blockers": [
     {
-      "gate_id": "estimated_flow_coverage",
-      "label": "Estimated-flow coverage",
-      "status": "block",
-      "reading": "0/11 representative rows have estimated_flow.",
-      "next_action": "Regenerate provider flow observations if coverage drops."
-    },
-    {
-      "gate_id": "true_flow_coverage",
-      "label": "True-flow coverage",
-      "status": "block",
-      "reading": "True-flow coverage is 0.",
-      "next_action": "Keep representative ETF mappings and provider observations complete."
-    },
-    {
       "gate_id": "valuation_fundamental_reality",
       "label": "Valuation and fundamental reality",
       "status": "block",
@@ -192,14 +177,14 @@
       "gate_id": "attribution_conflict",
       "label": "Attribution conflicts",
       "status": "warn",
-      "reading": "1 attribution conflict(s) require review.",
+      "reading": "2 attribution conflict(s) require review.",
       "next_action": "Resolve or annotate attribution conflicts before relaxing readiness."
     },
     {
       "gate_id": "watchlist_conflict_review",
       "label": "Watchlist conflict review",
       "status": "warn",
-      "reading": "4 watchlist row(s) are in conflict_review.",
+      "reading": "3 watchlist row(s) are in conflict_review.",
       "next_action": "Review conflict rows before changing model thresholds."
     },
     {
@@ -226,6 +211,20 @@
       "next_action": "Maintain provider CSV history across daily runs."
     },
     {
+      "gate_id": "estimated_flow_coverage",
+      "label": "Estimated-flow coverage",
+      "status": "pass",
+      "reading": "11/11 representative rows have estimated_flow.",
+      "next_action": "Regenerate provider flow observations if coverage drops."
+    },
+    {
+      "gate_id": "true_flow_coverage",
+      "label": "True-flow coverage",
+      "status": "pass",
+      "reading": "True-flow coverage is 1.",
+      "next_action": "Keep representative ETF mappings and provider observations complete."
+    },
+    {
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
@@ -241,8 +240,8 @@
     }
   ],
   "state_consistency": {
-    "provider_ready_but_execution_blocked": false,
-    "reading": "Provider and execution states are aligned with the current gate set."
+    "provider_ready_but_execution_blocked": true,
+    "reading": "Provider flow, history, estimated-flow coverage, and true-flow coverage are ready, but execution language remains blocked by non-provider gates."
   },
   "next_unlock_sequence": [
     {
@@ -271,9 +270,9 @@
       "next_action": "Only change this gate after all blocker gates pass."
     },
     {
-      "gate_id": "share_change_flow",
-      "label": "份额变化流",
-      "next_action": "CSV 已有上一可用日期 2026-07-16，但 11 只代表 ETF 仍缺 previous_share；检查导出脚本是否从历史 CSV 回填。"
+      "gate_id": "valuation_source",
+      "label": "估值来源",
+      "next_action": "估值和基本面还需要接入 PE/PB/股息/ROE 等真实来源。"
     }
   ],
   "manual_review_boundary": "Explains readiness only; no execution instruction."

@@ -231,6 +231,17 @@
       "insufficient_count": 59,
       "coverage_ratio": 0.5858,
       "observed_pool_count": 67
+    },
+    {
+      "as_of": "2026-07-17",
+      "real_count": 0,
+      "estimated_count": 102,
+      "derived_count": 213,
+      "missing_count": 55,
+      "planned_count": 108,
+      "insufficient_count": 58,
+      "coverage_ratio": 0.5877,
+      "observed_pool_count": 67
     }
   ]
 }

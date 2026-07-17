@@ -1,7 +1,7 @@
 {
   "module_id": "observation_snapshot_v0_10_48",
   "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:11:48.826Z",
+  "generated_at": "2026-07-17T10:28:04.657Z",
   "status": "observation_snapshot_available",
   "execution_state": "blocked",
   "observed_pool_count": 67,
@@ -17,9 +17,9 @@
   ],
   "counts": {
     "missing": 55,
-    "insufficient_history": 59,
+    "insufficient_history": 58,
     "planned": 108,
-    "real_provider_derived": 106,
+    "real_provider_derived": 107,
     "estimated_from_source": 102,
     "derived_from_market": 44,
     "manual_seed": 62
@@ -459,9 +459,9 @@
       "sector_id": "a_share_ai_computer",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 444080000,
+        "direction": "inward",
+        "magnitude": 0.2526,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -480,8 +480,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 444080000,
+          "score": 444080000,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -672,9 +672,9 @@
       "sector_id": "a_share_bank_insurance",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 932124650.496,
+        "direction": "inward",
+        "magnitude": 0.5302,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -693,8 +693,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 932124650.496,
+          "score": 932124650.496,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -1311,9 +1311,9 @@
       "sector_id": "a_share_brokerage",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 794173259.776,
+        "direction": "inward",
+        "magnitude": 0.4517,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -1332,8 +1332,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 794173259.776,
+          "score": 794173259.776,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -1950,9 +1950,9 @@
       "sector_id": "a_share_communication_electronics",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 1758210819.072,
+        "direction": "inward",
+        "magnitude": 1,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -1971,8 +1971,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 1758210819.072,
+          "score": 1758210819.072,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -2376,9 +2376,9 @@
       "sector_id": "a_share_consumer",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": -87501916.41600001,
+        "direction": "outward",
+        "magnitude": 0.0498,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -2397,8 +2397,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": -87501916.41600001,
+          "score": -87501916.41600001,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -2589,9 +2589,9 @@
       "sector_id": "a_share_defense_military",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 275058067.968,
+        "direction": "inward",
+        "magnitude": 0.1564,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -2610,8 +2610,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 275058067.968,
+          "score": 275058067.968,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -3228,9 +3228,9 @@
       "sector_id": "a_share_healthcare_pharma",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": -852488046.592,
+        "direction": "outward",
+        "magnitude": 0.4849,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -3249,8 +3249,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": -852488046.592,
+          "score": -852488046.592,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -4293,9 +4293,9 @@
       "sector_id": "a_share_new_energy_ev",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": -26401000,
+        "direction": "outward",
+        "magnitude": 0.015,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -4314,8 +4314,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": -26401000,
+          "score": -26401000,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -4932,9 +4932,9 @@
       "sector_id": "a_share_real_estate_infra",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 210574000,
+        "direction": "inward",
+        "magnitude": 0.1198,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -4953,8 +4953,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 210574000,
+          "score": 210574000,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -5145,9 +5145,9 @@
       "sector_id": "a_share_resources_materials",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": -557875895.296,
+        "direction": "outward",
+        "magnitude": 0.3173,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -5166,8 +5166,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": -557875895.296,
+          "score": -557875895.296,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -5571,9 +5571,9 @@
       "sector_id": "a_share_semiconductor",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 1712000000,
+        "direction": "inward",
+        "magnitude": 0.9737,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -5592,8 +5592,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 1712000000,
+          "score": 1712000000,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -7062,9 +7062,9 @@
       "sector_id": "ai_computer",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 444080000,
+        "direction": "inward",
+        "magnitude": 0.2526,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -7083,8 +7083,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 444080000,
+          "score": 444080000,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -7176,9 +7176,9 @@
         "rotation": {
           "slot": "rotation",
           "reality": "real_provider_derived",
-          "value": 8,
-          "score": 0.2064,
-          "label": "leader",
+          "value": 7,
+          "score": 0.1283,
+          "label": "单日观察",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.ai_computer",
           "trace_status": "available"
@@ -7218,7 +7218,7 @@
           "reality": "real_provider_derived",
           "value": null,
           "score": null,
-          "label": "conflict_review",
+          "label": "blocked_execution",
           "source_file": "sector_watchlist_state.json",
           "trace_id": "risk.boundary.ai_computer",
           "trace_status": "available"
@@ -7267,7 +7267,7 @@
         },
         {
           "trace_id": "observation.vector.ai_computer",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -7275,7 +7275,7 @@
       ],
       "system_note": "Generic observation snapshot. Signals can be real, derived, seeded, missing, planned, or history-limited.",
       "human_note": "",
-      "review_status": "conflict_review"
+      "review_status": "blocked_execution"
     },
     {
       "as_of": "2026-07-17",
@@ -7285,9 +7285,9 @@
       "sector_id": "bank_insurance",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 932124650.496,
+        "direction": "inward",
+        "magnitude": 0.5302,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -7306,8 +7306,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 932124650.496,
+          "score": 932124650.496,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -7399,9 +7399,9 @@
         "rotation": {
           "slot": "rotation",
           "reality": "real_provider_derived",
-          "value": 0,
-          "score": 0.1753,
-          "label": "单日观察",
+          "value": 1,
+          "score": 0.2346,
+          "label": "leader",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.bank_insurance",
           "trace_status": "available"
@@ -7490,7 +7490,7 @@
         },
         {
           "trace_id": "observation.vector.bank_insurance",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -7938,9 +7938,9 @@
       "sector_id": "brokerage",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 794173259.776,
+        "direction": "inward",
+        "magnitude": 0.4517,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -7959,8 +7959,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 794173259.776,
+          "score": 794173259.776,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -8052,9 +8052,9 @@
         "rotation": {
           "slot": "rotation",
           "reality": "real_provider_derived",
-          "value": 11,
-          "score": 0.2952,
-          "label": "leader",
+          "value": 10,
+          "score": 0.2318,
+          "label": "单日观察",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.brokerage",
           "trace_status": "available"
@@ -8094,7 +8094,7 @@
           "reality": "real_provider_derived",
           "value": null,
           "score": null,
-          "label": "conflict_review",
+          "label": "blocked_execution",
           "source_file": "sector_watchlist_state.json",
           "trace_id": "risk.boundary.brokerage",
           "trace_status": "available"
@@ -8143,7 +8143,7 @@
         },
         {
           "trace_id": "observation.vector.brokerage",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -8151,7 +8151,7 @@
       ],
       "system_note": "Generic observation snapshot. Signals can be real, derived, seeded, missing, planned, or history-limited.",
       "human_note": "",
-      "review_status": "conflict_review"
+      "review_status": "blocked_execution"
     },
     {
       "as_of": "2026-07-17",
@@ -8804,9 +8804,9 @@
       "sector_id": "communication_electronics",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 1758210819.072,
+        "direction": "inward",
+        "magnitude": 1,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -8825,8 +8825,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 1758210819.072,
+          "score": 1758210819.072,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -8918,9 +8918,9 @@
         "rotation": {
           "slot": "rotation",
           "reality": "real_provider_derived",
-          "value": 5,
-          "score": 0.1839,
-          "label": "单日观察",
+          "value": 4,
+          "score": 0.3189,
+          "label": "leader",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.communication_electronics",
           "trace_status": "available"
@@ -9009,7 +9009,7 @@
         },
         {
           "trace_id": "observation.vector.communication_electronics",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -9240,9 +9240,9 @@
       "sector_id": "consumer",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": -87501916.41600001,
+        "direction": "outward",
+        "magnitude": 0.0498,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -9261,8 +9261,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": -87501916.41600001,
+          "score": -87501916.41600001,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -9353,10 +9353,10 @@
         },
         "rotation": {
           "slot": "rotation",
-          "reality": "real_provider_derived",
+          "reality": "insufficient_history",
           "value": null,
-          "score": 0.0386,
-          "label": "laggard",
+          "score": null,
+          "label": "insufficient_history",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.consumer",
           "trace_status": "available"
@@ -9406,7 +9406,7 @@
         "flow": "estimated_from_source",
         "price_momentum": "derived_from_market",
         "liquidity": "derived_from_market",
-        "rotation": "derived",
+        "rotation": "insufficient",
         "news": "derived",
         "valuation": "seed",
         "fundamental": "seed",
@@ -9441,7 +9441,7 @@
         },
         {
           "trace_id": "observation.vector.consumer",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -9459,9 +9459,9 @@
       "sector_id": "defense_military",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 275058067.968,
+        "direction": "inward",
+        "magnitude": 0.1564,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -9480,8 +9480,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 275058067.968,
+          "score": 275058067.968,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -9660,7 +9660,7 @@
         },
         {
           "trace_id": "observation.vector.defense_military",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -10317,9 +10317,9 @@
       "sector_id": "healthcare_pharma",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": -852488046.592,
+        "direction": "outward",
+        "magnitude": 0.4849,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -10338,8 +10338,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": -852488046.592,
+          "score": -852488046.592,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -10430,10 +10430,10 @@
         },
         "rotation": {
           "slot": "rotation",
-          "reality": "insufficient_history",
+          "reality": "real_provider_derived",
           "value": null,
-          "score": null,
-          "label": "insufficient_history",
+          "score": -0.0594,
+          "label": "laggard",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.healthcare_pharma",
           "trace_status": "available"
@@ -10483,7 +10483,7 @@
         "flow": "estimated_from_source",
         "price_momentum": "derived_from_market",
         "liquidity": "derived_from_market",
-        "rotation": "insufficient",
+        "rotation": "derived",
         "news": "derived",
         "valuation": "seed",
         "fundamental": "seed",
@@ -10518,7 +10518,7 @@
         },
         {
           "trace_id": "observation.vector.healthcare_pharma",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -11388,9 +11388,9 @@
       "sector_id": "new_energy_ev",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": -26401000,
+        "direction": "outward",
+        "magnitude": 0.015,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -11409,8 +11409,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": -26401000,
+          "score": -26401000,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -11503,7 +11503,7 @@
           "slot": "rotation",
           "reality": "real_provider_derived",
           "value": 5,
-          "score": -0.0877,
+          "score": -0.0611,
           "label": "laggard",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.new_energy_ev",
@@ -11593,7 +11593,7 @@
         },
         {
           "trace_id": "observation.vector.new_energy_ev",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -12037,9 +12037,9 @@
       "sector_id": "real_estate_infra",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 210574000,
+        "direction": "inward",
+        "magnitude": 0.1198,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -12058,8 +12058,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 210574000,
+          "score": 210574000,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -12151,9 +12151,9 @@
         "rotation": {
           "slot": "rotation",
           "reality": "real_provider_derived",
-          "value": 11,
-          "score": -0.1452,
-          "label": "laggard",
+          "value": 0,
+          "score": -0.0432,
+          "label": "单日观察",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.real_estate_infra",
           "trace_status": "available"
@@ -12193,7 +12193,7 @@
           "reality": "real_provider_derived",
           "value": null,
           "score": null,
-          "label": "avoid_watch",
+          "label": "conflict_review",
           "source_file": "sector_watchlist_state.json",
           "trace_id": "risk.boundary.real_estate_infra",
           "trace_status": "available"
@@ -12242,7 +12242,7 @@
         },
         {
           "trace_id": "observation.vector.real_estate_infra",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -12250,7 +12250,7 @@
       ],
       "system_note": "Generic observation snapshot. Signals can be real, derived, seeded, missing, planned, or history-limited.",
       "human_note": "",
-      "review_status": "avoid_watch"
+      "review_status": "conflict_review"
     },
     {
       "as_of": "2026-07-17",
@@ -12260,9 +12260,9 @@
       "sector_id": "resources_materials",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": -557875895.296,
+        "direction": "outward",
+        "magnitude": 0.3173,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -12281,8 +12281,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": -557875895.296,
+          "score": -557875895.296,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -12373,10 +12373,10 @@
         },
         "rotation": {
           "slot": "rotation",
-          "reality": "insufficient_history",
+          "reality": "real_provider_derived",
           "value": null,
-          "score": null,
-          "label": "insufficient_history",
+          "score": -0.0433,
+          "label": "laggard",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.resources_materials",
           "trace_status": "available"
@@ -12426,7 +12426,7 @@
         "flow": "estimated_from_source",
         "price_momentum": "derived_from_market",
         "liquidity": "derived_from_market",
-        "rotation": "insufficient",
+        "rotation": "derived",
         "news": "derived",
         "valuation": "seed",
         "fundamental": "seed",
@@ -12461,7 +12461,7 @@
         },
         {
           "trace_id": "observation.vector.resources_materials",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -12696,9 +12696,9 @@
       "sector_id": "semiconductor",
       "vector_forecast": {
         "formula_id": "observation.vector_forecast.v0_10_48",
-        "F": 0,
-        "direction": "neutral",
-        "magnitude": 0,
+        "F": 1712000000,
+        "direction": "inward",
+        "magnitude": 0.9737,
         "velocity": null,
         "velocity_status": "insufficient_history",
         "acceleration": null,
@@ -12717,8 +12717,8 @@
         "flow": {
           "slot": "flow",
           "reality": "estimated_from_source",
-          "value": 0,
-          "score": 0,
+          "value": 1712000000,
+          "score": 1712000000,
           "label": "estimated_from_source",
           "source_file": "etf_flow_leaderboard.json",
           "source_type": "akshare_provider_estimated_flow",
@@ -12811,7 +12811,7 @@
           "slot": "rotation",
           "reality": "real_provider_derived",
           "value": 3,
-          "score": 0.2039,
+          "score": 0.333,
           "label": "leader",
           "source_file": "sector_rotation_history.json",
           "trace_id": "rotation.score.semiconductor",
@@ -12901,7 +12901,7 @@
         },
         {
           "trace_id": "observation.vector.semiconductor",
-          "trace_status": "missing",
+          "trace_status": "available",
           "source_files": [
             "observation_snapshot.json"
           ]
@@ -14430,7 +14430,7 @@
   "quality_guardrail": {
     "module_id": "signal_quality_report_v0_10_55",
     "as_of": "2026-07-17",
-    "generated_at": "2026-07-17T10:13:03.163Z",
+    "generated_at": "2026-07-17T10:29:20.448Z",
     "total_pool_count": 67,
     "mapped_pool_count": 63,
     "direct_evidence_count": 23,

@@ -1,24 +1,22 @@
 {
   "bridge_id": "a_share_benchmark_history",
-  "status": "ok",
+  "status": "error",
   "benchmark_symbol": "510300",
   "requested_dates": [
     "2026-07-17"
   ],
-  "successful_dates": [
-    "2026-07-17"
-  ],
-  "attempt_count": 1,
+  "successful_dates": [],
+  "attempt_count": 3,
   "diagnostics": [
     {
       "requested_date": "2026-07-17",
-      "attempt_count": 1,
-      "status": "ok",
-      "provider_error": null
+      "attempt_count": 3,
+      "status": "error",
+      "provider_error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))"
     }
   ],
-  "provider_error": null,
+  "provider_error": "ConnectionError: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))",
   "last_success_timestamp": "2026-07-17T10:11:34.840934+00:00",
-  "store_preserved": false,
-  "generated_at": "2026-07-17T10:11:34.840934+00:00"
+  "store_preserved": true,
+  "generated_at": "2026-07-17T10:27:45.548712+00:00"
 }

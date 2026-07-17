@@ -3,8 +3,8 @@
   "provider": "akshare",
   "mode": "real",
   "as_of": "2026-07-17",
-  "provider_run_id": "akshare_etf_bridge_2026-07-17_101049",
-  "started_at": "2026-07-17T10:10:49.539006+00:00",
+  "provider_run_id": "akshare_etf_bridge_2026-07-17_102700",
+  "started_at": "2026-07-17T10:27:00.975680+00:00",
   "status": "ok",
   "warnings": [
     "Optional AKShare endpoint failed: fund_etf_scale_szse: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))"
@@ -16,6 +16,6 @@
     "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv",
     "run_status_json": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-17.json"
   },
-  "finished_at": "2026-07-17T10:11:34.662185+00:00",
+  "finished_at": "2026-07-17T10:27:45.342242+00:00",
   "records": 11
 }

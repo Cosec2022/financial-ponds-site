@@ -1,7 +1,7 @@
 {
   "module_id": "candidate_review_analytics_v0_10_65",
   "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:13:04.258Z",
+  "generated_at": "2026-07-17T10:29:21.951Z",
   "status": "insufficient_sample",
   "source_files_used": [
     "financial-pond/data/candidate_review_history.json"

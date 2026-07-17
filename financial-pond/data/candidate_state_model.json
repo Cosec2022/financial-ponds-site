@@ -1,7 +1,7 @@
 {
   "module_id": "candidate_state_model_v0_10_61",
   "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:13:03.654Z",
+  "generated_at": "2026-07-17T10:29:20.988Z",
   "status": "state_model_available",
   "candidate_count": 35,
   "states_distribution": {
@@ -437,20 +437,6 @@
     },
     {
       "as_of": "2026-07-17",
-      "pool_id": "a_share_ai_computer",
-      "pool_name": "AI计算机",
-      "candidate_state": "Cooling",
-      "overheat_score": 32,
-      "major_wave_score": 99,
-      "risk_gate_status": "pass",
-      "state_reason": "Cooling: high evidence; direct mapped instrument.",
-      "overheat_reason": "recent top persistence",
-      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
-      "risk_gate_reason": "direct evidence and capped confidence usable",
-      "boundary": "observe_only; right-side model classification only"
-    },
-    {
-      "as_of": "2026-07-17",
       "pool_id": "a_share_communication_electronics",
       "pool_name": "通信电子",
       "candidate_state": "Cooling",
@@ -475,6 +461,20 @@
       "overheat_reason": "elevated short-term move; turnover spike; recent top persistence",
       "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 71.",
       "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-17",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "candidate_state": "Cooling",
+      "overheat_score": 32,
+      "major_wave_score": 99,
+      "risk_gate_status": "pass",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
       "boundary": "observe_only; right-side model classification only"
     },
     {

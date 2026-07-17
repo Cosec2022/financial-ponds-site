@@ -1,7 +1,7 @@
 {
   "schema_version": "market_penetration_report_v2",
   "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:10:43Z",
+  "generated_at": "2026-07-17T10:26:54Z",
   "display_contract": {
     "mode": "display_only",
     "affects_model_scores": false,
@@ -17,32 +17,32 @@
       "source_id": "a_share_market_archive",
       "status": "available",
       "source_date": "2026-07-17",
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "detail": "Published market signal archive; provider-origin quality is retained per fact."
     },
     {
       "source_id": "legacy_google_news_rss",
       "status": "available",
       "source_date": "2026-07-17",
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "detail": "Media narratives only; never verified automatically or scored by the graph."
     }
   ],
-  "headline": "AI计算机、通信电子仍居前，但通信电子、半导体过热风险上升；医药医疗、券商开始具备承接观察价值。",
+  "headline": "通信电子、半导体仍居前，但通信电子、半导体过热风险上升；医药医疗、券商开始具备承接观察价值。",
   "market_summary": {
     "market_regime": "中性偏进攻",
     "dominant_style": "科技成长",
-    "capital_state": "集中轮动",
+    "capital_state": "分化轮动",
     "action_boundary": "可跟踪，不追高"
   },
   "what_happened": [
     {
-      "statement": "今日观察前列为AI计算机、通信电子、半导体，前列分数为75 / 75 / 75。",
+      "statement": "今日观察前列为通信电子、半导体、AI计算机，前列分数为83 / 80.79 / 75.02。",
       "evidence_type": "fp_hard_data",
       "related_pool_ids": [
-        "a_share_ai_computer",
         "a_share_communication_electronics",
-        "a_share_semiconductor"
+        "a_share_semiconductor",
+        "a_share_ai_computer"
       ]
     },
     {
@@ -115,10 +115,10 @@
     },
     {
       "nodes": [
-        "AI计算机保持观察前列",
-        "趋势仍强但降温",
-        "风险门通过",
-        "观察回落后的承接"
+        "通信电子保持观察前列",
+        "强势但过热",
+        "风险门提醒",
+        "等待降温后再确认"
       ],
       "note": "该链条描述模型状态如何转化为观察条件，不是买卖指令。"
     },
@@ -133,15 +133,6 @@
     }
   ],
   "fp_cross_checks": [
-    {
-      "pool_id": "a_share_ai_computer",
-      "pool_name": "AI计算机",
-      "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Cooling",
-      "agreement": "数据支持",
-      "interpretation": "价格、流动性与证据质量同时较完整。",
-      "next_watch": "观察回落后的承接"
-    },
     {
       "pool_id": "a_share_communication_electronics",
       "pool_name": "通信电子",
@@ -159,6 +150,15 @@
       "agreement": "风险提醒",
       "interpretation": "强度与证据较好，但风险门已有提醒。",
       "next_watch": "等待降温后再确认"
+    },
+    {
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "narrative_direction": "unverified_or_not_required",
+      "hard_data_direction": "Cooling",
+      "agreement": "数据支持",
+      "interpretation": "价格、流动性与证据质量同时较完整。",
+      "next_watch": "观察回落后的承接"
     },
     {
       "pool_id": "a_share_healthcare_pharma",
@@ -190,7 +190,7 @@
       "statement": "AI计算机回落后是否出现承接，而不是继续失速。"
     },
     {
-      "statement": "AI计算机能否继续保持前列，同时不触发更高的过热或风险门警告。"
+      "statement": "通信电子能否继续保持前列，同时不触发更高的过热或风险门警告。"
     },
     {
       "statement": "复盘数据能否从 pending / unavailable 转为 reviewed；在样本不足前不使用胜率结论。"
@@ -201,7 +201,7 @@
       {
         "pool_id": "a_share_healthcare_pharma",
         "pool_name": "医药医疗",
-        "score": 72.94,
+        "score": 74.8192,
         "candidate_state": "Major Candidate",
         "overheat_score": 8,
         "major_wave_score": 100,
@@ -210,7 +210,7 @@
       {
         "pool_id": "a_share_brokerage",
         "pool_name": "券商",
-        "score": 72.7,
+        "score": 74.3136,
         "candidate_state": "Major Candidate",
         "overheat_score": 14,
         "major_wave_score": 99,
@@ -221,7 +221,7 @@
       {
         "pool_id": "a_share_ai_computer",
         "pool_name": "AI计算机",
-        "score": 75,
+        "score": 75.0208,
         "candidate_state": "Cooling",
         "overheat_score": 32,
         "major_wave_score": 99,
@@ -232,7 +232,7 @@
       {
         "pool_id": "a_share_communication_electronics",
         "pool_name": "通信电子",
-        "score": 75,
+        "score": 83,
         "candidate_state": "Cooling",
         "overheat_score": 58,
         "major_wave_score": 83,
@@ -241,7 +241,7 @@
       {
         "pool_id": "a_share_semiconductor",
         "pool_name": "半导体",
-        "score": 75,
+        "score": 80.7896,
         "candidate_state": "Overheated",
         "overheat_score": 78,
         "major_wave_score": 71,
@@ -519,7 +519,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
       "source_quality": "media_unverified",
@@ -534,7 +534,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
       "source_quality": "media_unverified",
@@ -549,7 +549,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
       "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
       "source_quality": "media_unverified",
@@ -564,7 +564,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "2024 chinese stimulus package basics how it s impacting chinese",
       "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
       "source_quality": "media_unverified",
@@ -579,7 +579,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNbF9Teld2c2NEeEpnemxpeDhiZkg3Zk1uX0taZkN3MVBVZ2d5OE1veUtQZ2ZrY21udlJ4NE9sQlhsajlhcHBORFZuQ3NzZ1htcjhvd3hNa0p2VkxmTDJRVzVqMjBDMGpxR1N1ZWZjVWNNVFhwRkcwa1l5enNfY3hNSzJXVGZ5c2Z5SmFyRWJaaWZlT042X2EtNjBpRERDVjJQaG4ySjlid3dSVTFid19zUUdVclRKaWdkN1hjUlRzUdIBvwFBVV95cUxObTJ3d1VlOXRIMGJlMktMSHpHc2RTUV9Ed1NsWEo4dzFxaWNvTV9SYUF1MFFTSjF2VjVFa1E1QU9ZcEhSWjJCUlBWUDV3Y0l0bUFPaHhwTDh2OTBnYU50Uk5WaE5HUnFLbEZxQTBSNHJOX0c5M1JlazM4OURoU2RWUDNtM1VpNG1CcENhaE82RVBZNWNhY09NQ2VzdC13RENnZWt2RXlrZFV1cllIVlpEZ3MtUi1vN01iT20zQlpNZw?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "china to support trading of treasury bond futures in hong",
       "duplicate_group": "china to support trading of treasury bond futures in hong",
       "source_quality": "media_unverified",
@@ -594,7 +594,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNX3o0b1RFRTFtaHN5cFZidE55MkQ1TzRMc0Uyd1hQNG04aDBLOHYwbVBSakZVUVBYaFJoc3VXZS1ycHREb1JKQ0Q2b3dGT1NfQlEwVkFYUDB3MmVCSlFNcGRXY2lRcVJST3pkck9va3VDLUZKb2hBRjRCSEo2VWFEQkpGUlRCVWd3QUFERzFqbWlzazNwQkswNHJJVVoyQTZtek82TnJUQ3pkcm8yU2NEZGlBQmYwRkNJY1FIY1p2anJDYlJGd0dlbGROaXQzUmstMmNUQzJEdEtLYjQ3NW8tTXVnOWlfVlU5U0IwekV4a3BFM3JsR3BN?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "s p 500 nasdaq dow end lower as chip stocks",
       "duplicate_group": "s p 500 nasdaq dow end lower as chip stocks",
       "source_quality": "media_unverified",
@@ -609,7 +609,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "ai chip stocks just had their best half year ever",
       "duplicate_group": "ai chip stocks just had their best half year ever",
       "source_quality": "media_unverified",
@@ -624,7 +624,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "why bitcoin faces a brutal liquidity trap because china s",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
       "source_quality": "media_unverified",
@@ -639,7 +639,7 @@
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-17T10:10:43Z",
+      "retrieved_at": "2026-07-17T10:26:54Z",
       "normalized_topic": "why bitcoin faces a brutal liquidity trap because china s",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
       "source_quality": "media_unverified",

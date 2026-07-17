@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:11:47.751Z",
+  "generated_at": "2026-07-17T10:28:03.526Z",
   "module_id": "data_reality_audit_v0_1",
   "status": "audit_available",
   "overall_reality": "mixed_non_real",
@@ -11,7 +11,7 @@
       "name": "AKShare环境预检",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_doctor.json",
       "as_of": null,
-      "generated_at": "2026-07-17T10:10:49.437011+00:00",
+      "generated_at": "2026-07-17T10:27:00.865590+00:00",
       "reality": "provider_doctor_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -27,7 +27,7 @@
       "name": "AKShare真实数据探测",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-17.json",
       "as_of": "2026-07-17",
-      "generated_at": "2026-07-17T10:11:34.662185+00:00",
+      "generated_at": "2026-07-17T10:27:45.342242+00:00",
       "reality": "provider_run_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -46,12 +46,12 @@
       "name": "资金量价",
       "source_file": "sector_flow_review.json",
       "as_of": "2026-07-17",
-      "generated_at": "2026-07-17T10:11:46.605Z",
+      "generated_at": "2026-07-17T10:28:02.324Z",
       "reality": "mock",
       "confidence_for_market_use": "low",
       "source_counts": {
-        "mock_observation_collector": 137,
-        "akshare_provider_flow_observations": 22,
+        "akshare_provider_flow_observations": 33,
+        "mock_observation_collector": 126,
         "a_share_water_level_provider": 62,
         "string_node": 100
       },
@@ -67,7 +67,7 @@
       "name": "新闻层",
       "source_file": "news_review.json",
       "as_of": "2026-07-17",
-      "generated_at": "2026-07-17T10:11:46.417Z",
+      "generated_at": "2026-07-17T10:28:02.117Z",
       "reality": "unknown",
       "confidence_for_market_use": "low",
       "counts": {
@@ -83,7 +83,7 @@
       "name": "估值/基本面/资金量价三模块",
       "source_file": "sector_module_review.json",
       "as_of": "2026-07-17",
-      "generated_at": "2026-07-17T10:11:46.756Z",
+      "generated_at": "2026-07-17T10:28:02.493Z",
       "reality": "manual_seed",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -96,8 +96,9 @@
         "provider_mapped_representative_sectors": 11,
         "framework_only_sectors": 20,
         "balanced_candidate": 2,
+        "cheap_with_flow": 1,
+        "expensive_momentum": 1,
         "wait_for_confirmation": 22,
-        "expensive_momentum": 2,
         "value_trap_risk": 5
       },
       "reading": "估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。"
@@ -107,7 +108,7 @@
       "name": "ETF行动准备度",
       "source_file": "etf_decision_readiness.json",
       "as_of": "2026-07-17",
-      "generated_at": "2026-07-17T10:11:46.797Z",
+      "generated_at": "2026-07-17T10:28:02.538Z",
       "reality": "decision_gate_blocked",
       "confidence_for_market_use": "low",
       "counts": {
@@ -127,14 +128,6 @@
           "reading": "行业资金量价仍来自 mock、fixture 或未验证来源。"
         },
         {
-          "id": "baseline_only",
-          "reading": "当前只有 ETF 份额基线，份额变化流需要至少下一个交易日。"
-        },
-        {
-          "id": "true_flow_coverage_low",
-          "reading": "真实 ETF 直接资金流覆盖不足。"
-        },
-        {
           "id": "manual_valuation_fundamental",
           "reading": "估值和基本面模块仍包含手工种子输入。"
         }
@@ -146,7 +139,7 @@
       "name": "行业轮动",
       "source_file": "sector_rotation_intelligence.json",
       "as_of": "2026-07-17",
-      "generated_at": "2026-07-17T10:11:46.643Z",
+      "generated_at": "2026-07-17T10:28:02.364Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -166,7 +159,7 @@
       "name": "通用池模型",
       "source_file": "general_pool_analysis.json",
       "as_of": "2026-07-17",
-      "generated_at": "2026-07-17T10:11:47.413Z",
+      "generated_at": "2026-07-17T10:28:03.180Z",
       "reality": "contract_output_source_unverified",
       "confidence_for_market_use": "low",
       "counts": {
@@ -181,7 +174,7 @@
       "name": "轮动历史",
       "source_file": "sector_rotation_history.json",
       "as_of": "2026-07-17",
-      "generated_at": "2026-07-17T10:11:46.721Z",
+      "generated_at": "2026-07-17T10:28:02.456Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
