@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-15",
-  "generated_at": "2026-07-15T10:30:10.176Z",
+  "as_of": "2026-07-16",
+  "generated_at": "2026-07-17T09:59:48.964Z",
   "model_id": "flow_engine_v0_9",
   "scenario_id": null,
   "counts": {
@@ -11,13 +11,13 @@
   },
   "sector_reviews": [
     {
-      "sector_id": "semiconductor",
-      "pool_id": "a_share_semiconductor",
-      "name": "Semiconductor",
-      "display_name": "A-share Semiconductor Pool",
+      "sector_id": "communication_electronics",
+      "pool_id": "a_share_communication_electronics",
+      "name": "Communication and Electronics",
+      "display_name": "A-share Communication and Electronics Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.33892224842767293,
+      "score": 0.31892224842767297,
       "label": "constructive_inflow_bias",
       "confidence": 0.7264,
       "data_completeness": 0.9,
@@ -28,8 +28,164 @@
           "available": true,
           "nodes": [
             {
-              "node_id": "semiconductor_etf_flow",
+              "node_id": "communication_electronics_etf_flow",
               "score": 0.75,
+              "confidence": 0.75,
+              "source": "akshare_provider_flow_observations"
+            }
+          ]
+        },
+        "market_confirmation": {
+          "score": 0.03333333333333335,
+          "confidence": 0.7333333333333334,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "communication_electronics_relative_strength",
+              "score": -0.65,
+              "confidence": 0.65,
+              "source": "akshare_provider_flow_observations"
+            },
+            {
+              "node_id": "communication_electronics_breadth",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "communication_electronics_leader_confirmation",
+              "score": 0.55,
+              "confidence": 0.55,
+              "source": "akshare_provider_flow_observations"
+            }
+          ]
+        },
+        "market_liquidity": {
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "a_share_turnover",
+              "score": 0.27299999999999996,
+              "confidence": 0.78,
+              "source": "a_share_water_level_provider"
+            },
+            {
+              "node_id": "a_share_breadth",
+              "score": 0.3260377358490566,
+              "confidence": 0.72,
+              "source": "a_share_water_level_provider"
+            },
+            {
+              "node_id": "margin_balance",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "etf_total_flow_a_share",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "policy_sentiment": {
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "communication_electronics_policy_news",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "china_policy_news",
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "fundamental_proxy": {
+          "score": 0.2,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "communication_electronics_fundamental_proxy",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "external_factor_effect": {
+          "score": 0,
+          "confidence": 0,
+          "available": false,
+          "nodes": [],
+          "factor_contributors": []
+        }
+      },
+      "top_drivers": [
+        {
+          "component": "direct_flow",
+          "score": 0.75,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": 0.22499999999999998,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.030000000000000006,
+          "available": true
+        },
+        {
+          "component": "fundamental_proxy",
+          "score": 0.2,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.020000000000000004,
+          "available": true
+        }
+      ]
+    },
+    {
+      "sector_id": "semiconductor",
+      "pool_id": "a_share_semiconductor",
+      "name": "Semiconductor",
+      "display_name": "A-share Semiconductor Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "score": 0.2809286205163359,
+      "label": "constructive_inflow_bias",
+      "confidence": 0.7264,
+      "data_completeness": 0.9,
+      "components": {
+        "direct_flow": {
+          "score": 0.5566879069622097,
+          "confidence": 0.75,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "semiconductor_etf_flow",
+              "score": 0.5566879069622097,
               "confidence": 0.75,
               "source": "akshare_provider_flow_observations"
             }
@@ -134,10 +290,10 @@
       "top_drivers": [
         {
           "component": "direct_flow",
-          "score": 0.75,
+          "score": 0.5566879069622097,
           "confidence": 0.75,
           "weight": 0.3,
-          "contribution": 0.22499999999999998,
+          "contribution": 0.1670063720886629,
           "available": true
         },
         {
@@ -167,194 +323,38 @@
       ]
     },
     {
-      "sector_id": "communication_electronics",
-      "pool_id": "a_share_communication_electronics",
-      "name": "Communication and Electronics",
-      "display_name": "A-share Communication and Electronics Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "score": 0.29884875795148247,
-      "label": "constructive_inflow_bias",
-      "confidence": 0.7264,
-      "data_completeness": 0.9,
-      "components": {
-        "direct_flow": {
-          "score": 0.5996716984126984,
-          "confidence": 0.75,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "communication_electronics_etf_flow",
-              "score": 0.5996716984126984,
-              "confidence": 0.75,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_confirmation": {
-          "score": 0.13343333333333335,
-          "confidence": 0.7333333333333334,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "communication_electronics_relative_strength",
-              "score": -0.3497,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
-            },
-            {
-              "node_id": "communication_electronics_breadth",
-              "score": 0.2,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "communication_electronics_leader_confirmation",
-              "score": 0.55,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "margin_balance",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "etf_total_flow_a_share",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "policy_sentiment": {
-          "score": 0.30000000000000004,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "communication_electronics_policy_news",
-              "score": 0.2,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "china_policy_news",
-              "score": 0.4,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "fundamental_proxy": {
-          "score": 0.2,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "communication_electronics_fundamental_proxy",
-              "score": 0.2,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "external_factor_effect": {
-          "score": 0,
-          "confidence": 0,
-          "available": false,
-          "nodes": [],
-          "factor_contributors": []
-        }
-      },
-      "top_drivers": [
-        {
-          "component": "direct_flow",
-          "score": 0.5996716984126984,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": 0.1799015095238095,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.13343333333333335,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.03335833333333334,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.30000000000000004,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.030000000000000006,
-          "available": true
-        }
-      ]
-    },
-    {
       "sector_id": "brokerage",
       "pool_id": "a_share_brokerage",
       "name": "Brokerage",
       "display_name": "A-share Brokerage Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.24109796704239156,
+      "score": 0.20764420808013614,
       "label": "constructive_inflow_bias",
       "confidence": 0.7264,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
-          "score": 0.23361350649350648,
+          "score": 0.25823986550821065,
           "confidence": 0.75,
           "available": true,
           "nodes": [
             {
               "node_id": "brokerage_etf_flow",
-              "score": 0.23361350649350648,
+              "score": 0.25823986550821065,
               "confidence": 0.75,
               "source": "akshare_provider_flow_observations"
             }
           ]
         },
         "market_confirmation": {
-          "score": 0.2717,
+          "score": 0.10833333333333332,
           "confidence": 0.7333333333333334,
           "available": true,
           "nodes": [
             {
               "node_id": "brokerage_relative_strength",
-              "score": 0.29510000000000003,
+              "score": -0.195,
               "confidence": 0.65,
               "source": "akshare_provider_flow_observations"
             },
@@ -446,18 +446,10 @@
       "top_drivers": [
         {
           "component": "direct_flow",
-          "score": 0.23361350649350648,
+          "score": 0.25823986550821065,
           "confidence": 0.75,
           "weight": 0.3,
-          "contribution": 0.07008405194805194,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.2717,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.067925,
+          "contribution": 0.07747195965246319,
           "available": true
         },
         {
@@ -475,6 +467,14 @@
           "weight": 0.15,
           "contribution": 0.03558891509433962,
           "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "score": 0.10833333333333332,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": 0.02708333333333333,
+          "available": true
         }
       ]
     },
@@ -485,32 +485,32 @@
       "display_name": "A-share Bank and Insurance Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.1525135633627379,
-      "label": "neutral",
+      "score": 0.20626809512573555,
+      "label": "constructive_inflow_bias",
       "confidence": 0.7264,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
-          "score": 0.11488771645021645,
+          "score": 0.30309726677131976,
           "confidence": 0.75,
           "available": true,
           "nodes": [
             {
               "node_id": "bank_insurance_etf_flow",
-              "score": 0.11488771645021645,
+              "score": 0.30309726677131976,
               "confidence": 0.75,
               "source": "akshare_provider_flow_observations"
             }
           ]
         },
         "market_confirmation": {
-          "score": 0.20983333333333334,
+          "score": 0.19900000000000004,
           "confidence": 0.7333333333333334,
           "available": true,
           "nodes": [
             {
               "node_id": "bank_insurance_relative_strength",
-              "score": 0.1495,
+              "score": 0.11699999999999999,
               "confidence": 0.65,
               "source": "akshare_provider_flow_observations"
             },
@@ -601,11 +601,19 @@
       },
       "top_drivers": [
         {
+          "component": "direct_flow",
+          "score": 0.30309726677131976,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": 0.09092918003139593,
+          "available": true
+        },
+        {
           "component": "market_confirmation",
-          "score": 0.20983333333333334,
+          "score": 0.19900000000000004,
           "confidence": 0.7333333333333334,
           "weight": 0.25,
-          "contribution": 0.052458333333333336,
+          "contribution": 0.04975000000000001,
           "available": true
         },
         {
@@ -614,14 +622,6 @@
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "direct_flow",
-          "score": 0.11488771645021645,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": 0.03446631493506493,
           "available": true
         },
         {
@@ -641,32 +641,32 @@
       "display_name": "A-share AI and Computer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": 0.11185284734542186,
+      "score": 0.11474245270169947,
       "label": "neutral",
       "confidence": 0.7264,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
-          "score": 0.1124631075036075,
+          "score": 0.1444006809134218,
           "confidence": 0.75,
           "available": true,
           "nodes": [
             {
               "node_id": "ai_computer_etf_flow",
-              "score": 0.1124631075036075,
+              "score": 0.1444006809134218,
               "confidence": 0.75,
               "source": "akshare_provider_flow_observations"
             }
           ]
         },
         "market_confirmation": {
-          "score": -0.0699,
+          "score": -0.09666666666666668,
           "confidence": 0.7333333333333334,
           "available": true,
           "nodes": [
             {
               "node_id": "ai_computer_relative_strength",
-              "score": -0.3497,
+              "score": -0.65,
               "confidence": 0.65,
               "source": "akshare_provider_flow_observations"
             },
@@ -678,7 +678,7 @@
             },
             {
               "node_id": "ai_computer_leader_confirmation",
-              "score": -0.10999999999999999,
+              "score": 0.10999999999999999,
               "confidence": 0.55,
               "source": "akshare_provider_flow_observations"
             }
@@ -757,6 +757,14 @@
       },
       "top_drivers": [
         {
+          "component": "direct_flow",
+          "score": 0.1444006809134218,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": 0.04332020427402653,
+          "available": true
+        },
+        {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
           "confidence": 0.875,
@@ -773,487 +781,11 @@
           "available": true
         },
         {
-          "component": "direct_flow",
-          "score": 0.1124631075036075,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": 0.033738932251082245,
-          "available": true
-        },
-        {
           "component": "fundamental_proxy",
           "score": 0.25,
           "confidence": 1,
           "weight": 0.1,
           "contribution": 0.025,
-          "available": true
-        }
-      ]
-    },
-    {
-      "sector_id": "healthcare_pharma",
-      "pool_id": "a_share_healthcare_pharma",
-      "name": "Healthcare and Pharma",
-      "display_name": "A-share Healthcare and Pharma Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "score": 0.10794420452435405,
-      "label": "neutral",
-      "confidence": 0.7264,
-      "data_completeness": 0.9,
-      "components": {
-        "direct_flow": {
-          "score": -0.1185657018999519,
-          "confidence": 0.75,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "healthcare_pharma_etf_flow",
-              "score": -0.1185657018999519,
-              "confidence": 0.75,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_confirmation": {
-          "score": 0.2117,
-          "confidence": 0.7333333333333334,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "healthcare_pharma_relative_strength",
-              "score": 0.42510000000000003,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
-            },
-            {
-              "node_id": "healthcare_pharma_breadth",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "healthcare_pharma_leader_confirmation",
-              "score": 0.10999999999999999,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "margin_balance",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "etf_total_flow_a_share",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "policy_sentiment": {
-          "score": 0.30000000000000004,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "healthcare_pharma_policy_news",
-              "score": 0.2,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "china_policy_news",
-              "score": 0.4,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "fundamental_proxy": {
-          "score": 0.25,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "healthcare_pharma_fundamental_proxy",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "external_factor_effect": {
-          "score": 0,
-          "confidence": 0,
-          "available": false,
-          "nodes": [],
-          "factor_contributors": []
-        }
-      },
-      "top_drivers": [
-        {
-          "component": "market_confirmation",
-          "score": 0.2117,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.052925,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "direct_flow",
-          "score": -0.1185657018999519,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": -0.03556971056998557,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.30000000000000004,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.030000000000000006,
-          "available": true
-        }
-      ]
-    },
-    {
-      "sector_id": "consumer",
-      "pool_id": "a_share_consumer",
-      "name": "Consumer",
-      "display_name": "A-share Consumer Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "score": 0.08972455722998177,
-      "label": "neutral",
-      "confidence": 0.7264,
-      "data_completeness": 0.9,
-      "components": {
-        "direct_flow": {
-          "score": -0.012325637325637327,
-          "confidence": 0.75,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "consumer_etf_flow",
-              "score": -0.012325637325637327,
-              "confidence": 0.75,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_confirmation": {
-          "score": 0.09133333333333336,
-          "confidence": 0.7333333333333334,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "consumer_relative_strength",
-              "score": 0.49400000000000005,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
-            },
-            {
-              "node_id": "consumer_breadth",
-              "score": 0,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "consumer_leader_confirmation",
-              "score": -0.21999999999999997,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "margin_balance",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "etf_total_flow_a_share",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "policy_sentiment": {
-          "score": 0.25,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "consumer_policy_news",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "china_policy_news",
-              "score": 0.4,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "fundamental_proxy": {
-          "score": 0.1,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "consumer_fundamental_proxy",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "external_factor_effect": {
-          "score": 0,
-          "confidence": 0,
-          "available": false,
-          "nodes": [],
-          "factor_contributors": []
-        }
-      },
-      "top_drivers": [
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.25,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.025,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.09133333333333336,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.02283333333333334,
-          "available": true
-        },
-        {
-          "component": "fundamental_proxy",
-          "score": 0.1,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.010000000000000002,
-          "available": true
-        }
-      ]
-    },
-    {
-      "sector_id": "defense_military",
-      "pool_id": "a_share_defense_military",
-      "name": "Defense and Military",
-      "display_name": "A-share Defense and Military Pool",
-      "coverage_status": "provider_mapped_representative",
-      "classification": "a_share_representative_cluster",
-      "score": 0.08544151942334394,
-      "label": "neutral",
-      "confidence": 0.7264,
-      "data_completeness": 0.9,
-      "components": {
-        "direct_flow": {
-          "score": 0.03811979220779221,
-          "confidence": 0.75,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "defense_military_etf_flow",
-              "score": 0.03811979220779221,
-              "confidence": 0.75,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_confirmation": {
-          "score": -0.11633333333333336,
-          "confidence": 0.7333333333333334,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "defense_military_relative_strength",
-              "score": -0.169,
-              "confidence": 0.65,
-              "source": "akshare_provider_flow_observations"
-            },
-            {
-              "node_id": "defense_military_breadth",
-              "score": 0.15,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "defense_military_leader_confirmation",
-              "score": -0.33000000000000007,
-              "confidence": 0.55,
-              "source": "akshare_provider_flow_observations"
-            }
-          ]
-        },
-        "market_liquidity": {
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "a_share_turnover",
-              "score": 0.27299999999999996,
-              "confidence": 0.78,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "a_share_breadth",
-              "score": 0.3260377358490566,
-              "confidence": 0.72,
-              "source": "a_share_water_level_provider"
-            },
-            {
-              "node_id": "margin_balance",
-              "score": 0.1,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "etf_total_flow_a_share",
-              "score": 0.25,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "policy_sentiment": {
-          "score": 0.375,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "defense_military_policy_news",
-              "score": 0.35,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            },
-            {
-              "node_id": "china_policy_news",
-              "score": 0.4,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "fundamental_proxy": {
-          "score": 0.3,
-          "confidence": 1,
-          "available": true,
-          "nodes": [
-            {
-              "node_id": "defense_military_fundamental_proxy",
-              "score": 0.3,
-              "confidence": 1,
-              "source": "mock_observation_collector"
-            }
-          ]
-        },
-        "external_factor_effect": {
-          "score": 0,
-          "confidence": 0,
-          "available": false,
-          "nodes": [],
-          "factor_contributors": []
-        }
-      },
-      "top_drivers": [
-        {
-          "component": "policy_sentiment",
-          "score": 0.375,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.037500000000000006,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "fundamental_proxy",
-          "score": 0.3,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.03,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": -0.11633333333333336,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": -0.02908333333333334,
           "available": true
         }
       ]
@@ -3439,50 +2971,50 @@
       ]
     },
     {
-      "sector_id": "real_estate_infra",
-      "pool_id": "a_share_real_estate_infra",
-      "name": "Real Estate and Infrastructure",
-      "display_name": "A-share Real Estate and Infrastructure Pool",
+      "sector_id": "defense_military",
+      "pool_id": "a_share_defense_military",
+      "name": "Defense and Military",
+      "display_name": "A-share Defense and Military Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": -0.004877065019296745,
+      "score": 0.06992095367205722,
       "label": "neutral",
       "confidence": 0.7264,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
-          "score": 0.03536339962121212,
+          "score": 0.089440128592392,
           "confidence": 0.75,
           "available": true,
           "nodes": [
             {
-              "node_id": "real_estate_infra_etf_flow",
-              "score": 0.03536339962121212,
+              "node_id": "defense_military_etf_flow",
+              "score": 0.089440128592392,
               "confidence": 0.75,
               "source": "akshare_provider_flow_observations"
             }
           ]
         },
         "market_confirmation": {
-          "score": -0.18430000000000002,
+          "score": -0.24,
           "confidence": 0.7333333333333334,
           "available": true,
           "nodes": [
             {
-              "node_id": "real_estate_infra_relative_strength",
-              "score": 0.08710000000000001,
+              "node_id": "defense_military_relative_strength",
+              "score": -0.65,
               "confidence": 0.65,
               "source": "akshare_provider_flow_observations"
             },
             {
-              "node_id": "real_estate_infra_breadth",
-              "score": -0.2,
+              "node_id": "defense_military_breadth",
+              "score": 0.15,
               "confidence": 1,
               "source": "mock_observation_collector"
             },
             {
-              "node_id": "real_estate_infra_leader_confirmation",
-              "score": -0.44000000000000006,
+              "node_id": "defense_military_leader_confirmation",
+              "score": -0.21999999999999997,
               "confidence": 0.55,
               "source": "akshare_provider_flow_observations"
             }
@@ -3520,13 +3052,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.30000000000000004,
+          "score": 0.375,
           "confidence": 1,
           "available": true,
           "nodes": [
             {
-              "node_id": "real_estate_infra_policy_news",
-              "score": 0.2,
+              "node_id": "defense_military_policy_news",
+              "score": 0.35,
               "confidence": 1,
               "source": "mock_observation_collector"
             },
@@ -3539,13 +3071,13 @@
           ]
         },
         "fundamental_proxy": {
-          "score": -0.35,
+          "score": 0.3,
           "confidence": 1,
           "available": true,
           "nodes": [
             {
-              "node_id": "real_estate_infra_fundamental_proxy",
-              "score": -0.35,
+              "node_id": "defense_military_fundamental_proxy",
+              "score": 0.3,
               "confidence": 1,
               "source": "mock_observation_collector"
             }
@@ -3562,10 +3094,18 @@
       "top_drivers": [
         {
           "component": "market_confirmation",
-          "score": -0.18430000000000002,
+          "score": -0.24,
           "confidence": 0.7333333333333334,
           "weight": 0.25,
-          "contribution": -0.046075000000000005,
+          "contribution": -0.06,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.375,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.037500000000000006,
           "available": true
         },
         {
@@ -3578,67 +3118,59 @@
         },
         {
           "component": "fundamental_proxy",
-          "score": -0.35,
+          "score": 0.3,
           "confidence": 1,
           "weight": 0.1,
-          "contribution": -0.034999999999999996,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.30000000000000004,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.030000000000000006,
+          "contribution": 0.03,
           "available": true
         }
       ]
     },
     {
-      "sector_id": "new_energy_ev",
-      "pool_id": "a_share_new_energy_ev",
-      "name": "New Energy Vehicle",
-      "display_name": "A-share New Energy Vehicle Pool",
+      "sector_id": "consumer",
+      "pool_id": "a_share_consumer",
+      "name": "Consumer",
+      "display_name": "A-share Consumer Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": -0.03325860587427511,
+      "score": 0.018492879534811726,
       "label": "neutral",
       "confidence": 0.7264,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
-          "score": -0.006852847673160172,
+          "score": -0.016986785198426304,
           "confidence": 0.75,
           "available": true,
           "nodes": [
             {
-              "node_id": "new_energy_ev_etf_flow",
-              "score": -0.006852847673160172,
+              "node_id": "consumer_etf_flow",
+              "score": -0.016986785198426304,
               "confidence": 0.75,
               "source": "akshare_provider_flow_observations"
             }
           ]
         },
         "market_confirmation": {
-          "score": -0.2571666666666667,
+          "score": -0.18800000000000003,
           "confidence": 0.7333333333333334,
           "available": true,
           "nodes": [
             {
-              "node_id": "new_energy_ev_relative_strength",
-              "score": -0.07150000000000001,
+              "node_id": "consumer_relative_strength",
+              "score": -0.23399999999999999,
               "confidence": 0.65,
               "source": "akshare_provider_flow_observations"
             },
             {
-              "node_id": "new_energy_ev_breadth",
-              "score": -0.15,
+              "node_id": "consumer_breadth",
+              "score": 0,
               "confidence": 1,
               "source": "mock_observation_collector"
             },
             {
-              "node_id": "new_energy_ev_leader_confirmation",
-              "score": -0.55,
+              "node_id": "consumer_leader_confirmation",
+              "score": -0.33000000000000007,
               "confidence": 0.55,
               "source": "akshare_provider_flow_observations"
             }
@@ -3676,13 +3208,13 @@
           ]
         },
         "policy_sentiment": {
-          "score": 0.225,
+          "score": 0.25,
           "confidence": 1,
           "available": true,
           "nodes": [
             {
-              "node_id": "new_energy_ev_policy_news",
-              "score": 0.05,
+              "node_id": "consumer_policy_news",
+              "score": 0.1,
               "confidence": 1,
               "source": "mock_observation_collector"
             },
@@ -3695,13 +3227,13 @@
           ]
         },
         "fundamental_proxy": {
-          "score": -0.25,
+          "score": 0.1,
           "confidence": 1,
           "available": true,
           "nodes": [
             {
-              "node_id": "new_energy_ev_fundamental_proxy",
-              "score": -0.25,
+              "node_id": "consumer_fundamental_proxy",
+              "score": 0.1,
               "confidence": 1,
               "source": "mock_observation_collector"
             }
@@ -3718,10 +3250,10 @@
       "top_drivers": [
         {
           "component": "market_confirmation",
-          "score": -0.2571666666666667,
+          "score": -0.18800000000000003,
           "confidence": 0.7333333333333334,
           "weight": 0.25,
-          "contribution": -0.06429166666666668,
+          "contribution": -0.04700000000000001,
           "available": true
         },
         {
@@ -3733,19 +3265,19 @@
           "available": true
         },
         {
-          "component": "fundamental_proxy",
-          "score": -0.25,
+          "component": "policy_sentiment",
+          "score": 0.25,
           "confidence": 1,
           "weight": 0.1,
-          "contribution": -0.025,
+          "contribution": 0.025,
           "available": true
         },
         {
-          "component": "policy_sentiment",
-          "score": 0.225,
+          "component": "fundamental_proxy",
+          "score": 0.1,
           "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.022500000000000003,
+          "contribution": 0.010000000000000002,
           "available": true
         }
       ]
@@ -3757,32 +3289,32 @@
       "display_name": "A-share Resources and Materials Pool",
       "coverage_status": "provider_mapped_representative",
       "classification": "a_share_representative_cluster",
-      "score": -0.03772138699801246,
+      "score": -0.02633213008620927,
       "label": "neutral",
       "confidence": 0.7264,
       "data_completeness": 0.9,
       "components": {
         "direct_flow": {
-          "score": -0.3287843403078403,
+          "score": -0.181403483935163,
           "confidence": 0.75,
           "available": true,
           "nodes": [
             {
               "node_id": "resources_materials_etf_flow",
-              "score": -0.3287843403078403,
+              "score": -0.181403483935163,
               "confidence": 0.75,
               "source": "akshare_provider_flow_observations"
             }
           ]
         },
         "market_confirmation": {
-          "score": -0.0687,
+          "score": -0.19999999999999998,
           "confidence": 0.7333333333333334,
           "available": true,
           "nodes": [
             {
               "node_id": "resources_materials_relative_strength",
-              "score": -0.2561,
+              "score": -0.65,
               "confidence": 0.65,
               "source": "akshare_provider_flow_observations"
             },
@@ -3874,10 +3406,18 @@
       "top_drivers": [
         {
           "component": "direct_flow",
-          "score": -0.3287843403078403,
+          "score": -0.181403483935163,
           "confidence": 0.75,
           "weight": 0.3,
-          "contribution": -0.09863530209235209,
+          "contribution": -0.0544210451805489,
+          "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "score": -0.19999999999999998,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": -0.049999999999999996,
           "available": true
         },
         {
@@ -3895,13 +3435,473 @@
           "weight": 0.1,
           "contribution": 0.022500000000000003,
           "available": true
+        }
+      ]
+    },
+    {
+      "sector_id": "healthcare_pharma",
+      "pool_id": "a_share_healthcare_pharma",
+      "name": "Healthcare and Pharma",
+      "display_name": "A-share Healthcare and Pharma Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "score": -0.03348834497786497,
+      "label": "neutral",
+      "confidence": 0.7264,
+      "data_completeness": 0.9,
+      "components": {
+        "direct_flow": {
+          "score": -0.2772019780184598,
+          "confidence": 0.75,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "healthcare_pharma_etf_flow",
+              "score": -0.2772019780184598,
+              "confidence": 0.75,
+              "source": "akshare_provider_flow_observations"
+            }
+          ]
+        },
+        "market_confirmation": {
+          "score": -0.16366666666666665,
+          "confidence": 0.7333333333333334,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "healthcare_pharma_relative_strength",
+              "score": -0.481,
+              "confidence": 0.65,
+              "source": "akshare_provider_flow_observations"
+            },
+            {
+              "node_id": "healthcare_pharma_breadth",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "healthcare_pharma_leader_confirmation",
+              "score": -0.10999999999999999,
+              "confidence": 0.55,
+              "source": "akshare_provider_flow_observations"
+            }
+          ]
+        },
+        "market_liquidity": {
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "a_share_turnover",
+              "score": 0.27299999999999996,
+              "confidence": 0.78,
+              "source": "a_share_water_level_provider"
+            },
+            {
+              "node_id": "a_share_breadth",
+              "score": 0.3260377358490566,
+              "confidence": 0.72,
+              "source": "a_share_water_level_provider"
+            },
+            {
+              "node_id": "margin_balance",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "etf_total_flow_a_share",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "policy_sentiment": {
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "healthcare_pharma_policy_news",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "china_policy_news",
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "fundamental_proxy": {
+          "score": 0.25,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "healthcare_pharma_fundamental_proxy",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "external_factor_effect": {
+          "score": 0,
+          "confidence": 0,
+          "available": false,
+          "nodes": [],
+          "factor_contributors": []
+        }
+      },
+      "top_drivers": [
+        {
+          "component": "direct_flow",
+          "score": -0.2772019780184598,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": -0.08316059340553794,
+          "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "score": -0.16366666666666665,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": -0.040916666666666664,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.030000000000000006,
+          "available": true
+        }
+      ]
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "pool_id": "a_share_real_estate_infra",
+      "name": "Real Estate and Infrastructure",
+      "display_name": "A-share Real Estate and Infrastructure Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "score": -0.04965282957299015,
+      "label": "neutral",
+      "confidence": 0.7264,
+      "data_completeness": 0.9,
+      "components": {
+        "direct_flow": {
+          "score": 0.06847196222001187,
+          "confidence": 0.75,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "real_estate_infra_etf_flow",
+              "score": 0.06847196222001187,
+              "confidence": 0.75,
+              "source": "akshare_provider_flow_observations"
+            }
+          ]
+        },
+        "market_confirmation": {
+          "score": -0.40313333333333334,
+          "confidence": 0.7333333333333334,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "real_estate_infra_relative_strength",
+              "score": -0.5694,
+              "confidence": 0.65,
+              "source": "akshare_provider_flow_observations"
+            },
+            {
+              "node_id": "real_estate_infra_breadth",
+              "score": -0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "real_estate_infra_leader_confirmation",
+              "score": -0.44000000000000006,
+              "confidence": 0.55,
+              "source": "akshare_provider_flow_observations"
+            }
+          ]
+        },
+        "market_liquidity": {
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "a_share_turnover",
+              "score": 0.27299999999999996,
+              "confidence": 0.78,
+              "source": "a_share_water_level_provider"
+            },
+            {
+              "node_id": "a_share_breadth",
+              "score": 0.3260377358490566,
+              "confidence": 0.72,
+              "source": "a_share_water_level_provider"
+            },
+            {
+              "node_id": "margin_balance",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "etf_total_flow_a_share",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "policy_sentiment": {
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "real_estate_infra_policy_news",
+              "score": 0.2,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "china_policy_news",
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "fundamental_proxy": {
+          "score": -0.35,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "real_estate_infra_fundamental_proxy",
+              "score": -0.35,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "external_factor_effect": {
+          "score": 0,
+          "confidence": 0,
+          "available": false,
+          "nodes": [],
+          "factor_contributors": []
+        }
+      },
+      "top_drivers": [
+        {
+          "component": "market_confirmation",
+          "score": -0.40313333333333334,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": -0.10078333333333334,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
         },
         {
           "component": "fundamental_proxy",
-          "score": 0.2,
+          "score": -0.35,
           "confidence": 1,
           "weight": 0.1,
-          "contribution": 0.020000000000000004,
+          "contribution": -0.034999999999999996,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.030000000000000006,
+          "available": true
+        }
+      ]
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "pool_id": "a_share_new_energy_ev",
+      "name": "New Energy Vehicle",
+      "display_name": "A-share New Energy Vehicle Pool",
+      "coverage_status": "provider_mapped_representative",
+      "classification": "a_share_representative_cluster",
+      "score": -0.060319847695484825,
+      "label": "neutral",
+      "confidence": 0.7264,
+      "data_completeness": 0.9,
+      "components": {
+        "direct_flow": {
+          "score": -0.008584764854970384,
+          "confidence": 0.75,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "new_energy_ev_etf_flow",
+              "score": -0.008584764854970384,
+              "confidence": 0.75,
+              "source": "akshare_provider_flow_observations"
+            }
+          ]
+        },
+        "market_confirmation": {
+          "score": -0.36333333333333334,
+          "confidence": 0.7333333333333334,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "new_energy_ev_relative_strength",
+              "score": -0.39,
+              "confidence": 0.65,
+              "source": "akshare_provider_flow_observations"
+            },
+            {
+              "node_id": "new_energy_ev_breadth",
+              "score": -0.15,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "new_energy_ev_leader_confirmation",
+              "score": -0.55,
+              "confidence": 0.55,
+              "source": "akshare_provider_flow_observations"
+            }
+          ]
+        },
+        "market_liquidity": {
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "a_share_turnover",
+              "score": 0.27299999999999996,
+              "confidence": 0.78,
+              "source": "a_share_water_level_provider"
+            },
+            {
+              "node_id": "a_share_breadth",
+              "score": 0.3260377358490566,
+              "confidence": 0.72,
+              "source": "a_share_water_level_provider"
+            },
+            {
+              "node_id": "margin_balance",
+              "score": 0.1,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "etf_total_flow_a_share",
+              "score": 0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "policy_sentiment": {
+          "score": 0.225,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "new_energy_ev_policy_news",
+              "score": 0.05,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            },
+            {
+              "node_id": "china_policy_news",
+              "score": 0.4,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "fundamental_proxy": {
+          "score": -0.25,
+          "confidence": 1,
+          "available": true,
+          "nodes": [
+            {
+              "node_id": "new_energy_ev_fundamental_proxy",
+              "score": -0.25,
+              "confidence": 1,
+              "source": "mock_observation_collector"
+            }
+          ]
+        },
+        "external_factor_effect": {
+          "score": 0,
+          "confidence": 0,
+          "available": false,
+          "nodes": [],
+          "factor_contributors": []
+        }
+      },
+      "top_drivers": [
+        {
+          "component": "market_confirmation",
+          "score": -0.36333333333333334,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": -0.09083333333333334,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "fundamental_proxy",
+          "score": -0.25,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": -0.025,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.225,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.022500000000000003,
           "available": true
         }
       ]
@@ -3910,35 +3910,35 @@
   "summary": {
     "top_positive": [
       {
-        "pool_id": "a_share_semiconductor",
-        "score": 0.33892224842767293,
+        "pool_id": "a_share_communication_electronics",
+        "score": 0.31892224842767297,
         "label": "constructive_inflow_bias"
       },
       {
-        "pool_id": "a_share_communication_electronics",
-        "score": 0.29884875795148247,
+        "pool_id": "a_share_semiconductor",
+        "score": 0.2809286205163359,
         "label": "constructive_inflow_bias"
       },
       {
         "pool_id": "a_share_brokerage",
-        "score": 0.24109796704239156,
+        "score": 0.20764420808013614,
         "label": "constructive_inflow_bias"
       }
     ],
     "top_negative": [
       {
-        "pool_id": "a_share_resources_materials",
-        "score": -0.03772138699801246,
-        "label": "neutral"
-      },
-      {
         "pool_id": "a_share_new_energy_ev",
-        "score": -0.03325860587427511,
+        "score": -0.060319847695484825,
         "label": "neutral"
       },
       {
         "pool_id": "a_share_real_estate_infra",
-        "score": -0.004877065019296745,
+        "score": -0.04965282957299015,
+        "label": "neutral"
+      },
+      {
+        "pool_id": "a_share_healthcare_pharma",
+        "score": -0.03348834497786497,
         "label": "neutral"
       }
     ]
@@ -3947,13 +3947,13 @@
     {
       "node_id": "ai_capex_news",
       "source": "news_intelligence_v1",
-      "event_count": 5,
+      "event_count": 3,
       "display_only": true
     },
     {
       "node_id": "ai_computer_policy_news",
       "source": "news_intelligence_v1",
-      "event_count": 7,
+      "event_count": 5,
       "display_only": true
     },
     {
@@ -3977,7 +3977,7 @@
     {
       "node_id": "communication_electronics_policy_news",
       "source": "news_intelligence_v1",
-      "event_count": 5,
+      "event_count": 3,
       "display_only": true
     },
     {
@@ -4001,7 +4001,7 @@
     {
       "node_id": "semiconductor_policy_news",
       "source": "news_intelligence_v1",
-      "event_count": 7,
+      "event_count": 5,
       "display_only": true
     }
   ],

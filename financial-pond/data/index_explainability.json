@@ -1,7 +1,7 @@
 {
   "module_id": "index_explainability_v0_10_47",
-  "as_of": "2026-07-15",
-  "generated_at": "2026-07-15T10:30:12.403Z",
+  "as_of": "2026-07-16",
+  "generated_at": "2026-07-17T09:59:51.079Z",
   "status": "index_explainability_available",
   "headline": "Index explainability: 336 indexes explained; 0 missing formula entries.",
   "indexes": [
@@ -40,7 +40,7 @@
         "provider_run": "real_ok",
         "provider_flow_readiness": "flow_ready",
         "flow_source_reality": "mixed_observed_mock",
-        "sample_days": 9,
+        "sample_days": 10,
         "blockers": [
           {
             "id": "non_real_flow_source",
@@ -167,162 +167,10 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "etf.estimated_flow.semiconductor",
-      "label": "Semiconductor ETF estimated_flow",
-      "value": 1596672000,
-      "display_value": "15.97亿",
-      "unit": "currency",
-      "category": "etf_flow",
-      "related_sector_id": "semiconductor",
-      "related_sector_name": "Semiconductor",
-      "formula_id": "provider.estimated_flow.v1",
-      "formula": {
-        "plain_language": "Representative ETF flow is the ETF share change multiplied by the latest close. The provider export calculates and stores the raw value.",
-        "formula_human": "estimated_flow = share_change * close; share_change = latest_share - previous_share.",
-        "formula_machine": "estimated_flow = (latest_share - previous_share) * close"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/etf_flow_leaderboard.json",
-        "data/provider_exports/a_share_etf_daily.csv"
-      ],
-      "source_fields": [
-        "latest_share",
-        "previous_share",
-        "share_change",
-        "close",
-        "estimated_flow"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": false,
-        "mock_or_fixture": false,
-        "missing_fields": []
-      },
-      "inputs": {
-        "latest_share": 18206007296,
-        "previous_share": 16910007296,
-        "share_change": 1296000000,
-        "close": 1.232,
-        "estimated_flow": 1596672000
-      },
-      "components": [
-        {
-          "label": "latest_share",
-          "value": 18206007296
-        },
-        {
-          "label": "previous_share",
-          "value": 16910007296
-        },
-        {
-          "label": "share_change",
-          "value": 1296000000
-        },
-        {
-          "label": "close",
-          "value": 1.232
-        }
-      ],
-      "calculation_steps": [
-        "latest_share 18206007296.0 - previous_share 16910007296.0 = share_change 1296000000.0",
-        "share_change 1296000000.0 * close 1.232 = estimated_flow 1596672000.0"
-      ],
-      "caveats": [
-        "Representative ETF row only; it is not full-sector fund coverage."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "etf.estimated_flow_rank.semiconductor",
-      "label": "Semiconductor estimated_flow_rank",
-      "value": 1,
-      "display_value": "1",
-      "unit": "rank",
-      "category": "etf_flow",
-      "related_sector_id": "semiconductor",
-      "related_sector_name": "Semiconductor",
-      "formula_id": "etf_flow_leaderboard.rank.v1",
-      "formula": {
-        "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
-        "formula_human": "estimated_flow_rank and amount_rank are 1-based descending ranks within the provider row set.",
-        "formula_machine": "rank = index(descending(rows by metric)) + 1"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/etf_flow_leaderboard.json",
-        "data/provider_exports/a_share_etf_daily.csv"
-      ],
-      "source_fields": [
-        "rows[].estimated_flow",
-        "rows[].estimated_flow_rank"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": false,
-        "mock_or_fixture": false,
-        "missing_fields": []
-      },
-      "inputs": {
-        "estimated_flow": 1596672000,
-        "estimated_flow_rank": 1
-      },
-      "components": [],
-      "calculation_steps": [
-        "Sort all numeric estimated_flow rows descending.",
-        "Assign 1-based rank after sorting."
-      ],
-      "caveats": [
-        "Ties are ordered by the current JavaScript sort order in the source row sequence."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "etf.amount_rank.semiconductor",
-      "label": "Semiconductor amount_rank",
-      "value": 2,
-      "display_value": "2",
-      "unit": "rank",
-      "category": "etf_flow",
-      "related_sector_id": "semiconductor",
-      "related_sector_name": "Semiconductor",
-      "formula_id": "etf_flow_leaderboard.rank.v1",
-      "formula": {
-        "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
-        "formula_human": "estimated_flow_rank and amount_rank are 1-based descending ranks within the provider row set.",
-        "formula_machine": "rank = index(descending(rows by metric)) + 1"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/etf_flow_leaderboard.json",
-        "data/provider_exports/a_share_etf_daily.csv"
-      ],
-      "source_fields": [
-        "rows[].amount",
-        "rows[].amount_rank"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": false,
-        "mock_or_fixture": false,
-        "missing_fields": []
-      },
-      "inputs": {
-        "amount": 2222562648,
-        "amount_rank": 2
-      },
-      "components": [],
-      "calculation_steps": [
-        "Sort all numeric amount rows descending.",
-        "Assign 1-based rank after sorting."
-      ],
-      "caveats": [
-        "Amount is attention or confirmation heat, not net flow."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
       "index_id": "etf.estimated_flow.communication_electronics",
       "label": "Communication and Electronics ETF estimated_flow",
-      "value": 1276638680.0640001,
-      "display_value": "12.77亿",
+      "value": 2306498819.072,
+      "display_value": "23.06亿",
       "unit": "currency",
       "category": "etf_flow",
       "related_sector_id": "communication_electronics",
@@ -351,16 +199,16 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 69979774976,
+        "latest_share": 71797772288,
         "previous_share": 68297774080,
-        "share_change": 1682000896,
-        "close": 0.759,
-        "estimated_flow": 1276638680.0640001
+        "share_change": 3499998208,
+        "close": 0.659,
+        "estimated_flow": 2306498819.072
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 69979774976
+          "value": 71797772288
         },
         {
           "label": "previous_share",
@@ -368,16 +216,16 @@
         },
         {
           "label": "share_change",
-          "value": 1682000896
+          "value": 3499998208
         },
         {
           "label": "close",
-          "value": 0.759
+          "value": 0.659
         }
       ],
       "calculation_steps": [
-        "latest_share 69979774976.0 - previous_share 68297774080.0 = share_change 1682000896.0",
-        "share_change 1682000896.0 * close 0.759 = estimated_flow 1276638680.0640001"
+        "latest_share 71797772288.0 - previous_share 68297774080.0 = share_change 3499998208.0",
+        "share_change 3499998208.0 * close 0.659 = estimated_flow 2306498819.072"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -387,8 +235,8 @@
     {
       "index_id": "etf.estimated_flow_rank.communication_electronics",
       "label": "Communication and Electronics estimated_flow_rank",
-      "value": 2,
-      "display_value": "2",
+      "value": 1,
+      "display_value": "1",
       "unit": "rank",
       "category": "etf_flow",
       "related_sector_id": "communication_electronics",
@@ -414,8 +262,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": 1276638680.0640001,
-        "estimated_flow_rank": 2
+        "estimated_flow": 2306498819.072,
+        "estimated_flow_rank": 1
       },
       "components": [],
       "calculation_steps": [
@@ -457,7 +305,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 4876194247,
+        "amount": 7199249354,
         "amount_rank": 1
       },
       "components": [],
@@ -471,14 +319,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "etf.estimated_flow.brokerage",
-      "label": "Brokerage ETF estimated_flow",
-      "value": 497338859.52000004,
-      "display_value": "4.97亿",
+      "index_id": "etf.estimated_flow.semiconductor",
+      "label": "Semiconductor ETF estimated_flow",
+      "value": 1712000000,
+      "display_value": "17.12亿",
       "unit": "currency",
       "category": "etf_flow",
-      "related_sector_id": "brokerage",
-      "related_sector_name": "Brokerage",
+      "related_sector_id": "semiconductor",
+      "related_sector_name": "Semiconductor",
       "formula_id": "provider.estimated_flow.v1",
       "formula": {
         "plain_language": "Representative ETF flow is the ETF share change multiplied by the latest close. The provider export calculates and stores the raw value.",
@@ -503,33 +351,33 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 75018035200,
-        "previous_share": 74097037312,
-        "share_change": 920997888,
-        "close": 0.54,
-        "estimated_flow": 497338859.52000004
+        "latest_share": 18510007296,
+        "previous_share": 16910007296,
+        "share_change": 1600000000,
+        "close": 1.07,
+        "estimated_flow": 1712000000
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 75018035200
+          "value": 18510007296
         },
         {
           "label": "previous_share",
-          "value": 74097037312
+          "value": 16910007296
         },
         {
           "label": "share_change",
-          "value": 920997888
+          "value": 1600000000
         },
         {
           "label": "close",
-          "value": 0.54
+          "value": 1.07
         }
       ],
       "calculation_steps": [
-        "latest_share 75018035200.0 - previous_share 74097037312.0 = share_change 920997888.0",
-        "share_change 920997888.0 * close 0.54 = estimated_flow 497338859.52000004"
+        "latest_share 18510007296.0 - previous_share 16910007296.0 = share_change 1600000000.0",
+        "share_change 1600000000.0 * close 1.07 = estimated_flow 1712000000.0"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -537,14 +385,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "etf.estimated_flow_rank.brokerage",
-      "label": "Brokerage estimated_flow_rank",
-      "value": 3,
-      "display_value": "3",
+      "index_id": "etf.estimated_flow_rank.semiconductor",
+      "label": "Semiconductor estimated_flow_rank",
+      "value": 2,
+      "display_value": "2",
       "unit": "rank",
       "category": "etf_flow",
-      "related_sector_id": "brokerage",
-      "related_sector_name": "Brokerage",
+      "related_sector_id": "semiconductor",
+      "related_sector_name": "Semiconductor",
       "formula_id": "etf_flow_leaderboard.rank.v1",
       "formula": {
         "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
@@ -566,8 +414,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": 497338859.52000004,
-        "estimated_flow_rank": 3
+        "estimated_flow": 1712000000,
+        "estimated_flow_rank": 2
       },
       "components": [],
       "calculation_steps": [
@@ -580,14 +428,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "etf.amount_rank.brokerage",
-      "label": "Brokerage amount_rank",
-      "value": 4,
-      "display_value": "4",
+      "index_id": "etf.amount_rank.semiconductor",
+      "label": "Semiconductor amount_rank",
+      "value": 2,
+      "display_value": "2",
       "unit": "rank",
       "category": "etf_flow",
-      "related_sector_id": "brokerage",
-      "related_sector_name": "Brokerage",
+      "related_sector_id": "semiconductor",
+      "related_sector_name": "Semiconductor",
       "formula_id": "etf_flow_leaderboard.rank.v1",
       "formula": {
         "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
@@ -609,8 +457,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 1455314175,
-        "amount_rank": 4
+        "amount": 2211679570,
+        "amount_rank": 2
       },
       "components": [],
       "calculation_steps": [
@@ -625,8 +473,8 @@
     {
       "index_id": "etf.estimated_flow.bank_insurance",
       "label": "Bank and Insurance ETF estimated_flow",
-      "value": 244584000,
-      "display_value": "2.45亿",
+      "value": 932124650.496,
+      "display_value": "9.32亿",
       "unit": "currency",
       "category": "etf_flow",
       "related_sector_id": "bank_insurance",
@@ -655,16 +503,16 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 14174679808,
+        "latest_share": 15046479872,
         "previous_share": 13865079808,
-        "share_change": 309600000,
-        "close": 0.79,
-        "estimated_flow": 244584000
+        "share_change": 1181400064,
+        "close": 0.789,
+        "estimated_flow": 932124650.496
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 14174679808
+          "value": 15046479872
         },
         {
           "label": "previous_share",
@@ -672,16 +520,16 @@
         },
         {
           "label": "share_change",
-          "value": 309600000
+          "value": 1181400064
         },
         {
           "label": "close",
-          "value": 0.79
+          "value": 0.789
         }
       ],
       "calculation_steps": [
-        "latest_share 14174679808.0 - previous_share 13865079808.0 = share_change 309600000.0",
-        "share_change 309600000.0 * close 0.79 = estimated_flow 244584000.0"
+        "latest_share 15046479872.0 - previous_share 13865079808.0 = share_change 1181400064.0",
+        "share_change 1181400064.0 * close 0.789 = estimated_flow 932124650.496"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -691,8 +539,8 @@
     {
       "index_id": "etf.estimated_flow_rank.bank_insurance",
       "label": "Bank and Insurance estimated_flow_rank",
-      "value": 4,
-      "display_value": "4",
+      "value": 3,
+      "display_value": "3",
       "unit": "rank",
       "category": "etf_flow",
       "related_sector_id": "bank_insurance",
@@ -718,8 +566,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": 244584000,
-        "estimated_flow_rank": 4
+        "estimated_flow": 932124650.496,
+        "estimated_flow_rank": 3
       },
       "components": [],
       "calculation_steps": [
@@ -761,8 +609,160 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 1632111435,
+        "amount": 1943623465,
         "amount_rank": 3
+      },
+      "components": [],
+      "calculation_steps": [
+        "Sort all numeric amount rows descending.",
+        "Assign 1-based rank after sorting."
+      ],
+      "caveats": [
+        "Amount is attention or confirmation heat, not net flow."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "etf.estimated_flow.brokerage",
+      "label": "Brokerage ETF estimated_flow",
+      "value": 794173259.776,
+      "display_value": "7.94亿",
+      "unit": "currency",
+      "category": "etf_flow",
+      "related_sector_id": "brokerage",
+      "related_sector_name": "Brokerage",
+      "formula_id": "provider.estimated_flow.v1",
+      "formula": {
+        "plain_language": "Representative ETF flow is the ETF share change multiplied by the latest close. The provider export calculates and stores the raw value.",
+        "formula_human": "estimated_flow = share_change * close; share_change = latest_share - previous_share.",
+        "formula_machine": "estimated_flow = (latest_share - previous_share) * close"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/etf_flow_leaderboard.json",
+        "data/provider_exports/a_share_etf_daily.csv"
+      ],
+      "source_fields": [
+        "latest_share",
+        "previous_share",
+        "share_change",
+        "close",
+        "estimated_flow"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": false,
+        "mock_or_fixture": false,
+        "missing_fields": []
+      },
+      "inputs": {
+        "latest_share": 75612635136,
+        "previous_share": 74097037312,
+        "share_change": 1515597824,
+        "close": 0.524,
+        "estimated_flow": 794173259.776
+      },
+      "components": [
+        {
+          "label": "latest_share",
+          "value": 75612635136
+        },
+        {
+          "label": "previous_share",
+          "value": 74097037312
+        },
+        {
+          "label": "share_change",
+          "value": 1515597824
+        },
+        {
+          "label": "close",
+          "value": 0.524
+        }
+      ],
+      "calculation_steps": [
+        "latest_share 75612635136.0 - previous_share 74097037312.0 = share_change 1515597824.0",
+        "share_change 1515597824.0 * close 0.524 = estimated_flow 794173259.776"
+      ],
+      "caveats": [
+        "Representative ETF row only; it is not full-sector fund coverage."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "etf.estimated_flow_rank.brokerage",
+      "label": "Brokerage estimated_flow_rank",
+      "value": 4,
+      "display_value": "4",
+      "unit": "rank",
+      "category": "etf_flow",
+      "related_sector_id": "brokerage",
+      "related_sector_name": "Brokerage",
+      "formula_id": "etf_flow_leaderboard.rank.v1",
+      "formula": {
+        "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
+        "formula_human": "estimated_flow_rank and amount_rank are 1-based descending ranks within the provider row set.",
+        "formula_machine": "rank = index(descending(rows by metric)) + 1"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/etf_flow_leaderboard.json",
+        "data/provider_exports/a_share_etf_daily.csv"
+      ],
+      "source_fields": [
+        "rows[].estimated_flow",
+        "rows[].estimated_flow_rank"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": false,
+        "mock_or_fixture": false,
+        "missing_fields": []
+      },
+      "inputs": {
+        "estimated_flow": 794173259.776,
+        "estimated_flow_rank": 4
+      },
+      "components": [],
+      "calculation_steps": [
+        "Sort all numeric estimated_flow rows descending.",
+        "Assign 1-based rank after sorting."
+      ],
+      "caveats": [
+        "Ties are ordered by the current JavaScript sort order in the source row sequence."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "etf.amount_rank.brokerage",
+      "label": "Brokerage amount_rank",
+      "value": 4,
+      "display_value": "4",
+      "unit": "rank",
+      "category": "etf_flow",
+      "related_sector_id": "brokerage",
+      "related_sector_name": "Brokerage",
+      "formula_id": "etf_flow_leaderboard.rank.v1",
+      "formula": {
+        "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
+        "formula_human": "estimated_flow_rank and amount_rank are 1-based descending ranks within the provider row set.",
+        "formula_machine": "rank = index(descending(rows by metric)) + 1"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/etf_flow_leaderboard.json",
+        "data/provider_exports/a_share_etf_daily.csv"
+      ],
+      "source_fields": [
+        "rows[].amount",
+        "rows[].amount_rank"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": false,
+        "mock_or_fixture": false,
+        "missing_fields": []
+      },
+      "inputs": {
+        "amount": 1563675351,
+        "amount_rank": 4
       },
       "components": [],
       "calculation_steps": [
@@ -777,8 +777,8 @@
     {
       "index_id": "etf.estimated_flow.ai_computer",
       "label": "AI and Computer ETF estimated_flow",
-      "value": 239422259.71199998,
-      "display_value": "2.39亿",
+      "value": 444080000,
+      "display_value": "4.44亿",
       "unit": "currency",
       "category": "etf_flow",
       "related_sector_id": "ai_computer",
@@ -807,16 +807,16 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 11291229696,
+        "latest_share": 11417229568,
         "previous_share": 11173229568,
-        "share_change": 118000128,
-        "close": 2.029,
-        "estimated_flow": 239422259.71199998
+        "share_change": 244000000,
+        "close": 1.82,
+        "estimated_flow": 444080000
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 11291229696
+          "value": 11417229568
         },
         {
           "label": "previous_share",
@@ -824,16 +824,16 @@
         },
         {
           "label": "share_change",
-          "value": 118000128
+          "value": 244000000
         },
         {
           "label": "close",
-          "value": 2.029
+          "value": 1.82
         }
       ],
       "calculation_steps": [
-        "latest_share 11291229696.0 - previous_share 11173229568.0 = share_change 118000128.0",
-        "share_change 118000128.0 * close 2.029 = estimated_flow 239422259.71199998"
+        "latest_share 11417229568.0 - previous_share 11173229568.0 = share_change 244000000.0",
+        "share_change 244000000.0 * close 1.82 = estimated_flow 444080000.0"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -870,7 +870,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": 239422259.71199998,
+        "estimated_flow": 444080000,
         "estimated_flow_rank": 5
       },
       "components": [],
@@ -886,8 +886,8 @@
     {
       "index_id": "etf.amount_rank.ai_computer",
       "label": "AI and Computer amount_rank",
-      "value": 7,
-      "display_value": "7",
+      "value": 5,
+      "display_value": "5",
       "unit": "rank",
       "category": "etf_flow",
       "related_sector_id": "ai_computer",
@@ -913,8 +913,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 751264448.067,
-        "amount_rank": 7
+        "amount": 1106147065.928,
+        "amount_rank": 5
       },
       "components": [],
       "calculation_steps": [
@@ -929,8 +929,8 @@
     {
       "index_id": "etf.estimated_flow.defense_military",
       "label": "Defense and Military ETF estimated_flow",
-      "value": 81153073.152,
-      "display_value": "8115.31万",
+      "value": 275058067.968,
+      "display_value": "2.75亿",
       "unit": "currency",
       "category": "etf_flow",
       "related_sector_id": "defense_military",
@@ -959,16 +959,16 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 5540080128,
+        "latest_share": 5728080128,
         "previous_share": 5469080064,
-        "share_change": 71000064,
-        "close": 1.143,
-        "estimated_flow": 81153073.152
+        "share_change": 259000064,
+        "close": 1.062,
+        "estimated_flow": 275058067.968
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 5540080128
+          "value": 5728080128
         },
         {
           "label": "previous_share",
@@ -976,16 +976,16 @@
         },
         {
           "label": "share_change",
-          "value": 71000064
+          "value": 259000064
         },
         {
           "label": "close",
-          "value": 1.143
+          "value": 1.062
         }
       ],
       "calculation_steps": [
-        "latest_share 5540080128.0 - previous_share 5469080064.0 = share_change 71000064.0",
-        "share_change 71000064.0 * close 1.143 = estimated_flow 81153073.152"
+        "latest_share 5728080128.0 - previous_share 5469080064.0 = share_change 259000064.0",
+        "share_change 259000064.0 * close 1.062 = estimated_flow 275058067.968"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -1022,7 +1022,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": 81153073.152,
+        "estimated_flow": 275058067.968,
         "estimated_flow_rank": 6
       },
       "components": [],
@@ -1038,8 +1038,8 @@
     {
       "index_id": "etf.amount_rank.defense_military",
       "label": "Defense and Military amount_rank",
-      "value": 9,
-      "display_value": "9",
+      "value": 8,
+      "display_value": "8",
       "unit": "rank",
       "category": "etf_flow",
       "related_sector_id": "defense_military",
@@ -1065,8 +1065,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 319881675,
-        "amount_rank": 9
+        "amount": 454073276,
+        "amount_rank": 8
       },
       "components": [],
       "calculation_steps": [
@@ -1081,8 +1081,8 @@
     {
       "index_id": "etf.estimated_flow.real_estate_infra",
       "label": "Real Estate and Infrastructure ETF estimated_flow",
-      "value": 75285000,
-      "display_value": "7528.50万",
+      "value": 210574000,
+      "display_value": "2.11亿",
       "unit": "currency",
       "category": "etf_flow",
       "related_sector_id": "real_estate_infra",
@@ -1111,16 +1111,16 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 2668097904,
+        "latest_share": 2787097904,
         "previous_share": 2605097904,
-        "share_change": 63000000,
-        "close": 1.195,
-        "estimated_flow": 75285000
+        "share_change": 182000000,
+        "close": 1.157,
+        "estimated_flow": 210574000
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 2668097904
+          "value": 2787097904
         },
         {
           "label": "previous_share",
@@ -1128,16 +1128,16 @@
         },
         {
           "label": "share_change",
-          "value": 63000000
+          "value": 182000000
         },
         {
           "label": "close",
-          "value": 1.195
+          "value": 1.157
         }
       ],
       "calculation_steps": [
-        "latest_share 2668097904.0 - previous_share 2605097904.0 = share_change 63000000.0",
-        "share_change 63000000.0 * close 1.195 = estimated_flow 75285000.0"
+        "latest_share 2787097904.0 - previous_share 2605097904.0 = share_change 182000000.0",
+        "share_change 182000000.0 * close 1.157 = estimated_flow 210574000.0"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -1174,7 +1174,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": 75285000,
+        "estimated_flow": 210574000,
         "estimated_flow_rank": 7
       },
       "components": [],
@@ -1217,7 +1217,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 197556092,
+        "amount": 162551494,
         "amount_rank": 10
       },
       "components": [],
@@ -1233,8 +1233,8 @@
     {
       "index_id": "etf.estimated_flow.new_energy_ev",
       "label": "New Energy Vehicle ETF estimated_flow",
-      "value": -14589000,
-      "display_value": "-1458.90万",
+      "value": -26401000,
+      "display_value": "-2640.10万",
       "unit": "currency",
       "category": "etf_flow",
       "related_sector_id": "new_energy_ev",
@@ -1263,16 +1263,16 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 1631384000,
+        "latest_share": 1623384000,
         "previous_share": 1640384000,
-        "share_change": -9000000,
-        "close": 1.621,
-        "estimated_flow": -14589000
+        "share_change": -17000000,
+        "close": 1.553,
+        "estimated_flow": -26401000
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 1631384000
+          "value": 1623384000
         },
         {
           "label": "previous_share",
@@ -1280,16 +1280,16 @@
         },
         {
           "label": "share_change",
-          "value": -9000000
+          "value": -17000000
         },
         {
           "label": "close",
-          "value": 1.621
+          "value": 1.553
         }
       ],
       "calculation_steps": [
-        "latest_share 1631384000.0 - previous_share 1640384000.0 = share_change -9000000.0",
-        "share_change -9000000.0 * close 1.621 = estimated_flow -14589000.0"
+        "latest_share 1623384000.0 - previous_share 1640384000.0 = share_change -17000000.0",
+        "share_change -17000000.0 * close 1.553 = estimated_flow -26401000.0"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -1326,7 +1326,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": -14589000,
+        "estimated_flow": -26401000,
         "estimated_flow_rank": 8
       },
       "components": [],
@@ -1369,7 +1369,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 126592810,
+        "amount": 159942109,
         "amount_rank": 11
       },
       "components": [],
@@ -1385,8 +1385,8 @@
     {
       "index_id": "etf.estimated_flow.consumer",
       "label": "Consumer ETF estimated_flow",
-      "value": -26240000,
-      "display_value": "-2624.00万",
+      "value": -52240000,
+      "display_value": "-5224.00万",
       "unit": "currency",
       "category": "etf_flow",
       "related_sector_id": "consumer",
@@ -1415,16 +1415,16 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 23332628992,
+        "latest_share": 23292628992,
         "previous_share": 23372628992,
-        "share_change": -40000000,
-        "close": 0.656,
-        "estimated_flow": -26240000
+        "share_change": -80000000,
+        "close": 0.653,
+        "estimated_flow": -52240000
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 23332628992
+          "value": 23292628992
         },
         {
           "label": "previous_share",
@@ -1432,16 +1432,16 @@
         },
         {
           "label": "share_change",
-          "value": -40000000
+          "value": -80000000
         },
         {
           "label": "close",
-          "value": 0.656
+          "value": 0.653
         }
       ],
       "calculation_steps": [
-        "latest_share 23332628992.0 - previous_share 23372628992.0 = share_change -40000000.0",
-        "share_change -40000000.0 * close 0.656 = estimated_flow -26240000.0"
+        "latest_share 23292628992.0 - previous_share 23372628992.0 = share_change -80000000.0",
+        "share_change -80000000.0 * close 0.653 = estimated_flow -52240000.0"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -1478,7 +1478,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": -26240000,
+        "estimated_flow": -52240000,
         "estimated_flow_rank": 9
       },
       "components": [],
@@ -1494,8 +1494,8 @@
     {
       "index_id": "etf.amount_rank.consumer",
       "label": "Consumer amount_rank",
-      "value": 8,
-      "display_value": "8",
+      "value": 9,
+      "display_value": "9",
       "unit": "rank",
       "category": "etf_flow",
       "related_sector_id": "consumer",
@@ -1521,160 +1521,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 573410882.604,
-        "amount_rank": 8
-      },
-      "components": [],
-      "calculation_steps": [
-        "Sort all numeric amount rows descending.",
-        "Assign 1-based rank after sorting."
-      ],
-      "caveats": [
-        "Amount is attention or confirmation heat, not net flow."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "etf.estimated_flow.healthcare_pharma",
-      "label": "Healthcare and Pharma ETF estimated_flow",
-      "value": -252414048.512,
-      "display_value": "-2.52亿",
-      "unit": "currency",
-      "category": "etf_flow",
-      "related_sector_id": "healthcare_pharma",
-      "related_sector_name": "Healthcare and Pharma",
-      "formula_id": "provider.estimated_flow.v1",
-      "formula": {
-        "plain_language": "Representative ETF flow is the ETF share change multiplied by the latest close. The provider export calculates and stores the raw value.",
-        "formula_human": "estimated_flow = share_change * close; share_change = latest_share - previous_share.",
-        "formula_machine": "estimated_flow = (latest_share - previous_share) * close"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/etf_flow_leaderboard.json",
-        "data/provider_exports/a_share_etf_daily.csv"
-      ],
-      "source_fields": [
-        "latest_share",
-        "previous_share",
-        "share_change",
-        "close",
-        "estimated_flow"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": false,
-        "mock_or_fixture": false,
-        "missing_fields": []
-      },
-      "inputs": {
-        "latest_share": 48423694848,
-        "previous_share": 49089694976,
-        "share_change": -666000128,
-        "close": 0.379,
-        "estimated_flow": -252414048.512
-      },
-      "components": [
-        {
-          "label": "latest_share",
-          "value": 48423694848
-        },
-        {
-          "label": "previous_share",
-          "value": 49089694976
-        },
-        {
-          "label": "share_change",
-          "value": -666000128
-        },
-        {
-          "label": "close",
-          "value": 0.379
-        }
-      ],
-      "calculation_steps": [
-        "latest_share 48423694848.0 - previous_share 49089694976.0 = share_change -666000128.0",
-        "share_change -666000128.0 * close 0.379 = estimated_flow -252414048.512"
-      ],
-      "caveats": [
-        "Representative ETF row only; it is not full-sector fund coverage."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "etf.estimated_flow_rank.healthcare_pharma",
-      "label": "Healthcare and Pharma estimated_flow_rank",
-      "value": 10,
-      "display_value": "10",
-      "unit": "rank",
-      "category": "etf_flow",
-      "related_sector_id": "healthcare_pharma",
-      "related_sector_name": "Healthcare and Pharma",
-      "formula_id": "etf_flow_leaderboard.rank.v1",
-      "formula": {
-        "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
-        "formula_human": "estimated_flow_rank and amount_rank are 1-based descending ranks within the provider row set.",
-        "formula_machine": "rank = index(descending(rows by metric)) + 1"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/etf_flow_leaderboard.json",
-        "data/provider_exports/a_share_etf_daily.csv"
-      ],
-      "source_fields": [
-        "rows[].estimated_flow",
-        "rows[].estimated_flow_rank"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": false,
-        "mock_or_fixture": false,
-        "missing_fields": []
-      },
-      "inputs": {
-        "estimated_flow": -252414048.512,
-        "estimated_flow_rank": 10
-      },
-      "components": [],
-      "calculation_steps": [
-        "Sort all numeric estimated_flow rows descending.",
-        "Assign 1-based rank after sorting."
-      ],
-      "caveats": [
-        "Ties are ordered by the current JavaScript sort order in the source row sequence."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "etf.amount_rank.healthcare_pharma",
-      "label": "Healthcare and Pharma amount_rank",
-      "value": 5,
-      "display_value": "5",
-      "unit": "rank",
-      "category": "etf_flow",
-      "related_sector_id": "healthcare_pharma",
-      "related_sector_name": "Healthcare and Pharma",
-      "formula_id": "etf_flow_leaderboard.rank.v1",
-      "formula": {
-        "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
-        "formula_human": "estimated_flow_rank and amount_rank are 1-based descending ranks within the provider row set.",
-        "formula_machine": "rank = index(descending(rows by metric)) + 1"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/etf_flow_leaderboard.json",
-        "data/provider_exports/a_share_etf_daily.csv"
-      ],
-      "source_fields": [
-        "rows[].amount",
-        "rows[].amount_rank"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": false,
-        "mock_or_fixture": false,
-        "missing_fields": []
-      },
-      "inputs": {
-        "amount": 1406423950,
-        "amount_rank": 5
+        "amount": 430551973.16,
+        "amount_rank": 9
       },
       "components": [],
       "calculation_steps": [
@@ -1689,8 +1537,8 @@
     {
       "index_id": "etf.estimated_flow.resources_materials",
       "label": "Resources and Materials ETF estimated_flow",
-      "value": -699947666.944,
-      "display_value": "-7.00亿",
+      "value": -557875895.296,
+      "display_value": "-5.58亿",
       "unit": "currency",
       "category": "etf_flow",
       "related_sector_id": "resources_materials",
@@ -1719,16 +1567,16 @@
         "missing_fields": []
       },
       "inputs": {
-        "latest_share": 12251538944,
+        "latest_share": 12313039104,
         "previous_share": 12654039040,
-        "share_change": -402500096,
-        "close": 1.739,
-        "estimated_flow": -699947666.944
+        "share_change": -340999936,
+        "close": 1.636,
+        "estimated_flow": -557875895.296
       },
       "components": [
         {
           "label": "latest_share",
-          "value": 12251538944
+          "value": 12313039104
         },
         {
           "label": "previous_share",
@@ -1736,16 +1584,16 @@
         },
         {
           "label": "share_change",
-          "value": -402500096
+          "value": -340999936
         },
         {
           "label": "close",
-          "value": 1.739
+          "value": 1.636
         }
       ],
       "calculation_steps": [
-        "latest_share 12251538944.0 - previous_share 12654039040.0 = share_change -402500096.0",
-        "share_change -402500096.0 * close 1.739 = estimated_flow -699947666.944"
+        "latest_share 12313039104.0 - previous_share 12654039040.0 = share_change -340999936.0",
+        "share_change -340999936.0 * close 1.636 = estimated_flow -557875895.296"
       ],
       "caveats": [
         "Representative ETF row only; it is not full-sector fund coverage."
@@ -1755,8 +1603,8 @@
     {
       "index_id": "etf.estimated_flow_rank.resources_materials",
       "label": "Resources and Materials estimated_flow_rank",
-      "value": 11,
-      "display_value": "11",
+      "value": 10,
+      "display_value": "10",
       "unit": "rank",
       "category": "etf_flow",
       "related_sector_id": "resources_materials",
@@ -1782,8 +1630,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "estimated_flow": -699947666.944,
-        "estimated_flow_rank": 11
+        "estimated_flow": -557875895.296,
+        "estimated_flow_rank": 10
       },
       "components": [],
       "calculation_steps": [
@@ -1825,7 +1673,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "amount": 775383139,
+        "amount": 941534728,
         "amount_rank": 6
       },
       "components": [],
@@ -1839,10 +1687,272 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
+      "index_id": "etf.estimated_flow.healthcare_pharma",
+      "label": "Healthcare and Pharma ETF estimated_flow",
+      "value": -852488046.592,
+      "display_value": "-8.52亿",
+      "unit": "currency",
+      "category": "etf_flow",
+      "related_sector_id": "healthcare_pharma",
+      "related_sector_name": "Healthcare and Pharma",
+      "formula_id": "provider.estimated_flow.v1",
+      "formula": {
+        "plain_language": "Representative ETF flow is the ETF share change multiplied by the latest close. The provider export calculates and stores the raw value.",
+        "formula_human": "estimated_flow = share_change * close; share_change = latest_share - previous_share.",
+        "formula_machine": "estimated_flow = (latest_share - previous_share) * close"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/etf_flow_leaderboard.json",
+        "data/provider_exports/a_share_etf_daily.csv"
+      ],
+      "source_fields": [
+        "latest_share",
+        "previous_share",
+        "share_change",
+        "close",
+        "estimated_flow"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": false,
+        "mock_or_fixture": false,
+        "missing_fields": []
+      },
+      "inputs": {
+        "latest_share": 46747694848,
+        "previous_share": 49089694976,
+        "share_change": -2342000128,
+        "close": 0.364,
+        "estimated_flow": -852488046.592
+      },
+      "components": [
+        {
+          "label": "latest_share",
+          "value": 46747694848
+        },
+        {
+          "label": "previous_share",
+          "value": 49089694976
+        },
+        {
+          "label": "share_change",
+          "value": -2342000128
+        },
+        {
+          "label": "close",
+          "value": 0.364
+        }
+      ],
+      "calculation_steps": [
+        "latest_share 46747694848.0 - previous_share 49089694976.0 = share_change -2342000128.0",
+        "share_change -2342000128.0 * close 0.364 = estimated_flow -852488046.592"
+      ],
+      "caveats": [
+        "Representative ETF row only; it is not full-sector fund coverage."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "etf.estimated_flow_rank.healthcare_pharma",
+      "label": "Healthcare and Pharma estimated_flow_rank",
+      "value": 11,
+      "display_value": "11",
+      "unit": "rank",
+      "category": "etf_flow",
+      "related_sector_id": "healthcare_pharma",
+      "related_sector_name": "Healthcare and Pharma",
+      "formula_id": "etf_flow_leaderboard.rank.v1",
+      "formula": {
+        "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
+        "formula_human": "estimated_flow_rank and amount_rank are 1-based descending ranks within the provider row set.",
+        "formula_machine": "rank = index(descending(rows by metric)) + 1"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/etf_flow_leaderboard.json",
+        "data/provider_exports/a_share_etf_daily.csv"
+      ],
+      "source_fields": [
+        "rows[].estimated_flow",
+        "rows[].estimated_flow_rank"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": false,
+        "mock_or_fixture": false,
+        "missing_fields": []
+      },
+      "inputs": {
+        "estimated_flow": -852488046.592,
+        "estimated_flow_rank": 11
+      },
+      "components": [],
+      "calculation_steps": [
+        "Sort all numeric estimated_flow rows descending.",
+        "Assign 1-based rank after sorting."
+      ],
+      "caveats": [
+        "Ties are ordered by the current JavaScript sort order in the source row sequence."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "etf.amount_rank.healthcare_pharma",
+      "label": "Healthcare and Pharma amount_rank",
+      "value": 7,
+      "display_value": "7",
+      "unit": "rank",
+      "category": "etf_flow",
+      "related_sector_id": "healthcare_pharma",
+      "related_sector_name": "Healthcare and Pharma",
+      "formula_id": "etf_flow_leaderboard.rank.v1",
+      "formula": {
+        "plain_language": "Leaderboard ranks sort available numeric rows from high to low.",
+        "formula_human": "estimated_flow_rank and amount_rank are 1-based descending ranks within the provider row set.",
+        "formula_machine": "rank = index(descending(rows by metric)) + 1"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/etf_flow_leaderboard.json",
+        "data/provider_exports/a_share_etf_daily.csv"
+      ],
+      "source_fields": [
+        "rows[].amount",
+        "rows[].amount_rank"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": false,
+        "mock_or_fixture": false,
+        "missing_fields": []
+      },
+      "inputs": {
+        "amount": 820522263,
+        "amount_rank": 7
+      },
+      "components": [],
+      "calculation_steps": [
+        "Sort all numeric amount rows descending.",
+        "Assign 1-based rank after sorting."
+      ],
+      "caveats": [
+        "Amount is attention or confirmation heat, not net flow."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "daily.score.communication_electronics",
+      "label": "通信电子 daily score",
+      "value": 0.3189,
+      "display_value": "0.3189",
+      "unit": "score",
+      "category": "daily",
+      "related_sector_id": "communication_electronics",
+      "related_sector_name": "通信电子",
+      "formula_id": "daily_sector_analysis.score_tier.v1",
+      "formula": {
+        "plain_language": "Daily rows preserve the source score from rotation or flow rows, then tier lists are filtered by priority, confirmation, and risk rules.",
+        "formula_human": "row.score = row.score ?? flow.score; priority_watch requires persistent leader score >= 0.08; confirm_next requires score >= 0.12 and not already priority; avoid_watch uses score <= 0.08 or risk module labels.",
+        "formula_machine": "score = numberOrNull(source.score ?? flow.score) ?? 0; tier = selected list in buildDailySectorAnalysis"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/daily_sector_analysis.json",
+        "model_outputs/<as_of>/sector_flow_review.json",
+        "model_outputs/<as_of>/sector_rotation_history.json"
+      ],
+      "source_fields": [
+        "tiers.*[].score",
+        "tiers.*[].current_flow_score",
+        "tiers.*[].tier"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "score": 0.3189,
+        "current_flow_score": 0.3189,
+        "tier": "priority_watch",
+        "streak_days": 3,
+        "readiness_score": 32
+      },
+      "components": {
+        "observed_direct_flow": true,
+        "observed_price_volume": true,
+        "confirmation_inputs": [
+          "ETF流",
+          "价量",
+          "总水位",
+          "新闻",
+          "基本面代理"
+        ],
+        "valuation_label": "expensive",
+        "valuation_position_score": 0.22,
+        "fundamental_label": "improving",
+        "fundamental_score": 0.18,
+        "flow_price_label": "constructive_inflow_bias",
+        "flow_price_score": 0.3189
+      },
+      "calculation_steps": [
+        "Preserve source row score from rotation history or flow review.",
+        "Round the selected score to four decimals.",
+        "Place row into its generated daily tier list."
+      ],
+      "caveats": [
+        "non_real_flow_source",
+        "valuation_manual_seed",
+        "fundamental_manual_seed"
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "daily.tier.communication_electronics",
+      "label": "通信电子 daily tier",
+      "value": "priority_watch",
+      "display_value": "priority_watch",
+      "unit": null,
+      "category": "daily",
+      "related_sector_id": "communication_electronics",
+      "related_sector_name": "通信电子",
+      "formula_id": "daily_sector_analysis.score_tier.v1",
+      "formula": {
+        "plain_language": "Daily rows preserve the source score from rotation or flow rows, then tier lists are filtered by priority, confirmation, and risk rules.",
+        "formula_human": "row.score = row.score ?? flow.score; priority_watch requires persistent leader score >= 0.08; confirm_next requires score >= 0.12 and not already priority; avoid_watch uses score <= 0.08 or risk module labels.",
+        "formula_machine": "score = numberOrNull(source.score ?? flow.score) ?? 0; tier = selected list in buildDailySectorAnalysis"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/daily_sector_analysis.json"
+      ],
+      "source_fields": [
+        "tiers.priority_watch",
+        "tiers.confirm_next",
+        "tiers.avoid_watch"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "tier": "priority_watch",
+        "score": 0.3189,
+        "module_decision_label": "balanced_candidate"
+      },
+      "components": [],
+      "calculation_steps": [
+        "Rows are emitted into priority_watch, confirm_next, or avoid_watch by buildDailySectorAnalysis filters."
+      ],
+      "caveats": [
+        "Tier lists are de-duplicated by sector."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
       "index_id": "daily.score.brokerage",
       "label": "券商 daily score",
-      "value": 0.2411,
-      "display_value": "0.2411",
+      "value": 0.2076,
+      "display_value": "0.2076",
       "unit": "score",
       "category": "daily",
       "related_sector_id": "brokerage",
@@ -1870,10 +1980,10 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.2411,
-        "current_flow_score": 0.2411,
+        "score": 0.2076,
+        "current_flow_score": 0.2076,
         "tier": "priority_watch",
-        "streak_days": 9,
+        "streak_days": 10,
         "readiness_score": 32
       },
       "components": {
@@ -1891,7 +2001,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.12,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2411
+        "flow_price_score": 0.2076
       },
       "calculation_steps": [
         "Preserve source row score from rotation history or flow review.",
@@ -1936,7 +2046,7 @@
       },
       "inputs": {
         "tier": "priority_watch",
-        "score": 0.2411,
+        "score": 0.2076,
         "module_decision_label": "balanced_candidate"
       },
       "components": [],
@@ -1951,8 +2061,8 @@
     {
       "index_id": "daily.score.semiconductor",
       "label": "半导体 daily score",
-      "value": 0.3389,
-      "display_value": "0.3389",
+      "value": 0.2809,
+      "display_value": "0.2809",
       "unit": "score",
       "category": "daily",
       "related_sector_id": "semiconductor",
@@ -1980,8 +2090,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.3389,
-        "current_flow_score": 0.3389,
+        "score": 0.2809,
+        "current_flow_score": 0.2809,
         "tier": "confirm_next",
         "streak_days": null,
         "readiness_score": 32
@@ -2001,7 +2111,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.2,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.3389
+        "flow_price_score": 0.2809
       },
       "calculation_steps": [
         "Preserve source row score from rotation history or flow review.",
@@ -2046,118 +2156,8 @@
       },
       "inputs": {
         "tier": "confirm_next",
-        "score": 0.3389,
+        "score": 0.2809,
         "module_decision_label": "expensive_momentum"
-      },
-      "components": [],
-      "calculation_steps": [
-        "Rows are emitted into priority_watch, confirm_next, or avoid_watch by buildDailySectorAnalysis filters."
-      ],
-      "caveats": [
-        "Tier lists are de-duplicated by sector."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "daily.score.communication_electronics",
-      "label": "通信电子 daily score",
-      "value": 0.2988,
-      "display_value": "0.2988",
-      "unit": "score",
-      "category": "daily",
-      "related_sector_id": "communication_electronics",
-      "related_sector_name": "通信电子",
-      "formula_id": "daily_sector_analysis.score_tier.v1",
-      "formula": {
-        "plain_language": "Daily rows preserve the source score from rotation or flow rows, then tier lists are filtered by priority, confirmation, and risk rules.",
-        "formula_human": "row.score = row.score ?? flow.score; priority_watch requires persistent leader score >= 0.08; confirm_next requires score >= 0.12 and not already priority; avoid_watch uses score <= 0.08 or risk module labels.",
-        "formula_machine": "score = numberOrNull(source.score ?? flow.score) ?? 0; tier = selected list in buildDailySectorAnalysis"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/daily_sector_analysis.json",
-        "model_outputs/<as_of>/sector_flow_review.json",
-        "model_outputs/<as_of>/sector_rotation_history.json"
-      ],
-      "source_fields": [
-        "tiers.*[].score",
-        "tiers.*[].current_flow_score",
-        "tiers.*[].tier"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "score": 0.2988,
-        "current_flow_score": 0.2988,
-        "tier": "confirm_next",
-        "streak_days": null,
-        "readiness_score": 32
-      },
-      "components": {
-        "observed_direct_flow": true,
-        "observed_price_volume": true,
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认",
-          "总水位",
-          "新闻压力",
-          "基本面代理"
-        ],
-        "valuation_label": "expensive",
-        "valuation_position_score": 0.22,
-        "fundamental_label": "improving",
-        "fundamental_score": 0.18,
-        "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2988
-      },
-      "calculation_steps": [
-        "Preserve source row score from rotation history or flow review.",
-        "Round the selected score to four decimals.",
-        "Place row into its generated daily tier list."
-      ],
-      "caveats": [
-        "non_real_flow_source",
-        "valuation_manual_seed",
-        "fundamental_manual_seed"
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "daily.tier.communication_electronics",
-      "label": "通信电子 daily tier",
-      "value": "confirm_next",
-      "display_value": "confirm_next",
-      "unit": null,
-      "category": "daily",
-      "related_sector_id": "communication_electronics",
-      "related_sector_name": "通信电子",
-      "formula_id": "daily_sector_analysis.score_tier.v1",
-      "formula": {
-        "plain_language": "Daily rows preserve the source score from rotation or flow rows, then tier lists are filtered by priority, confirmation, and risk rules.",
-        "formula_human": "row.score = row.score ?? flow.score; priority_watch requires persistent leader score >= 0.08; confirm_next requires score >= 0.12 and not already priority; avoid_watch uses score <= 0.08 or risk module labels.",
-        "formula_machine": "score = numberOrNull(source.score ?? flow.score) ?? 0; tier = selected list in buildDailySectorAnalysis"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/daily_sector_analysis.json"
-      ],
-      "source_fields": [
-        "tiers.priority_watch",
-        "tiers.confirm_next",
-        "tiers.avoid_watch"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "tier": "confirm_next",
-        "score": 0.2988,
-        "module_decision_label": "balanced_candidate"
       },
       "components": [],
       "calculation_steps": [
@@ -2171,8 +2171,8 @@
     {
       "index_id": "daily.score.bank_insurance",
       "label": "银行保险 daily score",
-      "value": 0.1525,
-      "display_value": "0.1525",
+      "value": 0.2063,
+      "display_value": "0.2063",
       "unit": "score",
       "category": "daily",
       "related_sector_id": "bank_insurance",
@@ -2200,8 +2200,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.1525,
-        "current_flow_score": 0.1525,
+        "score": 0.2063,
+        "current_flow_score": 0.2063,
         "tier": "confirm_next",
         "streak_days": null,
         "readiness_score": 32
@@ -2220,8 +2220,8 @@
         "valuation_position_score": -0.18,
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
-        "flow_price_label": "neutral",
-        "flow_price_score": 0.1525
+        "flow_price_label": "constructive_inflow_bias",
+        "flow_price_score": 0.2063
       },
       "calculation_steps": [
         "Preserve source row score from rotation history or flow review.",
@@ -2266,8 +2266,8 @@
       },
       "inputs": {
         "tier": "confirm_next",
-        "score": 0.1525,
-        "module_decision_label": "wait_for_confirmation"
+        "score": 0.2063,
+        "module_decision_label": "cheap_with_flow"
       },
       "components": [],
       "calculation_steps": [
@@ -2281,8 +2281,8 @@
     {
       "index_id": "daily.score.new_energy_ev",
       "label": "新能源车 daily score",
-      "value": -0.0333,
-      "display_value": "-0.0333",
+      "value": -0.0603,
+      "display_value": "-0.0603",
       "unit": "score",
       "category": "daily",
       "related_sector_id": "new_energy_ev",
@@ -2310,10 +2310,10 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": -0.0333,
-        "current_flow_score": -0.0333,
+        "score": -0.0603,
+        "current_flow_score": -0.0603,
         "tier": "avoid_watch",
-        "streak_days": 3,
+        "streak_days": 4,
         "readiness_score": 32
       },
       "components": {
@@ -2331,7 +2331,7 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.18,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0333
+        "flow_price_score": -0.0603
       },
       "calculation_steps": [
         "Preserve source row score from rotation history or flow review.",
@@ -2376,7 +2376,7 @@
       },
       "inputs": {
         "tier": "avoid_watch",
-        "score": -0.0333,
+        "score": -0.0603,
         "module_decision_label": "wait_for_confirmation"
       },
       "components": [],
@@ -2391,8 +2391,8 @@
     {
       "index_id": "daily.score.real_estate_infra",
       "label": "地产基建 daily score",
-      "value": -0.0049,
-      "display_value": "-0.0049",
+      "value": -0.0497,
+      "display_value": "-0.0497",
       "unit": "score",
       "category": "daily",
       "related_sector_id": "real_estate_infra",
@@ -2420,10 +2420,10 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": -0.0049,
-        "current_flow_score": -0.0049,
+        "score": -0.0497,
+        "current_flow_score": -0.0497,
         "tier": "avoid_watch",
-        "streak_days": 9,
+        "streak_days": 10,
         "readiness_score": 32
       },
       "components": {
@@ -2441,7 +2441,7 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.32,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0049
+        "flow_price_score": -0.0497
       },
       "calculation_steps": [
         "Preserve source row score from rotation history or flow review.",
@@ -2486,7 +2486,7 @@
       },
       "inputs": {
         "tier": "avoid_watch",
-        "score": -0.0049,
+        "score": -0.0497,
         "module_decision_label": "value_trap_risk"
       },
       "components": [],
@@ -2937,8 +2937,8 @@
     {
       "index_id": "watchlist.count.confirmed_watch",
       "label": "Watchlist confirmed_watch count",
-      "value": 0,
-      "display_value": "0",
+      "value": 2,
+      "display_value": "2",
       "unit": "count",
       "category": "watchlist",
       "related_sector_id": null,
@@ -2963,7 +2963,10 @@
       },
       "inputs": {
         "state": "confirmed_watch",
-        "sectors": []
+        "sectors": [
+          "brokerage",
+          "communication_electronics"
+        ]
       },
       "components": [],
       "calculation_steps": [
@@ -2977,8 +2980,8 @@
     {
       "index_id": "watchlist.count.conflict_review",
       "label": "Watchlist conflict_review count",
-      "value": 3,
-      "display_value": "3",
+      "value": 1,
+      "display_value": "1",
       "unit": "count",
       "category": "watchlist",
       "related_sector_id": null,
@@ -3004,9 +3007,7 @@
       "inputs": {
         "state": "conflict_review",
         "sectors": [
-          "brokerage",
-          "real_estate_infra",
-          "semiconductor"
+          "real_estate_infra"
         ]
       },
       "components": [],
@@ -3215,8 +3216,8 @@
         "state": "blocked_execution",
         "sectors": [
           "brokerage",
+          "communication_electronics",
           "real_estate_infra",
-          "semiconductor",
           "basic_chemicals",
           "building_materials",
           "new_energy_ev",
@@ -3224,7 +3225,7 @@
           "steel",
           "ai_computer",
           "bank_insurance",
-          "communication_electronics",
+          "semiconductor",
           "a_share",
           "a_share_agriculture",
           "a_share_ai_computer",
@@ -3295,8 +3296,8 @@
     {
       "index_id": "watchlist.watch_state.brokerage",
       "label": "券商 watch_state",
-      "value": "conflict_review",
-      "display_value": "conflict_review",
+      "value": "confirmed_watch",
+      "display_value": "confirmed_watch",
       "unit": null,
       "category": "watchlist",
       "related_sector_id": "brokerage",
@@ -3324,20 +3325,18 @@
         "missing_fields": []
       },
       "inputs": {
-        "watch_state": "conflict_review",
-        "evidence_summary": "state=conflict_review · daily=priority_watch · ETF flow rank=3 · rotation=领先延续 · conflict=manual review",
-        "conflict_evidence": [
-          "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。"
-        ]
+        "watch_state": "confirmed_watch",
+        "evidence_summary": "state=confirmed_watch · daily=priority_watch · ETF flow rank=4 · rotation=领先延续",
+        "conflict_evidence": []
       },
       "components": {
         "positive_evidence": [
-          "ETF estimated_flow 为正，流排名 3。",
+          "ETF estimated_flow 为正，流排名 4。",
           "日结论分层为 priority_watch。",
           "轮动标签偏强：领先延续。",
           "资金量价 review 分数偏正。",
           "三模块标签偏正：合理且改善。",
-          "ETF estimated_flow positive; rank 3.",
+          "ETF estimated_flow positive; rank 4.",
           "daily tier priority_watch.",
           "rotation strong: 领先延续.",
           "flow review score positive."
@@ -3359,8 +3358,8 @@
     {
       "index_id": "watchlist.priority_level.brokerage",
       "label": "券商 priority_level",
-      "value": "manual_review",
-      "display_value": "manual_review",
+      "value": "high",
+      "display_value": "high",
       "unit": null,
       "category": "watchlist",
       "related_sector_id": "brokerage",
@@ -3385,15 +3384,15 @@
         "missing_fields": []
       },
       "inputs": {
-        "priority_level": "manual_review",
-        "watch_state": "conflict_review"
+        "priority_level": "high",
+        "watch_state": "confirmed_watch"
       },
       "components": [],
       "calculation_steps": [
         "Map watch_state and rank evidence to priorityLevel."
       ],
       "caveats": [
-        "Resolve attribution conflicts.",
+        "Maintain positive evidence without new conflicts.",
         "Confirm ETF flow and rotation persistence on the next run.",
         "ETF readiness must leave watch-only/not-ready state before execution language."
       ],
@@ -3402,8 +3401,8 @@
     {
       "index_id": "watchlist.state_change.brokerage",
       "label": "券商 state_change",
-      "value": "unchanged",
-      "display_value": "unchanged",
+      "value": "upgraded",
+      "display_value": "upgraded",
       "unit": null,
       "category": "watchlist",
       "related_sector_id": "brokerage",
@@ -3429,8 +3428,157 @@
       },
       "inputs": {
         "previous_state": "conflict_review",
-        "watch_state": "conflict_review",
-        "state_change": "unchanged"
+        "watch_state": "confirmed_watch",
+        "state_change": "upgraded"
+      },
+      "components": [],
+      "calculation_steps": [
+        "If no previous watchlist row exists, mark new.",
+        "If state is unchanged, mark unchanged.",
+        "Otherwise compare state priority order."
+      ],
+      "caveats": [
+        "Requires previous watchlist output to detect unchanged/upgraded/downgraded."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "watchlist.watch_state.communication_electronics",
+      "label": "通信电子 watch_state",
+      "value": "confirmed_watch",
+      "display_value": "confirmed_watch",
+      "unit": null,
+      "category": "watchlist",
+      "related_sector_id": "communication_electronics",
+      "related_sector_name": "通信电子",
+      "formula_id": "sector_watchlist_state.state.v1",
+      "formula": {
+        "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
+        "formula_human": "priority with conflict -> conflict_review; priority -> confirmed_watch; conflict -> conflict_review; top positive flow alone -> flow_only_candidate; strong rotation without flow -> rotation_only_candidate; deterioration -> deteriorating_watch; avoid tier -> avoid_watch; otherwise blocked_execution.",
+        "formula_machine": "watch_state = classifyWatchState({daily, attribution, etf, rotation, module, flow})"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_watchlist_state.json",
+        "model_outputs/<as_of>/sector_signal_attribution.json",
+        "model_outputs/<as_of>/daily_sector_analysis.json"
+      ],
+      "source_fields": [
+        "rows[].watch_state",
+        "rows[].evidence_summary",
+        "rows[].conflict_evidence"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "watch_state": "confirmed_watch",
+        "evidence_summary": "state=confirmed_watch · daily=priority_watch · ETF flow rank=1 · rotation=领先延续",
+        "conflict_evidence": []
+      },
+      "components": {
+        "positive_evidence": [
+          "ETF estimated_flow 为正，流排名 1。",
+          "日结论分层为 priority_watch。",
+          "轮动标签偏强：领先延续。",
+          "资金量价 review 分数偏正。",
+          "三模块标签偏正：合理且改善。",
+          "ETF estimated_flow positive; rank 1.",
+          "daily tier priority_watch.",
+          "rotation strong: 领先延续.",
+          "flow review score positive."
+        ],
+        "negative_evidence": [
+          "估值/基本面仍包含手工种子。"
+        ]
+      },
+      "calculation_steps": [
+        "Apply classifyWatchState rule order.",
+        "Set priority_level from the resulting state and rank evidence.",
+        "Compare previous_state to classify state_change."
+      ],
+      "caveats": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "watchlist.priority_level.communication_electronics",
+      "label": "通信电子 priority_level",
+      "value": "high",
+      "display_value": "high",
+      "unit": null,
+      "category": "watchlist",
+      "related_sector_id": "communication_electronics",
+      "related_sector_name": "通信电子",
+      "formula_id": "sector_watchlist_state.state.v1",
+      "formula": {
+        "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
+        "formula_human": "priority with conflict -> conflict_review; priority -> confirmed_watch; conflict -> conflict_review; top positive flow alone -> flow_only_candidate; strong rotation without flow -> rotation_only_candidate; deterioration -> deteriorating_watch; avoid tier -> avoid_watch; otherwise blocked_execution.",
+        "formula_machine": "watch_state = classifyWatchState({daily, attribution, etf, rotation, module, flow})"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_watchlist_state.json"
+      ],
+      "source_fields": [
+        "rows[].priority_level",
+        "rows[].watch_state"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "priority_level": "high",
+        "watch_state": "confirmed_watch"
+      },
+      "components": [],
+      "calculation_steps": [
+        "Map watch_state and rank evidence to priorityLevel."
+      ],
+      "caveats": [
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "watchlist.state_change.communication_electronics",
+      "label": "通信电子 state_change",
+      "value": "upgraded",
+      "display_value": "upgraded",
+      "unit": null,
+      "category": "watchlist",
+      "related_sector_id": "communication_electronics",
+      "related_sector_name": "通信电子",
+      "formula_id": "sector_watchlist_state.state.v1",
+      "formula": {
+        "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
+        "formula_human": "priority with conflict -> conflict_review; priority -> confirmed_watch; conflict -> conflict_review; top positive flow alone -> flow_only_candidate; strong rotation without flow -> rotation_only_candidate; deterioration -> deteriorating_watch; avoid tier -> avoid_watch; otherwise blocked_execution.",
+        "formula_machine": "watch_state = classifyWatchState({daily, attribution, etf, rotation, module, flow})"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_watchlist_state.json"
+      ],
+      "source_fields": [
+        "rows[].previous_state",
+        "rows[].state_change"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "previous_state": "blocked_execution",
+        "watch_state": "confirmed_watch",
+        "state_change": "upgraded"
       },
       "components": [],
       "calculation_steps": [
@@ -3580,156 +3728,6 @@
         "previous_state": "avoid_watch",
         "watch_state": "conflict_review",
         "state_change": "upgraded"
-      },
-      "components": [],
-      "calculation_steps": [
-        "If no previous watchlist row exists, mark new.",
-        "If state is unchanged, mark unchanged.",
-        "Otherwise compare state priority order."
-      ],
-      "caveats": [
-        "Requires previous watchlist output to detect unchanged/upgraded/downgraded."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "watchlist.watch_state.semiconductor",
-      "label": "半导体 watch_state",
-      "value": "conflict_review",
-      "display_value": "conflict_review",
-      "unit": null,
-      "category": "watchlist",
-      "related_sector_id": "semiconductor",
-      "related_sector_name": "半导体",
-      "formula_id": "sector_watchlist_state.state.v1",
-      "formula": {
-        "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
-        "formula_human": "priority with conflict -> conflict_review; priority -> confirmed_watch; conflict -> conflict_review; top positive flow alone -> flow_only_candidate; strong rotation without flow -> rotation_only_candidate; deterioration -> deteriorating_watch; avoid tier -> avoid_watch; otherwise blocked_execution.",
-        "formula_machine": "watch_state = classifyWatchState({daily, attribution, etf, rotation, module, flow})"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_watchlist_state.json",
-        "model_outputs/<as_of>/sector_signal_attribution.json",
-        "model_outputs/<as_of>/daily_sector_analysis.json"
-      ],
-      "source_fields": [
-        "rows[].watch_state",
-        "rows[].evidence_summary",
-        "rows[].conflict_evidence"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "watch_state": "conflict_review",
-        "evidence_summary": "state=conflict_review · daily=confirm_next · ETF flow rank=1 · rotation=领先延续 · conflict=manual review",
-        "conflict_evidence": [
-          "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。"
-        ]
-      },
-      "components": {
-        "positive_evidence": [
-          "ETF estimated_flow 为正，流排名 1。",
-          "日结论分层为 confirm_next。",
-          "轮动标签偏强：领先延续。",
-          "资金量价 review 分数偏正。",
-          "ETF estimated_flow positive; rank 1.",
-          "daily tier confirm_next.",
-          "rotation strong: 领先延续.",
-          "flow review score positive."
-        ],
-        "negative_evidence": [
-          "估值/基本面仍包含手工种子。"
-        ]
-      },
-      "calculation_steps": [
-        "Apply classifyWatchState rule order.",
-        "Set priority_level from the resulting state and rank evidence.",
-        "Compare previous_state to classify state_change."
-      ],
-      "caveats": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "watchlist.priority_level.semiconductor",
-      "label": "半导体 priority_level",
-      "value": "manual_review",
-      "display_value": "manual_review",
-      "unit": null,
-      "category": "watchlist",
-      "related_sector_id": "semiconductor",
-      "related_sector_name": "半导体",
-      "formula_id": "sector_watchlist_state.state.v1",
-      "formula": {
-        "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
-        "formula_human": "priority with conflict -> conflict_review; priority -> confirmed_watch; conflict -> conflict_review; top positive flow alone -> flow_only_candidate; strong rotation without flow -> rotation_only_candidate; deterioration -> deteriorating_watch; avoid tier -> avoid_watch; otherwise blocked_execution.",
-        "formula_machine": "watch_state = classifyWatchState({daily, attribution, etf, rotation, module, flow})"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_watchlist_state.json"
-      ],
-      "source_fields": [
-        "rows[].priority_level",
-        "rows[].watch_state"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "priority_level": "manual_review",
-        "watch_state": "conflict_review"
-      },
-      "components": [],
-      "calculation_steps": [
-        "Map watch_state and rank evidence to priorityLevel."
-      ],
-      "caveats": [
-        "Resolve attribution conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "watchlist.state_change.semiconductor",
-      "label": "半导体 state_change",
-      "value": "unchanged",
-      "display_value": "unchanged",
-      "unit": null,
-      "category": "watchlist",
-      "related_sector_id": "semiconductor",
-      "related_sector_name": "半导体",
-      "formula_id": "sector_watchlist_state.state.v1",
-      "formula": {
-        "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
-        "formula_human": "priority with conflict -> conflict_review; priority -> confirmed_watch; conflict -> conflict_review; top positive flow alone -> flow_only_candidate; strong rotation without flow -> rotation_only_candidate; deterioration -> deteriorating_watch; avoid tier -> avoid_watch; otherwise blocked_execution.",
-        "formula_machine": "watch_state = classifyWatchState({daily, attribution, etf, rotation, module, flow})"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_watchlist_state.json"
-      ],
-      "source_fields": [
-        "rows[].previous_state",
-        "rows[].state_change"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "previous_state": "conflict_review",
-        "watch_state": "conflict_review",
-        "state_change": "unchanged"
       },
       "components": [],
       "calculation_steps": [
@@ -4633,15 +4631,20 @@
       },
       "inputs": {
         "watch_state": "blocked_execution",
-        "evidence_summary": "state=blocked_execution · daily=confirm_next · ETF flow rank=4 · rotation=单日观察",
+        "evidence_summary": "state=blocked_execution · daily=confirm_next · ETF flow rank=3 · rotation=单日观察",
         "conflict_evidence": []
       },
       "components": {
         "positive_evidence": [
-          "ETF estimated_flow 为正，流排名 4。",
+          "ETF estimated_flow 为正，流排名 3。",
           "日结论分层为 confirm_next。",
-          "ETF estimated_flow positive; rank 4.",
-          "daily tier confirm_next."
+          "轮动标签偏强：单日观察。",
+          "资金量价 review 分数偏正。",
+          "三模块标签偏正：低估且有资金。",
+          "ETF estimated_flow positive; rank 3.",
+          "daily tier confirm_next.",
+          "rotation strong: 单日观察.",
+          "flow review score positive."
         ],
         "negative_evidence": [
           "估值/基本面仍包含手工种子。"
@@ -4745,14 +4748,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "watchlist.watch_state.communication_electronics",
-      "label": "通信电子 watch_state",
+      "index_id": "watchlist.watch_state.semiconductor",
+      "label": "半导体 watch_state",
       "value": "blocked_execution",
       "display_value": "blocked_execution",
       "unit": null,
       "category": "watchlist",
-      "related_sector_id": "communication_electronics",
-      "related_sector_name": "通信电子",
+      "related_sector_id": "semiconductor",
+      "related_sector_name": "半导体",
       "formula_id": "sector_watchlist_state.state.v1",
       "formula": {
         "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
@@ -4786,7 +4789,6 @@
           "日结论分层为 confirm_next。",
           "轮动标签偏强：领先延续。",
           "资金量价 review 分数偏正。",
-          "三模块标签偏正：合理且改善。",
           "ETF estimated_flow positive; rank 2.",
           "daily tier confirm_next.",
           "rotation strong: 领先延续.",
@@ -4807,14 +4809,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "watchlist.priority_level.communication_electronics",
-      "label": "通信电子 priority_level",
+      "index_id": "watchlist.priority_level.semiconductor",
+      "label": "半导体 priority_level",
       "value": "medium",
       "display_value": "medium",
       "unit": null,
       "category": "watchlist",
-      "related_sector_id": "communication_electronics",
-      "related_sector_name": "通信电子",
+      "related_sector_id": "semiconductor",
+      "related_sector_name": "半导体",
       "formula_id": "sector_watchlist_state.state.v1",
       "formula": {
         "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
@@ -4850,14 +4852,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "watchlist.state_change.communication_electronics",
-      "label": "通信电子 state_change",
-      "value": "unchanged",
-      "display_value": "unchanged",
+      "index_id": "watchlist.state_change.semiconductor",
+      "label": "半导体 state_change",
+      "value": "downgraded",
+      "display_value": "downgraded",
       "unit": null,
       "category": "watchlist",
-      "related_sector_id": "communication_electronics",
-      "related_sector_name": "通信电子",
+      "related_sector_id": "semiconductor",
+      "related_sector_name": "半导体",
       "formula_id": "sector_watchlist_state.state.v1",
       "formula": {
         "plain_language": "Watchlist state is a rule order over daily tier, conflicts, ETF flow rank, rotation strength, deterioration, and fallback boundary.",
@@ -4878,9 +4880,9 @@
         "missing_fields": []
       },
       "inputs": {
-        "previous_state": "blocked_execution",
+        "previous_state": "conflict_review",
         "watch_state": "blocked_execution",
-        "state_change": "unchanged"
+        "state_change": "downgraded"
       },
       "components": [],
       "calculation_steps": [
@@ -10701,7 +10703,7 @@
       },
       "inputs": {
         "watch_state": "blocked_execution",
-        "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=10 · rotation=--",
+        "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=11 · rotation=弱势",
         "conflict_evidence": []
       },
       "components": {
@@ -10709,7 +10711,8 @@
         "negative_evidence": [
           "ETF estimated_flow 为负。",
           "估值/基本面仍包含手工种子。",
-          "ETF estimated_flow negative."
+          "ETF estimated_flow negative.",
+          "rotation weak: 弱势."
         ]
       },
       "calculation_steps": [
@@ -11676,7 +11679,7 @@
       },
       "inputs": {
         "watch_state": "blocked_execution",
-        "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=11 · rotation=弱势",
+        "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=10 · rotation=--",
         "conflict_evidence": []
       },
       "components": {
@@ -11684,8 +11687,7 @@
         "negative_evidence": [
           "ETF estimated_flow 为负。",
           "估值/基本面仍包含手工种子。",
-          "ETF estimated_flow negative.",
-          "rotation weak: 弱势."
+          "ETF estimated_flow negative."
         ]
       },
       "calculation_steps": [
@@ -12619,7 +12621,7 @@
       "index_id": "decision_gate.counts",
       "label": "Decision gate status counts",
       "value": 3,
-      "display_value": "6 pass / 3 warn / 3 block",
+      "display_value": "7 pass / 2 warn / 3 block",
       "unit": "count",
       "category": "gate",
       "related_sector_id": null,
@@ -12646,8 +12648,8 @@
         "missing_fields": []
       },
       "inputs": {
-        "pass": 6,
-        "warn": 3,
+        "pass": 7,
+        "warn": 2,
         "block": 3,
         "unknown": 0
       },
@@ -12738,7 +12740,7 @@
           "2026-07-08",
           "2026-07-09",
           "2026-07-10",
-          "2026-07-15"
+          "2026-07-16"
         ],
         "status": "flow_gate_ready"
       },
@@ -12873,14 +12875,13 @@
         "missing_fields": []
       },
       "inputs": {
-        "conflict_count": 2,
+        "conflict_count": 1,
         "conflict_ids": [
-          "etf_flow_leader_differs_from_daily_leader",
           "positive_flow_weak_daily_tier"
         ]
       },
       "components": {
-        "reading": "2 attribution conflict(s) require review.",
+        "reading": "1 attribution conflict(s) require review.",
         "next_action": "Resolve or annotate attribution conflicts before relaxing readiness."
       },
       "calculation_steps": [
@@ -12888,7 +12889,7 @@
         "Assign status warn."
       ],
       "caveats": [
-        "2 attribution conflict(s) require review."
+        "1 attribution conflict(s) require review."
       ],
       "execution_boundary": "Explanation only. No execution instruction."
     },
@@ -12921,15 +12922,13 @@
         "missing_fields": []
       },
       "inputs": {
-        "conflict_review_count": 3,
+        "conflict_review_count": 1,
         "sectors": [
-          "brokerage",
-          "real_estate_infra",
-          "semiconductor"
+          "real_estate_infra"
         ]
       },
       "components": {
-        "reading": "3 watchlist row(s) are in conflict_review.",
+        "reading": "1 watchlist row(s) are in conflict_review.",
         "next_action": "Review conflict rows before changing model thresholds."
       },
       "calculation_steps": [
@@ -12937,15 +12936,15 @@
         "Assign status warn."
       ],
       "caveats": [
-        "3 watchlist row(s) are in conflict_review."
+        "1 watchlist row(s) are in conflict_review."
       ],
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
       "index_id": "decision_gate.status.confirmed_watch_available",
       "label": "Confirmed watch rows status",
-      "value": "warn",
-      "display_value": "warn",
+      "value": "pass",
+      "display_value": "pass",
       "unit": null,
       "category": "gate",
       "related_sector_id": null,
@@ -12970,19 +12969,22 @@
         "missing_fields": []
       },
       "inputs": {
-        "confirmed_watch_count": 0,
-        "sectors": []
+        "confirmed_watch_count": 2,
+        "sectors": [
+          "brokerage",
+          "communication_electronics"
+        ]
       },
       "components": {
-        "reading": "No confirmed_watch rows are available.",
+        "reading": "2 confirmed_watch row(s) are available.",
         "next_action": "Keep confirmed rows separate from conflict and single-line evidence rows."
       },
       "calculation_steps": [
         "Evaluate explicit condition for confirmed_watch_available.",
-        "Assign status warn."
+        "Assign status pass."
       ],
       "caveats": [
-        "No confirmed_watch rows are available."
+        "2 confirmed_watch row(s) are available."
       ],
       "execution_boundary": "Explanation only. No execution instruction."
     },
@@ -13059,12 +13061,12 @@
         "missing_fields": []
       },
       "inputs": {
-        "sample_days": 9,
+        "sample_days": 10,
         "min_sample_days": 3,
         "trend_state": "trend_confirmed"
       },
       "components": {
-        "reading": "Rotation sample depth is 9/3.",
+        "reading": "Rotation sample depth is 10/3.",
         "next_action": "Continue daily history accumulation."
       },
       "calculation_steps": [
@@ -13072,7 +13074,7 @@
         "Assign status pass."
       ],
       "caveats": [
-        "Rotation sample depth is 9/3."
+        "Rotation sample depth is 10/3."
       ],
       "execution_boundary": "Explanation only. No execution instruction."
     },
@@ -13308,10 +13310,91 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
+      "index_id": "sector_flow.score.communication_electronics",
+      "label": "A-share Communication and Electronics Pool sector flow score",
+      "value": 0.31892224842767297,
+      "display_value": "0.3189",
+      "unit": "score",
+      "category": "sector_flow",
+      "related_sector_id": "communication_electronics",
+      "related_sector_name": "A-share Communication and Electronics Pool",
+      "formula_id": "sector_flow_review.score.v1",
+      "formula": {
+        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
+        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
+        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_flow_review.json",
+        "observations/<as_of>/*.json",
+        "config/model/flow_engine_v0_9.json"
+      ],
+      "source_fields": [
+        "sector_reviews[].components",
+        "sector_reviews[].top_drivers",
+        "sector_reviews[].score"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "score": 0.31892224842767297,
+        "label": "constructive_inflow_bias",
+        "confidence": 0.7264,
+        "data_completeness": 0.9
+      },
+      "components": [
+        {
+          "component": "direct_flow",
+          "score": 0.75,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": 0.22499999999999998,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.030000000000000006,
+          "available": true
+        },
+        {
+          "component": "fundamental_proxy",
+          "score": 0.2,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.020000000000000004,
+          "available": true
+        }
+      ],
+      "calculation_steps": [
+        "Build component scores from observations.",
+        "Apply configured component weights.",
+        "Clamp the weighted result to [-1, 1]."
+      ],
+      "caveats": [
+        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
       "index_id": "sector_flow.score.semiconductor",
       "label": "A-share Semiconductor Pool sector flow score",
-      "value": 0.33892224842767293,
-      "display_value": "0.3389",
+      "value": 0.2809286205163359,
+      "display_value": "0.2809",
       "unit": "score",
       "category": "sector_flow",
       "related_sector_id": "semiconductor",
@@ -13339,7 +13422,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.33892224842767293,
+        "score": 0.2809286205163359,
         "label": "constructive_inflow_bias",
         "confidence": 0.7264,
         "data_completeness": 0.9
@@ -13347,10 +13430,10 @@
       "components": [
         {
           "component": "direct_flow",
-          "score": 0.75,
+          "score": 0.5566879069622097,
           "confidence": 0.75,
           "weight": 0.3,
-          "contribution": 0.22499999999999998,
+          "contribution": 0.1670063720886629,
           "available": true
         },
         {
@@ -13389,91 +13472,10 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "sector_flow.score.communication_electronics",
-      "label": "A-share Communication and Electronics Pool sector flow score",
-      "value": 0.29884875795148247,
-      "display_value": "0.2988",
-      "unit": "score",
-      "category": "sector_flow",
-      "related_sector_id": "communication_electronics",
-      "related_sector_name": "A-share Communication and Electronics Pool",
-      "formula_id": "sector_flow_review.score.v1",
-      "formula": {
-        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
-        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
-        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_flow_review.json",
-        "observations/<as_of>/*.json",
-        "config/model/flow_engine_v0_9.json"
-      ],
-      "source_fields": [
-        "sector_reviews[].components",
-        "sector_reviews[].top_drivers",
-        "sector_reviews[].score"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "score": 0.29884875795148247,
-        "label": "constructive_inflow_bias",
-        "confidence": 0.7264,
-        "data_completeness": 0.9
-      },
-      "components": [
-        {
-          "component": "direct_flow",
-          "score": 0.5996716984126984,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": 0.1799015095238095,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.13343333333333335,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.03335833333333334,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.30000000000000004,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.030000000000000006,
-          "available": true
-        }
-      ],
-      "calculation_steps": [
-        "Build component scores from observations.",
-        "Apply configured component weights.",
-        "Clamp the weighted result to [-1, 1]."
-      ],
-      "caveats": [
-        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
       "index_id": "sector_flow.score.brokerage",
       "label": "A-share Brokerage Pool sector flow score",
-      "value": 0.24109796704239156,
-      "display_value": "0.2411",
+      "value": 0.20764420808013614,
+      "display_value": "0.2076",
       "unit": "score",
       "category": "sector_flow",
       "related_sector_id": "brokerage",
@@ -13501,7 +13503,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.24109796704239156,
+        "score": 0.20764420808013614,
         "label": "constructive_inflow_bias",
         "confidence": 0.7264,
         "data_completeness": 0.9
@@ -13509,18 +13511,10 @@
       "components": [
         {
           "component": "direct_flow",
-          "score": 0.23361350649350648,
+          "score": 0.25823986550821065,
           "confidence": 0.75,
           "weight": 0.3,
-          "contribution": 0.07008405194805194,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.2717,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.067925,
+          "contribution": 0.07747195965246319,
           "available": true
         },
         {
@@ -13538,6 +13532,14 @@
           "weight": 0.15,
           "contribution": 0.03558891509433962,
           "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "score": 0.10833333333333332,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": 0.02708333333333333,
+          "available": true
         }
       ],
       "calculation_steps": [
@@ -13553,8 +13555,8 @@
     {
       "index_id": "sector_flow.score.bank_insurance",
       "label": "A-share Bank and Insurance Pool sector flow score",
-      "value": 0.1525135633627379,
-      "display_value": "0.1525",
+      "value": 0.20626809512573555,
+      "display_value": "0.2063",
       "unit": "score",
       "category": "sector_flow",
       "related_sector_id": "bank_insurance",
@@ -13582,18 +13584,26 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.1525135633627379,
-        "label": "neutral",
+        "score": 0.20626809512573555,
+        "label": "constructive_inflow_bias",
         "confidence": 0.7264,
         "data_completeness": 0.9
       },
       "components": [
         {
+          "component": "direct_flow",
+          "score": 0.30309726677131976,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": 0.09092918003139593,
+          "available": true
+        },
+        {
           "component": "market_confirmation",
-          "score": 0.20983333333333334,
+          "score": 0.19900000000000004,
           "confidence": 0.7333333333333334,
           "weight": 0.25,
-          "contribution": 0.052458333333333336,
+          "contribution": 0.04975000000000001,
           "available": true
         },
         {
@@ -13602,14 +13612,6 @@
           "confidence": 0.875,
           "weight": 0.15,
           "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "direct_flow",
-          "score": 0.11488771645021645,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": 0.03446631493506493,
           "available": true
         },
         {
@@ -13634,8 +13636,8 @@
     {
       "index_id": "sector_flow.score.ai_computer",
       "label": "A-share AI and Computer Pool sector flow score",
-      "value": 0.11185284734542186,
-      "display_value": "0.1119",
+      "value": 0.11474245270169947,
+      "display_value": "0.1147",
       "unit": "score",
       "category": "sector_flow",
       "related_sector_id": "ai_computer",
@@ -13663,12 +13665,20 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.11185284734542186,
+        "score": 0.11474245270169947,
         "label": "neutral",
         "confidence": 0.7264,
         "data_completeness": 0.9
       },
       "components": [
+        {
+          "component": "direct_flow",
+          "score": 0.1444006809134218,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": 0.04332020427402653,
+          "available": true
+        },
         {
           "component": "market_liquidity",
           "score": 0.23725943396226415,
@@ -13686,262 +13696,11 @@
           "available": true
         },
         {
-          "component": "direct_flow",
-          "score": 0.1124631075036075,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": 0.033738932251082245,
-          "available": true
-        },
-        {
           "component": "fundamental_proxy",
           "score": 0.25,
           "confidence": 1,
           "weight": 0.1,
           "contribution": 0.025,
-          "available": true
-        }
-      ],
-      "calculation_steps": [
-        "Build component scores from observations.",
-        "Apply configured component weights.",
-        "Clamp the weighted result to [-1, 1]."
-      ],
-      "caveats": [
-        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "sector_flow.score.healthcare_pharma",
-      "label": "A-share Healthcare and Pharma Pool sector flow score",
-      "value": 0.10794420452435405,
-      "display_value": "0.1079",
-      "unit": "score",
-      "category": "sector_flow",
-      "related_sector_id": "healthcare_pharma",
-      "related_sector_name": "A-share Healthcare and Pharma Pool",
-      "formula_id": "sector_flow_review.score.v1",
-      "formula": {
-        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
-        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
-        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_flow_review.json",
-        "observations/<as_of>/*.json",
-        "config/model/flow_engine_v0_9.json"
-      ],
-      "source_fields": [
-        "sector_reviews[].components",
-        "sector_reviews[].top_drivers",
-        "sector_reviews[].score"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "score": 0.10794420452435405,
-        "label": "neutral",
-        "confidence": 0.7264,
-        "data_completeness": 0.9
-      },
-      "components": [
-        {
-          "component": "market_confirmation",
-          "score": 0.2117,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.052925,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "direct_flow",
-          "score": -0.1185657018999519,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": -0.03556971056998557,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.30000000000000004,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.030000000000000006,
-          "available": true
-        }
-      ],
-      "calculation_steps": [
-        "Build component scores from observations.",
-        "Apply configured component weights.",
-        "Clamp the weighted result to [-1, 1]."
-      ],
-      "caveats": [
-        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "sector_flow.score.consumer",
-      "label": "A-share Consumer Pool sector flow score",
-      "value": 0.08972455722998177,
-      "display_value": "0.0897",
-      "unit": "score",
-      "category": "sector_flow",
-      "related_sector_id": "consumer",
-      "related_sector_name": "A-share Consumer Pool",
-      "formula_id": "sector_flow_review.score.v1",
-      "formula": {
-        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
-        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
-        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_flow_review.json",
-        "observations/<as_of>/*.json",
-        "config/model/flow_engine_v0_9.json"
-      ],
-      "source_fields": [
-        "sector_reviews[].components",
-        "sector_reviews[].top_drivers",
-        "sector_reviews[].score"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "score": 0.08972455722998177,
-        "label": "neutral",
-        "confidence": 0.7264,
-        "data_completeness": 0.9
-      },
-      "components": [
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.25,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.025,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": 0.09133333333333336,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": 0.02283333333333334,
-          "available": true
-        },
-        {
-          "component": "fundamental_proxy",
-          "score": 0.1,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.010000000000000002,
-          "available": true
-        }
-      ],
-      "calculation_steps": [
-        "Build component scores from observations.",
-        "Apply configured component weights.",
-        "Clamp the weighted result to [-1, 1]."
-      ],
-      "caveats": [
-        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "sector_flow.score.defense_military",
-      "label": "A-share Defense and Military Pool sector flow score",
-      "value": 0.08544151942334394,
-      "display_value": "0.0854",
-      "unit": "score",
-      "category": "sector_flow",
-      "related_sector_id": "defense_military",
-      "related_sector_name": "A-share Defense and Military Pool",
-      "formula_id": "sector_flow_review.score.v1",
-      "formula": {
-        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
-        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
-        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_flow_review.json",
-        "observations/<as_of>/*.json",
-        "config/model/flow_engine_v0_9.json"
-      ],
-      "source_fields": [
-        "sector_reviews[].components",
-        "sector_reviews[].top_drivers",
-        "sector_reviews[].score"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "score": 0.08544151942334394,
-        "label": "neutral",
-        "confidence": 0.7264,
-        "data_completeness": 0.9
-      },
-      "components": [
-        {
-          "component": "policy_sentiment",
-          "score": 0.375,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.037500000000000006,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "fundamental_proxy",
-          "score": 0.3,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.03,
-          "available": true
-        },
-        {
-          "component": "market_confirmation",
-          "score": -0.11633333333333336,
-          "confidence": 0.7333333333333334,
-          "weight": 0.25,
-          "contribution": -0.02908333333333334,
           "available": true
         }
       ],
@@ -15256,10 +15015,334 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
+      "index_id": "sector_flow.score.defense_military",
+      "label": "A-share Defense and Military Pool sector flow score",
+      "value": 0.06992095367205722,
+      "display_value": "0.0699",
+      "unit": "score",
+      "category": "sector_flow",
+      "related_sector_id": "defense_military",
+      "related_sector_name": "A-share Defense and Military Pool",
+      "formula_id": "sector_flow_review.score.v1",
+      "formula": {
+        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
+        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
+        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_flow_review.json",
+        "observations/<as_of>/*.json",
+        "config/model/flow_engine_v0_9.json"
+      ],
+      "source_fields": [
+        "sector_reviews[].components",
+        "sector_reviews[].top_drivers",
+        "sector_reviews[].score"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "score": 0.06992095367205722,
+        "label": "neutral",
+        "confidence": 0.7264,
+        "data_completeness": 0.9
+      },
+      "components": [
+        {
+          "component": "market_confirmation",
+          "score": -0.24,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": -0.06,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.375,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.037500000000000006,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "fundamental_proxy",
+          "score": 0.3,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.03,
+          "available": true
+        }
+      ],
+      "calculation_steps": [
+        "Build component scores from observations.",
+        "Apply configured component weights.",
+        "Clamp the weighted result to [-1, 1]."
+      ],
+      "caveats": [
+        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "sector_flow.score.consumer",
+      "label": "A-share Consumer Pool sector flow score",
+      "value": 0.018492879534811726,
+      "display_value": "0.0185",
+      "unit": "score",
+      "category": "sector_flow",
+      "related_sector_id": "consumer",
+      "related_sector_name": "A-share Consumer Pool",
+      "formula_id": "sector_flow_review.score.v1",
+      "formula": {
+        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
+        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
+        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_flow_review.json",
+        "observations/<as_of>/*.json",
+        "config/model/flow_engine_v0_9.json"
+      ],
+      "source_fields": [
+        "sector_reviews[].components",
+        "sector_reviews[].top_drivers",
+        "sector_reviews[].score"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "score": 0.018492879534811726,
+        "label": "neutral",
+        "confidence": 0.7264,
+        "data_completeness": 0.9
+      },
+      "components": [
+        {
+          "component": "market_confirmation",
+          "score": -0.18800000000000003,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": -0.04700000000000001,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.25,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.025,
+          "available": true
+        },
+        {
+          "component": "fundamental_proxy",
+          "score": 0.1,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.010000000000000002,
+          "available": true
+        }
+      ],
+      "calculation_steps": [
+        "Build component scores from observations.",
+        "Apply configured component weights.",
+        "Clamp the weighted result to [-1, 1]."
+      ],
+      "caveats": [
+        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "sector_flow.score.resources_materials",
+      "label": "A-share Resources and Materials Pool sector flow score",
+      "value": -0.02633213008620927,
+      "display_value": "-0.0263",
+      "unit": "score",
+      "category": "sector_flow",
+      "related_sector_id": "resources_materials",
+      "related_sector_name": "A-share Resources and Materials Pool",
+      "formula_id": "sector_flow_review.score.v1",
+      "formula": {
+        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
+        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
+        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_flow_review.json",
+        "observations/<as_of>/*.json",
+        "config/model/flow_engine_v0_9.json"
+      ],
+      "source_fields": [
+        "sector_reviews[].components",
+        "sector_reviews[].top_drivers",
+        "sector_reviews[].score"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "score": -0.02633213008620927,
+        "label": "neutral",
+        "confidence": 0.7264,
+        "data_completeness": 0.9
+      },
+      "components": [
+        {
+          "component": "direct_flow",
+          "score": -0.181403483935163,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": -0.0544210451805489,
+          "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "score": -0.19999999999999998,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": -0.049999999999999996,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.225,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.022500000000000003,
+          "available": true
+        }
+      ],
+      "calculation_steps": [
+        "Build component scores from observations.",
+        "Apply configured component weights.",
+        "Clamp the weighted result to [-1, 1]."
+      ],
+      "caveats": [
+        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "sector_flow.score.healthcare_pharma",
+      "label": "A-share Healthcare and Pharma Pool sector flow score",
+      "value": -0.03348834497786497,
+      "display_value": "-0.0335",
+      "unit": "score",
+      "category": "sector_flow",
+      "related_sector_id": "healthcare_pharma",
+      "related_sector_name": "A-share Healthcare and Pharma Pool",
+      "formula_id": "sector_flow_review.score.v1",
+      "formula": {
+        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
+        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
+        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_flow_review.json",
+        "observations/<as_of>/*.json",
+        "config/model/flow_engine_v0_9.json"
+      ],
+      "source_fields": [
+        "sector_reviews[].components",
+        "sector_reviews[].top_drivers",
+        "sector_reviews[].score"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "score": -0.03348834497786497,
+        "label": "neutral",
+        "confidence": 0.7264,
+        "data_completeness": 0.9
+      },
+      "components": [
+        {
+          "component": "direct_flow",
+          "score": -0.2772019780184598,
+          "confidence": 0.75,
+          "weight": 0.3,
+          "contribution": -0.08316059340553794,
+          "available": true
+        },
+        {
+          "component": "market_confirmation",
+          "score": -0.16366666666666665,
+          "confidence": 0.7333333333333334,
+          "weight": 0.25,
+          "contribution": -0.040916666666666664,
+          "available": true
+        },
+        {
+          "component": "market_liquidity",
+          "score": 0.23725943396226415,
+          "confidence": 0.875,
+          "weight": 0.15,
+          "contribution": 0.03558891509433962,
+          "available": true
+        },
+        {
+          "component": "policy_sentiment",
+          "score": 0.30000000000000004,
+          "confidence": 1,
+          "weight": 0.1,
+          "contribution": 0.030000000000000006,
+          "available": true
+        }
+      ],
+      "calculation_steps": [
+        "Build component scores from observations.",
+        "Apply configured component weights.",
+        "Clamp the weighted result to [-1, 1]."
+      ],
+      "caveats": [
+        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
       "index_id": "sector_flow.score.real_estate_infra",
       "label": "A-share Real Estate and Infrastructure Pool sector flow score",
-      "value": -0.004877065019296745,
-      "display_value": "-0.0049",
+      "value": -0.04965282957299015,
+      "display_value": "-0.0497",
       "unit": "score",
       "category": "sector_flow",
       "related_sector_id": "real_estate_infra",
@@ -15287,7 +15370,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": -0.004877065019296745,
+        "score": -0.04965282957299015,
         "label": "neutral",
         "confidence": 0.7264,
         "data_completeness": 0.9
@@ -15295,10 +15378,10 @@
       "components": [
         {
           "component": "market_confirmation",
-          "score": -0.18430000000000002,
+          "score": -0.40313333333333334,
           "confidence": 0.7333333333333334,
           "weight": 0.25,
-          "contribution": -0.046075000000000005,
+          "contribution": -0.10078333333333334,
           "available": true
         },
         {
@@ -15339,8 +15422,8 @@
     {
       "index_id": "sector_flow.score.new_energy_ev",
       "label": "A-share New Energy Vehicle Pool sector flow score",
-      "value": -0.03325860587427511,
-      "display_value": "-0.0333",
+      "value": -0.060319847695484825,
+      "display_value": "-0.0603",
       "unit": "score",
       "category": "sector_flow",
       "related_sector_id": "new_energy_ev",
@@ -15368,7 +15451,7 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": -0.03325860587427511,
+        "score": -0.060319847695484825,
         "label": "neutral",
         "confidence": 0.7264,
         "data_completeness": 0.9
@@ -15376,10 +15459,10 @@
       "components": [
         {
           "component": "market_confirmation",
-          "score": -0.2571666666666667,
+          "score": -0.36333333333333334,
           "confidence": 0.7333333333333334,
           "weight": 0.25,
-          "contribution": -0.06429166666666668,
+          "contribution": -0.09083333333333334,
           "available": true
         },
         {
@@ -15418,147 +15501,10 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "sector_flow.score.resources_materials",
-      "label": "A-share Resources and Materials Pool sector flow score",
-      "value": -0.03772138699801246,
-      "display_value": "-0.0377",
-      "unit": "score",
-      "category": "sector_flow",
-      "related_sector_id": "resources_materials",
-      "related_sector_name": "A-share Resources and Materials Pool",
-      "formula_id": "sector_flow_review.score.v1",
-      "formula": {
-        "plain_language": "The flow review score is a weighted average of available component scores, then clamped to [-1, 1].",
-        "formula_human": "score = clamp(sum(component_score * component_weight for available components) / sum(abs(all configured weights)), -1, 1).",
-        "formula_machine": "score = clamp(weightedScore(components, component_weights).score, -1, 1)"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_flow_review.json",
-        "observations/<as_of>/*.json",
-        "config/model/flow_engine_v0_9.json"
-      ],
-      "source_fields": [
-        "sector_reviews[].components",
-        "sector_reviews[].top_drivers",
-        "sector_reviews[].score"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "score": -0.03772138699801246,
-        "label": "neutral",
-        "confidence": 0.7264,
-        "data_completeness": 0.9
-      },
-      "components": [
-        {
-          "component": "direct_flow",
-          "score": -0.3287843403078403,
-          "confidence": 0.75,
-          "weight": 0.3,
-          "contribution": -0.09863530209235209,
-          "available": true
-        },
-        {
-          "component": "market_liquidity",
-          "score": 0.23725943396226415,
-          "confidence": 0.875,
-          "weight": 0.15,
-          "contribution": 0.03558891509433962,
-          "available": true
-        },
-        {
-          "component": "policy_sentiment",
-          "score": 0.225,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.022500000000000003,
-          "available": true
-        },
-        {
-          "component": "fundamental_proxy",
-          "score": 0.2,
-          "confidence": 1,
-          "weight": 0.1,
-          "contribution": 0.020000000000000004,
-          "available": true
-        }
-      ],
-      "calculation_steps": [
-        "Build component scores from observations.",
-        "Apply configured component weights.",
-        "Clamp the weighted result to [-1, 1]."
-      ],
-      "caveats": [
-        "Observed provider inputs and mock inputs are mixed. Read observed-source coverage separately from raw component coverage."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "rotation.leader_score.semiconductor",
-      "label": "半导体 leader score",
-      "value": 0.3389,
-      "display_value": "0.3389",
-      "unit": "score",
-      "category": "rotation",
-      "related_sector_id": "semiconductor",
-      "related_sector_name": "半导体",
-      "formula_id": "sector_rotation_history.score.v1",
-      "formula": {
-        "plain_language": "Rotation history preserves the latest sector score produced by sector rotation intelligence and tracks streaks across stored days.",
-        "formula_human": "latest leader/laggard score = compacted latest rotation intelligence row score; streak_days = consecutive days on the same side.",
-        "formula_machine": "score = latest.{leaders|laggards}[sector].score; streak_days = sideStreak(history, sector, side)"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_rotation_history.json",
-        "model_outputs/<as_of>/sector_rotation_intelligence.json"
-      ],
-      "source_fields": [
-        "latest.leaders[].score",
-        "trend_confirmations"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "score": 0.3389,
-        "rank": 1,
-        "side": "leader",
-        "sample_days": 9
-      },
-      "components": {
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认",
-          "总水位",
-          "新闻压力",
-          "基本面代理"
-        ]
-      },
-      "calculation_steps": [
-        "Compact latest sector_rotation_intelligence row into rotation history.",
-        "Track whether the sector remains on the same side across stored history."
-      ],
-      "caveats": [
-        "History stores daily rotation snapshots; it is not a trading instruction.",
-        "Trend labels need enough consecutive samples.",
-        "If the CI workflow does not persist generated data, history cannot accumulate.",
-        "Fallback news remains degraded context even when stored in history."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
       "index_id": "rotation.leader_score.communication_electronics",
       "label": "通信电子 leader score",
-      "value": 0.2988,
-      "display_value": "0.2988",
+      "value": 0.3189,
+      "display_value": "0.3189",
       "unit": "score",
       "category": "rotation",
       "related_sector_id": "communication_electronics",
@@ -15584,10 +15530,66 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.2988,
+        "score": 0.3189,
+        "rank": 1,
+        "side": "leader",
+        "sample_days": 10
+      },
+      "components": {
+        "confirmation_inputs": [
+          "ETF流",
+          "价量确认",
+          "总水位",
+          "新闻压力",
+          "基本面代理"
+        ]
+      },
+      "calculation_steps": [
+        "Compact latest sector_rotation_intelligence row into rotation history.",
+        "Track whether the sector remains on the same side across stored history."
+      ],
+      "caveats": [
+        "History stores daily rotation snapshots; it is not a trading instruction.",
+        "Trend labels need enough consecutive samples.",
+        "If the CI workflow does not persist generated data, history cannot accumulate.",
+        "Fallback news remains degraded context even when stored in history."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "rotation.leader_score.semiconductor",
+      "label": "半导体 leader score",
+      "value": 0.2809,
+      "display_value": "0.2809",
+      "unit": "score",
+      "category": "rotation",
+      "related_sector_id": "semiconductor",
+      "related_sector_name": "半导体",
+      "formula_id": "sector_rotation_history.score.v1",
+      "formula": {
+        "plain_language": "Rotation history preserves the latest sector score produced by sector rotation intelligence and tracks streaks across stored days.",
+        "formula_human": "latest leader/laggard score = compacted latest rotation intelligence row score; streak_days = consecutive days on the same side.",
+        "formula_machine": "score = latest.{leaders|laggards}[sector].score; streak_days = sideStreak(history, sector, side)"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_rotation_history.json",
+        "model_outputs/<as_of>/sector_rotation_intelligence.json"
+      ],
+      "source_fields": [
+        "latest.leaders[].score",
+        "trend_confirmations"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "score": 0.2809,
         "rank": 2,
         "side": "leader",
-        "sample_days": 9
+        "sample_days": 10
       },
       "components": {
         "confirmation_inputs": [
@@ -15613,8 +15615,8 @@
     {
       "index_id": "rotation.leader_score.brokerage",
       "label": "券商 leader score",
-      "value": 0.2411,
-      "display_value": "0.2411",
+      "value": 0.2076,
+      "display_value": "0.2076",
       "unit": "score",
       "category": "rotation",
       "related_sector_id": "brokerage",
@@ -15640,66 +15642,10 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": 0.2411,
+        "score": 0.2076,
         "rank": 3,
         "side": "leader",
-        "sample_days": 9
-      },
-      "components": {
-        "confirmation_inputs": [
-          "ETF流",
-          "价量确认",
-          "总水位",
-          "新闻压力",
-          "基本面代理"
-        ]
-      },
-      "calculation_steps": [
-        "Compact latest sector_rotation_intelligence row into rotation history.",
-        "Track whether the sector remains on the same side across stored history."
-      ],
-      "caveats": [
-        "History stores daily rotation snapshots; it is not a trading instruction.",
-        "Trend labels need enough consecutive samples.",
-        "If the CI workflow does not persist generated data, history cannot accumulate.",
-        "Fallback news remains degraded context even when stored in history."
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "rotation.laggard_score.resources_materials",
-      "label": "资源材料 laggard score",
-      "value": -0.0377,
-      "display_value": "-0.0377",
-      "unit": "score",
-      "category": "rotation",
-      "related_sector_id": "resources_materials",
-      "related_sector_name": "资源材料",
-      "formula_id": "sector_rotation_history.score.v1",
-      "formula": {
-        "plain_language": "Rotation history preserves the latest sector score produced by sector rotation intelligence and tracks streaks across stored days.",
-        "formula_human": "latest leader/laggard score = compacted latest rotation intelligence row score; streak_days = consecutive days on the same side.",
-        "formula_machine": "score = latest.{leaders|laggards}[sector].score; streak_days = sideStreak(history, sector, side)"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_rotation_history.json",
-        "model_outputs/<as_of>/sector_rotation_intelligence.json"
-      ],
-      "source_fields": [
-        "latest.laggards[].score",
-        "trend_confirmations"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
-        "score": -0.0377,
-        "rank": 1,
-        "side": "laggard",
-        "sample_days": 9
+        "sample_days": 10
       },
       "components": {
         "confirmation_inputs": [
@@ -15725,8 +15671,8 @@
     {
       "index_id": "rotation.laggard_score.new_energy_ev",
       "label": "新能源车 laggard score",
-      "value": -0.0333,
-      "display_value": "-0.0333",
+      "value": -0.0603,
+      "display_value": "-0.0603",
       "unit": "score",
       "category": "rotation",
       "related_sector_id": "new_energy_ev",
@@ -15752,10 +15698,10 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": -0.0333,
-        "rank": 2,
+        "score": -0.0603,
+        "rank": 1,
         "side": "laggard",
-        "sample_days": 9
+        "sample_days": 10
       },
       "components": {
         "confirmation_inputs": [
@@ -15781,8 +15727,8 @@
     {
       "index_id": "rotation.laggard_score.real_estate_infra",
       "label": "地产基建 laggard score",
-      "value": -0.0049,
-      "display_value": "-0.0049",
+      "value": -0.0497,
+      "display_value": "-0.0497",
       "unit": "score",
       "category": "rotation",
       "related_sector_id": "real_estate_infra",
@@ -15808,10 +15754,10 @@
         "missing_fields": []
       },
       "inputs": {
-        "score": -0.0049,
-        "rank": 3,
+        "score": -0.0497,
+        "rank": 2,
         "side": "laggard",
-        "sample_days": 9
+        "sample_days": 10
       },
       "components": {
         "confirmation_inputs": [
@@ -15835,14 +15781,70 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.brokerage",
-      "label": "券商 attribution final_rank",
+      "index_id": "rotation.laggard_score.healthcare_pharma",
+      "label": "医药医疗 laggard score",
+      "value": -0.0335,
+      "display_value": "-0.0335",
+      "unit": "score",
+      "category": "rotation",
+      "related_sector_id": "healthcare_pharma",
+      "related_sector_name": "医药医疗",
+      "formula_id": "sector_rotation_history.score.v1",
+      "formula": {
+        "plain_language": "Rotation history preserves the latest sector score produced by sector rotation intelligence and tracks streaks across stored days.",
+        "formula_human": "latest leader/laggard score = compacted latest rotation intelligence row score; streak_days = consecutive days on the same side.",
+        "formula_machine": "score = latest.{leaders|laggards}[sector].score; streak_days = sideStreak(history, sector, side)"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_rotation_history.json",
+        "model_outputs/<as_of>/sector_rotation_intelligence.json"
+      ],
+      "source_fields": [
+        "latest.laggards[].score",
+        "trend_confirmations"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "score": -0.0335,
+        "rank": 3,
+        "side": "laggard",
+        "sample_days": 10
+      },
+      "components": {
+        "confirmation_inputs": [
+          "ETF流",
+          "价量确认",
+          "总水位",
+          "新闻压力",
+          "基本面代理"
+        ]
+      },
+      "calculation_steps": [
+        "Compact latest sector_rotation_intelligence row into rotation history.",
+        "Track whether the sector remains on the same side across stored history."
+      ],
+      "caveats": [
+        "History stores daily rotation snapshots; it is not a trading instruction.",
+        "Trend labels need enough consecutive samples.",
+        "If the CI workflow does not persist generated data, history cannot accumulate.",
+        "Fallback news remains degraded context even when stored in history."
+      ],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "attribution.final_rank.communication_electronics",
+      "label": "通信电子 attribution final_rank",
       "value": 1,
       "display_value": "1",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "brokerage",
-      "related_sector_name": "券商",
+      "related_sector_id": "communication_electronics",
+      "related_sector_name": "通信电子",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -15869,18 +15871,78 @@
       "inputs": {
         "final_rank": 1,
         "daily_tier": "priority_watch",
-        "daily_score": 0.2411,
-        "etf_flow_rank": 3
+        "daily_score": 0.3189,
+        "etf_flow_rank": 1
       },
       "components": {
-        "etf_estimated_flow": 497338859.52000004,
-        "etf_flow_rank": 3,
-        "etf_amount": 1455314175,
-        "etf_amount_rank": 4,
-        "flow_review_score": 0.24109796704239156,
+        "etf_estimated_flow": 2306498819.072,
+        "etf_flow_rank": 1,
+        "etf_amount": 7199249354,
+        "etf_amount_rank": 1,
+        "flow_review_score": 0.31892224842767297,
         "rotation_label": "领先延续",
-        "rotation_score": 0.2411,
-        "rotation_streak_days": 9,
+        "rotation_score": 0.3189,
+        "rotation_streak_days": 3,
+        "module_label": "balanced_candidate",
+        "module_text": "合理且改善",
+        "graph_score": 0.23518099547511315,
+        "valuation_fundamental_status": "manual_seed"
+      },
+      "calculation_steps": [
+        "Sort by daily tier priority.",
+        "Break ties by daily score, ETF flow rank, then sector id.",
+        "Assign final_rank from sorted order."
+      ],
+      "caveats": [],
+      "execution_boundary": "Explanation only. No execution instruction."
+    },
+    {
+      "index_id": "attribution.final_rank.brokerage",
+      "label": "券商 attribution final_rank",
+      "value": 2,
+      "display_value": "2",
+      "unit": "rank",
+      "category": "attribution",
+      "related_sector_id": "brokerage",
+      "related_sector_name": "券商",
+      "formula_id": "sector_signal_attribution.final_rank.v1",
+      "formula": {
+        "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
+        "formula_human": "sort by tierPriority, descending daily_score, ascending etf_flow_rank, sector_id; final_rank = sorted index + 1.",
+        "formula_machine": "final_rank = index(sort(rows, rowSort)) + 1"
+      },
+      "source_files": [
+        "model_outputs/<as_of>/sector_signal_attribution.json",
+        "model_outputs/<as_of>/daily_sector_analysis.json",
+        "model_outputs/<as_of>/etf_flow_leaderboard.json"
+      ],
+      "source_fields": [
+        "rows[].final_rank",
+        "rows[].daily_tier",
+        "rows[].daily_score",
+        "rows[].signal_components.etf_flow_rank"
+      ],
+      "data_reality": {
+        "real_provider": true,
+        "manual_seed": true,
+        "mock_or_fixture": true,
+        "missing_fields": []
+      },
+      "inputs": {
+        "final_rank": 2,
+        "daily_tier": "priority_watch",
+        "daily_score": 0.2076,
+        "etf_flow_rank": 4
+      },
+      "components": {
+        "etf_estimated_flow": 794173259.776,
+        "etf_flow_rank": 4,
+        "etf_amount": 1563675351,
+        "etf_amount_rank": 4,
+        "flow_review_score": 0.20764420808013614,
+        "rotation_label": "领先延续",
+        "rotation_score": 0.2076,
+        "rotation_streak_days": 10,
         "module_label": "balanced_candidate",
         "module_text": "合理且改善",
         "graph_score": 0.3601809954751132,
@@ -15891,16 +15953,14 @@
         "Break ties by daily score, ETF flow rank, then sector id.",
         "Assign final_rank from sorted order."
       ],
-      "caveats": [
-        "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。"
-      ],
+      "caveats": [],
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
       "index_id": "attribution.final_rank.semiconductor",
       "label": "半导体 attribution final_rank",
-      "value": 2,
-      "display_value": "2",
+      "value": 3,
+      "display_value": "3",
       "unit": "rank",
       "category": "attribution",
       "related_sector_id": "semiconductor",
@@ -15929,85 +15989,23 @@
         "missing_fields": []
       },
       "inputs": {
-        "final_rank": 2,
-        "daily_tier": "confirm_next",
-        "daily_score": 0.3389,
-        "etf_flow_rank": 1
-      },
-      "components": {
-        "etf_estimated_flow": 1596672000,
-        "etf_flow_rank": 1,
-        "etf_amount": 2222562648,
-        "etf_amount_rank": 2,
-        "flow_review_score": 0.33892224842767293,
-        "rotation_label": "领先延续",
-        "rotation_score": 0.3389,
-        "rotation_streak_days": 5,
-        "module_label": "expensive_momentum",
-        "module_text": "偏贵但趋势强",
-        "graph_score": 0.31595022624434393,
-        "valuation_fundamental_status": "manual_seed"
-      },
-      "calculation_steps": [
-        "Sort by daily tier priority.",
-        "Break ties by daily score, ETF flow rank, then sector id.",
-        "Assign final_rank from sorted order."
-      ],
-      "caveats": [
-        "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。"
-      ],
-      "execution_boundary": "Explanation only. No execution instruction."
-    },
-    {
-      "index_id": "attribution.final_rank.communication_electronics",
-      "label": "通信电子 attribution final_rank",
-      "value": 3,
-      "display_value": "3",
-      "unit": "rank",
-      "category": "attribution",
-      "related_sector_id": "communication_electronics",
-      "related_sector_name": "通信电子",
-      "formula_id": "sector_signal_attribution.final_rank.v1",
-      "formula": {
-        "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
-        "formula_human": "sort by tierPriority, descending daily_score, ascending etf_flow_rank, sector_id; final_rank = sorted index + 1.",
-        "formula_machine": "final_rank = index(sort(rows, rowSort)) + 1"
-      },
-      "source_files": [
-        "model_outputs/<as_of>/sector_signal_attribution.json",
-        "model_outputs/<as_of>/daily_sector_analysis.json",
-        "model_outputs/<as_of>/etf_flow_leaderboard.json"
-      ],
-      "source_fields": [
-        "rows[].final_rank",
-        "rows[].daily_tier",
-        "rows[].daily_score",
-        "rows[].signal_components.etf_flow_rank"
-      ],
-      "data_reality": {
-        "real_provider": true,
-        "manual_seed": true,
-        "mock_or_fixture": true,
-        "missing_fields": []
-      },
-      "inputs": {
         "final_rank": 3,
         "daily_tier": "confirm_next",
-        "daily_score": 0.2988,
+        "daily_score": 0.2809,
         "etf_flow_rank": 2
       },
       "components": {
-        "etf_estimated_flow": 1276638680.0640001,
+        "etf_estimated_flow": 1712000000,
         "etf_flow_rank": 2,
-        "etf_amount": 4876194247,
-        "etf_amount_rank": 1,
-        "flow_review_score": 0.29884875795148247,
+        "etf_amount": 2211679570,
+        "etf_amount_rank": 2,
+        "flow_review_score": 0.2809286205163359,
         "rotation_label": "领先延续",
-        "rotation_score": 0.2988,
-        "rotation_streak_days": 4,
-        "module_label": "balanced_candidate",
-        "module_text": "合理且改善",
-        "graph_score": 0.23518099547511315,
+        "rotation_score": 0.2809,
+        "rotation_streak_days": 6,
+        "module_label": "expensive_momentum",
+        "module_text": "偏贵但趋势强",
+        "graph_score": 0.31595022624434393,
         "valuation_fundamental_status": "manual_seed"
       },
       "calculation_steps": [
@@ -16053,20 +16051,20 @@
       "inputs": {
         "final_rank": 4,
         "daily_tier": "confirm_next",
-        "daily_score": 0.1525,
-        "etf_flow_rank": 4
+        "daily_score": 0.2063,
+        "etf_flow_rank": 3
       },
       "components": {
-        "etf_estimated_flow": 244584000,
-        "etf_flow_rank": 4,
-        "etf_amount": 1632111435,
+        "etf_estimated_flow": 932124650.496,
+        "etf_flow_rank": 3,
+        "etf_amount": 1943623465,
         "etf_amount_rank": 3,
-        "flow_review_score": 0.1525135633627379,
+        "flow_review_score": 0.20626809512573555,
         "rotation_label": "单日观察",
-        "rotation_score": 0.1525,
+        "rotation_score": 0.2063,
         "rotation_streak_days": 0,
-        "module_label": "wait_for_confirmation",
-        "module_text": "等待确认",
+        "module_label": "cheap_with_flow",
+        "module_text": "低估且有资金",
         "graph_score": 0.14671945701357472,
         "valuation_fundamental_status": "manual_seed"
       },
@@ -16113,15 +16111,15 @@
       "inputs": {
         "final_rank": 5,
         "daily_tier": "unranked",
-        "daily_score": 0.11185284734542186,
+        "daily_score": 0.11474245270169947,
         "etf_flow_rank": 5
       },
       "components": {
-        "etf_estimated_flow": 239422259.71199998,
+        "etf_estimated_flow": 444080000,
         "etf_flow_rank": 5,
-        "etf_amount": 751264448.067,
-        "etf_amount_rank": 7,
-        "flow_review_score": 0.11185284734542186,
+        "etf_amount": 1106147065.928,
+        "etf_amount_rank": 5,
+        "flow_review_score": 0.11474245270169947,
         "rotation_label": null,
         "rotation_score": null,
         "rotation_streak_days": null,
@@ -16139,14 +16137,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.healthcare_pharma",
-      "label": "Healthcare and Pharma attribution final_rank",
+      "index_id": "attribution.final_rank.agriculture",
+      "label": "Agriculture attribution final_rank",
       "value": 6,
       "display_value": "6",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "healthcare_pharma",
-      "related_sector_name": "Healthcare and Pharma",
+      "related_sector_id": "agriculture",
+      "related_sector_name": "Agriculture",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16173,21 +16171,21 @@
       "inputs": {
         "final_rank": 6,
         "daily_tier": "unranked",
-        "daily_score": 0.10794420452435405,
-        "etf_flow_rank": 10
+        "daily_score": 0.07558891509433963,
+        "etf_flow_rank": null
       },
       "components": {
-        "etf_estimated_flow": -252414048.512,
-        "etf_flow_rank": 10,
-        "etf_amount": 1406423950,
-        "etf_amount_rank": 5,
-        "flow_review_score": 0.10794420452435405,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
+        "etf_amount": null,
+        "etf_amount_rank": null,
+        "flow_review_score": 0.07558891509433963,
         "rotation_label": null,
         "rotation_score": null,
         "rotation_streak_days": null,
         "module_label": "wait_for_confirmation",
         "module_text": "等待确认",
-        "graph_score": 0.15825791855203622,
+        "graph_score": 0.21911764705882353,
         "valuation_fundamental_status": "manual_seed"
       },
       "calculation_steps": [
@@ -16199,14 +16197,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.consumer",
-      "label": "Consumer attribution final_rank",
+      "index_id": "attribution.final_rank.beauty_care",
+      "label": "Beauty Care attribution final_rank",
       "value": 7,
       "display_value": "7",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "consumer",
-      "related_sector_name": "Consumer",
+      "related_sector_id": "beauty_care",
+      "related_sector_name": "Beauty Care",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16233,21 +16231,21 @@
       "inputs": {
         "final_rank": 7,
         "daily_tier": "unranked",
-        "daily_score": 0.08972455722998177,
-        "etf_flow_rank": 9
+        "daily_score": 0.07558891509433963,
+        "etf_flow_rank": null
       },
       "components": {
-        "etf_estimated_flow": -26240000,
-        "etf_flow_rank": 9,
-        "etf_amount": 573410882.604,
-        "etf_amount_rank": 8,
-        "flow_review_score": 0.08972455722998177,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
+        "etf_amount": null,
+        "etf_amount_rank": null,
+        "flow_review_score": 0.07558891509433963,
         "rotation_label": null,
         "rotation_score": null,
         "rotation_streak_days": null,
         "module_label": "wait_for_confirmation",
         "module_text": "等待确认",
-        "graph_score": 0.07941176470588236,
+        "graph_score": 0.21911764705882353,
         "valuation_fundamental_status": "manual_seed"
       },
       "calculation_steps": [
@@ -16259,14 +16257,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.defense_military",
-      "label": "Defense and Military attribution final_rank",
+      "index_id": "attribution.final_rank.coal",
+      "label": "Coal attribution final_rank",
       "value": 8,
       "display_value": "8",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "defense_military",
-      "related_sector_name": "Defense and Military",
+      "related_sector_id": "coal",
+      "related_sector_name": "Coal",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16293,21 +16291,21 @@
       "inputs": {
         "final_rank": 8,
         "daily_tier": "unranked",
-        "daily_score": 0.08544151942334394,
-        "etf_flow_rank": 6
+        "daily_score": 0.07558891509433963,
+        "etf_flow_rank": null
       },
       "components": {
-        "etf_estimated_flow": 81153073.152,
-        "etf_flow_rank": 6,
-        "etf_amount": 319881675,
-        "etf_amount_rank": 9,
-        "flow_review_score": 0.08544151942334394,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
+        "etf_amount": null,
+        "etf_amount_rank": null,
+        "flow_review_score": 0.07558891509433963,
         "rotation_label": null,
         "rotation_score": null,
         "rotation_streak_days": null,
         "module_label": "wait_for_confirmation",
         "module_text": "等待确认",
-        "graph_score": 0.23710407239819006,
+        "graph_score": 0.21911764705882353,
         "valuation_fundamental_status": "manual_seed"
       },
       "calculation_steps": [
@@ -16319,14 +16317,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.agriculture",
-      "label": "Agriculture attribution final_rank",
+      "index_id": "attribution.final_rank.construction",
+      "label": "Construction attribution final_rank",
       "value": 9,
       "display_value": "9",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "agriculture",
-      "related_sector_name": "Agriculture",
+      "related_sector_id": "construction",
+      "related_sector_name": "Construction",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16379,14 +16377,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.beauty_care",
-      "label": "Beauty Care attribution final_rank",
+      "index_id": "attribution.final_rank.environmental_protection",
+      "label": "Environmental Protection attribution final_rank",
       "value": 10,
       "display_value": "10",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "beauty_care",
-      "related_sector_name": "Beauty Care",
+      "related_sector_id": "environmental_protection",
+      "related_sector_name": "Environmental Protection",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16439,14 +16437,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.coal",
-      "label": "Coal attribution final_rank",
+      "index_id": "attribution.final_rank.food_beverage",
+      "label": "Food and Beverage attribution final_rank",
       "value": 11,
       "display_value": "11",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "coal",
-      "related_sector_name": "Coal",
+      "related_sector_id": "food_beverage",
+      "related_sector_name": "Food and Beverage",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16499,14 +16497,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.construction",
-      "label": "Construction attribution final_rank",
+      "index_id": "attribution.final_rank.home_appliances",
+      "label": "Home Appliances attribution final_rank",
       "value": 12,
       "display_value": "12",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "construction",
-      "related_sector_name": "Construction",
+      "related_sector_id": "home_appliances",
+      "related_sector_name": "Home Appliances",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16559,14 +16557,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.environmental_protection",
-      "label": "Environmental Protection attribution final_rank",
+      "index_id": "attribution.final_rank.light_manufacturing",
+      "label": "Light Manufacturing attribution final_rank",
       "value": 13,
       "display_value": "13",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "environmental_protection",
-      "related_sector_name": "Environmental Protection",
+      "related_sector_id": "light_manufacturing",
+      "related_sector_name": "Light Manufacturing",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16619,14 +16617,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.food_beverage",
-      "label": "Food and Beverage attribution final_rank",
+      "index_id": "attribution.final_rank.machinery",
+      "label": "Machinery attribution final_rank",
       "value": 14,
       "display_value": "14",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "food_beverage",
-      "related_sector_name": "Food and Beverage",
+      "related_sector_id": "machinery",
+      "related_sector_name": "Machinery",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16679,14 +16677,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.home_appliances",
-      "label": "Home Appliances attribution final_rank",
+      "index_id": "attribution.final_rank.media",
+      "label": "Media attribution final_rank",
       "value": 15,
       "display_value": "15",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "home_appliances",
-      "related_sector_name": "Home Appliances",
+      "related_sector_id": "media",
+      "related_sector_name": "Media",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16739,14 +16737,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.light_manufacturing",
-      "label": "Light Manufacturing attribution final_rank",
+      "index_id": "attribution.final_rank.nonferrous_metals",
+      "label": "Nonferrous Metals attribution final_rank",
       "value": 16,
       "display_value": "16",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "light_manufacturing",
-      "related_sector_name": "Light Manufacturing",
+      "related_sector_id": "nonferrous_metals",
+      "related_sector_name": "Nonferrous Metals",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16799,14 +16797,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.machinery",
-      "label": "Machinery attribution final_rank",
+      "index_id": "attribution.final_rank.petroleum_petrochemical",
+      "label": "Petroleum and Petrochemical attribution final_rank",
       "value": 17,
       "display_value": "17",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "machinery",
-      "related_sector_name": "Machinery",
+      "related_sector_id": "petroleum_petrochemical",
+      "related_sector_name": "Petroleum and Petrochemical",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16859,14 +16857,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.media",
-      "label": "Media attribution final_rank",
+      "index_id": "attribution.final_rank.social_services",
+      "label": "Social Services attribution final_rank",
       "value": 18,
       "display_value": "18",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "media",
-      "related_sector_name": "Media",
+      "related_sector_id": "social_services",
+      "related_sector_name": "Social Services",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16919,14 +16917,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.nonferrous_metals",
-      "label": "Nonferrous Metals attribution final_rank",
+      "index_id": "attribution.final_rank.textile_apparel",
+      "label": "Textile and Apparel attribution final_rank",
       "value": 19,
       "display_value": "19",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "nonferrous_metals",
-      "related_sector_name": "Nonferrous Metals",
+      "related_sector_id": "textile_apparel",
+      "related_sector_name": "Textile and Apparel",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",
@@ -16979,14 +16977,14 @@
       "execution_boundary": "Explanation only. No execution instruction."
     },
     {
-      "index_id": "attribution.final_rank.petroleum_petrochemical",
-      "label": "Petroleum and Petrochemical attribution final_rank",
+      "index_id": "attribution.final_rank.transportation",
+      "label": "Transportation attribution final_rank",
       "value": 20,
       "display_value": "20",
       "unit": "rank",
       "category": "attribution",
-      "related_sector_id": "petroleum_petrochemical",
-      "related_sector_name": "Petroleum and Petrochemical",
+      "related_sector_id": "transportation",
+      "related_sector_name": "Transportation",
       "formula_id": "sector_signal_attribution.final_rank.v1",
       "formula": {
         "plain_language": "Attribution rows are sorted by daily tier priority, daily score, ETF flow rank, and sector id.",

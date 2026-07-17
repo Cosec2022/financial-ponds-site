@@ -1,7 +1,7 @@
 {
   "module_id": "candidate_review_analytics_v0_10_65",
-  "as_of": "2026-07-15",
-  "generated_at": "2026-07-15T10:31:38.935Z",
+  "as_of": "2026-07-16",
+  "generated_at": "2026-07-17T10:00:34.424Z",
   "status": "insufficient_sample",
   "source_files_used": [
     "financial-pond/data/candidate_review_history.json"
@@ -17,16 +17,16 @@
   "total_reviewed": 0,
   "reviewed_rows": 0,
   "pending_rows": 20,
-  "unavailable_rows": 30,
+  "unavailable_rows": 40,
   "unavailable_by_reason": {
     "calendar_unknown": 0,
     "stale_data": 0,
     "missing_price": 15,
-    "missing_benchmark": 10,
-    "invalid_baseline": 5
+    "missing_benchmark": 15,
+    "invalid_baseline": 10
   },
   "insufficient_sample_rows": 0,
-  "insufficient_review_rows": 5,
+  "insufficient_review_rows": 10,
   "win_rate_absolute": "insufficient_sample",
   "win_rate_vs_benchmark": "insufficient_sample",
   "average_return": "insufficient_sample",
@@ -36,6 +36,18 @@
   "confirmed_trend_continuation_rate": "insufficient_sample",
   "early_right_continuation_rate": "insufficient_sample",
   "by_candidate_state": [
+    {
+      "group": "Confirmed Trend",
+      "sample_size": 0,
+      "sample_status": "insufficient_sample",
+      "total_reviewed": 0,
+      "win_rate_absolute": "insufficient_sample",
+      "win_rate_vs_benchmark": "insufficient_sample",
+      "average_return": "insufficient_sample",
+      "average_excess_return": "insufficient_sample",
+      "continuation_rate": "insufficient_sample",
+      "failure_rate": "insufficient_sample"
+    },
     {
       "group": "Cooling",
       "sample_size": 0,

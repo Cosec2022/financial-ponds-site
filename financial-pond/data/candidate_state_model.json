@@ -1,17 +1,18 @@
 {
   "module_id": "candidate_state_model_v0_10_61",
-  "as_of": "2026-07-15",
-  "generated_at": "2026-07-15T10:31:38.299Z",
+  "as_of": "2026-07-16",
+  "generated_at": "2026-07-17T10:00:33.456Z",
   "status": "state_model_available",
-  "candidate_count": 25,
+  "candidate_count": 30,
   "states_distribution": {
     "Overheated": 4,
-    "Major Candidate": 8,
-    "Cooling": 13
+    "Major Candidate": 9,
+    "Cooling": 16,
+    "Confirmed Trend": 1
   },
   "risk_gate_distribution": {
-    "caution": 9,
-    "pass": 16
+    "caution": 11,
+    "pass": 19
   },
   "rows": [
     {
@@ -356,6 +357,76 @@
       "pool_name": "Healthcare and Pharma",
       "candidate_state": "Major Candidate",
       "overheat_score": 8,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-16",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "candidate_state": "Cooling",
+      "overheat_score": 68,
+      "major_wave_score": 83,
+      "risk_gate_status": "caution",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; recent top persistence; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 83.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-16",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "candidate_state": "Cooling",
+      "overheat_score": 68,
+      "major_wave_score": 83,
+      "risk_gate_status": "caution",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "large short-term move; recent top persistence; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 83.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-16",
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "Healthcare and Pharma",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 10,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-16",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI and Computer",
+      "candidate_state": "Cooling",
+      "overheat_score": 44,
+      "major_wave_score": 99,
+      "risk_gate_status": "pass",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; recent top persistence; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-16",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "银行保险",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 0,
       "major_wave_score": 100,
       "risk_gate_status": "pass",
       "state_reason": "Major Candidate: high evidence; direct mapped instrument.",

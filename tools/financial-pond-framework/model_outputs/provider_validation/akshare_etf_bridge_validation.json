@@ -12,7 +12,7 @@
   },
   "counts": {
     "row_records": 55,
-    "sector_flow_records": 6,
+    "sector_flow_records": 7,
     "dates": 5,
     "representative_codes_expected": 11,
     "representative_codes_observed": 11
@@ -22,17 +22,17 @@
     "2026-07-08",
     "2026-07-09",
     "2026-07-10",
-    "2026-07-15"
+    "2026-07-16"
   ],
   "latest_run": {
-    "path": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-15.json",
+    "path": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-16.json",
     "mode": "real",
-    "as_of": "2026-07-15",
+    "as_of": "2026-07-16",
     "status": "ok",
     "errors": []
   },
   "validator_id": "akshare_etf_bridge_export_validator",
-  "generated_at": "2026-07-15T10:30:08.389259+00:00",
+  "generated_at": "2026-07-17T09:59:46.889056+00:00",
   "row_csv": "data/provider_exports/a_share_etf_daily.csv",
   "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv"
 }

@@ -1,26 +1,26 @@
 {
   "module_id": "sector_watchlist_state_v0_10_45",
-  "as_of": "2026-07-15",
-  "generated_at": "2026-07-15T10:30:11.909Z",
+  "as_of": "2026-07-16",
+  "generated_at": "2026-07-17T09:59:50.612Z",
   "status": "watchlist_state_available",
   "guidance_state": "not_ready",
-  "headline": "观察清单状态：0 个确认观察，3 个冲突复核，0 个资金流单线候选；当前 not_ready，不是交易指令。",
+  "headline": "观察清单状态：2 个确认观察，1 个冲突复核，0 个资金流单线候选；当前 not_ready，不是交易指令。",
   "rows": [
     {
       "sector_id": "brokerage",
       "name": "券商",
-      "watch_state": "conflict_review",
+      "watch_state": "confirmed_watch",
       "previous_state": "conflict_review",
-      "state_change": "unchanged",
-      "priority_level": "manual_review",
-      "evidence_summary": "state=conflict_review · daily=priority_watch · ETF flow rank=3 · rotation=领先延续 · conflict=manual review",
+      "state_change": "upgraded",
+      "priority_level": "high",
+      "evidence_summary": "state=confirmed_watch · daily=priority_watch · ETF flow rank=4 · rotation=领先延续",
       "positive_evidence": [
-        "ETF estimated_flow 为正，流排名 3。",
+        "ETF estimated_flow 为正，流排名 4。",
         "日结论分层为 priority_watch。",
         "轮动标签偏强：领先延续。",
         "资金量价 review 分数偏正。",
         "三模块标签偏正：合理且改善。",
-        "ETF estimated_flow positive; rank 3.",
+        "ETF estimated_flow positive; rank 4.",
         "daily tier priority_watch.",
         "rotation strong: 领先延续.",
         "flow review score positive."
@@ -28,11 +28,43 @@
       "negative_evidence": [
         "估值/基本面仍包含手工种子。"
       ],
-      "conflict_evidence": [
-        "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。"
-      ],
+      "conflict_evidence": [],
       "upgrade_conditions": [
-        "Resolve attribution conflicts.",
+        "Maintain positive evidence without new conflicts.",
+        "Confirm ETF flow and rotation persistence on the next run.",
+        "ETF readiness must leave watch-only/not-ready state before execution language."
+      ],
+      "downgrade_conditions": [
+        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
+      ],
+      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
+      "manual_review_required": true
+    },
+    {
+      "sector_id": "communication_electronics",
+      "name": "通信电子",
+      "watch_state": "confirmed_watch",
+      "previous_state": "blocked_execution",
+      "state_change": "upgraded",
+      "priority_level": "high",
+      "evidence_summary": "state=confirmed_watch · daily=priority_watch · ETF flow rank=1 · rotation=领先延续",
+      "positive_evidence": [
+        "ETF estimated_flow 为正，流排名 1。",
+        "日结论分层为 priority_watch。",
+        "轮动标签偏强：领先延续。",
+        "资金量价 review 分数偏正。",
+        "三模块标签偏正：合理且改善。",
+        "ETF estimated_flow positive; rank 1.",
+        "daily tier priority_watch.",
+        "rotation strong: 领先延续.",
+        "flow review score positive."
+      ],
+      "negative_evidence": [
+        "估值/基本面仍包含手工种子。"
+      ],
+      "conflict_evidence": [],
+      "upgrade_conditions": [
+        "Maintain positive evidence without new conflicts.",
         "Confirm ETF flow and rotation persistence on the next run.",
         "ETF readiness must leave watch-only/not-ready state before execution language."
       ],
@@ -64,41 +96,6 @@
       ],
       "conflict_evidence": [
         "正向 ETF 份额变化流与偏弱/回避日结论不一致，需要人工复核。"
-      ],
-      "upgrade_conditions": [
-        "Resolve attribution conflicts.",
-        "Confirm ETF flow and rotation persistence on the next run.",
-        "ETF readiness must leave watch-only/not-ready state before execution language."
-      ],
-      "downgrade_conditions": [
-        "Negative ETF flow, weaker rotation, avoid_watch tier, or new attribution conflict."
-      ],
-      "execution_boundary": "execution language blocked: guidance_state=not_ready; observation-only review.",
-      "manual_review_required": true
-    },
-    {
-      "sector_id": "semiconductor",
-      "name": "半导体",
-      "watch_state": "conflict_review",
-      "previous_state": "conflict_review",
-      "state_change": "unchanged",
-      "priority_level": "manual_review",
-      "evidence_summary": "state=conflict_review · daily=confirm_next · ETF flow rank=1 · rotation=领先延续 · conflict=manual review",
-      "positive_evidence": [
-        "ETF estimated_flow 为正，流排名 1。",
-        "日结论分层为 confirm_next。",
-        "轮动标签偏强：领先延续。",
-        "资金量价 review 分数偏正。",
-        "ETF estimated_flow positive; rank 1.",
-        "daily tier confirm_next.",
-        "rotation strong: 领先延续.",
-        "flow review score positive."
-      ],
-      "negative_evidence": [
-        "估值/基本面仍包含手工种子。"
-      ],
-      "conflict_evidence": [
-        "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。"
       ],
       "upgrade_conditions": [
         "Resolve attribution conflicts.",
@@ -286,12 +283,17 @@
       "previous_state": "blocked_execution",
       "state_change": "unchanged",
       "priority_level": "medium",
-      "evidence_summary": "state=blocked_execution · daily=confirm_next · ETF flow rank=4 · rotation=单日观察",
+      "evidence_summary": "state=blocked_execution · daily=confirm_next · ETF flow rank=3 · rotation=单日观察",
       "positive_evidence": [
-        "ETF estimated_flow 为正，流排名 4。",
+        "ETF estimated_flow 为正，流排名 3。",
         "日结论分层为 confirm_next。",
-        "ETF estimated_flow positive; rank 4.",
-        "daily tier confirm_next."
+        "轮动标签偏强：单日观察。",
+        "资金量价 review 分数偏正。",
+        "三模块标签偏正：低估且有资金。",
+        "ETF estimated_flow positive; rank 3.",
+        "daily tier confirm_next.",
+        "rotation strong: 单日观察.",
+        "flow review score positive."
       ],
       "negative_evidence": [
         "估值/基本面仍包含手工种子。"
@@ -309,11 +311,11 @@
       "manual_review_required": true
     },
     {
-      "sector_id": "communication_electronics",
-      "name": "通信电子",
+      "sector_id": "semiconductor",
+      "name": "半导体",
       "watch_state": "blocked_execution",
-      "previous_state": "blocked_execution",
-      "state_change": "unchanged",
+      "previous_state": "conflict_review",
+      "state_change": "downgraded",
       "priority_level": "medium",
       "evidence_summary": "state=blocked_execution · daily=confirm_next · ETF flow rank=2 · rotation=领先延续",
       "positive_evidence": [
@@ -321,7 +323,6 @@
         "日结论分层为 confirm_next。",
         "轮动标签偏强：领先延续。",
         "资金量价 review 分数偏正。",
-        "三模块标签偏正：合理且改善。",
         "ETF estimated_flow positive; rank 2.",
         "daily tier confirm_next.",
         "rotation strong: 领先延续.",
@@ -1294,12 +1295,13 @@
       "previous_state": "blocked_execution",
       "state_change": "unchanged",
       "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=10 · rotation=--",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=11 · rotation=弱势",
       "positive_evidence": [],
       "negative_evidence": [
         "ETF estimated_flow 为负。",
         "估值/基本面仍包含手工种子。",
-        "ETF estimated_flow negative."
+        "ETF estimated_flow negative.",
+        "rotation weak: 弱势."
       ],
       "conflict_evidence": [],
       "upgrade_conditions": [
@@ -1464,13 +1466,12 @@
       "previous_state": "blocked_execution",
       "state_change": "unchanged",
       "priority_level": "background",
-      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=11 · rotation=弱势",
+      "evidence_summary": "state=blocked_execution · daily=unranked · ETF flow rank=10 · rotation=--",
       "positive_evidence": [],
       "negative_evidence": [
         "ETF estimated_flow 为负。",
         "估值/基本面仍包含手工种子。",
-        "ETF estimated_flow negative.",
-        "rotation weak: 弱势."
+        "ETF estimated_flow negative."
       ],
       "conflict_evidence": [],
       "upgrade_conditions": [
@@ -1626,11 +1627,12 @@
     }
   ],
   "groups": {
-    "confirmed_watch": [],
-    "conflict_review": [
+    "confirmed_watch": [
       "brokerage",
-      "real_estate_infra",
-      "semiconductor"
+      "communication_electronics"
+    ],
+    "conflict_review": [
+      "real_estate_infra"
     ],
     "flow_only_candidate": [],
     "rotation_only_candidate": [],
@@ -1644,8 +1646,8 @@
     ],
     "blocked_execution": [
       "brokerage",
+      "communication_electronics",
       "real_estate_infra",
-      "semiconductor",
       "basic_chemicals",
       "building_materials",
       "new_energy_ev",
@@ -1653,7 +1655,7 @@
       "steel",
       "ai_computer",
       "bank_insurance",
-      "communication_electronics",
+      "semiconductor",
       "a_share",
       "a_share_agriculture",
       "a_share_ai_computer",
