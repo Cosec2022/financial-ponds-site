@@ -1,11 +1,11 @@
 {
   "module_id": "pool_signal_quality_v0_10_55",
-  "as_of": "2026-07-16",
-  "generated_at": "2026-07-17T10:00:32.969Z",
+  "as_of": "2026-07-17",
+  "generated_at": "2026-07-17T10:13:03.163Z",
   "rows": [
     {
       "pool_id": "a_share_a_share",
-      "pool_name": "a_share",
+      "pool_name": "A-share benchmark proxy",
       "mapping_status": "mapped",
       "proxy_level": "broad",
       "mapping_confidence": 1,
@@ -566,7 +566,7 @@
     },
     {
       "pool_id": "a_share_ai_computer",
-      "pool_name": "AI and Computer",
+      "pool_name": "AI计算机",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,

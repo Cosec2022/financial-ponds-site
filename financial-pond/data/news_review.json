@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-16",
-  "generated_at": "2026-07-17T09:59:48.782Z",
+  "as_of": "2026-07-17",
+  "generated_at": "2026-07-17T10:11:46.417Z",
   "module_id": "news_daily_v1",
   "status": "news_available",
   "headline": "9 rule-matched news events; strongest mapped pressure is brokerage (1.35).",
@@ -104,7 +104,7 @@
             "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
           },
           {
-            "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+            "title": "China to support trading of treasury bond futures in Hong Kong - South China Morning Post",
             "bucket": "China policy",
             "channel": "policy_liquidity",
             "score": 0.248,
@@ -115,7 +115,7 @@
               "bank_insurance",
               "real_estate_infra"
             ],
-            "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+            "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNbF9Teld2c2NEeEpnemxpeDhiZkg3Zk1uX0taZkN3MVBVZ2d5OE1veUtQZ2ZrY21udlJ4NE9sQlhsajlhcHBORFZuQ3NzZ1htcjhvd3hNa0p2VkxmTDJRVzVqMjBDMGpxR1N1ZWZjVWNNVFhwRkcwa1l5enNfY3hNSzJXVGZ5c2Z5SmFyRWJaaWZlT042X2EtNjBpRERDVjJQaG4ySjlid3dSVTFid19zUUdVclRKaWdkN1hjUlRzUdIBvwFBVV95cUxObTJ3d1VlOXRIMGJlMktMSHpHc2RTUV9Ed1NsWEo4dzFxaWNvTV9SYUF1MFFTSjF2VjVFa1E1QU9ZcEhSWjJCUlBWUDV3Y0l0bUFPaHhwTDh2OTBnYU50Uk5WaE5HUnFLbEZxQTBSNHJOX0c5M1JlazM4OURoU2RWUDNtM1VpNG1CcENhaE82RVBZNWNhY09NQ2VzdC13RENnZWt2RXlrZFV1cllIVlpEZ3MtUi1vN01iT20zQlpNZw?oc=5"
           }
         ]
       },
@@ -153,7 +153,7 @@
             "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
           },
           {
-            "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+            "title": "China to support trading of treasury bond futures in Hong Kong - South China Morning Post",
             "bucket": "China policy",
             "channel": "policy_liquidity",
             "score": 0.248,
@@ -164,7 +164,7 @@
               "bank_insurance",
               "real_estate_infra"
             ],
-            "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+            "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNbF9Teld2c2NEeEpnemxpeDhiZkg3Zk1uX0taZkN3MVBVZ2d5OE1veUtQZ2ZrY21udlJ4NE9sQlhsajlhcHBORFZuQ3NzZ1htcjhvd3hNa0p2VkxmTDJRVzVqMjBDMGpxR1N1ZWZjVWNNVFhwRkcwa1l5enNfY3hNSzJXVGZ5c2Z5SmFyRWJaaWZlT042X2EtNjBpRERDVjJQaG4ySjlid3dSVTFid19zUUdVclRKaWdkN1hjUlRzUdIBvwFBVV95cUxObTJ3d1VlOXRIMGJlMktMSHpHc2RTUV9Ed1NsWEo4dzFxaWNvTV9SYUF1MFFTSjF2VjVFa1E1QU9ZcEhSWjJCUlBWUDV3Y0l0bUFPaHhwTDh2OTBnYU50Uk5WaE5HUnFLbEZxQTBSNHJOX0c5M1JlazM4OURoU2RWUDNtM1VpNG1CcENhaE82RVBZNWNhY09NQ2VzdC13RENnZWt2RXlrZFV1cllIVlpEZ3MtUi1vN01iT20zQlpNZw?oc=5"
           }
         ]
       }
@@ -379,7 +379,7 @@
           "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
         },
         {
-          "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+          "title": "China to support trading of treasury bond futures in Hong Kong - South China Morning Post",
           "bucket": "China policy",
           "channel": "policy_liquidity",
           "score": 0.248,
@@ -390,7 +390,7 @@
             "bank_insurance",
             "real_estate_infra"
           ],
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNbF9Teld2c2NEeEpnemxpeDhiZkg3Zk1uX0taZkN3MVBVZ2d5OE1veUtQZ2ZrY21udlJ4NE9sQlhsajlhcHBORFZuQ3NzZ1htcjhvd3hNa0p2VkxmTDJRVzVqMjBDMGpxR1N1ZWZjVWNNVFhwRkcwa1l5enNfY3hNSzJXVGZ5c2Z5SmFyRWJaaWZlT042X2EtNjBpRERDVjJQaG4ySjlid3dSVTFid19zUUdVclRKaWdkN1hjUlRzUdIBvwFBVV95cUxObTJ3d1VlOXRIMGJlMktMSHpHc2RTUV9Ed1NsWEo4dzFxaWNvTV9SYUF1MFFTSjF2VjVFa1E1QU9ZcEhSWjJCUlBWUDV3Y0l0bUFPaHhwTDh2OTBnYU50Uk5WaE5HUnFLbEZxQTBSNHJOX0c5M1JlazM4OURoU2RWUDNtM1VpNG1CcENhaE82RVBZNWNhY09NQ2VzdC13RENnZWt2RXlrZFV1cllIVlpEZ3MtUi1vN01iT20zQlpNZw?oc=5"
         }
       ]
     },
@@ -428,7 +428,7 @@
           "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
         },
         {
-          "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+          "title": "China to support trading of treasury bond futures in Hong Kong - South China Morning Post",
           "bucket": "China policy",
           "channel": "policy_liquidity",
           "score": 0.248,
@@ -439,7 +439,7 @@
             "bank_insurance",
             "real_estate_infra"
           ],
-          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNbF9Teld2c2NEeEpnemxpeDhiZkg3Zk1uX0taZkN3MVBVZ2d5OE1veUtQZ2ZrY21udlJ4NE9sQlhsajlhcHBORFZuQ3NzZ1htcjhvd3hNa0p2VkxmTDJRVzVqMjBDMGpxR1N1ZWZjVWNNVFhwRkcwa1l5enNfY3hNSzJXVGZ5c2Z5SmFyRWJaaWZlT042X2EtNjBpRERDVjJQaG4ySjlid3dSVTFid19zUUdVclRKaWdkN1hjUlRzUdIBvwFBVV95cUxObTJ3d1VlOXRIMGJlMktMSHpHc2RTUV9Ed1NsWEo4dzFxaWNvTV9SYUF1MFFTSjF2VjVFa1E1QU9ZcEhSWjJCUlBWUDV3Y0l0bUFPaHhwTDh2OTBnYU50Uk5WaE5HUnFLbEZxQTBSNHJOX0c5M1JlazM4OURoU2RWUDNtM1VpNG1CcENhaE82RVBZNWNhY09NQ2VzdC13RENnZWt2RXlrZFV1cllIVlpEZ3MtUi1vN01iT20zQlpNZw?oc=5"
         }
       ]
     },
@@ -812,7 +812,7 @@
       "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
     },
     {
-      "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+      "title": "China to support trading of treasury bond futures in Hong Kong - South China Morning Post",
       "bucket": "China policy",
       "channel": "policy_liquidity",
       "score": 0.248,
@@ -823,7 +823,7 @@
         "bank_insurance",
         "real_estate_infra"
       ],
-      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNbF9Teld2c2NEeEpnemxpeDhiZkg3Zk1uX0taZkN3MVBVZ2d5OE1veUtQZ2ZrY21udlJ4NE9sQlhsajlhcHBORFZuQ3NzZ1htcjhvd3hNa0p2VkxmTDJRVzVqMjBDMGpxR1N1ZWZjVWNNVFhwRkcwa1l5enNfY3hNSzJXVGZ5c2Z5SmFyRWJaaWZlT042X2EtNjBpRERDVjJQaG4ySjlid3dSVTFid19zUUdVclRKaWdkN1hjUlRzUdIBvwFBVV95cUxObTJ3d1VlOXRIMGJlMktMSHpHc2RTUV9Ed1NsWEo4dzFxaWNvTV9SYUF1MFFTSjF2VjVFa1E1QU9ZcEhSWjJCUlBWUDV3Y0l0bUFPaHhwTDh2OTBnYU50Uk5WaE5HUnFLbEZxQTBSNHJOX0c5M1JlazM4OURoU2RWUDNtM1VpNG1CcENhaE82RVBZNWNhY09NQ2VzdC13RENnZWt2RXlrZFV1cllIVlpEZ3MtUi1vN01iT20zQlpNZw?oc=5"
     },
     {
       "title": "S&P 500, Nasdaq, Dow End Lower As Chip Stocks Slide On TSMC Capex Concerns — TSM, MU, NVDA, UNH, GOOGL In Focus - TradingView",

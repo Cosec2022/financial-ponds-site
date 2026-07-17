@@ -2,8 +2,8 @@
   "doctor_id": "akshare_etf_bridge_doctor_v0_10_24",
   "provider": "akshare",
   "status": "ok",
-  "started_at": "2026-07-17T09:58:51.503441+00:00",
-  "finished_at": "2026-07-17T09:58:52.021834+00:00",
+  "started_at": "2026-07-17T10:10:48.912994+00:00",
+  "finished_at": "2026-07-17T10:10:49.437011+00:00",
   "checks": [
     {
       "id": "python_runtime",

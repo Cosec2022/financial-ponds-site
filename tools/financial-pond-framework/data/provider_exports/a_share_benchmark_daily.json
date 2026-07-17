@@ -13,7 +13,7 @@
     "display_label": "A-share benchmark proxy: 510300",
     "disclosure": "Operational ETF proxy; not the complete A-share market."
   },
-  "last_success_timestamp": "2026-07-15T10:29:57.001932+00:00",
+  "last_success_timestamp": "2026-07-17T10:11:34.840934+00:00",
   "rows": [
     {
       "date": "2026-07-13",
@@ -38,6 +38,14 @@
       "source_provider": "eastmoney",
       "source_endpoint": "fund_etf_hist_em-compatible exact-date kline",
       "collected_at": "2026-07-15T10:29:57.001932+00:00"
+    },
+    {
+      "date": "2026-07-17",
+      "symbol": "510300",
+      "close": 4.589,
+      "source_provider": "eastmoney",
+      "source_endpoint": "fund_etf_hist_em-compatible exact-date kline",
+      "collected_at": "2026-07-17T10:11:34.840934+00:00"
     }
   ]
 }

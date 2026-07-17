@@ -1,11 +1,11 @@
 {
   "module_id": "flow_channel_report_v0_10_51",
-  "as_of": "2026-07-16",
-  "generated_at": "2026-07-17T10:00:32.876Z",
+  "as_of": "2026-07-17",
+  "generated_at": "2026-07-17T10:13:03.075Z",
   "source_files_used": [
     "pool_instrument_map.json",
     "etf_flow_leaderboard.json",
-    "tools/financial-pond-framework/model_outputs/2026-07-16/akshare_provider_flow_observations.json"
+    "tools/financial-pond-framework/model_outputs/2026-07-17/akshare_provider_flow_observations.json"
   ],
   "source_row_count": 11,
   "mapped_pool_count": 22,

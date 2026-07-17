@@ -95,6 +95,20 @@
       "insufficient_history_count": 0,
       "stable_pool_count": 0,
       "baseline_state": "today archived / previous available"
+    },
+    {
+      "as_of": "2026-07-17",
+      "comparison_available": true,
+      "latest_as_of": "2026-07-17",
+      "previous_as_of": "2026-07-16",
+      "observed_pool_count": 67,
+      "changed_pool_count": 67,
+      "improved_data_count": 0,
+      "new_signal_count": 0,
+      "confidence_change_count": 0,
+      "insufficient_history_count": 0,
+      "stable_pool_count": 0,
+      "baseline_state": "today archived / previous available"
     }
   ]
 }
