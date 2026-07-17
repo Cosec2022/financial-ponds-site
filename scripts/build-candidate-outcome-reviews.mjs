@@ -93,7 +93,8 @@ const reviewHistory = {
     "Future horizons remain pending until due date and source data are available."
   ]
 };
-const dueVerificationRows = rows.filter((row) => ["T+1", "T+3"].includes(row.horizon)).map((row) => ({
+const dueVerificationHorizons = ["T+1", "T+3"];
+const dueVerificationRows = rows.filter((row) => dueVerificationHorizons.includes(row.horizon)).map((row) => ({
   as_of: row.candidate_as_of,
   candidate_as_of: row.candidate_as_of,
   signal_date: row.signal_date,
@@ -140,6 +141,8 @@ const dueVerification = {
   as_of: currentAsOf,
   generated_at: generatedAt,
   benchmark_proxy: benchmarkDisclosure(),
+  included_horizons: dueVerificationHorizons,
+  all_horizon_due_review_count: dueReviewCount,
   due_review_count: dueVerificationRows.filter((row) => row.is_due).length,
   reviewed_count: dueVerificationRows.filter((row) => row.review_status === "reviewed").length,
   pending_count: dueVerificationRows.filter((row) => row.review_status === "pending").length,

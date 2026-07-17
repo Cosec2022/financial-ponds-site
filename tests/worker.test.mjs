@@ -405,7 +405,16 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(dueVerification.status, 200);
   const dueVerificationJson = await dueVerification.json();
   assert.ok(["candidate_due_review_verification_v0_10_64", "candidate_due_review_verification_v0_10_65"].includes(dueVerificationJson.module_id));
-  assert.equal(dueVerificationJson.due_review_count, outcomeReportJson.due_review_count);
+  const dueVerificationHorizons = new Set(dueVerificationJson.included_horizons ?? ["T+1", "T+3"]);
+  assert.deepEqual([...dueVerificationHorizons], ["T+1", "T+3"]);
+  assert.ok(dueVerificationJson.rows.every((row) => dueVerificationHorizons.has(row.review_horizon)));
+  const scopedDueReviewCount = outcomeReviewsJson.rows.filter(
+    (row) => dueVerificationHorizons.has(row.horizon) && row.is_due
+  ).length;
+  assert.equal(dueVerificationJson.due_review_count, scopedDueReviewCount);
+  if ("all_horizon_due_review_count" in dueVerificationJson) {
+    assert.equal(dueVerificationJson.all_horizon_due_review_count, outcomeReportJson.due_review_count);
+  }
   assertUnavailableBreakdown(dueVerificationJson.unavailable_by_reason);
   assert.ok(dueVerificationJson.rows.filter((row) => row.is_due).every((row) => row.diagnostic_note && row.expected_review_price_date && "latest_available_price_date" in row));
   assert.ok(dueVerificationJson.rows.some((row) => row.is_due && row.unavailable_reason));
