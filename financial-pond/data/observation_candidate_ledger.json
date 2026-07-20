@@ -1,7 +1,7 @@
 {
   "module_id": "observation_candidate_ledger_v0_10_61",
-  "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:29:20.988Z",
+  "as_of": "2026-07-20",
+  "generated_at": "2026-07-20T11:30:35.891Z",
   "rows": [
     {
       "as_of": "2026-07-09",
@@ -49,7 +49,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -99,7 +99,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -149,7 +149,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -199,7 +199,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -249,7 +249,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -299,7 +299,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -349,7 +349,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -399,7 +399,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -449,7 +449,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -499,7 +499,7 @@
       "review_calendar_version": "2026.07.1",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -549,7 +549,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -599,7 +599,7 @@
       "risk_gate_reason": "overheat guardrail active",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -649,7 +649,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -699,7 +699,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -749,7 +749,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -799,7 +799,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -849,7 +849,7 @@
       "risk_gate_reason": "overheat guardrail active",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -899,7 +899,7 @@
       "risk_gate_reason": "overheat guardrail active",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -949,7 +949,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -999,7 +999,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1049,7 +1049,7 @@
       "risk_gate_reason": "overheat guardrail active",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1099,7 +1099,7 @@
       "risk_gate_reason": "overheat guardrail active",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1149,7 +1149,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1199,7 +1199,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1249,7 +1249,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1299,7 +1299,7 @@
       "risk_gate_reason": "overheat guardrail active",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1349,7 +1349,7 @@
       "risk_gate_reason": "overheat guardrail active",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1399,7 +1399,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1449,7 +1449,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1499,7 +1499,7 @@
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "review_schedule_migration": {
         "applied": false,
-        "migrated_at_as_of": "2026-07-17",
+        "migrated_at_as_of": "2026-07-20",
         "previous_due_dates": null
       }
     },
@@ -1538,7 +1538,7 @@
       "review_t20_calendar_unknown_reason": null,
       "review_policy_version": "review_policy_v0_10_65",
       "review_calendar_version": "2026.07.1",
-      "review_status": "pending",
+      "review_status": "review_due",
       "candidate_state": "Cooling",
       "overheat_score": 58,
       "major_wave_score": 83,
@@ -1546,7 +1546,12 @@
       "state_reason": "Cooling: high evidence; direct mapped instrument.",
       "overheat_reason": "turnover spike; recent top persistence",
       "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 83.",
-      "risk_gate_reason": "overheat guardrail active"
+      "risk_gate_reason": "overheat guardrail active",
+      "review_schedule_migration": {
+        "applied": false,
+        "migrated_at_as_of": "2026-07-20",
+        "previous_due_dates": null
+      }
     },
     {
       "as_of": "2026-07-17",
@@ -1583,7 +1588,7 @@
       "review_t20_calendar_unknown_reason": null,
       "review_policy_version": "review_policy_v0_10_65",
       "review_calendar_version": "2026.07.1",
-      "review_status": "pending",
+      "review_status": "review_due",
       "candidate_state": "Overheated",
       "overheat_score": 78,
       "major_wave_score": 71,
@@ -1591,7 +1596,12 @@
       "state_reason": "Overheated: high evidence; direct mapped instrument.",
       "overheat_reason": "elevated short-term move; turnover spike; recent top persistence",
       "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 71.",
-      "risk_gate_reason": "overheat guardrail active"
+      "risk_gate_reason": "overheat guardrail active",
+      "review_schedule_migration": {
+        "applied": false,
+        "migrated_at_as_of": "2026-07-20",
+        "previous_due_dates": null
+      }
     },
     {
       "as_of": "2026-07-17",
@@ -1628,7 +1638,7 @@
       "review_t20_calendar_unknown_reason": null,
       "review_policy_version": "review_policy_v0_10_65",
       "review_calendar_version": "2026.07.1",
-      "review_status": "pending",
+      "review_status": "review_due",
       "candidate_state": "Cooling",
       "overheat_score": 32,
       "major_wave_score": 99,
@@ -1636,7 +1646,12 @@
       "state_reason": "Cooling: high evidence; direct mapped instrument.",
       "overheat_reason": "recent top persistence",
       "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
-      "risk_gate_reason": "direct evidence and capped confidence usable"
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "review_schedule_migration": {
+        "applied": false,
+        "migrated_at_as_of": "2026-07-20",
+        "previous_due_dates": null
+      }
     },
     {
       "as_of": "2026-07-17",
@@ -1673,7 +1688,7 @@
       "review_t20_calendar_unknown_reason": null,
       "review_policy_version": "review_policy_v0_10_65",
       "review_calendar_version": "2026.07.1",
-      "review_status": "pending",
+      "review_status": "review_due",
       "candidate_state": "Major Candidate",
       "overheat_score": 8,
       "major_wave_score": 100,
@@ -1681,7 +1696,12 @@
       "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
       "overheat_reason": "No strong overheat flag.",
       "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
-      "risk_gate_reason": "direct evidence and capped confidence usable"
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "review_schedule_migration": {
+        "applied": false,
+        "migrated_at_as_of": "2026-07-20",
+        "previous_due_dates": null
+      }
     },
     {
       "as_of": "2026-07-17",
@@ -1714,6 +1734,236 @@
       "review_t5_calendar_unknown_reason": null,
       "review_t20_due": "2026-08-14",
       "review_t20_legacy_calendar_target": "2026-08-06",
+      "review_t20_calendar_known": true,
+      "review_t20_calendar_unknown_reason": null,
+      "review_policy_version": "review_policy_v0_10_65",
+      "review_calendar_version": "2026.07.1",
+      "review_status": "review_due",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 14,
+      "major_wave_score": 99,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "review_schedule_migration": {
+        "applied": false,
+        "migrated_at_as_of": "2026-07-20",
+        "previous_due_dates": null
+      }
+    },
+    {
+      "as_of": "2026-07-20",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "observation_tier": "strong_observe",
+      "observation_score": 83,
+      "direction": "inward",
+      "magnitude": 1,
+      "capped_confidence": 0.75,
+      "flow_status": "estimated_from_source",
+      "momentum_status": "derived_from_market",
+      "liquidity_status": "derived_from_market",
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "main_reason": "high evidence via direct_etf; 3/3 core observations available; delta changed.",
+      "caution_reason": "",
+      "boundary": "observe_only; review candidate only",
+      "review_t1_due": "2026-07-21",
+      "review_t1_legacy_calendar_target": "2026-07-21",
+      "review_t1_calendar_known": true,
+      "review_t1_calendar_unknown_reason": null,
+      "review_t3_due": "2026-07-23",
+      "review_t3_legacy_calendar_target": "2026-07-23",
+      "review_t3_calendar_known": true,
+      "review_t3_calendar_unknown_reason": null,
+      "review_t5_due": "2026-07-27",
+      "review_t5_legacy_calendar_target": "2026-07-25",
+      "review_t5_calendar_known": true,
+      "review_t5_calendar_unknown_reason": null,
+      "review_t20_due": "2026-08-17",
+      "review_t20_legacy_calendar_target": "2026-08-09",
+      "review_t20_calendar_known": true,
+      "review_t20_calendar_unknown_reason": null,
+      "review_policy_version": "review_policy_v0_10_65",
+      "review_calendar_version": "2026.07.1",
+      "review_status": "pending",
+      "candidate_state": "Cooling",
+      "overheat_score": 58,
+      "major_wave_score": 83,
+      "risk_gate_status": "caution",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "turnover spike; recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 83.",
+      "risk_gate_reason": "overheat guardrail active"
+    },
+    {
+      "as_of": "2026-07-20",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "observation_tier": "strong_observe",
+      "observation_score": 82.736,
+      "direction": "inward",
+      "magnitude": 0.967,
+      "capped_confidence": 0.75,
+      "flow_status": "estimated_from_source",
+      "momentum_status": "derived_from_market",
+      "liquidity_status": "derived_from_market",
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "main_reason": "high evidence via direct_etf; 3/3 core observations available; delta changed.",
+      "caution_reason": "",
+      "boundary": "observe_only; review candidate only",
+      "review_t1_due": "2026-07-21",
+      "review_t1_legacy_calendar_target": "2026-07-21",
+      "review_t1_calendar_known": true,
+      "review_t1_calendar_unknown_reason": null,
+      "review_t3_due": "2026-07-23",
+      "review_t3_legacy_calendar_target": "2026-07-23",
+      "review_t3_calendar_known": true,
+      "review_t3_calendar_unknown_reason": null,
+      "review_t5_due": "2026-07-27",
+      "review_t5_legacy_calendar_target": "2026-07-25",
+      "review_t5_calendar_known": true,
+      "review_t5_calendar_unknown_reason": null,
+      "review_t20_due": "2026-08-17",
+      "review_t20_legacy_calendar_target": "2026-08-09",
+      "review_t20_calendar_known": true,
+      "review_t20_calendar_unknown_reason": null,
+      "review_policy_version": "review_policy_v0_10_65",
+      "review_calendar_version": "2026.07.1",
+      "review_status": "pending",
+      "candidate_state": "Overheated",
+      "overheat_score": 78,
+      "major_wave_score": 71,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; turnover spike; recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 71.",
+      "risk_gate_reason": "overheat guardrail active"
+    },
+    {
+      "as_of": "2026-07-20",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "observation_tier": "strong_observe",
+      "observation_score": 77.112,
+      "direction": "inward",
+      "magnitude": 0.264,
+      "capped_confidence": 0.75,
+      "flow_status": "estimated_from_source",
+      "momentum_status": "derived_from_market",
+      "liquidity_status": "derived_from_market",
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "main_reason": "high evidence via direct_etf; 3/3 core observations available; delta changed.",
+      "caution_reason": "",
+      "boundary": "observe_only; review candidate only",
+      "review_t1_due": "2026-07-21",
+      "review_t1_legacy_calendar_target": "2026-07-21",
+      "review_t1_calendar_known": true,
+      "review_t1_calendar_unknown_reason": null,
+      "review_t3_due": "2026-07-23",
+      "review_t3_legacy_calendar_target": "2026-07-23",
+      "review_t3_calendar_known": true,
+      "review_t3_calendar_unknown_reason": null,
+      "review_t5_due": "2026-07-27",
+      "review_t5_legacy_calendar_target": "2026-07-25",
+      "review_t5_calendar_known": true,
+      "review_t5_calendar_unknown_reason": null,
+      "review_t20_due": "2026-08-17",
+      "review_t20_legacy_calendar_target": "2026-08-09",
+      "review_t20_calendar_known": true,
+      "review_t20_calendar_unknown_reason": null,
+      "review_policy_version": "review_policy_v0_10_65",
+      "review_calendar_version": "2026.07.1",
+      "review_status": "pending",
+      "candidate_state": "Cooling",
+      "overheat_score": 32,
+      "major_wave_score": 99,
+      "risk_gate_status": "pass",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable"
+    },
+    {
+      "as_of": "2026-07-20",
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "Healthcare and Pharma",
+      "observation_tier": "strong_observe",
+      "observation_score": 77.0336,
+      "direction": "outward",
+      "magnitude": 0.5117,
+      "capped_confidence": 0.75,
+      "flow_status": "estimated_from_source",
+      "momentum_status": "derived_from_market",
+      "liquidity_status": "derived_from_market",
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "main_reason": "high evidence via direct_etf; 3/3 core observations available; delta changed.",
+      "caution_reason": "",
+      "boundary": "observe_only; review candidate only",
+      "review_t1_due": "2026-07-21",
+      "review_t1_legacy_calendar_target": "2026-07-21",
+      "review_t1_calendar_known": true,
+      "review_t1_calendar_unknown_reason": null,
+      "review_t3_due": "2026-07-23",
+      "review_t3_legacy_calendar_target": "2026-07-23",
+      "review_t3_calendar_known": true,
+      "review_t3_calendar_unknown_reason": null,
+      "review_t5_due": "2026-07-27",
+      "review_t5_legacy_calendar_target": "2026-07-25",
+      "review_t5_calendar_known": true,
+      "review_t5_calendar_unknown_reason": null,
+      "review_t20_due": "2026-08-17",
+      "review_t20_legacy_calendar_target": "2026-08-09",
+      "review_t20_calendar_known": true,
+      "review_t20_calendar_unknown_reason": null,
+      "review_policy_version": "review_policy_v0_10_65",
+      "review_calendar_version": "2026.07.1",
+      "review_status": "pending",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 8,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable"
+    },
+    {
+      "as_of": "2026-07-20",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "observation_tier": "moderate_observe",
+      "observation_score": 76.4552,
+      "direction": "inward",
+      "magnitude": 0.4694,
+      "capped_confidence": 0.75,
+      "flow_status": "estimated_from_source",
+      "momentum_status": "derived_from_market",
+      "liquidity_status": "derived_from_market",
+      "evidence_quality": "high",
+      "proxy_risk": "none",
+      "main_reason": "high evidence via direct_etf; 3/3 core observations available; delta changed.",
+      "caution_reason": "",
+      "boundary": "observe_only; review candidate only",
+      "review_t1_due": "2026-07-21",
+      "review_t1_legacy_calendar_target": "2026-07-21",
+      "review_t1_calendar_known": true,
+      "review_t1_calendar_unknown_reason": null,
+      "review_t3_due": "2026-07-23",
+      "review_t3_legacy_calendar_target": "2026-07-23",
+      "review_t3_calendar_known": true,
+      "review_t3_calendar_unknown_reason": null,
+      "review_t5_due": "2026-07-27",
+      "review_t5_legacy_calendar_target": "2026-07-25",
+      "review_t5_calendar_known": true,
+      "review_t5_calendar_unknown_reason": null,
+      "review_t20_due": "2026-08-17",
+      "review_t20_legacy_calendar_target": "2026-08-09",
       "review_t20_calendar_known": true,
       "review_t20_calendar_unknown_reason": null,
       "review_policy_version": "review_policy_v0_10_65",

@@ -1,0 +1,24 @@
+{
+  "bridge_id": "a_share_benchmark_history",
+  "status": "ok",
+  "benchmark_symbol": "510300",
+  "requested_dates": [
+    "2026-07-20"
+  ],
+  "successful_dates": [
+    "2026-07-20"
+  ],
+  "attempt_count": 1,
+  "diagnostics": [
+    {
+      "requested_date": "2026-07-20",
+      "attempt_count": 1,
+      "status": "ok",
+      "provider_error": null
+    }
+  ],
+  "provider_error": null,
+  "last_success_timestamp": "2026-07-20T11:29:42.112199+00:00",
+  "store_preserved": false,
+  "generated_at": "2026-07-20T11:29:42.112199+00:00"
+}

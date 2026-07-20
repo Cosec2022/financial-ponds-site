@@ -1,9 +1,9 @@
 {
   "module_id": "score_calibration_report_v0_10_57",
-  "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:29:20.718Z",
-  "strong_count": 4,
-  "moderate_count": 18,
+  "as_of": "2026-07-20",
+  "generated_at": "2026-07-20T11:30:35.652Z",
+  "strong_count": 8,
+  "moderate_count": 14,
   "weak_count": 0,
   "insufficient_count": 45,
   "score_min": 0,
@@ -12,11 +12,11 @@
   "score_distribution": [
     {
       "range": "77-100",
-      "count": 4
+      "count": 8
     },
     {
       "range": "55-76.9999",
-      "count": 18
+      "count": 14
     },
     {
       "range": "35-54.9999",

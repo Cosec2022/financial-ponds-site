@@ -1,7 +1,7 @@
 {
   "module_id": "pool_delta_signals_v0_10_55",
-  "as_of": "2026-07-17",
-  "generated_at": "2026-07-17T10:29:20.653Z",
+  "as_of": "2026-07-20",
+  "generated_at": "2026-07-20T11:30:35.604Z",
   "comparison_available": true,
   "rows": [
     {
@@ -41,36 +41,36 @@
     {
       "pool_id": "a_share_a_share_ai_computer",
       "pool_name": "a_share_ai_computer",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 10248000,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_bank_insurance",
       "pool_name": "a_share_bank_insurance",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 22446601.216,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_basic_chemicals",
@@ -109,19 +109,19 @@
     {
       "pool_id": "a_share_a_share_brokerage",
       "pool_name": "a_share_brokerage",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 13640380.416,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_building_materials",
@@ -167,7 +167,7 @@
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": -548288000,
+      "flow_value_delta": -37351974.912,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
@@ -201,7 +201,7 @@
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": -35261916.416,
+      "flow_value_delta": 33421916.416,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
@@ -211,19 +211,19 @@
     {
       "pool_id": "a_share_a_share_defense_military",
       "pool_name": "a_share_defense_military",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": -1813000.448,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_environmental_protection",
@@ -262,19 +262,19 @@
     {
       "pool_id": "a_share_a_share_healthcare_pharma",
       "pool_name": "a_share_healthcare_pharma",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": -28104001.536,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_home_appliances",
@@ -347,19 +347,19 @@
     {
       "pool_id": "a_share_a_share_new_energy_ev",
       "pool_name": "a_share_new_energy_ev",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 8197000,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_nonferrous_metals",
@@ -398,36 +398,36 @@
     {
       "pool_id": "a_share_a_share_real_estate_infra",
       "pool_name": "a_share_real_estate_infra",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": -2002000,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_resources_materials",
       "pool_name": "a_share_resources_materials",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 3750999.296,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_retail",
@@ -449,19 +449,19 @@
     {
       "pool_id": "a_share_a_share_semiconductor",
       "pool_name": "a_share_semiconductor",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": -48000000,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_a_share_social_services",
@@ -568,36 +568,36 @@
     {
       "pool_id": "a_share_ai_computer",
       "pool_name": "AI计算机",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 10248000,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_bank_insurance",
       "pool_name": "银行保险",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 22446601.216,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_basic_chemicals",
@@ -636,19 +636,19 @@
     {
       "pool_id": "a_share_brokerage",
       "pool_name": "券商",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 13640380.416,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_btc",
@@ -711,7 +711,7 @@
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": -548288000,
+      "flow_value_delta": -37351974.912,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
@@ -745,7 +745,7 @@
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": -35261916.416,
+      "flow_value_delta": 33421916.416,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
@@ -755,19 +755,19 @@
     {
       "pool_id": "a_share_defense_military",
       "pool_name": "Defense and Military",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": -1813000.448,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_environmental_protection",
@@ -823,19 +823,19 @@
     {
       "pool_id": "a_share_healthcare_pharma",
       "pool_name": "Healthcare and Pharma",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": -28104001.536,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_home_appliances",
@@ -908,19 +908,19 @@
     {
       "pool_id": "a_share_new_energy_ev",
       "pool_name": "新能源车",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 8197000,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_nonferrous_metals",
@@ -959,36 +959,36 @@
     {
       "pool_id": "a_share_real_estate_infra",
       "pool_name": "地产基建",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": -2002000,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_resources_materials",
       "pool_name": "Resources and Materials",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": 3750999.296,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_retail",
@@ -1010,19 +1010,19 @@
     {
       "pool_id": "a_share_semiconductor",
       "pool_name": "半导体",
-      "review_flag": "stable",
+      "review_flag": "changed",
       "latest_flow_status": "estimated_from_source",
       "previous_flow_status": "estimated_from_source",
       "latest_momentum_status": "derived_from_market",
       "previous_momentum_status": "derived_from_market",
       "latest_liquidity_status": "derived_from_market",
       "previous_liquidity_status": "derived_from_market",
-      "flow_value_delta": 0,
+      "flow_value_delta": -48000000,
       "direction_delta": "same",
       "confidence_delta": 0,
       "main_change": "confidence_capped",
       "boundary": "observe_only",
-      "reason": "No compared observation field changed versus previous archive."
+      "reason": "One or more observation fields changed versus previous archive."
     },
     {
       "pool_id": "a_share_social_services",
