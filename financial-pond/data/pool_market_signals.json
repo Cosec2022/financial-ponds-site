@@ -1,7 +1,7 @@
 {
   "module_id": "pool_market_signals_v0_10_55",
-  "as_of": "2026-07-20",
-  "generated_at": "2026-07-20T11:30:35.409Z",
+  "as_of": "2026-07-21",
+  "generated_at": "2026-07-21T10:52:46.782Z",
   "source_files_used": [
     "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
@@ -37,10 +37,10 @@
       "instrument_name": "A-share benchmark ETF proxy 510300",
       "benchmark_type": "etf_proxy",
       "benchmark_role": "broad_market_proxy",
-      "source_date": "2026-07-20",
-      "price_date": "2026-07-20",
-      "market_close": 4.65,
-      "price_close": 4.65,
+      "source_date": "2026-07-21",
+      "price_date": "2026-07-21",
+      "market_close": 4.787,
+      "price_close": 4.787,
       "fund_code": "510300",
       "fund_name": "A-share benchmark ETF proxy 510300",
       "raw_confidence": {
@@ -2759,7 +2759,7 @@
     },
     {
       "pool_id": "a_share_defense_military",
-      "pool_name": "Defense and Military",
+      "pool_name": "军工",
       "momentum_status": "derived_from_market",
       "momentum_value": 3.06,
       "momentum_direction": "positive",

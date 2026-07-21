@@ -1,11 +1,11 @@
 {
   "module_id": "decision_gate_ledger_v0_10_46",
-  "as_of": "2026-07-20",
-  "generated_at": "2026-07-20T11:29:53.520Z",
+  "as_of": "2026-07-21",
+  "generated_at": "2026-07-21T10:51:33.184Z",
   "status": "gate_ledger_available",
   "guidance_state": "not_ready",
   "execution_state": "blocked",
-  "headline": "Decision gate ledger: 3 block, 2 warn; provider gates pass but execution remains blocked; guidance_state=not_ready.",
+  "headline": "Decision gate ledger: 3 block, 3 warn; provider gates pass but execution remains blocked; guidance_state=not_ready.",
   "gates": [
     {
       "gate_id": "provider_run",
@@ -28,7 +28,7 @@
           "2026-07-08",
           "2026-07-09",
           "2026-07-10",
-          "2026-07-20"
+          "2026-07-21"
         ],
         "status": "flow_gate_ready"
       },
@@ -87,13 +87,11 @@
     {
       "gate_id": "confirmed_watch_available",
       "label": "Confirmed watch rows",
-      "status": "pass",
-      "reading": "1 confirmed_watch row(s) are available.",
+      "status": "warn",
+      "reading": "No confirmed_watch rows are available.",
       "evidence": {
-        "confirmed_watch_count": 1,
-        "sectors": [
-          "brokerage"
-        ]
+        "confirmed_watch_count": 0,
+        "sectors": []
       },
       "next_action": "Keep confirmed rows separate from conflict and single-line evidence rows."
     },
@@ -111,9 +109,9 @@
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
-      "reading": "Rotation sample depth is 12/3.",
+      "reading": "Rotation sample depth is 13/3.",
       "evidence": {
-        "sample_days": 12,
+        "sample_days": 13,
         "min_sample_days": 3,
         "trend_state": "trend_confirmed"
       },
@@ -188,6 +186,13 @@
       "status": "warn",
       "reading": "3 watchlist row(s) are in conflict_review.",
       "next_action": "Review conflict rows before changing model thresholds."
+    },
+    {
+      "gate_id": "confirmed_watch_available",
+      "label": "Confirmed watch rows",
+      "status": "warn",
+      "reading": "No confirmed_watch rows are available.",
+      "next_action": "Keep confirmed rows separate from conflict and single-line evidence rows."
     }
   ],
   "passes": [
@@ -220,17 +225,10 @@
       "next_action": "Keep representative ETF mappings and provider observations complete."
     },
     {
-      "gate_id": "confirmed_watch_available",
-      "label": "Confirmed watch rows",
-      "status": "pass",
-      "reading": "1 confirmed_watch row(s) are available.",
-      "next_action": "Keep confirmed rows separate from conflict and single-line evidence rows."
-    },
-    {
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
-      "reading": "Rotation sample depth is 12/3.",
+      "reading": "Rotation sample depth is 13/3.",
       "next_action": "Continue daily history accumulation."
     },
     {

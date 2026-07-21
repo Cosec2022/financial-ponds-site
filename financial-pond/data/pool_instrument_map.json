@@ -1,7 +1,7 @@
 {
   "module_id": "pool_instrument_map_v0_10_54",
-  "as_of": "2026-07-20",
-  "generated_at": "2026-07-20T11:30:35.337Z",
+  "as_of": "2026-07-21",
+  "generated_at": "2026-07-21T10:52:46.698Z",
   "rows": [
     {
       "pool_id": "a_share_a_share",
@@ -624,7 +624,7 @@
     },
     {
       "pool_id": "a_share_defense_military",
-      "pool_name": "Defense and Military",
+      "pool_name": "军工",
       "instrument_type": "etf",
       "instrument_code": "512660",
       "instrument_name": "军工ETF国泰",

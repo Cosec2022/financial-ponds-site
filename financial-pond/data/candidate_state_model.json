@@ -1,18 +1,18 @@
 {
   "module_id": "candidate_state_model_v0_10_61",
-  "as_of": "2026-07-20",
-  "generated_at": "2026-07-20T11:30:35.891Z",
+  "as_of": "2026-07-21",
+  "generated_at": "2026-07-21T10:52:47.380Z",
   "status": "state_model_available",
-  "candidate_count": 40,
+  "candidate_count": 45,
   "states_distribution": {
-    "Overheated": 6,
-    "Major Candidate": 12,
-    "Cooling": 20,
+    "Overheated": 7,
+    "Major Candidate": 14,
+    "Cooling": 22,
     "Confirmed Trend": 2
   },
   "risk_gate_distribution": {
-    "caution": 15,
-    "pass": 25
+    "caution": 17,
+    "pass": 28
   },
   "rows": [
     {
@@ -572,6 +572,76 @@
       "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
       "overheat_reason": "No strong overheat flag.",
       "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-21",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "candidate_state": "Cooling",
+      "overheat_score": 58,
+      "major_wave_score": 83,
+      "risk_gate_status": "caution",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "turnover spike; recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 83.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-21",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "candidate_state": "Overheated",
+      "overheat_score": 78,
+      "major_wave_score": 71,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; turnover spike; recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 71.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-21",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "candidate_state": "Cooling",
+      "overheat_score": 32,
+      "major_wave_score": 99,
+      "risk_gate_status": "pass",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-21",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 14,
+      "major_wave_score": 99,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-21",
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "Healthcare and Pharma",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 8,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "boundary": "observe_only; right-side model classification only"
     }

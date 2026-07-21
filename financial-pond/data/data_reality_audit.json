@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-20",
-  "generated_at": "2026-07-20T11:29:53.019Z",
+  "as_of": "2026-07-21",
+  "generated_at": "2026-07-21T10:51:32.590Z",
   "module_id": "data_reality_audit_v0_1",
   "status": "audit_available",
   "overall_reality": "mixed_non_real",
@@ -11,7 +11,7 @@
       "name": "AKShare环境预检",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_doctor.json",
       "as_of": null,
-      "generated_at": "2026-07-20T11:29:05.769840+00:00",
+      "generated_at": "2026-07-21T10:50:37.529645+00:00",
       "reality": "provider_doctor_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -25,9 +25,9 @@
     {
       "id": "akshare_provider_run",
       "name": "AKShare真实数据探测",
-      "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-20.json",
-      "as_of": "2026-07-20",
-      "generated_at": "2026-07-20T11:29:41.956816+00:00",
+      "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-21.json",
+      "as_of": "2026-07-21",
+      "generated_at": "2026-07-21T10:51:18.825144+00:00",
       "reality": "provider_run_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -45,8 +45,8 @@
       "id": "flow_price",
       "name": "资金量价",
       "source_file": "sector_flow_review.json",
-      "as_of": "2026-07-20",
-      "generated_at": "2026-07-20T11:29:52.029Z",
+      "as_of": "2026-07-21",
+      "generated_at": "2026-07-21T10:51:31.398Z",
       "reality": "mock",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -66,15 +66,15 @@
       "id": "news",
       "name": "新闻层",
       "source_file": "news_review.json",
-      "as_of": "2026-07-20",
-      "generated_at": "2026-07-20T11:29:51.877Z",
+      "as_of": "2026-07-21",
+      "generated_at": "2026-07-21T10:51:31.201Z",
       "reality": "unknown",
       "confidence_for_market_use": "low",
       "counts": {
         "collected_items": 25,
         "matched_events": 13,
-        "observations": 10,
-        "affected_sectors": 7
+        "observations": 11,
+        "affected_sectors": 8
       },
       "reading": "新闻层来源不明。"
     },
@@ -82,8 +82,8 @@
       "id": "sector_modules",
       "name": "估值/基本面/资金量价三模块",
       "source_file": "sector_module_review.json",
-      "as_of": "2026-07-20",
-      "generated_at": "2026-07-20T11:29:52.172Z",
+      "as_of": "2026-07-21",
+      "generated_at": "2026-07-21T10:51:31.565Z",
       "reality": "manual_seed",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -107,8 +107,8 @@
       "id": "etf_decision_readiness",
       "name": "ETF行动准备度",
       "source_file": "etf_decision_readiness.json",
-      "as_of": "2026-07-20",
-      "generated_at": "2026-07-20T11:29:52.208Z",
+      "as_of": "2026-07-21",
+      "generated_at": "2026-07-21T10:51:31.606Z",
       "reality": "decision_gate_blocked",
       "confidence_for_market_use": "low",
       "counts": {
@@ -138,8 +138,8 @@
       "id": "sector_rotation",
       "name": "行业轮动",
       "source_file": "sector_rotation_intelligence.json",
-      "as_of": "2026-07-20",
-      "generated_at": "2026-07-20T11:29:52.063Z",
+      "as_of": "2026-07-21",
+      "generated_at": "2026-07-21T10:51:31.436Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -158,8 +158,8 @@
       "id": "general_pool_analysis",
       "name": "通用池模型",
       "source_file": "general_pool_analysis.json",
-      "as_of": "2026-07-20",
-      "generated_at": "2026-07-20T11:29:52.733Z",
+      "as_of": "2026-07-21",
+      "generated_at": "2026-07-21T10:51:32.243Z",
       "reality": "contract_output_source_unverified",
       "confidence_for_market_use": "low",
       "counts": {
@@ -173,8 +173,8 @@
       "id": "rotation_history",
       "name": "轮动历史",
       "source_file": "sector_rotation_history.json",
-      "as_of": "2026-07-20",
-      "generated_at": "2026-07-20T11:29:52.138Z",
+      "as_of": "2026-07-21",
+      "generated_at": "2026-07-21T10:51:31.528Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
