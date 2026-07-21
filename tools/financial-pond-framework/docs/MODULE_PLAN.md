@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.48
+Version: v0.10.73
 Status: active
 
 Module IDs use this format:
@@ -24,19 +24,19 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-NEWS-01 | News Pressure Engine | News as pressure, catalyst, risk, expectation | basic / fallback | 30% | Add fixed real sources and source-quality labels |
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots, recover recent published history, and compare latest vs previous day | working prototype | 42% | Add explicit continuation/reversal labels |
-| FP-HIST-MKT-01 | Historical Market Replay | Archive normalized ETF OHLCV inputs and replay historical evidence without latest data | working prototype | 55% | Expand provider coverage and historical share-flow sources |
+| FP-HIST-MKT-01 | Historical Market Replay | Preserve cumulative normalized ETF OHLCV inputs and replay historical evidence without latest/future data | working prototype | 64% | Backfill exact missing review dates and persist replay inputs beyond short-lived CI artifacts |
 | FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language, with share-change flow diagnostics | working prototype | 42% | Current state is `watch_only`; unblock manual valuation/fundamental seeds, rotation visibility, and execution rules |
 | FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, ETF readiness, and decision tickets | working prototype | 40% | Add continuation/reversal labels after more history accumulates |
 | FP-ATTR-01 | Signal Attribution | Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes | working prototype | 35% | Add richer attribution weights and history-aware explanations |
 | FP-WATCH-01 | Watchlist State Machine | Convert attribution and daily evidence into observation states and review boundaries | working prototype | 30% | Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples |
 | FP-GATE-01 | Decision Gate Ledger | Explain why provider readiness does or does not unlock execution-language readiness | working prototype | 25% | Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers |
 | FP-EXPLAIN-01 | Index Explainability | Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns | working prototype | 25% | Expand formula registry as more UI indexes become clickable |
-| FP-OBS-01 | Observation Data Backbone | Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes | working prototype | 30% | Add manual review editing and realized-outcome filling |
+| FP-OBS-01 | Observation Data Backbone | Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes | working prototype | 42% | Produce the first source-backed reviewed T+1/T+3 outcomes without replacing missing values |
 | FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 68% | Keep observation workbench compact and trace-visible |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
 | FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 80% | Keep CI-order, history-recovery, and provider-coverage guards current |
-| FP-MAINT-01 | Maintenance Protocol | Rules, update protocol, total plan, module plan | working | 75% | Keep progress updated every version |
+| FP-MAINT-01 | Maintenance Protocol | Rules, update protocol, total plan, module plan | working | 82% | Keep version, plan, package time, commit, and data-through fields synchronized |
 | FP-POOL-01 | Free Pond Expansion | Add arbitrary market, asset, sector, theme, or watchlist as a pond | started | 20% | Define pond template and creation checklist |
 
 ## Progress Labels
@@ -68,16 +68,34 @@ Tests:
 ## Current Priority
 
 ```text
-1. FP-DATA-01: valuation/fundamental manual seed replacement.
-2. FP-OBS-01: preserve every daily observation and keep history append-only.
-3. FP-EXPLAIN-01: keep every displayed index backed by source/formula/input explanation.
-4. FP-GATE-01: keep provider-ready-but-execution-blocked reasons visible.
-5. FP-WATCH-01: keep attribution conflicts sorted into daily review states.
-6. FP-GEN-01: remove pool graph snapshot dependency from one-command runs.
-7. FP-HIST-01 / FP-ROT-01: improve rotation visibility while sample history is still low.
-8. FP-ETF-01 / FP-DAILY-01: keep execution decision blocked until watch-only gates are cleared.
-9. FP-NEWS-01: real fixed A-share news sources.
-10. FP-DATA-01: S&P 500 live provider inputs after the A-share flow path is stable.
+1. FP-HIST-MKT-01: preserve every exact-date ETF row across daily archive runs; never rebuild from a fixed old Git baseline.
+2. FP-OBS-01: obtain the first real T+1/T+3 reviewed outcomes from exact candidate and 510300 benchmark closes.
+3. FP-DATA-01 / FP-FLOW-01: propagate real provider rows through market signals and candidate baselines without mock/manual substitution.
+4. FP-NEWS-01: add official-source facts, publication timestamps, event deduplication, and global-to-A-share transmission; keep narratives display-only.
+5. FP-EXPLAIN-01 / FP-GATE-01: keep every visible number and execution blocker traceable.
+6. FP-HIST-01 / FP-ROT-01: accumulate enough uninterrupted trading-day history for continuation/reversal labels.
+7. FP-ETF-01 / FP-DAILY-01: keep execution blocked until source, validation, and conflict gates are cleared.
+8. FP-DATA-01: add S&P 500 live inputs only after the A-share exact-date review path is stable.
+```
+
+## v0.10.73 Status Note
+
+```text
+Fixed:
+- historical market-input hydration now preserves the cumulative provider CSV
+- rows later than AS_OF are excluded during replay
+- same-date exact historical rows upsert without deleting earlier dates
+- a failed historical fetch no longer erases the live current-session snapshot
+
+Still blocked:
+- no fabricated backfill for dates whose exact candidate or benchmark close is absent
+- reviewed outcome count may remain zero until missing exact dates are fetched successfully
+- valuation/fundamental manual seeds and non-real flow layers remain decision blockers
+- global official-fact news penetration is not complete
+
+Boundary:
+- observe_only
+- no buy/sell/rebalance/allocation instruction
 ```
 
 ## v0.10.47 Status Note

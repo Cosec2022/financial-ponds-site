@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """FP-HIST-MKT-01 archive normalized ETF market inputs and hydrate replay CSV."""
 from __future__ import annotations
-import argparse, csv, hashlib, json, subprocess
+import argparse, csv, hashlib, json
 from datetime import datetime, timezone
 from pathlib import Path
 import sys
@@ -20,7 +20,7 @@ def main():
     target=repo/"financial-pond"/"history"/"market-inputs"/args.as_of; etf_file=target/"etf_ohlcv.json"
     if args.offline:
         if not etf_file.exists(): raise SystemExit(f"offline snapshot missing: {etf_file}")
-        payload=read(etf_file, {}); series=load_series(target) or load_legacy_series(repo, args.as_of); write(target/"etf_ohlcv_series.json", {"as_of":args.as_of,"rows":series}); hydrate(root, payload.get("rows", []), series); print(json.dumps({"mode":"offline_snapshot","path":str(target)})); return
+        payload=read(etf_file, {}); series=load_series(target) or load_existing_series(root, args.as_of); write(target/"etf_ohlcv_series.json", {"as_of":args.as_of,"rows":series}); hydrate(root, payload.get("rows", []), series); print(json.dumps({"mode":"offline_snapshot","path":str(target)})); return
     prior_rows={row.get("symbol"): row for row in read(etf_file, {"rows": []}).get("rows", []) if row.get("status")=="ok"}
     rows=[]
     for item in contract.get("representative_etfs", []):
@@ -34,20 +34,27 @@ def main():
         pass
     business={"as_of":args.as_of,"etf_rows":[business_row(r) for r in rows],"benchmark":business_row(benchmark)}
     digest=hashlib.sha256(canonical(business).encode()).hexdigest(); old=read(target/"manifest.json", {})
-    manifest={"schema_version":"historical_market_input_v1","as_of":args.as_of,"generated_at":datetime.now(timezone.utc).isoformat(),"business_payload_hash":digest,"instruments_expected":len(rows),"instruments_observed":sum(r["status"]=="ok" for r in rows),"source_summary":summary(rows+[benchmark]),"missing_summary":summary([r for r in rows if r["status"]!="ok"]),"files":["etf_ohlcv.json","benchmark_ohlcv.json","share_flow.json","market_calendar.json","provider_audit.json"],"replayable":True,"replay_limitations":["ETF share flow remains unavailable unless separate historical share source is archived."],"revision":old.get("revision",1) if old.get("business_payload_hash")==digest else old.get("revision",0)+1}
+    series=load_existing_series(root, args.as_of)
+    manifest={"schema_version":"historical_market_input_v1","as_of":args.as_of,"generated_at":datetime.now(timezone.utc).isoformat(),"business_payload_hash":digest,"instruments_expected":len(rows),"instruments_observed":sum(r["status"]=="ok" for r in rows),"source_summary":summary(rows+[benchmark]),"missing_summary":summary([r for r in rows if r["status"]!="ok"]),"files":["etf_ohlcv.json","benchmark_ohlcv.json","share_flow.json","market_calendar.json","provider_audit.json"],"replayable":True,"replay_limitations":["ETF share flow remains unavailable unless separate historical share source is archived."],"revision":old.get("revision",1) if old.get("business_payload_hash")==digest else old.get("revision",0)+1,"series_rows_preserved":len(series),"series_latest_date":max((r.get("date", "") for r in series), default=None)}
     if old.get("business_payload_hash")==digest: manifest["generated_at"]=old.get("generated_at")
-    series=load_legacy_series(repo, args.as_of)
     write(etf_file,{"schema_version":"historical_etf_ohlcv_v1","as_of":args.as_of,"rows":rows}); write(target/"etf_ohlcv_series.json", {"as_of":args.as_of,"rows":series}); write(target/"benchmark_ohlcv.json",benchmark); write(target/"share_flow.json",{"as_of":args.as_of,"rows":[],"status":"unavailable"}); write(target/"market_calendar.json",{"as_of":args.as_of,"actual_trade_dates":sorted({r["trade_date"] for r in rows if r["trade_date"]})}); write(target/"provider_audit.json",{"as_of":args.as_of,"rows":rows+[benchmark]}); write(target/"manifest.json",manifest); hydrate(root, rows, series); print(json.dumps(manifest,ensure_ascii=False))
 
 def business_row(row): return {k:v for k,v in row.items() if k not in {"fetched_at"}}
 def summary(rows):
     return {"ok":sum(r.get("status")=="ok" for r in rows),"unavailable":sum(r.get("status")!="ok" for r in rows),"providers":sorted({r.get("source_provider") for r in rows if r.get("source_provider")})}
-def load_legacy_series(repo, as_of):
-    """Read committed pre-backfill ETF bars; never reads working-tree/current-date data."""
-    try:
-        text=subprocess.check_output(["git","show","36e6ae0^:tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"],cwd=repo,text=True)
-        return [row for row in csv.DictReader(text.splitlines()) if row.get("date","") <= as_of]
-    except Exception: return []
+def load_existing_series(root, as_of):
+    """Preserve the cumulative normalized ETF series without admitting future rows.
+
+    The daily provider runs before this archive step and may already have written
+    the current session. Historical hydration must therefore upsert into the
+    existing series, not rebuild from a fixed old Git revision. Filtering by
+    ``as_of`` keeps historical replay fail-closed and prevents look-ahead.
+    """
+    path=root/"data"/"provider_exports"/"a_share_etf_daily.csv"
+    if not path.exists(): return []
+    with path.open(newline="", encoding="utf8") as handle:
+        rows=list(csv.DictReader(handle))
+    return [row for row in rows if row.get("date") and row.get("date") <= as_of]
 def load_series(target): return read(target/"etf_ohlcv_series.json", {"rows":[]}).get("rows", [])
 def hydrate(root, rows, series=[]):
     path=root/"data"/"provider_exports"/"a_share_etf_daily.csv"; path.parent.mkdir(parents=True,exist_ok=True)

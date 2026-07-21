@@ -4,6 +4,8 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 
 ## Current status
 
+**Current package: v0.10.73.** The historical market-input archive now preserves the cumulative exact-date ETF CSV instead of rebuilding it from a fixed old Git baseline. Rows later than `AS_OF` remain excluded, and missing historical endpoints still fail closed.
+
 - Site root shows a reference-first dashboard with general S&P 500 and A-share industry analysis.
 - The first screen starts with `FP-AUDIT-01` data reality audit, so model conclusions are read only after source reality is checked.
 - The first screen includes `FP-GEN-01` general pool analysis for S&P 500, A-share market, and A-share industries.

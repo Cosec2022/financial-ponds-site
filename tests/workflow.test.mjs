@@ -226,7 +226,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.72 release adds daily AI web research without changing model boundaries", async () => {
+test("v0.10.73 preserves the v0.10.72 AI layer and repairs historical input continuity", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -236,10 +236,11 @@ test("v0.10.72 release adds daily AI web research without changing model boundar
     readFile("tools/financial-pond-framework/package.json", "utf8")
   ]);
   assert.match(index, /Financial Ponds/);
-  assert.match(index, /v0\.10\.72/);
+  assert.match(index, /v0\.10\.73/);
   assert.match(index, /每日市场穿透/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.72");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.72");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.73");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.73");
+  assert.match(changelog, /v0\.10\.73/);
   assert.match(changelog, /v0\.10\.65/);
   assert.match(modelDoc, /Version: v0\.10\.65/);
   assert.match(app, /A-share benchmark proxy: 510300/);

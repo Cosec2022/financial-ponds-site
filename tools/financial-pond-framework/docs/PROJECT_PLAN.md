@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.48
+Version: v0.10.73
 Status: active
 
 ## Final Target
@@ -30,14 +30,16 @@ data confidence and data gaps
 
 The system should not output direct trading instructions.
 
+Implementation order remains **A-share first**, then S&P 500 / U.S. markets, Hong Kong, and other global adapters after the A-share exact-date validation path is stable.
+
 ## Overall Progress
 
 ```text
-Overall progress: 45%
-Current stage: usable prototype
-Daily data pipeline: partial, with AKShare provider flow_ready, one-command recovery for missing pool graph snapshots, signal attribution, watchlist state machine, decision gate ledger, index explainability, observation vault, and workbench snapshot
+Overall progress: 52%
+Current stage: usable observation prototype; validation path under repair
+Daily data pipeline: automated and publishing; v0.10.73 fixes cumulative exact-date ETF input preservation so future review rows are not lost between runs
 Decision-grade model: not yet
-Main limitation: A-share provider flow is flow_ready and displayed numbers are now preserved/explainable, but ETF readiness remains watch_only/not_ready when source, valuation/fundamental, rotation, conflict-review, data reality, or execution gates block guidance
+Main limitation: exact-date candidate/benchmark history is incomplete, reviewed outcomes are not yet statistically usable, and valuation/fundamental/news layers still contain manual, fallback, or unverified inputs
 ```
 
 ## Phase Plan
@@ -104,17 +106,13 @@ local graph node edits and patch export
 
 ## Next Work Order
 
-1. A-share first: replace valuation/fundamental manual seeds with reviewed hard-data sources.
-2. Use Index Explainability to keep every displayed score/rank/readiness number traceable.
-3. Use Decision Gate Ledger to keep provider-ready-but-execution-blocked reasons visible.
-4. Use Watchlist State to route conflict, flow-only, and rotation-only rows before changing scoring.
-5. Use Signal Attribution to review ETF-flow-vs-daily-leader conflicts before changing scoring.
-6. Make pool graph snapshots robust so `pool:analysis` can run after cycle recovery or graceful fallback.
-7. Improve rotation visibility while sample history is still low.
-8. Keep execution decision blocked until ETF readiness exits watch-only mode.
-9. Sync shared work into the general model: input coverage, confidence labels, missing-input reporting, and component contract tests.
-10. S&P 500 second: add live provider inputs for flow, breadth, EPS/valuation, and news pressure after the A-share flow path is stable.
-11. Add continuation / reversal / strengthening / weakening labels.
-12. Feed confirmed trend labels into the daily sector analysis scoring.
-13. Implement keyword state engine.
-14. Implement graph edge state backend.
+1. Preserve cumulative exact-date ETF rows across every daily run; never delete earlier dates when an endpoint fails.
+2. Fetch only the missing exact candidate and 510300 benchmark dates required by due T+1/T+3 reviews, then rerun outcomes fail-closed.
+3. Produce the first source-backed reviewed outcomes; do not report a success rate while reviewed sample size is insufficient.
+4. Propagate real provider prices/volume/amount through market signals and candidate baselines without stale-date substitution.
+5. Replace valuation/fundamental manual seeds with reviewed hard-data sources.
+6. Add official-source global facts, publication timestamps, event-level deduplication, and A-share transmission paths; keep media narratives display-only.
+7. Keep Index Explainability, Decision Gate Ledger, Watchlist State, and Signal Attribution current while inputs mature.
+8. Add continuation / reversal / strengthening / weakening labels only after uninterrupted history is sufficient.
+9. Keep execution decision blocked until ETF readiness exits watch-only mode through evidence, not wording changes.
+10. Add S&P 500 live inputs after the A-share exact-date outcome path is stable.

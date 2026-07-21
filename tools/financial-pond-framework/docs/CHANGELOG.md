@@ -1,3 +1,15 @@
+# Changelog
+
+## v0.10.73
+
+- fixed cumulative A-share ETF market-input persistence
+- replaced the fixed historical `git show` baseline with the existing normalized CSV filtered to `date <= AS_OF`
+- preserved live current-session rows when exact-date historical providers fail
+- kept same-date historical hydration as an upsert and retained no-lookahead behavior
+- added regression tests for cumulative preservation and future-row exclusion
+- synchronized project state, project plan, module plan, and package version
+- kept outcome reviews fail-closed and all investment outputs observe-only
+
 ## v0.10.72 - Daily AI web-research interpretation layer
 
 - Added optional OpenAI Responses API web search after deterministic FP daily persistence.

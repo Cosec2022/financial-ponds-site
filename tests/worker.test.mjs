@@ -10,7 +10,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
   assert.match(html, /Financial Ponds/);
-  assert.match(html, /v0\.10\.72/);
+  assert.match(html, /v0\.10\.73/);
   assert.match(html, /每日市场穿透/);
   assert.match(html, /今晚市场结论/);
   assert.match(html, /Top 5 候选/);

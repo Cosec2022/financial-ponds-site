@@ -5,9 +5,19 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.48`
+Package version: `0.10.73`
 
 Purpose of this version:
+
+- fix FP-HIST-MKT-01 cumulative ETF market-input persistence so the archive step no longer rewrites the provider CSV from a fixed pre-2026-07-11 Git baseline
+- preserve all existing normalized ETF rows with `date <= AS_OF`, then upsert exact-date historical bars
+- keep historical replay no-lookahead by excluding rows later than `AS_OF`
+- prevent a failed historical endpoint from deleting the live provider snapshot already collected for the current session
+- add regression coverage for cumulative preservation, same-date upsert, and future-row exclusion
+- synchronize the operational plan with v0.10.72/v0.10.73 reality: engineering automation is usable, but decision-grade validation remains blocked by incomplete exact-date review inputs and non-real model layers
+- keep all outputs observe-only; this release does not add trading instructions, fabricate review prices, or unlock ETF execution language
+
+Historical note: the detailed v0.10.48 capability list below is retained as implementation history.
 
 - add the Observation Data Backbone and Workbench UI layer
 - add `src/core/observation_schema.mjs` with generic universe, pool, signal, vector, review, outcome, and boundary contracts
