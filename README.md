@@ -4,7 +4,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 
 ## Current status
 
-**Current package: v0.10.73.** The historical market-input archive now preserves the cumulative exact-date ETF CSV instead of rebuilding it from a fixed old Git baseline. Rows later than `AS_OF` remain excluded, and missing historical endpoints still fail closed.
+**Current package: v0.10.74.** v0.10.73 stopped historical replay from replacing cumulative ETF history with a fixed old Git baseline. v0.10.74 completes the live path: every successful AKShare run writes a durable normalized daily rows file, exact-date upserts it into the cumulative CSV before downstream models, and persists that daily source in GitHub Actions. Invalid, incomplete, stale, or future rows remain fail-closed.
 
 - Site root shows a reference-first dashboard with general S&P 500 and A-share industry analysis.
 - The first screen starts with `FP-AUDIT-01` data reality audit, so model conclusions are read only after source reality is checked.

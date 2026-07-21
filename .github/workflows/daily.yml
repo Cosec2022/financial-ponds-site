@@ -179,6 +179,7 @@ jobs:
             git add "reports/market-penetration/${AS_OF}.md"
           fi
           git add tools/financial-pond-framework/data/provider_exports/*.csv
+          git add tools/financial-pond-framework/data/provider_exports/daily/*.json
           if [[ -f tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json ]]; then
             git add tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json
           fi

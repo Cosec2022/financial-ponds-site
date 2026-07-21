@@ -86,6 +86,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(workflow, /Persist published data/);
   assert.match(workflow, /git add financial-pond\/data/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/data\/provider_exports\/\*\.csv/);
+  assert.match(workflow, /git add tools\/financial-pond-framework\/data\/provider_exports\/daily\/\*\.json/);
   assert.match(workflow, /a_share_benchmark_daily\.json/);
   assert.match(workflow, /a_share_benchmark_history_/);
   assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_runs\/akshare_etf_bridge_\*\.json/);
@@ -226,20 +227,26 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.73 preserves the v0.10.72 AI layer and repairs historical input continuity", async () => {
-  const [index, app, changelog, modelDoc, sitePackage, frameworkPackage] = await Promise.all([
+test("v0.10.74 persists daily provider rows while preserving the v0.10.73 archive repair", async () => {
+  const [index, app, changelog, modelDoc, sitePackage, frameworkPackage, ciRunner, archiveScript] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
     readFile("tools/financial-pond-framework/docs/CHANGELOG.md", "utf8"),
     readFile("docs/model/RIGHT_SIDE_MAJOR_WAVE_MODEL.md", "utf8"),
     readFile("package.json", "utf8"),
-    readFile("tools/financial-pond-framework/package.json", "utf8")
+    readFile("tools/financial-pond-framework/package.json", "utf8"),
+    readFile("tools/financial-pond-framework/src/tools/a_share_daily_ci.mjs", "utf8"),
+    readFile("tools/financial-pond-framework/providers/akshare_etf_bridge/archive_historical_market_inputs.py", "utf8")
   ]);
   assert.match(index, /Financial Ponds/);
-  assert.match(index, /v0\.10\.73/);
+  assert.match(index, /v0\.10\.74/);
   assert.match(index, /每日市场穿透/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.73");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.73");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.74");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.74");
+  assert.match(changelog, /v0\.10\.74/);
+  assert.ok(ciRunner.indexOf("persist_daily_etf_history") > ciRunner.indexOf("akshare_etf_snapshot"));
+  assert.ok(ciRunner.indexOf("persist_daily_etf_history") < ciRunner.indexOf("akshare_to_flow"));
+  assert.match(archiveScript, /persist_daily_output/);
   assert.match(changelog, /v0\.10\.73/);
   assert.match(changelog, /v0\.10\.65/);
   assert.match(modelDoc, /Version: v0\.10\.65/);

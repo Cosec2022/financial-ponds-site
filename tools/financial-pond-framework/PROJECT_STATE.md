@@ -5,9 +5,19 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.73`
+Package version: `0.10.74`
 
 Purpose of this version:
+
+- persist each successful AKShare daily ETF result as a normalized exact-date JSON before downstream processing
+- validate all 11 representative ETF identities, mappings, close/amount fields, provider metadata, and one exact date before cumulative upsert
+- merge the durable daily rows into `a_share_etf_daily.csv` in the CI runner and again at the archive boundary
+- persist daily normalized provider files in GitHub Actions so a later archive step cannot erase the only copy of the rows
+- keep same-date reruns deterministic and reject incomplete, duplicate, stale, future, benchmark-substitute, or unavailable inputs
+- recover only repository-verifiable dates; v0.10.74 restores 2026-07-16 and preserves 2026-07-22, while 2026-07-17/20/21 remain absent because their complete industry ETF rows were not retained
+- keep candidate price basis and outcome review downstream of the cumulative exact-date CSV, with unavailable rows excluded from results
+
+v0.10.73 historical preservation repair retained below:
 
 - fix FP-HIST-MKT-01 cumulative ETF market-input persistence so the archive step no longer rewrites the provider CSV from a fixed pre-2026-07-11 Git baseline
 - preserve all existing normalized ETF rows with `date <= AS_OF`, then upsert exact-date historical bars

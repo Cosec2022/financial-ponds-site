@@ -34,6 +34,7 @@ def main() -> int:
     row_csv_path = root_dir / "data" / "provider_exports" / "a_share_etf_daily.csv"
     sector_flow_path = root_dir / "data" / "provider_exports" / "a_share_sector_flow.csv"
     run_status_path = root_dir / "model_outputs" / "provider_runs" / f"akshare_etf_bridge_{as_of}.json"
+    daily_rows_path = root_dir / "data" / "provider_exports" / "daily" / f"a_share_etf_daily_{as_of}.json"
     status: dict[str, Any] = {
         "bridge_id": BRIDGE_ID,
         "provider": "akshare",
@@ -62,6 +63,17 @@ def main() -> int:
             status["warnings"] = raw_payload.get("warnings", [])
 
         write_json(raw_path, raw_payload)
+        write_json(daily_rows_path, {
+            "schema_version": "akshare_daily_etf_rows_v1",
+            "provider": "akshare",
+            "mode": "fixture" if args.fixture else "real",
+            "status": "ok",
+            "as_of": as_of,
+            "provider_run_id": provider_run_id,
+            "generated_at": collected_at,
+            "records": len(rows),
+            "rows": rows
+        })
         upsert_csv(row_csv_path, contract["row_level_columns"], rows, ["date", "fund_code"])
         upsert_sector_flow_csv(sector_flow_path, contract["sector_flow_columns"], rows, as_of)
 
@@ -72,6 +84,7 @@ def main() -> int:
                 "records": len(rows),
                 "outputs": {
                     "raw_json": str(raw_path.relative_to(root_dir)),
+                    "daily_rows_json": str(daily_rows_path.relative_to(root_dir)),
                     "row_csv": str(row_csv_path.relative_to(root_dir)),
                     "sector_flow_csv": str(sector_flow_path.relative_to(root_dir)),
                     "run_status_json": str(run_status_path.relative_to(root_dir))

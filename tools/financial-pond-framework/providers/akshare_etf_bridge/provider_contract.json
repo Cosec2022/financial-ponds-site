@@ -5,6 +5,7 @@
   "default_outputs": {
     "raw_json": "raw_data/provider/akshare/<as_of>/a_share_etf_daily_raw.json",
     "row_csv": "data/provider_exports/a_share_etf_daily.csv",
+    "daily_rows_json": "data/provider_exports/daily/a_share_etf_daily_<as_of>.json",
     "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv",
     "run_status_json": "model_outputs/provider_runs/akshare_etf_bridge_<as_of>.json"
   },

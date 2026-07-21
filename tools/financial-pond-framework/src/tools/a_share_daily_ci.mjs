@@ -26,6 +26,12 @@ export async function runAShareDailyCi({
     asOf
   ], { rootDir });
 
+  await runStep(summary, "persist_daily_etf_history", "python3", [
+    "providers/akshare_etf_bridge/persist_daily_etf_history.py",
+    "--as-of",
+    asOf
+  ], { rootDir });
+
   await runStep(summary, "a_share_benchmark_exact_date", "python3", [
     "providers/akshare_etf_bridge/fetch_benchmark_history.py",
     "--date",

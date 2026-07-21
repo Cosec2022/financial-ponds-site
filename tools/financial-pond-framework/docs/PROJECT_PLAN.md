@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.73
+Version: v0.10.74
 Status: active
 
 ## Final Target
@@ -37,7 +37,7 @@ Implementation order remains **A-share first**, then S&P 500 / U.S. markets, Hon
 ```text
 Overall progress: 52%
 Current stage: usable observation prototype; validation path under repair
-Daily data pipeline: automated and publishing; v0.10.73 fixes cumulative exact-date ETF input preservation so future review rows are not lost between runs
+Daily data pipeline: automated and publishing; v0.10.73 fixed historical preservation and v0.10.74 persists each verified daily Provider output before candidate/outcome processing
 Decision-grade model: not yet
 Main limitation: exact-date candidate/benchmark history is incomplete, reviewed outcomes are not yet statistically usable, and valuation/fundamental/news layers still contain manual, fallback, or unverified inputs
 ```
@@ -106,7 +106,7 @@ local graph node edits and patch export
 
 ## Next Work Order
 
-1. Preserve cumulative exact-date ETF rows across every daily run; never delete earlier dates when an endpoint fails.
+1. Monitor the durable daily Provider-to-history path across the next scheduled run and keep its normalized daily source committed.
 2. Fetch only the missing exact candidate and 510300 benchmark dates required by due T+1/T+3 reviews, then rerun outcomes fail-closed.
 3. Produce the first source-backed reviewed outcomes; do not report a success rate while reviewed sample size is insufficient.
 4. Propagate real provider prices/volume/amount through market signals and candidate baselines without stale-date substitution.

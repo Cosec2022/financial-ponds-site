@@ -7,6 +7,7 @@ from pathlib import Path
 import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from historical_market_provider import get_etf_daily_bar
+from akshare_etf_bridge.persist_daily_etf_history import daily_output_path, persist_daily_output
 
 def canonical(value): return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 def write(path, value): path.parent.mkdir(parents=True, exist_ok=True); path.write_text(json.dumps(value, ensure_ascii=False, indent=2)+"\n", encoding="utf8")
@@ -21,6 +22,8 @@ def main():
     if args.offline:
         if not etf_file.exists(): raise SystemExit(f"offline snapshot missing: {etf_file}")
         payload=read(etf_file, {}); series=load_series(target) or load_existing_series(root, args.as_of); write(target/"etf_ohlcv_series.json", {"as_of":args.as_of,"rows":series}); hydrate(root, payload.get("rows", []), series); print(json.dumps({"mode":"offline_snapshot","path":str(target)})); return
+    daily_path=daily_output_path(root, args.as_of)
+    if daily_path.exists(): persist_daily_output(root, contract, args.as_of, daily_path)
     prior_rows={row.get("symbol"): row for row in read(etf_file, {"rows": []}).get("rows", []) if row.get("status")=="ok"}
     rows=[]
     for item in contract.get("representative_etfs", []):

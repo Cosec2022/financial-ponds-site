@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.10.74
+
+- completed the daily Provider-to-history path that v0.10.73 did not cover
+- added durable normalized `a_share_etf_daily_<as_of>.json` files containing the exact 11 AKShare industry ETF rows and source metadata
+- added strict exact-date validation and deterministic `(date, fund_code)` cumulative upsert before downstream candidate/outcome processing
+- made historical archive re-apply the verified daily output before hydration and made GitHub Actions persist the daily source files
+- added integration coverage for cumulative additions, same-day reruns, future rejection, unavailable-provider fail-closed behavior, and the prior “daily output exists but CSV is missing it” bug
+- restored only repository-verifiable 2026-07-16 rows; no unavailable 2026-07-17/20/21 industry ETF prices were fabricated
+
 ## v0.10.73
 
 - fixed cumulative A-share ETF market-input persistence

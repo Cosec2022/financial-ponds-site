@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.73
+Version: v0.10.74
 Status: active
 
 Module IDs use this format:
@@ -24,7 +24,7 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-NEWS-01 | News Pressure Engine | News as pressure, catalyst, risk, expectation | basic / fallback | 30% | Add fixed real sources and source-quality labels |
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots, recover recent published history, and compare latest vs previous day | working prototype | 42% | Add explicit continuation/reversal labels |
-| FP-HIST-MKT-01 | Historical Market Replay | Preserve cumulative normalized ETF OHLCV inputs and replay historical evidence without latest/future data | working prototype | 64% | Backfill exact missing review dates and persist replay inputs beyond short-lived CI artifacts |
+| FP-HIST-MKT-01 | Historical Market Replay | Persist verified daily ETF rows, preserve cumulative OHLCV inputs, and replay without future data | working prototype | 72% | Monitor committed daily-row continuity and recover only source-verifiable missing dates |
 | FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language, with share-change flow diagnostics | working prototype | 42% | Current state is `watch_only`; unblock manual valuation/fundamental seeds, rotation visibility, and execution rules |
 | FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, ETF readiness, and decision tickets | working prototype | 40% | Add continuation/reversal labels after more history accumulates |
 | FP-ATTR-01 | Signal Attribution | Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes | working prototype | 35% | Add richer attribution weights and history-aware explanations |
@@ -68,7 +68,7 @@ Tests:
 ## Current Priority
 
 ```text
-1. FP-HIST-MKT-01: preserve every exact-date ETF row across daily archive runs; never rebuild from a fixed old Git baseline.
+1. FP-HIST-MKT-01: monitor durable daily exact-date rows across daily archive runs; never rebuild from a fixed old Git baseline.
 2. FP-OBS-01: obtain the first real T+1/T+3 reviewed outcomes from exact candidate and 510300 benchmark closes.
 3. FP-DATA-01 / FP-FLOW-01: propagate real provider rows through market signals and candidate baselines without mock/manual substitution.
 4. FP-NEWS-01: add official-source facts, publication timestamps, event deduplication, and global-to-A-share transmission; keep narratives display-only.
@@ -76,6 +76,26 @@ Tests:
 6. FP-HIST-01 / FP-ROT-01: accumulate enough uninterrupted trading-day history for continuation/reversal labels.
 7. FP-ETF-01 / FP-DAILY-01: keep execution blocked until source, validation, and conflict gates are cleared.
 8. FP-DATA-01: add S&P 500 live inputs only after the A-share exact-date review path is stable.
+```
+
+## v0.10.74 Status Note
+
+```text
+Fixed:
+- every successful daily AKShare export now leaves a durable normalized rows file
+- the daily runner exact-date upserts verified rows before downstream models
+- the archive boundary reapplies the same durable file before hydration
+- GitHub Actions commits the normalized daily source beside the cumulative CSV
+- incomplete, unavailable, duplicate, stale, future, or non-industry rows fail closed
+
+Recovery reality:
+- 2026-07-16 was restored from a complete repository-verifiable historical Provider CSV
+- 2026-07-22 remains present from Run #33
+- 2026-07-17, 2026-07-20, and 2026-07-21 complete industry rows were not retained and were not fabricated
+
+Boundary:
+- observe_only
+- no buy/sell/rebalance/allocation instruction
 ```
 
 ## v0.10.73 Status Note

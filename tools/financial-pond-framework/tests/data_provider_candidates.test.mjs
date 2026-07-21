@@ -83,6 +83,9 @@ test("AKShare ETF bridge fixture exports collector-friendly files", async () => 
   const status = await readJsonFile(
     path.join(outputRoot, "model_outputs", "provider_runs", "akshare_etf_bridge_2026-07-03.json")
   );
+  const dailyRows = await readJsonFile(
+    path.join(outputRoot, "data", "provider_exports", "daily", "a_share_etf_daily_2026-07-03.json")
+  );
   const validationReport = await readJsonFile(
     path.join(outputRoot, "model_outputs", "provider_validation", "akshare_etf_bridge_validation.json")
   );
@@ -95,6 +98,9 @@ test("AKShare ETF bridge fixture exports collector-friendly files", async () => 
   assert.equal(status.status, "ok");
   assert.equal(status.mode, "fixture");
   assert.equal(status.records, 11);
+  assert.equal(dailyRows.status, "ok");
+  assert.equal(dailyRows.rows.length, 11);
+  assert.equal(dailyRows.rows.every((row) => row.date === "2026-07-03" && row.source_provider === "akshare"), true);
   assert.equal(validationReport.status, "ok");
   assert.equal(validationReport.counts.representative_codes_observed, 11);
   assert.equal(rowCsv.trim().split("\n").length, 23);
