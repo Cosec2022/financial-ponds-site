@@ -1,14 +1,14 @@
 {
   "module_id": "module_maturity_audit_v0_10_39",
   "status": "module_maturity_available",
-  "as_of": "2026-07-21",
-  "generated_at": "2026-07-21T10:51:33.330Z",
+  "as_of": "2026-07-22",
+  "generated_at": "2026-07-21T16:02:25.920Z",
   "overall": {
     "module_count": 22,
-    "average_progress": 42,
+    "average_progress": 42.86,
     "decision_path_progress": 50.8,
-    "low_maturity_count": 11,
-    "current_stage": "usable prototype",
+    "low_maturity_count": 10,
+    "current_stage": "usable observation prototype; validation path under repair",
     "decision_grade_model": "not yet"
   },
   "recommended_mainline": {
@@ -36,85 +36,15 @@
       "module": "Observation Data Backbone",
       "role": "Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes",
       "status": "working prototype",
-      "progress": 30,
-      "next": "Add manual review editing and realized-outcome filling",
+      "progress": 42,
+      "next": "Produce the first source-backed reviewed T+1/T+3 outcomes without replacing missing values",
       "priority_rank": 2,
-      "priority_reading": "preserve every daily observation and keep history append-only.",
+      "priority_reading": "obtain the first real T+1/T+3 reviewed outcomes from exact candidate and 510300 benchmark closes.",
       "focus_lane": "future_expansion",
-      "maturity_label": "early",
-      "urgency": "critical_path",
-      "blockers": [
-        "manual_or_seed_input",
-        "real_provider_gap"
-      ],
-      "next_action": "Add manual review editing and realized-outcome filling"
-    },
-    {
-      "module_id": "FP-EXPLAIN-01",
-      "module": "Index Explainability",
-      "role": "Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns",
-      "status": "working prototype",
-      "progress": 25,
-      "next": "Expand formula registry as more UI indexes become clickable",
-      "priority_rank": 3,
-      "priority_reading": "keep every displayed index backed by source/formula/input explanation.",
-      "focus_lane": "future_expansion",
-      "maturity_label": "early",
-      "urgency": "near_term",
-      "blockers": [
-        "low_maturity"
-      ],
-      "next_action": "Expand formula registry as more UI indexes become clickable"
-    },
-    {
-      "module_id": "FP-GATE-01",
-      "module": "Decision Gate Ledger",
-      "role": "Explain why provider readiness does or does not unlock execution-language readiness",
-      "status": "working prototype",
-      "progress": 25,
-      "next": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers",
-      "priority_rank": 4,
-      "priority_reading": "keep provider-ready-but-execution-blocked reasons visible.",
-      "focus_lane": "future_expansion",
-      "maturity_label": "early",
-      "urgency": "near_term",
-      "blockers": [
-        "real_provider_gap",
-        "low_maturity"
-      ],
-      "next_action": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers"
-    },
-    {
-      "module_id": "FP-WATCH-01",
-      "module": "Watchlist State Machine",
-      "role": "Convert attribution and daily evidence into observation states and review boundaries",
-      "status": "working prototype",
-      "progress": 30,
-      "next": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples",
-      "priority_rank": 5,
-      "priority_reading": "keep attribution conflicts sorted into daily review states.",
-      "focus_lane": "future_expansion",
-      "maturity_label": "early",
-      "urgency": "near_term",
-      "blockers": [],
-      "next_action": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples"
-    },
-    {
-      "module_id": "FP-GEN-01",
-      "module": "General Pool Analysis",
-      "role": "Analyze pools through one component contract with pool-specific input profiles",
-      "status": "working prototype",
-      "progress": 52,
-      "next": "Surface provider-mapped vs framework-only coverage in the frontend",
-      "priority_rank": 6,
-      "priority_reading": "remove pool graph snapshot dependency from one-command runs.",
-      "focus_lane": "quality_expansion",
       "maturity_label": "prototype",
-      "urgency": "later",
-      "blockers": [
-        "real_provider_gap"
-      ],
-      "next_action": "Surface provider-mapped vs framework-only coverage in the frontend"
+      "urgency": "critical_path",
+      "blockers": [],
+      "next_action": "Produce the first source-backed reviewed T+1/T+3 outcomes without replacing missing values"
     },
     {
       "module_id": "FP-NEWS-01",
@@ -123,11 +53,11 @@
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 9,
-      "priority_reading": "real fixed A-share news sources.",
+      "priority_rank": 4,
+      "priority_reading": "add official-source facts, publication timestamps, event deduplication, and global-to-A-share transmission; keep narratives display-only.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
-      "urgency": "later",
+      "urgency": "near_term",
       "blockers": [
         "real_provider_gap"
       ],
@@ -140,8 +70,8 @@
       "status": "working with fallback",
       "progress": 66,
       "next": "Add valuation/fundamental real sources; S&P 500 provider second",
-      "priority_rank": 10,
-      "priority_reading": "S&P 500 live provider inputs after the A-share flow path is stable.",
+      "priority_rank": 8,
+      "priority_reading": "add S&P 500 live inputs only after the A-share exact-date review path is stable.",
       "focus_lane": "decision_path",
       "maturity_label": "usable",
       "urgency": "later",
@@ -167,26 +97,41 @@
         "low_maturity"
       ],
       "next_action": "Add proposal schema and disabled-by-default runner"
-    }
-  ],
-  "low_maturity_modules": [
+    },
     {
-      "module_id": "FP-OBS-01",
-      "module": "Observation Data Backbone",
-      "role": "Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes",
-      "status": "working prototype",
-      "progress": 30,
-      "next": "Add manual review editing and realized-outcome filling",
-      "priority_rank": 2,
-      "priority_reading": "preserve every daily observation and keep history append-only.",
+      "module_id": "FP-POOL-01",
+      "module": "Free Pond Expansion",
+      "role": "Add arbitrary market, asset, sector, theme, or watchlist as a pond",
+      "status": "started",
+      "progress": 20,
+      "next": "Define pond template and creation checklist",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "critical_path",
+      "urgency": "weak_module",
       "blockers": [
-        "manual_or_seed_input",
-        "real_provider_gap"
+        "low_maturity"
       ],
-      "next_action": "Add manual review editing and realized-outcome filling"
+      "next_action": "Define pond template and creation checklist"
+    },
+    {
+      "module_id": "FP-PV-01",
+      "module": "Price-Volume Analysis",
+      "role": "Relative strength, volume, breadth, confirmation",
+      "status": "basic",
+      "progress": 20,
+      "next": "Add trend, divergence, volume expansion, and persistence",
+      "priority_rank": null,
+      "priority_reading": null,
+      "focus_lane": "quality_expansion",
+      "maturity_label": "early",
+      "urgency": "weak_module",
+      "blockers": [
+        "history_depth_gap",
+        "low_maturity"
+      ],
+      "next_action": "Add trend, divergence, volume expansion, and persistence"
     },
     {
       "module_id": "FP-EXPLAIN-01",
@@ -195,11 +140,11 @@
       "status": "working prototype",
       "progress": 25,
       "next": "Expand formula registry as more UI indexes become clickable",
-      "priority_rank": 3,
-      "priority_reading": "keep every displayed index backed by source/formula/input explanation.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "near_term",
+      "urgency": "weak_module",
       "blockers": [
         "low_maturity"
       ],
@@ -212,32 +157,19 @@
       "status": "working prototype",
       "progress": 25,
       "next": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers",
-      "priority_rank": 4,
-      "priority_reading": "keep provider-ready-but-execution-blocked reasons visible.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "near_term",
+      "urgency": "weak_module",
       "blockers": [
         "real_provider_gap",
         "low_maturity"
       ],
       "next_action": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers"
-    },
-    {
-      "module_id": "FP-WATCH-01",
-      "module": "Watchlist State Machine",
-      "role": "Convert attribution and daily evidence into observation states and review boundaries",
-      "status": "working prototype",
-      "progress": 30,
-      "next": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples",
-      "priority_rank": 5,
-      "priority_reading": "keep attribution conflicts sorted into daily review states.",
-      "focus_lane": "future_expansion",
-      "maturity_label": "early",
-      "urgency": "near_term",
-      "blockers": [],
-      "next_action": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples"
-    },
+    }
+  ],
+  "low_maturity_modules": [
     {
       "module_id": "FP-NEWS-01",
       "module": "News Pressure Engine",
@@ -245,11 +177,11 @@
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 9,
-      "priority_reading": "real fixed A-share news sources.",
+      "priority_rank": 4,
+      "priority_reading": "add official-source facts, publication timestamps, event deduplication, and global-to-A-share transmission; keep narratives display-only.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
-      "urgency": "later",
+      "urgency": "near_term",
       "blockers": [
         "real_provider_gap"
       ],
@@ -308,6 +240,41 @@
       "next_action": "Add trend, divergence, volume expansion, and persistence"
     },
     {
+      "module_id": "FP-EXPLAIN-01",
+      "module": "Index Explainability",
+      "role": "Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns",
+      "status": "working prototype",
+      "progress": 25,
+      "next": "Expand formula registry as more UI indexes become clickable",
+      "priority_rank": null,
+      "priority_reading": null,
+      "focus_lane": "future_expansion",
+      "maturity_label": "early",
+      "urgency": "weak_module",
+      "blockers": [
+        "low_maturity"
+      ],
+      "next_action": "Expand formula registry as more UI indexes become clickable"
+    },
+    {
+      "module_id": "FP-GATE-01",
+      "module": "Decision Gate Ledger",
+      "role": "Explain why provider readiness does or does not unlock execution-language readiness",
+      "status": "working prototype",
+      "progress": 25,
+      "next": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers",
+      "priority_rank": null,
+      "priority_reading": null,
+      "focus_lane": "future_expansion",
+      "maturity_label": "early",
+      "urgency": "weak_module",
+      "blockers": [
+        "real_provider_gap",
+        "low_maturity"
+      ],
+      "next_action": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers"
+    },
+    {
       "module_id": "FP-RPT-01",
       "module": "Reports",
       "role": "Daily and weekly human-readable reports",
@@ -323,6 +290,21 @@
         "low_maturity"
       ],
       "next_action": "Add weekly report and proposal sections"
+    },
+    {
+      "module_id": "FP-WATCH-01",
+      "module": "Watchlist State Machine",
+      "role": "Convert attribution and daily evidence into observation states and review boundaries",
+      "status": "working prototype",
+      "progress": 30,
+      "next": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples",
+      "priority_rank": null,
+      "priority_reading": null,
+      "focus_lane": "future_expansion",
+      "maturity_label": "early",
+      "urgency": "later",
+      "blockers": [],
+      "next_action": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples"
     },
     {
       "module_id": "FP-ATTR-01",
@@ -445,8 +427,8 @@
       "status": "working with fallback",
       "progress": 66,
       "next": "Add valuation/fundamental real sources; S&P 500 provider second",
-      "priority_rank": 10,
-      "priority_reading": "S&P 500 live provider inputs after the A-share flow path is stable.",
+      "priority_rank": 8,
+      "priority_reading": "add S&P 500 live inputs only after the A-share exact-date review path is stable.",
       "focus_lane": "decision_path",
       "maturity_label": "usable",
       "urgency": "later",
@@ -480,8 +462,8 @@
       "status": "working prototype",
       "progress": 52,
       "next": "Surface provider-mapped vs framework-only coverage in the frontend",
-      "priority_rank": 6,
-      "priority_reading": "remove pool graph snapshot dependency from one-command runs.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "quality_expansion",
       "maturity_label": "prototype",
       "urgency": "later",
@@ -533,11 +515,11 @@
       "status": "basic / fallback",
       "progress": 30,
       "next": "Add fixed real sources and source-quality labels",
-      "priority_rank": 9,
-      "priority_reading": "real fixed A-share news sources.",
+      "priority_rank": 4,
+      "priority_reading": "add official-source facts, publication timestamps, event deduplication, and global-to-A-share transmission; keep narratives display-only.",
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
-      "urgency": "later",
+      "urgency": "near_term",
       "blockers": [
         "real_provider_gap"
       ],
@@ -633,11 +615,11 @@
       "status": "working prototype",
       "progress": 30,
       "next": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples",
-      "priority_rank": 5,
-      "priority_reading": "keep attribution conflicts sorted into daily review states.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "near_term",
+      "urgency": "later",
       "blockers": [],
       "next_action": "Add persistence-aware unchanged/upgraded/downgraded behavior after more daily samples"
     },
@@ -648,11 +630,11 @@
       "status": "working prototype",
       "progress": 25,
       "next": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers",
-      "priority_rank": 4,
-      "priority_reading": "keep provider-ready-but-execution-blocked reasons visible.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "near_term",
+      "urgency": "weak_module",
       "blockers": [
         "real_provider_gap",
         "low_maturity"
@@ -666,11 +648,11 @@
       "status": "working prototype",
       "progress": 25,
       "next": "Expand formula registry as more UI indexes become clickable",
-      "priority_rank": 3,
-      "priority_reading": "keep every displayed index backed by source/formula/input explanation.",
+      "priority_rank": null,
+      "priority_reading": null,
       "focus_lane": "future_expansion",
       "maturity_label": "early",
-      "urgency": "near_term",
+      "urgency": "weak_module",
       "blockers": [
         "low_maturity"
       ],
@@ -681,18 +663,15 @@
       "module": "Observation Data Backbone",
       "role": "Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes",
       "status": "working prototype",
-      "progress": 30,
-      "next": "Add manual review editing and realized-outcome filling",
+      "progress": 42,
+      "next": "Produce the first source-backed reviewed T+1/T+3 outcomes without replacing missing values",
       "priority_rank": 2,
-      "priority_reading": "preserve every daily observation and keep history append-only.",
+      "priority_reading": "obtain the first real T+1/T+3 reviewed outcomes from exact candidate and 510300 benchmark closes.",
       "focus_lane": "future_expansion",
-      "maturity_label": "early",
+      "maturity_label": "prototype",
       "urgency": "critical_path",
-      "blockers": [
-        "manual_or_seed_input",
-        "real_provider_gap"
-      ],
-      "next_action": "Add manual review editing and realized-outcome filling"
+      "blockers": [],
+      "next_action": "Produce the first source-backed reviewed T+1/T+3 outcomes without replacing missing values"
     },
     {
       "module_id": "FP-UI-01",
@@ -766,15 +745,15 @@
       "module": "Maintenance Protocol",
       "role": "Rules, update protocol, total plan, module plan",
       "status": "working",
-      "progress": 75,
-      "next": "Keep progress updated every version",
+      "progress": 82,
+      "next": "Keep version, plan, package time, commit, and data-through fields synchronized",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "infrastructure",
       "maturity_label": "strong",
       "urgency": "later",
       "blockers": [],
-      "next_action": "Keep progress updated every version"
+      "next_action": "Keep version, plan, package time, commit, and data-through fields synchronized"
     },
     {
       "module_id": "FP-POOL-01",

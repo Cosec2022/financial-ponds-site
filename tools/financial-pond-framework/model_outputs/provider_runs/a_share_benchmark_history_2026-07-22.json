@@ -1,0 +1,22 @@
+{
+  "bridge_id": "a_share_benchmark_history",
+  "status": "error",
+  "benchmark_symbol": "510300",
+  "requested_dates": [
+    "2026-07-22"
+  ],
+  "successful_dates": [],
+  "attempt_count": 3,
+  "diagnostics": [
+    {
+      "requested_date": "2026-07-22",
+      "attempt_count": 3,
+      "status": "error",
+      "provider_error": "RuntimeError: Provider returned 0 rows for exact date 2026-07-22"
+    }
+  ],
+  "provider_error": "RuntimeError: Provider returned 0 rows for exact date 2026-07-22",
+  "last_success_timestamp": "2026-07-21T10:51:19.007540+00:00",
+  "store_preserved": true,
+  "generated_at": "2026-07-21T16:02:05.417285+00:00"
+}

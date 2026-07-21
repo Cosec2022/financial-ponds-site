@@ -11,14 +11,18 @@
 - Direct evidence covers 34% of observed pools.
 - Proxy evidence covers 60% and carries high aggregate proxy risk.
 - 62 momentum and 62 liquidity observations are available.
-- 4 pools meet the strict direct-evidence strong observation gate.
+- 6 pools meet the strict direct-evidence strong observation gate.
 
 ## Top Observation Pools
 - **通信电子** | strong_observe | inward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta changed.
+  - high evidence via direct_etf; 3/3 core observations available; delta stable.
 - **半导体** | strong_observe | inward
+  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
+  - evidence high; proxy risk none; capped confidence 0.75
+  - high evidence via direct_etf; 3/3 core observations available; delta changed.
+- **银行保险** | strong_observe | inward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta changed.
@@ -26,11 +30,7 @@
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **券商** | moderate_observe | inward
-  - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
-  - evidence high; proxy risk none; capped confidence 0.75
-  - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **Healthcare and Pharma** | moderate_observe | outward
+- **Resources and Materials** | moderate_observe | outward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta changed.

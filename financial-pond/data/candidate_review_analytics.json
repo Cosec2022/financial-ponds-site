@@ -1,7 +1,7 @@
 {
   "module_id": "candidate_review_analytics_v0_10_65",
-  "as_of": "2026-07-21",
-  "generated_at": "2026-07-21T10:52:48.325Z",
+  "as_of": "2026-07-22",
+  "generated_at": "2026-07-21T16:03:45.690Z",
   "status": "insufficient_sample",
   "source_files_used": [
     "financial-pond/data/candidate_review_history.json"
@@ -17,16 +17,16 @@
   "total_reviewed": 0,
   "reviewed_rows": 0,
   "pending_rows": 20,
-  "unavailable_rows": 70,
+  "unavailable_rows": 80,
   "unavailable_by_reason": {
     "calendar_unknown": 0,
     "stale_data": 0,
     "missing_price": 25,
     "missing_benchmark": 15,
-    "invalid_baseline": 30
+    "invalid_baseline": 40
   },
   "insufficient_sample_rows": 0,
-  "insufficient_review_rows": 30,
+  "insufficient_review_rows": 40,
   "win_rate_absolute": "insufficient_sample",
   "win_rate_vs_benchmark": "insufficient_sample",
   "average_return": "insufficient_sample",

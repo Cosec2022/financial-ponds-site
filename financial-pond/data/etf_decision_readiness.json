@@ -1,6 +1,6 @@
 {
-  "as_of": "2026-07-21",
-  "generated_at": "2026-07-21T10:51:31.606Z",
+  "as_of": "2026-07-22",
+  "generated_at": "2026-07-21T16:02:24.140Z",
   "module_id": "etf_decision_readiness_v0_2",
   "status": "readiness_available",
   "guidance_state": "not_ready",
@@ -36,10 +36,10 @@
           "2026-07-08",
           "2026-07-09",
           "2026-07-10",
-          "2026-07-21"
+          "2026-07-22"
         ],
         "date_count": 5,
-        "current_date": "2026-07-21",
+        "current_date": "2026-07-22",
         "previous_available_date": "2026-07-10",
         "has_previous_available_date": true,
         "rows_by_date": {
@@ -47,14 +47,14 @@
           "2026-07-08": 11,
           "2026-07-09": 11,
           "2026-07-10": 11,
-          "2026-07-21": 11
+          "2026-07-22": 11
         },
         "current_rows": 11,
         "previous_rows": 11
       },
       "next_unlock": "代表 ETF 份额变化流已可计算。"
     },
-    "sample_days": 13,
+    "sample_days": 14,
     "min_sample_days": 3,
     "valuation_fundamental_source": "manual_seed",
     "blockers": [
@@ -105,7 +105,7 @@
         "id": "trend_history",
         "label": "趋势样本",
         "status": "done",
-        "current": "13/3",
+        "current": "14/3",
         "reading": "轮动历史样本已达到基础趋势确认门槛。"
       },
       {
@@ -144,7 +144,7 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.19,
+        "flow_price_score": 0.1884,
         "observed_direct_flow": true
       },
       "blockers": [
@@ -191,8 +191,8 @@
         "valuation_position_score": 0.08,
         "fundamental_label": "improving",
         "fundamental_score": 0.12,
-        "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2055,
+        "flow_price_label": "neutral",
+        "flow_price_score": 0.1995,
         "observed_direct_flow": true
       },
       "blockers": [
@@ -216,7 +216,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.2,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.3685,
+        "flow_price_score": 0.3895,
         "observed_direct_flow": true
       },
       "blockers": [
@@ -240,7 +240,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.24,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2274,
+        "flow_price_score": 0.2331,
         "observed_direct_flow": true
       },
       "blockers": [
@@ -264,7 +264,7 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0356,
+        "flow_price_score": 0.0193,
         "observed_direct_flow": true
       },
       "blockers": [
@@ -318,7 +318,7 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.02,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.19,
+        "flow_price_score": 0.1884,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -403,8 +403,8 @@
         "valuation_position_score": 0.08,
         "fundamental_label": "improving",
         "fundamental_score": 0.12,
-        "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2055,
+        "flow_price_label": "neutral",
+        "flow_price_score": 0.1995,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -447,7 +447,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.2,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.3685,
+        "flow_price_score": 0.3895,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -490,7 +490,7 @@
         "fundamental_label": "improving",
         "fundamental_score": 0.24,
         "flow_price_label": "constructive_inflow_bias",
-        "flow_price_score": 0.2274,
+        "flow_price_score": 0.2331,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -533,7 +533,7 @@
         "fundamental_label": "stable",
         "fundamental_score": -0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0356,
+        "flow_price_score": 0.0193,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -576,7 +576,7 @@
         "fundamental_label": "stable",
         "fundamental_score": 0,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0964,
+        "flow_price_score": 0.0923,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -619,7 +619,7 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.06,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0457,
+        "flow_price_score": 0.042,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -662,7 +662,7 @@
         "fundamental_label": "stable",
         "fundamental_score": 0.04,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.1467,
+        "flow_price_score": 0.1549,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -705,7 +705,7 @@
         "fundamental_label": "weak",
         "fundamental_score": -0.18,
         "flow_price_label": "neutral",
-        "flow_price_score": 0.0278,
+        "flow_price_score": 0.027,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },
@@ -748,7 +748,7 @@
         "fundamental_label": "deteriorating",
         "fundamental_score": -0.32,
         "flow_price_label": "neutral",
-        "flow_price_score": -0.0212,
+        "flow_price_score": -0.0195,
         "flow_confidence": 0.7264,
         "data_completeness": 0.9
       },

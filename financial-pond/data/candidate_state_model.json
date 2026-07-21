@@ -1,18 +1,18 @@
 {
   "module_id": "candidate_state_model_v0_10_61",
-  "as_of": "2026-07-21",
-  "generated_at": "2026-07-21T10:52:47.380Z",
+  "as_of": "2026-07-22",
+  "generated_at": "2026-07-21T16:03:45.010Z",
   "status": "state_model_available",
-  "candidate_count": 45,
+  "candidate_count": 50,
   "states_distribution": {
-    "Overheated": 7,
-    "Major Candidate": 14,
-    "Cooling": 22,
+    "Overheated": 9,
+    "Major Candidate": 16,
+    "Cooling": 23,
     "Confirmed Trend": 2
   },
   "risk_gate_distribution": {
-    "caution": 17,
-    "pass": 28
+    "caution": 20,
+    "pass": 30
   },
   "rows": [
     {
@@ -641,6 +641,76 @@
       "risk_gate_status": "pass",
       "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
       "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-22",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "candidate_state": "Overheated",
+      "overheat_score": 100,
+      "major_wave_score": 71,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "large short-term move; turnover spike; recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 71.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-22",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "candidate_state": "Overheated",
+      "overheat_score": 94,
+      "major_wave_score": 71,
+      "risk_gate_status": "caution",
+      "state_reason": "Overheated: high evidence; direct mapped instrument.",
+      "overheat_reason": "large short-term move; turnover spike; recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 71.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-22",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "银行保险",
+      "candidate_state": "Cooling",
+      "overheat_score": 28,
+      "major_wave_score": 99,
+      "risk_gate_status": "pass",
+      "state_reason": "Cooling: high evidence; direct mapped instrument.",
+      "overheat_reason": "turnover spike",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-22",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 52,
+      "major_wave_score": 90,
+      "risk_gate_status": "caution",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move; recent top persistence; strength without hard flow",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 90.",
+      "risk_gate_reason": "overheat guardrail active",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-22",
+      "pool_id": "a_share_resources_materials",
+      "pool_name": "Resources and Materials",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 22,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "elevated short-term move",
       "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
       "risk_gate_reason": "direct evidence and capped confidence usable",
       "boundary": "observe_only; right-side model classification only"
