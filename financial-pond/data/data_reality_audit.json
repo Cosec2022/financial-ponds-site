@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-22",
-  "generated_at": "2026-07-21T16:02:25.154Z",
+  "generated_at": "2026-07-22T10:53:27.995Z",
   "module_id": "data_reality_audit_v0_1",
   "status": "audit_available",
   "overall_reality": "mixed_non_real",
@@ -11,7 +11,7 @@
       "name": "AKShare环境预检",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_doctor.json",
       "as_of": null,
-      "generated_at": "2026-07-21T16:01:22.813909+00:00",
+      "generated_at": "2026-07-22T10:52:40.550422+00:00",
       "reality": "provider_doctor_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -27,7 +27,7 @@
       "name": "AKShare真实数据探测",
       "source_file": "model_outputs/provider_runs/akshare_etf_bridge_2026-07-22.json",
       "as_of": "2026-07-22",
-      "generated_at": "2026-07-21T16:02:05.231618+00:00",
+      "generated_at": "2026-07-22T10:53:15.923722+00:00",
       "reality": "provider_run_ok",
       "confidence_for_market_use": "medium",
       "counts": {
@@ -46,7 +46,7 @@
       "name": "资金量价",
       "source_file": "sector_flow_review.json",
       "as_of": "2026-07-22",
-      "generated_at": "2026-07-21T16:02:23.925Z",
+      "generated_at": "2026-07-22T10:53:26.780Z",
       "reality": "mock",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -67,12 +67,12 @@
       "name": "新闻层",
       "source_file": "news_review.json",
       "as_of": "2026-07-22",
-      "generated_at": "2026-07-21T16:02:23.716Z",
+      "generated_at": "2026-07-22T10:53:26.571Z",
       "reality": "unknown",
       "confidence_for_market_use": "low",
       "counts": {
         "collected_items": 25,
-        "matched_events": 13,
+        "matched_events": 14,
         "observations": 10,
         "affected_sectors": 7
       },
@@ -83,7 +83,7 @@
       "name": "估值/基本面/资金量价三模块",
       "source_file": "sector_module_review.json",
       "as_of": "2026-07-22",
-      "generated_at": "2026-07-21T16:02:24.097Z",
+      "generated_at": "2026-07-22T10:53:26.950Z",
       "reality": "manual_seed",
       "confidence_for_market_use": "low",
       "source_counts": {
@@ -95,10 +95,7 @@
         "sectors": 31,
         "provider_mapped_representative_sectors": 11,
         "framework_only_sectors": 20,
-        "balanced_candidate": 2,
-        "cheap_with_flow": 1,
-        "expensive_momentum": 2,
-        "wait_for_confirmation": 21,
+        "wait_for_confirmation": 26,
         "value_trap_risk": 5
       },
       "reading": "估值和基本面是 manual_seed，可解释结构，但不是实时估值或财报数据。"
@@ -108,7 +105,7 @@
       "name": "ETF行动准备度",
       "source_file": "etf_decision_readiness.json",
       "as_of": "2026-07-22",
-      "generated_at": "2026-07-21T16:02:24.140Z",
+      "generated_at": "2026-07-22T10:53:26.994Z",
       "reality": "decision_gate_blocked",
       "confidence_for_market_use": "low",
       "counts": {
@@ -139,7 +136,7 @@
       "name": "行业轮动",
       "source_file": "sector_rotation_intelligence.json",
       "as_of": "2026-07-22",
-      "generated_at": "2026-07-21T16:02:23.964Z",
+      "generated_at": "2026-07-22T10:53:26.817Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [
@@ -159,7 +156,7 @@
       "name": "通用池模型",
       "source_file": "general_pool_analysis.json",
       "as_of": "2026-07-22",
-      "generated_at": "2026-07-21T16:02:24.800Z",
+      "generated_at": "2026-07-22T10:53:27.648Z",
       "reality": "contract_output_source_unverified",
       "confidence_for_market_use": "low",
       "counts": {
@@ -174,7 +171,7 @@
       "name": "轮动历史",
       "source_file": "sector_rotation_history.json",
       "as_of": "2026-07-22",
-      "generated_at": "2026-07-21T16:02:24.060Z",
+      "generated_at": "2026-07-22T10:53:26.913Z",
       "reality": "derived_from_non_real",
       "confidence_for_market_use": "low",
       "input_layers": [

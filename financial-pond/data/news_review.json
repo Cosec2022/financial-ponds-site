@@ -1,12 +1,12 @@
 {
   "as_of": "2026-07-22",
-  "generated_at": "2026-07-21T16:02:23.716Z",
+  "generated_at": "2026-07-22T10:53:26.571Z",
   "module_id": "news_daily_v1",
   "status": "news_available",
-  "headline": "13 rule-matched news events; strongest mapped pressure is brokerage (1.64).",
+  "headline": "14 rule-matched news events; strongest mapped pressure is brokerage (1.89).",
   "counts": {
     "collected_items": 25,
-    "matched_events": 13,
+    "matched_events": 14,
     "observations": 10,
     "affected_sectors": 7
   },
@@ -22,8 +22,8 @@
     "top_positive_sectors": [
       {
         "sector_id": "brokerage",
-        "score": 1.643,
-        "event_count": 8,
+        "score": 1.89,
+        "event_count": 9,
         "top_events": [
           {
             "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
@@ -71,102 +71,100 @@
         ]
       },
       {
-        "sector_id": "semiconductor",
+        "sector_id": "bank_insurance",
         "score": 0.99,
-        "event_count": 10,
+        "event_count": 4,
         "top_events": [
           {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+            "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
             "bucket": "China policy",
-            "channel": "external_risk",
-            "score": -0.293,
-            "direction": "negative",
-            "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-            "affected_sector_ids": [
-              "semiconductor",
-              "ai_computer",
-              "communication_electronics"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-          },
-          {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-            "bucket": "China policy",
-            "channel": "liquidity",
-            "score": 0.18,
+            "channel": "policy_liquidity",
+            "score": 0.248,
             "direction": "positive",
-            "reason": "Easier global liquidity can support equity duration and risk appetite.",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
             "affected_sector_ids": [
               "brokerage",
-              "semiconductor",
-              "ai_computer",
-              "consumer"
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
+          },
+          {
+            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+            "bucket": "China policy",
+            "channel": "policy_liquidity",
+            "score": 0.248,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
             ],
             "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
           },
           {
-            "title": "S&P 500, Nasdaq, Dow End Lower As Chip Stocks Slide On TSMC Capex Concerns — TSM, MU, NVDA, UNH, GOOGL In Focus - TradingView",
-            "bucket": "Global technology risk",
-            "channel": "industry_cycle",
-            "score": 0.225,
+            "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+            "bucket": "China policy",
+            "channel": "policy_liquidity",
+            "score": 0.248,
             "direction": "positive",
-            "reason": "Global AI and chip demand news can support domestic technology expectations.",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
             "affected_sector_ids": [
-              "semiconductor",
-              "ai_computer",
-              "communication_electronics"
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
             ],
-            "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNX3o0b1RFRTFtaHN5cFZidE55MkQ1TzRMc0Uyd1hQNG04aDBLOHYwbVBSakZVUVBYaFJoc3VXZS1ycHREb1JKQ0Q2b3dGT1NfQlEwVkFYUDB3MmVCSlFNcGRXY2lRcVJST3pkck9va3VDLUZKb2hBRjRCSEo2VWFEQkpGUlRCVWd3QUFERzFqbWlzazNwQkswNHJJVVoyQTZtek82TnJUQ3pkcm8yU2NEZGlBQmYwRkNJY1FIY1p2anJDYlJGd0dlbGROaXQzUmstMmNUQzJEdEtLYjQ3NW8tTXVnOWlfVlU5U0IwekV4a3BFM3JsR3BN?oc=5"
+            "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
           }
         ]
       },
       {
-        "sector_id": "ai_computer",
+        "sector_id": "real_estate_infra",
         "score": 0.99,
-        "event_count": 10,
+        "event_count": 4,
         "top_events": [
           {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+            "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
             "bucket": "China policy",
-            "channel": "external_risk",
-            "score": -0.293,
-            "direction": "negative",
-            "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-            "affected_sector_ids": [
-              "semiconductor",
-              "ai_computer",
-              "communication_electronics"
-            ],
-            "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-          },
-          {
-            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-            "bucket": "China policy",
-            "channel": "liquidity",
-            "score": 0.18,
+            "channel": "policy_liquidity",
+            "score": 0.248,
             "direction": "positive",
-            "reason": "Easier global liquidity can support equity duration and risk appetite.",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
             "affected_sector_ids": [
               "brokerage",
-              "semiconductor",
-              "ai_computer",
-              "consumer"
+              "bank_insurance",
+              "real_estate_infra"
+            ],
+            "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
+          },
+          {
+            "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+            "bucket": "China policy",
+            "channel": "policy_liquidity",
+            "score": 0.248,
+            "direction": "positive",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+            "affected_sector_ids": [
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
             ],
             "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
           },
           {
-            "title": "S&P 500, Nasdaq, Dow End Lower As Chip Stocks Slide On TSMC Capex Concerns — TSM, MU, NVDA, UNH, GOOGL In Focus - TradingView",
-            "bucket": "Global technology risk",
-            "channel": "industry_cycle",
-            "score": 0.225,
+            "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+            "bucket": "China policy",
+            "channel": "policy_liquidity",
+            "score": 0.248,
             "direction": "positive",
-            "reason": "Global AI and chip demand news can support domestic technology expectations.",
+            "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
             "affected_sector_ids": [
-              "semiconductor",
-              "ai_computer",
-              "communication_electronics"
+              "brokerage",
+              "bank_insurance",
+              "real_estate_infra"
             ],
-            "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNX3o0b1RFRTFtaHN5cFZidE55MkQ1TzRMc0Uyd1hQNG04aDBLOHYwbVBSakZVUVBYaFJoc3VXZS1ycHREb1JKQ0Q2b3dGT1NfQlEwVkFYUDB3MmVCSlFNcGRXY2lRcVJST3pkck9va3VDLUZKb2hBRjRCSEo2VWFEQkpGUlRCVWd3QUFERzFqbWlzazNwQkswNHJJVVoyQTZtek82TnJUQ3pkcm8yU2NEZGlBQmYwRkNJY1FIY1p2anJDYlJGd0dlbGROaXQzUmstMmNUQzJEdEtLYjQ3NW8tTXVnOWlfVlU5U0IwekV4a3BFM3JsR3BN?oc=5"
+            "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
           }
         ]
       }
@@ -275,8 +273,8 @@
       },
       {
         "bucket": "China policy",
-        "score": 0.383,
-        "event_count": 4,
+        "score": 0.63,
+        "event_count": 5,
         "top_events": [
           {
             "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
@@ -327,8 +325,8 @@
   "sector_news_pressure": [
     {
       "sector_id": "brokerage",
-      "score": 1.643,
-      "event_count": 8,
+      "score": 1.89,
+      "event_count": 9,
       "top_events": [
         {
           "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
@@ -372,6 +370,104 @@
             "consumer"
           ],
           "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
+        }
+      ]
+    },
+    {
+      "sector_id": "bank_insurance",
+      "score": 0.99,
+      "event_count": 4,
+      "top_events": [
+        {
+          "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
+          "bucket": "China policy",
+          "channel": "policy_liquidity",
+          "score": 0.248,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
+        },
+        {
+          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+          "bucket": "China policy",
+          "channel": "policy_liquidity",
+          "score": 0.248,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
+        },
+        {
+          "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+          "bucket": "China policy",
+          "channel": "policy_liquidity",
+          "score": 0.248,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+        }
+      ]
+    },
+    {
+      "sector_id": "real_estate_infra",
+      "score": 0.99,
+      "event_count": 4,
+      "top_events": [
+        {
+          "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
+          "bucket": "China policy",
+          "channel": "policy_liquidity",
+          "score": 0.248,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
+        },
+        {
+          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+          "bucket": "China policy",
+          "channel": "policy_liquidity",
+          "score": 0.248,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
+        },
+        {
+          "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+          "bucket": "China policy",
+          "channel": "policy_liquidity",
+          "score": 0.248,
+          "direction": "positive",
+          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+          "affected_sector_ids": [
+            "brokerage",
+            "bank_insurance",
+            "real_estate_infra"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
         }
       ]
     },
@@ -528,104 +624,6 @@
       ]
     },
     {
-      "sector_id": "bank_insurance",
-      "score": 0.743,
-      "event_count": 3,
-      "top_events": [
-        {
-          "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
-          "bucket": "China policy",
-          "channel": "policy_liquidity",
-          "score": 0.248,
-          "direction": "positive",
-          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-          "affected_sector_ids": [
-            "brokerage",
-            "bank_insurance",
-            "real_estate_infra"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
-        },
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "policy_liquidity",
-          "score": 0.248,
-          "direction": "positive",
-          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-          "affected_sector_ids": [
-            "brokerage",
-            "bank_insurance",
-            "real_estate_infra"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
-        {
-          "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
-          "bucket": "Macro liquidity",
-          "channel": "policy_liquidity",
-          "score": 0.248,
-          "direction": "positive",
-          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-          "affected_sector_ids": [
-            "brokerage",
-            "bank_insurance",
-            "real_estate_infra"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
-        }
-      ]
-    },
-    {
-      "sector_id": "real_estate_infra",
-      "score": 0.743,
-      "event_count": 3,
-      "top_events": [
-        {
-          "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
-          "bucket": "China policy",
-          "channel": "policy_liquidity",
-          "score": 0.248,
-          "direction": "positive",
-          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-          "affected_sector_ids": [
-            "brokerage",
-            "bank_insurance",
-            "real_estate_infra"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
-        },
-        {
-          "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-          "bucket": "China policy",
-          "channel": "policy_liquidity",
-          "score": 0.248,
-          "direction": "positive",
-          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-          "affected_sector_ids": [
-            "brokerage",
-            "bank_insurance",
-            "real_estate_infra"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
-        },
-        {
-          "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
-          "bucket": "Macro liquidity",
-          "channel": "policy_liquidity",
-          "score": 0.248,
-          "direction": "positive",
-          "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-          "affected_sector_ids": [
-            "brokerage",
-            "bank_insurance",
-            "real_estate_infra"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
-        }
-      ]
-    },
-    {
       "sector_id": "communication_electronics",
       "score": 0.09,
       "event_count": 5,
@@ -778,8 +776,8 @@
     },
     {
       "bucket": "China policy",
-      "score": 0.383,
-      "event_count": 4,
+      "score": 0.63,
+      "event_count": 5,
       "top_events": [
         {
           "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
@@ -885,6 +883,20 @@
       "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
     },
     {
+      "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
+      "bucket": "China policy",
+      "channel": "policy_liquidity",
+      "score": 0.248,
+      "direction": "positive",
+      "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
+      "affected_sector_ids": [
+        "brokerage",
+        "bank_insurance",
+        "real_estate_infra"
+      ],
+      "link": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
+    },
+    {
       "title": "S&P 500, Nasdaq, Dow End Lower As Chip Stocks Slide On TSMC Capex Concerns — TSM, MU, NVDA, UNH, GOOGL In Focus - TradingView",
       "bucket": "Global technology risk",
       "channel": "industry_cycle",
@@ -971,21 +983,7 @@
       "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTV9NN1lFQ2FiWkowZ1JmOUZhekt1X1RRaWxDalRaa2lhdVRiWlIzZU5GQkdMSmRVdW4xcmFTZ3VlOUhudVhpTHBVcGdaRkYxc3l5clR2VXVMMmVqencwSFFpcVZvbzRPNDB0cWxDenN3MkFJbjhaRk1ON25kcVpIRDB5R3VSTUp2Mzl4bkdqS3BqS0JreGd1aEs5QQ?oc=5"
     },
     {
-      "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
-      "bucket": "Macro liquidity",
-      "channel": "policy_liquidity",
-      "score": 0.248,
-      "direction": "positive",
-      "reason": "Policy or liquidity support can improve A-share risk appetite, but market confirmation is still required.",
-      "affected_sector_ids": [
-        "brokerage",
-        "bank_insurance",
-        "real_estate_infra"
-      ],
-      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
-    },
-    {
-      "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
+      "title": "Bitcoin Price Jumps Amid Peace Talks, Risk Appetite Ignites Rally - CryptoRank",
       "bucket": "Macro liquidity",
       "channel": "liquidity",
       "score": 0.18,
@@ -997,7 +995,7 @@
         "ai_computer",
         "consumer"
       ],
-      "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
+      "link": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8zc0QtTjhIRjBSNTB5Y21nS2FVYW05NlEwQWNqd29iOGlFem1wVlZlUXAzM2Zma2lyUElsa25VQVNxMEw5MTVyUWM0U0VGOVMxUExVTVpJcTlNdnM5c2FCTkN6bFNjX0tsdll1OVJn?oc=5"
     }
   ],
   "interpretation_boundary": [
