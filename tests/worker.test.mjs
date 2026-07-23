@@ -456,9 +456,22 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(reviewAnalyticsJson.pending_rows, outcomeReviewsJson.rows.filter((row) => normalizeReview(row).review_status === "pending" && ["T+1", "T+3"].includes(row.horizon)).length);
   assert.equal(reviewAnalyticsJson.unavailable_rows, outcomeReviewsJson.rows.filter((row) => ["unavailable", "skipped"].includes(normalizeReview(row).review_status) && ["T+1", "T+3"].includes(row.horizon)).length);
   assertUnavailableBreakdown(reviewAnalyticsJson.unavailable_by_reason);
-  if (reviewAnalyticsJson.total_reviewed < 3) assert.equal(reviewAnalyticsJson.status, "insufficient_sample");
-  if (reviewAnalyticsJson.total_reviewed < 3) assert.equal(reviewAnalyticsJson.win_rate_absolute, "insufficient_sample");
-  assert.ok(reviewAnalyticsJson.by_candidate_state.every((row) => row.sample_status === "insufficient_sample"));
+  const minimumSampleSize = reviewAnalyticsJson.sample_policy.minimum_sample_size;
+  assert.equal(
+    reviewAnalyticsJson.status,
+    reviewAnalyticsJson.total_reviewed >= minimumSampleSize ? "analytics_available" : "insufficient_sample"
+  );
+  if (reviewAnalyticsJson.total_reviewed < minimumSampleSize) {
+    assert.equal(reviewAnalyticsJson.win_rate_absolute, "insufficient_sample");
+  }
+  for (const grouping of [
+    reviewAnalyticsJson.by_candidate_state,
+    reviewAnalyticsJson.by_risk_gate_status,
+    reviewAnalyticsJson.by_overheat_score_bucket,
+    reviewAnalyticsJson.by_major_wave_score_bucket
+  ]) {
+    assertAnalyticsGrouping(grouping, minimumSampleSize);
+  }
   assert.ok(reviewAnalyticsJson.boundary_notes.includes("observe_only"));
 
   const eveningReport = await worker.fetch(request("/data/evening_report.md"), {});
@@ -505,6 +518,26 @@ function assertUnavailableBreakdown(value) {
   const current = ["calendar_unknown", "stale_data", "missing_price", "missing_benchmark", "invalid_baseline"];
   const legacy = ["unavailable_market_closed", "unavailable_missing_price", "unavailable_missing_benchmark", "unavailable_data_stale", "skipped_invalid_baseline"];
   assert.ok(current.every((key) => typeof value?.[key] === "number") || legacy.every((key) => typeof value?.[key] === "number"));
+}
+
+function assertAnalyticsGrouping(rows, minimumSampleSize) {
+  const metrics = [
+    "win_rate_absolute",
+    "win_rate_vs_benchmark",
+    "average_return",
+    "average_excess_return",
+    "continuation_rate",
+    "failure_rate"
+  ];
+  for (const row of rows) {
+    const available = row.sample_size >= minimumSampleSize;
+    assert.equal(row.sample_status, available ? "available" : "insufficient_sample");
+    assert.equal(row.total_reviewed, row.sample_size);
+    for (const metric of metrics) {
+      if (available) assert.ok(Number.isFinite(row[metric]), `${row.group}.${metric} must be finite when available`);
+      else assert.equal(row[metric], "insufficient_sample", `${row.group}.${metric} must reject false precision`);
+    }
+  }
 }
 
 function normalizeReview(row) {

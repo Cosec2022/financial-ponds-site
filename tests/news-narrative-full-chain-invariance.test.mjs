@@ -82,6 +82,11 @@ async function fullCandidateChain(tempRoot, fixture) {
   const observationDir = path.join(root, "tools/financial-pond-framework/observations", asOf);
   await mkdir(observationDir, { recursive: true });
   await writeFile(path.join(observationDir, "news_observations.json"), `${JSON.stringify({ observations: allNarratives(fixture) }, null, 2)}\n`);
+  const historicalSnapshot = await json(path.join(root, "financial-pond/data/history/observations", `${asOf}.json`));
+  await writeFile(
+    path.join(root, "financial-pond/data/candidate_outcome_reviews.json"),
+    `${JSON.stringify(historicalSnapshot.candidate_outcome_reviews, null, 2)}\n`
+  );
   await run("bash", ["scripts/local/fp-daily.sh", asOf], root);
   const persistenceFiles = [
     "financial-pond/data/history/daily/index.json",
