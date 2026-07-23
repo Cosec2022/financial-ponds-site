@@ -1,3 +1,5 @@
+import { STRUCTURAL_OBSERVATION_LIMIT } from "../../financial-pond/structural-observation-contract.mjs";
+
 const ALLOWED_CONFIDENCE = new Set(["confirmed", "likely", "unverified"]);
 const ALLOWED_AGREEMENT = new Set(["外部环境与FP同向", "部分同向", "FP强但外部未确认", "外部支持但FP未确认", "风险冲突", "无明确关系"]);
 
@@ -36,7 +38,7 @@ export const MARKET_RESEARCH_SCHEMA = {
     why_market_moved: {
       type: "array",
       minItems: 2,
-      maxItems: 5,
+      maxItems: STRUCTURAL_OBSERVATION_LIMIT,
       items: {
         type: "object",
         additionalProperties: false,
@@ -124,7 +126,7 @@ export const MARKET_RESEARCH_SCHEMA = {
 };
 
 export function buildMarketResearchPrompt(brief) {
-  const candidates = (brief.fp_cross_checks ?? []).slice(0, 5).map((row) => ({
+  const candidates = (brief.fp_cross_checks ?? []).slice(0, STRUCTURAL_OBSERVATION_LIMIT).map((row) => ({
     pool_id: row.pool_id,
     pool_name: row.pool_name,
     hard_data_direction: row.hard_data_direction,
@@ -162,7 +164,7 @@ export function buildMarketResearchPrompt(brief) {
     "7. 输出简体中文，面向非专业但认真交易的读者。结论要清楚，不写买卖指令，不做短期价格预测。观察周期以未来 3–20 个交易日为主。",
     "8. 每个外部事实和因果判断必须引用 sources 中的 source_id。source_id 必须唯一且确实存在。",
     "9. fp_cross_checks 必须覆盖下面给出的候选 pool_id，不得发明候选或改名。",
-    "10. headline 应综合“外部市场环境 + FP硬数据 + 风险边界”，不能只复述 Top 5。",
+    "10. headline 应综合“外部市场环境 + FP硬数据 + 风险边界”，不能只复述 Top 10 结构性观察。",
     "",
     `目标业务日期：${brief.as_of}`,
     "FP确定性输入：",
@@ -192,7 +194,7 @@ export function validateMarketResearchSynthesis(synthesis, brief) {
   for (const row of synthesis.what_happened ?? []) if (!ALLOWED_CONFIDENCE.has(row.confidence)) throw new Error(`Invalid confidence ${row.confidence}`);
   for (const row of synthesis.why_market_moved ?? []) if (!ALLOWED_CONFIDENCE.has(row.confidence)) throw new Error(`Invalid confidence ${row.confidence}`);
   for (const row of synthesis.fp_cross_checks ?? []) if (!ALLOWED_AGREEMENT.has(row.agreement)) throw new Error(`Invalid agreement ${row.agreement}`);
-  const expected = new Set((brief.fp_cross_checks ?? []).slice(0, 5).map((row) => row.pool_id));
+  const expected = new Set((brief.fp_cross_checks ?? []).slice(0, STRUCTURAL_OBSERVATION_LIMIT).map((row) => row.pool_id));
   const actual = new Set((synthesis.fp_cross_checks ?? []).map((row) => row.pool_id));
   for (const poolId of expected) if (!actual.has(poolId)) throw new Error(`AI synthesis missing FP candidate ${poolId}`);
   return true;

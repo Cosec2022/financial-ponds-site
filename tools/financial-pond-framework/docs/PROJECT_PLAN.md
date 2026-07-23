@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.74
+Version: v0.10.75
 Status: active
 
 ## Final Target
@@ -37,7 +37,7 @@ Implementation order remains **A-share first**, then S&P 500 / U.S. markets, Hon
 ```text
 Overall progress: 52%
 Current stage: usable observation prototype; validation path under repair
-Daily data pipeline: automated and publishing; v0.10.73 fixed historical preservation and v0.10.74 persists each verified daily Provider output before candidate/outcome processing
+Daily data pipeline: automated and publishing; v0.10.73 fixed historical preservation, v0.10.74 persists each verified daily Provider output before candidate/outcome processing, and v0.10.75 presents the unchanged model ranking as a Top 10 structural-observation surface
 Decision-grade model: not yet
 Main limitation: exact-date candidate/benchmark history is incomplete, reviewed outcomes are not yet statistically usable, and valuation/fundamental/news layers still contain manual, fallback, or unverified inputs
 ```
@@ -80,6 +80,9 @@ Published-data completeness guard for the daily Action
 Daily sector analysis panel with priority watch, confirm next, and avoid watch tiers
 Rotation-history recovery from recent published Git versions
 clickable pond map
+Top 10 structural observations in backend-published order, with no frontend re-ranking or fabricated padding
+Chinese human-readable status and field-grounded explanation layer with switchable industry details
+formal vector logo, pond-only favicon, and responsive mobile observation cards
 news pressure with fallback labeling
 local graph node edits and patch export
 ```
@@ -102,6 +105,7 @@ local graph node edits and patch export
 13. Watchlist state is an observation workflow, not a trading instruction.
 14. Decision gate ledger explains blocked readiness; it does not unlock ETF execution advice.
 15. Index explainability explains displayed numbers; it does not unlock ETF execution advice.
+16. The Top 10 structural-observation order is a relative evidence order, not a buy list, rise probability, or trading instruction.
 ```
 
 ## Next Work Order

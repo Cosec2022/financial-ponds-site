@@ -1,6 +1,6 @@
 # Financial Pond Framework
 
-Current package version: `0.10.17`
+Current package version: `0.10.75`
 
 Start recovery here if chat history is missing:
 
@@ -9,7 +9,7 @@ Start recovery here if chat history is missing:
 - `docs/GITHUB_SYNC_PROTOCOL.md`
 - `docs/PROJECT_PLAN.md`
 - `docs/MODULE_PLAN.md`
-- `docs/handbook/CURRENT_PROGRESS_V0_10_17.md`
+- `docs/handbook/CURRENT_PROGRESS_V0_10_75.md`
 - `PROJECT_STATE.md`
 - `docs/PROJECT_MEMORY.md`
 - `docs/MODULE_STATUS.md`

@@ -1,3 +1,5 @@
+import { STRUCTURAL_OBSERVATION_LIMIT } from "../../financial-pond/structural-observation-contract.mjs";
+
 const DAY = /^\d{4}-\d{2}-\d{2}$/;
 
 const POOL_NAME_MAP = {
@@ -108,7 +110,7 @@ export function buildMarketPenetrationBrief({
     what_happened: buildWhatHappened({ candidates, groups, marketFacts, evidenceSummary }),
     why_market_moved: buildWhyMarketMoved(distinctNarratives),
     a_share_transmission: buildTransmission({ candidates, groups, marketSummary, narratives: distinctNarratives }),
-    fp_cross_checks: candidates.slice(0, 5).map(crossCheck),
+    fp_cross_checks: candidates.slice(0, STRUCTURAL_OBSERVATION_LIMIT).map(crossCheck),
     tomorrow_watch: buildTomorrowWatch(candidates, groups),
     sector_state_groups: groups,
     evidence_summary: evidenceSummary,
@@ -194,15 +196,15 @@ function currentCandidates({ asOf, eveningSummary, candidateLedger, candidateSta
   const ledgerRows = (candidateLedger.rows ?? [])
     .filter((row) => row.as_of === asOf)
     .sort((a, b) => number(b.observation_score) - number(a.observation_score) || String(a.pool_id).localeCompare(String(b.pool_id)));
-  if (ledgerRows.length) return uniqueByPool(ledgerRows).slice(0, 5).map(normalizeCandidate);
+  if (ledgerRows.length) return uniqueByPool(ledgerRows).slice(0, STRUCTURAL_OBSERVATION_LIMIT).map(normalizeCandidate);
 
   const summaryRows = (eveningSummary.top_observation_pools ?? []).map((row) => ({ ...row, as_of: eveningSummary.as_of ?? asOf }));
-  if (summaryRows.length) return uniqueByPool(summaryRows).slice(0, 5).map(normalizeCandidate);
+  if (summaryRows.length) return uniqueByPool(summaryRows).slice(0, STRUCTURAL_OBSERVATION_LIMIT).map(normalizeCandidate);
 
   const stateRows = (candidateStateModel.rows ?? [])
     .filter((row) => row.as_of === asOf)
     .sort((a, b) => number(b.major_wave_score) - number(a.major_wave_score));
-  return uniqueByPool(stateRows).slice(0, 5).map(normalizeCandidate);
+  return uniqueByPool(stateRows).slice(0, STRUCTURAL_OBSERVATION_LIMIT).map(normalizeCandidate);
 }
 
 function normalizeCandidate(row) {

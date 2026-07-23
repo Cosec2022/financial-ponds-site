@@ -6,6 +6,11 @@ const files = [
   ["index.html", "text/html; charset=utf-8"],
   ["styles.css", "text/css; charset=utf-8"],
   ["app.js", "text/javascript; charset=utf-8"],
+  ["structural-observation-contract.mjs", "text/javascript; charset=utf-8"],
+  ["financial-ponds-mark.svg", "image/svg+xml"],
+  ["financial-ponds-logo.svg", "image/svg+xml"],
+  ["favicon.svg", "image/svg+xml"],
+  ["apple-touch-icon.png", "image/png"],
   ["data/dashboard.json", "application/json; charset=utf-8"],
   ["data/general_pool_analysis.json", "application/json; charset=utf-8"],
   ["data/sector_flow_review.json", "application/json; charset=utf-8"],
@@ -68,9 +73,12 @@ try {
 
 const assets = {};
 for (const [file, contentType] of files) {
+  const binary = contentType === "image/png";
+  const contents = await readFile(resolve(root, "financial-pond", file), binary ? undefined : "utf8");
   assets[file] = {
     content_type: contentType,
-    body: await readFile(resolve(root, "financial-pond", file), "utf8"),
+    body: binary ? contents.toString("base64") : contents,
+    ...(binary ? { encoding: "base64" } : {})
   };
 }
 

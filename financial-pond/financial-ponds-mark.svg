@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Financial Ponds 池塘标志</title>
+  <defs>
+    <linearGradient id="pond-gradient" x1="12" y1="8" x2="53" y2="57" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20c5b8"/>
+      <stop offset="1" stop-color="#078f8c"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="30" fill="url(#pond-gradient)"/>
+  <circle cx="32" cy="32" r="29.25" fill="none" stroke="#fff" stroke-opacity=".48" stroke-width="1.5"/>
+  <path d="M10 42c9-5 17-5 25-1 7 3 13 3 20-1" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="4"/>
+  <path d="M9 33c8-4 16-4 24 0 8 4 15 4 22 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-opacity=".76" stroke-width="4"/>
+  <path d="M12 24c7-3 14-3 21 0 7 3 13 3 19 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-opacity=".48" stroke-width="4"/>
+</svg>

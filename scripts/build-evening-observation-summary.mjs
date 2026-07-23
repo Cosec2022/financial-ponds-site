@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { loadTradingCalendar, tradingSessionTarget } from "./lib/trading-calendar.mjs";
+import { STRUCTURAL_OBSERVATION_LIMIT } from "../financial-pond/structural-observation-contract.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 const dataDir = resolve(root, "financial-pond", "data");
@@ -29,7 +30,8 @@ const tierCounts = rows.reduce((counts, row) => {
   counts[row.observation_tier] = (counts[row.observation_tier] ?? 0) + 1;
   return counts;
 }, {});
-const topPools = uniqueSemantic(rows.filter((row) => row.observation_tier !== "insufficient")).slice(0, 10);
+const topPools = uniqueSemantic(rows.filter((row) => row.observation_tier !== "insufficient"))
+  .slice(0, STRUCTURAL_OBSERVATION_LIMIT);
 const cautionPools = uniqueSemantic([...rows].sort((a, b) => cautionWeight(b) - cautionWeight(a))).filter((row) => row.caution_reason).slice(0, 10);
 const unresolvedGaps = (coverageReport.priority_gaps ?? []).slice(0, 5).map((gap) => ({
   signal_type: gap.signal_type,
@@ -60,13 +62,14 @@ const summary = {
   low_quality_count: qualityReport.low_quality_signal_count,
   confidence_cap_applied_count: qualityReport.confidence_cap_applied_count,
   delta_comparison_available: deltaReport.comparison_available,
+  structural_observation_limit: STRUCTURAL_OBSERVATION_LIMIT,
   key_findings: [
     `Direct evidence covers ${formatRatio(qualityReport.direct_evidence_ratio)} of observed pools.`,
     `Proxy evidence covers ${formatRatio(qualityReport.proxy_evidence_ratio)} and carries ${qualityReport.proxy_risk_level} aggregate proxy risk.`,
     `${marketReport.momentum_signal_count} momentum and ${marketReport.liquidity_signal_count} liquidity observations are available.`,
     `${tierCounts.strong_observe ?? 0} pools meet the strict direct-evidence strong observation gate.`
   ],
-  top_observation_pools: topPools.slice(0, 5),
+  top_observation_pools: topPools,
   caution_pools: cautionPools.slice(0, 5),
   unresolved_gaps: unresolvedGaps,
   main_caution: mainCaution,

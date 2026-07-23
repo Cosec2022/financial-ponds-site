@@ -10,19 +10,35 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
   assert.match(html, /Financial Ponds/);
-  assert.match(html, /v0\.10\.74/);
+  assert.match(html, /v0\.10\.75/);
   assert.match(html, /每日市场穿透/);
   assert.match(html, /今晚市场结论/);
-  assert.match(html, /Top 5 候选/);
-  assert.match(html, /技术细节/);
+  assert.match(html, /Top 10 结构性观察/);
+  assert.match(html, /技术详情/);
   assert.match(html, /证据与复盘/);
   assert.match(html, /高级诊断/);
   assert.match(html, /板块状态地图/);
   assert.match(html, /对A股的传导/);
   assert.match(html, /明天看什么/);
-  assert.match(html, /observe_only/);
+  assert.match(html, /仅作结构观察/);
   assert.match(html, /高级诊断/);
   assert.doesNotMatch(html, /资金池塘图谱/);
+
+  const [mark, logo, favicon, touchIcon, contract] = await Promise.all([
+    worker.fetch(request("/financial-ponds-mark.svg"), {}),
+    worker.fetch(request("/financial-ponds-logo.svg"), {}),
+    worker.fetch(request("/favicon.svg"), {}),
+    worker.fetch(request("/apple-touch-icon.png"), {}),
+    worker.fetch(request("/structural-observation-contract.mjs"), {})
+  ]);
+  assert.equal(mark.status, 200);
+  assert.match(mark.headers.get("content-type"), /image\/svg\+xml/);
+  assert.equal(logo.status, 200);
+  assert.equal(favicon.status, 200);
+  assert.equal(touchIcon.status, 200);
+  assert.match(touchIcon.headers.get("content-type"), /image\/png/);
+  assert.ok((await touchIcon.arrayBuffer()).byteLength > 1_000);
+  assert.equal(contract.status, 200);
 });
 
 test("serves dashboard, general pool analysis, sector review, rotation data, module review, news review, and pond map JSON", async () => {

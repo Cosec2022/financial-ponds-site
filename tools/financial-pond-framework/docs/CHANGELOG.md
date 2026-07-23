@@ -1,5 +1,15 @@
 # Changelog
 
+## v0.10.75
+
+- expanded the published observation surface from five to the real first ten model-ranked industries through one shared limit
+- kept backend model scores and ordering unchanged; the frontend consumes published order without re-scoring, sorting, or fabricated padding
+- added Chinese status labels plus field-grounded core-basis, next-observation, risk-boundary, and rank/state-change explanations
+- added selectable industry technical details with the first published row selected by default
+- added a formal vector Financial Ponds brand mark and logo, a pond-only favicon, an Apple touch icon, and a mobile card layout
+- added regression coverage for Top 10 ordering, short-list fail-closed behavior, Chinese enum presentation, explanation fallbacks, selection wiring, assets, and sticky/mobile layout
+- retained the `observe_only` boundary: this is not a buy list, upside probability, allocation advice, or trading instruction
+
 ## v0.10.74
 
 - completed the daily Provider-to-history path that v0.10.73 did not cover

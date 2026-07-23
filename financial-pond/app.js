@@ -1,3 +1,13 @@
+import {
+  STRUCTURAL_OBSERVATION_LIMIT,
+  buildCoreBasis,
+  buildNextObservation,
+  describePublishedChange,
+  metricLevel,
+  structuralObservationRows,
+  visibleLabel
+} from "./structural-observation-contract.mjs";
+
 const state = {
   summary: null,
   ledger: null,
@@ -9,7 +19,10 @@ const state = {
   flow: null,
   market: null,
   mapping: null,
+  instrumentMap: null,
   scores: null,
+  marketRows: null,
+  deltaRows: null,
   candidateStateModel: null,
   outcomeReviews: null,
   outcomeReport: null,
@@ -39,6 +52,7 @@ const POOL_NAME_MAP = {
   a_share_bank_insurance: "银行保险",
   a_share_resources_materials: "资源材料",
   a_share_new_energy_ev: "新能源车",
+  a_share_defense_military: "国防军工",
   a_share_consumer: "消费",
   a_share_real_estate_infra: "地产基建",
   a_share_energy: "能源",
@@ -65,11 +79,7 @@ function latestAsOf() {
 }
 
 function rowsForToday() {
-  const asOf = state.ledger?.as_of ?? latestAsOf();
-  return (state.ledger?.rows ?? [])
-    .filter((row) => !asOf || row.as_of === asOf)
-    .sort((a, b) => number(b.observation_score) - number(a.observation_score) || String(a.pool_id).localeCompare(String(b.pool_id)))
-    .slice(0, 5);
+  return structuralObservationRows(state.summary, state.ledger);
 }
 
 function selectedCandidate() {
@@ -182,10 +192,10 @@ function renderMarketPenetration() {
         agreement: row.risk_gate_status === "pass" ? "数据支持" : "风险提醒"
       }));
   document.getElementById("fpCrossChecks").innerHTML = checks.length
-    ? checks.slice(0, 5).map((item) => `
+    ? checks.slice(0, STRUCTURAL_OBSERVATION_LIMIT).map((item) => `
       <div class="cross-check-row">
         <strong>${escapeHtml(item.pool_name ?? displayPoolName(item.pool_id))}</strong>
-        <span class="cross-check-copy">${escapeHtml(item.interpretation ?? item.hard_data_direction ?? "等待更多证据")}${renderSourceLinks(item.source_ids)}</span>
+        <span class="cross-check-copy">${escapeHtml(crossCheckInterpretation(item))}${renderSourceLinks(item.source_ids)}</span>
         <span class="status-badge ${agreementClass(item.agreement)}">${escapeHtml(item.agreement ?? "待验证")}</span>
       </div>
     `).join("")
@@ -224,23 +234,28 @@ function renderSectorStateMap() {
 function renderCandidates() {
   const el = document.getElementById("candidateTable");
   const rows = rowsForToday();
+  const countNote = document.getElementById("candidateCountNote");
   if (!rows.length) {
-    el.innerHTML = `<div class="error-state">没有加载到今日候选。</div>`;
+    countNote.textContent = "当前没有行业满足基础观察条件，系统不会补充虚假条目。";
+    el.innerHTML = `<div class="error-state">没有加载到今日结构性观察行业。</div>`;
     document.getElementById("selectedCandidate").innerHTML = "";
     return;
   }
+  countNote.textContent = rows.length < STRUCTURAL_OBSERVATION_LIMIT
+    ? `当前仅有 ${rows.length} 个行业满足基础观察条件。`
+    : `当前展示模型已发布排序中的前 ${STRUCTURAL_OBSERVATION_LIMIT} 个行业。`;
 
   el.innerHTML = `
     <div class="candidate-table-head" aria-hidden="true">
-      <span>#</span><span>行业</span><span>当前状态</span><span>为什么上榜</span><span>下一步观察</span>
+      <span>排名</span><span>行业</span><span>当前状态</span><span>核心依据</span><span>下一步观察</span>
     </div>
     ${rows.map((row, index) => `
-      <button class="candidate-row${row.pool_id === selectedCandidate()?.pool_id ? " active" : ""}" data-candidate-id="${escapeHtml(row.pool_id)}" type="button">
-        <span class="candidate-rank">${index + 1}</span>
-        <span class="candidate-name">${escapeHtml(poolName(row))}</span>
-        <span class="status-badge ${candidateStatusClass(row)}">${escapeHtml(candidateStatusLabel(row))}</span>
-        <span class="candidate-copy">${escapeHtml(candidateWhy(row))}</span>
-        <span class="candidate-copy">${escapeHtml(candidateNextStep(row))}</span>
+      <button class="candidate-row${row.pool_id === selectedCandidate()?.pool_id ? " active" : ""}" data-candidate-id="${escapeHtml(row.pool_id)}" type="button" aria-pressed="${row.pool_id === selectedCandidate()?.pool_id}">
+        <span class="candidate-rank" data-label="排名">${index + 1}</span>
+        <span class="candidate-name" data-label="行业">${escapeHtml(poolName(row))}</span>
+        <span class="status-badge ${candidateStatusClass(row)}" data-label="当前状态">${escapeHtml(candidateStatusLabel(row))}</span>
+        <span class="candidate-copy" data-label="核心依据">${escapeHtml(candidateWhy(row))}</span>
+        <span class="candidate-copy" data-label="下一步观察">${escapeHtml(candidateNextStep(row))}</span>
       </button>
     `).join("")}
   `;
@@ -264,28 +279,36 @@ function renderSelectedCandidate() {
     el.innerHTML = "";
     return;
   }
+  const context = candidateContext(candidate);
+  const history = context.history;
   el.innerHTML = `
     <article class="selected-card">
       <div class="selected-card-head">
         <div>
           <h3>${escapeHtml(poolName(candidate))} · 技术细节</h3>
-          <p>这里保留模型内部状态，默认不占据首页主视线。</p>
+          <p>分数是模型内部观察尺度，不是概率，也不是交易指令。</p>
         </div>
         <span class="status-badge ${candidateStatusClass(candidate)}">${escapeHtml(candidateStatusLabel(candidate))}</span>
       </div>
+      <p class="published-change">${escapeHtml(describePublishedChange({
+        currentRank: rowsForToday().findIndex((row) => row.pool_id === candidate.pool_id) + 1,
+        previousRank: history.previousRank,
+        currentState: candidate.candidate_state,
+        previousState: history.previousState
+      }))}</p>
       <div class="selected-card-summary">
-        ${miniMetric("观察分数", fmt(candidate.observation_score))}
-        ${miniMetric("过热分数", fmt(candidate.overheat_score))}
-        ${miniMetric("主升浪分数", fmt(candidate.major_wave_score))}
-        ${miniMetric("风险门", candidate.risk_gate_status ?? "--")}
-        ${miniMetric("证据质量", candidate.evidence_quality ?? "--")}
-        ${miniMetric("代理风险", candidate.proxy_risk ?? "--")}
-        ${miniMetric("方向", candidate.direction ?? "--")}
-        ${miniMetric("置信上限", fmt(candidate.capped_confidence))}
+        ${miniMetric("综合观察分", fmt(candidate.observation_score), metricLevel(candidate.observation_score), "汇总多个观察维度的相对强度，不等于上涨概率。")}
+        ${miniMetric("过热／拥挤度", fmt(candidate.overheat_score), metricLevel(candidate.overheat_score), "衡量短期拥挤、连续高位和追涨风险；数值越高，回撤风险通常越值得关注。")}
+        ${miniMetric("中期主趋势强度", fmt(candidate.major_wave_score), metricLevel(candidate.major_wave_score), "衡量趋势、持续性和扩散证据，不代表未来一定上涨。")}
+        ${miniMetric("风险闸门", visibleLabel(candidate.risk_gate_status), "", "检查数据质量、过热、冲突和映射风险是否触发硬性限制。")}
+        ${miniMetric("数据证据质量", visibleLabel(candidate.evidence_quality), "", "表示核心数据来源、完整度和可验证程度。")}
+        ${miniMetric("标的映射风险", visibleLabel(candidate.proxy_risk), "", "表示行业与代表 ETF 的对应是否直接、可靠。")}
+        ${miniMetric("强势扩散方向", visibleLabel(candidate.direction), "", "表示强势是否从本行业向相关行业扩散，或只集中在内部。")}
+        ${miniMetric("最高置信度", fmt(candidate.capped_confidence), metricLevel(candidate.capped_confidence, { scale: 1 }), "模型允许展示的置信度上限，用于防止少量数据产生假精确。")}
       </div>
       <div class="selected-reasons">
-        <div class="selected-reason"><strong>主要依据</strong><br>${escapeHtml(candidate.main_reason || "未记录主要依据。")}</div>
-        <div class="selected-reason caution"><strong>风险与边界</strong><br>${escapeHtml(`${candidate.overheat_reason || "无明确过热标记。"} ${candidate.risk_gate_reason || ""}`.trim())}</div>
+        <div class="selected-reason"><strong>主要依据</strong><br>${escapeHtml(candidateWhy(candidate))}</div>
+        <div class="selected-reason caution"><strong>风险与边界</strong><br>${escapeHtml(candidateRiskBoundary(candidate))}</div>
       </div>
     </article>
   `;
@@ -346,8 +369,7 @@ function renderAdvancedDetails() {
   const analytics = state.reviewAnalytics ?? {};
   const reasons = reviewReasonCounts(state.outcomeReviews?.rows ?? []);
   const unavailable = analytics.unavailable_by_reason ?? outcome.unavailable_by_reason ?? {};
-  const benchmarkLabel = outcome.benchmark_proxy?.display_label ?? "A-share benchmark proxy: 510300";
-  const benchmarkDisclosure = outcome.benchmark_proxy?.disclosure ?? "Operational ETF proxy; not the complete A-share market.";
+  const benchmarkSymbol = outcome.benchmark_proxy?.symbol ?? "510300";
 
   document.getElementById("dataHealth").innerHTML = `
     <div class="compact-facts">
@@ -364,23 +386,23 @@ function renderAdvancedDetails() {
 
   document.getElementById("signalDetails").innerHTML = candidate ? `
     <div class="compact-facts">
-      <span>Flow ${escapeHtml(candidate.flow_status ?? "missing")}</span>
-      <span>Momentum ${escapeHtml(candidate.momentum_status ?? "missing")}</span>
-      <span>Liquidity ${escapeHtml(candidate.liquidity_status ?? "missing")}</span>
-      <span>Quality ${escapeHtml(candidate.evidence_quality ?? "--")}</span>
-      <span>Proxy risk ${escapeHtml(candidate.proxy_risk ?? "--")}</span>
-      <span>Final score ${fmt(score.final_score ?? candidate.observation_score)}</span>
+      <span>资金数据 ${escapeHtml(visibleLabel(candidate.flow_status))}</span>
+      <span>价格强度 ${escapeHtml(visibleLabel(candidate.momentum_status))}</span>
+      <span>流动性 ${escapeHtml(visibleLabel(candidate.liquidity_status))}</span>
+      <span>证据质量 ${escapeHtml(visibleLabel(candidate.evidence_quality))}</span>
+      <span>映射风险 ${escapeHtml(visibleLabel(candidate.proxy_risk))}</span>
+      <span>综合观察分 ${fmt(score.final_score ?? candidate.observation_score)}</span>
     </div>
   ` : "暂无选中候选。";
 
   document.getElementById("reviewDetails").innerHTML = `
-    <p>${escapeHtml(benchmarkLabel)}；${escapeHtml(benchmarkDisclosure)}</p>
+    <p>A股复盘基准代理为 ${escapeHtml(benchmarkSymbol)}；该工具仅用于运营复盘，不代表完整 A 股市场。</p>
     <div class="compact-facts">
-      <span>due ${outcome.due_review_count ?? 0}</span>
-      <span>reviewed ${analytics.reviewed_rows ?? outcome.reviewed_count ?? 0}</span>
-      <span>pending ${analytics.pending_rows ?? outcome.pending_count ?? 0}</span>
-      <span>unavailable ${analytics.unavailable_rows ?? outcome.unavailable_count ?? 0}</span>
-      ${REVIEW_REASONS.map((reason) => `<span>${reason} ${reasons[reason] ?? unavailable[reason] ?? 0}</span>`).join("")}
+      <span>已到复盘期 ${outcome.due_review_count ?? 0}</span>
+      <span>已复盘 ${analytics.reviewed_rows ?? outcome.reviewed_count ?? 0}</span>
+      <span>等待确认 ${analytics.pending_rows ?? outcome.pending_count ?? 0}</span>
+      <span>数据不可用 ${analytics.unavailable_rows ?? outcome.unavailable_count ?? 0}</span>
+      ${REVIEW_REASONS.map((reason) => `<span>${escapeHtml(visibleLabel(reason))} ${reasons[reason] ?? unavailable[reason] ?? 0}</span>`).join("")}
     </div>
   `;
 }
@@ -409,7 +431,7 @@ function deriveHeadline(rows) {
 }
 
 function deriveSectorGroups(rows = rowsForToday()) {
-  const candidates = rows.length ? rows : currentStateRows().slice(0, 5);
+  const candidates = rows.length ? rows : currentStateRows().slice(0, STRUCTURAL_OBSERVATION_LIMIT);
   const groups = { strengthening: [], cooling: [], overheated: [], weak: [] };
   for (const row of candidates) {
     const item = sectorGroupItem(row);
@@ -523,25 +545,16 @@ function normalizeDrivers(primary, narratives) {
 }
 
 function candidateWhy(row) {
-  if (row.evidence_quality === "high" && row.risk_gate_status === "pass") return "价格、流动性与证据质量同时较完整";
-  if (row.evidence_quality === "high") return "强度与证据较好，但风险门已有提醒";
-  if (row.delta_flag === "changed") return "相较上一观察日出现边际变化";
-  return "综合分数较高，但仍需补充直接证据";
+  return buildCoreBasis(row, candidateContext(row));
 }
 
 function candidateNextStep(row) {
-  const name = poolName(row);
-  if (isOverheated(row)) return `观察${name}是否降温，并避免把强势直接理解为追涨信号`;
-  if (row.candidate_state === "Cooling") return `观察${name}回落后的承接、成交与相对强度`;
-  if (["Major Candidate", "Early Right"].includes(row.candidate_state)) return `看${name}能否延续改善并向更多相关板块扩散`;
-  return `等待${name}出现连续性、量能或风险门改善`;
+  return buildNextObservation(row, candidateContext(row));
 }
 
 function candidateStatusLabel(row) {
-  if (isOverheated(row)) return row.candidate_state === "Overheated" ? "Overheated" : "Overheat Warning";
-  if (row.candidate_state === "Major Candidate") return "Major Candidate";
-  if (row.candidate_state === "Cooling") return "Cooling";
-  return row.candidate_state ?? row.observation_tier ?? "观察中";
+  if (isOverheated(row)) return "短期偏热";
+  return visibleLabel(row.candidate_state ?? row.observation_tier, "观察中");
 }
 
 function candidateStatusClass(row) {
@@ -556,6 +569,63 @@ function isOverheated(row) {
   return row?.candidate_state === "Overheated"
     || number(row?.overheat_score) >= 65
     || (row?.risk_gate_status === "caution" && number(row?.overheat_score) >= 50);
+}
+
+function candidateContext(row) {
+  return {
+    mapping: findPoolRow(state.instrumentMap, row.pool_id),
+    market: findPoolRow(state.marketRows, row.pool_id),
+    delta: findPoolRow(state.deltaRows, row.pool_id),
+    history: publishedHistory(row.pool_id),
+    displayName: poolName(row)
+  };
+}
+
+function publishedHistory(poolId) {
+  const rows = state.ledger?.rows ?? [];
+  const currentAsOf = state.ledger?.as_of ?? latestAsOf();
+  const previousDates = [...new Set(rows.map((row) => row.as_of).filter((date) => date && date < currentAsOf))]
+    .sort((a, b) => b.localeCompare(a));
+  const previousDate = previousDates[0] ?? null;
+  const previousRows = previousDate ? rows.filter((row) => row.as_of === previousDate) : [];
+  const previousIndex = previousRows.findIndex((row) => row.pool_id === poolId);
+  const previous = previousIndex >= 0 ? previousRows[previousIndex] : null;
+  const observedSessions = [currentAsOf, ...previousDates.slice(0, 4)]
+    .filter(Boolean)
+    .filter((date) => rows.some((row) => row.as_of === date && row.pool_id === poolId)).length;
+  return {
+    observedSessions,
+    previousRank: previousIndex >= 0 ? previousIndex + 1 : null,
+    previousState: previous?.candidate_state ?? null
+  };
+}
+
+function findPoolRow(file, poolId) {
+  return (file?.rows ?? []).find((row) => row.pool_id === poolId) ?? {};
+}
+
+function candidateRiskBoundary(row) {
+  const parts = [];
+  const overheat = Number(row.overheat_score);
+  if (Number.isFinite(overheat)) {
+    parts.push(overheat >= 70
+      ? "短期拥挤度较高，回撤风险需要优先观察"
+      : overheat >= 45
+        ? "短期拥挤度处于中等区间"
+        : "当前未触发明显过热警示");
+  } else {
+    parts.push("过热／拥挤度数据不足");
+  }
+  parts.push(`风险闸门：${visibleLabel(row.risk_gate_status)}`);
+  parts.push(row.proxy_risk === "none" ? "当前未记录标的代理风险" : `标的映射风险：${visibleLabel(row.proxy_risk)}`);
+  return `${parts.join("；")}。所有结论均为结构观察，不构成交易指令。`;
+}
+
+function crossCheckInterpretation(item) {
+  const candidate = rowsForToday().find((row) => row.pool_id === item.pool_id);
+  if (candidate) return candidateWhy(candidate);
+  const direction = visibleLabel(item.hard_data_direction, "");
+  return direction || "等待更多可验证的价格、流动性与连续性证据。";
 }
 
 function dominantStyleFromRows(rows) {
@@ -642,8 +712,13 @@ function reviewMini(label, value) {
   return `<div class="review-mini"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`;
 }
 
-function miniMetric(label, value) {
-  return `<div class="mini-metric"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong></div>`;
+function miniMetric(label, value, level = "", explanation = "") {
+  return `
+    <div class="mini-metric"${explanation ? ` title="${escapeHtml(explanation)}"` : ""}>
+      <span>${escapeHtml(label)}${explanation ? `<i class="metric-help" aria-label="${escapeHtml(explanation)}">?</i>` : ""}</span>
+      <strong>${escapeHtml(value)}${level ? `<small>${escapeHtml(level)}</small>` : ""}</strong>
+    </div>
+  `;
 }
 
 function sparkBars(score, key, index) {
@@ -702,7 +777,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, scores, candidateStateModel, outcomeReviews, outcomeReport, reviewReadiness, reviewAnalytics, marketPenetrationBrief] = await Promise.all([
+  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, instrumentMap, scores, marketRows, deltaRows, candidateStateModel, outcomeReviews, outcomeReport, reviewReadiness, reviewAnalytics, marketPenetrationBrief] = await Promise.all([
     readJson("./data/evening_observation_summary.json", {}),
     readJson("./data/observation_candidate_ledger.json", { rows: [] }),
     readJson("./data/candidate_review_schedule.json", {}),
@@ -713,7 +788,10 @@ async function init() {
     readJson("./data/flow_channel_report.json", {}),
     readJson("./data/market_signal_report.json", {}),
     readJson("./data/pool_mapping_report.json", {}),
+    readJson("./data/pool_instrument_map.json", { rows: [] }),
     readJson("./data/pool_observation_scores.json", { rows: [] }),
+    readJson("./data/pool_market_signals.json", { rows: [] }),
+    readJson("./data/pool_delta_signals.json", { rows: [] }),
     readJson("./data/candidate_state_model.json", { rows: [] }),
     readJson("./data/candidate_outcome_reviews.json", { rows: [] }),
     readJson("./data/outcome_review_report.json", {}),
@@ -733,7 +811,10 @@ async function init() {
     flow,
     market,
     mapping,
+    instrumentMap,
     scores,
+    marketRows,
+    deltaRows,
     candidateStateModel,
     outcomeReviews,
     outcomeReport,

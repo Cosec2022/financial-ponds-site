@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.74
+Version: v0.10.75
 Status: active
 
 Module IDs use this format:
@@ -32,7 +32,7 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-GATE-01 | Decision Gate Ledger | Explain why provider readiness does or does not unlock execution-language readiness | working prototype | 25% | Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers |
 | FP-EXPLAIN-01 | Index Explainability | Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns | working prototype | 25% | Expand formula registry as more UI indexes become clickable |
 | FP-OBS-01 | Observation Data Backbone | Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes | working prototype | 42% | Produce the first source-backed reviewed T+1/T+3 outcomes without replacing missing values |
-| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 68% | Keep observation workbench compact and trace-visible |
+| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 74% | Validate Top 10, Chinese explanations, branding, and mobile layout across daily deployments |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
 | FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 80% | Keep CI-order, history-recovery, and provider-coverage guards current |
@@ -76,6 +76,24 @@ Tests:
 6. FP-HIST-01 / FP-ROT-01: accumulate enough uninterrupted trading-day history for continuation/reversal labels.
 7. FP-ETF-01 / FP-DAILY-01: keep execution blocked until source, validation, and conflict gates are cleared.
 8. FP-DATA-01: add S&P 500 live inputs only after the A-share exact-date review path is stable.
+```
+
+## v0.10.75 Status Note
+
+```text
+Changed:
+- the backend publishes its real first 10 structural observations through one shared limit
+- the frontend preserves published order and never re-scores, re-sorts, or pads missing rows
+- Chinese status labels and human-readable explanations use real mapping, market, continuity, diffusion, overheat, and risk fields
+- the first row is selected by default and any published row can switch the industry technical details
+- formal vector logo, pond-only favicon, Apple touch icon, and mobile cards are now part of the Worker asset contract
+
+Unchanged:
+- model scores, ranking formulas, minimum sample rules, outcome history, and immutable snapshots
+
+Boundary:
+- observe_only
+- not a buy list, rise probability, allocation recommendation, or trading instruction
 ```
 
 ## v0.10.74 Status Note

@@ -4,13 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Financial Ponds A股行业观察面板：先看市场结论，再看穿透逻辑、板块状态与复盘证据。">
+    <meta property="og:title" content="Financial Ponds | A股行业观察面板">
+    <meta property="og:description" content="面向中期结构观察的 Top 10 行业证据面板，仅作观察，不构成投资建议。">
+    <meta property="og:image" content="/financial-ponds-logo.svg">
     <title>Financial Ponds | A股行业观察面板</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <header class="app-header">
       <a class="brand" href="./" aria-label="Financial Ponds 首页">
-        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <img class="brand-mark" src="./financial-ponds-mark.svg" alt="" width="40" height="40">
         <span>
           <strong>Financial Ponds</strong>
           <small>A股行业观察面板</small>
@@ -19,7 +24,7 @@
       <div class="header-meta" aria-label="数据状态">
         <span>数据日期 <strong id="headerDataDate">--</strong></span>
         <span class="meta-divider" aria-hidden="true"></span>
-        <span>模式 <strong>observe only</strong></span>
+        <span>模式 <strong>仅作观察</strong></span>
         <span id="headerFreshness" class="freshness-pill neutral">正在读取</span>
       </div>
     </header>
@@ -86,15 +91,29 @@
       </section>
 
       <section class="decision-grid">
-        <section class="panel candidates-panel" aria-labelledby="candidateTitle">
+        <section id="structuralObservations" class="panel candidates-panel" aria-labelledby="candidateTitle">
           <div class="section-heading compact-heading">
             <div>
               <p class="section-kicker"><span class="kicker-icon">☆</span> 当前观察优先级</p>
-              <h2 id="candidateTitle">Top 5 候选</h2>
+              <h2 id="candidateTitle">Top 10 结构性观察</h2>
+              <p class="candidate-intro">根据价格、流动性、证据完整度、多日延续性和风险状态筛选，仅用于中期结构观察，不代表买入建议。</p>
+              <p class="candidate-boundary">排名表示当前观察证据的相对完整程度，不等于未来上涨概率。</p>
             </div>
-            <span class="quiet-note">点击行查看技术细节</span>
+            <span class="quiet-note">点击行业切换技术详情</span>
           </div>
+          <details class="candidate-guide">
+            <summary>如何阅读</summary>
+            <div class="candidate-guide-grid">
+              <p><strong>趋势已确认：</strong>当前证据较强，并获得多日连续性确认。</p>
+              <p><strong>主线候选：</strong>当前证据较完整，但仍需观察连续性和扩散。</p>
+              <p><strong>观察候选：</strong>部分证据成立，但关键确认仍不足。</p>
+              <p>综合观察分不等于上涨概率；主趋势强度高也不代表不会回撤。</p>
+              <p>所有结论均为观察状态，不是交易指令。</p>
+            </div>
+          </details>
+          <p id="candidateCountNote" class="candidate-count-note" aria-live="polite"></p>
           <div id="candidateTable" class="candidate-table loading-copy">正在读取候选…</div>
+          <p class="candidate-tail-note">未进入前 10 仅表示当前相对证据较弱或不完整，不代表行业基本面一定较差。</p>
           <div id="selectedCandidate" class="selected-candidate" aria-live="polite"></div>
         </section>
 
@@ -146,8 +165,8 @@
     </main>
 
     <footer class="app-footer">
-      <span>Financial Ponds v0.10.74</span>
-      <span>observe_only · outcome history insufficient</span>
+      <span>Financial Ponds v0.10.75</span>
+      <span>仅作结构观察 · 历史复盘样本仍在积累</span>
     </footer>
 
     <script src="./app.js" type="module"></script>

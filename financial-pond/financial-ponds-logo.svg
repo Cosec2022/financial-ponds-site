@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 80" role="img" aria-labelledby="logo-title logo-description">
+  <title id="logo-title">Financial Ponds</title>
+  <desc id="logo-description">青绿色圆形池塘标志与 A 股行业观察面板字样</desc>
+  <defs>
+    <linearGradient id="logo-gradient" x1="8" y1="5" x2="62" y2="69" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#20c5b8"/>
+      <stop offset="1" stop-color="#078f8c"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(4 4)">
+    <circle cx="36" cy="36" r="34" fill="url(#logo-gradient)"/>
+    <path d="M12 47c10-5 19-5 28-1 8 4 15 4 23-1M11 37c9-4 18-4 27 0 9 4 17 4 25 0M14 27c8-3 16-3 24 0 8 3 15 3 22 0" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="4.5"/>
+  </g>
+  <text x="90" y="38" fill="#14233a" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="27" font-weight="750">Financial Ponds</text>
+  <text x="91" y="61" fill="#67758a" font-family="PingFang SC,Microsoft YaHei,Arial,sans-serif" font-size="14">A股行业观察面板</text>
+</svg>

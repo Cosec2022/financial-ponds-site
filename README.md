@@ -4,7 +4,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 
 ## Current status
 
-**Current package: v0.10.74.** v0.10.73 stopped historical replay from replacing cumulative ETF history with a fixed old Git baseline. v0.10.74 completes the live path: every successful AKShare run writes a durable normalized daily rows file, exact-date upserts it into the cumulative CSV before downstream models, and persists that daily source in GitHub Actions. Invalid, incomplete, stale, or future rows remain fail-closed.
+**Current package: v0.10.75.** The dashboard now publishes the model's real Top 10 structural observations in backend order, adds a Chinese human-readable explanation layer and switchable industry details, and introduces formal Financial Ponds logo, favicon, and mobile card assets. This presentation release does not change underlying model scores or ranking logic, never pads a short list, and remains `observe_only`: it is not a buy list, rise probability, or trading instruction. v0.10.73's cumulative-history preservation and v0.10.74's durable daily Provider-to-history persistence remain unchanged.
 
 - Site root shows a reference-first dashboard with general S&P 500 and A-share industry analysis.
 - The first screen starts with `FP-AUDIT-01` data reality audit, so model conclusions are read only after source reality is checked.

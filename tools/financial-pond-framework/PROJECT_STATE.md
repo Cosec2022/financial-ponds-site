@@ -5,9 +5,19 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.74`
+Package version: `0.10.75`
 
 Purpose of this version:
+
+- publish the real first 10 structural observations in the exact order produced by the backend model
+- share one Top 10 limit across summary, state history, market-penetration checks, and the frontend without changing any score or ranking formula
+- add a Chinese human-readable explanation layer grounded in mapping, price strength, liquidity, continuity, diffusion, overheat, and risk-gate fields
+- let the reader switch industry details while selecting the first published observation by default
+- render fewer than 10 rows without padding when the valid published set is short
+- add a formal vector Financial Ponds logo, pond-only favicon, and readable mobile card layout
+- preserve `observe_only`: the list is not a buy ranking, rise probability, allocation recommendation, or trading instruction
+
+v0.10.74 daily Provider persistence retained below:
 
 - persist each successful AKShare daily ETF result as a normalized exact-date JSON before downstream processing
 - validate all 11 representative ETF identities, mappings, close/amount fields, provider metadata, and one exact date before cumulative upsert

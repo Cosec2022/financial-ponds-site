@@ -227,7 +227,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.74 persists daily provider rows while preserving the v0.10.73 archive repair", async () => {
+test("v0.10.75 presentation preserves the v0.10.74 provider path and v0.10.73 archive repair", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage, ciRunner, archiveScript] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -239,10 +239,11 @@ test("v0.10.74 persists daily provider rows while preserving the v0.10.73 archiv
     readFile("tools/financial-pond-framework/providers/akshare_etf_bridge/archive_historical_market_inputs.py", "utf8")
   ]);
   assert.match(index, /Financial Ponds/);
-  assert.match(index, /v0\.10\.74/);
+  assert.match(index, /v0\.10\.75/);
   assert.match(index, /每日市场穿透/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.74");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.74");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.75");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.75");
+  assert.match(changelog, /v0\.10\.75/);
   assert.match(changelog, /v0\.10\.74/);
   assert.ok(ciRunner.indexOf("persist_daily_etf_history") > ciRunner.indexOf("akshare_etf_snapshot"));
   assert.ok(ciRunner.indexOf("persist_daily_etf_history") < ciRunner.indexOf("akshare_to_flow"));
@@ -250,8 +251,8 @@ test("v0.10.74 persists daily provider rows while preserving the v0.10.73 archiv
   assert.match(changelog, /v0\.10\.73/);
   assert.match(changelog, /v0\.10\.65/);
   assert.match(modelDoc, /Version: v0\.10\.65/);
-  assert.match(app, /A-share benchmark proxy: 510300/);
-  assert.match(app, /not the complete A-share market/);
+  assert.match(app, /A股复盘基准代理/);
+  assert.match(app, /不代表完整 A 股市场/);
   assert.match(app, /market_penetration_brief\.json/);
   assert.match(app, /穿透已过期/);
   assert.match(app, /可跟踪，不追高/);
