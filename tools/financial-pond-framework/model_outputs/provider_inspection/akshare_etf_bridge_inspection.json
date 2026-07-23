@@ -1,18 +1,41 @@
 {
   "status": "ok",
   "errors": [],
-  "warnings": [],
-  "as_of": "2026-07-23",
+  "warnings": [
+    "brokerage_etf_flow should remain disabled: estimated_flow is missing",
+    "bank_insurance_etf_flow should remain disabled: estimated_flow is missing",
+    "semiconductor_etf_flow should remain disabled: estimated_flow is missing",
+    "ai_computer_etf_flow should remain disabled: estimated_flow is missing",
+    "communication_electronics_etf_flow should remain disabled: estimated_flow is missing",
+    "new_energy_ev_etf_flow should remain disabled: estimated_flow is missing",
+    "healthcare_pharma_etf_flow should remain disabled: estimated_flow is missing",
+    "consumer_etf_flow should remain disabled: estimated_flow is missing",
+    "defense_military_etf_flow should remain disabled: estimated_flow is missing",
+    "resources_materials_etf_flow should remain disabled: estimated_flow is missing",
+    "real_estate_infra_etf_flow should remain disabled: estimated_flow is missing",
+    "brokerage_etf_flow has no latest sector-flow value on 2026-07-24",
+    "bank_insurance_etf_flow has no latest sector-flow value on 2026-07-24",
+    "semiconductor_etf_flow has no latest sector-flow value on 2026-07-24",
+    "ai_computer_etf_flow has no latest sector-flow value on 2026-07-24",
+    "communication_electronics_etf_flow has no latest sector-flow value on 2026-07-24",
+    "new_energy_ev_etf_flow has no latest sector-flow value on 2026-07-24",
+    "healthcare_pharma_etf_flow has no latest sector-flow value on 2026-07-24",
+    "consumer_etf_flow has no latest sector-flow value on 2026-07-24",
+    "defense_military_etf_flow has no latest sector-flow value on 2026-07-24",
+    "resources_materials_etf_flow has no latest sector-flow value on 2026-07-24",
+    "real_estate_infra_etf_flow has no latest sector-flow value on 2026-07-24"
+  ],
+  "as_of": "2026-07-24",
   "counts": {
-    "dates": 7,
-    "row_records_total": 77,
-    "sector_flow_records_total": 12,
+    "dates": 8,
+    "row_records_total": 88,
+    "sector_flow_records_total": 13,
     "latest_row_records": 11,
     "expected_representative_codes": 11,
     "missing_representative_codes": 0,
-    "enable_candidates": 11
+    "enable_candidates": 0
   },
-  "overall_recommendation": "review_candidates_before_enabling",
+  "overall_recommendation": "keep_all_provider_sources_disabled",
   "row_findings": [
     {
       "sector_id": "brokerage",
@@ -22,9 +45,9 @@
       "close": 0.539,
       "amount": 1023139107.0,
       "latest_share": 75854434304.0,
-      "estimated_flow": 135827034.11200002,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "bank_insurance",
@@ -34,9 +57,9 @@
       "close": 0.803,
       "amount": 1140740994.0,
       "latest_share": 15357280000.0,
-      "estimated_flow": -108886697.216,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "semiconductor",
@@ -46,9 +69,9 @@
       "close": 1.106,
       "amount": 2059970165.0,
       "latest_share": 18162007296.0,
-      "estimated_flow": -17696000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "ai_computer",
@@ -58,9 +81,9 @@
       "close": 1.929,
       "amount": 639400400.603,
       "latest_share": 11291229696.0,
-      "estimated_flow": -239196000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "communication_electronics",
@@ -70,9 +93,9 @@
       "close": 0.671,
       "amount": 3558859751.0,
       "latest_share": 67237774080.0,
-      "estimated_flow": -2332396000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "new_energy_ev",
@@ -82,9 +105,9 @@
       "close": 1.608,
       "amount": 142507087.0,
       "latest_share": 1611384000.0,
-      "estimated_flow": -36984000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "healthcare_pharma",
@@ -94,9 +117,9 @@
       "close": 0.377,
       "amount": 536498411.0,
       "latest_share": 46462694912.0,
-      "estimated_flow": -75400000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "consumer",
@@ -106,9 +129,9 @@
       "close": 0.67,
       "amount": 326973801.176,
       "latest_share": 23250629120.0,
-      "estimated_flow": 44220085.760000005,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "defense_military",
@@ -118,9 +141,9 @@
       "close": 1.101,
       "amount": 298720971.0,
       "latest_share": 5747079936.0,
-      "estimated_flow": -129918140.928,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "resources_materials",
@@ -130,9 +153,9 @@
       "close": 1.822,
       "amount": 1859662340.0,
       "latest_share": 12137539072.0,
-      "estimated_flow": 177645291.52,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "real_estate_infra",
@@ -142,66 +165,66 @@
       "close": 1.157,
       "amount": 94038360.0,
       "latest_share": 2781097904.0,
-      "estimated_flow": -21983000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     }
   ],
   "sector_flow_findings": [
     {
       "column": "brokerage_etf_flow",
-      "value": 135827034.11200002,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "bank_insurance_etf_flow",
-      "value": -108886697.216,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "semiconductor_etf_flow",
-      "value": -17696000.0,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "ai_computer_etf_flow",
-      "value": -239196000.0,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "communication_electronics_etf_flow",
-      "value": -2332396000.0,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "new_energy_ev_etf_flow",
-      "value": -36984000.0,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "healthcare_pharma_etf_flow",
-      "value": -75400000.0,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "consumer_etf_flow",
-      "value": 44220085.760000005,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "defense_military_etf_flow",
-      "value": -129918140.928,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "resources_materials_etf_flow",
-      "value": 177645291.52,
-      "has_value": true
+      "value": null,
+      "has_value": false
     },
     {
       "column": "real_estate_infra_etf_flow",
-      "value": -21983000.0,
-      "has_value": true
+      "value": null,
+      "has_value": false
     }
   ],
   "source_recommendations": [
@@ -209,78 +232,78 @@
       "node_id": "brokerage_etf_flow",
       "sector_id": "brokerage",
       "fund_code": "512000",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "bank_insurance_etf_flow",
       "sector_id": "bank_insurance",
       "fund_code": "512800",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "semiconductor_etf_flow",
       "sector_id": "semiconductor",
       "fund_code": "512480",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "ai_computer_etf_flow",
       "sector_id": "ai_computer",
       "fund_code": "159819",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "communication_electronics_etf_flow",
       "sector_id": "communication_electronics",
       "fund_code": "515880",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "new_energy_ev_etf_flow",
       "sector_id": "new_energy_ev",
       "fund_code": "515030",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "healthcare_pharma_etf_flow",
       "sector_id": "healthcare_pharma",
       "fund_code": "512010",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "consumer_etf_flow",
       "sector_id": "consumer",
       "fund_code": "159928",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "defense_military_etf_flow",
       "sector_id": "defense_military",
       "fund_code": "512660",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "resources_materials_etf_flow",
       "sector_id": "resources_materials",
       "fund_code": "512400",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     },
     {
       "node_id": "real_estate_infra_etf_flow",
       "sector_id": "real_estate_infra",
       "fund_code": "512200",
-      "recommendation": "candidate_for_manual_review",
-      "reason": "Latest row has positive price, positive amount, and non-empty estimated_flow."
+      "recommendation": "keep_disabled",
+      "reason": "estimated_flow is missing"
     }
   ],
   "ranked_by_amount": [
@@ -292,9 +315,9 @@
       "close": 0.671,
       "amount": 3558859751.0,
       "latest_share": 67237774080.0,
-      "estimated_flow": -2332396000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "semiconductor",
@@ -304,9 +327,9 @@
       "close": 1.106,
       "amount": 2059970165.0,
       "latest_share": 18162007296.0,
-      "estimated_flow": -17696000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "resources_materials",
@@ -316,9 +339,9 @@
       "close": 1.822,
       "amount": 1859662340.0,
       "latest_share": 12137539072.0,
-      "estimated_flow": 177645291.52,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "bank_insurance",
@@ -328,9 +351,9 @@
       "close": 0.803,
       "amount": 1140740994.0,
       "latest_share": 15357280000.0,
-      "estimated_flow": -108886697.216,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "brokerage",
@@ -340,9 +363,9 @@
       "close": 0.539,
       "amount": 1023139107.0,
       "latest_share": 75854434304.0,
-      "estimated_flow": 135827034.11200002,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "ai_computer",
@@ -352,9 +375,9 @@
       "close": 1.929,
       "amount": 639400400.603,
       "latest_share": 11291229696.0,
-      "estimated_flow": -239196000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "healthcare_pharma",
@@ -364,9 +387,9 @@
       "close": 0.377,
       "amount": 536498411.0,
       "latest_share": 46462694912.0,
-      "estimated_flow": -75400000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "consumer",
@@ -376,9 +399,9 @@
       "close": 0.67,
       "amount": 326973801.176,
       "latest_share": 23250629120.0,
-      "estimated_flow": 44220085.760000005,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "defense_military",
@@ -388,9 +411,9 @@
       "close": 1.101,
       "amount": 298720971.0,
       "latest_share": 5747079936.0,
-      "estimated_flow": -129918140.928,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "new_energy_ev",
@@ -400,9 +423,9 @@
       "close": 1.608,
       "amount": 142507087.0,
       "latest_share": 1611384000.0,
-      "estimated_flow": -36984000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     },
     {
       "sector_id": "real_estate_infra",
@@ -412,147 +435,14 @@
       "close": 1.157,
       "amount": 94038360.0,
       "latest_share": 2781097904.0,
-      "estimated_flow": -21983000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
+      "estimated_flow": null,
+      "enable_candidate": false,
+      "blocking_reason": "estimated_flow is missing"
     }
   ],
-  "ranked_by_estimated_flow": [
-    {
-      "sector_id": "resources_materials",
-      "node_id": "resources_materials_etf_flow",
-      "fund_code": "512400",
-      "fund_name": "有色金属ETF南方",
-      "close": 1.822,
-      "amount": 1859662340.0,
-      "latest_share": 12137539072.0,
-      "estimated_flow": 177645291.52,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "brokerage",
-      "node_id": "brokerage_etf_flow",
-      "fund_code": "512000",
-      "fund_name": "券商ETF华宝",
-      "close": 0.539,
-      "amount": 1023139107.0,
-      "latest_share": 75854434304.0,
-      "estimated_flow": 135827034.11200002,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "consumer",
-      "node_id": "consumer_etf_flow",
-      "fund_code": "159928",
-      "fund_name": "消费ETF汇添富",
-      "close": 0.67,
-      "amount": 326973801.176,
-      "latest_share": 23250629120.0,
-      "estimated_flow": 44220085.760000005,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "semiconductor",
-      "node_id": "semiconductor_etf_flow",
-      "fund_code": "512480",
-      "fund_name": "半导体ETF国联安",
-      "close": 1.106,
-      "amount": 2059970165.0,
-      "latest_share": 18162007296.0,
-      "estimated_flow": -17696000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "real_estate_infra",
-      "node_id": "real_estate_infra_etf_flow",
-      "fund_code": "512200",
-      "fund_name": "房地产ETF南方",
-      "close": 1.157,
-      "amount": 94038360.0,
-      "latest_share": 2781097904.0,
-      "estimated_flow": -21983000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "new_energy_ev",
-      "node_id": "new_energy_ev_etf_flow",
-      "fund_code": "515030",
-      "fund_name": "新能源车ETF华夏",
-      "close": 1.608,
-      "amount": 142507087.0,
-      "latest_share": 1611384000.0,
-      "estimated_flow": -36984000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "healthcare_pharma",
-      "node_id": "healthcare_pharma_etf_flow",
-      "fund_code": "512010",
-      "fund_name": "医药ETF易方达",
-      "close": 0.377,
-      "amount": 536498411.0,
-      "latest_share": 46462694912.0,
-      "estimated_flow": -75400000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "bank_insurance",
-      "node_id": "bank_insurance_etf_flow",
-      "fund_code": "512800",
-      "fund_name": "银行ETF华宝",
-      "close": 0.803,
-      "amount": 1140740994.0,
-      "latest_share": 15357280000.0,
-      "estimated_flow": -108886697.216,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "defense_military",
-      "node_id": "defense_military_etf_flow",
-      "fund_code": "512660",
-      "fund_name": "军工ETF国泰",
-      "close": 1.101,
-      "amount": 298720971.0,
-      "latest_share": 5747079936.0,
-      "estimated_flow": -129918140.928,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "ai_computer",
-      "node_id": "ai_computer_etf_flow",
-      "fund_code": "159819",
-      "fund_name": "人工智能ETF易方达",
-      "close": 1.929,
-      "amount": 639400400.603,
-      "latest_share": 11291229696.0,
-      "estimated_flow": -239196000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    },
-    {
-      "sector_id": "communication_electronics",
-      "node_id": "communication_electronics_etf_flow",
-      "fund_code": "515880",
-      "fund_name": "通信ETF国泰",
-      "close": 0.671,
-      "amount": 3558859751.0,
-      "latest_share": 67237774080.0,
-      "estimated_flow": -2332396000.0,
-      "enable_candidate": true,
-      "blocking_reason": ""
-    }
-  ],
+  "ranked_by_estimated_flow": [],
   "inspector_id": "akshare_etf_bridge_export_inspector",
-  "generated_at": "2026-07-23T15:18:38.156179+00:00",
+  "generated_at": "2026-07-23T16:24:56.161892+00:00",
   "row_csv": "data/provider_exports/a_share_etf_daily.csv",
   "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv"
 }

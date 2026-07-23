@@ -1,90 +1,159 @@
 {
   "module_id": "sector_signal_attribution_v0_10_44",
-  "as_of": "2026-07-23",
-  "generated_at": "2026-07-23T15:18:40.940Z",
+  "as_of": "2026-07-24",
+  "generated_at": "2026-07-23T16:24:59.520Z",
   "status": "attribution_available",
   "guidance_state": "not_ready",
-  "headline": "行业信号归因：半导体 排名第一；2 个跨模块冲突需要人工复核；当前 not_ready，只解释观察结果。",
+  "headline": "行业信号归因：券商 排名第一；1 个跨模块冲突需要人工复核；当前 not_ready，只解释观察结果。",
   "rows": [
     {
-      "sector_id": "semiconductor",
-      "name": "半导体",
-      "daily_tier": "priority_watch",
-      "daily_score": 0.1232,
+      "sector_id": "brokerage",
+      "name": "券商",
+      "daily_tier": "confirm_next",
+      "daily_score": 0.3166,
       "final_rank": 1,
       "signal_components": {
-        "etf_estimated_flow": -17696000,
-        "etf_flow_rank": 4,
-        "etf_amount": 2059970165,
-        "etf_amount_rank": 2,
-        "flow_review_score": 0.1231568293336026,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
+        "etf_amount": 1023139107,
+        "etf_amount_rank": 5,
+        "flow_review_score": 0.3165555817610063,
         "rotation_label": "领先延续",
-        "rotation_score": 0.1232,
-        "rotation_streak_days": 7,
-        "module_label": "wait_for_confirmation",
-        "module_text": "等待确认",
-        "graph_score": 0.31595022624434393,
+        "rotation_score": 0.3166,
+        "rotation_streak_days": 14,
+        "module_label": "balanced_candidate",
+        "module_text": "合理且改善",
+        "graph_score": 0.3601809954751132,
         "valuation_fundamental_status": "manual_seed"
       },
       "positive_reasons": [
-        "日结论分层为 priority_watch。",
-        "轮动标签偏强：领先延续。"
+        "日结论分层为 confirm_next。",
+        "轮动标签偏强：领先延续。",
+        "资金量价 review 分数偏正。",
+        "三模块标签偏正：合理且改善。"
       ],
       "negative_reasons": [
-        "ETF estimated_flow 为负。",
         "估值/基本面仍包含手工种子。"
       ],
       "conflict_notes": [
-        "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。",
         "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
       ],
       "manual_review_boundary": "manual_review_required"
     },
     {
-      "sector_id": "brokerage",
-      "name": "券商",
+      "sector_id": "communication_electronics",
+      "name": "通信电子",
       "daily_tier": "confirm_next",
-      "daily_score": 0.1647,
+      "daily_score": 0.2381,
       "final_rank": 2,
       "signal_components": {
-        "etf_estimated_flow": 135827034.11200002,
-        "etf_flow_rank": 2,
-        "etf_amount": 1023139107,
-        "etf_amount_rank": 5,
-        "flow_review_score": 0.16465845223205838,
-        "rotation_label": "领先延续",
-        "rotation_score": 0.1647,
-        "rotation_streak_days": 13,
-        "module_label": "wait_for_confirmation",
-        "module_text": "等待确认",
-        "graph_score": 0.3601809954751132,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
+        "etf_amount": 3558859751,
+        "etf_amount_rank": 1,
+        "flow_review_score": 0.2380889150943396,
+        "rotation_label": "弱转强",
+        "rotation_score": 0.2381,
+        "rotation_streak_days": 10,
+        "module_label": "balanced_candidate",
+        "module_text": "合理且改善",
+        "graph_score": 0.23518099547511315,
         "valuation_fundamental_status": "manual_seed"
       },
       "positive_reasons": [
-        "ETF estimated_flow 为正，流排名 2。",
         "日结论分层为 confirm_next。",
-        "轮动标签偏强：领先延续。"
+        "轮动标签偏强：弱转强。",
+        "资金量价 review 分数偏正。",
+        "三模块标签偏正：合理且改善。"
       ],
       "negative_reasons": [
         "估值/基本面仍包含手工种子。"
       ],
-      "conflict_notes": [],
-      "manual_review_boundary": "observation_only"
+      "conflict_notes": [
+        "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
+      ],
+      "manual_review_boundary": "manual_review_required"
+    },
+    {
+      "sector_id": "ai_computer",
+      "name": "AI计算机",
+      "daily_tier": "confirm_next",
+      "daily_score": 0.224,
+      "final_rank": 3,
+      "signal_components": {
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
+        "etf_amount": 639400400.603,
+        "etf_amount_rank": 6,
+        "flow_review_score": 0.22401391509433963,
+        "rotation_label": "领先延续",
+        "rotation_score": 0.224,
+        "rotation_streak_days": 10,
+        "module_label": "expensive_momentum",
+        "module_text": "偏贵但趋势强",
+        "graph_score": 0.3063348416289593,
+        "valuation_fundamental_status": "manual_seed"
+      },
+      "positive_reasons": [
+        "日结论分层为 confirm_next。",
+        "轮动标签偏强：领先延续。",
+        "资金量价 review 分数偏正。"
+      ],
+      "negative_reasons": [
+        "估值/基本面仍包含手工种子。"
+      ],
+      "conflict_notes": [
+        "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
+      ],
+      "manual_review_boundary": "manual_review_required"
+    },
+    {
+      "sector_id": "semiconductor",
+      "name": "半导体",
+      "daily_tier": "confirm_next",
+      "daily_score": 0.2149,
+      "final_rank": 4,
+      "signal_components": {
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
+        "etf_amount": 2059970165,
+        "etf_amount_rank": 2,
+        "flow_review_score": 0.2148639150943396,
+        "rotation_label": "单日观察",
+        "rotation_score": 0.2149,
+        "rotation_streak_days": 11,
+        "module_label": "expensive_momentum",
+        "module_text": "偏贵但趋势强",
+        "graph_score": 0.31595022624434393,
+        "valuation_fundamental_status": "manual_seed"
+      },
+      "positive_reasons": [
+        "日结论分层为 confirm_next。",
+        "轮动标签偏强：单日观察。",
+        "资金量价 review 分数偏正。"
+      ],
+      "negative_reasons": [
+        "估值/基本面仍包含手工种子。"
+      ],
+      "conflict_notes": [
+        "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
+      ],
+      "manual_review_boundary": "manual_review_required"
     },
     {
       "sector_id": "resources_materials",
       "name": "资源材料",
       "daily_tier": "confirm_next",
-      "daily_score": 0.1599,
-      "final_rank": 3,
+      "daily_score": 0.1878,
+      "final_rank": 5,
       "signal_components": {
-        "etf_estimated_flow": 177645291.52,
-        "etf_flow_rank": 1,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
         "etf_amount": 1859662340,
         "etf_amount_rank": 3,
-        "flow_review_score": 0.15993421427395293,
-        "rotation_label": "新进强势",
-        "rotation_score": 0.1599,
+        "flow_review_score": 0.18779724842767292,
+        "rotation_label": "单日观察",
+        "rotation_score": 0.1878,
         "rotation_streak_days": 1,
         "module_label": "wait_for_confirmation",
         "module_text": "等待确认",
@@ -92,58 +161,63 @@
         "valuation_fundamental_status": "manual_seed"
       },
       "positive_reasons": [
-        "ETF estimated_flow 为正，流排名 1。",
         "日结论分层为 confirm_next。",
-        "轮动标签偏强：新进强势。"
+        "轮动标签偏强：单日观察。",
+        "资金量价 review 分数偏正。"
       ],
       "negative_reasons": [
         "估值/基本面仍包含手工种子。"
       ],
       "conflict_notes": [
-        "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。"
+        "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
       ],
       "manual_review_boundary": "manual_review_required"
     },
     {
       "sector_id": "defense_military",
-      "name": "Defense and Military",
-      "daily_tier": "unranked",
-      "daily_score": 0.09353939306829144,
-      "final_rank": 4,
+      "name": "军工",
+      "daily_tier": "confirm_next",
+      "daily_score": 0.1811,
+      "final_rank": 6,
       "signal_components": {
-        "etf_estimated_flow": -129918140.928,
-        "etf_flow_rank": 9,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
         "etf_amount": 298720971,
         "etf_amount_rank": 9,
-        "flow_review_score": 0.09353939306829144,
-        "rotation_label": null,
-        "rotation_score": null,
-        "rotation_streak_days": null,
+        "flow_review_score": 0.18107224842767294,
+        "rotation_label": "单日观察",
+        "rotation_score": 0.1811,
+        "rotation_streak_days": 1,
         "module_label": "wait_for_confirmation",
         "module_text": "等待确认",
         "graph_score": 0.23710407239819006,
         "valuation_fundamental_status": "manual_seed"
       },
-      "positive_reasons": [],
+      "positive_reasons": [
+        "日结论分层为 confirm_next。",
+        "轮动标签偏强：单日观察。",
+        "资金量价 review 分数偏正。"
+      ],
       "negative_reasons": [
-        "ETF estimated_flow 为负。",
         "估值/基本面仍包含手工种子。"
       ],
-      "conflict_notes": [],
-      "manual_review_boundary": "observation_only"
+      "conflict_notes": [
+        "轮动强势与零流或负向 ETF 份额变化流不一致，需要人工复核。"
+      ],
+      "manual_review_boundary": "manual_review_required"
     },
     {
       "sector_id": "bank_insurance",
       "name": "Bank and Insurance",
       "daily_tier": "unranked",
-      "daily_score": 0.0913349068240459,
-      "final_rank": 5,
+      "daily_score": 0.16183891509433962,
+      "final_rank": 7,
       "signal_components": {
-        "etf_estimated_flow": -108886697.216,
-        "etf_flow_rank": 8,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
         "etf_amount": 1140740994,
         "etf_amount_rank": 4,
-        "flow_review_score": 0.0913349068240459,
+        "flow_review_score": 0.16183891509433962,
         "rotation_label": null,
         "rotation_score": null,
         "rotation_streak_days": null,
@@ -154,7 +228,6 @@
       },
       "positive_reasons": [],
       "negative_reasons": [
-        "ETF estimated_flow 为负。",
         "估值/基本面仍包含手工种子。"
       ],
       "conflict_notes": [],
@@ -164,14 +237,14 @@
       "sector_id": "healthcare_pharma",
       "name": "Healthcare and Pharma",
       "daily_tier": "unranked",
-      "daily_score": 0.08248194555171764,
-      "final_rank": 6,
+      "daily_score": 0.13475558176100627,
+      "final_rank": 8,
       "signal_components": {
-        "etf_estimated_flow": -75400000,
-        "etf_flow_rank": 7,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
         "etf_amount": 536498411,
         "etf_amount_rank": 7,
-        "flow_review_score": 0.08248194555171764,
+        "flow_review_score": 0.13475558176100627,
         "rotation_label": null,
         "rotation_score": null,
         "rotation_streak_days": null,
@@ -182,7 +255,6 @@
       },
       "positive_reasons": [],
       "negative_reasons": [
-        "ETF estimated_flow 为负。",
         "估值/基本面仍包含手工种子。"
       ],
       "conflict_notes": [],
@@ -193,7 +265,7 @@
       "name": "Agriculture",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 7,
+      "final_rank": 9,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -220,7 +292,7 @@
       "name": "Beauty Care",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 8,
+      "final_rank": 10,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -247,7 +319,7 @@
       "name": "Coal",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 9,
+      "final_rank": 11,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -274,7 +346,7 @@
       "name": "Construction",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 10,
+      "final_rank": 12,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -301,7 +373,7 @@
       "name": "Environmental Protection",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 11,
+      "final_rank": 13,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -328,7 +400,7 @@
       "name": "Food and Beverage",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 12,
+      "final_rank": 14,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -355,7 +427,7 @@
       "name": "Home Appliances",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 13,
+      "final_rank": 15,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -382,7 +454,7 @@
       "name": "Light Manufacturing",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 14,
+      "final_rank": 16,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -409,7 +481,7 @@
       "name": "Machinery",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 15,
+      "final_rank": 17,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -436,7 +508,7 @@
       "name": "Media",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 16,
+      "final_rank": 18,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -463,7 +535,7 @@
       "name": "Nonferrous Metals",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 17,
+      "final_rank": 19,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -490,7 +562,7 @@
       "name": "Petroleum and Petrochemical",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 18,
+      "final_rank": 20,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -517,7 +589,7 @@
       "name": "Social Services",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 19,
+      "final_rank": 21,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -544,7 +616,7 @@
       "name": "Textile and Apparel",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 20,
+      "final_rank": 22,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -571,7 +643,7 @@
       "name": "Transportation",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 21,
+      "final_rank": 23,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -598,7 +670,7 @@
       "name": "Utilities",
       "daily_tier": "unranked",
       "daily_score": 0.07558891509433963,
-      "final_rank": 22,
+      "final_rank": 24,
       "signal_components": {
         "etf_estimated_flow": null,
         "etf_flow_rank": null,
@@ -621,85 +693,27 @@
       "manual_review_boundary": "observation_only"
     },
     {
-      "sector_id": "ai_computer",
-      "name": "AI and Computer",
-      "daily_tier": "unranked",
-      "daily_score": 0.06593931712727055,
-      "final_rank": 23,
-      "signal_components": {
-        "etf_estimated_flow": -239196000,
-        "etf_flow_rank": 10,
-        "etf_amount": 639400400.603,
-        "etf_amount_rank": 6,
-        "flow_review_score": 0.06593931712727055,
-        "rotation_label": null,
-        "rotation_score": null,
-        "rotation_streak_days": null,
-        "module_label": "wait_for_confirmation",
-        "module_text": "等待确认",
-        "graph_score": 0.3063348416289593,
-        "valuation_fundamental_status": "manual_seed"
-      },
-      "positive_reasons": [],
-      "negative_reasons": [
-        "ETF estimated_flow 为负。",
-        "估值/基本面仍包含手工种子。"
-      ],
-      "conflict_notes": [],
-      "manual_review_boundary": "observation_only"
-    },
-    {
       "sector_id": "consumer",
       "name": "Consumer",
       "daily_tier": "unranked",
-      "daily_score": 0.05164637508941193,
-      "final_rank": 24,
+      "daily_score": 0.06238058176100629,
+      "final_rank": 25,
       "signal_components": {
-        "etf_estimated_flow": 44220085.760000005,
-        "etf_flow_rank": 3,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
         "etf_amount": 326973801.176,
         "etf_amount_rank": 8,
-        "flow_review_score": 0.05164637508941193,
-        "rotation_label": null,
-        "rotation_score": null,
+        "flow_review_score": 0.06238058176100629,
+        "rotation_label": "弱势",
+        "rotation_score": 0.0624,
         "rotation_streak_days": null,
         "module_label": "wait_for_confirmation",
         "module_text": "等待确认",
         "graph_score": 0.07941176470588236,
         "valuation_fundamental_status": "manual_seed"
       },
-      "positive_reasons": [
-        "ETF estimated_flow 为正，流排名 3。"
-      ],
-      "negative_reasons": [
-        "估值/基本面仍包含手工种子。"
-      ],
-      "conflict_notes": [],
-      "manual_review_boundary": "observation_only"
-    },
-    {
-      "sector_id": "communication_electronics",
-      "name": "Communication and Electronics",
-      "daily_tier": "unranked",
-      "daily_score": -0.07691108490566036,
-      "final_rank": 25,
-      "signal_components": {
-        "etf_estimated_flow": -2332396000,
-        "etf_flow_rank": 11,
-        "etf_amount": 3558859751,
-        "etf_amount_rank": 1,
-        "flow_review_score": -0.07691108490566036,
-        "rotation_label": "弱势",
-        "rotation_score": -0.0769,
-        "rotation_streak_days": null,
-        "module_label": "wait_for_confirmation",
-        "module_text": "等待确认",
-        "graph_score": 0.23518099547511315,
-        "valuation_fundamental_status": "manual_seed"
-      },
       "positive_reasons": [],
       "negative_reasons": [
-        "ETF estimated_flow 为负。",
         "估值/基本面仍包含手工种子。"
       ],
       "conflict_notes": [],
@@ -1725,17 +1739,17 @@
       "sector_id": "new_energy_ev",
       "name": "新能源车",
       "daily_tier": "avoid_watch",
-      "daily_score": 0.0195,
+      "daily_score": -0.007,
       "final_rank": 66,
       "signal_components": {
-        "etf_estimated_flow": -36984000,
-        "etf_flow_rank": 6,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
         "etf_amount": 142507087,
         "etf_amount_rank": 10,
-        "flow_review_score": 0.019462834260153085,
+        "flow_review_score": -0.006969418238993715,
         "rotation_label": "弱势延续",
-        "rotation_score": 0.0195,
-        "rotation_streak_days": 9,
+        "rotation_score": -0.007,
+        "rotation_streak_days": 10,
         "module_label": "wait_for_confirmation",
         "module_text": "等待确认",
         "graph_score": -0.04751131221719458,
@@ -1743,7 +1757,6 @@
       },
       "positive_reasons": [],
       "negative_reasons": [
-        "ETF estimated_flow 为负。",
         "日结论分层为 avoid_watch。",
         "估值/基本面仍包含手工种子。"
       ],
@@ -1754,17 +1767,17 @@
       "sector_id": "real_estate_infra",
       "name": "地产基建",
       "daily_tier": "avoid_watch",
-      "daily_score": -0.035,
+      "daily_score": -0.1079,
       "final_rank": 67,
       "signal_components": {
-        "etf_estimated_flow": -21983000,
-        "etf_flow_rank": 5,
+        "etf_estimated_flow": null,
+        "etf_flow_rank": null,
         "etf_amount": 94038360,
         "etf_amount_rank": 11,
-        "flow_review_score": -0.03500672608323056,
+        "flow_review_score": -0.1078860849056604,
         "rotation_label": "弱势延续",
-        "rotation_score": -0.035,
-        "rotation_streak_days": 15,
+        "rotation_score": -0.1079,
+        "rotation_streak_days": 16,
         "module_label": "value_trap_risk",
         "module_text": "便宜但基本面弱",
         "graph_score": -0.10328054298642535,
@@ -1772,8 +1785,8 @@
       },
       "positive_reasons": [],
       "negative_reasons": [
-        "ETF estimated_flow 为负。",
         "日结论分层为 avoid_watch。",
+        "资金量价 review 分数偏弱。",
         "估值/基本面仍包含手工种子。",
         "三模块风险标签：便宜但基本面弱。"
       ],
@@ -1783,18 +1796,15 @@
   ],
   "conflicts": [
     {
-      "id": "etf_flow_leader_differs_from_daily_leader",
-      "reading": "ETF 份额变化流第一与综合日结论第一不一致，需要人工复核。",
-      "sectors": [
-        "resources_materials",
-        "semiconductor"
-      ]
-    },
-    {
       "id": "strong_rotation_zero_or_negative_flow",
       "reading": "有行业轮动偏强，但 ETF 份额变化流为零、缺失或负向。",
       "sectors": [
-        "semiconductor"
+        "brokerage",
+        "communication_electronics",
+        "ai_computer",
+        "semiconductor",
+        "resources_materials",
+        "defense_military"
       ]
     }
   ],

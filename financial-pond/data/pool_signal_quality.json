@@ -1,11 +1,11 @@
 {
   "module_id": "pool_signal_quality_v0_10_55",
-  "as_of": "2026-07-23",
-  "generated_at": "2026-07-23T15:19:26.420Z",
+  "as_of": "2026-07-24",
+  "generated_at": "2026-07-23T16:26:05.091Z",
   "rows": [
     {
       "pool_id": "a_share_a_share",
-      "pool_name": "A-share benchmark proxy",
+      "pool_name": "a_share",
       "mapping_status": "mapped",
       "proxy_level": "broad",
       "mapping_confidence": 1,
@@ -566,7 +566,7 @@
     },
     {
       "pool_id": "a_share_ai_computer",
-      "pool_name": "AI and Computer",
+      "pool_name": "AI计算机",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -702,7 +702,7 @@
     },
     {
       "pool_id": "a_share_communication_electronics",
-      "pool_name": "Communication and Electronics",
+      "pool_name": "通信电子",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -753,7 +753,7 @@
     },
     {
       "pool_id": "a_share_defense_military",
-      "pool_name": "Defense and Military",
+      "pool_name": "军工",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,

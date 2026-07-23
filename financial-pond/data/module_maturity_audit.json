@@ -1,11 +1,11 @@
 {
   "module_id": "module_maturity_audit_v0_10_39",
   "status": "module_maturity_available",
-  "as_of": "2026-07-23",
-  "generated_at": "2026-07-23T15:18:41.297Z",
+  "as_of": "2026-07-24",
+  "generated_at": "2026-07-23T16:24:59.971Z",
   "overall": {
     "module_count": 22,
-    "average_progress": 42.86,
+    "average_progress": 43.14,
     "decision_path_progress": 50.8,
     "low_maturity_count": 10,
     "current_stage": "usable observation prototype; validation path under repair",
@@ -678,15 +678,15 @@
       "module": "Frontend Dashboard",
       "role": "Explain model outputs and data boundaries",
       "status": "usable prototype",
-      "progress": 68,
-      "next": "Keep observation workbench compact and trace-visible",
+      "progress": 74,
+      "next": "Validate Top 10, Chinese explanations, branding, and mobile layout across daily deployments",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "infrastructure",
       "maturity_label": "usable",
       "urgency": "later",
       "blockers": [],
-      "next_action": "Keep observation workbench compact and trace-visible"
+      "next_action": "Validate Top 10, Chinese explanations, branding, and mobile layout across daily deployments"
     },
     {
       "module_id": "FP-RPT-01",
