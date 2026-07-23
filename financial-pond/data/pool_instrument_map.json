@@ -1,7 +1,7 @@
 {
   "module_id": "pool_instrument_map_v0_10_54",
-  "as_of": "2026-07-22",
-  "generated_at": "2026-07-22T10:54:25.495Z",
+  "as_of": "2026-07-23",
+  "generated_at": "2026-07-23T15:19:26.312Z",
   "rows": [
     {
       "pool_id": "a_share_a_share",
@@ -806,7 +806,7 @@
     },
     {
       "pool_id": "a_share_resources_materials",
-      "pool_name": "Resources and Materials",
+      "pool_name": "资源材料",
       "instrument_type": "etf",
       "instrument_code": "512400",
       "instrument_name": "有色金属ETF南方",
@@ -834,7 +834,7 @@
     },
     {
       "pool_id": "a_share_semiconductor",
-      "pool_name": "Semiconductor",
+      "pool_name": "半导体",
       "instrument_type": "etf",
       "instrument_code": "512480",
       "instrument_name": "半导体ETF国联安",

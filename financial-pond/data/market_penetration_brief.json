@@ -1,43 +1,43 @@
 {
   "schema_version": "market_penetration_report_v2",
-  "as_of": "2026-07-22",
-  "generated_at": "2026-07-22T10:52:33Z",
+  "as_of": "2026-07-23",
+  "generated_at": "2026-07-23T15:17:48Z",
   "display_contract": {
     "mode": "display_only",
     "affects_model_scores": false,
     "boundary": "Narratives and interpretation never alter observation ranking."
   },
   "coverage_window": {
-    "as_of": "2026-07-22",
-    "market_source_date": "2026-07-22",
-    "narrative_window": "2026-07-22"
+    "as_of": "2026-07-23",
+    "market_source_date": "2026-07-23",
+    "narrative_window": "2026-07-23"
   },
   "source_status": [
     {
       "source_id": "a_share_market_archive",
       "status": "available",
-      "source_date": "2026-07-22",
-      "retrieved_at": "2026-07-22T10:52:33Z",
+      "source_date": "2026-07-23",
+      "retrieved_at": "2026-07-23T15:17:48Z",
       "detail": "Published market signal archive; provider-origin quality is retained per fact."
     },
     {
       "source_id": "legacy_google_news_rss",
       "status": "available",
-      "source_date": "2026-07-22",
-      "retrieved_at": "2026-07-22T10:52:33Z",
+      "source_date": "2026-07-23",
+      "retrieved_at": "2026-07-23T15:17:48Z",
       "detail": "Media narratives only; never verified automatically or scored by the graph."
     }
   ],
-  "headline": "通信电子、资源材料仍居前，但通信电子过热风险上升；资源材料、半导体开始具备承接观察价值。",
+  "headline": "通信电子、资源材料保持前列，资源材料、半导体正在增强；仍需成交、相对强度和后续复盘确认。",
   "market_summary": {
     "market_regime": "中性偏进攻",
     "dominant_style": "科技成长",
-    "capital_state": "分化轮动",
-    "action_boundary": "可跟踪，不追高"
+    "capital_state": "集中轮动",
+    "action_boundary": "等待确认后跟踪"
   },
   "what_happened": [
     {
-      "statement": "今日观察前列为通信电子、资源材料、半导体，前列分数为83 / 76.76 / 75.75。",
+      "statement": "今日观察前列为通信电子、资源材料、半导体，前列分数为77 / 75.61 / 75.06。",
       "evidence_type": "fp_hard_data",
       "related_pool_ids": [
         "a_share_communication_electronics",
@@ -46,27 +46,20 @@
       ]
     },
     {
-      "statement": "通信电子触发过热或风险门提醒，强势与新建仓价值不能直接画等号。",
-      "evidence_type": "fp_risk_state",
-      "related_pool_ids": [
-        "a_share_communication_electronics"
-      ]
-    },
-    {
-      "statement": "资源材料、半导体、AI计算机、银行保险处于主要候选或早期右侧状态，重点看改善能否延续。",
+      "statement": "资源材料、半导体、AI计算机、券商处于主要候选或早期右侧状态，重点看改善能否延续。",
       "evidence_type": "fp_candidate_state",
       "related_pool_ids": [
         "a_share_resources_materials",
         "a_share_semiconductor",
         "a_share_ai_computer",
-        "a_share_bank_insurance"
+        "a_share_brokerage"
       ]
     },
     {
-      "statement": "a_share_basic_chemicals的代表工具当日变化为+3.39%，这是精确日期市场观察，不代表未来方向。",
+      "statement": "环保的代表工具当日变化为+3.61%，这是精确日期市场观察，不代表未来方向。",
       "evidence_type": "exact_date_market_observation",
       "related_fact_ids": [
-        "market:2026-07-22:a_share_basic_chemicals:close"
+        "market:2026-07-23:a_share_environmental_protection:close"
       ]
     },
     {
@@ -76,31 +69,31 @@
   ],
   "why_market_moved": [
     {
-      "statement": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
-      "confidence": "unverified",
-      "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-22:0:99fff302",
-      "source_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
-    },
-    {
       "statement": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-22:1:45112ef3",
+      "narrative_id": "media:2026-07-23:0:45112ef3",
       "source_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5"
+    },
+    {
+      "statement": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
+      "confidence": "unverified",
+      "evidence_status": "media_narrative",
+      "narrative_id": "media:2026-07-23:3:99fff302",
+      "source_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
     },
     {
       "statement": "PBOC, CSRC all in on boosting growth - chinadailyhk",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-22:4:574cf1a",
+      "narrative_id": "media:2026-07-23:4:574cf1a",
       "source_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
     },
     {
       "statement": "S&P 500, Nasdaq, Dow End Lower As Chip Stocks Slide On TSMC Capex Concerns — TSM, MU, NVDA, UNH, GOOGL In Focus - TradingView",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-22:5:55438afe",
+      "narrative_id": "media:2026-07-23:5:55438afe",
       "source_url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNX3o0b1RFRTFtaHN5cFZidE55MkQ1TzRMc0Uyd1hQNG04aDBLOHYwbVBSakZVUVBYaFJoc3VXZS1ycHREb1JKQ0Q2b3dGT1NfQlEwVkFYUDB3MmVCSlFNcGRXY2lRcVJST3pkck9va3VDLUZKb2hBRjRCSEo2VWFEQkpGUlRCVWd3QUFERzFqbWlzazNwQkswNHJJVVoyQTZtek82TnJUQ3pkcm8yU2NEZGlBQmYwRkNJY1FIY1p2anJDYlJGd0dlbGROaXQzUmstMmNUQzJEdEtLYjQ3NW8tTXVnOWlfVlU5U0IwekV4a3BFM3JsR3BN?oc=5"
     }
   ],
@@ -117,20 +110,11 @@
     {
       "nodes": [
         "通信电子保持观察前列",
-        "强势但过热",
-        "风险门提醒",
-        "等待降温后再确认"
+        "Confirmed Trend",
+        "风险门通过",
+        "等待增量证据"
       ],
       "note": "该链条描述模型状态如何转化为观察条件，不是买卖指令。"
-    },
-    {
-      "nodes": [
-        "板块保持强势",
-        "短线热度或拥挤升高",
-        "风险门收紧",
-        "等待降温后再确认"
-      ],
-      "note": "过热组优先处理风险，不因排名靠前而自动升级。"
     }
   ],
   "fp_cross_checks": [
@@ -138,10 +122,10 @@
       "pool_id": "a_share_communication_electronics",
       "pool_name": "通信电子",
       "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Major Candidate",
-      "agreement": "风险提醒",
-      "interpretation": "强度与证据较好，但风险门已有提醒。",
-      "next_watch": "等待降温后再确认"
+      "hard_data_direction": "Confirmed Trend",
+      "agreement": "数据支持",
+      "interpretation": "价格、流动性与证据质量同时较完整。",
+      "next_watch": "等待增量证据"
     },
     {
       "pool_id": "a_share_resources_materials",
@@ -157,8 +141,8 @@
       "pool_name": "半导体",
       "narrative_direction": "unverified_or_not_required",
       "hard_data_direction": "Major Candidate",
-      "agreement": "风险提醒",
-      "interpretation": "强度与证据较好，但风险门已有提醒。",
+      "agreement": "数据支持",
+      "interpretation": "价格、流动性与证据质量同时较完整。",
       "next_watch": "观察持续性与扩散"
     },
     {
@@ -171,8 +155,8 @@
       "next_watch": "观察持续性与扩散"
     },
     {
-      "pool_id": "a_share_bank_insurance",
-      "pool_name": "银行保险",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
       "narrative_direction": "unverified_or_not_required",
       "hard_data_direction": "Major Candidate",
       "agreement": "数据支持",
@@ -182,10 +166,10 @@
   ],
   "tomorrow_watch": [
     {
-      "statement": "通信电子能否降温，同时维持相对强度与成交承接。"
+      "statement": "资源材料、半导体、AI计算机、券商的改善能否连续，并扩散到相关板块。"
     },
     {
-      "statement": "资源材料、半导体、AI计算机、银行保险的改善能否连续，并扩散到相关板块。"
+      "statement": "通信电子回落后是否出现承接，而不是继续失速。"
     },
     {
       "statement": "通信电子能否继续保持前列，同时不触发更高的过热或风险门警告。"
@@ -199,78 +183,78 @@
       {
         "pool_id": "a_share_resources_materials",
         "pool_name": "资源材料",
-        "score": 76.7648,
+        "score": 75.6096,
         "candidate_state": "Major Candidate",
-        "overheat_score": 18,
+        "overheat_score": 32,
         "major_wave_score": 100,
         "risk_gate_status": "pass"
       },
       {
         "pool_id": "a_share_semiconductor",
         "pool_name": "半导体",
-        "score": 75.752,
+        "score": 75.0608,
         "candidate_state": "Major Candidate",
-        "overheat_score": 48,
-        "major_wave_score": 96,
-        "risk_gate_status": "caution"
+        "overheat_score": 38,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass"
       },
       {
         "pool_id": "a_share_ai_computer",
         "pool_name": "AI计算机",
-        "score": 73.1696,
+        "score": 74.8739,
         "candidate_state": "Major Candidate",
         "overheat_score": 14,
         "major_wave_score": 100,
         "risk_gate_status": "pass"
       },
       {
-        "pool_id": "a_share_bank_insurance",
-        "pool_name": "银行保险",
-        "score": 73.0328,
+        "pool_id": "a_share_brokerage",
+        "pool_name": "券商",
+        "score": 72.0972,
         "candidate_state": "Major Candidate",
-        "overheat_score": 18,
+        "overheat_score": 8,
         "major_wave_score": 100,
         "risk_gate_status": "pass"
       }
     ],
-    "cooling": [],
-    "overheated": [
+    "cooling": [
       {
         "pool_id": "a_share_communication_electronics",
         "pool_name": "通信电子",
-        "score": 83,
-        "candidate_state": "Major Candidate",
-        "overheat_score": 58,
-        "major_wave_score": 87,
-        "risk_gate_status": "caution"
+        "score": 77,
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 28,
+        "major_wave_score": 99,
+        "risk_gate_status": "pass"
       }
     ],
+    "overheated": [],
     "weak": [
+      {
+        "pool_id": "a_share_transportation",
+        "pool_name": "交通运输",
+        "score": 0.3727,
+        "direction": "weak",
+        "reason": "当前综合观察分数偏低或证据不足。"
+      },
       {
         "pool_id": "a_share_agriculture",
         "pool_name": "Agriculture",
-        "score": 1.4,
+        "score": 1.0915,
         "direction": "weak",
         "reason": "当前综合观察分数偏低或证据不足。"
       },
       {
         "pool_id": "a_share_light_manufacturing",
         "pool_name": "Light Manufacturing",
-        "score": 1.4,
+        "score": 1.0915,
         "direction": "weak",
         "reason": "当前综合观察分数偏低或证据不足。"
       },
       {
         "pool_id": "a_share_social_services",
         "pool_name": "Social Services",
-        "score": 1.4,
-        "direction": "weak",
-        "reason": "当前综合观察分数偏低或证据不足。"
-      },
-      {
-        "pool_id": "a_share_transportation",
-        "pool_name": "交通运输",
-        "score": 2.64,
+        "score": 1.0915,
         "direction": "weak",
         "reason": "当前综合观察分数偏低或证据不足。"
       }
@@ -284,239 +268,284 @@
     "fully_mapped_count": 22,
     "direct_evidence_ratio": 0.3433,
     "proxy_evidence_ratio": 0.597,
-    "reviewed_rows": 0,
+    "reviewed_rows": 5,
     "pending_rows": 20,
-    "unavailable_rows": 80,
-    "note": "历史复盘样本仍不足，暂不用于胜率判断；pending 和 unavailable 不计入输赢。"
+    "unavailable_rows": 85,
+    "note": "复盘样本已开始形成，但仍需按候选状态和市场环境分组解读。"
   },
   "market_facts": [
     {
-      "fact_id": "market:2026-07-22:a_share_basic_chemicals:close",
+      "fact_id": "market:2026-07-23:a_share_environmental_protection:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "环保代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_environmental_protection",
+      "pool_name": "环保",
+      "observed_value": 1.608,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "515030",
+      "observation_time": "2026-07-23",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-23",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 3.6082474226804218
+    },
+    {
+      "fact_id": "market:2026-07-23:a_share_machinery:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "机械代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_machinery",
+      "pool_name": "机械",
+      "observed_value": 1.608,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "515030",
+      "observation_time": "2026-07-23",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-23",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 3.6082474226804218
+    },
+    {
+      "fact_id": "market:2026-07-23:a_share_new_energy_ev:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "新能源车代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_new_energy_ev",
+      "pool_name": "新能源车",
+      "observed_value": 1.608,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "515030",
+      "observation_time": "2026-07-23",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-23",
+      "verification_status": "candidate",
+      "data_quality": "derived_from_market",
+      "observed_return": 3.6082474226804218
+    },
+    {
+      "fact_id": "market:2026-07-23:a_share_utilities:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "公用事业代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_utilities",
+      "pool_name": "公用事业",
+      "observed_value": 1.608,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "515030",
+      "observation_time": "2026-07-23",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-23",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 3.6082474226804218
+    },
+    {
+      "fact_id": "market:2026-07-23:a_share_environmental_protection:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "环保代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_environmental_protection",
+      "pool_name": "环保",
+      "observed_value": 1.608,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "515030",
+      "observation_time": "2026-07-23",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-23",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 3.6082474226804218
+    },
+    {
+      "fact_id": "market:2026-07-23:a_share_machinery:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "机械代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_machinery",
+      "pool_name": "机械",
+      "observed_value": 1.608,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "515030",
+      "observation_time": "2026-07-23",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-23",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 3.6082474226804218
+    },
+    {
+      "fact_id": "market:2026-07-23:a_share_new_energy_ev:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "新能源车代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_new_energy_ev",
+      "pool_name": "新能源车",
+      "observed_value": 1.608,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "515030",
+      "observation_time": "2026-07-23",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-23",
+      "verification_status": "candidate",
+      "data_quality": "derived_from_market",
+      "observed_return": 3.6082474226804218
+    },
+    {
+      "fact_id": "market:2026-07-23:a_share_utilities:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "公用事业代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_utilities",
+      "pool_name": "公用事业",
+      "observed_value": 1.608,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "515030",
+      "observation_time": "2026-07-23",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-23",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 3.6082474226804218
+    },
+    {
+      "fact_id": "market:2026-07-23:a_share_basic_chemicals:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_basic_chemicals代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_basic_chemicals",
       "pool_name": "a_share_basic_chemicals",
-      "observed_value": 1.768,
+      "observed_value": 1.822,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
       "symbol": "512400",
-      "observation_time": "2026-07-22",
+      "observation_time": "2026-07-23",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
+      "source_date": "2026-07-23",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 3.39
+      "observed_return": 3.054298642533948
     },
     {
-      "fact_id": "market:2026-07-22:a_share_coal:close",
+      "fact_id": "market:2026-07-23:a_share_coal:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_coal代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_coal",
       "pool_name": "a_share_coal",
-      "observed_value": 1.768,
+      "observed_value": 1.822,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
       "symbol": "512400",
-      "observation_time": "2026-07-22",
+      "observation_time": "2026-07-23",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
+      "source_date": "2026-07-23",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 3.39
+      "observed_return": 3.054298642533948
     },
     {
-      "fact_id": "market:2026-07-22:a_share_nonferrous_metals:close",
+      "fact_id": "market:2026-07-23:a_share_nonferrous_metals:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_nonferrous_metals代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_nonferrous_metals",
       "pool_name": "a_share_nonferrous_metals",
-      "observed_value": 1.768,
+      "observed_value": 1.822,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
       "symbol": "512400",
-      "observation_time": "2026-07-22",
+      "observation_time": "2026-07-23",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
+      "source_date": "2026-07-23",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 3.39
+      "observed_return": 3.054298642533948
     },
     {
-      "fact_id": "market:2026-07-22:a_share_petroleum_petrochemical:close",
+      "fact_id": "market:2026-07-23:a_share_petroleum_petrochemical:close",
       "fact_type": "exact_date_market_observation",
       "fact_text": "a_share_petroleum_petrochemical代表工具的精确日期收盘数据已记录。",
       "pool_id": "a_share_petroleum_petrochemical",
       "pool_name": "a_share_petroleum_petrochemical",
-      "observed_value": 1.768,
+      "observed_value": 1.822,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
       "symbol": "512400",
-      "observation_time": "2026-07-22",
+      "observation_time": "2026-07-23",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
+      "source_date": "2026-07-23",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 3.39
-    },
-    {
-      "fact_id": "market:2026-07-22:a_share_resources_materials:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "资源材料代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_resources_materials",
-      "pool_name": "资源材料",
-      "observed_value": 1.768,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "512400",
-      "observation_time": "2026-07-22",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
-      "verification_status": "candidate",
-      "data_quality": "derived_from_market",
-      "observed_return": 3.39
-    },
-    {
-      "fact_id": "market:2026-07-22:a_share_steel:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "a_share_steel代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_steel",
-      "pool_name": "a_share_steel",
-      "observed_value": 1.768,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "512400",
-      "observation_time": "2026-07-22",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
-      "verification_status": "candidate",
-      "data_quality": "estimated_from_source",
-      "observed_return": 3.39
-    },
-    {
-      "fact_id": "market:2026-07-22:a_share_basic_chemicals:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "基础化工代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_basic_chemicals",
-      "pool_name": "基础化工",
-      "observed_value": 1.768,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "512400",
-      "observation_time": "2026-07-22",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
-      "verification_status": "candidate",
-      "data_quality": "estimated_from_source",
-      "observed_return": 3.39
-    },
-    {
-      "fact_id": "market:2026-07-22:a_share_coal:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "Coal代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_coal",
-      "pool_name": "Coal",
-      "observed_value": 1.768,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "512400",
-      "observation_time": "2026-07-22",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
-      "verification_status": "candidate",
-      "data_quality": "estimated_from_source",
-      "observed_return": 3.39
-    },
-    {
-      "fact_id": "market:2026-07-22:a_share_nonferrous_metals:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "Nonferrous Metals代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_nonferrous_metals",
-      "pool_name": "Nonferrous Metals",
-      "observed_value": 1.768,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "512400",
-      "observation_time": "2026-07-22",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
-      "verification_status": "candidate",
-      "data_quality": "estimated_from_source",
-      "observed_return": 3.39
-    },
-    {
-      "fact_id": "market:2026-07-22:a_share_petroleum_petrochemical:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "Petroleum and Petrochemical代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_petroleum_petrochemical",
-      "pool_name": "Petroleum and Petrochemical",
-      "observed_value": 1.768,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "512400",
-      "observation_time": "2026-07-22",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
-      "verification_status": "candidate",
-      "data_quality": "estimated_from_source",
-      "observed_return": 3.39
-    },
-    {
-      "fact_id": "market:2026-07-22:a_share_resources_materials:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "资源材料代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_resources_materials",
-      "pool_name": "资源材料",
-      "observed_value": 1.768,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "512400",
-      "observation_time": "2026-07-22",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
-      "verification_status": "candidate",
-      "data_quality": "derived_from_market",
-      "observed_return": 3.39
-    },
-    {
-      "fact_id": "market:2026-07-22:a_share_steel:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "钢铁代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_steel",
-      "pool_name": "钢铁",
-      "observed_value": 1.768,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "512400",
-      "observation_time": "2026-07-22",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-22",
-      "verification_status": "candidate",
-      "data_quality": "estimated_from_source",
-      "observed_return": 3.39
+      "observed_return": 3.054298642533948
     }
   ],
   "official_fact_candidates": [],
   "media_narratives": [
     {
-      "narrative_id": "media:2026-07-22:0:99fff302",
+      "narrative_id": "media:2026-07-23:0:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-23T15:17:48Z",
+      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:1:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-23T15:17:48Z",
+      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:2:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-23T15:17:48Z",
+      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:3:99fff302",
       "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
+      "retrieved_at": "2026-07-23T15:17:48Z",
       "normalized_topic": "2024 chinese stimulus package basics how it s impacting chinese",
       "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
       "source_quality": "media_unverified",
@@ -525,58 +554,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:1:45112ef3",
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "description": "",
-      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
-      "publisher": null,
-      "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
-      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
-      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
-      "source_quality": "media_unverified",
-      "verification_status": "candidate",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:2:45112ef3",
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "description": "",
-      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
-      "publisher": null,
-      "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
-      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
-      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
-      "source_quality": "media_unverified",
-      "verification_status": "candidate",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:3:45112ef3",
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "description": "",
-      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
-      "publisher": null,
-      "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
-      "normalized_topic": "china rolls out broad rate cuts and other stimulus to",
-      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
-      "source_quality": "media_unverified",
-      "verification_status": "candidate",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:4:574cf1a",
+      "narrative_id": "media:2026-07-23:4:574cf1a",
       "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
+      "retrieved_at": "2026-07-23T15:17:48Z",
       "normalized_topic": "pboc csrc all in on boosting growth chinadailyhk",
       "duplicate_group": "pboc csrc all in on boosting growth chinadailyhk",
       "source_quality": "media_unverified",
@@ -585,13 +569,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:5:55438afe",
+      "narrative_id": "media:2026-07-23:5:55438afe",
       "title": "S&P 500, Nasdaq, Dow End Lower As Chip Stocks Slide On TSMC Capex Concerns — TSM, MU, NVDA, UNH, GOOGL In Focus - TradingView",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNX3o0b1RFRTFtaHN5cFZidE55MkQ1TzRMc0Uyd1hQNG04aDBLOHYwbVBSakZVUVBYaFJoc3VXZS1ycHREb1JKQ0Q2b3dGT1NfQlEwVkFYUDB3MmVCSlFNcGRXY2lRcVJST3pkck9va3VDLUZKb2hBRjRCSEo2VWFEQkpGUlRCVWd3QUFERzFqbWlzazNwQkswNHJJVVoyQTZtek82TnJUQ3pkcm8yU2NEZGlBQmYwRkNJY1FIY1p2anJDYlJGd0dlbGROaXQzUmstMmNUQzJEdEtLYjQ3NW8tTXVnOWlfVlU5U0IwekV4a3BFM3JsR3BN?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
+      "retrieved_at": "2026-07-23T15:17:48Z",
       "normalized_topic": "s p 500 nasdaq dow end lower as chip stocks",
       "duplicate_group": "s p 500 nasdaq dow end lower as chip stocks",
       "source_quality": "media_unverified",
@@ -600,13 +584,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:6:cf909931",
+      "narrative_id": "media:2026-07-23:6:cf909931",
       "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
+      "retrieved_at": "2026-07-23T15:17:48Z",
       "normalized_topic": "ai chip stocks just had their best half year ever",
       "duplicate_group": "ai chip stocks just had their best half year ever",
       "source_quality": "media_unverified",
@@ -615,43 +599,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:7:f8cc1d8f",
-      "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
-      "description": "",
-      "rss_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5",
-      "publisher": null,
-      "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
-      "normalized_topic": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
-      "duplicate_group": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
-      "source_quality": "media_unverified",
-      "verification_status": "candidate",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:8:df36ebec",
-      "title": "Asia FX: Dollar slips as risk appetite improves; won gains on Korea FX reforms - Investing.com Australia",
-      "description": "",
-      "rss_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOeUZTbm5OU2MtU0JVQm84SWgzZnJxcEVLcDU4dWR2akJxWXduR0JEbHpDS0FxbGNVWWNPc0FQcUJPbU1GZkM4MWdGd3RhVDJkRy1rbTZFUXZHbFJodEp5eHRoVnJTYnRWNTlIazlFbjcxNHpiWlRpSl8tbjN2S0dzNHFBbGlPbkFWeWhOZHFGUndwR0RYSHZHTlk3bGtlVGxMWGI0dWNhR1F4a0RHcjNBMS1ieVZ6eUZSajgtblNiQVc?oc=5",
-      "publisher": null,
-      "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
-      "normalized_topic": "asia fx dollar slips as risk appetite improves won gains",
-      "duplicate_group": "asia fx dollar slips as risk appetite improves won gains",
-      "source_quality": "media_unverified",
-      "verification_status": "candidate",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:9:7324a2bc",
+      "narrative_id": "media:2026-07-23:7:7324a2bc",
       "title": "Dollar dented by simmering trade tensions, rate cut bets - Reuters",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTV9NN1lFQ2FiWkowZ1JmOUZhekt1X1RRaWxDalRaa2lhdVRiWlIzZU5GQkdMSmRVdW4xcmFTZ3VlOUhudVhpTHBVcGdaRkYxc3l5clR2VXVMMmVqencwSFFpcVZvbzRPNDB0cWxDenN3MkFJbjhaRk1ON25kcVpIRDB5R3VSTUp2Mzl4bkdqS3BqS0JreGd1aEs5QQ?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
+      "retrieved_at": "2026-07-23T15:17:48Z",
       "normalized_topic": "dollar dented by simmering trade tensions rate cut bets reuters",
       "duplicate_group": "dollar dented by simmering trade tensions rate cut bets reuters",
       "source_quality": "media_unverified",
@@ -660,13 +614,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:10:7324a2bc",
+      "narrative_id": "media:2026-07-23:8:7324a2bc",
       "title": "Dollar dented by simmering trade tensions, rate cut bets - Reuters",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTV9NN1lFQ2FiWkowZ1JmOUZhekt1X1RRaWxDalRaa2lhdVRiWlIzZU5GQkdMSmRVdW4xcmFTZ3VlOUhudVhpTHBVcGdaRkYxc3l5clR2VXVMMmVqencwSFFpcVZvbzRPNDB0cWxDenN3MkFJbjhaRk1ON25kcVpIRDB5R3VSTUp2Mzl4bkdqS3BqS0JreGd1aEs5QQ?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
+      "retrieved_at": "2026-07-23T15:17:48Z",
       "normalized_topic": "dollar dented by simmering trade tensions rate cut bets reuters",
       "duplicate_group": "dollar dented by simmering trade tensions rate cut bets reuters",
       "source_quality": "media_unverified",
@@ -675,15 +629,45 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:11:3b2c40b6",
-      "title": "Bitcoin Price Jumps Amid Peace Talks, Risk Appetite Ignites Rally - CryptoRank",
+      "narrative_id": "media:2026-07-23:9:27f696da",
+      "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "description": "",
-      "rss_url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8zc0QtTjhIRjBSNTB5Y21nS2FVYW05NlEwQWNqd29iOGlFem1wVlZlUXAzM2Zma2lyUElsa25VQVNxMEw5MTVyUWM0U0VGOVMxUExVTVpJcTlNdnM5c2FCTkN6bFNjX0tsdll1OVJn?oc=5",
+      "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-22T10:52:33Z",
-      "normalized_topic": "bitcoin price jumps amid peace talks risk appetite ignites rally",
-      "duplicate_group": "bitcoin price jumps amid peace talks risk appetite ignites rally",
+      "retrieved_at": "2026-07-23T15:17:48Z",
+      "normalized_topic": "why bitcoin faces a brutal liquidity trap because china s",
+      "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:10:27f696da",
+      "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-23T15:17:48Z",
+      "normalized_topic": "why bitcoin faces a brutal liquidity trap because china s",
+      "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:11:5d781e32",
+      "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-23T15:17:48Z",
+      "normalized_topic": "us cpi preview jobs shock turns inflation into a live",
+      "duplicate_group": "us cpi preview jobs shock turns inflation into a live",
       "source_quality": "media_unverified",
       "verification_status": "candidate",
       "evidence_status": "media_narrative",
@@ -692,7 +676,31 @@
   ],
   "unsupported_narratives": [
     {
-      "narrative_id": "media:2026-07-22:0:99fff302",
+      "narrative_id": "media:2026-07-23:0:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:1:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:2:45112ef3",
+      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
+      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
+      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:3:99fff302",
       "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
       "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
@@ -700,31 +708,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:1:45112ef3",
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
-      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:2:45112ef3",
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
-      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:3:45112ef3",
-      "title": "China rolls out broad rate cuts and other stimulus to spur weak economy - Reuters",
-      "rss_url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQRGZHbEQ2cDhDekxhMXpuRExqUFlKaHlrWjd2NVJxUUl3M1hiYzMzVnNfUy1IdXFmd2ZXbG5DWm1wbHU0UTZybU80b2tMSFVRMGktU1VEdm8zdERSU0ZIS1lucG1mRUNBMWdiMzRfOWM2RWxoME12dE0xQ1NDY1o3dFY2QTJrNWZIZWg5V2FucUllQmNmNTFuWkthNF81UHBvMjhxT3N5ZnNvNmVQZGdoZTN3?oc=5",
-      "duplicate_group": "china rolls out broad rate cuts and other stimulus to",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:4:574cf1a",
+      "narrative_id": "media:2026-07-23:4:574cf1a",
       "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
       "rss_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5",
       "duplicate_group": "pboc csrc all in on boosting growth chinadailyhk",
@@ -732,7 +716,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:5:55438afe",
+      "narrative_id": "media:2026-07-23:5:55438afe",
       "title": "S&P 500, Nasdaq, Dow End Lower As Chip Stocks Slide On TSMC Capex Concerns — TSM, MU, NVDA, UNH, GOOGL In Focus - TradingView",
       "rss_url": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNX3o0b1RFRTFtaHN5cFZidE55MkQ1TzRMc0Uyd1hQNG04aDBLOHYwbVBSakZVUVBYaFJoc3VXZS1ycHREb1JKQ0Q2b3dGT1NfQlEwVkFYUDB3MmVCSlFNcGRXY2lRcVJST3pkck9va3VDLUZKb2hBRjRCSEo2VWFEQkpGUlRCVWd3QUFERzFqbWlzazNwQkswNHJJVVoyQTZtek82TnJUQ3pkcm8yU2NEZGlBQmYwRkNJY1FIY1p2anJDYlJGd0dlbGROaXQzUmstMmNUQzJEdEtLYjQ3NW8tTXVnOWlfVlU5U0IwekV4a3BFM3JsR3BN?oc=5",
       "duplicate_group": "s p 500 nasdaq dow end lower as chip stocks",
@@ -740,7 +724,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:6:cf909931",
+      "narrative_id": "media:2026-07-23:6:cf909931",
       "title": "AI Chip Stocks Just Had Their Best Half-Year Ever — Here's What's Driving It - Memeburn",
       "rss_url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE10THBQV0Fjb0QwNGJQd0VwNURSUUJrOXIyNEFzQUVjdkxaSEIzOXBIWlJsZXJtTlhNN0RCNjMwNWc1VXo3amZRM3RiV3FqWVg2N3VFM3FULUJ6WXJMcm11dU9ib0E?oc=5",
       "duplicate_group": "ai chip stocks just had their best half year ever",
@@ -748,23 +732,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:7:f8cc1d8f",
-      "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
-      "rss_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5",
-      "duplicate_group": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:8:df36ebec",
-      "title": "Asia FX: Dollar slips as risk appetite improves; won gains on Korea FX reforms - Investing.com Australia",
-      "rss_url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOeUZTbm5OU2MtU0JVQm84SWgzZnJxcEVLcDU4dWR2akJxWXduR0JEbHpDS0FxbGNVWWNPc0FQcUJPbU1GZkM4MWdGd3RhVDJkRy1rbTZFUXZHbFJodEp5eHRoVnJTYnRWNTlIazlFbjcxNHpiWlRpSl8tbjN2S0dzNHFBbGlPbkFWeWhOZHFGUndwR0RYSHZHTlk3bGtlVGxMWGI0dWNhR1F4a0RHcjNBMS1ieVZ6eUZSajgtblNiQVc?oc=5",
-      "duplicate_group": "asia fx dollar slips as risk appetite improves won gains",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-22:9:7324a2bc",
+      "narrative_id": "media:2026-07-23:7:7324a2bc",
       "title": "Dollar dented by simmering trade tensions, rate cut bets - Reuters",
       "rss_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTV9NN1lFQ2FiWkowZ1JmOUZhekt1X1RRaWxDalRaa2lhdVRiWlIzZU5GQkdMSmRVdW4xcmFTZ3VlOUhudVhpTHBVcGdaRkYxc3l5clR2VXVMMmVqencwSFFpcVZvbzRPNDB0cWxDenN3MkFJbjhaRk1ON25kcVpIRDB5R3VSTUp2Mzl4bkdqS3BqS0JreGd1aEs5QQ?oc=5",
       "duplicate_group": "dollar dented by simmering trade tensions rate cut bets reuters",
@@ -772,7 +740,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:10:7324a2bc",
+      "narrative_id": "media:2026-07-23:8:7324a2bc",
       "title": "Dollar dented by simmering trade tensions, rate cut bets - Reuters",
       "rss_url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTV9NN1lFQ2FiWkowZ1JmOUZhekt1X1RRaWxDalRaa2lhdVRiWlIzZU5GQkdMSmRVdW4xcmFTZ3VlOUhudVhpTHBVcGdaRkYxc3l5clR2VXVMMmVqencwSFFpcVZvbzRPNDB0cWxDenN3MkFJbjhaRk1ON25kcVpIRDB5R3VSTUp2Mzl4bkdqS3BqS0JreGd1aEs5QQ?oc=5",
       "duplicate_group": "dollar dented by simmering trade tensions rate cut bets reuters",
@@ -780,10 +748,26 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-22:11:3b2c40b6",
-      "title": "Bitcoin Price Jumps Amid Peace Talks, Risk Appetite Ignites Rally - CryptoRank",
-      "rss_url": "https://news.google.com/rss/articles/CBMibkFVX3lxTE8zc0QtTjhIRjBSNTB5Y21nS2FVYW05NlEwQWNqd29iOGlFem1wVlZlUXAzM2Zma2lyUElsa25VQVNxMEw5MTVyUWM0U0VGOVMxUExVTVpJcTlNdnM5c2FCTkN6bFNjX0tsdll1OVJn?oc=5",
-      "duplicate_group": "bitcoin price jumps amid peace talks risk appetite ignites rally",
+      "narrative_id": "media:2026-07-23:9:27f696da",
+      "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
+      "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
+      "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:10:27f696da",
+      "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
+      "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
+      "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-23:11:5d781e32",
+      "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
+      "rss_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5",
+      "duplicate_group": "us cpi preview jobs shock turns inflation into a live",
       "evidence_status": "media_narrative",
       "stale": false
     }
@@ -807,56 +791,65 @@
         "Dollar dented by simmering trade tensions, rate cut bets - Reuters"
       ],
       "evidence_status": "repeated_media_narrative"
+    },
+    {
+      "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
+      "count": 2,
+      "titles": [
+        "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
+        "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate"
+      ],
+      "evidence_status": "repeated_media_narrative"
     }
   ],
   "unexplained_moves": [],
   "possible_3_20_session_implications": [
     {
-      "implication_id": "hypothesis:market:2026-07-22:a_share_basic_chemicals:close",
+      "implication_id": "hypothesis:market:2026-07-23:a_share_environmental_protection:close",
       "kind": "hypothesis",
-      "statement": "a_share_basic_chemicals出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
+      "statement": "环保出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-22:a_share_basic_chemicals:close"
+        "market:2026-07-23:a_share_environmental_protection:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
     },
     {
-      "implication_id": "hypothesis:market:2026-07-22:a_share_coal:close",
+      "implication_id": "hypothesis:market:2026-07-23:a_share_machinery:close",
       "kind": "hypothesis",
-      "statement": "a_share_coal出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
+      "statement": "机械出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-22:a_share_coal:close"
+        "market:2026-07-23:a_share_machinery:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
     },
     {
-      "implication_id": "hypothesis:market:2026-07-22:a_share_nonferrous_metals:close",
+      "implication_id": "hypothesis:market:2026-07-23:a_share_new_energy_ev:close",
       "kind": "hypothesis",
-      "statement": "a_share_nonferrous_metals出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
+      "statement": "新能源车出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-22:a_share_nonferrous_metals:close"
+        "market:2026-07-23:a_share_new_energy_ev:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
     },
     {
-      "implication_id": "hypothesis:market:2026-07-22:a_share_petroleum_petrochemical:close",
+      "implication_id": "hypothesis:market:2026-07-23:a_share_utilities:close",
       "kind": "hypothesis",
-      "statement": "a_share_petroleum_petrochemical出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
+      "statement": "公用事业出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-22:a_share_petroleum_petrochemical:close"
+        "market:2026-07-23:a_share_utilities:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"
     },
     {
-      "implication_id": "hypothesis:market:2026-07-22:a_share_resources_materials:close",
+      "implication_id": "hypothesis:market:2026-07-23:a_share_environmental_protection:close",
       "kind": "hypothesis",
-      "statement": "资源材料出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
+      "statement": "环保出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
       "related_fact_ids": [
-        "market:2026-07-22:a_share_resources_materials:close"
+        "market:2026-07-23:a_share_environmental_protection:close"
       ],
       "horizon": "3_20_sessions",
       "status": "not_a_fact"

@@ -1,8 +1,8 @@
 {
   "module_id": "module_maturity_audit_v0_10_39",
   "status": "module_maturity_available",
-  "as_of": "2026-07-22",
-  "generated_at": "2026-07-22T10:53:28.749Z",
+  "as_of": "2026-07-23",
+  "generated_at": "2026-07-23T15:18:41.297Z",
   "overall": {
     "module_count": 22,
     "average_progress": 42.86,

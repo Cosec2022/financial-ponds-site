@@ -1,7 +1,7 @@
 {
   "module_id": "pool_signal_quality_v0_10_55",
-  "as_of": "2026-07-22",
-  "generated_at": "2026-07-22T10:54:25.630Z",
+  "as_of": "2026-07-23",
+  "generated_at": "2026-07-23T15:19:26.420Z",
   "rows": [
     {
       "pool_id": "a_share_a_share",
@@ -974,7 +974,7 @@
     },
     {
       "pool_id": "a_share_resources_materials",
-      "pool_name": "Resources and Materials",
+      "pool_name": "资源材料",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -1008,7 +1008,7 @@
     },
     {
       "pool_id": "a_share_semiconductor",
-      "pool_name": "Semiconductor",
+      "pool_name": "半导体",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,

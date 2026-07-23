@@ -1,7 +1,7 @@
 {
   "module_id": "candidate_review_schedule_v0_10_63",
-  "as_of": "2026-07-22",
-  "generated_at": "2026-07-22T10:52:33Z",
+  "as_of": "2026-07-23",
+  "generated_at": "2026-07-23T15:17:48Z",
   "candidate_count": 5,
   "pending_t1_count": 5,
   "pending_t3_count": 5,
@@ -9,16 +9,16 @@
   "pending_t20_count": 5,
   "next_review_dates": {
     "t1": [
-      "2026-07-23"
+      "2026-07-24"
     ],
     "t3": [
-      "2026-07-27"
+      "2026-07-28"
     ],
     "t5": [
-      "2026-07-29"
+      "2026-07-30"
     ],
     "t20": [
-      "2026-08-19"
+      "2026-08-20"
     ]
   },
   "boundary_notes": [
@@ -26,23 +26,23 @@
     "Review dates schedule evidence checks only.",
     "Future outcomes remain pending until their due date and source data are available."
   ],
-  "reviewed_count": 0,
-  "pending_count": 95,
-  "unavailable_count": 105,
-  "insufficient_count": 50,
+  "reviewed_count": 5,
+  "pending_count": 100,
+  "unavailable_count": 115,
+  "insufficient_count": 55,
   "next_due_reviews": [
     {
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "horizon": "T+1",
       "count": 5
     },
     {
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "horizon": "T+3",
       "count": 5
     },
     {
-      "date": "2026-07-23",
+      "date": "2026-07-24",
       "horizon": "T+5",
       "count": 5
     }

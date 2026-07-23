@@ -1,18 +1,18 @@
 {
   "module_id": "candidate_state_model_v0_10_61",
-  "as_of": "2026-07-22",
-  "generated_at": "2026-07-22T10:54:26.249Z",
+  "as_of": "2026-07-23",
+  "generated_at": "2026-07-23T15:19:26.949Z",
   "status": "state_model_available",
-  "candidate_count": 50,
+  "candidate_count": 55,
   "states_distribution": {
     "Overheated": 7,
-    "Major Candidate": 19,
+    "Major Candidate": 23,
     "Cooling": 22,
-    "Confirmed Trend": 2
+    "Confirmed Trend": 3
   },
   "risk_gate_distribution": {
     "caution": 19,
-    "pass": 31
+    "pass": 36
   },
   "rows": [
     {
@@ -707,6 +707,76 @@
       "pool_name": "Bank and Insurance",
       "candidate_state": "Major Candidate",
       "overheat_score": 18,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "No strong overheat flag.",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-23",
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "Communication and Electronics",
+      "candidate_state": "Confirmed Trend",
+      "overheat_score": 28,
+      "major_wave_score": 99,
+      "risk_gate_status": "pass",
+      "state_reason": "Confirmed Trend: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 99.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-23",
+      "pool_id": "a_share_resources_materials",
+      "pool_name": "资源材料",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 32,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-23",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 38,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-23",
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI and Computer",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 14,
+      "major_wave_score": 100,
+      "risk_gate_status": "pass",
+      "state_reason": "Major Candidate: high evidence; direct mapped instrument.",
+      "overheat_reason": "recent top persistence",
+      "major_wave_reason": "high evidence; direct mapped instrument; market confirmation present; liquidity support; score 100.",
+      "risk_gate_reason": "direct evidence and capped confidence usable",
+      "boundary": "observe_only; right-side model classification only"
+    },
+    {
+      "as_of": "2026-07-23",
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
+      "candidate_state": "Major Candidate",
+      "overheat_score": 8,
       "major_wave_score": 100,
       "risk_gate_status": "pass",
       "state_reason": "Major Candidate: high evidence; direct mapped instrument.",

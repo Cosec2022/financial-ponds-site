@@ -1,7 +1,7 @@
 {
   "module_id": "decision_gate_ledger_v0_10_46",
-  "as_of": "2026-07-22",
-  "generated_at": "2026-07-22T10:53:28.601Z",
+  "as_of": "2026-07-23",
+  "generated_at": "2026-07-23T15:18:41.182Z",
   "status": "gate_ledger_available",
   "guidance_state": "not_ready",
   "execution_state": "blocked",
@@ -29,7 +29,8 @@
           "2026-07-09",
           "2026-07-10",
           "2026-07-16",
-          "2026-07-22"
+          "2026-07-22",
+          "2026-07-23"
         ],
         "status": "flow_gate_ready"
       },
@@ -64,7 +65,7 @@
       "evidence": {
         "conflict_count": 2,
         "conflict_ids": [
-          "positive_flow_weak_daily_tier",
+          "etf_flow_leader_differs_from_daily_leader",
           "strong_rotation_zero_or_negative_flow"
         ]
       },
@@ -74,13 +75,12 @@
       "gate_id": "watchlist_conflict_review",
       "label": "Watchlist conflict review",
       "status": "warn",
-      "reading": "3 watchlist row(s) are in conflict_review.",
+      "reading": "2 watchlist row(s) are in conflict_review.",
       "evidence": {
-        "conflict_review_count": 3,
+        "conflict_review_count": 2,
         "sectors": [
-          "new_energy_ev",
-          "real_estate_infra",
-          "resources_materials"
+          "resources_materials",
+          "semiconductor"
         ]
       },
       "next_action": "Review conflict rows before changing model thresholds."
@@ -110,9 +110,9 @@
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
-      "reading": "Rotation sample depth is 14/3.",
+      "reading": "Rotation sample depth is 15/3.",
       "evidence": {
-        "sample_days": 14,
+        "sample_days": 15,
         "min_sample_days": 3,
         "trend_state": "trend_confirmed"
       },
@@ -185,7 +185,7 @@
       "gate_id": "watchlist_conflict_review",
       "label": "Watchlist conflict review",
       "status": "warn",
-      "reading": "3 watchlist row(s) are in conflict_review.",
+      "reading": "2 watchlist row(s) are in conflict_review.",
       "next_action": "Review conflict rows before changing model thresholds."
     },
     {
@@ -229,7 +229,7 @@
       "gate_id": "rotation_visibility",
       "label": "Rotation visibility",
       "status": "pass",
-      "reading": "Rotation sample depth is 14/3.",
+      "reading": "Rotation sample depth is 15/3.",
       "next_action": "Continue daily history accumulation."
     },
     {

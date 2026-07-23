@@ -4,7 +4,7 @@
 - observe_only
 
 ## Data Readiness
-- Market OHLCV mapped: 62/67; Flow mapped: 62; Fully mapped: 22; quality guardrail active
+- Market OHLCV mapped: 62/67; Flow mapped: 0; Fully mapped: 0; quality guardrail active
 - Direct evidence 34%; proxy evidence 60%.
 
 ## What Improved Today
@@ -18,11 +18,11 @@
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **Resources and Materials** | moderate_observe | outward
+- **资源材料** | moderate_observe | inward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **Semiconductor** | moderate_observe | outward
+- **半导体** | moderate_observe | outward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta changed.
@@ -30,7 +30,7 @@
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta changed.
-- **Bank and Insurance** | moderate_observe | outward
+- **券商** | moderate_observe | inward
   - flow estimated_from_source; momentum derived_from_market; liquidity derived_from_market
   - evidence high; proxy risk none; capped confidence 0.75
   - high evidence via direct_etf; 3/3 core observations available; delta changed.
@@ -40,7 +40,7 @@
 - **Environmental Protection**: sector_proxy with loose proxy; high proxy risk; flow unavailable
 - **Machinery**: sector_proxy with loose proxy; high proxy risk; flow unavailable
 - **Utilities**: sector_proxy with loose proxy; high proxy risk; flow unavailable
-- **Transportation**: sector_proxy with loose proxy; high proxy risk; flow unavailable
+- **Agriculture**: sector_proxy with loose proxy; high proxy risk; flow unavailable
 
 ## Main Data Gaps
 - flow: 45 pools; connect mapped provider flow source
