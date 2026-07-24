@@ -1,7 +1,7 @@
 {
   "as_of": "2026-07-24",
   "model_version": "0.1.0",
-  "generated_at": "2026-07-23T16:25:00.728Z",
+  "generated_at": "2026-07-24T10:49:59.528Z",
   "entities": {
     "a_share_breadth": {
       "id": "a_share_breadth",

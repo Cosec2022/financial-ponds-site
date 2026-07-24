@@ -1,7 +1,7 @@
 {
   "module_id": "candidate_review_schedule_v0_10_63",
   "as_of": "2026-07-24",
-  "generated_at": "2026-07-23T16:23:55Z",
+  "generated_at": "2026-07-24T10:48:57Z",
   "candidate_count": 10,
   "pending_t1_count": 10,
   "pending_t3_count": 10,
@@ -26,9 +26,9 @@
     "Review dates schedule evidence checks only.",
     "Future outcomes remain pending until their due date and source data are available."
   ],
-  "reviewed_count": 5,
+  "reviewed_count": 10,
   "pending_count": 125,
-  "unavailable_count": 130,
+  "unavailable_count": 125,
   "insufficient_count": 65,
   "next_due_reviews": [
     {

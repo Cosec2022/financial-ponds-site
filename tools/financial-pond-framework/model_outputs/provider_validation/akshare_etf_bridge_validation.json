@@ -35,7 +35,7 @@
     "errors": []
   },
   "validator_id": "akshare_etf_bridge_export_validator",
-  "generated_at": "2026-07-23T16:24:56.119458+00:00",
+  "generated_at": "2026-07-24T10:49:55.254462+00:00",
   "row_csv": "data/provider_exports/a_share_etf_daily.csv",
   "sector_flow_csv": "data/provider_exports/a_share_sector_flow.csv"
 }

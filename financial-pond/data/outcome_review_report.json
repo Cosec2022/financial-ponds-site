@@ -1,7 +1,7 @@
 {
   "module_id": "outcome_review_report_v0_10_65",
   "as_of": "2026-07-24",
-  "generated_at": "2026-07-23T16:23:55Z",
+  "generated_at": "2026-07-24T10:48:57Z",
   "benchmark_proxy": {
     "display_label": "A-share benchmark proxy: 510300",
     "symbol": "510300",
@@ -11,19 +11,19 @@
   },
   "total_candidates": 65,
   "due_review_count": 135,
-  "reviewed_count": 5,
+  "reviewed_count": 10,
   "pending_count": 125,
-  "unavailable_count": 130,
+  "unavailable_count": 125,
   "unavailable_by_reason": {
     "calendar_unknown": 0,
     "stale_data": 0,
     "missing_price": 35,
-    "missing_benchmark": 30,
+    "missing_benchmark": 25,
     "invalid_baseline": 65
   },
   "insufficient_count": 65,
-  "aligned_count": 2,
-  "opposite_count": 2,
+  "aligned_count": 4,
+  "opposite_count": 5,
   "neutral_count": 1,
   "reviewed_horizons": [
     "T+1"

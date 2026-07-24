@@ -1,7 +1,7 @@
 {
   "module_id": "market_signal_report_v0_10_54",
   "as_of": "2026-07-24",
-  "generated_at": "2026-07-23T16:26:05.041Z",
+  "generated_at": "2026-07-24T10:50:51.646Z",
   "source_files_used": [
     "financial-pond/data/pool_instrument_map.json",
     "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
@@ -10,8 +10,8 @@
   "source_row_count": 11,
   "mapped_pool_count": 62,
   "ohlcv_mapped_count": 62,
-  "flow_mapped_count": 0,
-  "fully_mapped_count": 0,
+  "flow_mapped_count": 62,
+  "fully_mapped_count": 22,
   "unmapped_pool_count": 5,
   "momentum_signal_count": 62,
   "liquidity_signal_count": 62,
@@ -22,8 +22,8 @@
   "unmapped_examples": [
     {
       "pool_id": "a_share_a_share",
-      "pool_name": "a_share",
-      "reason": "Explicit versioned benchmark proxy configuration"
+      "pool_name": "A-share benchmark proxy",
+      "reason": "Independent exact-date benchmark history row."
     },
     {
       "pool_id": "a_share_btc",
