@@ -1,7 +1,7 @@
 {
   "module_id": "outcome_review_report_v0_10_65",
-  "as_of": "2026-07-24",
-  "generated_at": "2026-07-24T10:48:57Z",
+  "as_of": "2026-07-27",
+  "generated_at": "2026-07-27T11:58:30Z",
   "benchmark_proxy": {
     "display_label": "A-share benchmark proxy: 510300",
     "symbol": "510300",
@@ -9,19 +9,19 @@
     "role": "broad_market_proxy",
     "disclosure": "Operational ETF proxy; not the complete A-share market."
   },
-  "total_candidates": 65,
-  "due_review_count": 135,
+  "total_candidates": 75,
+  "due_review_count": 155,
   "reviewed_count": 10,
-  "pending_count": 125,
-  "unavailable_count": 125,
+  "pending_count": 145,
+  "unavailable_count": 145,
   "unavailable_by_reason": {
     "calendar_unknown": 0,
     "stale_data": 0,
     "missing_price": 35,
-    "missing_benchmark": 25,
-    "invalid_baseline": 65
+    "missing_benchmark": 40,
+    "invalid_baseline": 70
   },
-  "insufficient_count": 65,
+  "insufficient_count": 70,
   "aligned_count": 4,
   "opposite_count": 5,
   "neutral_count": 1,
@@ -30,17 +30,17 @@
   ],
   "next_due_reviews": [
     {
-      "date": "2026-07-27",
+      "date": "2026-07-28",
       "horizon": "T+1",
       "count": 10
     },
     {
-      "date": "2026-07-27",
+      "date": "2026-07-28",
       "horizon": "T+3",
       "count": 5
     },
     {
-      "date": "2026-07-27",
+      "date": "2026-07-28",
       "horizon": "T+5",
       "count": 5
     }

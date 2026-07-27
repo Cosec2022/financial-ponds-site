@@ -2,8 +2,8 @@
   "doctor_id": "akshare_etf_bridge_doctor_v0_10_24",
   "provider": "akshare",
   "status": "ok",
-  "started_at": "2026-07-24T10:49:03.566959+00:00",
-  "finished_at": "2026-07-24T10:49:04.062892+00:00",
+  "started_at": "2026-07-27T11:58:35.453088+00:00",
+  "finished_at": "2026-07-27T11:58:35.952701+00:00",
   "checks": [
     {
       "id": "python_runtime",
@@ -14,7 +14,7 @@
       "id": "akshare_import",
       "status": "ok",
       "detail": "akshare package imported",
-      "version": "1.18.78"
+      "version": "1.18.79"
     }
   ],
   "install_hint": "python3 -m pip install -r providers/requirements.txt",
