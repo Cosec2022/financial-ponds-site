@@ -1,7 +1,7 @@
 {
   "module_id": "sector_observation_panel_v1",
   "as_of": "2026-07-28",
-  "generated_at": "2026-07-28T06:15:00.000Z",
+  "generated_at": "2026-07-28T16:12:42Z",
   "status": "panel_available",
   "data_quality_summary": {
     "text": "价格 20/20｜成交额 20/20｜基准对齐 20/20｜扩散未接入",
@@ -80,1198 +80,11 @@
     "distinct_statuses": [
       "strengthening",
       "maintain",
+      "price_only",
       "weakening"
     ]
   },
   "rows": [
-    {
-      "pool_id": "a_share_bank_insurance",
-      "sector_id": "bank_insurance",
-      "pool_name": "银行保险",
-      "instrument_code": "512800",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 1,
-      "previous_rank": 9,
-      "rank_change": 8,
-      "score": 79.48,
-      "previous_score": 69.24,
-      "score_change": 10.24,
-      "status": "strengthening",
-      "status_label": "边际增强",
-      "status_change": "边际转弱 → 边际增强",
-      "model_state": "Confirmed Trend",
-      "conclusion": "银行保险综合分+10.24分；评分与价格增强；量能已确认；内部扩散待接入。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 0
-            },
-            {
-              "date": "2026-07-02",
-              "value": 1.4925
-            },
-            {
-              "date": "2026-07-03",
-              "value": 1.3569
-            },
-            {
-              "date": "2026-07-06",
-              "value": 3.1208
-            },
-            {
-              "date": "2026-07-07",
-              "value": 2.9851
-            },
-            {
-              "date": "2026-07-08",
-              "value": 4.4776
-            },
-            {
-              "date": "2026-07-09",
-              "value": 3.2564
-            },
-            {
-              "date": "2026-07-10",
-              "value": 4.0706
-            },
-            {
-              "date": "2026-07-13",
-              "value": 5.6988
-            },
-            {
-              "date": "2026-07-14",
-              "value": 5.9701
-            },
-            {
-              "date": "2026-07-15",
-              "value": 7.1913
-            },
-            {
-              "date": "2026-07-16",
-              "value": 6.1058
-            },
-            {
-              "date": "2026-07-17",
-              "value": 7.0556
-            },
-            {
-              "date": "2026-07-20",
-              "value": 9.6336
-            },
-            {
-              "date": "2026-07-21",
-              "value": 7.1913
-            },
-            {
-              "date": "2026-07-22",
-              "value": 8.4125
-            },
-            {
-              "date": "2026-07-23",
-              "value": 8.9552
-            },
-            {
-              "date": "2026-07-24",
-              "value": 9.0909
-            },
-            {
-              "date": "2026-07-27",
-              "value": 9.2266
-            },
-            {
-              "date": "2026-07-28",
-              "value": 10.5834
-            }
-          ],
-          "available_points": 20,
-          "required_points": 2,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": 10.5834,
-          "latest_daily_change": 1.24,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 0.7967
-            },
-            {
-              "date": "2026-07-02",
-              "value": 1.6582
-            },
-            {
-              "date": "2026-07-03",
-              "value": 0.7244
-            },
-            {
-              "date": "2026-07-06",
-              "value": 0.7049
-            },
-            {
-              "date": "2026-07-07",
-              "value": 1.1518
-            },
-            {
-              "date": "2026-07-08",
-              "value": 0.7449
-            },
-            {
-              "date": "2026-07-09",
-              "value": 0.7718
-            },
-            {
-              "date": "2026-07-10",
-              "value": 0.6973
-            },
-            {
-              "date": "2026-07-13",
-              "value": 1.1258
-            },
-            {
-              "date": "2026-07-14",
-              "value": 0.7352
-            },
-            {
-              "date": "2026-07-15",
-              "value": 1.5484
-            },
-            {
-              "date": "2026-07-16",
-              "value": 0.696
-            },
-            {
-              "date": "2026-07-17",
-              "value": 1.8439
-            },
-            {
-              "date": "2026-07-20",
-              "value": 0.9401
-            },
-            {
-              "date": "2026-07-21",
-              "value": 1.4628
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0.894
-            },
-            {
-              "date": "2026-07-23",
-              "value": 1.0822
-            },
-            {
-              "date": "2026-07-24",
-              "value": 1.1094
-            },
-            {
-              "date": "2026-07-27",
-              "value": 0.6836
-            },
-            {
-              "date": "2026-07-28",
-              "value": 0.6286
-            }
-          ],
-          "available_points": 20,
-          "required_points": 20,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": 0.6286,
-          "missing_reason": null
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 0
-            },
-            {
-              "date": "2026-07-02",
-              "value": 4.5896
-            },
-            {
-              "date": "2026-07-03",
-              "value": 3.8929
-            },
-            {
-              "date": "2026-07-06",
-              "value": 5.6792
-            },
-            {
-              "date": "2026-07-07",
-              "value": 6.6555
-            },
-            {
-              "date": "2026-07-08",
-              "value": 8.8327
-            },
-            {
-              "date": "2026-07-09",
-              "value": 4.9788
-            },
-            {
-              "date": "2026-07-10",
-              "value": 7.7127
-            },
-            {
-              "date": "2026-07-13",
-              "value": 11.358
-            },
-            {
-              "date": "2026-07-14",
-              "value": 9.4974
-            },
-            {
-              "date": "2026-07-15",
-              "value": 10.7363
-            },
-            {
-              "date": "2026-07-16",
-              "value": 11.5752
-            },
-            {
-              "date": "2026-07-17",
-              "value": 16.5971
-            },
-            {
-              "date": "2026-07-20",
-              "value": 17.8385
-            },
-            {
-              "date": "2026-07-21",
-              "value": 11.9161
-            },
-            {
-              "date": "2026-07-22",
-              "value": 13.7137
-            },
-            {
-              "date": "2026-07-23",
-              "value": 13.7577
-            },
-            {
-              "date": "2026-07-24",
-              "value": 15.9831
-            },
-            {
-              "date": "2026-07-27",
-              "value": 14.8568
-            },
-            {
-              "date": "2026-07-28",
-              "value": 19.3986
-            }
-          ],
-          "available_points": 20,
-          "required_points": 20,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": 19.3986,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": null
-            },
-            {
-              "date": "2026-07-02",
-              "value": null
-            },
-            {
-              "date": "2026-07-03",
-              "value": null
-            },
-            {
-              "date": "2026-07-06",
-              "value": null
-            },
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-13",
-              "value": null
-            },
-            {
-              "date": "2026-07-14",
-              "value": null
-            },
-            {
-              "date": "2026-07-15",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-17",
-              "value": null
-            },
-            {
-              "date": "2026-07-20",
-              "value": null
-            },
-            {
-              "date": "2026-07-21",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            },
-            {
-              "date": "2026-07-28",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "display_status": "source_unavailable",
-          "missing_point_count": 20,
-          "latest": null,
-          "missing_reason": "尚未接入可信成分股数据源"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_resources_materials",
-      "sector_id": "resources_materials",
-      "pool_name": "资源材料",
-      "instrument_code": "512400",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 2,
-      "previous_rank": 3,
-      "rank_change": 1,
-      "score": 79.2062,
-      "previous_score": 73.72,
-      "score_change": 5.49,
-      "status": "strengthening",
-      "status_label": "边际增强",
-      "status_change": "边际转弱 → 边际增强",
-      "model_state": "Cooling",
-      "conclusion": "资源材料综合分+5.49分；评分与价格分化；量能已确认；内部扩散待接入。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 0
-            },
-            {
-              "date": "2026-07-02",
-              "value": 1.7316
-            },
-            {
-              "date": "2026-07-03",
-              "value": 2.381
-            },
-            {
-              "date": "2026-07-06",
-              "value": 0.9199
-            },
-            {
-              "date": "2026-07-07",
-              "value": -2.4351
-            },
-            {
-              "date": "2026-07-08",
-              "value": -5.303
-            },
-            {
-              "date": "2026-07-09",
-              "value": -5.5736
-            },
-            {
-              "date": "2026-07-10",
-              "value": -4.9784
-            },
-            {
-              "date": "2026-07-13",
-              "value": -9.145
-            },
-            {
-              "date": "2026-07-14",
-              "value": -4.0043
-            },
-            {
-              "date": "2026-07-15",
-              "value": -5.8983
-            },
-            {
-              "date": "2026-07-16",
-              "value": -6.6558
-            },
-            {
-              "date": "2026-07-17",
-              "value": -11.4719
-            },
-            {
-              "date": "2026-07-20",
-              "value": -12.0671
-            },
-            {
-              "date": "2026-07-21",
-              "value": -7.4675
-            },
-            {
-              "date": "2026-07-22",
-              "value": -4.329
-            },
-            {
-              "date": "2026-07-23",
-              "value": -1.4069
-            },
-            {
-              "date": "2026-07-24",
-              "value": -6.1147
-            },
-            {
-              "date": "2026-07-27",
-              "value": -3.8961
-            },
-            {
-              "date": "2026-07-28",
-              "value": -6.4935
-            }
-          ],
-          "available_points": 20,
-          "required_points": 2,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": -6.4935,
-          "latest_daily_change": -2.7027027027027084,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 0.8665
-            },
-            {
-              "date": "2026-07-02",
-              "value": 1.2224
-            },
-            {
-              "date": "2026-07-03",
-              "value": 1.4186
-            },
-            {
-              "date": "2026-07-06",
-              "value": 1.2287
-            },
-            {
-              "date": "2026-07-07",
-              "value": 0.9017
-            },
-            {
-              "date": "2026-07-08",
-              "value": 0.784
-            },
-            {
-              "date": "2026-07-09",
-              "value": 1.1833
-            },
-            {
-              "date": "2026-07-10",
-              "value": 0.8717
-            },
-            {
-              "date": "2026-07-13",
-              "value": 0.682
-            },
-            {
-              "date": "2026-07-14",
-              "value": 1.1405
-            },
-            {
-              "date": "2026-07-15",
-              "value": 0.7618
-            },
-            {
-              "date": "2026-07-16",
-              "value": 0.6731
-            },
-            {
-              "date": "2026-07-17",
-              "value": 0.9251
-            },
-            {
-              "date": "2026-07-20",
-              "value": 0.7504
-            },
-            {
-              "date": "2026-07-21",
-              "value": 0.9439
-            },
-            {
-              "date": "2026-07-22",
-              "value": 1.2334
-            },
-            {
-              "date": "2026-07-23",
-              "value": 1.8272
-            },
-            {
-              "date": "2026-07-24",
-              "value": 1.1465
-            },
-            {
-              "date": "2026-07-27",
-              "value": 0.798
-            },
-            {
-              "date": "2026-07-28",
-              "value": 0.6413
-            }
-          ],
-          "available_points": 20,
-          "required_points": 20,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": 0.6413,
-          "missing_reason": null
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 0
-            },
-            {
-              "date": "2026-07-02",
-              "value": 4.836
-            },
-            {
-              "date": "2026-07-03",
-              "value": 4.9426
-            },
-            {
-              "date": "2026-07-06",
-              "value": 3.4238
-            },
-            {
-              "date": "2026-07-07",
-              "value": 1.0422
-            },
-            {
-              "date": "2026-07-08",
-              "value": -1.3557
-            },
-            {
-              "date": "2026-07-09",
-              "value": -3.9985
-            },
-            {
-              "date": "2026-07-10",
-              "value": -1.6529
-            },
-            {
-              "date": "2026-07-13",
-              "value": -4.2805
-            },
-            {
-              "date": "2026-07-14",
-              "value": -0.8091
-            },
-            {
-              "date": "2026-07-15",
-              "value": -2.7862
-            },
-            {
-              "date": "2026-07-16",
-              "value": -1.8443
-            },
-            {
-              "date": "2026-07-17",
-              "value": -3.5817
-            },
-            {
-              "date": "2026-07-20",
-              "value": -5.4863
-            },
-            {
-              "date": "2026-07-21",
-              "value": -3.3889
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0.3491
-            },
-            {
-              "date": "2026-07-23",
-              "value": 2.9388
-            },
-            {
-              "date": "2026-07-24",
-              "value": -0.1832
-            },
-            {
-              "date": "2026-07-27",
-              "value": 1.0577
-            },
-            {
-              "date": "2026-07-28",
-              "value": 0.9603
-            }
-          ],
-          "available_points": 20,
-          "required_points": 20,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": 0.9603,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": null
-            },
-            {
-              "date": "2026-07-02",
-              "value": null
-            },
-            {
-              "date": "2026-07-03",
-              "value": null
-            },
-            {
-              "date": "2026-07-06",
-              "value": null
-            },
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-13",
-              "value": null
-            },
-            {
-              "date": "2026-07-14",
-              "value": null
-            },
-            {
-              "date": "2026-07-15",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-17",
-              "value": null
-            },
-            {
-              "date": "2026-07-20",
-              "value": null
-            },
-            {
-              "date": "2026-07-21",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            },
-            {
-              "date": "2026-07-28",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "display_status": "source_unavailable",
-          "missing_point_count": 20,
-          "latest": null,
-          "missing_reason": "尚未接入可信成分股数据源"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_communication_electronics",
-      "sector_id": "communication_electronics",
-      "pool_name": "通信电子",
-      "instrument_code": "515880",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 3,
-      "previous_rank": 2,
-      "rank_change": -1,
-      "score": 78.244,
-      "previous_score": 75,
-      "score_change": 3.24,
-      "status": "strengthening",
-      "status_label": "边际增强",
-      "status_change": "边际转弱 → 边际增强",
-      "model_state": "Overheated",
-      "conclusion": "通信电子综合分+3.24分；评分与价格分化；量能已确认；内部扩散待接入。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 0
-            },
-            {
-              "date": "2026-07-02",
-              "value": -8.2654
-            },
-            {
-              "date": "2026-07-03",
-              "value": -8.0908
-            },
-            {
-              "date": "2026-07-06",
-              "value": -55.9371
-            },
-            {
-              "date": "2026-07-07",
-              "value": -55.7043
-            },
-            {
-              "date": "2026-07-08",
-              "value": -55.9371
-            },
-            {
-              "date": "2026-07-09",
-              "value": -53.0268
-            },
-            {
-              "date": "2026-07-10",
-              "value": -54.6566
-            },
-            {
-              "date": "2026-07-13",
-              "value": -57.0431
-            },
-            {
-              "date": "2026-07-14",
-              "value": -54.5984
-            },
-            {
-              "date": "2026-07-15",
-              "value": -55.8207
-            },
-            {
-              "date": "2026-07-16",
-              "value": -57.3923
-            },
-            {
-              "date": "2026-07-17",
-              "value": -61.6414
-            },
-            {
-              "date": "2026-07-20",
-              "value": -62.4563
-            },
-            {
-              "date": "2026-07-21",
-              "value": -59.1967
-            },
-            {
-              "date": "2026-07-22",
-              "value": -60.943
-            },
-            {
-              "date": "2026-07-23",
-              "value": -60.943
-            },
-            {
-              "date": "2026-07-24",
-              "value": -62.3981
-            },
-            {
-              "date": "2026-07-27",
-              "value": -61.1758
-            },
-            {
-              "date": "2026-07-28",
-              "value": -64.7264
-            }
-          ],
-          "available_points": 20,
-          "required_points": 2,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": -64.7264,
-          "latest_daily_change": -9.145427286356833,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 1.4965
-            },
-            {
-              "date": "2026-07-02",
-              "value": 1.421
-            },
-            {
-              "date": "2026-07-03",
-              "value": 1.0239
-            },
-            {
-              "date": "2026-07-06",
-              "value": 0.9708
-            },
-            {
-              "date": "2026-07-07",
-              "value": 0.9579
-            },
-            {
-              "date": "2026-07-08",
-              "value": 0.8644
-            },
-            {
-              "date": "2026-07-09",
-              "value": 1.2762
-            },
-            {
-              "date": "2026-07-10",
-              "value": 1.123
-            },
-            {
-              "date": "2026-07-13",
-              "value": 0.7233
-            },
-            {
-              "date": "2026-07-14",
-              "value": 1.203
-            },
-            {
-              "date": "2026-07-15",
-              "value": 0.8761
-            },
-            {
-              "date": "2026-07-16",
-              "value": 0.9888
-            },
-            {
-              "date": "2026-07-17",
-              "value": 1.2935
-            },
-            {
-              "date": "2026-07-20",
-              "value": 0.9987
-            },
-            {
-              "date": "2026-07-21",
-              "value": 1.3637
-            },
-            {
-              "date": "2026-07-22",
-              "value": 1.0807
-            },
-            {
-              "date": "2026-07-23",
-              "value": 0.6394
-            },
-            {
-              "date": "2026-07-24",
-              "value": 0.5308
-            },
-            {
-              "date": "2026-07-27",
-              "value": 0.4987
-            },
-            {
-              "date": "2026-07-28",
-              "value": 0.6696
-            }
-          ],
-          "available_points": 20,
-          "required_points": 20,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": 0.6696,
-          "missing_reason": null
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": 0
-            },
-            {
-              "date": "2026-07-02",
-              "value": -5.4661
-            },
-            {
-              "date": "2026-07-03",
-              "value": -5.7912
-            },
-            {
-              "date": "2026-07-06",
-              "value": -54.8439
-            },
-            {
-              "date": "2026-07-07",
-              "value": -54.1256
-            },
-            {
-              "date": "2026-07-08",
-              "value": -54.1004
-            },
-            {
-              "date": "2026-07-09",
-              "value": -52.2433
-            },
-            {
-              "date": "2026-07-10",
-              "value": -53.0697
-            },
-            {
-              "date": "2026-07-13",
-              "value": -54.7431
-            },
-            {
-              "date": "2026-07-14",
-              "value": -53.0872
-            },
-            {
-              "date": "2026-07-15",
-              "value": -54.3596
-            },
-            {
-              "date": "2026-07-16",
-              "value": -55.196
-            },
-            {
-              "date": "2026-07-17",
-              "value": -58.2227
-            },
-            {
-              "date": "2026-07-20",
-              "value": -59.6466
-            },
-            {
-              "date": "2026-07-21",
-              "value": -57.3982
-            },
-            {
-              "date": "2026-07-22",
-              "value": -59.0331
-            },
-            {
-              "date": "2026-07-23",
-              "value": -59.2214
-            },
-            {
-              "date": "2026-07-24",
-              "value": -60.0225
-            },
-            {
-              "date": "2026-07-27",
-              "value": -59.1745
-            },
-            {
-              "date": "2026-07-28",
-              "value": -61.9146
-            }
-          ],
-          "available_points": 20,
-          "required_points": 20,
-          "status": "available",
-          "display_status": "available",
-          "missing_point_count": 0,
-          "latest": -61.9146,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-01",
-              "value": null
-            },
-            {
-              "date": "2026-07-02",
-              "value": null
-            },
-            {
-              "date": "2026-07-03",
-              "value": null
-            },
-            {
-              "date": "2026-07-06",
-              "value": null
-            },
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-13",
-              "value": null
-            },
-            {
-              "date": "2026-07-14",
-              "value": null
-            },
-            {
-              "date": "2026-07-15",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-17",
-              "value": null
-            },
-            {
-              "date": "2026-07-20",
-              "value": null
-            },
-            {
-              "date": "2026-07-21",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            },
-            {
-              "date": "2026-07-28",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "display_status": "source_unavailable",
-          "missing_point_count": 20,
-          "latest": null,
-          "missing_reason": "尚未接入可信成分股数据源"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
     {
       "pool_id": "a_share_ai_computer",
       "sector_id": "ai_computer",
@@ -1279,17 +92,17 @@
       "instrument_code": "159819",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 4,
+      "rank": 1,
       "previous_rank": 5,
-      "rank_change": 1,
-      "score": 76.744,
+      "rank_change": 4,
+      "score": 73,
       "previous_score": 71.64,
-      "score_change": 5.1,
+      "score_change": 1.36,
       "status": "strengthening",
       "status_label": "边际增强",
       "status_change": "状态未变",
       "model_state": "Cooling",
-      "conclusion": "AI计算机综合分+5.1分；评分与价格分化；量能已确认；内部扩散待接入。",
+      "conclusion": "AI计算机综合分+1.36分；评分与价格分化；量能已确认；内部扩散待接入。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -1383,7 +196,7 @@
           "display_status": "available",
           "missing_point_count": 0,
           "latest": -17.1415,
-          "latest_daily_change": -6.044815007816573,
+          "latest_daily_change": -6.98,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -1669,23 +482,23 @@
       "boundary": "observe_only; published order preserved; no synthetic values"
     },
     {
-      "pool_id": "a_share_brokerage",
-      "sector_id": "brokerage",
-      "pool_name": "券商",
-      "instrument_code": "512000",
+      "pool_id": "a_share_communication_electronics",
+      "sector_id": "communication_electronics",
+      "pool_name": "通信电子",
+      "instrument_code": "515880",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 5,
-      "previous_rank": 8,
-      "rank_change": 3,
-      "score": 76.2784,
-      "previous_score": 69.76,
-      "score_change": 6.52,
-      "status": "strengthening",
-      "status_label": "边际增强",
-      "status_change": "边际转弱 → 边际增强",
-      "model_state": "Major Candidate",
-      "conclusion": "券商综合分+6.52分；评分与价格分化；量能已确认；内部扩散待接入。",
+      "rank": 2,
+      "previous_rank": 2,
+      "rank_change": 0,
+      "score": 73,
+      "previous_score": 75,
+      "score_change": -2,
+      "status": "maintain",
+      "status_label": "维持观察",
+      "status_change": "边际转弱 → 维持观察",
+      "model_state": "Overheated",
+      "conclusion": "通信电子综合分与排名未触发显著边际变化；评分与价格分化；量能已确认；内部扩散待接入。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -1698,79 +511,79 @@
             },
             {
               "date": "2026-07-02",
-              "value": -2.6596
+              "value": -8.2654
             },
             {
               "date": "2026-07-03",
-              "value": -2.1277
+              "value": -8.0908
             },
             {
               "date": "2026-07-06",
-              "value": -1.9504
+              "value": -55.9371
             },
             {
               "date": "2026-07-07",
-              "value": -4.7872
+              "value": -55.7043
             },
             {
               "date": "2026-07-08",
-              "value": -6.0284
+              "value": -55.9371
             },
             {
               "date": "2026-07-09",
-              "value": -3.9007
+              "value": -53.0268
             },
             {
               "date": "2026-07-10",
-              "value": -5.6738
+              "value": -54.6566
             },
             {
               "date": "2026-07-13",
-              "value": -6.9149
+              "value": -57.0431
             },
             {
               "date": "2026-07-14",
-              "value": -6.383
+              "value": -54.5984
             },
             {
               "date": "2026-07-15",
-              "value": -4.2553
+              "value": -55.8207
             },
             {
               "date": "2026-07-16",
-              "value": -5.6738
+              "value": -57.3923
             },
             {
               "date": "2026-07-17",
-              "value": -7.0922
+              "value": -61.6414
             },
             {
               "date": "2026-07-20",
-              "value": -5.4965
+              "value": -62.4563
             },
             {
               "date": "2026-07-21",
-              "value": -4.9645
+              "value": -59.1967
             },
             {
               "date": "2026-07-22",
-              "value": -5.6738
+              "value": -60.943
             },
             {
               "date": "2026-07-23",
-              "value": -4.4326
+              "value": -60.943
             },
             {
               "date": "2026-07-24",
-              "value": -6.7376
+              "value": -62.3981
             },
             {
               "date": "2026-07-27",
-              "value": -6.383
+              "value": -61.1758
             },
             {
               "date": "2026-07-28",
-              "value": -8.156
+              "value": -64.7264
             }
           ],
           "available_points": 20,
@@ -1778,8 +591,8 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": -8.156,
-          "latest_daily_change": -1.89,
+          "latest": -64.7264,
+          "latest_daily_change": -10.04,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -1788,83 +601,83 @@
           "values": [
             {
               "date": "2026-07-01",
-              "value": 2.3421
+              "value": 1.4965
             },
             {
               "date": "2026-07-02",
-              "value": 1.547
+              "value": 1.421
             },
             {
               "date": "2026-07-03",
-              "value": 1.3381
+              "value": 1.0239
             },
             {
               "date": "2026-07-06",
-              "value": 1.0516
+              "value": 0.9708
             },
             {
               "date": "2026-07-07",
-              "value": 0.9897
+              "value": 0.9579
             },
             {
               "date": "2026-07-08",
-              "value": 0.8629
+              "value": 0.8644
             },
             {
               "date": "2026-07-09",
-              "value": 0.9597
+              "value": 1.2762
             },
             {
               "date": "2026-07-10",
-              "value": 0.9995
+              "value": 1.123
             },
             {
               "date": "2026-07-13",
-              "value": 0.8121
+              "value": 0.7233
             },
             {
               "date": "2026-07-14",
-              "value": 0.9988
+              "value": 1.203
             },
             {
               "date": "2026-07-15",
-              "value": 1.002
+              "value": 0.8761
             },
             {
               "date": "2026-07-16",
-              "value": 1.0548
+              "value": 0.9888
             },
             {
               "date": "2026-07-17",
-              "value": 1.0766
+              "value": 1.2935
             },
             {
               "date": "2026-07-20",
-              "value": 0.956
+              "value": 0.9987
             },
             {
               "date": "2026-07-21",
-              "value": 0.8852
+              "value": 1.3637
             },
             {
               "date": "2026-07-22",
-              "value": 0.6213
+              "value": 1.0807
             },
             {
               "date": "2026-07-23",
-              "value": 0.7045
+              "value": 0.6394
             },
             {
               "date": "2026-07-24",
-              "value": 0.8008
+              "value": 0.5308
             },
             {
               "date": "2026-07-27",
-              "value": 0.5027
+              "value": 0.4987
             },
             {
               "date": "2026-07-28",
-              "value": 0.4946
+              "value": 0.6696
             }
           ],
           "available_points": 20,
@@ -1872,7 +685,7 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": 0.4946,
+          "latest": 0.6696,
           "missing_reason": null
         },
         "relative_strength": {
@@ -1885,79 +698,79 @@
             },
             {
               "date": "2026-07-02",
-              "value": 0.3108
+              "value": -5.4661
             },
             {
               "date": "2026-07-03",
-              "value": 0.3212
+              "value": -5.7912
             },
             {
               "date": "2026-07-06",
-              "value": 0.4823
+              "value": -54.8439
             },
             {
               "date": "2026-07-07",
-              "value": -1.3938
+              "value": -54.1256
             },
             {
               "date": "2026-07-08",
-              "value": -2.1113
+              "value": -54.1004
             },
             {
               "date": "2026-07-09",
-              "value": -2.2978
+              "value": -52.2433
             },
             {
               "date": "2026-07-10",
-              "value": -2.3726
+              "value": -53.0697
             },
             {
               "date": "2026-07-13",
-              "value": -1.931
+              "value": -54.7431
             },
             {
               "date": "2026-07-14",
-              "value": -3.2669
+              "value": -53.0872
             },
             {
               "date": "2026-07-15",
-              "value": -1.0889
+              "value": -54.3596
             },
             {
               "date": "2026-07-16",
-              "value": -0.8116
+              "value": -55.196
             },
             {
               "date": "2026-07-17",
-              "value": 1.1883
+              "value": -58.2227
             },
             {
               "date": "2026-07-20",
-              "value": 1.5761
+              "value": -59.6466
             },
             {
               "date": "2026-07-21",
-              "value": -0.7756
+              "value": -57.3982
             },
             {
               "date": "2026-07-22",
-              "value": -1.0614
+              "value": -59.0331
             },
             {
               "date": "2026-07-23",
-              "value": -0.2202
+              "value": -59.2214
             },
             {
               "date": "2026-07-24",
-              "value": -0.8455
+              "value": -60.0225
             },
             {
               "date": "2026-07-27",
-              "value": -1.5574
+              "value": -59.1745
             },
             {
               "date": "2026-07-28",
-              "value": -0.8347
+              "value": -61.9146
             }
           ],
           "available_points": 20,
@@ -1965,7 +778,7 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": -0.8347,
+          "latest": -61.9146,
           "missing_reason": null
         },
         "internal_breadth": {
@@ -2071,17 +884,17 @@
       "instrument_code": "512480",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 6,
+      "rank": 3,
       "previous_rank": 6,
-      "rank_change": 0,
-      "score": 76.1176,
+      "rank_change": 3,
+      "score": 73,
       "previous_score": 70.98,
-      "score_change": 5.14,
+      "score_change": 2.02,
       "status": "strengthening",
       "status_label": "边际增强",
       "status_change": "边际转弱 → 边际增强",
-      "model_state": "Major Candidate",
-      "conclusion": "半导体综合分+5.14分；评分与价格分化；量能已确认；内部扩散待接入。",
+      "model_state": "Cooling",
+      "conclusion": "半导体综合分+2.02分；评分与价格分化；量能已确认；内部扩散待接入。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -2175,7 +988,7 @@
           "display_status": "available",
           "missing_point_count": 0,
           "latest": -64.2881,
-          "latest_daily_change": -6.4946619217082,
+          "latest_daily_change": -7.38,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -2461,23 +1274,23 @@
       "boundary": "observe_only; published order preserved; no synthetic values"
     },
     {
-      "pool_id": "a_share_defense_military",
-      "sector_id": "defense_military",
-      "pool_name": "国防军工",
-      "instrument_code": "512660",
+      "pool_id": "a_share_resources_materials",
+      "sector_id": "resources_materials",
+      "pool_name": "资源材料",
+      "instrument_code": "512400",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 7,
-      "previous_rank": 7,
-      "rank_change": 0,
-      "score": 70.7455,
-      "previous_score": 70.02,
-      "score_change": 0.73,
-      "status": "maintain",
-      "status_label": "维持观察",
-      "status_change": "状态未变",
-      "model_state": "Major Candidate",
-      "conclusion": "国防军工综合分与排名未触发显著边际变化；评分与价格分化；量能已确认；内部扩散待接入。",
+      "rank": 4,
+      "previous_rank": 3,
+      "rank_change": -1,
+      "score": 71.5,
+      "previous_score": 73.72,
+      "score_change": -2.22,
+      "status": "price_only",
+      "status_label": "仅价格异动",
+      "status_change": "边际转弱 → 仅价格异动",
+      "model_state": "Cooling",
+      "conclusion": "资源材料最新价格变动-2.25%，但成交、相对强度或内部扩散尚未形成交叉确认。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -2490,79 +1303,79 @@
             },
             {
               "date": "2026-07-02",
-              "value": -2.7111
+              "value": 1.7316
             },
             {
               "date": "2026-07-03",
-              "value": 0.7746
+              "value": 2.381
             },
             {
               "date": "2026-07-06",
-              "value": -0.5422
+              "value": 0.9199
             },
             {
               "date": "2026-07-07",
-              "value": -3.6406
+              "value": -2.4351
             },
             {
               "date": "2026-07-08",
-              "value": -5.5771
+              "value": -5.303
             },
             {
               "date": "2026-07-09",
-              "value": -3.718
+              "value": -5.5736
             },
             {
               "date": "2026-07-10",
-              "value": -0.7746
+              "value": -4.9784
             },
             {
               "date": "2026-07-13",
-              "value": -7.6685
+              "value": -9.145
             },
             {
               "date": "2026-07-14",
-              "value": -10.3021
+              "value": -4.0043
             },
             {
               "date": "2026-07-15",
-              "value": -11.464
+              "value": -5.8983
             },
             {
               "date": "2026-07-16",
-              "value": -13.2455
+              "value": -6.6558
             },
             {
               "date": "2026-07-17",
-              "value": -17.7382
+              "value": -11.4719
             },
             {
               "date": "2026-07-20",
-              "value": -18.2804
+              "value": -12.0671
             },
             {
               "date": "2026-07-21",
-              "value": -15.5693
+              "value": -7.4675
             },
             {
               "date": "2026-07-22",
-              "value": -16.1115
+              "value": -4.329
             },
             {
               "date": "2026-07-23",
-              "value": -14.7173
+              "value": -1.4069
             },
             {
               "date": "2026-07-24",
-              "value": -16.5763
+              "value": -6.1147
             },
             {
               "date": "2026-07-27",
-              "value": -14.4849
+              "value": -3.8961
             },
             {
               "date": "2026-07-28",
-              "value": -16.8861
+              "value": -6.4935
             }
           ],
           "available_points": 20,
@@ -2570,8 +1383,8 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": -16.8861,
-          "latest_daily_change": -2.8079710144927605,
+          "latest": -6.4935,
+          "latest_daily_change": -2.25,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -2580,83 +1393,83 @@
           "values": [
             {
               "date": "2026-07-01",
-              "value": 0.9365
+              "value": 0.8665
             },
             {
               "date": "2026-07-02",
-              "value": 0.9079
+              "value": 1.2224
             },
             {
               "date": "2026-07-03",
-              "value": 1.2639
+              "value": 1.4186
             },
             {
               "date": "2026-07-06",
-              "value": 1.1386
+              "value": 1.2287
             },
             {
               "date": "2026-07-07",
-              "value": 0.8375
+              "value": 0.9017
             },
             {
               "date": "2026-07-08",
-              "value": 0.713
+              "value": 0.784
             },
             {
               "date": "2026-07-09",
-              "value": 0.9074
+              "value": 1.1833
             },
             {
               "date": "2026-07-10",
-              "value": 1.7482
+              "value": 0.8717
             },
             {
               "date": "2026-07-13",
-              "value": 1.3803
+              "value": 0.682
             },
             {
               "date": "2026-07-14",
-              "value": 1.0911
+              "value": 1.1405
             },
             {
               "date": "2026-07-15",
-              "value": 0.8211
+              "value": 0.7618
             },
             {
               "date": "2026-07-16",
-              "value": 0.7846
+              "value": 0.6731
             },
             {
               "date": "2026-07-17",
-              "value": 1.1656
+              "value": 0.9251
             },
             {
               "date": "2026-07-20",
-              "value": 1.0245
+              "value": 0.7504
             },
             {
               "date": "2026-07-21",
-              "value": 1.0809
+              "value": 0.9439
             },
             {
               "date": "2026-07-22",
-              "value": 0.9833
+              "value": 1.2334
             },
             {
               "date": "2026-07-23",
-              "value": 0.7668
+              "value": 1.8272
             },
             {
               "date": "2026-07-24",
-              "value": 0.825
+              "value": 1.1465
             },
             {
               "date": "2026-07-27",
-              "value": 1.0849
+              "value": 0.798
             },
             {
               "date": "2026-07-28",
-              "value": 0.5388
+              "value": 0.6413
             }
           ],
           "available_points": 20,
@@ -2664,7 +1477,7 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": 0.5388,
+          "latest": 0.6413,
           "missing_reason": null
         },
         "relative_strength": {
@@ -2677,79 +1490,79 @@
             },
             {
               "date": "2026-07-02",
-              "value": 0.2577
+              "value": 4.836
             },
             {
               "date": "2026-07-03",
-              "value": 3.296
+              "value": 4.9426
             },
             {
               "date": "2026-07-06",
-              "value": 1.9254
+              "value": 3.4238
             },
             {
               "date": "2026-07-07",
-              "value": -0.2063
+              "value": 1.0422
             },
             {
               "date": "2026-07-08",
-              "value": -1.6411
+              "value": -1.3557
             },
             {
               "date": "2026-07-09",
-              "value": -2.112
+              "value": -3.9985
             },
             {
               "date": "2026-07-10",
-              "value": 2.698
+              "value": -1.6529
             },
             {
               "date": "2026-07-13",
-              "value": -2.7249
+              "value": -4.2805
             },
             {
               "date": "2026-07-14",
-              "value": -7.3165
+              "value": -0.8091
             },
             {
               "date": "2026-07-15",
-              "value": -8.536
+              "value": -2.7862
             },
             {
               "date": "2026-07-16",
-              "value": -8.7737
+              "value": -1.8443
             },
             {
               "date": "2026-07-17",
-              "value": -10.4065
+              "value": -3.5817
             },
             {
               "date": "2026-07-20",
-              "value": -12.1646
+              "value": -5.4863
             },
             {
               "date": "2026-07-21",
-              "value": -11.8478
+              "value": -3.3889
             },
             {
               "date": "2026-07-22",
-              "value": -12.0095
+              "value": 0.3491
             },
             {
               "date": "2026-07-23",
-              "value": -10.9582
+              "value": 2.9388
             },
             {
               "date": "2026-07-24",
-              "value": -11.3058
+              "value": -0.1832
             },
             {
               "date": "2026-07-27",
-              "value": -10.0769
+              "value": 1.0577
             },
             {
               "date": "2026-07-28",
-              "value": -10.2607
+              "value": 0.9603
             }
           ],
           "available_points": 20,
@@ -2757,7 +1570,799 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": -10.2607,
+          "latest": 0.9603,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-01",
+              "value": null
+            },
+            {
+              "date": "2026-07-02",
+              "value": null
+            },
+            {
+              "date": "2026-07-03",
+              "value": null
+            },
+            {
+              "date": "2026-07-06",
+              "value": null
+            },
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-13",
+              "value": null
+            },
+            {
+              "date": "2026-07-14",
+              "value": null
+            },
+            {
+              "date": "2026-07-15",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-17",
+              "value": null
+            },
+            {
+              "date": "2026-07-20",
+              "value": null
+            },
+            {
+              "date": "2026-07-21",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "display_status": "source_unavailable",
+          "missing_point_count": 20,
+          "latest": null,
+          "missing_reason": "尚未接入可信成分股数据源"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
+    {
+      "pool_id": "a_share_brokerage",
+      "sector_id": "brokerage",
+      "pool_name": "券商",
+      "instrument_code": "512000",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 5,
+      "previous_rank": 8,
+      "rank_change": 3,
+      "score": 70.4,
+      "previous_score": 69.76,
+      "score_change": 0.64,
+      "status": "strengthening",
+      "status_label": "边际增强",
+      "status_change": "边际转弱 → 边际增强",
+      "model_state": "Major Candidate",
+      "conclusion": "券商综合分+0.64分；评分与价格分化；量能已确认；内部扩散待接入。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-01",
+              "value": 0
+            },
+            {
+              "date": "2026-07-02",
+              "value": -2.6596
+            },
+            {
+              "date": "2026-07-03",
+              "value": -2.1277
+            },
+            {
+              "date": "2026-07-06",
+              "value": -1.9504
+            },
+            {
+              "date": "2026-07-07",
+              "value": -4.7872
+            },
+            {
+              "date": "2026-07-08",
+              "value": -6.0284
+            },
+            {
+              "date": "2026-07-09",
+              "value": -3.9007
+            },
+            {
+              "date": "2026-07-10",
+              "value": -5.6738
+            },
+            {
+              "date": "2026-07-13",
+              "value": -6.9149
+            },
+            {
+              "date": "2026-07-14",
+              "value": -6.383
+            },
+            {
+              "date": "2026-07-15",
+              "value": -4.2553
+            },
+            {
+              "date": "2026-07-16",
+              "value": -5.6738
+            },
+            {
+              "date": "2026-07-17",
+              "value": -7.0922
+            },
+            {
+              "date": "2026-07-20",
+              "value": -5.4965
+            },
+            {
+              "date": "2026-07-21",
+              "value": -4.9645
+            },
+            {
+              "date": "2026-07-22",
+              "value": -5.6738
+            },
+            {
+              "date": "2026-07-23",
+              "value": -4.4326
+            },
+            {
+              "date": "2026-07-24",
+              "value": -6.7376
+            },
+            {
+              "date": "2026-07-27",
+              "value": -6.383
+            },
+            {
+              "date": "2026-07-28",
+              "value": -8.156
+            }
+          ],
+          "available_points": 20,
+          "required_points": 2,
+          "status": "available",
+          "display_status": "available",
+          "missing_point_count": 0,
+          "latest": -8.156,
+          "latest_daily_change": -1.7,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-01",
+              "value": 2.3421
+            },
+            {
+              "date": "2026-07-02",
+              "value": 1.547
+            },
+            {
+              "date": "2026-07-03",
+              "value": 1.3381
+            },
+            {
+              "date": "2026-07-06",
+              "value": 1.0516
+            },
+            {
+              "date": "2026-07-07",
+              "value": 0.9897
+            },
+            {
+              "date": "2026-07-08",
+              "value": 0.8629
+            },
+            {
+              "date": "2026-07-09",
+              "value": 0.9597
+            },
+            {
+              "date": "2026-07-10",
+              "value": 0.9995
+            },
+            {
+              "date": "2026-07-13",
+              "value": 0.8121
+            },
+            {
+              "date": "2026-07-14",
+              "value": 0.9988
+            },
+            {
+              "date": "2026-07-15",
+              "value": 1.002
+            },
+            {
+              "date": "2026-07-16",
+              "value": 1.0548
+            },
+            {
+              "date": "2026-07-17",
+              "value": 1.0766
+            },
+            {
+              "date": "2026-07-20",
+              "value": 0.956
+            },
+            {
+              "date": "2026-07-21",
+              "value": 0.8852
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0.6213
+            },
+            {
+              "date": "2026-07-23",
+              "value": 0.7045
+            },
+            {
+              "date": "2026-07-24",
+              "value": 0.8008
+            },
+            {
+              "date": "2026-07-27",
+              "value": 0.5027
+            },
+            {
+              "date": "2026-07-28",
+              "value": 0.4946
+            }
+          ],
+          "available_points": 20,
+          "required_points": 20,
+          "status": "available",
+          "display_status": "available",
+          "missing_point_count": 0,
+          "latest": 0.4946,
+          "missing_reason": null
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-01",
+              "value": 0
+            },
+            {
+              "date": "2026-07-02",
+              "value": 0.3108
+            },
+            {
+              "date": "2026-07-03",
+              "value": 0.3212
+            },
+            {
+              "date": "2026-07-06",
+              "value": 0.4823
+            },
+            {
+              "date": "2026-07-07",
+              "value": -1.3938
+            },
+            {
+              "date": "2026-07-08",
+              "value": -2.1113
+            },
+            {
+              "date": "2026-07-09",
+              "value": -2.2978
+            },
+            {
+              "date": "2026-07-10",
+              "value": -2.3726
+            },
+            {
+              "date": "2026-07-13",
+              "value": -1.931
+            },
+            {
+              "date": "2026-07-14",
+              "value": -3.2669
+            },
+            {
+              "date": "2026-07-15",
+              "value": -1.0889
+            },
+            {
+              "date": "2026-07-16",
+              "value": -0.8116
+            },
+            {
+              "date": "2026-07-17",
+              "value": 1.1883
+            },
+            {
+              "date": "2026-07-20",
+              "value": 1.5761
+            },
+            {
+              "date": "2026-07-21",
+              "value": -0.7756
+            },
+            {
+              "date": "2026-07-22",
+              "value": -1.0614
+            },
+            {
+              "date": "2026-07-23",
+              "value": -0.2202
+            },
+            {
+              "date": "2026-07-24",
+              "value": -0.8455
+            },
+            {
+              "date": "2026-07-27",
+              "value": -1.5574
+            },
+            {
+              "date": "2026-07-28",
+              "value": -0.8347
+            }
+          ],
+          "available_points": 20,
+          "required_points": 20,
+          "status": "available",
+          "display_status": "available",
+          "missing_point_count": 0,
+          "latest": -0.8347,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-01",
+              "value": null
+            },
+            {
+              "date": "2026-07-02",
+              "value": null
+            },
+            {
+              "date": "2026-07-03",
+              "value": null
+            },
+            {
+              "date": "2026-07-06",
+              "value": null
+            },
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-13",
+              "value": null
+            },
+            {
+              "date": "2026-07-14",
+              "value": null
+            },
+            {
+              "date": "2026-07-15",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-17",
+              "value": null
+            },
+            {
+              "date": "2026-07-20",
+              "value": null
+            },
+            {
+              "date": "2026-07-21",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "display_status": "source_unavailable",
+          "missing_point_count": 20,
+          "latest": null,
+          "missing_reason": "尚未接入可信成分股数据源"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
+    {
+      "pool_id": "a_share_bank_insurance",
+      "sector_id": "bank_insurance",
+      "pool_name": "银行保险",
+      "instrument_code": "512800",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 6,
+      "previous_rank": 9,
+      "rank_change": 3,
+      "score": 70.22,
+      "previous_score": 69.24,
+      "score_change": 0.98,
+      "status": "strengthening",
+      "status_label": "边际增强",
+      "status_change": "边际转弱 → 边际增强",
+      "model_state": "Major Candidate",
+      "conclusion": "银行保险综合分+0.98分；评分与价格增强；量能已确认；内部扩散待接入。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-01",
+              "value": 0
+            },
+            {
+              "date": "2026-07-02",
+              "value": 1.4925
+            },
+            {
+              "date": "2026-07-03",
+              "value": 1.3569
+            },
+            {
+              "date": "2026-07-06",
+              "value": 3.1208
+            },
+            {
+              "date": "2026-07-07",
+              "value": 2.9851
+            },
+            {
+              "date": "2026-07-08",
+              "value": 4.4776
+            },
+            {
+              "date": "2026-07-09",
+              "value": 3.2564
+            },
+            {
+              "date": "2026-07-10",
+              "value": 4.0706
+            },
+            {
+              "date": "2026-07-13",
+              "value": 5.6988
+            },
+            {
+              "date": "2026-07-14",
+              "value": 5.9701
+            },
+            {
+              "date": "2026-07-15",
+              "value": 7.1913
+            },
+            {
+              "date": "2026-07-16",
+              "value": 6.1058
+            },
+            {
+              "date": "2026-07-17",
+              "value": 7.0556
+            },
+            {
+              "date": "2026-07-20",
+              "value": 9.6336
+            },
+            {
+              "date": "2026-07-21",
+              "value": 7.1913
+            },
+            {
+              "date": "2026-07-22",
+              "value": 8.4125
+            },
+            {
+              "date": "2026-07-23",
+              "value": 8.9552
+            },
+            {
+              "date": "2026-07-24",
+              "value": 9.0909
+            },
+            {
+              "date": "2026-07-27",
+              "value": 9.2266
+            },
+            {
+              "date": "2026-07-28",
+              "value": 10.5834
+            }
+          ],
+          "available_points": 20,
+          "required_points": 2,
+          "status": "available",
+          "display_status": "available",
+          "missing_point_count": 0,
+          "latest": 10.5834,
+          "latest_daily_change": 1.61,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-01",
+              "value": 0.7967
+            },
+            {
+              "date": "2026-07-02",
+              "value": 1.6582
+            },
+            {
+              "date": "2026-07-03",
+              "value": 0.7244
+            },
+            {
+              "date": "2026-07-06",
+              "value": 0.7049
+            },
+            {
+              "date": "2026-07-07",
+              "value": 1.1518
+            },
+            {
+              "date": "2026-07-08",
+              "value": 0.7449
+            },
+            {
+              "date": "2026-07-09",
+              "value": 0.7718
+            },
+            {
+              "date": "2026-07-10",
+              "value": 0.6973
+            },
+            {
+              "date": "2026-07-13",
+              "value": 1.1258
+            },
+            {
+              "date": "2026-07-14",
+              "value": 0.7352
+            },
+            {
+              "date": "2026-07-15",
+              "value": 1.5484
+            },
+            {
+              "date": "2026-07-16",
+              "value": 0.696
+            },
+            {
+              "date": "2026-07-17",
+              "value": 1.8439
+            },
+            {
+              "date": "2026-07-20",
+              "value": 0.9401
+            },
+            {
+              "date": "2026-07-21",
+              "value": 1.4628
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0.894
+            },
+            {
+              "date": "2026-07-23",
+              "value": 1.0822
+            },
+            {
+              "date": "2026-07-24",
+              "value": 1.1094
+            },
+            {
+              "date": "2026-07-27",
+              "value": 0.6836
+            },
+            {
+              "date": "2026-07-28",
+              "value": 0.6286
+            }
+          ],
+          "available_points": 20,
+          "required_points": 20,
+          "status": "available",
+          "display_status": "available",
+          "missing_point_count": 0,
+          "latest": 0.6286,
+          "missing_reason": null
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-01",
+              "value": 0
+            },
+            {
+              "date": "2026-07-02",
+              "value": 4.5896
+            },
+            {
+              "date": "2026-07-03",
+              "value": 3.8929
+            },
+            {
+              "date": "2026-07-06",
+              "value": 5.6792
+            },
+            {
+              "date": "2026-07-07",
+              "value": 6.6555
+            },
+            {
+              "date": "2026-07-08",
+              "value": 8.8327
+            },
+            {
+              "date": "2026-07-09",
+              "value": 4.9788
+            },
+            {
+              "date": "2026-07-10",
+              "value": 7.7127
+            },
+            {
+              "date": "2026-07-13",
+              "value": 11.358
+            },
+            {
+              "date": "2026-07-14",
+              "value": 9.4974
+            },
+            {
+              "date": "2026-07-15",
+              "value": 10.7363
+            },
+            {
+              "date": "2026-07-16",
+              "value": 11.5752
+            },
+            {
+              "date": "2026-07-17",
+              "value": 16.5971
+            },
+            {
+              "date": "2026-07-20",
+              "value": 17.8385
+            },
+            {
+              "date": "2026-07-21",
+              "value": 11.9161
+            },
+            {
+              "date": "2026-07-22",
+              "value": 13.7137
+            },
+            {
+              "date": "2026-07-23",
+              "value": 13.7577
+            },
+            {
+              "date": "2026-07-24",
+              "value": 15.9831
+            },
+            {
+              "date": "2026-07-27",
+              "value": 14.8568
+            },
+            {
+              "date": "2026-07-28",
+              "value": 19.3986
+            }
+          ],
+          "available_points": 20,
+          "required_points": 20,
+          "status": "available",
+          "display_status": "available",
+          "missing_point_count": 0,
+          "latest": 19.3986,
           "missing_reason": null
         },
         "internal_breadth": {
@@ -2863,17 +2468,17 @@
       "instrument_code": "515030",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 8,
+      "rank": 7,
       "previous_rank": 4,
-      "rank_change": -4,
-      "score": 69.8045,
+      "rank_change": -3,
+      "score": 68.48,
       "previous_score": 72.3248,
-      "score_change": -2.52,
+      "score_change": -3.84,
       "status": "weakening",
       "status_label": "边际转弱",
       "status_change": "边际增强 → 边际转弱",
       "model_state": "Major Candidate",
-      "conclusion": "新能源车综合分-2.52分，最新价格变动-2.12%，边际证据转弱。",
+      "conclusion": "新能源车综合分-3.84分，最新价格变动-1.74%，边际证据转弱。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -2967,7 +2572,7 @@
           "display_status": "available",
           "missing_point_count": 0,
           "latest": -15.9808,
-          "latest_daily_change": -2.1170610211706076,
+          "latest_daily_change": -1.74,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -3259,17 +2864,17 @@
       "instrument_code": "159928",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 9,
+      "rank": 8,
       "previous_rank": 1,
-      "rank_change": -8,
-      "score": 67.274,
+      "rank_change": -7,
+      "score": 68.02,
       "previous_score": 75.14,
-      "score_change": -7.87,
+      "score_change": -7.12,
       "status": "weakening",
       "status_label": "边际转弱",
       "status_change": "边际增强 → 边际转弱",
       "model_state": "Major Candidate",
-      "conclusion": "消费综合分-7.87分，最新价格变动+1.06%，边际证据转弱。",
+      "conclusion": "消费综合分-7.12分，最新价格变动+1.51%，边际证据转弱。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -3363,7 +2968,7 @@
           "display_status": "available",
           "missing_point_count": 0,
           "latest": 6.3492,
-          "latest_daily_change": 1.0558069381598756,
+          "latest_daily_change": 1.51,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -3649,23 +3254,23 @@
       "boundary": "observe_only; published order preserved; no synthetic values"
     },
     {
-      "pool_id": "a_share_healthcare_pharma",
-      "sector_id": "healthcare_pharma",
-      "pool_name": "医药医疗",
-      "instrument_code": "512010",
+      "pool_id": "a_share_defense_military",
+      "sector_id": "defense_military",
+      "pool_name": "国防军工",
+      "instrument_code": "512660",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 10,
-      "previous_rank": null,
-      "rank_change": null,
-      "score": 66.7998,
-      "previous_score": null,
-      "score_change": null,
-      "status": "maintain",
-      "status_label": "维持观察",
-      "status_change": "新进入观察",
-      "model_state": "Major Candidate",
-      "conclusion": "医药医疗综合分与排名未触发显著边际变化；评分与价格分化；量能已确认；内部扩散待接入。",
+      "rank": 9,
+      "previous_rank": 7,
+      "rank_change": -2,
+      "score": 67.9,
+      "previous_score": 70.02,
+      "score_change": -2.12,
+      "status": "weakening",
+      "status_label": "边际转弱",
+      "status_change": "维持观察 → 边际转弱",
+      "model_state": "Cooling",
+      "conclusion": "国防军工综合分-2.12分，最新价格变动-2.45%，边际证据转弱。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -3678,79 +3283,79 @@
             },
             {
               "date": "2026-07-02",
-              "value": -0.5571
+              "value": -2.7111
             },
             {
               "date": "2026-07-03",
-              "value": 1.1142
+              "value": 0.7746
             },
             {
               "date": "2026-07-06",
-              "value": 2.2284
+              "value": -0.5422
             },
             {
               "date": "2026-07-07",
-              "value": -1.3928
+              "value": -3.6406
             },
             {
               "date": "2026-07-08",
-              "value": -2.7855
+              "value": -5.5771
             },
             {
               "date": "2026-07-09",
-              "value": -0.8357
+              "value": -3.718
             },
             {
               "date": "2026-07-10",
-              "value": 1.1142
+              "value": -0.7746
             },
             {
               "date": "2026-07-13",
-              "value": 0.2786
+              "value": -7.6685
             },
             {
               "date": "2026-07-14",
-              "value": 2.2284
+              "value": -10.3021
             },
             {
               "date": "2026-07-15",
-              "value": 5.571
+              "value": -11.464
             },
             {
               "date": "2026-07-16",
-              "value": 5.2925
+              "value": -13.2455
             },
             {
               "date": "2026-07-17",
-              "value": 1.3928
+              "value": -17.7382
             },
             {
               "date": "2026-07-20",
-              "value": 4.7354
+              "value": -18.2804
             },
             {
               "date": "2026-07-21",
-              "value": 4.7354
+              "value": -15.5693
             },
             {
               "date": "2026-07-22",
-              "value": 5.0139
+              "value": -16.1115
             },
             {
               "date": "2026-07-23",
-              "value": 5.0139
+              "value": -14.7173
             },
             {
               "date": "2026-07-24",
-              "value": 1.6713
+              "value": -16.5763
             },
             {
               "date": "2026-07-27",
-              "value": 2.507
+              "value": -14.4849
             },
             {
               "date": "2026-07-28",
-              "value": 1.9499
+              "value": -16.8861
             }
           ],
           "available_points": 20,
@@ -3758,8 +3363,8 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": 1.9499,
-          "latest_daily_change": -0.5434782608695676,
+          "latest": -16.8861,
+          "latest_daily_change": -2.45,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -3768,83 +3373,83 @@
           "values": [
             {
               "date": "2026-07-01",
-              "value": 1.5959
+              "value": 0.9365
             },
             {
               "date": "2026-07-02",
-              "value": 1.2251
+              "value": 0.9079
             },
             {
               "date": "2026-07-03",
-              "value": 1.0649
+              "value": 1.2639
             },
             {
               "date": "2026-07-06",
-              "value": 1.461
+              "value": 1.1386
             },
             {
               "date": "2026-07-07",
-              "value": 0.948
+              "value": 0.8375
             },
             {
               "date": "2026-07-08",
-              "value": 0.7236
+              "value": 0.713
             },
             {
               "date": "2026-07-09",
-              "value": 0.7852
+              "value": 0.9074
             },
             {
               "date": "2026-07-10",
-              "value": 1.1105
+              "value": 1.7482
             },
             {
               "date": "2026-07-13",
-              "value": 0.7055
+              "value": 1.3803
             },
             {
               "date": "2026-07-14",
-              "value": 0.916
+              "value": 1.0911
             },
             {
               "date": "2026-07-15",
-              "value": 1.9693
+              "value": 0.8211
             },
             {
               "date": "2026-07-16",
-              "value": 1.2438
+              "value": 0.7846
             },
             {
               "date": "2026-07-17",
-              "value": 1.1489
+              "value": 1.1656
             },
             {
               "date": "2026-07-20",
-              "value": 1.0479
+              "value": 1.0245
             },
             {
               "date": "2026-07-21",
-              "value": 0.7512
+              "value": 1.0809
             },
             {
               "date": "2026-07-22",
-              "value": 0.8527
+              "value": 0.9833
             },
             {
               "date": "2026-07-23",
-              "value": 0.7512
+              "value": 0.7668
             },
             {
               "date": "2026-07-24",
-              "value": 0.7705
+              "value": 0.825
             },
             {
               "date": "2026-07-27",
-              "value": 0.5706
+              "value": 1.0849
             },
             {
               "date": "2026-07-28",
-              "value": 0.3584
+              "value": 0.5388
             }
           ],
           "available_points": 20,
@@ -3852,7 +3457,7 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": 0.3584,
+          "latest": 0.5388,
           "missing_reason": null
         },
         "relative_strength": {
@@ -3865,79 +3470,79 @@
             },
             {
               "date": "2026-07-02",
-              "value": 2.4774
+              "value": 0.2577
             },
             {
               "date": "2026-07-03",
-              "value": 3.6441
+              "value": 3.296
             },
             {
               "date": "2026-07-06",
-              "value": 4.7647
+              "value": 1.9254
             },
             {
               "date": "2026-07-07",
-              "value": 2.1216
+              "value": -0.2063
             },
             {
               "date": "2026-07-08",
-              "value": 1.2668
+              "value": -1.6411
             },
             {
               "date": "2026-07-09",
-              "value": 0.8184
+              "value": -2.112
             },
             {
               "date": "2026-07-10",
-              "value": 4.6529
+              "value": 2.698
             },
             {
               "date": "2026-07-13",
-              "value": 5.6476
+              "value": -2.7249
             },
             {
               "date": "2026-07-14",
-              "value": 5.6311
+              "value": -7.3165
             },
             {
               "date": "2026-07-15",
-              "value": 9.0624
+              "value": -8.536
             },
             {
               "date": "2026-07-16",
-              "value": 10.7199
+              "value": -8.7737
             },
             {
               "date": "2026-07-17",
-              "value": 10.4295
+              "value": -10.4065
             },
             {
               "date": "2026-07-20",
-              "value": 12.5736
+              "value": -12.1646
             },
             {
               "date": "2026-07-21",
-              "value": 9.3519
+              "value": -11.8478
             },
             {
               "date": "2026-07-22",
-              "value": 10.1489
+              "value": -12.0095
             },
             {
               "date": "2026-07-23",
-              "value": 9.6427
+              "value": -10.9582
             },
             {
               "date": "2026-07-24",
-              "value": 8.0947
+              "value": -11.3058
             },
             {
               "date": "2026-07-27",
-              "value": 7.7908
+              "value": -10.0769
             },
             {
               "date": "2026-07-28",
-              "value": 10.0768
+              "value": -10.2607
             }
           ],
           "available_points": 20,
@@ -3945,7 +3550,7 @@
           "status": "available",
           "display_status": "available",
           "missing_point_count": 0,
-          "latest": 10.0768,
+          "latest": -10.2607,
           "missing_reason": null
         },
         "internal_breadth": {
@@ -4043,27 +3648,25 @@
         }
       },
       "boundary": "observe_only; published order preserved; no synthetic values"
-    }
-  ],
-  "departures": [
+    },
     {
       "pool_id": "a_share_real_estate_infra",
       "sector_id": "real_estate_infra",
       "pool_name": "地产基建",
       "instrument_code": "512200",
       "mapping_status": "direct_etf",
-      "is_current": false,
-      "rank": null,
+      "is_current": true,
+      "rank": 10,
       "previous_rank": 10,
-      "rank_change": null,
-      "score": 68.92,
-      "previous_score": null,
-      "score_change": null,
-      "status": "exit",
-      "status_label": "退出观察",
-      "status_change": "退出当前观察序列",
+      "rank_change": 0,
+      "score": 65.44,
+      "previous_score": 68.92,
+      "score_change": -3.48,
+      "status": "weakening",
+      "status_label": "边际转弱",
+      "status_change": "状态未变",
       "model_state": "Major Candidate",
-      "conclusion": "地产基建已离开当前前 10，上一观察日排名第 10；不补位、不推断后续涨跌。",
+      "conclusion": "地产基建综合分-3.48分，最新价格变动+1.22%，边际证据转弱。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -4157,7 +3760,7 @@
           "display_status": "available",
           "missing_point_count": 0,
           "latest": -4.9423,
-          "latest_daily_change": 0.79,
+          "latest_daily_change": 1.22,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -4443,6 +4046,7 @@
       "boundary": "observe_only; published order preserved; no synthetic values"
     }
   ],
+  "departures": [],
   "boundary_notes": [
     "Rows preserve the published Top 10 order; this panel does not rescore or rerank sectors.",
     "Missing observations remain null and are never replaced with zero.",

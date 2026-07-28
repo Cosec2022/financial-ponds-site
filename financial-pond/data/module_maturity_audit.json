@@ -2,13 +2,13 @@
   "module_id": "module_maturity_audit_v0_10_39",
   "status": "module_maturity_available",
   "as_of": "2026-07-28",
-  "generated_at": "2026-07-28T05:36:28.682Z",
+  "generated_at": "2026-07-28T16:13:51.608Z",
   "overall": {
     "module_count": 22,
-    "average_progress": 43.86,
-    "decision_path_progress": 50.8,
-    "low_maturity_count": 10,
-    "current_stage": "usable observation prototype; validation path under repair",
+    "average_progress": 45.5,
+    "decision_path_progress": 52.4,
+    "low_maturity_count": 9,
+    "current_stage": "usable observation prototype; mapped ETF history complete, breadth source pending",
     "decision_grade_model": "not yet"
   },
   "recommended_mainline": {
@@ -16,7 +16,7 @@
     "label": "A股真实 Provider -> ETF 份额变化流",
     "priority": 1,
     "rationale": "ETF readiness cannot unlock until provider history produces observed share-change flow. This is the narrowest path from prototype to usable decision support.",
-    "current_progress": 50.8,
+    "current_progress": 52.4,
     "immediate_modules": [
       "FP-DATA-01",
       "FP-FLOW-01",
@@ -25,7 +25,7 @@
       "FP-DAILY-01"
     ],
     "next_actions": [
-      "Add valuation/fundamental real sources; S&P 500 provider second",
+      "Connect a trusted point-in-time constituent source; add valuation/fundamental real sources",
       "Run provider:akshare:history before the full model to verify provider CSV continuity.",
       "Keep valuation/fundamental outputs as blockers until non-manual sources are connected."
     ]
@@ -68,18 +68,17 @@
       "module": "Hard Data Providers",
       "role": "AKShare ETF snapshot, A-share water level, provider adapters",
       "status": "working with fallback",
-      "progress": 66,
-      "next": "Add valuation/fundamental real sources; S&P 500 provider second",
+      "progress": 74,
+      "next": "Connect a trusted point-in-time constituent source; add valuation/fundamental real sources",
       "priority_rank": 8,
       "priority_reading": "add S&P 500 live inputs only after the A-share exact-date review path is stable.",
       "focus_lane": "decision_path",
       "maturity_label": "usable",
       "urgency": "later",
       "blockers": [
-        "real_provider_gap",
-        "cross_market_provider_gap"
+        "real_provider_gap"
       ],
-      "next_action": "Add valuation/fundamental real sources; S&P 500 provider second"
+      "next_action": "Connect a trusted point-in-time constituent source; add valuation/fundamental real sources"
     },
     {
       "module_id": "FP-GPT-01",
@@ -273,23 +272,6 @@
       "next_action": "Add weekly report and proposal sections"
     },
     {
-      "module_id": "FP-PV-01",
-      "module": "Price-Volume Analysis",
-      "role": "Relative strength, volume, breadth, confirmation",
-      "status": "working prototype",
-      "progress": 30,
-      "next": "Accumulate 20 real amount sessions and add source-backed constituent breadth",
-      "priority_rank": null,
-      "priority_reading": null,
-      "focus_lane": "quality_expansion",
-      "maturity_label": "early",
-      "urgency": "later",
-      "blockers": [
-        "real_provider_gap"
-      ],
-      "next_action": "Accumulate 20 real amount sessions and add source-backed constituent breadth"
-    },
-    {
       "module_id": "FP-WATCH-01",
       "module": "Watchlist State Machine",
       "role": "Convert attribution and daily evidence into observation states and review boundaries",
@@ -351,7 +333,7 @@
       "phase": "P2",
       "goal": "A-share sector ETF hard-data path",
       "status": "formed",
-      "progress": 70
+      "progress": 78
     },
     {
       "phase": "P3",
@@ -374,8 +356,8 @@
     {
       "phase": "P6",
       "goal": "Price-volume analysis expansion",
-      "status": "planned",
-      "progress": 10
+      "status": "working prototype",
+      "progress": 35
     },
     {
       "phase": "P7",
@@ -423,18 +405,17 @@
       "module": "Hard Data Providers",
       "role": "AKShare ETF snapshot, A-share water level, provider adapters",
       "status": "working with fallback",
-      "progress": 66,
-      "next": "Add valuation/fundamental real sources; S&P 500 provider second",
+      "progress": 74,
+      "next": "Connect a trusted point-in-time constituent source; add valuation/fundamental real sources",
       "priority_rank": 8,
       "priority_reading": "add S&P 500 live inputs only after the A-share exact-date review path is stable.",
       "focus_lane": "decision_path",
       "maturity_label": "usable",
       "urgency": "later",
       "blockers": [
-        "real_provider_gap",
-        "cross_market_provider_gap"
+        "real_provider_gap"
       ],
-      "next_action": "Add valuation/fundamental real sources; S&P 500 provider second"
+      "next_action": "Connect a trusted point-in-time constituent source; add valuation/fundamental real sources"
     },
     {
       "module_id": "FP-FLOW-01",
@@ -493,17 +474,15 @@
       "module": "Price-Volume Analysis",
       "role": "Relative strength, volume, breadth, confirmation",
       "status": "working prototype",
-      "progress": 30,
-      "next": "Accumulate 20 real amount sessions and add source-backed constituent breadth",
+      "progress": 50,
+      "next": "Keep 20/20 turnover/alignment current and add source-backed constituent breadth",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "quality_expansion",
-      "maturity_label": "early",
+      "maturity_label": "prototype",
       "urgency": "later",
-      "blockers": [
-        "real_provider_gap"
-      ],
-      "next_action": "Accumulate 20 real amount sessions and add source-backed constituent breadth"
+      "blockers": [],
+      "next_action": "Keep 20/20 turnover/alignment current and add source-backed constituent breadth"
     },
     {
       "module_id": "FP-NEWS-01",
@@ -675,15 +654,15 @@
       "module": "Frontend Dashboard",
       "role": "Explain model outputs and data boundaries",
       "status": "usable prototype",
-      "progress": 80,
-      "next": "Validate quantitative rows, mini-series gaps, and mobile layout across daily deployments",
+      "progress": 82,
+      "next": "Keep mobile/desktop overflow and unavailable-source presentation under regression coverage",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "infrastructure",
       "maturity_label": "strong",
       "urgency": "later",
       "blockers": [],
-      "next_action": "Validate quantitative rows, mini-series gaps, and mobile layout across daily deployments"
+      "next_action": "Keep mobile/desktop overflow and unavailable-source presentation under regression coverage"
     },
     {
       "module_id": "FP-RPT-01",
@@ -724,8 +703,8 @@
       "module": "Tests and Validation",
       "role": "Guard contracts, pipeline, Worker assets",
       "status": "working",
-      "progress": 80,
-      "next": "Keep CI-order, history-recovery, and provider-coverage guards current",
+      "progress": 84,
+      "next": "Keep CI-order, history-quality, Worker, and provider-coverage guards current",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "infrastructure",
@@ -735,14 +714,14 @@
         "real_provider_gap",
         "history_depth_gap"
       ],
-      "next_action": "Keep CI-order, history-recovery, and provider-coverage guards current"
+      "next_action": "Keep CI-order, history-quality, Worker, and provider-coverage guards current"
     },
     {
       "module_id": "FP-MAINT-01",
       "module": "Maintenance Protocol",
       "role": "Rules, update protocol, total plan, module plan",
       "status": "working",
-      "progress": 82,
+      "progress": 84,
       "next": "Keep version, plan, package time, commit, and data-through fields synchronized",
       "priority_rank": null,
       "priority_reading": null,

@@ -1,6 +1,6 @@
 {
   "as_of": "2026-07-28",
-  "generated_at": "2026-07-28T05:36:26.801Z",
+  "generated_at": "2026-07-28T16:13:49.622Z",
   "module_id": "sector_rotation_history_v0_10_19",
   "status": "history_available",
   "sample_days": 18,
@@ -11,15 +11,15 @@
     "as_of": "2026-07-28",
     "rotation_state": "selective_rotation",
     "evidence_level": "hard_data_confirmed",
-    "confidence": 0.4594,
+    "confidence": 0.4742,
     "data_completeness": 0.4806,
-    "score_spread": 0.3487,
+    "score_spread": 0.3867,
     "leaders": [
       {
         "rank": 1,
         "sector_id": "brokerage",
         "name": "券商",
-        "score": 0.2335,
+        "score": 0.3022,
         "label": "constructive_inflow_bias",
         "confirmation_inputs": [
           "ETF流",
@@ -31,10 +31,10 @@
       },
       {
         "rank": 2,
-        "sector_id": "resources_materials",
-        "name": "资源材料",
-        "score": 0.1984,
-        "label": "neutral",
+        "sector_id": "semiconductor",
+        "name": "半导体",
+        "score": 0.2039,
+        "label": "constructive_inflow_bias",
         "confirmation_inputs": [
           "ETF流",
           "价量确认",
@@ -47,7 +47,7 @@
         "rank": 3,
         "sector_id": "ai_computer",
         "name": "AI计算机",
-        "score": 0.1113,
+        "score": 0.1973,
         "label": "neutral",
         "confirmation_inputs": [
           "ETF流",
@@ -61,9 +61,9 @@
     "laggards": [
       {
         "rank": 1,
-        "sector_id": "bank_insurance",
-        "name": "银行保险",
-        "score": -0.1151,
+        "sector_id": "real_estate_infra",
+        "name": "地产基建",
+        "score": -0.0845,
         "label": "neutral",
         "confirmation_inputs": [
           "ETF流",
@@ -77,7 +77,7 @@
         "rank": 2,
         "sector_id": "new_energy_ev",
         "name": "新能源车",
-        "score": -0.0635,
+        "score": -0.0741,
         "label": "neutral",
         "confirmation_inputs": [
           "ETF流",
@@ -89,56 +89,53 @@
       },
       {
         "rank": 3,
-        "sector_id": "real_estate_infra",
-        "name": "地产基建",
-        "score": -0.014,
+        "sector_id": "media",
+        "name": "A-share Media Pool",
+        "score": 0.0756,
         "label": "neutral",
         "confirmation_inputs": [
-          "ETF流",
-          "价量确认",
           "总水位",
-          "新闻压力",
-          "基本面代理"
+          "新闻压力"
         ]
       }
     ],
     "cluster_reviews": [
       {
-        "cluster_id": "defensive_domestic",
-        "name": "防御内需",
-        "score": 0.076,
-        "label": "cluster_neutral",
-        "strongest_sector_id": "healthcare_pharma",
-        "weakest_sector_id": "defense_military"
-      },
-      {
-        "cluster_id": "technology_growth",
-        "name": "科技成长",
-        "score": 0.0655,
-        "label": "cluster_neutral",
-        "strongest_sector_id": "ai_computer",
-        "weakest_sector_id": "communication_electronics"
-      },
-      {
         "cluster_id": "financial_beta",
         "name": "金融弹性",
-        "score": 0.0592,
-        "label": "cluster_neutral",
+        "score": 0.238,
+        "label": "cluster_inflow_bias",
         "strongest_sector_id": "brokerage",
         "weakest_sector_id": "bank_insurance"
       },
       {
+        "cluster_id": "technology_growth",
+        "name": "科技成长",
+        "score": 0.195,
+        "label": "cluster_inflow_bias",
+        "strongest_sector_id": "semiconductor",
+        "weakest_sector_id": "communication_electronics"
+      },
+      {
+        "cluster_id": "defensive_domestic",
+        "name": "防御内需",
+        "score": 0.1164,
+        "label": "cluster_neutral",
+        "strongest_sector_id": "defense_military",
+        "weakest_sector_id": "consumer"
+      },
+      {
         "cluster_id": "cyclical_value",
         "name": "顺周期价值",
-        "score": 0.0403,
+        "score": -0.0155,
         "label": "cluster_neutral",
         "strongest_sector_id": "resources_materials",
-        "weakest_sector_id": "new_energy_ev"
+        "weakest_sector_id": "real_estate_infra"
       }
     ],
     "counts": {
       "sectors": 31,
-      "positive_bias_sectors": 2,
+      "positive_bias_sectors": 4,
       "negative_bias_sectors": 0,
       "direct_flow_inputs": 11,
       "price_volume_confirmations": 11,
@@ -289,60 +286,60 @@
       "name": "券商",
       "latest_side": "leader",
       "previous_side": "leader",
-      "latest_score": 0.2335,
+      "latest_score": 0.3022,
       "previous_score": 0.1505,
-      "score_change": 0.083,
+      "score_change": 0.1517,
       "change_label": "strengthening"
     },
     {
-      "sector_id": "resources_materials",
-      "name": "资源材料",
+      "sector_id": "semiconductor",
+      "name": "半导体",
       "latest_side": "leader",
-      "previous_side": "not_tracked",
-      "latest_score": 0.1984,
-      "previous_score": null,
-      "score_change": null,
-      "change_label": "new_or_untracked"
+      "previous_side": "leader",
+      "latest_score": 0.2039,
+      "previous_score": 0.1788,
+      "score_change": 0.0251,
+      "change_label": "stable"
     },
     {
       "sector_id": "ai_computer",
       "name": "AI计算机",
       "latest_side": "leader",
       "previous_side": "not_tracked",
-      "latest_score": 0.1113,
+      "latest_score": 0.1973,
       "previous_score": null,
       "score_change": null,
       "change_label": "new_or_untracked"
-    },
-    {
-      "sector_id": "bank_insurance",
-      "name": "银行保险",
-      "latest_side": "laggard",
-      "previous_side": "not_tracked",
-      "latest_score": -0.1151,
-      "previous_score": null,
-      "score_change": null,
-      "change_label": "new_or_untracked"
-    },
-    {
-      "sector_id": "new_energy_ev",
-      "name": "新能源车",
-      "latest_side": "laggard",
-      "previous_side": "laggard",
-      "latest_score": -0.0635,
-      "previous_score": 0.0619,
-      "score_change": -0.1254,
-      "change_label": "weakening"
     },
     {
       "sector_id": "real_estate_infra",
       "name": "地产基建",
       "latest_side": "laggard",
       "previous_side": "laggard",
-      "latest_score": -0.014,
+      "latest_score": -0.0845,
       "previous_score": -0.0107,
-      "score_change": -0.0033,
+      "score_change": -0.0738,
       "change_label": "stable"
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "name": "新能源车",
+      "latest_side": "laggard",
+      "previous_side": "laggard",
+      "latest_score": -0.0741,
+      "previous_score": 0.0619,
+      "score_change": -0.136,
+      "change_label": "weakening"
+    },
+    {
+      "sector_id": "media",
+      "name": "A-share Media Pool",
+      "latest_side": "laggard",
+      "previous_side": "not_tracked",
+      "latest_score": 0.0756,
+      "previous_score": null,
+      "score_change": null,
+      "change_label": "new_or_untracked"
     }
   ],
   "trend_confirmations": {
@@ -351,7 +348,7 @@
       {
         "sector_id": "brokerage",
         "name": "券商",
-        "score": 0.2335,
+        "score": 0.3022,
         "rank": 1,
         "label": "constructive_inflow_bias",
         "streak_days": 4
@@ -359,20 +356,20 @@
     ],
     "persistent_laggards": [
       {
+        "sector_id": "real_estate_infra",
+        "name": "地产基建",
+        "score": -0.0845,
+        "rank": 1,
+        "label": "neutral",
+        "streak_days": 18
+      },
+      {
         "sector_id": "new_energy_ev",
         "name": "新能源车",
-        "score": -0.0635,
+        "score": -0.0741,
         "rank": 2,
         "label": "neutral",
         "streak_days": 12
-      },
-      {
-        "sector_id": "real_estate_infra",
-        "name": "地产基建",
-        "score": -0.014,
-        "rank": 3,
-        "label": "neutral",
-        "streak_days": 18
       }
     ],
     "strengthening": [
@@ -381,9 +378,9 @@
         "name": "券商",
         "latest_side": "leader",
         "previous_side": "leader",
-        "latest_score": 0.2335,
+        "latest_score": 0.3022,
         "previous_score": 0.1505,
-        "score_change": 0.083,
+        "score_change": 0.1517,
         "change_label": "strengthening"
       }
     ],
@@ -393,23 +390,23 @@
         "name": "新能源车",
         "latest_side": "laggard",
         "previous_side": "laggard",
-        "latest_score": -0.0635,
+        "latest_score": -0.0741,
         "previous_score": 0.0619,
-        "score_change": -0.1254,
+        "score_change": -0.136,
         "change_label": "weakening"
       }
     ],
     "leading_cluster": {
-      "cluster_id": "defensive_domestic",
-      "name": "防御内需",
-      "score": 0.076,
-      "label": "cluster_neutral",
+      "cluster_id": "financial_beta",
+      "name": "金融弹性",
+      "score": 0.238,
+      "label": "cluster_inflow_bias",
       "streak_days": 1
     },
     "lagging_cluster": {
       "cluster_id": "cyclical_value",
       "name": "顺周期价值",
-      "score": 0.0403,
+      "score": -0.0155,
       "label": "cluster_neutral",
       "streak_days": 1
     }
@@ -439,10 +436,10 @@
       },
       {
         "as_of": "2026-07-08",
-        "rank": 2,
+        "rank": 1,
         "side": "leader",
-        "score": 0.1322,
-        "label": "neutral"
+        "score": 0.2218,
+        "label": "constructive_inflow_bias"
       },
       {
         "as_of": "2026-07-09",
@@ -525,7 +522,7 @@
         "as_of": "2026-07-28",
         "rank": 1,
         "side": "leader",
-        "score": 0.2335,
+        "score": 0.3022,
         "label": "constructive_inflow_bias"
       }
     ],
@@ -550,13 +547,6 @@
         "side": "leader",
         "score": 0.2122,
         "label": "constructive_inflow_bias"
-      },
-      {
-        "as_of": "2026-07-08",
-        "rank": 3,
-        "side": "leader",
-        "score": 0.1197,
-        "label": "neutral"
       },
       {
         "as_of": "2026-07-09",
@@ -611,7 +601,7 @@
         "as_of": "2026-07-28",
         "rank": 3,
         "side": "leader",
-        "score": 0.1113,
+        "score": 0.1973,
         "label": "neutral"
       }
     ],
@@ -632,9 +622,9 @@
       },
       {
         "as_of": "2026-07-08",
-        "rank": 1,
+        "rank": 2,
         "side": "leader",
-        "score": 0.1611,
+        "score": 0.1001,
         "label": "neutral"
       },
       {
@@ -706,6 +696,13 @@
         "side": "leader",
         "score": 0.1788,
         "label": "neutral"
+      },
+      {
+        "as_of": "2026-07-28",
+        "rank": 2,
+        "side": "leader",
+        "score": 0.2039,
+        "label": "constructive_inflow_bias"
       }
     ],
     "real_estate_infra": [
@@ -734,7 +731,7 @@
         "as_of": "2026-07-08",
         "rank": 3,
         "side": "laggard",
-        "score": -0.0357,
+        "score": -0.0629,
         "label": "neutral"
       },
       {
@@ -830,9 +827,9 @@
       },
       {
         "as_of": "2026-07-28",
-        "rank": 3,
+        "rank": 1,
         "side": "laggard",
-        "score": -0.014,
+        "score": -0.0845,
         "label": "neutral"
       }
     ],
@@ -862,7 +859,7 @@
         "as_of": "2026-07-08",
         "rank": 2,
         "side": "laggard",
-        "score": -0.0816,
+        "score": -0.1363,
         "label": "neutral"
       },
       {
@@ -960,7 +957,7 @@
         "as_of": "2026-07-28",
         "rank": 2,
         "side": "laggard",
-        "score": -0.0635,
+        "score": -0.0741,
         "label": "neutral"
       }
     ],
@@ -985,6 +982,13 @@
         "side": "laggard",
         "score": 0.0663,
         "label": "neutral"
+      },
+      {
+        "as_of": "2026-07-28",
+        "rank": 3,
+        "side": "laggard",
+        "score": 0.0756,
+        "label": "neutral"
       }
     ],
     "communication_electronics": [
@@ -997,9 +1001,9 @@
       },
       {
         "as_of": "2026-07-08",
-        "rank": 1,
-        "side": "laggard",
-        "score": -0.092,
+        "rank": 3,
+        "side": "leader",
+        "score": 0.0601,
         "label": "neutral"
       },
       {
@@ -1119,17 +1123,17 @@
     ],
     "bank_insurance": [
       {
+        "as_of": "2026-07-08",
+        "rank": 1,
+        "side": "laggard",
+        "score": -0.2014,
+        "label": "outflow_watch"
+      },
+      {
         "as_of": "2026-07-09",
         "rank": 3,
         "side": "laggard",
         "score": 0.0156,
-        "label": "neutral"
-      },
-      {
-        "as_of": "2026-07-28",
-        "rank": 1,
-        "side": "laggard",
-        "score": -0.1151,
         "label": "neutral"
       }
     ],
@@ -1163,13 +1167,6 @@
         "side": "leader",
         "score": 0.1599,
         "label": "neutral"
-      },
-      {
-        "as_of": "2026-07-28",
-        "rank": 2,
-        "side": "leader",
-        "score": 0.1984,
-        "label": "neutral"
       }
     ],
     "healthcare_pharma": [
@@ -1199,7 +1196,6 @@
   "history_recovery": {
     "source_payloads": 16,
     "source_as_of": [
-      "2026-07-10",
       "2026-07-13",
       "2026-07-14",
       "2026-07-15",
@@ -1210,9 +1206,10 @@
       "2026-07-22",
       "2026-07-23",
       "2026-07-24",
-      "2026-07-27"
+      "2026-07-27",
+      "2026-07-28"
     ],
-    "recovered_days": 17
+    "recovered_days": 18
   },
   "history": [
     {
@@ -1625,128 +1622,110 @@
     },
     {
       "as_of": "2026-07-08",
-      "rotation_state": "selective_rotation",
+      "rotation_state": "low_visibility",
       "evidence_level": "hard_data_confirmed",
-      "confidence": 0.4802,
-      "data_completeness": 0.4806,
-      "score_spread": 0.2531,
+      "confidence": 0.0798,
+      "data_completeness": 0.1952,
+      "score_spread": 0.4232,
       "leaders": [
         {
           "rank": 1,
-          "sector_id": "semiconductor",
-          "name": "半导体",
-          "score": 0.1611,
-          "label": "neutral",
+          "sector_id": "brokerage",
+          "name": "券商",
+          "score": 0.2218,
+          "label": "constructive_inflow_bias",
           "confirmation_inputs": [
             "ETF流",
-            "价量确认",
-            "总水位",
-            "新闻压力",
-            "基本面代理"
+            "价量确认"
           ]
         },
         {
           "rank": 2,
-          "sector_id": "brokerage",
-          "name": "券商",
-          "score": 0.1322,
+          "sector_id": "semiconductor",
+          "name": "半导体",
+          "score": 0.1001,
           "label": "neutral",
           "confirmation_inputs": [
             "ETF流",
-            "价量确认",
-            "总水位",
-            "新闻压力",
-            "基本面代理"
+            "价量确认"
           ]
         },
         {
           "rank": 3,
-          "sector_id": "ai_computer",
-          "name": "AI计算机",
-          "score": 0.1197,
+          "sector_id": "communication_electronics",
+          "name": "通信电子",
+          "score": 0.0601,
           "label": "neutral",
           "confirmation_inputs": [
             "ETF流",
-            "价量确认",
-            "总水位",
-            "新闻压力",
-            "基本面代理"
+            "价量确认"
           ]
         }
       ],
       "laggards": [
         {
           "rank": 1,
-          "sector_id": "communication_electronics",
-          "name": "通信电子",
-          "score": -0.092,
-          "label": "neutral",
+          "sector_id": "bank_insurance",
+          "name": "银行保险",
+          "score": -0.2014,
+          "label": "outflow_watch",
           "confirmation_inputs": [
             "ETF流",
-            "价量确认",
-            "总水位",
-            "新闻压力",
-            "基本面代理"
+            "价量确认"
           ]
         },
         {
           "rank": 2,
           "sector_id": "new_energy_ev",
           "name": "新能源车",
-          "score": -0.0816,
+          "score": -0.1363,
           "label": "neutral",
           "confirmation_inputs": [
             "ETF流",
-            "价量确认",
-            "总水位",
-            "新闻压力",
-            "基本面代理"
+            "价量确认"
           ]
         },
         {
           "rank": 3,
           "sector_id": "real_estate_infra",
           "name": "地产基建",
-          "score": -0.0357,
+          "score": -0.0629,
           "label": "neutral",
           "confirmation_inputs": [
             "ETF流",
-            "价量确认",
-            "总水位",
-            "新闻压力",
-            "基本面代理"
+            "价量确认"
           ]
         }
       ],
       "cluster_reviews": [
         {
+          "cluster_id": "technology_growth",
+          "name": "科技成长",
+          "score": 0.0725,
+          "label": "cluster_neutral",
+          "strongest_sector_id": "semiconductor",
+          "weakest_sector_id": "ai_computer"
+        },
+        {
           "cluster_id": "financial_beta",
           "name": "金融弹性",
-          "score": 0.1083,
+          "score": 0.0102,
           "label": "cluster_neutral",
           "strongest_sector_id": "brokerage",
           "weakest_sector_id": "bank_insurance"
         },
         {
-          "cluster_id": "technology_growth",
-          "name": "科技成长",
-          "score": 0.0629,
-          "label": "cluster_neutral",
-          "strongest_sector_id": "semiconductor",
-          "weakest_sector_id": "communication_electronics"
-        },
-        {
           "cluster_id": "defensive_domestic",
           "name": "防御内需",
-          "score": 0.0497,
+          "score": -0.0116,
           "label": "cluster_neutral",
-          "strongest_sector_id": "defense_military",
+          "strongest_sector_id": "healthcare_pharma",
           "weakest_sector_id": "consumer"
         },
         {
           "cluster_id": "cyclical_value",
           "name": "顺周期价值",
-          "score": -0.0224,
+          "score": -0.08,
           "label": "cluster_neutral",
           "strongest_sector_id": "resources_materials",
           "weakest_sector_id": "new_energy_ev"
@@ -1754,8 +1733,8 @@
       ],
       "counts": {
         "sectors": 31,
-        "positive_bias_sectors": 0,
-        "negative_bias_sectors": 0,
+        "positive_bias_sectors": 1,
+        "negative_bias_sectors": 1,
         "direct_flow_inputs": 11,
         "price_volume_confirmations": 11,
         "news_fallback": false
@@ -3556,15 +3535,15 @@
       "as_of": "2026-07-28",
       "rotation_state": "selective_rotation",
       "evidence_level": "hard_data_confirmed",
-      "confidence": 0.4594,
+      "confidence": 0.4742,
       "data_completeness": 0.4806,
-      "score_spread": 0.3487,
+      "score_spread": 0.3867,
       "leaders": [
         {
           "rank": 1,
           "sector_id": "brokerage",
           "name": "券商",
-          "score": 0.2335,
+          "score": 0.3022,
           "label": "constructive_inflow_bias",
           "confirmation_inputs": [
             "ETF流",
@@ -3576,10 +3555,10 @@
         },
         {
           "rank": 2,
-          "sector_id": "resources_materials",
-          "name": "资源材料",
-          "score": 0.1984,
-          "label": "neutral",
+          "sector_id": "semiconductor",
+          "name": "半导体",
+          "score": 0.2039,
+          "label": "constructive_inflow_bias",
           "confirmation_inputs": [
             "ETF流",
             "价量确认",
@@ -3592,7 +3571,7 @@
           "rank": 3,
           "sector_id": "ai_computer",
           "name": "AI计算机",
-          "score": 0.1113,
+          "score": 0.1973,
           "label": "neutral",
           "confirmation_inputs": [
             "ETF流",
@@ -3606,9 +3585,9 @@
       "laggards": [
         {
           "rank": 1,
-          "sector_id": "bank_insurance",
-          "name": "银行保险",
-          "score": -0.1151,
+          "sector_id": "real_estate_infra",
+          "name": "地产基建",
+          "score": -0.0845,
           "label": "neutral",
           "confirmation_inputs": [
             "ETF流",
@@ -3622,7 +3601,7 @@
           "rank": 2,
           "sector_id": "new_energy_ev",
           "name": "新能源车",
-          "score": -0.0635,
+          "score": -0.0741,
           "label": "neutral",
           "confirmation_inputs": [
             "ETF流",
@@ -3634,56 +3613,53 @@
         },
         {
           "rank": 3,
-          "sector_id": "real_estate_infra",
-          "name": "地产基建",
-          "score": -0.014,
+          "sector_id": "media",
+          "name": "A-share Media Pool",
+          "score": 0.0756,
           "label": "neutral",
           "confirmation_inputs": [
-            "ETF流",
-            "价量确认",
             "总水位",
-            "新闻压力",
-            "基本面代理"
+            "新闻压力"
           ]
         }
       ],
       "cluster_reviews": [
         {
-          "cluster_id": "defensive_domestic",
-          "name": "防御内需",
-          "score": 0.076,
-          "label": "cluster_neutral",
-          "strongest_sector_id": "healthcare_pharma",
-          "weakest_sector_id": "defense_military"
-        },
-        {
-          "cluster_id": "technology_growth",
-          "name": "科技成长",
-          "score": 0.0655,
-          "label": "cluster_neutral",
-          "strongest_sector_id": "ai_computer",
-          "weakest_sector_id": "communication_electronics"
-        },
-        {
           "cluster_id": "financial_beta",
           "name": "金融弹性",
-          "score": 0.0592,
-          "label": "cluster_neutral",
+          "score": 0.238,
+          "label": "cluster_inflow_bias",
           "strongest_sector_id": "brokerage",
           "weakest_sector_id": "bank_insurance"
         },
         {
+          "cluster_id": "technology_growth",
+          "name": "科技成长",
+          "score": 0.195,
+          "label": "cluster_inflow_bias",
+          "strongest_sector_id": "semiconductor",
+          "weakest_sector_id": "communication_electronics"
+        },
+        {
+          "cluster_id": "defensive_domestic",
+          "name": "防御内需",
+          "score": 0.1164,
+          "label": "cluster_neutral",
+          "strongest_sector_id": "defense_military",
+          "weakest_sector_id": "consumer"
+        },
+        {
           "cluster_id": "cyclical_value",
           "name": "顺周期价值",
-          "score": 0.0403,
+          "score": -0.0155,
           "label": "cluster_neutral",
           "strongest_sector_id": "resources_materials",
-          "weakest_sector_id": "new_energy_ev"
+          "weakest_sector_id": "real_estate_infra"
         }
       ],
       "counts": {
         "sectors": 31,
-        "positive_bias_sectors": 2,
+        "positive_bias_sectors": 4,
         "negative_bias_sectors": 0,
         "direct_flow_inputs": 11,
         "price_volume_confirmations": 11,

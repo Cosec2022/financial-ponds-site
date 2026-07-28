@@ -1,14 +1,14 @@
 {
   "as_of": "2026-07-28",
-  "generated_at": "2026-07-28T05:36:26.456Z",
+  "generated_at": "2026-07-28T16:13:49.269Z",
   "module_id": "news_daily_v1",
   "status": "news_available",
-  "headline": "8 rule-matched news events; strongest mapped pressure is brokerage (0.92).",
+  "headline": "9 rule-matched news events; strongest mapped pressure is brokerage (0.92).",
   "counts": {
     "collected_items": 24,
-    "matched_events": 8,
-    "observations": 10,
-    "affected_sectors": 7
+    "matched_events": 9,
+    "observations": 11,
+    "affected_sectors": 8
   },
   "collection": {
     "mode": "real",
@@ -170,9 +170,80 @@
     ],
     "top_negative_sectors": [
       {
-        "sector_id": "communication_electronics",
-        "score": -0.135,
-        "event_count": 4,
+        "sector_id": "new_energy_ev",
+        "score": -0.202,
+        "event_count": 1,
+        "top_events": [
+          {
+            "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
+            "bucket": "Macro liquidity",
+            "channel": "liquidity",
+            "score": -0.202,
+            "direction": "negative",
+            "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "new_energy_ev",
+              "consumer"
+            ],
+            "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5"
+          }
+        ]
+      },
+      {
+        "sector_id": "ai_computer",
+        "score": -0.158,
+        "event_count": 6,
+        "top_events": [
+          {
+            "title": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
+            "bucket": "China policy",
+            "channel": "external_risk",
+            "score": -0.293,
+            "direction": "negative",
+            "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VbzBmX1FPUDdTQV9xNFpGMlZQNDRzdzdxenRXdy02VkYxQTk1RGR6djctdjdrazRlT3kxaF9lbG9WNzJ3VHpkTW0yRzM5bGdzajlwQWR3RUJwYU44Vi1SX3IxdGxDVGtEaVVQelRVTGlHVDJFWVE?oc=5"
+          },
+          {
+            "title": "“Nvidia Is Hamstrung Too”: Packaging Emerges as AI Chips’ New Bottleneck, Intensifying Global Capex Race - economy.ac",
+            "bucket": "Global technology risk",
+            "channel": "industry_cycle",
+            "score": 0.225,
+            "direction": "positive",
+            "reason": "Global AI and chip demand news can support domestic technology expectations.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGY3NZZm1keDlNaXB2dzlHTWdSR3UxSDBucktFOEhfcGpsNk9vRTdicDFkNlFMUGdsdklCeFNuUzNyczFadUZoR3lNaDVyZHAzQzNMVHlaQQ?oc=5"
+          },
+          {
+            "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
+            "bucket": "Global technology risk",
+            "channel": "industry_cycle",
+            "score": 0.225,
+            "direction": "positive",
+            "reason": "Global AI and chip demand news can support domestic technology expectations.",
+            "affected_sector_ids": [
+              "semiconductor",
+              "ai_computer",
+              "communication_electronics"
+            ],
+            "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
+          }
+        ]
+      },
+      {
+        "sector_id": "semiconductor",
+        "score": -0.158,
+        "event_count": 6,
         "top_events": [
           {
             "title": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
@@ -306,8 +377,8 @@
       },
       {
         "bucket": "Macro liquidity",
-        "score": 0.135,
-        "event_count": 3,
+        "score": -0.067,
+        "event_count": 4,
         "top_events": [
           {
             "title": "Bitcoin (BTCUSD) Is down 2.49% on Jul 28: Why It Happened - TradingKey",
@@ -506,8 +577,8 @@
     },
     {
       "sector_id": "consumer",
-      "score": 0.18,
-      "event_count": 1,
+      "score": -0.022,
+      "event_count": 2,
       "top_events": [
         {
           "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
@@ -523,104 +594,21 @@
             "consumer"
           ],
           "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
-        }
-      ]
-    },
-    {
-      "sector_id": "semiconductor",
-      "score": 0.045,
-      "event_count": 5,
-      "top_events": [
+        },
         {
-          "title": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
-          "bucket": "China policy",
-          "channel": "external_risk",
-          "score": -0.293,
+          "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
+          "bucket": "Macro liquidity",
+          "channel": "liquidity",
+          "score": -0.202,
           "direction": "negative",
-          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
           "affected_sector_ids": [
             "semiconductor",
             "ai_computer",
-            "communication_electronics"
+            "new_energy_ev",
+            "consumer"
           ],
-          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VbzBmX1FPUDdTQV9xNFpGMlZQNDRzdzdxenRXdy02VkYxQTk1RGR6djctdjdrazRlT3kxaF9lbG9WNzJ3VHpkTW0yRzM5bGdzajlwQWR3RUJwYU44Vi1SX3IxdGxDVGtEaVVQelRVTGlHVDJFWVE?oc=5"
-        },
-        {
-          "title": "“Nvidia Is Hamstrung Too”: Packaging Emerges as AI Chips’ New Bottleneck, Intensifying Global Capex Race - economy.ac",
-          "bucket": "Global technology risk",
-          "channel": "industry_cycle",
-          "score": 0.225,
-          "direction": "positive",
-          "reason": "Global AI and chip demand news can support domestic technology expectations.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGY3NZZm1keDlNaXB2dzlHTWdSR3UxSDBucktFOEhfcGpsNk9vRTdicDFkNlFMUGdsdklCeFNuUzNyczFadUZoR3lNaDVyZHAzQzNMVHlaQQ?oc=5"
-        },
-        {
-          "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
-          "bucket": "Global technology risk",
-          "channel": "industry_cycle",
-          "score": 0.225,
-          "direction": "positive",
-          "reason": "Global AI and chip demand news can support domestic technology expectations.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
-        }
-      ]
-    },
-    {
-      "sector_id": "ai_computer",
-      "score": 0.045,
-      "event_count": 5,
-      "top_events": [
-        {
-          "title": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
-          "bucket": "China policy",
-          "channel": "external_risk",
-          "score": -0.293,
-          "direction": "negative",
-          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VbzBmX1FPUDdTQV9xNFpGMlZQNDRzdzdxenRXdy02VkYxQTk1RGR6djctdjdrazRlT3kxaF9lbG9WNzJ3VHpkTW0yRzM5bGdzajlwQWR3RUJwYU44Vi1SX3IxdGxDVGtEaVVQelRVTGlHVDJFWVE?oc=5"
-        },
-        {
-          "title": "“Nvidia Is Hamstrung Too”: Packaging Emerges as AI Chips’ New Bottleneck, Intensifying Global Capex Race - economy.ac",
-          "bucket": "Global technology risk",
-          "channel": "industry_cycle",
-          "score": 0.225,
-          "direction": "positive",
-          "reason": "Global AI and chip demand news can support domestic technology expectations.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGY3NZZm1keDlNaXB2dzlHTWdSR3UxSDBucktFOEhfcGpsNk9vRTdicDFkNlFMUGdsdklCeFNuUzNyczFadUZoR3lNaDVyZHAzQzNMVHlaQQ?oc=5"
-        },
-        {
-          "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
-          "bucket": "Global technology risk",
-          "channel": "industry_cycle",
-          "score": 0.225,
-          "direction": "positive",
-          "reason": "Global AI and chip demand news can support domestic technology expectations.",
-          "affected_sector_ids": [
-            "semiconductor",
-            "ai_computer",
-            "communication_electronics"
-          ],
-          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
+          "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5"
         }
       ]
     },
@@ -670,6 +658,126 @@
             "communication_electronics"
           ],
           "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
+        }
+      ]
+    },
+    {
+      "sector_id": "semiconductor",
+      "score": -0.158,
+      "event_count": 6,
+      "top_events": [
+        {
+          "title": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
+          "bucket": "China policy",
+          "channel": "external_risk",
+          "score": -0.293,
+          "direction": "negative",
+          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VbzBmX1FPUDdTQV9xNFpGMlZQNDRzdzdxenRXdy02VkYxQTk1RGR6djctdjdrazRlT3kxaF9lbG9WNzJ3VHpkTW0yRzM5bGdzajlwQWR3RUJwYU44Vi1SX3IxdGxDVGtEaVVQelRVTGlHVDJFWVE?oc=5"
+        },
+        {
+          "title": "“Nvidia Is Hamstrung Too”: Packaging Emerges as AI Chips’ New Bottleneck, Intensifying Global Capex Race - economy.ac",
+          "bucket": "Global technology risk",
+          "channel": "industry_cycle",
+          "score": 0.225,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGY3NZZm1keDlNaXB2dzlHTWdSR3UxSDBucktFOEhfcGpsNk9vRTdicDFkNlFMUGdsdklCeFNuUzNyczFadUZoR3lNaDVyZHAzQzNMVHlaQQ?oc=5"
+        },
+        {
+          "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
+          "bucket": "Global technology risk",
+          "channel": "industry_cycle",
+          "score": 0.225,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
+        }
+      ]
+    },
+    {
+      "sector_id": "ai_computer",
+      "score": -0.158,
+      "event_count": 6,
+      "top_events": [
+        {
+          "title": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
+          "bucket": "China policy",
+          "channel": "external_risk",
+          "score": -0.293,
+          "direction": "negative",
+          "reason": "Global technology stress can pressure A-share technology sectors, but the model treats it as broad risk, not a precise causal edge.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VbzBmX1FPUDdTQV9xNFpGMlZQNDRzdzdxenRXdy02VkYxQTk1RGR6djctdjdrazRlT3kxaF9lbG9WNzJ3VHpkTW0yRzM5bGdzajlwQWR3RUJwYU44Vi1SX3IxdGxDVGtEaVVQelRVTGlHVDJFWVE?oc=5"
+        },
+        {
+          "title": "“Nvidia Is Hamstrung Too”: Packaging Emerges as AI Chips’ New Bottleneck, Intensifying Global Capex Race - economy.ac",
+          "bucket": "Global technology risk",
+          "channel": "industry_cycle",
+          "score": 0.225,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGY3NZZm1keDlNaXB2dzlHTWdSR3UxSDBucktFOEhfcGpsNk9vRTdicDFkNlFMUGdsdklCeFNuUzNyczFadUZoR3lNaDVyZHAzQzNMVHlaQQ?oc=5"
+        },
+        {
+          "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
+          "bucket": "Global technology risk",
+          "channel": "industry_cycle",
+          "score": 0.225,
+          "direction": "positive",
+          "reason": "Global AI and chip demand news can support domestic technology expectations.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "communication_electronics"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5"
+        }
+      ]
+    },
+    {
+      "sector_id": "new_energy_ev",
+      "score": -0.202,
+      "event_count": 1,
+      "top_events": [
+        {
+          "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
+          "bucket": "Macro liquidity",
+          "channel": "liquidity",
+          "score": -0.202,
+          "direction": "negative",
+          "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+          "affected_sector_ids": [
+            "semiconductor",
+            "ai_computer",
+            "new_energy_ev",
+            "consumer"
+          ],
+          "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5"
         }
       ]
     }
@@ -761,8 +869,8 @@
     },
     {
       "bucket": "Macro liquidity",
-      "score": 0.135,
-      "event_count": 3,
+      "score": -0.067,
+      "event_count": 4,
       "top_events": [
         {
           "title": "Bitcoin (BTCUSD) Is down 2.49% on Jul 28: Why It Happened - TradingKey",
@@ -923,6 +1031,21 @@
         "consumer"
       ],
       "link": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5"
+    },
+    {
+      "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
+      "bucket": "Macro liquidity",
+      "channel": "liquidity",
+      "score": -0.202,
+      "direction": "negative",
+      "reason": "Tighter global liquidity or FX pressure can reduce A-share risk appetite.",
+      "affected_sector_ids": [
+        "semiconductor",
+        "ai_computer",
+        "new_energy_ev",
+        "consumer"
+      ],
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5"
     }
   ],
   "interpretation_boundary": [

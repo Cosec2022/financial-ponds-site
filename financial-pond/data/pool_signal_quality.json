@@ -1,7 +1,7 @@
 {
   "module_id": "pool_signal_quality_v0_10_55",
   "as_of": "2026-07-28",
-  "generated_at": "2026-07-28T05:37:17.399Z",
+  "generated_at": "2026-07-28T16:14:15.347Z",
   "rows": [
     {
       "pool_id": "a_share_a_share",
@@ -566,7 +566,7 @@
     },
     {
       "pool_id": "a_share_ai_computer",
-      "pool_name": "AI and Computer",
+      "pool_name": "AI计算机",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -583,7 +583,7 @@
     },
     {
       "pool_id": "a_share_bank_insurance",
-      "pool_name": "Bank and Insurance",
+      "pool_name": "银行保险",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -702,7 +702,7 @@
     },
     {
       "pool_id": "a_share_communication_electronics",
-      "pool_name": "Communication and Electronics",
+      "pool_name": "通信电子",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -753,7 +753,7 @@
     },
     {
       "pool_id": "a_share_defense_military",
-      "pool_name": "Defense and Military",
+      "pool_name": "军工",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -974,7 +974,7 @@
     },
     {
       "pool_id": "a_share_resources_materials",
-      "pool_name": "资源材料",
+      "pool_name": "Resources and Materials",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
@@ -1008,7 +1008,7 @@
     },
     {
       "pool_id": "a_share_semiconductor",
-      "pool_name": "Semiconductor",
+      "pool_name": "半导体",
       "mapping_status": "direct_etf",
       "proxy_level": "exact",
       "mapping_confidence": 0.94,
