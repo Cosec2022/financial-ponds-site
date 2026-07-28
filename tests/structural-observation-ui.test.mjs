@@ -117,7 +117,7 @@ test("status labels and published change language stay Chinese and evidence-boun
   );
 });
 
-test("site implementation uses the shared Top 10 contract, selectable details, mobile cards, sticky offset, and formal brand assets", async () => {
+test("site implementation uses a fail-closed dark quantitative panel, mobile cards, sticky offset, and formal brand assets", async () => {
   const [app, html, css, builder, stateModel, mark, favicon] = await Promise.all([
     readFile(new URL("../financial-pond/app.js", import.meta.url), "utf8"),
     readFile(new URL("../financial-pond/index.html", import.meta.url), "utf8"),
@@ -128,8 +128,9 @@ test("site implementation uses the shared Top 10 contract, selectable details, m
     readFile(new URL("../financial-pond/favicon.svg", import.meta.url), "utf8")
   ]);
 
-  assert.match(html, /Top 10 结构性观察/);
-  assert.match(html, /不等于未来上涨概率/);
+  assert.match(html, /行业量价观察/);
+  assert.match(html, /成交额\/20日均值/);
+  assert.match(html, /缺失数据保留为空/);
   assert.match(html, /financial-ponds-mark\.svg/);
   assert.match(html, /favicon\.svg/);
   assert.match(html, /apple-touch-icon\.png/);
@@ -137,7 +138,13 @@ test("site implementation uses the shared Top 10 contract, selectable details, m
 
   assert.match(app, /structuralObservationRows\(state\.summary, state\.ledger\)/);
   assert.match(app, /state\.selectedPoolId = button\.getAttribute/);
-  assert.match(app, /state\.selectedPoolId = rowsForToday\(\)\[0\]\?\.pool_id/);
+  assert.match(app, /state\.selectedPoolId = panelRows\(\)\[0\]\?\.pool_id/);
+  assert.match(app, /renderMiniSeries\(row\.series\?\.price_strength\)/);
+  assert.match(app, /renderMiniSeries\(row\.series\?\.turnover_activity\)/);
+  assert.match(app, /renderMiniSeries\(row\.series\?\.relative_strength\)/);
+  assert.match(app, /renderMiniSeries\(row\.series\?\.internal_breadth\)/);
+  assert.match(app, /metric\.status !== "available"/);
+  assert.doesNotMatch(app, /point\.value \?\? 0/);
   for (const name of ["通信电子", "资源材料", "半导体", "AI计算机", "券商", "新能源车", "银行保险", "国防军工", "消费", "医药医疗"]) {
     assert.match(app, new RegExp(name));
   }
@@ -147,8 +154,10 @@ test("site implementation uses the shared Top 10 contract, selectable details, m
   assert.doesNotMatch(stateModel, /STRUCTURAL_OBSERVATION_LIMIT/);
   assert.match(stateModel, /recentTopSessions[\s\S]*?slice\(0,\s*5\)/);
 
-  assert.match(css, /grid-template-areas:[\s\S]*"rank name state"/);
-  assert.match(css, /\.candidate-copy::before/);
+  assert.match(css, /\.sector-quant-row/);
+  assert.match(css, /background:\s*#07111f/);
+  assert.match(css, /\.quant-spark-grid/);
+  assert.match(css, /\.mini-series\.unavailable/);
   assert.match(css, /\.candidates-panel[\s\S]*scroll-margin-top:/);
   assert.doesNotMatch(css, /\.candidate-table\s*\{\s*overflow-x:\s*auto/);
   assert.match(mark, /^<svg/);

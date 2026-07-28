@@ -18,6 +18,7 @@ node scripts/build-daily-delta-report.mjs
 node scripts/build-evening-observation-summary.mjs
 node scripts/build-candidate-price-basis.mjs
 node scripts/build-candidate-state-model.mjs
+node scripts/build-sector-observation-panel.mjs
 node scripts/build-daily-longitudinal-archive.mjs
 node scripts/build-candidate-outcome-reviews.mjs
 node scripts/build-daily-outcome-label-ledger.mjs

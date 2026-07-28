@@ -10,11 +10,11 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
   assert.match(html, /Financial Ponds/);
-  assert.match(html, /v0\.10\.75/);
+  assert.match(html, /v0\.10\.76/);
   assert.match(html, /每日市场穿透/);
   assert.match(html, /今晚市场结论/);
-  assert.match(html, /Top 10 结构性观察/);
-  assert.match(html, /技术详情/);
+  assert.match(html, /行业量价观察/);
+  assert.match(html, /近20个交易日/);
   assert.match(html, /证据与复盘/);
   assert.match(html, /高级诊断/);
   assert.match(html, /板块状态地图/);
@@ -76,6 +76,15 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(rotationHistoryJson.module_id, "sector_rotation_history_v0_10_19");
   assert.ok(rotationHistoryJson.trend_confirmations);
   assert.ok(rotationHistoryJson.sample_days >= 1);
+
+  const observationPanel = await worker.fetch(request("/data/sector_observation_panel.json"), {});
+  assert.equal(observationPanel.status, 200);
+  const observationPanelJson = await observationPanel.json();
+  assert.equal(observationPanelJson.module_id, "sector_observation_panel_v1");
+  assert.equal(observationPanelJson.window.target_trading_days, 20);
+  assert.equal(observationPanelJson.rows.length, 10);
+  assert.ok(observationPanelJson.rows.every((row) => row.boundary.includes("observe_only")));
+  assert.ok(observationPanelJson.rows.every((row) => ["price_strength", "turnover_activity", "relative_strength", "internal_breadth"].every((key) => Array.isArray(row.series[key].values))));
 
   const moduleReview = await worker.fetch(request("/data/sector_module_review.json"), {});
   assert.equal(moduleReview.status, 200);

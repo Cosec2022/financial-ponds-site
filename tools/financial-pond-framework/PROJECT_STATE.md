@@ -5,17 +5,25 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.75`
+Package version: `0.10.76`
 
 Purpose of this version:
 
+- replace the repeated long-text Top 10 list with one dark quantitative industry row per formally published sector
+- publish four 20-session mini-series contracts: normalized price strength, amount/20-day mean, exact-date relative strength versus 510300, and source-backed internal breadth
+- preserve missing observations as `null`; never draw zero substitutes or accept mock breadth as a constituent ratio
+- retain the exact v0.10.75 model scores and published order while adding score, rank, and state deltas
+- distinguish marginal strengthening, maintain, marginal weakening, price-only anomaly, insufficient evidence, and observation exit through deterministic rules
+- publish an explicit `当前模型区分度不足` warning instead of forcing different labels when the data cannot distinguish sectors
+- keep turnover activity unavailable until 20 real amount rows exist and breadth unavailable until a trusted constituent ratio exists
+- preserve `observe_only`: the panel is not a buy ranking, rise probability, allocation recommendation, or trading instruction
+
+v0.10.75 Top 10 presentation retained below:
+
 - publish the real first 10 structural observations in the exact order produced by the backend model
-- share one Top 10 limit across summary, state history, market-penetration checks, and the frontend without changing any score or ranking formula
-- add a Chinese human-readable explanation layer grounded in mapping, price strength, liquidity, continuity, diffusion, overheat, and risk-gate fields
-- let the reader switch industry details while selecting the first published observation by default
+- keep the Top 10 limit shared without changing any score or ranking formula
 - render fewer than 10 rows without padding when the valid published set is short
-- add a formal vector Financial Ponds logo, pond-only favicon, and readable mobile card layout
-- preserve `observe_only`: the list is not a buy ranking, rise probability, allocation recommendation, or trading instruction
+- retain the formal vector logo, pond-only favicon, and responsive layout
 
 v0.10.74 daily Provider persistence retained below:
 

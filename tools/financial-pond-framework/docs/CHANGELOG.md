@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.10.76
+
+- replaced the repeated long-form Top 10 list and duplicate detail card with a dark one-row-per-sector quantitative panel
+- added `sector_observation_panel.json` with four 20-session mini-series, official score/rank deltas, state changes, departures, field definitions, and status rules
+- derived price strength only from exact mapped ETF closes and relative strength only from exact-date ETF/510300 closes
+- fail closed on incomplete 20-day amount history and unavailable constituent breadth; missing values remain `null` and mock breadth is rejected
+- added deterministic marginal-strengthening, maintain, marginal-weakening, price-only, insufficient-evidence, and exit states without forcing label diversity
+- kept v0.10.75 model scores and published ordering unchanged
+- added builder, published-data, Worker/API, UI, null-preservation, mapping, breadth-source, status, and mobile visualization regression coverage
+- retained the `observe_only` boundary: this is not a buy list, upside probability, allocation advice, or trading instruction
+
 ## v0.10.75
 
 - expanded the published observation surface from five to the real first ten model-ranked industries through one shared limit

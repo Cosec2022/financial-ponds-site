@@ -9,6 +9,7 @@ const requiredFiles = [
   ["sector_flow_review.json", (json) => Boolean(json.data_availability?.mode) && Array.isArray(json.sector_reviews)],
   ["sector_rotation_intelligence.json", (json) => json.module_id === "sector_rotation_intelligence_v0_10_5"],
   ["sector_rotation_history.json", (json) => json.module_id === "sector_rotation_history_v0_10_19"],
+  ["sector_observation_panel.json", validateSectorObservationPanel],
   ["sector_module_review.json", (json) => json.module_id === "sector_module_review_v0_1"],
   ["etf_decision_readiness.json", (json) => json.status === "readiness_available" && Boolean(json.gates) && Boolean(json.gates.share_change_diagnostics)],
   ["data_reality_audit.json", (json) => json.status === "audit_available" && Array.isArray(json.layers)],
@@ -83,6 +84,33 @@ const directionResults = new Set(["aligned", "opposite", "neutral", "unavailable
 const readinessStates = new Set(["ready", "partially_ready", "not_ready"]);
 const candidateStates = new Set(["Noise", "Pulse", "Early Right", "Major Candidate", "Confirmed Trend", "Overheated", "Cooling", "Failed"]);
 const riskGateStatuses = new Set(["pass", "caution", "block", "insufficient_data"]);
+const sectorObservationStatuses = new Set(["strengthening", "maintain", "weakening", "price_only", "insufficient", "exit"]);
+
+function validateSectorObservationPanel(json) {
+  const metricOk = (metric) => metric
+    && Array.isArray(metric.values)
+    && metric.values.every((point) => Boolean(point.date) && (point.value === null || Number.isFinite(point.value)))
+    && Number.isInteger(metric.available_points)
+    && ["available", "insufficient_data"].includes(metric.status);
+  const rowOk = (row) => Boolean(row.pool_id)
+    && sectorObservationStatuses.has(row.status)
+    && Boolean(row.status_label)
+    && Boolean(row.conclusion)
+    && row.boundary?.includes("observe_only")
+    && ["price_strength", "turnover_activity", "relative_strength", "internal_breadth"].every((key) => metricOk(row.series?.[key]));
+  return json.module_id === "sector_observation_panel_v1"
+    && ["panel_available", "no_published_sectors"].includes(json.status)
+    && json.window?.target_trading_days === 20
+    && Array.isArray(json.window.observed_dates)
+    && Array.isArray(json.rows)
+    && Array.isArray(json.departures)
+    && json.rows.every(rowOk)
+    && json.departures.every(rowOk)
+    && Boolean(json.field_definitions)
+    && Array.isArray(json.status_rules)
+    && Boolean(json.differentiation?.status)
+    && json.boundary_notes?.some((note) => note.includes("observe_only"));
+}
 
 function validateMarketPenetrationBrief(json) {
   const shared = Boolean(json.as_of)
