@@ -75,9 +75,29 @@ jobs:
           npm test
           npm run provider:akshare:doctor
           npm run a-share:daily:ci -- --as-of "$AS_OF"
-          python3 providers/akshare_etf_bridge/backfill_market_history.py \
-            --end-date "$AS_OF" \
-            --target-trade-days 60
+          REPLAY_MODE="${{ inputs.replay_mode }}"
+          if [[ -z "$REPLAY_MODE" ]]; then REPLAY_MODE="live"; fi
+          case "$REPLAY_MODE" in
+            live)
+              python3 providers/akshare_etf_bridge/backfill_market_history.py \
+                --mode live \
+                --end-date "$AS_OF" \
+                --target-trade-days 60
+              ;;
+            historical_fetch)
+              python3 providers/akshare_etf_bridge/backfill_market_history.py \
+                --mode strict \
+                --end-date "$AS_OF" \
+                --target-trade-days 60
+              ;;
+            offline_snapshot)
+              echo "offline_snapshot: skip network market history refresh"
+              ;;
+            *)
+              echo "Unsupported replay_mode: $REPLAY_MODE" >&2
+              exit 2
+              ;;
+          esac
           npm run pool:analysis -- --as-of "$AS_OF"
           npm run data:vault -- --as-of "$AS_OF"
           npm run data:audit -- --as-of "$AS_OF"

@@ -37,7 +37,10 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(workflow, /npm ci/);
   assert.doesNotMatch(workflow, /\bnpm install\b/);
   assert.match(workflow, /npm run a-share:daily:ci -- --as-of "\$AS_OF"/);
-  assert.match(workflow, /backfill_market_history\.py[\s\\]*\n\s*--end-date "\$AS_OF"[\s\\]*\n\s*--target-trade-days 60/);
+  assert.match(workflow, /backfill_market_history\.py[\s\\]*\n\s*--mode live[\s\\]*\n\s*--end-date "\$AS_OF"[\s\\]*\n\s*--target-trade-days 60/);
+  assert.match(workflow, /historical_fetch\)[\s\S]*backfill_market_history\.py[\s\\]*\n\s*--mode strict/);
+  assert.match(workflow, /offline_snapshot\)[\s\S]*skip network market history refresh/);
+  assert.match(workflow, /if \[\[ -z "\$REPLAY_MODE" \]\]; then REPLAY_MODE="live"; fi/);
   assert.doesNotMatch(workflow, /npm run cycle -- "\$AS_OF"/);
   assert.match(workflow, /npm run pool:analysis -- --as-of "\$AS_OF"/);
   assert.ok(workflow.indexOf("npm run data:audit") > workflow.indexOf("npm run pool:analysis"));
