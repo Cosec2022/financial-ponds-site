@@ -75,6 +75,9 @@ jobs:
           npm test
           npm run provider:akshare:doctor
           npm run a-share:daily:ci -- --as-of "$AS_OF"
+          python3 providers/akshare_etf_bridge/backfill_market_history.py \
+            --end-date "$AS_OF" \
+            --target-trade-days 60
           npm run pool:analysis -- --as-of "$AS_OF"
           npm run data:vault -- --as-of "$AS_OF"
           npm run data:audit -- --as-of "$AS_OF"

@@ -4,7 +4,7 @@
 AKShare remains the primary adapter. A bounded curl request to the same
 Eastmoney kline endpoint is used only when the local Python TLS stack cannot
 complete the AKShare request. Rows are accepted only for exact benchmark trade
-dates at or before the fixed cutoff.
+dates at or before the requested Daily `AS_OF` cutoff.
 """
 
 from __future__ import annotations
@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 import subprocess
 import sys
 import time
@@ -20,13 +21,19 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Callable
 from urllib.parse import urlencode
+from zoneinfo import ZoneInfo
 
 from export_a_share_etf_daily import dataframe_records, load_akshare_module, read_json
+from persist_daily_etf_history import (
+    OHLCVA_FIELDS,
+    SNAPSHOT_UPDATE_FIELDS,
+    complete_valid_bar,
+)
 
 
 BRIDGE_ID = "market_history_backfill_v0_10_77"
 ENDPOINT = "https://push2his.eastmoney.com/api/qt/stock/kline/get"
-CORE_FIELDS = ("open", "high", "low", "close", "volume", "amount")
+CORE_FIELDS = OHLCVA_FIELDS
 CSV_FIELDS = [
     "date", "trade_date", "sector_id", "sector_node_id", "fund_code", "fund_name",
     "open", "high", "low", "close", "volume", "amount", "pct_change", "turnover",
@@ -98,7 +105,7 @@ def main() -> int:
             })
             time.sleep(0.75)
 
-        merged = merge_history(existing_rows, incoming_rows)
+        merged = merge_history(existing_rows, incoming_rows, cutoff)
         write_csv(csv_path, merged)
         merged_benchmark = merge_benchmark(
             read_json_or(benchmark_path, {}),
@@ -148,11 +155,15 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root-dir", default=Path(__file__).resolve().parents[2])
     parser.add_argument("--contract")
-    parser.add_argument("--end-date", default="2026-07-28")
+    parser.add_argument("--end-date", default=default_end_date())
     parser.add_argument("--target-trade-days", type=int, default=60)
     parser.add_argument("--calendar-days", type=int, default=150)
     parser.add_argument("--retrieved-at")
     return parser.parse_args()
+
+
+def default_end_date() -> str:
+    return os.environ.get("AS_OF") or datetime.now(ZoneInfo("Asia/Hong_Kong")).date().isoformat()
 
 
 def fetch_history(symbol: str, start_date: str, end_date: str) -> tuple[list[dict[str, Any]], dict[str, str]]:
@@ -277,27 +288,43 @@ def history_csv_row(
     }
 
 
-def merge_history(existing: list[dict[str, Any]], incoming: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    """Idempotently enrich by instrument+date without replacing valid existing fields."""
+def merge_history(
+    existing: list[dict[str, Any]],
+    incoming: list[dict[str, Any]],
+    cutoff: str | None = None,
+) -> list[dict[str, Any]]:
+    """Atomically replace OHLCVA from exact-date history while retaining snapshot fields."""
     merged: dict[tuple[str, str], dict[str, Any]] = {}
     for row in existing:
         date = str(row.get("trade_date") or row.get("date") or "")
         code = str(row.get("fund_code") or "")
-        if date and code:
+        if date and code and (cutoff is None or date <= cutoff):
             normalized = {**row, "date": date, "trade_date": date}
-            merged[(code, date)] = normalized
+            key = (code, date)
+            previous = merged.get(key)
+            if previous is None or (not complete_valid_bar(previous) and complete_valid_bar(normalized)):
+                merged[key] = normalized
+            elif not complete_valid_bar(previous) and not complete_valid_bar(normalized):
+                merged[key] = normalized
     for row in incoming:
-        key = (str(row["fund_code"]), str(row["trade_date"]))
+        date = str(row["trade_date"])
+        if cutoff is not None and date > cutoff:
+            continue
+        if not complete_valid_bar(row):
+            raise ValueError(f"historical row has an invalid OHLCVA relationship: {row.get('fund_code')} {date}")
+        key = (str(row["fund_code"]), date)
         old = merged.get(key, {})
-        enriched = {**row}
-        for field, value in old.items():
-            if value not in (None, ""):
-                enriched[field] = value
-        for field in (
-            "trade_date", "backfill_source_provider", "backfill_source_endpoint",
-            "retrieved_at", "backfilled_at", "cutoff_date", "historical_input"
-        ):
-            enriched[field] = row.get(field)
+        if complete_valid_bar(old) and bar_signature(old) == bar_signature(row):
+            enriched = dict(old)
+        else:
+            enriched = {**old, **row}
+            for field in CORE_FIELDS:
+                enriched[field] = row.get(field)
+            for field in SNAPSHOT_UPDATE_FIELDS:
+                if old.get(field) not in (None, ""):
+                    enriched[field] = old[field]
+        enriched["date"] = date
+        enriched["trade_date"] = date
         merged[key] = enriched
     return sorted(merged.values(), key=lambda row: (row["date"], row["fund_code"]))
 
@@ -318,6 +345,7 @@ def merge_benchmark(
         for row in existing.get("rows", [])
         if row.get("trade_date") or row.get("date")
     }
+    changed = any(date > cutoff for date in by_date)
     for row in incoming:
         date = row["trade_date"]
         old = by_date.get(date, {})
@@ -332,20 +360,25 @@ def merge_benchmark(
             "backfilled_at": timestamp,
             "cutoff_date": cutoff,
         }
-        for field, value in old.items():
-            if value not in (None, ""):
-                candidate[field] = value
-        for field in ("trade_date", "retrieved_at", "backfilled_at", "cutoff_date"):
-            candidate[field] = date if field == "trade_date" else timestamp if field != "cutoff_date" else cutoff
+        if complete_valid_bar(old) and bar_signature(old) == bar_signature(row):
+            candidate = dict(old)
+        else:
+            changed = True
+        candidate["date"] = date
+        candidate["trade_date"] = date
         by_date[date] = candidate
     rows = [by_date[date] for date in sorted(by_date) if date <= cutoff]
     return {
         "module_id": "a_share_benchmark_daily_v0_10_77",
         "benchmark": existing.get("benchmark", {"symbol": "510300", "price_field": "close"}),
-        "last_success_timestamp": timestamp,
+        "last_success_timestamp": timestamp if changed else existing.get("last_success_timestamp", timestamp),
         "cutoff_date": cutoff,
         "rows": rows,
     }
+
+
+def bar_signature(row: dict[str, Any]) -> tuple[float | None, ...]:
+    return tuple(number(row.get(field)) for field in CORE_FIELDS)
 
 
 def first(row: dict[str, Any], *keys: str) -> Any:

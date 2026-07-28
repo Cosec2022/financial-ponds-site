@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   buildMarketHistoryQuality,
   validateMarketHistoryQuality
@@ -9,6 +10,24 @@ const dates = Array.from({ length: 20 }, (_, index) => `2026-07-${String(index +
 const benchmark = dates.map((tradeDate, index) => bar("510300", tradeDate, 4 + index / 100));
 const etf = dates.map((tradeDate, index) => bar("512000", tradeDate, 1 + index / 100));
 const instruments = [{ instrument_code: "512000" }];
+
+test("published Run #41 recovery baseline remains strict-clean without requiring breadth", async () => {
+  const [quality, breadth] = await Promise.all([
+    readFile(new URL("../financial-pond/data/market_history_quality.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../financial-pond/data/sector_breadth_daily.json", import.meta.url), "utf8").then(JSON.parse)
+  ]);
+  assert.equal(quality.as_of, "2026-07-28");
+  assert.equal(quality.per_instrument.length, 11);
+  assert.ok(quality.per_instrument.every((row) => row.observed_trade_days === 60 && row.expected_trade_days === 60));
+  assert.ok(quality.per_instrument.every((row) => row.turnover_readiness.sample_count === 20));
+  assert.ok(quality.per_instrument.every((row) => row.benchmark_alignment.aligned_count === 20));
+  assert.equal(quality.turnover_readiness.complete_instruments, 11);
+  assert.equal(quality.benchmark_alignment.complete_instruments, 11);
+  assert.deepEqual(quality.hard_failures, []);
+  assert.equal(quality.overall_status, "partial");
+  assert.equal(breadth.status, "unavailable");
+  assert.equal(breadth.reason, "尚未接入可信成分股数据源");
+});
 
 test("history quality accepts exact complete bars and reports 20/20 alignment and turnover", () => {
   const report = buildMarketHistoryQuality({
