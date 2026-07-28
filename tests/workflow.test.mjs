@@ -37,6 +37,7 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(workflow, /npm ci/);
   assert.doesNotMatch(workflow, /\bnpm install\b/);
   assert.match(workflow, /npm run a-share:daily:ci -- --as-of "\$AS_OF"/);
+  assert.match(workflow, /backfill_market_history\.py[\s\\]*\n\s*--end-date "\$AS_OF"[\s\\]*\n\s*--target-trade-days 60/);
   assert.doesNotMatch(workflow, /npm run cycle -- "\$AS_OF"/);
   assert.match(workflow, /npm run pool:analysis -- --as-of "\$AS_OF"/);
   assert.ok(workflow.indexOf("npm run data:audit") > workflow.indexOf("npm run pool:analysis"));
@@ -65,6 +66,8 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.match(workflow, /TZ=Asia\/Hong_Kong date \+%F/);
   assert.match(workflow, /GENERATED_AT=/);
   assert.ok(workflow.indexOf("npm run fp:daily") < workflow.indexOf("npm run fp:research"));
+  assert.ok(workflow.indexOf("backfill_market_history.py") > workflow.indexOf("npm run a-share:daily:ci"));
+  assert.ok(workflow.indexOf("backfill_market_history.py") < workflow.indexOf("npm run fp:daily"));
   assert.ok(workflow.indexOf("npm run fp:research") < workflow.indexOf("npm run build:site"));
   assert.ok(workflow.indexOf("npm run validate:data") > workflow.indexOf("npm run build:site"));
   assert.match(workflow, /name: Build site and Worker/);

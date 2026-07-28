@@ -36,6 +36,26 @@ function rowsFor(date, closeOffset = 0) {
   }));
 }
 
+function completeRowsFor(date) {
+  return rowsFor(date).map((row, index) => {
+    const close = Number(row.close);
+    return {
+      ...row,
+      trade_date: date,
+      open: close - 0.01,
+      high: close + 0.03,
+      low: close - 0.02,
+      volume: 1000000 + index,
+      amount: 200000000 + index,
+      historical_input: "true",
+      source_provider: "eastmoney",
+      source_endpoint: "historical_kline",
+      backfill_source_provider: "eastmoney",
+      backfill_source_endpoint: "historical_kline"
+    };
+  });
+}
+
 async function setup(initialDates = []) {
   const root = await mkdtemp(path.join(tmpdir(), "fp-provider-history-"));
   const exportDir = path.join(root, "data", "provider_exports");
@@ -122,4 +142,68 @@ test("D: unavailable provider output creates no fabricated daily rows", async ()
   const result = JSON.parse((await persist(root, "2026-07-22")).stdout);
   assert.equal(result.status, "no_valid_provider_rows");
   assert.deepEqual([...new Set((await readRows(root)).map((row) => row.date))], ["2026-07-10"]);
+});
+
+test("F: partial same-day spot updates snapshot fields without breaking a complete OHLCVA bar", async () => {
+  const date = "2026-07-28";
+  const root = await setup();
+  await writeCsv(
+    path.join(root, "data", "provider_exports", "a_share_etf_daily.csv"),
+    completeRowsFor(date)
+  );
+  const spot = rowsFor(date, 3).map((row, index) => ({
+    ...row,
+    latest_share: 2000000000 + index,
+    previous_share: 1900000000 + index,
+    share_change: 100000000,
+    estimated_flow: 400000000
+  }));
+  await writeDaily(root, date, spot);
+  await persist(root, date);
+
+  const first = (await readRows(root)).find((row) => row.date === date && row.fund_code === contract.representative_etfs[0].fund_code);
+  assert.equal(Number(first.open), 0.99);
+  assert.equal(Number(first.high), 1.03);
+  assert.equal(Number(first.low), 0.98);
+  assert.equal(Number(first.close), 1);
+  assert.equal(Number(first.volume), 1000000);
+  assert.equal(Number(first.amount), 200000000);
+  assert.equal(Number(first.latest_share), 2000000000);
+  assert.equal(Number(first.share_change), 100000000);
+  assert.equal(Number(first.estimated_flow), 400000000);
+  assert.match(first.provider_run_id, /2026-07-28_test/);
+});
+
+test("G: a new partial spot date remains partial and never inherits an old OHLC shape", async () => {
+  const root = await setup(["2026-07-27"]);
+  const date = "2026-07-28";
+  await writeDaily(root, date, rowsFor(date, 4));
+  await persist(root, date);
+  await persist(root, date);
+
+  const rows = await readRows(root);
+  const exact = rows.filter((row) => row.date === date);
+  assert.equal(exact.length, 11);
+  assert.ok(exact.every((row) => row.open === "" && row.high === "" && row.low === "" && row.volume === ""));
+  assert.ok(exact.every((row) => row.historical_input === ""));
+});
+
+test("H: a complete daily row with an invalid OHLC relationship is rejected", async () => {
+  const root = await setup();
+  const date = "2026-07-28";
+  const invalid = completeRowsFor(date).map((row) => ({
+    ...row,
+    source_provider: "akshare",
+    source_endpoint: "fund_etf_spot_em+fund_etf_scale",
+    historical_input: ""
+  }));
+  invalid[0] = { ...invalid[0], close: 2, high: 1.03 };
+  await writeDaily(root, date, invalid);
+  await assert.rejects(
+    persist(root, date),
+    (error) => {
+      assert.match(error.stdout, /invalid OHLCVA relationship/);
+      return true;
+    }
+  );
 });

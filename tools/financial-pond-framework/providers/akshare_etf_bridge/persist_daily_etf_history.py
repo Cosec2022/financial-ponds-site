@@ -10,6 +10,25 @@ from typing import Any
 
 
 EXTRA_HISTORY_COLUMNS = ["open", "high", "low", "volume", "historical_input"]
+OHLCVA_FIELDS = ("open", "high", "low", "close", "volume", "amount")
+SNAPSHOT_UPDATE_FIELDS = (
+    "latest_share",
+    "previous_share",
+    "share_change",
+    "estimated_flow",
+    "pct_change",
+    "turnover",
+    "provider_run_id",
+    "collected_at",
+)
+BACKFILL_PROVENANCE_FIELDS = (
+    "historical_input",
+    "backfill_source_provider",
+    "backfill_source_endpoint",
+    "retrieved_at",
+    "backfilled_at",
+    "cutoff_date",
+)
 
 
 def read_json(path: Path) -> dict[str, Any]:
@@ -36,6 +55,48 @@ def numeric(value: Any) -> float | None:
         return None
 
 
+def exact_trade_date(row: dict[str, Any]) -> str:
+    return str(row.get("trade_date") or row.get("date") or "")
+
+
+def complete_valid_bar(row: dict[str, Any]) -> bool:
+    values = {field: numeric(row.get(field)) for field in OHLCVA_FIELDS}
+    if any(value is None for value in values.values()):
+        return False
+    return (
+        values["low"] <= min(values["open"], values["close"])
+        <= max(values["open"], values["close"]) <= values["high"]
+    )
+
+
+def merge_daily_row(existing: dict[str, Any], incoming: dict[str, Any], trade_date: str) -> dict[str, Any]:
+    """Merge one exact-date snapshot without ever creating a hybrid OHLCVA bar."""
+    old_complete = complete_valid_bar(existing)
+    incoming_complete = complete_valid_bar(incoming)
+
+    if incoming_complete:
+        merged = {**existing, **incoming}
+        for field in OHLCVA_FIELDS:
+            merged[field] = incoming.get(field)
+    elif old_complete:
+        merged = dict(existing)
+        for field in SNAPSHOT_UPDATE_FIELDS:
+            if incoming.get(field) not in (None, ""):
+                merged[field] = incoming[field]
+    else:
+        # A partial spot row is one atomic partial price observation. Do not retain
+        # old high/low/volume fields and combine them with a new spot close/amount.
+        merged = {**existing, **incoming}
+        for field in OHLCVA_FIELDS:
+            merged[field] = incoming.get(field)
+        for field in BACKFILL_PROVENANCE_FIELDS:
+            merged[field] = incoming.get(field, "")
+
+    merged["date"] = trade_date
+    merged["trade_date"] = trade_date
+    return merged
+
+
 def validate_daily_rows(payload: dict[str, Any], contract: dict[str, Any], as_of: str) -> list[dict[str, Any]]:
     if payload.get("status") != "ok":
         return []
@@ -51,7 +112,8 @@ def validate_daily_rows(payload: dict[str, Any], contract: dict[str, Any], as_of
 
     validated: dict[str, dict[str, Any]] = {}
     payload_run_id = str(payload.get("provider_run_id") or "")
-    for row in rows:
+    for original in rows:
+        row = dict(original)
         code = str(row.get("fund_code") or "")
         required_text = [
             row.get("date"), row.get("sector_id"), row.get("sector_node_id"), code,
@@ -60,8 +122,9 @@ def validate_daily_rows(payload: dict[str, Any], contract: dict[str, Any], as_of
         ]
         if any(value in (None, "") for value in required_text):
             raise ValueError(f"daily provider row has incomplete identity/source fields: {code or '<missing>'}")
-        if row["date"] != as_of:
-            raise ValueError(f"daily provider row is not exact-date {as_of}: {code} {row['date']}")
+        trade_date = exact_trade_date(row)
+        if row["date"] != as_of or trade_date != as_of:
+            raise ValueError(f"daily provider row is not exact-date {as_of}: {code} {trade_date}")
         if code not in expected:
             raise ValueError(f"daily provider row is not a representative industry ETF: {code}")
         if row["sector_id"] != expected[code]["sector_id"] or row["sector_node_id"] != expected[code]["sector_node_id"]:
@@ -70,8 +133,12 @@ def validate_daily_rows(payload: dict[str, Any], contract: dict[str, Any], as_of
             raise ValueError(f"daily provider row source metadata is inconsistent: {code}")
         if numeric(row.get("close")) is None or numeric(row.get("amount")) is None:
             raise ValueError(f"daily provider row lacks a positive close/amount: {code}")
+        if all(row.get(field) not in (None, "") for field in OHLCVA_FIELDS) and not complete_valid_bar(row):
+            raise ValueError(f"daily provider row has an invalid OHLCVA relationship: {code}")
         if code in validated:
             raise ValueError(f"daily provider output contains duplicate ETF code: {code}")
+        row["date"] = as_of
+        row["trade_date"] = as_of
         validated[code] = row
 
     missing = sorted(set(expected) - set(validated))
@@ -94,10 +161,22 @@ def persist_daily_output(root: Path, contract: dict[str, Any], as_of: str, input
         return {"status": "no_valid_provider_rows", "as_of": as_of, "rows_written": 0, "source": str(source)}
 
     # Historical replay is no-lookahead: preserve only rows at or before as_of.
-    preserved = [row for row in existing if row.get("date") and row["date"] <= as_of]
-    by_key = {(row.get("date", ""), row.get("fund_code", "")): row for row in preserved}
+    by_key: dict[tuple[str, str], dict[str, Any]] = {}
+    for row in existing:
+        trade_date = exact_trade_date(row)
+        code = str(row.get("fund_code") or "")
+        if not trade_date or trade_date > as_of or not code:
+            continue
+        normalized = {**row, "date": trade_date, "trade_date": trade_date}
+        key = (code, trade_date)
+        previous = by_key.get(key)
+        if previous is None or (not complete_valid_bar(previous) and complete_valid_bar(normalized)):
+            by_key[key] = normalized
+        elif not complete_valid_bar(previous) and not complete_valid_bar(normalized):
+            by_key[key] = normalized
     for row in daily_rows:
-        by_key[(as_of, row["fund_code"])] = row
+        key = (str(row["fund_code"]), as_of)
+        by_key[key] = merge_daily_row(by_key.get(key, {}), row, as_of)
 
     output_fields = list(dict.fromkeys(fields + contract.get("row_level_columns", []) + EXTRA_HISTORY_COLUMNS))
     cumulative.parent.mkdir(parents=True, exist_ok=True)

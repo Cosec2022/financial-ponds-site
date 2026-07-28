@@ -1,5 +1,14 @@
 # Changelog
 
+## v0.10.77 Daily Run #41 hotfix
+
+- preserve an existing complete exact-date OHLCVA bar when the same-day AKShare spot snapshot contains only close and amount
+- update share-flow and snapshot metadata without mixing spot close/amount with historical open/high/low/volume
+- let the exact-date history backfill atomically replace partial spot OHLCVA while retaining permitted snapshot fields
+- run the 60-session history completion with `--end-date "$AS_OF"` before strict history-quality validation
+- remove the fixed 2026-07-28 backfill default; future Daily runs use `AS_OF` or the current Hong Kong date
+- retain Top 10 scores, rank order, status rules, breadth unavailability, and the `observe_only` boundary
+
 ## v0.10.77
 
 - retained 60 real trading sessions for all 11 directly mapped sector ETFs and the 510300 benchmark proxy, covering 2026-04-30 through 2026-07-28
