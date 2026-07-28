@@ -11,12 +11,14 @@ const historyDir = resolve(dataDir, "history", "observations");
 const asOf = process.env.AS_OF ?? JSON.parse(await readFile(resolve(dataDir, "evening_observation_summary.json"), "utf8")).as_of;
 const generatedAt = process.env.GENERATED_AT ?? new Date().toISOString();
 
-const [summary, instrumentMap, etfCsv, benchmarkStore, archiveSummaries] = await Promise.all([
+const [summary, instrumentMap, etfCsv, benchmarkStore, archiveSummaries, breadthStore, qualityReport] = await Promise.all([
   readJson(resolve(dataDir, "evening_observation_summary.json")),
   readJson(resolve(dataDir, "pool_instrument_map.json")),
   readFile(resolve(root, "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv"), "utf8"),
   readJson(resolve(root, "tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json")),
-  readArchiveSummaries()
+  readArchiveSummaries(),
+  readOptionalJson(resolve(dataDir, "sector_breadth_daily.json"), { status: "unavailable", rows: [] }),
+  readOptionalJson(resolve(dataDir, "market_history_quality.json"), null)
 ]);
 
 const panel = buildSectorObservationPanel({
@@ -27,7 +29,9 @@ const panel = buildSectorObservationPanel({
   etfRows: parseCsv(etfCsv),
   benchmarkRows: benchmarkStore.rows ?? [],
   archiveSummaries,
-  breadthRows: []
+  breadthRows: breadthStore.rows ?? [],
+  breadthStatus: breadthStore,
+  qualityReport
 });
 
 await writeFile(
@@ -55,4 +59,13 @@ async function readArchiveSummaries() {
 
 async function readJson(file) {
   return JSON.parse(await readFile(file, "utf8"));
+}
+
+async function readOptionalJson(file, fallback) {
+  try {
+    return await readJson(file);
+  } catch (error) {
+    if (error.code === "ENOENT") return fallback;
+    throw error;
+  }
 }

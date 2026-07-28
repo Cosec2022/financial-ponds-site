@@ -1,5 +1,5 @@
 {
-  "id": "akshare_etf_bridge_contract_v0_7_2",
+  "id": "akshare_etf_bridge_contract_v0_10_77",
   "provider": "akshare",
   "purpose": "Export representative A-share industry ETF data to local CSV and raw JSON files. The ETF universe is an initial candidate list and must be reviewed before enabling production scoring.",
   "default_outputs": {
@@ -11,11 +11,16 @@
   },
   "row_level_columns": [
     "date",
+    "trade_date",
     "sector_id",
     "sector_node_id",
     "fund_code",
     "fund_name",
+    "open",
+    "high",
+    "low",
     "close",
+    "volume",
     "pct_change",
     "amount",
     "turnover",
@@ -26,7 +31,13 @@
     "source_provider",
     "source_endpoint",
     "provider_run_id",
-    "collected_at"
+    "collected_at",
+    "historical_input",
+    "backfill_source_provider",
+    "backfill_source_endpoint",
+    "retrieved_at",
+    "backfilled_at",
+    "cutoff_date"
   ],
   "sector_flow_columns": [
     "date",

@@ -32,7 +32,9 @@ export function buildSectorObservationPanel({
   etfRows,
   benchmarkRows,
   archiveSummaries = [],
-  breadthRows = []
+  breadthRows = [],
+  breadthStatus = null,
+  qualityReport = null
 }) {
   const summaries = [
     ...(archiveSummaries ?? []),
@@ -65,7 +67,8 @@ export function buildSectorObservationPanel({
       mapping,
       etfRows,
       benchmarkRows,
-      breadthRows
+      breadthRows,
+      breadthStatus
     });
     const status = classifyObservationStatus({
       candidate,
@@ -87,7 +90,8 @@ export function buildSectorObservationPanel({
             mapping,
             etfRows,
             benchmarkRows,
-            breadthRows
+            breadthRows,
+            breadthStatus
           })
         })
       : null;
@@ -125,7 +129,8 @@ export function buildSectorObservationPanel({
           mapping,
           etfRows,
           benchmarkRows,
-          breadthRows
+          breadthRows,
+          breadthStatus
         }),
         isCurrent: false,
         departureOrder: index + 1
@@ -150,6 +155,7 @@ export function buildSectorObservationPanel({
     as_of: asOf,
     generated_at: generatedAt,
     status: rows.length ? "panel_available" : "no_published_sectors",
+    data_quality_summary: qualitySummary(qualityReport, breadthStatus),
     window: {
       target_trading_days: SECTOR_OBSERVATION_WINDOW,
       observed_dates: dates,
@@ -279,23 +285,24 @@ function buildSeries({
   mapping,
   etfRows,
   benchmarkRows,
-  breadthRows
+  breadthRows,
+  breadthStatus
 }) {
   const code = String(mapping.instrument_code ?? "");
   const exactRows = new Map(
     (etfRows ?? [])
-      .filter((row) => row.date <= asOf && String(row.fund_code ?? "") === code)
-      .map((row) => [row.date, row])
+      .filter((row) => dateFor(row) <= asOf && String(row.fund_code ?? "") === code)
+      .map((row) => [dateFor(row), row])
   );
   const benchmarkByDate = new Map(
     (benchmarkRows ?? [])
-      .filter((row) => row.date <= asOf)
-      .map((row) => [row.date, row])
+      .filter((row) => dateFor(row) <= asOf)
+      .map((row) => [dateFor(row), row])
   );
   const breadthByDate = new Map(
     (breadthRows ?? [])
-      .filter((row) => row.date <= asOf && row.sector_id === sectorId && trustedBreadth(row))
-      .map((row) => [row.date, row])
+      .filter((row) => dateFor(row) <= asOf && row.sector_id === sectorId && trustedBreadth(row))
+      .map((row) => [dateFor(row), row])
   );
   const priceRows = dates.map((date) => ({ date, row: exactRows.get(date) ?? null }));
   const firstClose = priceRows.map(({ row }) => positiveOrNull(row?.close)).find((value) => value !== null) ?? null;
@@ -332,7 +339,8 @@ function buildSeries({
   const breadthValues = dates.map((date) => ({
     date,
     value: ratioOrNull(
-      breadthByDate.get(date)?.breadth_ratio
+      breadthByDate.get(date)?.advancers_ratio
+      ?? breadthByDate.get(date)?.breadth_ratio
       ?? breadthByDate.get(date)?.above_ma20_ratio
     )
   }));
@@ -351,22 +359,24 @@ function buildSeries({
       unit: "x",
       values: activityValues,
       requiredPoints: SECTOR_OBSERVATION_WINDOW,
-      missingReason: amountMean === null ? "不足20个真实成交额样本，不能计算20日均值" : null
+      missingReason: amountMean === null ? `积累中：${validAmounts.length}/${SECTOR_OBSERVATION_WINDOW}` : null,
+      accumulating: amountMean === null
     }),
     relative_strength: seriesMetric({
       label: "相对沪深300",
       unit: "%",
       values: relativeValues,
-      requiredPoints: 2,
+      requiredPoints: SECTOR_OBSERVATION_WINDOW,
       missingReason: commonBase === null ? "缺少ETF与沪深300精确同日收盘价" : null
     }),
     internal_breadth: seriesMetric({
-      label: "内部扩散",
+      label: breadthStatus?.display_label ?? "内部扩散",
       unit: "%",
       values: breadthValues,
       requiredPoints: 2,
       transformLatest: (value) => round(value * 100, 2),
-      missingReason: "缺少来源可信的上涨成分股或站上20日均线比例"
+      missingReason: breadthStatus?.reason ?? "尚未接入可信成分股数据源",
+      sourceUnavailable: breadthStatus?.status !== "available"
     })
   };
 }
@@ -378,9 +388,12 @@ function seriesMetric({
   requiredPoints,
   latestDailyChange = undefined,
   transformLatest = (value) => value,
-  missingReason = null
+  missingReason = null,
+  accumulating = false,
+  sourceUnavailable = false
 }) {
   const available = values.filter((point) => point.value !== null);
+  const missingPointCount = values.length - available.length;
   return {
     label,
     unit,
@@ -388,6 +401,10 @@ function seriesMetric({
     available_points: available.length,
     required_points: requiredPoints,
     status: available.length >= requiredPoints ? "available" : "insufficient_data",
+    display_status: sourceUnavailable
+      ? "source_unavailable"
+      : accumulating ? "accumulating" : missingPointCount ? "missing_points" : "available",
+    missing_point_count: missingPointCount,
     latest: available.length ? transformLatest(available.at(-1).value) : null,
     ...(latestDailyChange !== undefined ? { latest_daily_change: latestDailyChange } : {}),
     missing_reason: available.length >= requiredPoints ? null : missingReason ?? "有效样本不足"
@@ -421,13 +438,13 @@ function conclusionFor({ name, status, scoreDelta, rankDelta, previousRank, seri
   }
   if (status === "strengthening") {
     const change = scoreDelta !== null ? `综合分${signed(scoreDelta, "分")}` : `排名上升 ${Math.max(rankDelta ?? 0, 0)} 位`;
-    return `${name}${change}，相对沪深300为${signed(relative, "%")}，边际证据改善。`;
+    return `${name}${change}；${confirmationText(series, priceChange)}。`;
   }
   if (status === "weakening") {
     const change = scoreDelta !== null ? `综合分${signed(scoreDelta, "分")}` : `排名下降 ${Math.abs(Math.min(rankDelta ?? 0, 0))} 位`;
     return `${name}${change}，最新价格变动${signed(priceChange, "%")}，边际证据转弱。`;
   }
-  return `${name}综合分与排名未触发显著边际变化，最新相对沪深300为${signed(relative, "%")}。`;
+  return `${name}综合分与排名未触发显著边际变化；${confirmationText(series, priceChange)}。`;
 }
 
 function fieldDefinitions() {
@@ -455,7 +472,7 @@ function statusRules() {
 }
 
 function latestDates(rows, asOf, limit) {
-  return [...new Set((rows ?? []).map((row) => row.date).filter((date) => date && date <= asOf))]
+  return [...new Set((rows ?? []).map(dateFor).filter((date) => date && date <= asOf))]
     .sort()
     .slice(-limit);
 }
@@ -465,12 +482,53 @@ function sectorIdFor(candidate, mapping) {
 }
 
 function trustedBreadth(row) {
-  const ratio = ratioOrNull(row?.breadth_ratio ?? row?.above_ma20_ratio);
-  const source = String(row?.source_provider ?? row?.source ?? "");
+  const ratio = ratioOrNull(row?.advancers_ratio ?? row?.breadth_ratio ?? row?.above_ma20_ratio);
+  const source = String(row?.constituent_source ?? row?.source_provider ?? row?.source ?? "");
+  const metadataComplete = Boolean(
+    row?.constituent_source
+    && row?.constituent_as_of
+    && row?.composition_as_of
+    && row?.price_source
+    && Number.isInteger(row?.effective_count)
+    && Number.isInteger(row?.total_count)
+  );
   return ratio !== null
-    && ["constituent_advancers_ratio", "constituent_above_ma20_ratio"].includes(row?.metric)
+    && (metadataComplete || ["constituent_advancers_ratio", "constituent_above_ma20_ratio"].includes(row?.metric))
     && source
-    && !/mock|fixture|manual/i.test(source);
+    && !/mock|fixture|manual|model/i.test(source);
+}
+
+function dateFor(row) {
+  return String(row?.trade_date ?? row?.date ?? "");
+}
+
+function confirmationText(series, priceChange) {
+  const scoreAndPrice = priceChange === null
+    ? "评分变化已有，但该日价格缺失"
+    : `评分与价格${priceChange >= 0 ? "增强" : "分化"}`;
+  const turnover = series.turnover_activity?.status === "available"
+    ? "量能已确认"
+    : `量能${series.turnover_activity?.missing_reason ?? "尚未确认"}`;
+  const breadth = series.internal_breadth?.status === "available"
+    ? `${series.internal_breadth.label}已确认`
+    : "内部扩散待接入";
+  return `${scoreAndPrice}；${turnover}；${breadth}`;
+}
+
+function qualitySummary(quality, breadthStatus) {
+  const alignmentCounts = (quality?.per_instrument ?? [])
+    .map((item) => item.benchmark_alignment?.aligned_count ?? 0);
+  const price = alignmentCounts.length ? Math.min(...alignmentCounts, SECTOR_OBSERVATION_WINDOW) : 0;
+  const turnover = quality?.turnover_readiness?.minimum_count ?? 0;
+  const alignment = quality?.benchmark_alignment?.minimum_count ?? 0;
+  return {
+    text: `价格 ${price}/${SECTOR_OBSERVATION_WINDOW}｜成交额 ${turnover}/${SECTOR_OBSERVATION_WINDOW}｜基准对齐 ${alignment}/${SECTOR_OBSERVATION_WINDOW}｜扩散${breadthStatus?.status === "available" ? "已接入" : "未接入"}`,
+    price_count: price,
+    turnover_count: turnover,
+    benchmark_alignment_count: alignment,
+    breadth_status: breadthStatus?.status ?? "unavailable",
+    overall_status: quality?.overall_status ?? "unavailable"
+  };
 }
 
 function positiveOrNull(value) {

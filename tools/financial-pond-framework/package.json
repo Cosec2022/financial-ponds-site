@@ -1,6 +1,6 @@
 {
   "name": "financial-pond-framework",
-  "version": "0.10.76",
+  "version": "0.10.77",
   "description": "Config-driven financial pond graph framework for cross-asset and sector ETF analysis.",
   "type": "module",
   "scripts": {
@@ -23,6 +23,7 @@
     "provider:akshare:doctor": "python3 providers/akshare_etf_bridge/doctor.py",
     "provider:akshare:doctor:probe": "python3 providers/akshare_etf_bridge/doctor.py --probe-endpoint",
     "provider:akshare:backfill-month": "python3 providers/akshare_etf_bridge/backfill_a_share_etf_history.py",
+    "provider:market-history:backfill": "python3 providers/akshare_etf_bridge/backfill_market_history.py",
     "provider:akshare:backfill-month:fixture": "python3 providers/akshare_etf_bridge/backfill_a_share_etf_history.py --fixture",
     "provider:akshare:validate": "python3 providers/akshare_etf_bridge/validate_exports.py",
     "provider:akshare:inspect": "python3 providers/akshare_etf_bridge/inspect_exports.py",
@@ -54,7 +55,7 @@
     "daily:sector-analysis": "node src/tools/daily_sector_analysis.mjs",
     "flow:review:fixture": "node src/tools/sector_flow_review.mjs --fixture",
     "web": "node src/web/serve_static.mjs",
-    "test": "node --test tests/*.test.mjs",
+    "test": "python3 -m unittest providers/akshare_etf_bridge/test_backfill_market_history.py && node --test tests/*.test.mjs",
     "news:review": "node src/tools/news_daily_review.mjs",
     "news:review:fixture": "node src/tools/news_daily_review.mjs --fixture",
     "news:review:ci": "node src/tools/news_daily_review.mjs --ci"

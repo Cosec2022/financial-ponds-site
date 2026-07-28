@@ -144,6 +144,10 @@ test("site implementation uses a fail-closed dark quantitative panel, mobile car
   assert.match(app, /renderMiniSeries\(row\.series\?\.relative_strength\)/);
   assert.match(app, /renderMiniSeries\(row\.series\?\.internal_breadth\)/);
   assert.match(app, /metric\.status !== "available"/);
+  assert.match(app, /积累中/);
+  assert.match(app, /尚未接入数据源/);
+  assert.match(app, /该日缺失/);
+  assert.match(app, /data_quality_summary/);
   assert.doesNotMatch(app, /point\.value \?\? 0/);
   for (const name of ["通信电子", "资源材料", "半导体", "AI计算机", "券商", "新能源车", "银行保险", "国防军工", "消费", "医药医疗"]) {
     assert.match(app, new RegExp(name));
@@ -158,6 +162,8 @@ test("site implementation uses a fail-closed dark quantitative panel, mobile car
   assert.match(css, /background:\s*#07111f/);
   assert.match(css, /\.quant-spark-grid/);
   assert.match(css, /\.mini-series\.unavailable/);
+  assert.match(css, /@media \(max-width:\s*780px\)/);
+  assert.match(css, /\.sector-quant-row[\s\S]*grid-template-columns:\s*1fr/);
   assert.match(css, /\.candidates-panel[\s\S]*scroll-margin-top:/);
   assert.doesNotMatch(css, /\.candidate-table\s*\{\s*overflow-x:\s*auto/);
   assert.match(mark, /^<svg/);

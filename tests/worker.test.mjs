@@ -85,6 +85,20 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(observationPanelJson.rows.length, 10);
   assert.ok(observationPanelJson.rows.every((row) => row.boundary.includes("observe_only")));
   assert.ok(observationPanelJson.rows.every((row) => ["price_strength", "turnover_activity", "relative_strength", "internal_breadth"].every((key) => Array.isArray(row.series[key].values))));
+  assert.equal(observationPanelJson.data_quality_summary.turnover_count, 20);
+
+  const historyQuality = await worker.fetch(request("/data/market_history_quality.json"), {});
+  assert.equal(historyQuality.status, 200);
+  const historyQualityJson = await historyQuality.json();
+  assert.equal(historyQualityJson.module_id, "market_history_quality_v0_10_77");
+  assert.equal(historyQualityJson.expected_trade_dates.length, 60);
+  assert.equal(historyQualityJson.benchmark_alignment.minimum_count, 20);
+
+  const sectorBreadth = await worker.fetch(request("/data/sector_breadth_daily.json"), {});
+  assert.equal(sectorBreadth.status, 200);
+  const sectorBreadthJson = await sectorBreadth.json();
+  assert.equal(sectorBreadthJson.module_id, "sector_breadth_daily_v0_10_77");
+  assert.equal(sectorBreadthJson.status, "unavailable");
 
   const moduleReview = await worker.fetch(request("/data/sector_module_review.json"), {});
   assert.equal(moduleReview.status, 200);

@@ -279,11 +279,16 @@ def build_row(
 ) -> dict[str, Any]:
     return {
         "date": as_of,
+        "trade_date": as_of,
         "sector_id": item["sector_id"],
         "sector_node_id": item["sector_node_id"],
         "fund_code": item["fund_code"],
         "fund_name": fund_name,
+        "open": None,
+        "high": None,
+        "low": None,
         "close": close,
+        "volume": None,
         "pct_change": pct_change,
         "amount": amount,
         "turnover": turnover,
@@ -294,7 +299,13 @@ def build_row(
         "source_provider": "akshare",
         "source_endpoint": source_endpoint,
         "provider_run_id": provider_run_id,
-        "collected_at": collected_at
+        "collected_at": collected_at,
+        "historical_input": "",
+        "backfill_source_provider": "",
+        "backfill_source_endpoint": "",
+        "retrieved_at": "",
+        "backfilled_at": "",
+        "cutoff_date": ""
     }
 
 
@@ -337,7 +348,13 @@ def upsert_csv(path: Path, columns: list[str], rows: list[dict[str, Any]], key_c
     existing = read_existing_csv(path)
     by_key = {row_key(row, key_columns): row for row in existing}
     for row in rows:
-        by_key[row_key(row, key_columns)] = row
+        key = row_key(row, key_columns)
+        previous = by_key.get(key, {})
+        merged = dict(row)
+        for field, value in previous.items():
+            if value not in (None, ""):
+                merged[field] = value
+        by_key[key] = merged
     merged = sorted(by_key.values(), key=lambda row: row_key(row, key_columns))
     write_row_csv(path, columns, merged)
 
