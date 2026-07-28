@@ -424,6 +424,23 @@ Important boundary:
 - Regime output is read-only model context in this version.
 - It does not mutate graph scores.
 
+## v0.10.77 Market History Completeness
+
+Status: `working`
+
+Current capability:
+
+- All 11 directly mapped sector ETFs and 510300 retain 60 real trading sessions from 2026-04-30 through 2026-07-28.
+- Each mapped ETF has 20/20 real amount observations and 20/20 exact-date alignment with 510300.
+- Missing, duplicate, future, non-trading, polluted, and stale observations are reported explicitly; structural corruption fails closed.
+- Internal breadth is `unavailable` with `尚未接入可信成分股数据源`.
+- Mock, fixture, model, manual, and incomplete point-in-time constituent inputs are rejected.
+
+Important boundary:
+
+- The quality layer does not alter scores, ranks, candidate thresholds, or `observe_only`.
+- No current constituent list may be used to silently reconstruct historical breadth.
+
 ## Change Logging
 
 Status: `working process`

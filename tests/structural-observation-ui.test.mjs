@@ -162,7 +162,7 @@ test("site implementation uses a fail-closed dark quantitative panel, mobile car
   assert.match(css, /background:\s*#07111f/);
   assert.match(css, /\.quant-spark-grid/);
   assert.match(css, /\.mini-series\.unavailable/);
-  assert.match(css, /@media \(max-width:\s*780px\)/);
+  assert.match(css, /@media \(max-width:\s*720px\)/);
   assert.match(css, /\.sector-quant-row[\s\S]*grid-template-columns:\s*1fr/);
   assert.match(css, /\.candidates-panel[\s\S]*scroll-margin-top:/);
   assert.doesNotMatch(css, /\.candidate-table\s*\{\s*overflow-x:\s*auto/);

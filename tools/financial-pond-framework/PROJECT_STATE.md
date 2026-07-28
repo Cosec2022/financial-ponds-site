@@ -5,18 +5,16 @@ a zip package, especially when conversation history is missing.
 
 ## Current Version
 
-Package version: `0.10.76`
+Package version: `0.10.77`
 
 Purpose of this version:
 
-- replace the repeated long-text Top 10 list with one dark quantitative industry row per formally published sector
-- publish four 20-session mini-series contracts: normalized price strength, amount/20-day mean, exact-date relative strength versus 510300, and source-backed internal breadth
-- preserve missing observations as `null`; never draw zero substitutes or accept mock breadth as a constituent ratio
-- retain the exact v0.10.75 model scores and published order while adding score, rank, and state deltas
-- distinguish marginal strengthening, maintain, marginal weakening, price-only anomaly, insufficient evidence, and observation exit through deterministic rules
-- publish an explicit `当前模型区分度不足` warning instead of forcing different labels when the data cannot distinguish sectors
-- keep turnover activity unavailable until 20 real amount rows exist and breadth unavailable until a trusted constituent ratio exists
-- preserve `observe_only`: the panel is not a buy ranking, rise probability, allocation recommendation, or trading instruction
+- retain 60 real trading sessions for each of the 11 directly mapped sector ETFs and the 510300 benchmark proxy through the fixed cutoff 2026-07-28
+- publish fail-closed cumulative quality checks with zero missing, duplicate, future, non-trading, and polluted dates
+- make turnover activity and exact-date ETF/510300 relative strength complete at 20/20 for every directly mapped ETF
+- keep internal breadth unavailable as `尚未接入可信成分股数据源` until traceable point-in-time constituent and price metadata exist
+- reject mock, fixture, model, manual, and silently reconstructed breadth inputs
+- retain the exact formal Top 10 scores, published order, and `observe_only` boundary
 
 v0.10.75 Top 10 presentation retained below:
 

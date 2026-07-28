@@ -10,7 +10,7 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
   assert.match(html, /Financial Ponds/);
-  assert.match(html, /v0\.10\.76/);
+  assert.match(html, /v0\.10\.77/);
   assert.match(html, /每日市场穿透/);
   assert.match(html, /今晚市场结论/);
   assert.match(html, /行业量价观察/);
@@ -85,7 +85,7 @@ test("serves dashboard, general pool analysis, sector review, rotation data, mod
   assert.equal(observationPanelJson.rows.length, 10);
   assert.ok(observationPanelJson.rows.every((row) => row.boundary.includes("observe_only")));
   assert.ok(observationPanelJson.rows.every((row) => ["price_strength", "turnover_activity", "relative_strength", "internal_breadth"].every((key) => Array.isArray(row.series[key].values))));
-  assert.equal(observationPanelJson.data_quality_summary.turnover_count, 20);
+  assert.equal(observationPanelJson.data_quality_summary?.turnover_count, 20);
 
   const historyQuality = await worker.fetch(request("/data/market_history_quality.json"), {});
   assert.equal(historyQuality.status, 200);

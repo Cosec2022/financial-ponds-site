@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.76
+Version: v0.10.77
 Status: active
 
 ## Final Target
@@ -35,11 +35,11 @@ Implementation order remains **A-share first**, then S&P 500 / U.S. markets, Hon
 ## Overall Progress
 
 ```text
-Overall progress: 52%
-Current stage: usable observation prototype; validation path under repair
-Daily data pipeline: automated and publishing; v0.10.73 fixed historical preservation, v0.10.74 persists each verified daily Provider output, v0.10.75 fixed the Top 10 publication surface, and v0.10.76 adds a fail-closed quantitative view without changing model rank or score
+Overall progress: 54%
+Current stage: usable observation prototype; mapped ETF history complete, breadth source pending
+Daily data pipeline: automated and publishing; v0.10.77 validates 60-session cumulative market history and supplies 20/20 turnover and benchmark-alignment evidence without changing formal scores or rank
 Decision-grade model: not yet
-Main limitation: exact-date candidate/benchmark history is incomplete, reviewed outcomes are not yet statistically usable, and valuation/fundamental/news layers still contain manual, fallback, or unverified inputs
+Main limitation: trusted point-in-time constituent breadth is not connected, reviewed outcomes are not yet statistically usable, and valuation/fundamental/news layers still contain manual, fallback, or unverified inputs
 ```
 
 ## Phase Plan
@@ -47,11 +47,11 @@ Main limitation: exact-date candidate/benchmark history is incomplete, reviewed 
 | Phase | Goal | Status | Progress |
 |---|---|---|---:|
 | P1 | Runnable website and basic framework | done | 100% |
-| P2 | A-share sector ETF hard-data path | formed | 70% |
+| P2 | A-share sector ETF hard-data path | formed | 78% |
 | P3 | Capital-flow review | formed prototype | 56% |
 | P4 | Sector rotation intelligence | formed prototype | 45% |
 | P5 | Multi-day trend confirmation | started | 15% |
-| P6 | Price-volume analysis expansion | planned | 10% |
+| P6 | Price-volume analysis expansion | working prototype | 35% |
 | P7 | Influence graph backend state | prototype | 25% |
 | P8 | Real fixed news sources | planned | 10% |
 | P9 | Free pond creation / arbitrary pool expansion | started | 28% |
@@ -83,6 +83,9 @@ clickable pond map
 Top 10 structural observations in backend-published order, with no frontend re-ranking or fabricated padding
 Dark industry quantitative panel with four null-preserving 20-session mini-series and score/rank/state deltas
 Explicit insufficient-history handling for amount/20-day mean and source-backed constituent breadth
+60-session source-backed history for 11 directly mapped ETFs and 510300 through 2026-07-28
+20/20 turnover activity and 20/20 exact-date benchmark alignment
+Explicit unavailable internal breadth until a trusted constituent source is connected
 formal vector logo, pond-only favicon, and responsive mobile observation cards
 news pressure with fallback labeling
 local graph node edits and patch export
@@ -107,6 +110,7 @@ local graph node edits and patch export
 14. Decision gate ledger explains blocked readiness; it does not unlock ETF execution advice.
 15. Index explainability explains displayed numbers; it does not unlock ETF execution advice.
 16. The Top 10 structural-observation order is a relative evidence order, not a buy list, rise probability, or trading instruction.
+17. Internal breadth must remain unavailable; mock/model data cannot satisfy its source contract.
 ```
 
 ## Next Work Order

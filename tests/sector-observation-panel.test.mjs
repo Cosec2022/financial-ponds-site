@@ -91,7 +91,7 @@ test("missing inputs stay null and never become zero-valued curves", () => {
   assert.ok(row.series.turnover_activity.values.every((point) => point.value === null));
   assert.doesNotMatch(JSON.stringify(row.series.turnover_activity), /"value":0(?:[,}])/);
   assert.equal(row.series.internal_breadth.latest, null);
-  assert.equal(row.series.internal_breadth.missing_reason, "缺少来源可信的上涨成分股或站上20日均线比例");
+  assert.equal(row.series.internal_breadth.missing_reason, "尚未接入可信成分股数据源");
 });
 
 test("19 real amount samples stay unavailable while 20 samples publish the real mean ratio", () => {

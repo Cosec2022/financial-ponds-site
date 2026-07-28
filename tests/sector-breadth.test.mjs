@@ -43,8 +43,8 @@ test("traceable constituent metadata produces both advancer and MA20 ratios", ()
   assert.equal(result.display_label, "ETF篮子扩散");
   assert.equal(result.rows[0].effective_count, 3);
   assert.equal(result.rows[0].total_count, 3);
-  assert.equal(result.rows[0].advancers_ratio, 1 / 3);
-  assert.equal(result.rows[0].above_ma20_ratio, 2 / 3);
+  assert.equal(result.rows[0].advancers_ratio, 0.333333);
+  assert.equal(result.rows[0].above_ma20_ratio, 0.666667);
   assert.equal(result.rows[0].composition_as_of, "2026-07-28");
 });
 

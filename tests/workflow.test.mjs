@@ -237,7 +237,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.76 quantitative panel preserves the v0.10.75 ordering, v0.10.74 provider path, and v0.10.73 archive repair", async () => {
+test("v0.10.77 data completeness preserves the v0.10.75 ordering, v0.10.74 provider path, and v0.10.73 archive repair", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage, ciRunner, archiveScript] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -249,10 +249,11 @@ test("v0.10.76 quantitative panel preserves the v0.10.75 ordering, v0.10.74 prov
     readFile("tools/financial-pond-framework/providers/akshare_etf_bridge/archive_historical_market_inputs.py", "utf8")
   ]);
   assert.match(index, /Financial Ponds/);
-  assert.match(index, /v0\.10\.76/);
+  assert.match(index, /v0\.10\.77/);
   assert.match(index, /每日市场穿透/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.76");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.76");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.77");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.77");
+  assert.match(changelog, /v0\.10\.77/);
   assert.match(changelog, /v0\.10\.76/);
   assert.match(changelog, /v0\.10\.75/);
   assert.match(changelog, /v0\.10\.74/);
