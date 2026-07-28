@@ -1,71 +1,74 @@
 {
   "schema_version": "market_penetration_report_v2",
-  "as_of": "2026-07-27",
-  "generated_at": "2026-07-27T11:58:30Z",
+  "as_of": "2026-07-28",
+  "generated_at": "2026-07-28T05:35:20Z",
   "display_contract": {
     "mode": "display_only",
     "affects_model_scores": false,
     "boundary": "Narratives and interpretation never alter observation ranking."
   },
   "coverage_window": {
-    "as_of": "2026-07-27",
-    "market_source_date": "2026-07-27",
-    "narrative_window": "2026-07-27"
+    "as_of": "2026-07-28",
+    "market_source_date": "2026-07-28",
+    "narrative_window": "2026-07-28"
   },
   "source_status": [
     {
       "source_id": "a_share_market_archive",
       "status": "available",
-      "source_date": "2026-07-27",
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "source_date": "2026-07-28",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "detail": "Published market signal archive; provider-origin quality is retained per fact."
     },
     {
       "source_id": "legacy_google_news_rss",
       "status": "available",
-      "source_date": "2026-07-27",
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "source_date": "2026-07-28",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "detail": "Media narratives only; never verified automatically or scored by the graph."
     }
   ],
-  "headline": "消费、通信电子保持前列，消费、通信电子正在增强；仍需成交、相对强度和后续复盘确认。",
+  "headline": "银行保险、资源材料仍居前，但通信电子、半导体过热风险上升；券商、Defense and Military开始具备承接观察价值。",
   "market_summary": {
     "market_regime": "中性偏进攻",
     "dominant_style": "科技成长",
     "capital_state": "集中轮动",
-    "action_boundary": "等待确认后跟踪"
+    "action_boundary": "可跟踪，不追高"
   },
   "what_happened": [
     {
-      "statement": "今日观察前列为消费、通信电子、资源材料，前列分数为75.14 / 75 / 73.72。",
+      "statement": "今日观察前列为银行保险、资源材料、通信电子，前列分数为79.48 / 79.21 / 78.24。",
       "evidence_type": "fp_hard_data",
       "related_pool_ids": [
-        "a_share_consumer",
-        "a_share_communication_electronics",
-        "a_share_resources_materials"
+        "a_share_bank_insurance",
+        "a_share_resources_materials",
+        "a_share_communication_electronics"
       ]
     },
     {
-      "statement": "消费、通信电子、资源材料、新能源车、AI计算机、半导体、军工、券商、银行保险、地产基建处于主要候选或早期右侧状态，重点看改善能否延续。",
+      "statement": "通信电子、半导体触发过热或风险门提醒，强势与新建仓价值不能直接画等号。",
+      "evidence_type": "fp_risk_state",
+      "related_pool_ids": [
+        "a_share_communication_electronics",
+        "a_share_semiconductor"
+      ]
+    },
+    {
+      "statement": "券商、Defense and Military、新能源车、消费、医药医疗处于主要候选或早期右侧状态，重点看改善能否延续。",
       "evidence_type": "fp_candidate_state",
       "related_pool_ids": [
-        "a_share_consumer",
-        "a_share_communication_electronics",
-        "a_share_resources_materials",
-        "a_share_new_energy_ev",
-        "a_share_ai_computer",
-        "a_share_semiconductor",
-        "a_share_defense_military",
         "a_share_brokerage",
-        "a_share_bank_insurance",
-        "a_share_real_estate_infra"
+        "a_share_defense_military",
+        "a_share_new_energy_ev",
+        "a_share_consumer",
+        "a_share_healthcare_pharma"
       ]
     },
     {
-      "statement": "通信电子的代表工具当日变化为+3.25%，这是精确日期市场观察，不代表未来方向。",
+      "statement": "银行保险的代表工具当日变化为+1.24%，这是精确日期市场观察，不代表未来方向。",
       "evidence_type": "exact_date_market_observation",
       "related_fact_ids": [
-        "market:2026-07-27:a_share_communication_electronics:close"
+        "market:2026-07-28:a_share_bank_insurance:close"
       ]
     },
     {
@@ -78,28 +81,28 @@
       "statement": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-27:0:e18898e9",
+      "narrative_id": "media:2026-07-28:0:e18898e9",
       "source_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VbzBmX1FPUDdTQV9xNFpGMlZQNDRzdzdxenRXdy02VkYxQTk1RGR6djctdjdrazRlT3kxaF9lbG9WNzJ3VHpkTW0yRzM5bGdzajlwQWR3RUJwYU44Vi1SX3IxdGxDVGtEaVVQelRVTGlHVDJFWVE?oc=5"
     },
     {
       "statement": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-27:1:99fff302",
+      "narrative_id": "media:2026-07-28:1:99fff302",
       "source_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5"
     },
     {
       "statement": "PBOC, CSRC all in on boosting growth - chinadailyhk",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-27:2:574cf1a",
+      "narrative_id": "media:2026-07-28:2:574cf1a",
       "source_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5"
     },
     {
       "statement": "“Nvidia Is Hamstrung Too”: Packaging Emerges as AI Chips’ New Bottleneck, Intensifying Global Capex Race - economy.ac",
       "confidence": "unverified",
       "evidence_status": "media_narrative",
-      "narrative_id": "media:2026-07-27:3:96cb0746",
+      "narrative_id": "media:2026-07-28:3:96cb0746",
       "source_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGY3NZZm1keDlNaXB2dzlHTWdSR3UxSDBucktFOEhfcGpsNk9vRTdicDFkNlFMUGdsdklCeFNuUzNyczFadUZoR3lNaDVyZHAzQzNMVHlaQQ?oc=5"
     }
   ],
@@ -115,18 +118,63 @@
     },
     {
       "nodes": [
-        "消费保持观察前列",
-        "主要候选",
+        "银行保险保持观察前列",
+        "Confirmed Trend",
         "风险门通过",
-        "观察持续性与扩散"
+        "等待增量证据"
       ],
       "note": "该链条描述模型状态如何转化为观察条件，不是买卖指令。"
+    },
+    {
+      "nodes": [
+        "板块保持强势",
+        "短线热度或拥挤升高",
+        "风险门收紧",
+        "等待降温后再确认"
+      ],
+      "note": "过热组优先处理风险，不因排名靠前而自动升级。"
     }
   ],
   "fp_cross_checks": [
     {
-      "pool_id": "a_share_consumer",
-      "pool_name": "消费",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "银行保险",
+      "narrative_direction": "unverified_or_not_required",
+      "hard_data_direction": "Confirmed Trend",
+      "agreement": "数据支持",
+      "interpretation": "价格、流动性与证据质量同时较完整。",
+      "next_watch": "等待增量证据"
+    },
+    {
+      "pool_id": "a_share_resources_materials",
+      "pool_name": "资源材料",
+      "narrative_direction": "unverified_or_not_required",
+      "hard_data_direction": "Cooling",
+      "agreement": "数据支持",
+      "interpretation": "价格、流动性与证据质量同时较完整。",
+      "next_watch": "观察回落后的承接"
+    },
+    {
+      "pool_id": "a_share_communication_electronics",
+      "pool_name": "通信电子",
+      "narrative_direction": "unverified_or_not_required",
+      "hard_data_direction": "Overheated",
+      "agreement": "风险提醒",
+      "interpretation": "强度与证据较好，但风险门已有提醒。",
+      "next_watch": "等待降温后再确认"
+    },
+    {
+      "pool_id": "a_share_ai_computer",
+      "pool_name": "AI计算机",
+      "narrative_direction": "unverified_or_not_required",
+      "hard_data_direction": "Cooling",
+      "agreement": "数据支持",
+      "interpretation": "价格、流动性与证据质量同时较完整。",
+      "next_watch": "观察回落后的承接"
+    },
+    {
+      "pool_id": "a_share_brokerage",
+      "pool_name": "券商",
       "narrative_direction": "unverified_or_not_required",
       "hard_data_direction": "Major Candidate",
       "agreement": "数据支持",
@@ -134,17 +182,17 @@
       "next_watch": "观察持续性与扩散"
     },
     {
-      "pool_id": "a_share_communication_electronics",
-      "pool_name": "通信电子",
+      "pool_id": "a_share_semiconductor",
+      "pool_name": "半导体",
       "narrative_direction": "unverified_or_not_required",
       "hard_data_direction": "Major Candidate",
       "agreement": "风险提醒",
       "interpretation": "强度与证据较好，但风险门已有提醒。",
-      "next_watch": "观察持续性与扩散"
+      "next_watch": "等待降温后再确认"
     },
     {
-      "pool_id": "a_share_resources_materials",
-      "pool_name": "资源材料",
+      "pool_id": "a_share_defense_military",
+      "pool_name": "Defense and Military",
       "narrative_direction": "unverified_or_not_required",
       "hard_data_direction": "Major Candidate",
       "agreement": "数据支持",
@@ -161,8 +209,8 @@
       "next_watch": "观察持续性与扩散"
     },
     {
-      "pool_id": "a_share_ai_computer",
-      "pool_name": "AI计算机",
+      "pool_id": "a_share_consumer",
+      "pool_name": "消费",
       "narrative_direction": "unverified_or_not_required",
       "hard_data_direction": "Major Candidate",
       "agreement": "数据支持",
@@ -170,44 +218,8 @@
       "next_watch": "观察持续性与扩散"
     },
     {
-      "pool_id": "a_share_semiconductor",
-      "pool_name": "半导体",
-      "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Major Candidate",
-      "agreement": "数据支持",
-      "interpretation": "价格、流动性与证据质量同时较完整。",
-      "next_watch": "观察持续性与扩散"
-    },
-    {
-      "pool_id": "a_share_defense_military",
-      "pool_name": "军工",
-      "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Major Candidate",
-      "agreement": "数据支持",
-      "interpretation": "价格、流动性与证据质量同时较完整。",
-      "next_watch": "观察持续性与扩散"
-    },
-    {
-      "pool_id": "a_share_brokerage",
-      "pool_name": "券商",
-      "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Major Candidate",
-      "agreement": "数据支持",
-      "interpretation": "价格、流动性与证据质量同时较完整。",
-      "next_watch": "观察持续性与扩散"
-    },
-    {
-      "pool_id": "a_share_bank_insurance",
-      "pool_name": "银行保险",
-      "narrative_direction": "unverified_or_not_required",
-      "hard_data_direction": "Major Candidate",
-      "agreement": "数据支持",
-      "interpretation": "价格、流动性与证据质量同时较完整。",
-      "next_watch": "观察持续性与扩散"
-    },
-    {
-      "pool_id": "a_share_real_estate_infra",
-      "pool_name": "地产基建",
+      "pool_id": "a_share_healthcare_pharma",
+      "pool_name": "医药医疗",
       "narrative_direction": "unverified_or_not_required",
       "hard_data_direction": "Major Candidate",
       "agreement": "数据支持",
@@ -217,10 +229,16 @@
   ],
   "tomorrow_watch": [
     {
-      "statement": "消费、通信电子、资源材料、新能源车、AI计算机、半导体、军工、券商、银行保险、地产基建的改善能否连续，并扩散到相关板块。"
+      "statement": "通信电子、半导体能否降温，同时维持相对强度与成交承接。"
     },
     {
-      "statement": "消费能否继续保持前列，同时不触发更高的过热或风险门警告。"
+      "statement": "券商、Defense and Military、新能源车、消费、医药医疗的改善能否连续，并扩散到相关板块。"
+    },
+    {
+      "statement": "银行保险、资源材料回落后是否出现承接，而不是继续失速。"
+    },
+    {
+      "statement": "银行保险能否继续保持前列，同时不触发更高的过热或风险门警告。"
     },
     {
       "statement": "复盘数据能否从 pending / unavailable 转为 reviewed；在样本不足前不使用胜率结论。"
@@ -229,124 +247,126 @@
   "sector_state_groups": {
     "strengthening": [
       {
-        "pool_id": "a_share_consumer",
-        "pool_name": "消费",
-        "score": 75.14,
+        "pool_id": "a_share_brokerage",
+        "pool_name": "券商",
+        "score": 76.2784,
         "candidate_state": "Major Candidate",
-        "overheat_score": 0,
-        "major_wave_score": 100,
+        "overheat_score": 8,
+        "major_wave_score": 99,
         "risk_gate_status": "pass"
       },
       {
-        "pool_id": "a_share_communication_electronics",
-        "pool_name": "通信电子",
-        "score": 75,
+        "pool_id": "a_share_defense_military",
+        "pool_name": "Defense and Military",
+        "score": 70.7455,
         "candidate_state": "Major Candidate",
-        "overheat_score": 48,
-        "major_wave_score": 96,
-        "risk_gate_status": "caution"
-      },
-      {
-        "pool_id": "a_share_resources_materials",
-        "pool_name": "资源材料",
-        "score": 73.72,
-        "candidate_state": "Major Candidate",
-        "overheat_score": 22,
-        "major_wave_score": 100,
+        "overheat_score": 0,
+        "major_wave_score": 94,
         "risk_gate_status": "pass"
       },
       {
         "pool_id": "a_share_new_energy_ev",
         "pool_name": "新能源车",
-        "score": 72.3248,
+        "score": 69.8045,
         "candidate_state": "Major Candidate",
-        "overheat_score": 10,
+        "overheat_score": 0,
+        "major_wave_score": 94,
+        "risk_gate_status": "pass"
+      },
+      {
+        "pool_id": "a_share_consumer",
+        "pool_name": "消费",
+        "score": 67.274,
+        "candidate_state": "Major Candidate",
+        "overheat_score": 0,
         "major_wave_score": 100,
+        "risk_gate_status": "pass"
+      },
+      {
+        "pool_id": "a_share_healthcare_pharma",
+        "pool_name": "医药医疗",
+        "score": 66.7998,
+        "candidate_state": "Major Candidate",
+        "overheat_score": 0,
+        "major_wave_score": 90,
+        "risk_gate_status": "pass"
+      }
+    ],
+    "cooling": [
+      {
+        "pool_id": "a_share_bank_insurance",
+        "pool_name": "银行保险",
+        "score": 79.48,
+        "candidate_state": "Confirmed Trend",
+        "overheat_score": 8,
+        "major_wave_score": 100,
+        "risk_gate_status": "pass"
+      },
+      {
+        "pool_id": "a_share_resources_materials",
+        "pool_name": "资源材料",
+        "score": 79.2062,
+        "candidate_state": "Cooling",
+        "overheat_score": 22,
+        "major_wave_score": 99,
         "risk_gate_status": "pass"
       },
       {
         "pool_id": "a_share_ai_computer",
         "pool_name": "AI计算机",
-        "score": 71.64,
-        "candidate_state": "Major Candidate",
-        "overheat_score": 8,
-        "major_wave_score": 100,
+        "score": 76.744,
+        "candidate_state": "Cooling",
+        "overheat_score": 38,
+        "major_wave_score": 99,
         "risk_gate_status": "pass"
+      }
+    ],
+    "overheated": [
+      {
+        "pool_id": "a_share_communication_electronics",
+        "pool_name": "通信电子",
+        "score": 78.244,
+        "candidate_state": "Overheated",
+        "overheat_score": 74,
+        "major_wave_score": 75,
+        "risk_gate_status": "caution"
       },
       {
         "pool_id": "a_share_semiconductor",
         "pool_name": "半导体",
-        "score": 70.98,
+        "score": 76.1176,
         "candidate_state": "Major Candidate",
-        "overheat_score": 38,
-        "major_wave_score": 100,
-        "risk_gate_status": "pass"
-      },
-      {
-        "pool_id": "a_share_defense_military",
-        "pool_name": "军工",
-        "score": 70.02,
-        "candidate_state": "Major Candidate",
-        "overheat_score": 10,
-        "major_wave_score": 100,
-        "risk_gate_status": "pass"
-      },
-      {
-        "pool_id": "a_share_brokerage",
-        "pool_name": "券商",
-        "score": 69.76,
-        "candidate_state": "Major Candidate",
-        "overheat_score": 8,
-        "major_wave_score": 100,
-        "risk_gate_status": "pass"
-      },
-      {
-        "pool_id": "a_share_bank_insurance",
-        "pool_name": "银行保险",
-        "score": 69.24,
-        "candidate_state": "Major Candidate",
-        "overheat_score": 8,
-        "major_wave_score": 100,
-        "risk_gate_status": "pass"
-      },
-      {
-        "pool_id": "a_share_real_estate_infra",
-        "pool_name": "地产基建",
-        "score": 68.92,
-        "candidate_state": "Major Candidate",
-        "overheat_score": 0,
-        "major_wave_score": 100,
-        "risk_gate_status": "pass"
+        "overheat_score": 58,
+        "major_wave_score": 87,
+        "risk_gate_status": "caution"
       }
     ],
-    "cooling": [],
-    "overheated": [],
     "weak": [
+      {
+        "pool_id": "a_share_transportation",
+        "pool_name": "交通运输",
+        "score": 1.78,
+        "direction": "weak",
+        "reason": "当前综合观察分数偏低或证据不足。"
+      },
       {
         "pool_id": "a_share_agriculture",
         "pool_name": "Agriculture",
-        "score": 2.34,
+        "score": 2.3116,
         "direction": "weak",
         "reason": "当前综合观察分数偏低或证据不足。"
       },
       {
         "pool_id": "a_share_light_manufacturing",
         "pool_name": "Light Manufacturing",
-        "score": 2.34,
+        "score": 2.3116,
         "direction": "weak",
         "reason": "当前综合观察分数偏低或证据不足。"
       },
       {
         "pool_id": "a_share_social_services",
         "pool_name": "Social Services",
-        "score": 2.34,
-        "direction": "weak",
-        "reason": "当前综合观察分数偏低或证据不足。"
-      },
-      {
-        "pool_id": "a_share_transportation",
-        "pool_name": "交通运输",
-        "score": 4.12,
+        "score": 2.3116,
         "direction": "weak",
         "reason": "当前综合观察分数偏低或证据不足。"
       }
@@ -360,239 +380,239 @@
     "fully_mapped_count": 22,
     "direct_evidence_ratio": 0.3433,
     "proxy_evidence_ratio": 0.597,
-    "reviewed_rows": 10,
-    "pending_rows": 35,
-    "unavailable_rows": 105,
+    "reviewed_rows": 15,
+    "pending_rows": 40,
+    "unavailable_rows": 115,
     "note": "复盘样本已开始形成，但仍需按候选状态和市场环境分组解读。"
   },
   "market_facts": [
     {
-      "fact_id": "market:2026-07-27:a_share_communication_electronics:close",
+      "fact_id": "market:2026-07-28:a_share_bank_insurance:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "通信电子代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_communication_electronics",
-      "pool_name": "通信电子",
-      "observed_value": 0.667,
+      "fact_text": "银行保险代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "银行保险",
+      "observed_value": 0.815,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515880",
-      "observation_time": "2026-07-27",
+      "symbol": "512800",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "derived_from_market",
-      "observed_return": 3.25
+      "observed_return": 1.24
     },
     {
-      "fact_id": "market:2026-07-27:a_share_communication_electronics:close",
+      "fact_id": "market:2026-07-28:a_share_bank_insurance:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "通信电子代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_communication_electronics",
-      "pool_name": "通信电子",
-      "observed_value": 0.667,
+      "fact_text": "银行保险代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_bank_insurance",
+      "pool_name": "银行保险",
+      "observed_value": 0.815,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515880",
-      "observation_time": "2026-07-27",
+      "symbol": "512800",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "derived_from_market",
-      "observed_return": 3.25
+      "observed_return": 1.24
     },
     {
-      "fact_id": "market:2026-07-27:a_share_environmental_protection:close",
+      "fact_id": "market:2026-07-28:a_share_agriculture:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "环保代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_environmental_protection",
-      "pool_name": "环保",
-      "observed_value": 1.606,
+      "fact_text": "a_share_agriculture代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_agriculture",
+      "pool_name": "a_share_agriculture",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515030",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 2.82
+      "observed_return": 1.0558069381598756
     },
     {
-      "fact_id": "market:2026-07-27:a_share_machinery:close",
+      "fact_id": "market:2026-07-28:a_share_beauty_care:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "机械代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_machinery",
-      "pool_name": "机械",
-      "observed_value": 1.606,
+      "fact_text": "a_share_beauty_care代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_beauty_care",
+      "pool_name": "a_share_beauty_care",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515030",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 2.82
+      "observed_return": 1.0558069381598756
     },
     {
-      "fact_id": "market:2026-07-27:a_share_new_energy_ev:close",
+      "fact_id": "market:2026-07-28:a_share_consumer:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "新能源车代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_new_energy_ev",
-      "pool_name": "新能源车",
-      "observed_value": 1.606,
+      "fact_text": "消费代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_consumer",
+      "pool_name": "消费",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515030",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "derived_from_market",
-      "observed_return": 2.82
+      "observed_return": 1.0558069381598756
     },
     {
-      "fact_id": "market:2026-07-27:a_share_utilities:close",
+      "fact_id": "market:2026-07-28:a_share_food_beverage:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "公用事业代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_utilities",
-      "pool_name": "公用事业",
-      "observed_value": 1.606,
+      "fact_text": "a_share_food_beverage代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_food_beverage",
+      "pool_name": "a_share_food_beverage",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515030",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 2.82
+      "observed_return": 1.0558069381598756
     },
     {
-      "fact_id": "market:2026-07-27:a_share_environmental_protection:close",
+      "fact_id": "market:2026-07-28:a_share_home_appliances:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "环保代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_environmental_protection",
-      "pool_name": "环保",
-      "observed_value": 1.606,
+      "fact_text": "a_share_home_appliances代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_home_appliances",
+      "pool_name": "a_share_home_appliances",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515030",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 2.82
+      "observed_return": 1.0558069381598756
     },
     {
-      "fact_id": "market:2026-07-27:a_share_machinery:close",
+      "fact_id": "market:2026-07-28:a_share_light_manufacturing:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "机械代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_machinery",
-      "pool_name": "机械",
-      "observed_value": 1.606,
+      "fact_text": "a_share_light_manufacturing代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_light_manufacturing",
+      "pool_name": "a_share_light_manufacturing",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515030",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 2.82
+      "observed_return": 1.0558069381598756
     },
     {
-      "fact_id": "market:2026-07-27:a_share_new_energy_ev:close",
+      "fact_id": "market:2026-07-28:a_share_retail:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "新能源车代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_new_energy_ev",
-      "pool_name": "新能源车",
-      "observed_value": 1.606,
+      "fact_text": "a_share_retail代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_retail",
+      "pool_name": "a_share_retail",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "515030",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
-      "verification_status": "candidate",
-      "data_quality": "derived_from_market",
-      "observed_return": 2.82
-    },
-    {
-      "fact_id": "market:2026-07-27:a_share_utilities:close",
-      "fact_type": "exact_date_market_observation",
-      "fact_text": "公用事业代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_utilities",
-      "pool_name": "公用事业",
-      "observed_value": 1.606,
-      "previous_value": null,
-      "unit": "price",
-      "market": "a_share",
-      "symbol": "515030",
-      "observation_time": "2026-07-27",
-      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
       "data_quality": "estimated_from_source",
-      "observed_return": 2.82
+      "observed_return": 1.0558069381598756
     },
     {
-      "fact_id": "market:2026-07-27:a_share_defense_military:close",
+      "fact_id": "market:2026-07-28:a_share_social_services:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "a_share_defense_military代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_defense_military",
-      "pool_name": "a_share_defense_military",
-      "observed_value": 1.104,
+      "fact_text": "a_share_social_services代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_social_services",
+      "pool_name": "a_share_social_services",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "512660",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
-      "data_quality": "derived_from_market",
-      "observed_return": 2.51
+      "data_quality": "estimated_from_source",
+      "observed_return": 1.0558069381598756
     },
     {
-      "fact_id": "market:2026-07-27:a_share_defense_military:close",
+      "fact_id": "market:2026-07-28:a_share_textile_apparel:close",
       "fact_type": "exact_date_market_observation",
-      "fact_text": "军工代表工具的精确日期收盘数据已记录。",
-      "pool_id": "a_share_defense_military",
-      "pool_name": "军工",
-      "observed_value": 1.104,
+      "fact_text": "a_share_textile_apparel代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_textile_apparel",
+      "pool_name": "a_share_textile_apparel",
+      "observed_value": 0.67,
       "previous_value": null,
       "unit": "price",
       "market": "a_share",
-      "symbol": "512660",
-      "observation_time": "2026-07-27",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
       "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
-      "source_date": "2026-07-27",
+      "source_date": "2026-07-28",
       "verification_status": "candidate",
-      "data_quality": "derived_from_market",
-      "observed_return": 2.51
+      "data_quality": "estimated_from_source",
+      "observed_return": 1.0558069381598756
+    },
+    {
+      "fact_id": "market:2026-07-28:a_share_agriculture:close",
+      "fact_type": "exact_date_market_observation",
+      "fact_text": "Agriculture代表工具的精确日期收盘数据已记录。",
+      "pool_id": "a_share_agriculture",
+      "pool_name": "Agriculture",
+      "observed_value": 0.67,
+      "previous_value": null,
+      "unit": "price",
+      "market": "a_share",
+      "symbol": "159928",
+      "observation_time": "2026-07-28",
+      "source": "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv",
+      "source_date": "2026-07-28",
+      "verification_status": "candidate",
+      "data_quality": "estimated_from_source",
+      "observed_return": 1.0558069381598756
     }
   ],
   "official_fact_candidates": [],
   "media_narratives": [
     {
-      "narrative_id": "media:2026-07-27:0:e18898e9",
+      "narrative_id": "media:2026-07-28:0:e18898e9",
       "title": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VbzBmX1FPUDdTQV9xNFpGMlZQNDRzdzdxenRXdy02VkYxQTk1RGR6djctdjdrazRlT3kxaF9lbG9WNzJ3VHpkTW0yRzM5bGdzajlwQWR3RUJwYU44Vi1SX3IxdGxDVGtEaVVQelRVTGlHVDJFWVE?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "normalized_topic": "us imposes new tariffs on 60 economies as china us",
       "duplicate_group": "us imposes new tariffs on 60 economies as china us",
       "source_quality": "media_unverified",
@@ -601,13 +621,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:1:99fff302",
+      "narrative_id": "media:2026-07-28:1:99fff302",
       "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "normalized_topic": "2024 chinese stimulus package basics how it s impacting chinese",
       "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
       "source_quality": "media_unverified",
@@ -616,13 +636,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:2:574cf1a",
+      "narrative_id": "media:2026-07-28:2:574cf1a",
       "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "normalized_topic": "pboc csrc all in on boosting growth chinadailyhk",
       "duplicate_group": "pboc csrc all in on boosting growth chinadailyhk",
       "source_quality": "media_unverified",
@@ -631,13 +651,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:3:96cb0746",
+      "narrative_id": "media:2026-07-28:3:96cb0746",
       "title": "“Nvidia Is Hamstrung Too”: Packaging Emerges as AI Chips’ New Bottleneck, Intensifying Global Capex Race - economy.ac",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGY3NZZm1keDlNaXB2dzlHTWdSR3UxSDBucktFOEhfcGpsNk9vRTdicDFkNlFMUGdsdklCeFNuUzNyczFadUZoR3lNaDVyZHAzQzNMVHlaQQ?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "normalized_topic": "nvidia is hamstrung too packaging emerges as ai chips new",
       "duplicate_group": "nvidia is hamstrung too packaging emerges as ai chips new",
       "source_quality": "media_unverified",
@@ -646,13 +666,13 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:4:f8cc1d8f",
+      "narrative_id": "media:2026-07-28:4:f8cc1d8f",
       "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "normalized_topic": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
       "duplicate_group": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
       "source_quality": "media_unverified",
@@ -661,13 +681,28 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:5:27f696da",
+      "narrative_id": "media:2026-07-28:5:ecc1f1e9",
+      "title": "Bitcoin (BTCUSD) Is down 2.49% on Jul 28: Why It Happened - TradingKey",
+      "description": "",
+      "rss_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPazFjZUhFTWZJN3VNU0xvYUt4VVZocmF0MDRmS1BSLW1MMVMwbXVBcHFobzZFd1lRWmF5dFhHRi1QVFMtUHhTaXhLdVQyZ01OMzd6eXNjOFdQR0RURm9GLTNpZUE5bXBqVlJVYnFBLXZnd2x6cFRHS3RJWnhlS2kwUHhjMUt0NGJiOW5wNGRB?oc=5",
+      "publisher": null,
+      "published_at": null,
+      "retrieved_at": "2026-07-28T05:35:20Z",
+      "normalized_topic": "bitcoin btcusd is down 2 49 on jul 28 why",
+      "duplicate_group": "bitcoin btcusd is down 2 49 on jul 28 why",
+      "source_quality": "media_unverified",
+      "verification_status": "candidate",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-28:6:27f696da",
       "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "normalized_topic": "why bitcoin faces a brutal liquidity trap because china s",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
       "source_quality": "media_unverified",
@@ -676,30 +711,15 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:6:27f696da",
+      "narrative_id": "media:2026-07-28:7:27f696da",
       "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "description": "",
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "publisher": null,
       "published_at": null,
-      "retrieved_at": "2026-07-27T11:58:30Z",
+      "retrieved_at": "2026-07-28T05:35:20Z",
       "normalized_topic": "why bitcoin faces a brutal liquidity trap because china s",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
-      "source_quality": "media_unverified",
-      "verification_status": "candidate",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-27:7:5d781e32",
-      "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
-      "description": "",
-      "rss_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5",
-      "publisher": null,
-      "published_at": null,
-      "retrieved_at": "2026-07-27T11:58:30Z",
-      "normalized_topic": "us cpi preview jobs shock turns inflation into a live",
-      "duplicate_group": "us cpi preview jobs shock turns inflation into a live",
       "source_quality": "media_unverified",
       "verification_status": "candidate",
       "evidence_status": "media_narrative",
@@ -708,7 +728,7 @@
   ],
   "unsupported_narratives": [
     {
-      "narrative_id": "media:2026-07-27:0:e18898e9",
+      "narrative_id": "media:2026-07-28:0:e18898e9",
       "title": "US Imposes New Tariffs on 60 Economies as China-US Talks on Reciprocal Tariff Cuts Advance - finance.biggo.com",
       "rss_url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5VbzBmX1FPUDdTQV9xNFpGMlZQNDRzdzdxenRXdy02VkYxQTk1RGR6djctdjdrazRlT3kxaF9lbG9WNzJ3VHpkTW0yRzM5bGdzajlwQWR3RUJwYU44Vi1SX3IxdGxDVGtEaVVQelRVTGlHVDJFWVE?oc=5",
       "duplicate_group": "us imposes new tariffs on 60 economies as china us",
@@ -716,7 +736,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:1:99fff302",
+      "narrative_id": "media:2026-07-28:1:99fff302",
       "title": "2024 Chinese Stimulus Package Basics & How it's Impacting Chinese and Hong Kong Stocks - Moomoo",
       "rss_url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxONGllVVJDSUFmVkdDcmVxMW1RSTZQcVd5UlZrWVJYMS13ZEJfUngzQTlHYXJUSjBIcTg0eHRVMFVCaUR3YU9HczZ6RHNSZ3cyclpSeUJuaHZwbnlQRUFmUjUybjRPYmd4dWh3Uk96NEJPOUI1SktBVVR5VWY5d1doZzYzTmhJUzJlcXh5b25XWmdFWGpuTzRCQnhmVTd2amdJSS1zVEZmblVoLVNKS183QWFYT19lbVZaUFZGZTJ1SUl6bkQ2RWo5T2Y1SllCTDdqRkY1OVh3?oc=5",
       "duplicate_group": "2024 chinese stimulus package basics how it s impacting chinese",
@@ -724,7 +744,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:2:574cf1a",
+      "narrative_id": "media:2026-07-28:2:574cf1a",
       "title": "PBOC, CSRC all in on boosting growth - chinadailyhk",
       "rss_url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAwWmtoUTZvU2gtMnp0ckZtdUhxZ0xuZm5fOEZNWF9HTWVYZ0xMa0otOEF6alFYSkhuYWRwTlllUWM2WEdUY3BveWwzcFByNWhhM0FTNnVFNE9BUQ?oc=5",
       "duplicate_group": "pboc csrc all in on boosting growth chinadailyhk",
@@ -732,7 +752,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:3:96cb0746",
+      "narrative_id": "media:2026-07-28:3:96cb0746",
       "title": "“Nvidia Is Hamstrung Too”: Packaging Emerges as AI Chips’ New Bottleneck, Intensifying Global Capex Race - economy.ac",
       "rss_url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBGY3NZZm1keDlNaXB2dzlHTWdSR3UxSDBucktFOEhfcGpsNk9vRTdicDFkNlFMUGdsdklCeFNuUzNyczFadUZoR3lNaDVyZHAzQzNMVHlaQQ?oc=5",
       "duplicate_group": "nvidia is hamstrung too packaging emerges as ai chips new",
@@ -740,7 +760,7 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:4:f8cc1d8f",
+      "narrative_id": "media:2026-07-28:4:f8cc1d8f",
       "title": "Samsung's $73B Semiconductor Investment 2026: AI Chip Strategy - tech-insider.org",
       "rss_url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9lLW5YQ2R0aGlTQlNnc1VTQmJLOVRpSmxTV1ZwcDNVdUdUWUd4aEh0OTZ1bHRZTTF1RDFueEhId1JwNWs3Tk8ybXVhYkZfdEVBS0JBUXBQd3lFUXV0cWFSd3ZxUnJkMVZZLXNuU0Fkakw2Q1pPUHQ5MGFVb0F2UUk?oc=5",
       "duplicate_group": "samsung s 73b semiconductor investment 2026 ai chip strategy tech",
@@ -748,7 +768,15 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:5:27f696da",
+      "narrative_id": "media:2026-07-28:5:ecc1f1e9",
+      "title": "Bitcoin (BTCUSD) Is down 2.49% on Jul 28: Why It Happened - TradingKey",
+      "rss_url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPazFjZUhFTWZJN3VNU0xvYUt4VVZocmF0MDRmS1BSLW1MMVMwbXVBcHFobzZFd1lRWmF5dFhHRi1QVFMtUHhTaXhLdVQyZ01OMzd6eXNjOFdQR0RURm9GLTNpZUE5bXBqVlJVYnFBLXZnd2x6cFRHS3RJWnhlS2kwUHhjMUt0NGJiOW5wNGRB?oc=5",
+      "duplicate_group": "bitcoin btcusd is down 2 49 on jul 28 why",
+      "evidence_status": "media_narrative",
+      "stale": false
+    },
+    {
+      "narrative_id": "media:2026-07-28:6:27f696da",
       "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
@@ -756,18 +784,10 @@
       "stale": false
     },
     {
-      "narrative_id": "media:2026-07-27:6:27f696da",
+      "narrative_id": "media:2026-07-28:7:27f696da",
       "title": "Why Bitcoin faces a brutal liquidity trap because China's $298B of US Treasuries are up for sale - CryptoSlate",
       "rss_url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNdHdQVTFQUUNXNVlpZmpkQ3BBdE5YTm1kUEdiYWV1UHRtRlpCT201UGJyWUlHV1RVRV81cEZtdFVJQ1Z3bUJPLXBVTkRWYTdodnRIXzdzOGl0QUducGlLYjVJQU9naFRCam1EMHJBd1VpWkVjb1cxcDFQREpWWnAzREk0T2drNUU?oc=5",
       "duplicate_group": "why bitcoin faces a brutal liquidity trap because china s",
-      "evidence_status": "media_narrative",
-      "stale": false
-    },
-    {
-      "narrative_id": "media:2026-07-27:7:5d781e32",
-      "title": "US CPI preview: Jobs shock turns inflation into a live trading event - Saxo",
-      "rss_url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxObDduX0o0cC15Qnl0eXJlSmE2VFBGWGMxdC03WVNndlBjWDJKeVphV0RncElNUDV0bnFoX2xWbzRMZ2NfS0NQVXF6QV9wMExxOGxaVjNURTI4Q1cyTVc0cG1GdmlPeHdVOHFTSjhRdmtzaVlCaGZJdjE2YVlMYUhHZUZSekpIMjJ0bGdmT1NULWF5SU9ZVlBOakVsUHBfemhYRlhscXNDeTNVR0tVaUxxeVJPMzhrUVZoamE0Z0JsS0dEc2hMR3c?oc=5",
-      "duplicate_group": "us cpi preview jobs shock turns inflation into a live",
       "evidence_status": "media_narrative",
       "stale": false
     }
@@ -784,58 +804,7 @@
     }
   ],
   "unexplained_moves": [],
-  "possible_3_20_session_implications": [
-    {
-      "implication_id": "hypothesis:market:2026-07-27:a_share_communication_electronics:close",
-      "kind": "hypothesis",
-      "statement": "通信电子出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
-      "related_fact_ids": [
-        "market:2026-07-27:a_share_communication_electronics:close"
-      ],
-      "horizon": "3_20_sessions",
-      "status": "not_a_fact"
-    },
-    {
-      "implication_id": "hypothesis:market:2026-07-27:a_share_communication_electronics:close",
-      "kind": "hypothesis",
-      "statement": "通信电子出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
-      "related_fact_ids": [
-        "market:2026-07-27:a_share_communication_electronics:close"
-      ],
-      "horizon": "3_20_sessions",
-      "status": "not_a_fact"
-    },
-    {
-      "implication_id": "hypothesis:market:2026-07-27:a_share_environmental_protection:close",
-      "kind": "hypothesis",
-      "statement": "环保出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
-      "related_fact_ids": [
-        "market:2026-07-27:a_share_environmental_protection:close"
-      ],
-      "horizon": "3_20_sessions",
-      "status": "not_a_fact"
-    },
-    {
-      "implication_id": "hypothesis:market:2026-07-27:a_share_machinery:close",
-      "kind": "hypothesis",
-      "statement": "机械出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
-      "related_fact_ids": [
-        "market:2026-07-27:a_share_machinery:close"
-      ],
-      "horizon": "3_20_sessions",
-      "status": "not_a_fact"
-    },
-    {
-      "implication_id": "hypothesis:market:2026-07-27:a_share_new_energy_ev:close",
-      "kind": "hypothesis",
-      "statement": "新能源车出现较明显的当日价格变化；需要用未来3–20个交易日的价格、流动性和广度独立验证持续性。",
-      "related_fact_ids": [
-        "market:2026-07-27:a_share_new_energy_ev:close"
-      ],
-      "horizon": "3_20_sessions",
-      "status": "not_a_fact"
-    }
-  ],
+  "possible_3_20_session_implications": [],
   "verified_facts": [],
   "warnings": [
     "Verified facts remain empty until a primary-source ingestion and verification adapter is enabled.",

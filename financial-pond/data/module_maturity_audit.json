@@ -1,11 +1,11 @@
 {
   "module_id": "module_maturity_audit_v0_10_39",
   "status": "module_maturity_available",
-  "as_of": "2026-07-27",
-  "generated_at": "2026-07-27T11:59:39.682Z",
+  "as_of": "2026-07-28",
+  "generated_at": "2026-07-28T05:36:28.682Z",
   "overall": {
     "module_count": 22,
-    "average_progress": 43.14,
+    "average_progress": 43.86,
     "decision_path_progress": 50.8,
     "low_maturity_count": 10,
     "current_stage": "usable observation prototype; validation path under repair",
@@ -116,24 +116,6 @@
       "next_action": "Define pond template and creation checklist"
     },
     {
-      "module_id": "FP-PV-01",
-      "module": "Price-Volume Analysis",
-      "role": "Relative strength, volume, breadth, confirmation",
-      "status": "basic",
-      "progress": 20,
-      "next": "Add trend, divergence, volume expansion, and persistence",
-      "priority_rank": null,
-      "priority_reading": null,
-      "focus_lane": "quality_expansion",
-      "maturity_label": "early",
-      "urgency": "weak_module",
-      "blockers": [
-        "history_depth_gap",
-        "low_maturity"
-      ],
-      "next_action": "Add trend, divergence, volume expansion, and persistence"
-    },
-    {
       "module_id": "FP-EXPLAIN-01",
       "module": "Index Explainability",
       "role": "Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns",
@@ -167,6 +149,23 @@
         "low_maturity"
       ],
       "next_action": "Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers"
+    },
+    {
+      "module_id": "FP-RPT-01",
+      "module": "Reports",
+      "role": "Daily and weekly human-readable reports",
+      "status": "basic",
+      "progress": 25,
+      "next": "Add weekly report and proposal sections",
+      "priority_rank": null,
+      "priority_reading": null,
+      "focus_lane": "quality_expansion",
+      "maturity_label": "early",
+      "urgency": "weak_module",
+      "blockers": [
+        "low_maturity"
+      ],
+      "next_action": "Add weekly report and proposal sections"
     }
   ],
   "low_maturity_modules": [
@@ -222,24 +221,6 @@
       "next_action": "Define pond template and creation checklist"
     },
     {
-      "module_id": "FP-PV-01",
-      "module": "Price-Volume Analysis",
-      "role": "Relative strength, volume, breadth, confirmation",
-      "status": "basic",
-      "progress": 20,
-      "next": "Add trend, divergence, volume expansion, and persistence",
-      "priority_rank": null,
-      "priority_reading": null,
-      "focus_lane": "quality_expansion",
-      "maturity_label": "early",
-      "urgency": "weak_module",
-      "blockers": [
-        "history_depth_gap",
-        "low_maturity"
-      ],
-      "next_action": "Add trend, divergence, volume expansion, and persistence"
-    },
-    {
       "module_id": "FP-EXPLAIN-01",
       "module": "Index Explainability",
       "role": "Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns",
@@ -290,6 +271,23 @@
         "low_maturity"
       ],
       "next_action": "Add weekly report and proposal sections"
+    },
+    {
+      "module_id": "FP-PV-01",
+      "module": "Price-Volume Analysis",
+      "role": "Relative strength, volume, breadth, confirmation",
+      "status": "working prototype",
+      "progress": 30,
+      "next": "Accumulate 20 real amount sessions and add source-backed constituent breadth",
+      "priority_rank": null,
+      "priority_reading": null,
+      "focus_lane": "quality_expansion",
+      "maturity_label": "early",
+      "urgency": "later",
+      "blockers": [
+        "real_provider_gap"
+      ],
+      "next_action": "Accumulate 20 real amount sessions and add source-backed constituent breadth"
     },
     {
       "module_id": "FP-WATCH-01",
@@ -494,19 +492,18 @@
       "module_id": "FP-PV-01",
       "module": "Price-Volume Analysis",
       "role": "Relative strength, volume, breadth, confirmation",
-      "status": "basic",
-      "progress": 20,
-      "next": "Add trend, divergence, volume expansion, and persistence",
+      "status": "working prototype",
+      "progress": 30,
+      "next": "Accumulate 20 real amount sessions and add source-backed constituent breadth",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "quality_expansion",
       "maturity_label": "early",
-      "urgency": "weak_module",
+      "urgency": "later",
       "blockers": [
-        "history_depth_gap",
-        "low_maturity"
+        "real_provider_gap"
       ],
-      "next_action": "Add trend, divergence, volume expansion, and persistence"
+      "next_action": "Accumulate 20 real amount sessions and add source-backed constituent breadth"
     },
     {
       "module_id": "FP-NEWS-01",
@@ -678,15 +675,15 @@
       "module": "Frontend Dashboard",
       "role": "Explain model outputs and data boundaries",
       "status": "usable prototype",
-      "progress": 74,
-      "next": "Validate Top 10, Chinese explanations, branding, and mobile layout across daily deployments",
+      "progress": 80,
+      "next": "Validate quantitative rows, mini-series gaps, and mobile layout across daily deployments",
       "priority_rank": null,
       "priority_reading": null,
       "focus_lane": "infrastructure",
-      "maturity_label": "usable",
+      "maturity_label": "strong",
       "urgency": "later",
       "blockers": [],
-      "next_action": "Validate Top 10, Chinese explanations, branding, and mobile layout across daily deployments"
+      "next_action": "Validate quantitative rows, mini-series gaps, and mobile layout across daily deployments"
     },
     {
       "module_id": "FP-RPT-01",

@@ -1,7 +1,7 @@
 {
   "module_id": "sector_observation_panel_v1",
-  "as_of": "2026-07-27",
-  "generated_at": "2026-07-27T16:24:00.000Z",
+  "as_of": "2026-07-28",
+  "generated_at": "2026-07-28T05:35:20Z",
   "status": "panel_available",
   "window": {
     "target_trading_days": 20,
@@ -14,9 +14,10 @@
       "2026-07-22",
       "2026-07-23",
       "2026-07-24",
-      "2026-07-27"
+      "2026-07-27",
+      "2026-07-28"
     ],
-    "observed_date_count": 9,
+    "observed_date_count": 10,
     "complete": false
   },
   "field_definitions": {
@@ -60,1707 +61,12 @@
     "message": "状态由真实边际变化按规则区分",
     "distinct_statuses": [
       "strengthening",
+      "price_only",
       "weakening",
       "maintain"
     ]
   },
   "rows": [
-    {
-      "pool_id": "a_share_consumer",
-      "sector_id": "consumer",
-      "pool_name": "消费",
-      "instrument_code": "159928",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 1,
-      "previous_rank": 9,
-      "rank_change": 8,
-      "score": 75.14,
-      "previous_score": 69.5576,
-      "score_change": 5.58,
-      "status": "strengthening",
-      "status_label": "边际增强",
-      "status_change": "维持观察 → 边际增强",
-      "model_state": "Major Candidate",
-      "conclusion": "消费综合分+5.58分，相对沪深300为-1.2%，边际证据改善。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": 0
-            },
-            {
-              "date": "2026-07-08",
-              "value": -0.7937
-            },
-            {
-              "date": "2026-07-09",
-              "value": -1.9048
-            },
-            {
-              "date": "2026-07-10",
-              "value": 0.3175
-            },
-            {
-              "date": "2026-07-16",
-              "value": 5.5556
-            },
-            {
-              "date": "2026-07-22",
-              "value": 6.8254
-            },
-            {
-              "date": "2026-07-23",
-              "value": 6.3492
-            },
-            {
-              "date": "2026-07-24",
-              "value": 4.127
-            },
-            {
-              "date": "2026-07-27",
-              "value": 5.2381
-            }
-          ],
-          "available_points": 9,
-          "required_points": 2,
-          "status": "available",
-          "latest": 5.2381,
-          "latest_daily_change": 1.07,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 20,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0
-            },
-            {
-              "date": "2026-07-23",
-              "value": -0.9033
-            },
-            {
-              "date": "2026-07-24",
-              "value": -1.199
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 3,
-          "required_points": 2,
-          "status": "available",
-          "latest": -1.199,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_communication_electronics",
-      "sector_id": "communication_electronics",
-      "pool_name": "通信电子",
-      "instrument_code": "515880",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 2,
-      "previous_rank": 2,
-      "rank_change": 0,
-      "score": 75,
-      "previous_score": 78.84,
-      "score_change": -3.84,
-      "status": "weakening",
-      "status_label": "边际转弱",
-      "status_change": "维持观察 → 边际转弱",
-      "model_state": "Major Candidate",
-      "conclusion": "通信电子综合分-3.84分，最新价格变动+3.25%，边际证据转弱。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": 0
-            },
-            {
-              "date": "2026-07-08",
-              "value": -0.5256
-            },
-            {
-              "date": "2026-07-09",
-              "value": 6.0447
-            },
-            {
-              "date": "2026-07-10",
-              "value": 2.3653
-            },
-            {
-              "date": "2026-07-16",
-              "value": -3.8108
-            },
-            {
-              "date": "2026-07-22",
-              "value": -11.8265
-            },
-            {
-              "date": "2026-07-23",
-              "value": -11.8265
-            },
-            {
-              "date": "2026-07-24",
-              "value": -15.1117
-            },
-            {
-              "date": "2026-07-27",
-              "value": -12.3522
-            }
-          ],
-          "available_points": 9,
-          "required_points": 2,
-          "status": "available",
-          "latest": -12.3522,
-          "latest_daily_change": 3.25,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 20,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0
-            },
-            {
-              "date": "2026-07-23",
-              "value": -0.4596
-            },
-            {
-              "date": "2026-07-24",
-              "value": -2.4151
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 3,
-          "required_points": 2,
-          "status": "available",
-          "latest": -2.4151,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_resources_materials",
-      "sector_id": "resources_materials",
-      "pool_name": "资源材料",
-      "instrument_code": "512400",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 3,
-      "previous_rank": 1,
-      "rank_change": -2,
-      "score": 73.72,
-      "previous_score": 82.3344,
-      "score_change": -8.61,
-      "status": "weakening",
-      "status_label": "边际转弱",
-      "status_change": "边际增强 → 边际转弱",
-      "model_state": "Major Candidate",
-      "conclusion": "资源材料综合分-8.61分，最新价格变动+2.36%，边际证据转弱。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": 0
-            },
-            {
-              "date": "2026-07-08",
-              "value": -2.9395
-            },
-            {
-              "date": "2026-07-09",
-              "value": -3.2169
-            },
-            {
-              "date": "2026-07-10",
-              "value": -2.6068
-            },
-            {
-              "date": "2026-07-16",
-              "value": -4.3261
-            },
-            {
-              "date": "2026-07-22",
-              "value": -1.9412
-            },
-            {
-              "date": "2026-07-23",
-              "value": 1.0538
-            },
-            {
-              "date": "2026-07-24",
-              "value": -3.7715
-            },
-            {
-              "date": "2026-07-27",
-              "value": -1.4975
-            }
-          ],
-          "available_points": 9,
-          "required_points": 2,
-          "status": "available",
-          "latest": -1.4975,
-          "latest_daily_change": 2.36,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 20,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0
-            },
-            {
-              "date": "2026-07-23",
-              "value": 2.5807
-            },
-            {
-              "date": "2026-07-24",
-              "value": -0.5305
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 3,
-          "required_points": 2,
-          "status": "available",
-          "latest": -0.5305,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_new_energy_ev",
-      "sector_id": "new_energy_ev",
-      "pool_name": "新能源车",
-      "instrument_code": "515030",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 4,
-      "previous_rank": 8,
-      "rank_change": 4,
-      "score": 72.3248,
-      "previous_score": 70.7736,
-      "score_change": 1.55,
-      "status": "strengthening",
-      "status_label": "边际增强",
-      "status_change": "仅价格异动 → 边际增强",
-      "model_state": "Major Candidate",
-      "conclusion": "新能源车综合分+1.55分，相对沪深300为+2.01%，边际证据改善。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": 0
-            },
-            {
-              "date": "2026-07-08",
-              "value": -5.2863
-            },
-            {
-              "date": "2026-07-09",
-              "value": -5.6167
-            },
-            {
-              "date": "2026-07-10",
-              "value": -7.9846
-            },
-            {
-              "date": "2026-07-16",
-              "value": -11.8392
-            },
-            {
-              "date": "2026-07-22",
-              "value": -14.5374
-            },
-            {
-              "date": "2026-07-23",
-              "value": -11.4537
-            },
-            {
-              "date": "2026-07-24",
-              "value": -13.9868
-            },
-            {
-              "date": "2026-07-27",
-              "value": -11.5639
-            }
-          ],
-          "available_points": 9,
-          "required_points": 2,
-          "status": "available",
-          "latest": -11.5639,
-          "latest_daily_change": 2.82,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 20,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0
-            },
-            {
-              "date": "2026-07-23",
-              "value": 3.1321
-            },
-            {
-              "date": "2026-07-24",
-              "value": 2.0145
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 3,
-          "required_points": 2,
-          "status": "available",
-          "latest": 2.0145,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_ai_computer",
-      "sector_id": "ai_computer",
-      "pool_name": "AI计算机",
-      "instrument_code": "159819",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 5,
-      "previous_rank": 10,
-      "rank_change": 5,
-      "score": 71.64,
-      "previous_score": 69.4488,
-      "score_change": 2.19,
-      "status": "strengthening",
-      "status_label": "边际增强",
-      "status_change": "边际转弱 → 边际增强",
-      "model_state": "Major Candidate",
-      "conclusion": "AI计算机综合分+2.19分，相对沪深300为-2.99%，边际证据改善。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": 0
-            },
-            {
-              "date": "2026-07-08",
-              "value": 1.8362
-            },
-            {
-              "date": "2026-07-09",
-              "value": 8.4367
-            },
-            {
-              "date": "2026-07-10",
-              "value": 5.0124
-            },
-            {
-              "date": "2026-07-16",
-              "value": -1.737
-            },
-            {
-              "date": "2026-07-22",
-              "value": -1.7866
-            },
-            {
-              "date": "2026-07-23",
-              "value": -4.268
-            },
-            {
-              "date": "2026-07-24",
-              "value": -6.005
-            },
-            {
-              "date": "2026-07-27",
-              "value": -4.7643
-            }
-          ],
-          "available_points": 9,
-          "required_points": 2,
-          "status": "available",
-          "latest": -4.7643,
-          "latest_daily_change": 1.32,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 20,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0
-            },
-            {
-              "date": "2026-07-23",
-              "value": -2.9745
-            },
-            {
-              "date": "2026-07-24",
-              "value": -2.9922
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 3,
-          "required_points": 2,
-          "status": "available",
-          "latest": -2.9922,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_semiconductor",
-      "sector_id": "semiconductor",
-      "pool_name": "半导体",
-      "instrument_code": "512480",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 6,
-      "previous_rank": 3,
-      "rank_change": -3,
-      "score": 70.98,
-      "previous_score": 78.26,
-      "score_change": -7.28,
-      "status": "weakening",
-      "status_label": "边际转弱",
-      "status_change": "边际增强 → 边际转弱",
-      "model_state": "Major Candidate",
-      "conclusion": "半导体综合分-7.28分，最新价格变动+0.99%，边际证据转弱。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": 0
-            },
-            {
-              "date": "2026-07-08",
-              "value": 0.2246
-            },
-            {
-              "date": "2026-07-09",
-              "value": 10.1048
-            },
-            {
-              "date": "2026-07-10",
-              "value": 2.4701
-            },
-            {
-              "date": "2026-07-16",
-              "value": -13.2485
-            },
-            {
-              "date": "2026-07-22",
-              "value": -13.7725
-            },
-            {
-              "date": "2026-07-23",
-              "value": -17.2156
-            },
-            {
-              "date": "2026-07-24",
-              "value": -16.6916
-            },
-            {
-              "date": "2026-07-27",
-              "value": -15.8683
-            }
-          ],
-          "available_points": 9,
-          "required_points": 2,
-          "status": "available",
-          "latest": -15.8683,
-          "latest_daily_change": 0.99,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 20,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0
-            },
-            {
-              "date": "2026-07-23",
-              "value": -4.4343
-            },
-            {
-              "date": "2026-07-24",
-              "value": -2.0701
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 3,
-          "required_points": 2,
-          "status": "available",
-          "latest": -2.0701,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_defense_military",
-      "sector_id": "defense_military",
-      "pool_name": "国防军工",
-      "instrument_code": "512660",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 7,
-      "previous_rank": null,
-      "rank_change": null,
-      "score": 70.02,
-      "previous_score": null,
-      "score_change": null,
-      "status": "maintain",
-      "status_label": "维持观察",
-      "status_change": "新进入观察",
-      "model_state": "Major Candidate",
-      "conclusion": "国防军工综合分与排名未触发显著边际变化，最新相对沪深300为+0.8%。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": 0
-            },
-            {
-              "date": "2026-07-08",
-              "value": -2.0096
-            },
-            {
-              "date": "2026-07-09",
-              "value": -0.0804
-            },
-            {
-              "date": "2026-07-10",
-              "value": 2.9743
-            },
-            {
-              "date": "2026-07-16",
-              "value": -9.9678
-            },
-            {
-              "date": "2026-07-22",
-              "value": -12.9421
-            },
-            {
-              "date": "2026-07-23",
-              "value": -11.4952
-            },
-            {
-              "date": "2026-07-24",
-              "value": -13.4244
-            },
-            {
-              "date": "2026-07-27",
-              "value": -11.254
-            }
-          ],
-          "available_points": 9,
-          "required_points": 2,
-          "status": "available",
-          "latest": -11.254,
-          "latest_daily_change": 2.51,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 20,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0
-            },
-            {
-              "date": "2026-07-23",
-              "value": 1.1948
-            },
-            {
-              "date": "2026-07-24",
-              "value": 0.7999
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 3,
-          "required_points": 2,
-          "status": "available",
-          "latest": 0.7999,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
-    {
-      "pool_id": "a_share_brokerage",
-      "sector_id": "brokerage",
-      "pool_name": "券商",
-      "instrument_code": "512000",
-      "mapping_status": "direct_etf",
-      "is_current": true,
-      "rank": 8,
-      "previous_rank": 5,
-      "rank_change": -3,
-      "score": 69.76,
-      "previous_score": 75.7648,
-      "score_change": -6,
-      "status": "weakening",
-      "status_label": "边际转弱",
-      "status_change": "边际增强 → 边际转弱",
-      "model_state": "Major Candidate",
-      "conclusion": "券商综合分-6分，最新价格变动+0.38%，边际证据转弱。",
-      "series": {
-        "mapping_status": "direct_etf",
-        "price_strength": {
-          "label": "价格强度",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": 0
-            },
-            {
-              "date": "2026-07-08",
-              "value": -1.3035
-            },
-            {
-              "date": "2026-07-09",
-              "value": 0.9311
-            },
-            {
-              "date": "2026-07-10",
-              "value": -0.9311
-            },
-            {
-              "date": "2026-07-16",
-              "value": -0.9311
-            },
-            {
-              "date": "2026-07-22",
-              "value": -0.9311
-            },
-            {
-              "date": "2026-07-23",
-              "value": 0.3724
-            },
-            {
-              "date": "2026-07-24",
-              "value": -2.0484
-            },
-            {
-              "date": "2026-07-27",
-              "value": -1.676
-            }
-          ],
-          "available_points": 9,
-          "required_points": 2,
-          "status": "available",
-          "latest": -1.676,
-          "latest_daily_change": 0.38,
-          "missing_reason": null
-        },
-        "turnover_activity": {
-          "label": "成交活跃度",
-          "unit": "x",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 20,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
-        },
-        "relative_strength": {
-          "label": "相对沪深300",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": 0
-            },
-            {
-              "date": "2026-07-23",
-              "value": 0.8502
-            },
-            {
-              "date": "2026-07-24",
-              "value": 0.2182
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 3,
-          "required_points": 2,
-          "status": "available",
-          "latest": 0.2182,
-          "missing_reason": null
-        },
-        "internal_breadth": {
-          "label": "内部扩散",
-          "unit": "%",
-          "values": [
-            {
-              "date": "2026-07-07",
-              "value": null
-            },
-            {
-              "date": "2026-07-08",
-              "value": null
-            },
-            {
-              "date": "2026-07-09",
-              "value": null
-            },
-            {
-              "date": "2026-07-10",
-              "value": null
-            },
-            {
-              "date": "2026-07-16",
-              "value": null
-            },
-            {
-              "date": "2026-07-22",
-              "value": null
-            },
-            {
-              "date": "2026-07-23",
-              "value": null
-            },
-            {
-              "date": "2026-07-24",
-              "value": null
-            },
-            {
-              "date": "2026-07-27",
-              "value": null
-            }
-          ],
-          "available_points": 0,
-          "required_points": 2,
-          "status": "insufficient_data",
-          "latest": null,
-          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
-        }
-      },
-      "boundary": "observe_only; published order preserved; no synthetic values"
-    },
     {
       "pool_id": "a_share_bank_insurance",
       "sector_id": "bank_insurance",
@@ -1768,17 +74,17 @@
       "instrument_code": "512800",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 9,
-      "previous_rank": 6,
-      "rank_change": -3,
-      "score": 69.24,
-      "previous_score": 72.8464,
-      "score_change": -3.61,
-      "status": "weakening",
-      "status_label": "边际转弱",
-      "status_change": "维持观察 → 边际转弱",
-      "model_state": "Major Candidate",
-      "conclusion": "银行保险综合分-3.61分，最新价格变动+0.12%，边际证据转弱。",
+      "rank": 1,
+      "previous_rank": 9,
+      "rank_change": 8,
+      "score": 79.48,
+      "previous_score": 69.24,
+      "score_change": 10.24,
+      "status": "strengthening",
+      "status_label": "边际增强",
+      "status_change": "边际转弱 → 边际增强",
+      "model_state": "Confirmed Trend",
+      "conclusion": "银行保险综合分+10.24分，相对沪深300为+5%，边际证据改善。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -1820,13 +126,17 @@
             {
               "date": "2026-07-27",
               "value": 6.0606
+            },
+            {
+              "date": "2026-07-28",
+              "value": 7.3781
             }
           ],
-          "available_points": 9,
+          "available_points": 10,
           "required_points": 2,
           "status": "available",
-          "latest": 6.0606,
-          "latest_daily_change": 0.12,
+          "latest": 7.3781,
+          "latest_daily_change": 1.24,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -1867,6 +177,10 @@
             },
             {
               "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
               "value": null
             }
           ],
@@ -1915,12 +229,16 @@
             {
               "date": "2026-07-27",
               "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": 4.9993
             }
           ],
-          "available_points": 3,
+          "available_points": 4,
           "required_points": 2,
           "status": "available",
-          "latest": 1.9957,
+          "latest": 4.9993,
           "missing_reason": null
         },
         "internal_breadth": {
@@ -1962,6 +280,10 @@
             {
               "date": "2026-07-27",
               "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
             }
           ],
           "available_points": 0,
@@ -1974,23 +296,23 @@
       "boundary": "observe_only; published order preserved; no synthetic values"
     },
     {
-      "pool_id": "a_share_real_estate_infra",
-      "sector_id": "real_estate_infra",
-      "pool_name": "地产基建",
-      "instrument_code": "512200",
+      "pool_id": "a_share_resources_materials",
+      "sector_id": "resources_materials",
+      "pool_name": "资源材料",
+      "instrument_code": "512400",
       "mapping_status": "direct_etf",
       "is_current": true,
-      "rank": 10,
-      "previous_rank": 7,
-      "rank_change": -3,
-      "score": 68.92,
-      "previous_score": 70.932,
-      "score_change": -2.01,
-      "status": "weakening",
-      "status_label": "边际转弱",
-      "status_change": "维持观察 → 边际转弱",
-      "model_state": "Major Candidate",
-      "conclusion": "地产基建综合分-2.01分，最新价格变动+1.96%，边际证据转弱。",
+      "rank": 2,
+      "previous_rank": 3,
+      "rank_change": 1,
+      "score": 79.2062,
+      "previous_score": 73.72,
+      "score_change": 5.49,
+      "status": "strengthening",
+      "status_label": "边际增强",
+      "status_change": "边际转弱 → 边际增强",
+      "model_state": "Cooling",
+      "conclusion": "资源材料综合分+5.49分，相对沪深300为+0.61%，边际证据改善。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -2003,42 +325,46 @@
             },
             {
               "date": "2026-07-08",
-              "value": 0.5124
+              "value": -2.9395
             },
             {
               "date": "2026-07-09",
-              "value": 1.5371
+              "value": -3.2169
             },
             {
               "date": "2026-07-10",
-              "value": 3.8429
+              "value": -2.6068
             },
             {
               "date": "2026-07-16",
-              "value": 3.3305
+              "value": -4.3261
             },
             {
               "date": "2026-07-22",
-              "value": -1.1102
+              "value": -1.9412
             },
             {
               "date": "2026-07-23",
-              "value": -1.1956
+              "value": 1.0538
             },
             {
               "date": "2026-07-24",
-              "value": -4.0991
+              "value": -3.7715
             },
             {
               "date": "2026-07-27",
-              "value": -2.2203
+              "value": -1.4975
+            },
+            {
+              "date": "2026-07-28",
+              "value": -4.1597
             }
           ],
-          "available_points": 9,
+          "available_points": 10,
           "required_points": 2,
           "status": "available",
-          "latest": -2.2203,
-          "latest_daily_change": 1.96,
+          "latest": -4.1597,
+          "latest_daily_change": -2.7027027027027084,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -2080,6 +406,10 @@
             {
               "date": "2026-07-27",
               "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
             }
           ],
           "available_points": 0,
@@ -2118,21 +448,25 @@
             },
             {
               "date": "2026-07-23",
-              "value": -0.5455
+              "value": 2.5807
             },
             {
               "date": "2026-07-24",
-              "value": -1.7022
+              "value": -0.5305
             },
             {
               "date": "2026-07-27",
               "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": 0.6091
             }
           ],
-          "available_points": 3,
+          "available_points": 4,
           "required_points": 2,
           "status": "available",
-          "latest": -1.7022,
+          "latest": 0.6091,
           "missing_reason": null
         },
         "internal_breadth": {
@@ -2174,6 +508,10 @@
             {
               "date": "2026-07-27",
               "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
             }
           ],
           "available_points": 0,
@@ -2184,27 +522,1621 @@
         }
       },
       "boundary": "observe_only; published order preserved; no synthetic values"
-    }
-  ],
-  "departures": [
+    },
+    {
+      "pool_id": "a_share_communication_electronics",
+      "sector_id": "communication_electronics",
+      "pool_name": "通信电子",
+      "instrument_code": "515880",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 3,
+      "previous_rank": 2,
+      "rank_change": -1,
+      "score": 78.244,
+      "previous_score": 75,
+      "score_change": 3.24,
+      "status": "strengthening",
+      "status_label": "边际增强",
+      "status_change": "边际转弱 → 边际增强",
+      "model_state": "Overheated",
+      "conclusion": "通信电子综合分+3.24分，相对沪深300为-7.03%，边际证据改善。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "value": -0.5256
+            },
+            {
+              "date": "2026-07-09",
+              "value": 6.0447
+            },
+            {
+              "date": "2026-07-10",
+              "value": 2.3653
+            },
+            {
+              "date": "2026-07-16",
+              "value": -3.8108
+            },
+            {
+              "date": "2026-07-22",
+              "value": -11.8265
+            },
+            {
+              "date": "2026-07-23",
+              "value": -11.8265
+            },
+            {
+              "date": "2026-07-24",
+              "value": -15.1117
+            },
+            {
+              "date": "2026-07-27",
+              "value": -12.3522
+            },
+            {
+              "date": "2026-07-28",
+              "value": -20.3679
+            }
+          ],
+          "available_points": 10,
+          "required_points": 2,
+          "status": "available",
+          "latest": -20.3679,
+          "latest_daily_change": -9.145427286356833,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 20,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0
+            },
+            {
+              "date": "2026-07-23",
+              "value": -0.4596
+            },
+            {
+              "date": "2026-07-24",
+              "value": -2.4151
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": -7.0336
+            }
+          ],
+          "available_points": 4,
+          "required_points": 2,
+          "status": "available",
+          "latest": -7.0336,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
+    {
+      "pool_id": "a_share_ai_computer",
+      "sector_id": "ai_computer",
+      "pool_name": "AI计算机",
+      "instrument_code": "159819",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 4,
+      "previous_rank": 5,
+      "rank_change": 1,
+      "score": 76.744,
+      "previous_score": 71.64,
+      "score_change": 5.1,
+      "status": "strengthening",
+      "status_label": "边际增强",
+      "status_change": "状态未变",
+      "model_state": "Cooling",
+      "conclusion": "AI计算机综合分+5.1分，相对沪深300为-6.22%，边际证据改善。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "value": 1.8362
+            },
+            {
+              "date": "2026-07-09",
+              "value": 8.4367
+            },
+            {
+              "date": "2026-07-10",
+              "value": 5.0124
+            },
+            {
+              "date": "2026-07-16",
+              "value": -1.737
+            },
+            {
+              "date": "2026-07-22",
+              "value": -1.7866
+            },
+            {
+              "date": "2026-07-23",
+              "value": -4.268
+            },
+            {
+              "date": "2026-07-24",
+              "value": -6.005
+            },
+            {
+              "date": "2026-07-27",
+              "value": -4.7643
+            },
+            {
+              "date": "2026-07-28",
+              "value": -10.5211
+            }
+          ],
+          "available_points": 10,
+          "required_points": 2,
+          "status": "available",
+          "latest": -10.5211,
+          "latest_daily_change": -6.044815007816573,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 20,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0
+            },
+            {
+              "date": "2026-07-23",
+              "value": -2.9745
+            },
+            {
+              "date": "2026-07-24",
+              "value": -2.9922
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": -6.2167
+            }
+          ],
+          "available_points": 4,
+          "required_points": 2,
+          "status": "available",
+          "latest": -6.2167,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
+    {
+      "pool_id": "a_share_brokerage",
+      "sector_id": "brokerage",
+      "pool_name": "券商",
+      "instrument_code": "512000",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 5,
+      "previous_rank": 8,
+      "rank_change": 3,
+      "score": 76.2784,
+      "previous_score": 69.76,
+      "score_change": 6.52,
+      "status": "strengthening",
+      "status_label": "边际增强",
+      "status_change": "边际转弱 → 边际增强",
+      "model_state": "Major Candidate",
+      "conclusion": "券商综合分+6.52分，相对沪深300为+0.23%，边际证据改善。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "value": -1.3035
+            },
+            {
+              "date": "2026-07-09",
+              "value": 0.9311
+            },
+            {
+              "date": "2026-07-10",
+              "value": -0.9311
+            },
+            {
+              "date": "2026-07-16",
+              "value": -0.9311
+            },
+            {
+              "date": "2026-07-22",
+              "value": -0.9311
+            },
+            {
+              "date": "2026-07-23",
+              "value": 0.3724
+            },
+            {
+              "date": "2026-07-24",
+              "value": -2.0484
+            },
+            {
+              "date": "2026-07-27",
+              "value": -1.676
+            },
+            {
+              "date": "2026-07-28",
+              "value": -3.5382
+            }
+          ],
+          "available_points": 10,
+          "required_points": 2,
+          "status": "available",
+          "latest": -3.5382,
+          "latest_daily_change": -1.89,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 20,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0
+            },
+            {
+              "date": "2026-07-23",
+              "value": 0.8502
+            },
+            {
+              "date": "2026-07-24",
+              "value": 0.2182
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": 0.2291
+            }
+          ],
+          "available_points": 4,
+          "required_points": 2,
+          "status": "available",
+          "latest": 0.2291,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
+    {
+      "pool_id": "a_share_semiconductor",
+      "sector_id": "semiconductor",
+      "pool_name": "半导体",
+      "instrument_code": "512480",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 6,
+      "previous_rank": 6,
+      "rank_change": 0,
+      "score": 76.1176,
+      "previous_score": 70.98,
+      "score_change": 5.14,
+      "status": "strengthening",
+      "status_label": "边际增强",
+      "status_change": "边际转弱 → 边际增强",
+      "model_state": "Major Candidate",
+      "conclusion": "半导体综合分+5.14分，相对沪深300为-6.09%，边际证据改善。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "value": 0.2246
+            },
+            {
+              "date": "2026-07-09",
+              "value": 10.1048
+            },
+            {
+              "date": "2026-07-10",
+              "value": 2.4701
+            },
+            {
+              "date": "2026-07-16",
+              "value": -13.2485
+            },
+            {
+              "date": "2026-07-22",
+              "value": -13.7725
+            },
+            {
+              "date": "2026-07-23",
+              "value": -17.2156
+            },
+            {
+              "date": "2026-07-24",
+              "value": -16.6916
+            },
+            {
+              "date": "2026-07-27",
+              "value": -15.8683
+            },
+            {
+              "date": "2026-07-28",
+              "value": -21.3323
+            }
+          ],
+          "available_points": 10,
+          "required_points": 2,
+          "status": "available",
+          "latest": -21.3323,
+          "latest_daily_change": -6.4946619217082,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 20,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0
+            },
+            {
+              "date": "2026-07-23",
+              "value": -4.4343
+            },
+            {
+              "date": "2026-07-24",
+              "value": -2.0701
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": -6.0869
+            }
+          ],
+          "available_points": 4,
+          "required_points": 2,
+          "status": "available",
+          "latest": -6.0869,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
+    {
+      "pool_id": "a_share_defense_military",
+      "sector_id": "defense_military",
+      "pool_name": "国防军工",
+      "instrument_code": "512660",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 7,
+      "previous_rank": 7,
+      "rank_change": 0,
+      "score": 70.7455,
+      "previous_score": 70.02,
+      "score_change": 0.73,
+      "status": "price_only",
+      "status_label": "仅价格异动",
+      "status_change": "维持观察 → 仅价格异动",
+      "model_state": "Major Candidate",
+      "conclusion": "国防军工最新价格变动-2.81%，但成交、相对强度或内部扩散尚未形成交叉确认。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "value": -2.0096
+            },
+            {
+              "date": "2026-07-09",
+              "value": -0.0804
+            },
+            {
+              "date": "2026-07-10",
+              "value": 2.9743
+            },
+            {
+              "date": "2026-07-16",
+              "value": -9.9678
+            },
+            {
+              "date": "2026-07-22",
+              "value": -12.9421
+            },
+            {
+              "date": "2026-07-23",
+              "value": -11.4952
+            },
+            {
+              "date": "2026-07-24",
+              "value": -13.4244
+            },
+            {
+              "date": "2026-07-27",
+              "value": -11.254
+            },
+            {
+              "date": "2026-07-28",
+              "value": -13.746
+            }
+          ],
+          "available_points": 10,
+          "required_points": 2,
+          "status": "available",
+          "latest": -13.746,
+          "latest_daily_change": -2.8079710144927605,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 20,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0
+            },
+            {
+              "date": "2026-07-23",
+              "value": 1.1948
+            },
+            {
+              "date": "2026-07-24",
+              "value": 0.7999
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": 1.9875
+            }
+          ],
+          "available_points": 4,
+          "required_points": 2,
+          "status": "available",
+          "latest": 1.9875,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
+    {
+      "pool_id": "a_share_new_energy_ev",
+      "sector_id": "new_energy_ev",
+      "pool_name": "新能源车",
+      "instrument_code": "515030",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 8,
+      "previous_rank": 4,
+      "rank_change": -4,
+      "score": 69.8045,
+      "previous_score": 72.3248,
+      "score_change": -2.52,
+      "status": "weakening",
+      "status_label": "边际转弱",
+      "status_change": "边际增强 → 边际转弱",
+      "model_state": "Major Candidate",
+      "conclusion": "新能源车综合分-2.52分，最新价格变动-2.12%，边际证据转弱。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "value": -5.2863
+            },
+            {
+              "date": "2026-07-09",
+              "value": -5.6167
+            },
+            {
+              "date": "2026-07-10",
+              "value": -7.9846
+            },
+            {
+              "date": "2026-07-16",
+              "value": -11.8392
+            },
+            {
+              "date": "2026-07-22",
+              "value": -14.5374
+            },
+            {
+              "date": "2026-07-23",
+              "value": -11.4537
+            },
+            {
+              "date": "2026-07-24",
+              "value": -13.9868
+            },
+            {
+              "date": "2026-07-27",
+              "value": -11.5639
+            },
+            {
+              "date": "2026-07-28",
+              "value": -13.4361
+            }
+          ],
+          "available_points": 10,
+          "required_points": 2,
+          "status": "available",
+          "latest": -13.4361,
+          "latest_daily_change": -2.1170610211706076,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 20,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0
+            },
+            {
+              "date": "2026-07-23",
+              "value": 3.1321
+            },
+            {
+              "date": "2026-07-24",
+              "value": 2.0145
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": 4.2645
+            }
+          ],
+          "available_points": 4,
+          "required_points": 2,
+          "status": "available",
+          "latest": 4.2645,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
+    {
+      "pool_id": "a_share_consumer",
+      "sector_id": "consumer",
+      "pool_name": "消费",
+      "instrument_code": "159928",
+      "mapping_status": "direct_etf",
+      "is_current": true,
+      "rank": 9,
+      "previous_rank": 1,
+      "rank_change": -8,
+      "score": 67.274,
+      "previous_score": 75.14,
+      "score_change": -7.87,
+      "status": "weakening",
+      "status_label": "边际转弱",
+      "status_change": "边际增强 → 边际转弱",
+      "model_state": "Major Candidate",
+      "conclusion": "消费综合分-7.87分，最新价格变动+1.06%，边际证据转弱。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "value": -0.7937
+            },
+            {
+              "date": "2026-07-09",
+              "value": -1.9048
+            },
+            {
+              "date": "2026-07-10",
+              "value": 0.3175
+            },
+            {
+              "date": "2026-07-16",
+              "value": 5.5556
+            },
+            {
+              "date": "2026-07-22",
+              "value": 6.8254
+            },
+            {
+              "date": "2026-07-23",
+              "value": 6.3492
+            },
+            {
+              "date": "2026-07-24",
+              "value": 4.127
+            },
+            {
+              "date": "2026-07-27",
+              "value": 5.2381
+            },
+            {
+              "date": "2026-07-28",
+              "value": 6.3492
+            }
+          ],
+          "available_points": 10,
+          "required_points": 2,
+          "status": "available",
+          "latest": 6.3492,
+          "latest_daily_change": 1.0558069381598756,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 20,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0
+            },
+            {
+              "date": "2026-07-23",
+              "value": -0.9033
+            },
+            {
+              "date": "2026-07-24",
+              "value": -1.199
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": 2.4791
+            }
+          ],
+          "available_points": 4,
+          "required_points": 2,
+          "status": "available",
+          "latest": 2.4791,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    },
     {
       "pool_id": "a_share_healthcare_pharma",
       "sector_id": "healthcare_pharma",
       "pool_name": "医药医疗",
       "instrument_code": "512010",
       "mapping_status": "direct_etf",
-      "is_current": false,
-      "rank": null,
-      "previous_rank": 4,
+      "is_current": true,
+      "rank": 10,
+      "previous_rank": null,
       "rank_change": null,
-      "score": 75.9632,
+      "score": 66.7998,
       "previous_score": null,
       "score_change": null,
-      "status": "exit",
-      "status_label": "退出观察",
-      "status_change": "退出当前观察序列",
+      "status": "maintain",
+      "status_label": "维持观察",
+      "status_change": "新进入观察",
       "model_state": "Major Candidate",
-      "conclusion": "医药医疗已离开当前前 10，上一观察日排名第 4；不补位、不推断后续涨跌。",
+      "conclusion": "医药医疗综合分与排名未触发显著边际变化，最新相对沪深300为-0.07%。",
       "series": {
         "mapping_status": "direct_etf",
         "price_strength": {
@@ -2246,13 +2178,17 @@
             {
               "date": "2026-07-27",
               "value": 3.9548
+            },
+            {
+              "date": "2026-07-28",
+              "value": 3.3898
             }
           ],
-          "available_points": 9,
+          "available_points": 10,
           "required_points": 2,
           "status": "available",
-          "latest": 3.9548,
-          "latest_daily_change": 0.82,
+          "latest": 3.3898,
+          "latest_daily_change": -0.5434782608695676,
           "missing_reason": null
         },
         "turnover_activity": {
@@ -2293,6 +2229,10 @@
             },
             {
               "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
               "value": null
             }
           ],
@@ -2341,12 +2281,16 @@
             {
               "date": "2026-07-27",
               "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": -0.0655
             }
           ],
-          "available_points": 3,
+          "available_points": 4,
           "required_points": 2,
           "status": "available",
-          "latest": -1.8649,
+          "latest": -0.0655,
           "missing_reason": null
         },
         "internal_breadth": {
@@ -2387,6 +2331,240 @@
             },
             {
               "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 2,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "缺少来源可信的上涨成分股或站上20日均线比例"
+        }
+      },
+      "boundary": "observe_only; published order preserved; no synthetic values"
+    }
+  ],
+  "departures": [
+    {
+      "pool_id": "a_share_real_estate_infra",
+      "sector_id": "real_estate_infra",
+      "pool_name": "地产基建",
+      "instrument_code": "512200",
+      "mapping_status": "direct_etf",
+      "is_current": false,
+      "rank": null,
+      "previous_rank": 10,
+      "rank_change": null,
+      "score": 68.92,
+      "previous_score": null,
+      "score_change": null,
+      "status": "exit",
+      "status_label": "退出观察",
+      "status_change": "退出当前观察序列",
+      "model_state": "Major Candidate",
+      "conclusion": "地产基建已离开当前前 10，上一观察日排名第 10；不补位、不推断后续涨跌。",
+      "series": {
+        "mapping_status": "direct_etf",
+        "price_strength": {
+          "label": "价格强度",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": 0
+            },
+            {
+              "date": "2026-07-08",
+              "value": 0.5124
+            },
+            {
+              "date": "2026-07-09",
+              "value": 1.5371
+            },
+            {
+              "date": "2026-07-10",
+              "value": 3.8429
+            },
+            {
+              "date": "2026-07-16",
+              "value": 3.3305
+            },
+            {
+              "date": "2026-07-22",
+              "value": -1.1102
+            },
+            {
+              "date": "2026-07-23",
+              "value": -1.1956
+            },
+            {
+              "date": "2026-07-24",
+              "value": -4.0991
+            },
+            {
+              "date": "2026-07-27",
+              "value": -2.2203
+            },
+            {
+              "date": "2026-07-28",
+              "value": -1.4518
+            }
+          ],
+          "available_points": 10,
+          "required_points": 2,
+          "status": "available",
+          "latest": -1.4518,
+          "latest_daily_change": 0.79,
+          "missing_reason": null
+        },
+        "turnover_activity": {
+          "label": "成交活跃度",
+          "unit": "x",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": null
+            }
+          ],
+          "available_points": 0,
+          "required_points": 20,
+          "status": "insufficient_data",
+          "latest": null,
+          "missing_reason": "不足20个真实成交额样本，不能计算20日均值"
+        },
+        "relative_strength": {
+          "label": "相对沪深300",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": 0
+            },
+            {
+              "date": "2026-07-23",
+              "value": -0.5455
+            },
+            {
+              "date": "2026-07-24",
+              "value": -1.7022
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
+              "value": 2.5824
+            }
+          ],
+          "available_points": 4,
+          "required_points": 2,
+          "status": "available",
+          "latest": 2.5824,
+          "missing_reason": null
+        },
+        "internal_breadth": {
+          "label": "内部扩散",
+          "unit": "%",
+          "values": [
+            {
+              "date": "2026-07-07",
+              "value": null
+            },
+            {
+              "date": "2026-07-08",
+              "value": null
+            },
+            {
+              "date": "2026-07-09",
+              "value": null
+            },
+            {
+              "date": "2026-07-10",
+              "value": null
+            },
+            {
+              "date": "2026-07-16",
+              "value": null
+            },
+            {
+              "date": "2026-07-22",
+              "value": null
+            },
+            {
+              "date": "2026-07-23",
+              "value": null
+            },
+            {
+              "date": "2026-07-24",
+              "value": null
+            },
+            {
+              "date": "2026-07-27",
+              "value": null
+            },
+            {
+              "date": "2026-07-28",
               "value": null
             }
           ],
