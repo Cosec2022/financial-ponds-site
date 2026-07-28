@@ -2,8 +2,6 @@ import {
   STRUCTURAL_OBSERVATION_LIMIT,
   buildCoreBasis,
   buildNextObservation,
-  describePublishedChange,
-  metricLevel,
   structuralObservationRows,
   visibleLabel
 } from "./structural-observation-contract.mjs";
@@ -29,6 +27,7 @@ const state = {
   reviewReadiness: null,
   reviewAnalytics: null,
   marketPenetrationBrief: null,
+  sectorObservationPanel: null,
   selectedPoolId: null
 };
 
@@ -80,6 +79,10 @@ function latestAsOf() {
 
 function rowsForToday() {
   return structuralObservationRows(state.summary, state.ledger);
+}
+
+function panelRows() {
+  return state.sectorObservationPanel?.rows ?? [];
 }
 
 function selectedCandidate() {
@@ -233,85 +236,137 @@ function renderSectorStateMap() {
 
 function renderCandidates() {
   const el = document.getElementById("candidateTable");
-  const rows = rowsForToday();
+  const panel = state.sectorObservationPanel;
+  const rows = panelRows();
+  const departures = panel?.departures ?? [];
   const countNote = document.getElementById("candidateCountNote");
+  const differentiation = document.getElementById("candidateDifferentiation");
   if (!rows.length) {
-    countNote.textContent = "当前没有行业满足基础观察条件，系统不会补充虚假条目。";
-    el.innerHTML = `<div class="error-state">没有加载到今日结构性观察行业。</div>`;
-    document.getElementById("selectedCandidate").innerHTML = "";
+    countNote.textContent = "当前没有可发布的行业量价观察，系统不会补充虚假条目。";
+    differentiation.hidden = true;
+    el.innerHTML = `<div class="quant-error-state">行业量价面板不可用；请检查正式发布数据与历史数据链。</div>`;
     return;
   }
-  countNote.textContent = rows.length < STRUCTURAL_OBSERVATION_LIMIT
-    ? `当前仅有 ${rows.length} 个行业满足基础观察条件。`
-    : `当前展示模型已发布排序中的前 ${STRUCTURAL_OBSERVATION_LIMIT} 个行业。`;
+  const observed = panel?.window?.observed_date_count ?? 0;
+  countNote.textContent = `严格保持正式发布顺序 · 可验证交易日 ${observed}/${panel?.window?.target_trading_days ?? 20} · 缺失值不补零`;
+  differentiation.hidden = panel?.differentiation?.status !== "insufficient";
+  differentiation.textContent = panel?.differentiation?.message ?? "";
 
   el.innerHTML = `
-    <div class="candidate-table-head" aria-hidden="true">
-      <span>排名</span><span>行业</span><span>当前状态</span><span>核心依据</span><span>下一步观察</span>
+    <div class="quant-panel-legend" aria-hidden="true">
+      <span>行业 / 状态</span><span>综合分与边际变化</span><span>近20个交易日量价证据</span>
     </div>
-    ${rows.map((row, index) => `
-      <button class="candidate-row${row.pool_id === selectedCandidate()?.pool_id ? " active" : ""}" data-candidate-id="${escapeHtml(row.pool_id)}" type="button" aria-pressed="${row.pool_id === selectedCandidate()?.pool_id}">
-        <span class="candidate-rank" data-label="排名">${index + 1}</span>
-        <span class="candidate-name" data-label="行业">${escapeHtml(poolName(row))}</span>
-        <span class="status-badge ${candidateStatusClass(row)}" data-label="当前状态">${escapeHtml(candidateStatusLabel(row))}</span>
-        <span class="candidate-copy" data-label="核心依据">${escapeHtml(candidateWhy(row))}</span>
-        <span class="candidate-copy" data-label="下一步观察">${escapeHtml(candidateNextStep(row))}</span>
-      </button>
-    `).join("")}
+    ${rows.map(renderQuantRow).join("")}
+    ${departures.length ? `
+      <div class="departure-divider">退出观察</div>
+      ${departures.map(renderQuantRow).join("")}
+    ` : ""}
   `;
 
   el.querySelectorAll("[data-candidate-id]").forEach((button) => {
     button.addEventListener("click", () => {
       state.selectedPoolId = button.getAttribute("data-candidate-id");
       renderCandidates();
-      renderSelectedCandidate();
       renderAdvancedDetails();
     });
   });
-  renderSelectedCandidate();
 }
 
-function renderSelectedCandidate() {
-  const el = document.getElementById("selectedCandidate");
-  const candidate = selectedCandidate();
-  const score = candidate ? scoreRow(candidate.pool_id) ?? candidate : null;
-  if (!candidate || !score) {
-    el.innerHTML = "";
-    return;
-  }
-  const context = candidateContext(candidate);
-  const history = context.history;
-  el.innerHTML = `
-    <article class="selected-card">
-      <div class="selected-card-head">
-        <div>
-          <h3>${escapeHtml(poolName(candidate))} · 技术细节</h3>
-          <p>分数是模型内部观察尺度，不是概率，也不是交易指令。</p>
-        </div>
-        <span class="status-badge ${candidateStatusClass(candidate)}">${escapeHtml(candidateStatusLabel(candidate))}</span>
-      </div>
-      <p class="published-change">${escapeHtml(describePublishedChange({
-        currentRank: rowsForToday().findIndex((row) => row.pool_id === candidate.pool_id) + 1,
-        previousRank: history.previousRank,
-        currentState: candidate.candidate_state,
-        previousState: history.previousState
-      }))}</p>
-      <div class="selected-card-summary">
-        ${miniMetric("综合观察分", fmt(candidate.observation_score), metricLevel(candidate.observation_score), "汇总多个观察维度的相对强度，不等于上涨概率。")}
-        ${miniMetric("过热／拥挤度", fmt(candidate.overheat_score), metricLevel(candidate.overheat_score), "衡量短期拥挤、连续高位和追涨风险；数值越高，回撤风险通常越值得关注。")}
-        ${miniMetric("中期主趋势强度", fmt(candidate.major_wave_score), metricLevel(candidate.major_wave_score), "衡量趋势、持续性和扩散证据，不代表未来一定上涨。")}
-        ${miniMetric("风险闸门", visibleLabel(candidate.risk_gate_status), "", "检查数据质量、过热、冲突和映射风险是否触发硬性限制。")}
-        ${miniMetric("数据证据质量", visibleLabel(candidate.evidence_quality), "", "表示核心数据来源、完整度和可验证程度。")}
-        ${miniMetric("标的映射风险", visibleLabel(candidate.proxy_risk), "", "表示行业与代表 ETF 的对应是否直接、可靠。")}
-        ${miniMetric("强势扩散方向", visibleLabel(candidate.direction), "", "表示强势是否从本行业向相关行业扩散，或只集中在内部。")}
-        ${miniMetric("最高置信度", fmt(candidate.capped_confidence), metricLevel(candidate.capped_confidence, { scale: 1 }), "模型允许展示的置信度上限，用于防止少量数据产生假精确。")}
-      </div>
-      <div class="selected-reasons">
-        <div class="selected-reason"><strong>主要依据</strong><br>${escapeHtml(candidateWhy(candidate))}</div>
-        <div class="selected-reason caution"><strong>风险与边界</strong><br>${escapeHtml(candidateRiskBoundary(candidate))}</div>
-      </div>
-    </article>
+function renderQuantRow(row) {
+  const selected = row.pool_id === state.selectedPoolId;
+  const rank = Number.isInteger(row.rank) ? String(row.rank).padStart(2, "0") : "—";
+  return `
+    <button class="sector-quant-row status-${escapeHtml(row.status)}${selected ? " active" : ""}${row.is_current ? "" : " departed"}"${row.is_current ? ` data-candidate-id="${escapeHtml(row.pool_id)}"` : " disabled"} type="button" aria-pressed="${selected}">
+      <span class="quant-accent" aria-hidden="true"></span>
+      <span class="quant-identity">
+        <span class="quant-rank">${rank}</span>
+        <span>
+          <strong>${escapeHtml(displayPoolName(row.pool_id, row.pool_name))}</strong>
+          <small>${escapeHtml(row.instrument_code ? `ETF ${row.instrument_code}` : "无直接行业标的")}</small>
+        </span>
+        <span class="quant-status">${escapeHtml(row.status_label)}</span>
+      </span>
+      <span class="quant-deltas">
+        ${quantDelta("综合分", row.score, row.score_change, "分")}
+        ${quantDelta("排名", row.rank, row.rank_change, "位", { rank: true })}
+        <span class="quant-delta"><small>状态变化</small><strong>${escapeHtml(row.status_change)}</strong></span>
+      </span>
+      <span class="quant-spark-grid">
+        ${renderMiniSeries(row.series?.price_strength)}
+        ${renderMiniSeries(row.series?.turnover_activity)}
+        ${renderMiniSeries(row.series?.relative_strength)}
+        ${renderMiniSeries(row.series?.internal_breadth)}
+      </span>
+      <span class="quant-conclusion">${escapeHtml(row.conclusion)}</span>
+    </button>
   `;
+}
+
+function quantDelta(label, value, change, unit, { rank = false } = {}) {
+  const changeText = change === null || change === undefined
+    ? "—"
+    : rank
+      ? change === 0 ? "→ 0" : `${change > 0 ? "↑" : "↓"} ${Math.abs(change)}`
+      : `${change > 0 ? "+" : ""}${fmt(change)}${unit}`;
+  return `
+    <span class="quant-delta">
+      <small>${escapeHtml(label)}</small>
+      <strong>${value === null || value === undefined ? "—" : escapeHtml(fmt(value))}</strong>
+      <em class="${Number(change) > 0 ? "up" : Number(change) < 0 ? "down" : ""}">${escapeHtml(changeText)}</em>
+    </span>
+  `;
+}
+
+function renderMiniSeries(metric = {}) {
+  const values = Array.isArray(metric.values) ? metric.values : [];
+  const usable = values.filter((point) => Number.isFinite(point.value));
+  const latest = metric.latest === null || metric.latest === undefined
+    ? "—"
+    : `${fmt(metric.latest)}${metric.unit ?? ""}`;
+  if (metric.status !== "available" || usable.length < 2) {
+    return `
+      <span class="mini-series unavailable" title="${escapeHtml(metric.missing_reason ?? "数据不足")}">
+        <span class="mini-series-head"><strong>${escapeHtml(metric.label ?? "未知指标")}</strong><em>数据不足</em></span>
+        <span class="mini-series-empty">空值保留 · ${usable.length}/${metric.required_points ?? 20}</span>
+      </span>
+    `;
+  }
+  const paths = sparklinePaths(values);
+  return `
+    <span class="mini-series">
+      <span class="mini-series-head"><strong>${escapeHtml(metric.label)}</strong><em>${escapeHtml(latest)}</em></span>
+      <svg viewBox="0 0 100 32" role="img" aria-label="${escapeHtml(metric.label)}，${usable.length}个真实数据点">
+        <line x1="0" y1="28" x2="100" y2="28" class="spark-baseline"></line>
+        ${paths.map((path) => `<path d="${path}" class="spark-line"></path>`).join("")}
+      </svg>
+      <span class="mini-series-coverage">${usable.length}/${values.length || 20}</span>
+    </span>
+  `;
+}
+
+function sparklinePaths(values) {
+  const finite = values.map((point) => Number.isFinite(point.value) ? point.value : null);
+  const usable = finite.filter((value) => value !== null);
+  let min = Math.min(...usable);
+  let max = Math.max(...usable);
+  if (min === max) {
+    min -= 1;
+    max += 1;
+  }
+  const segments = [];
+  let points = [];
+  finite.forEach((value, index) => {
+    if (value === null) {
+      if (points.length >= 2) segments.push(points);
+      points = [];
+      return;
+    }
+    const x = finite.length <= 1 ? 50 : index / (finite.length - 1) * 100;
+    const y = 27 - ((value - min) / (max - min)) * 23;
+    points.push([x, y]);
+  });
+  if (points.length >= 2) segments.push(points);
+  return segments.map((segment) => segment.map(([x, y], index) => `${index ? "L" : "M"}${x.toFixed(2)} ${y.toFixed(2)}`).join(" "));
 }
 
 function renderEvidenceReview() {
@@ -777,7 +832,7 @@ function escapeHtml(value) {
 }
 
 async function init() {
-  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, instrumentMap, scores, marketRows, deltaRows, candidateStateModel, outcomeReviews, outcomeReport, reviewReadiness, reviewAnalytics, marketPenetrationBrief] = await Promise.all([
+  const [summary, ledger, schedule, quality, pointer, delta, coverage, flow, market, mapping, instrumentMap, scores, marketRows, deltaRows, candidateStateModel, outcomeReviews, outcomeReport, reviewReadiness, reviewAnalytics, marketPenetrationBrief, sectorObservationPanel] = await Promise.all([
     readJson("./data/evening_observation_summary.json", {}),
     readJson("./data/observation_candidate_ledger.json", { rows: [] }),
     readJson("./data/candidate_review_schedule.json", {}),
@@ -797,7 +852,8 @@ async function init() {
     readJson("./data/outcome_review_report.json", {}),
     readJson("./data/review_readiness_report.json", {}),
     readJson("./data/candidate_review_analytics.json", {}),
-    readJson("./data/market_penetration_brief.json", null)
+    readJson("./data/market_penetration_brief.json", null),
+    readJson("./data/sector_observation_panel.json", null)
   ]);
 
   Object.assign(state, {
@@ -820,9 +876,10 @@ async function init() {
     outcomeReport,
     reviewReadiness,
     reviewAnalytics,
-    marketPenetrationBrief
+    marketPenetrationBrief,
+    sectorObservationPanel
   });
-  state.selectedPoolId = rowsForToday()[0]?.pool_id ?? null;
+  state.selectedPoolId = panelRows()[0]?.pool_id ?? rowsForToday()[0]?.pool_id ?? null;
 
   renderHeaderAndHero();
   renderMarketPenetration();

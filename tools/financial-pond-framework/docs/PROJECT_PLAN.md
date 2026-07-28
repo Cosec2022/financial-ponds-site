@@ -1,6 +1,6 @@
 # Project Plan
 
-Version: v0.10.75
+Version: v0.10.76
 Status: active
 
 ## Final Target
@@ -37,7 +37,7 @@ Implementation order remains **A-share first**, then S&P 500 / U.S. markets, Hon
 ```text
 Overall progress: 52%
 Current stage: usable observation prototype; validation path under repair
-Daily data pipeline: automated and publishing; v0.10.73 fixed historical preservation, v0.10.74 persists each verified daily Provider output before candidate/outcome processing, and v0.10.75 presents the unchanged model ranking as a Top 10 structural-observation surface
+Daily data pipeline: automated and publishing; v0.10.73 fixed historical preservation, v0.10.74 persists each verified daily Provider output, v0.10.75 fixed the Top 10 publication surface, and v0.10.76 adds a fail-closed quantitative view without changing model rank or score
 Decision-grade model: not yet
 Main limitation: exact-date candidate/benchmark history is incomplete, reviewed outcomes are not yet statistically usable, and valuation/fundamental/news layers still contain manual, fallback, or unverified inputs
 ```
@@ -81,7 +81,8 @@ Daily sector analysis panel with priority watch, confirm next, and avoid watch t
 Rotation-history recovery from recent published Git versions
 clickable pond map
 Top 10 structural observations in backend-published order, with no frontend re-ranking or fabricated padding
-Chinese human-readable status and field-grounded explanation layer with switchable industry details
+Dark industry quantitative panel with four null-preserving 20-session mini-series and score/rank/state deltas
+Explicit insufficient-history handling for amount/20-day mean and source-backed constituent breadth
 formal vector logo, pond-only favicon, and responsive mobile observation cards
 news pressure with fallback labeling
 local graph node edits and patch export

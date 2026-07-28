@@ -95,26 +95,27 @@
           <div class="section-heading compact-heading">
             <div>
               <p class="section-kicker"><span class="kicker-icon">☆</span> 当前观察优先级</p>
-              <h2 id="candidateTitle">Top 10 结构性观察</h2>
-              <p class="candidate-intro">根据价格、流动性、证据完整度、多日延续性和风险状态筛选，仅用于中期结构观察，不代表买入建议。</p>
-              <p class="candidate-boundary">排名表示当前观察证据的相对完整程度，不等于未来上涨概率。</p>
+              <h2 id="candidateTitle">行业量价观察</h2>
+              <p class="candidate-intro">每个行业一行，使用正式发布顺序对照价格、成交、相对沪深300强度与内部扩散证据。</p>
+              <p class="candidate-boundary">综合分与排名沿用正式模型；面板不重算、不重排，缺失数据保留为空。</p>
             </div>
-            <span class="quiet-note">点击行业切换技术详情</span>
+            <span class="quiet-note">近20个交易日 · Fail-Closed</span>
           </div>
           <details class="candidate-guide">
-            <summary>如何阅读</summary>
+            <summary>字段与状态规则</summary>
             <div class="candidate-guide-grid">
-              <p><strong>趋势已确认：</strong>当前证据较强，并获得多日连续性确认。</p>
-              <p><strong>主线候选：</strong>当前证据较完整，但仍需观察连续性和扩散。</p>
-              <p><strong>观察候选：</strong>部分证据成立，但关键确认仍不足。</p>
-              <p>综合观察分不等于上涨概率；主趋势强度高也不代表不会回撤。</p>
-              <p>所有结论均为观察状态，不是交易指令。</p>
+              <p><strong>价格强度：</strong>代表ETF在窗口内的归一化收盘价变化。</p>
+              <p><strong>成交活跃度：</strong>成交额/20日均值；不足20个真实样本时不计算。</p>
+              <p><strong>相对强度：</strong>ETF与沪深300精确同日收盘价的归一化比值。</p>
+              <p><strong>内部扩散：</strong>只接受真实成分股上涨比例或站上20日均线比例。</p>
+              <p><strong>状态：</strong>区分边际增强、维持观察、边际转弱、仅价格异动、证据不足与退出观察。</p>
+              <p>所有结论仅作结构观察，不是交易指令。</p>
             </div>
           </details>
           <p id="candidateCountNote" class="candidate-count-note" aria-live="polite"></p>
+          <p id="candidateDifferentiation" class="candidate-differentiation" aria-live="polite" hidden></p>
           <div id="candidateTable" class="candidate-table loading-copy">正在读取候选…</div>
-          <p class="candidate-tail-note">未进入前 10 仅表示当前相对证据较弱或不完整，不代表行业基本面一定较差。</p>
-          <div id="selectedCandidate" class="selected-candidate" aria-live="polite"></div>
+          <p class="candidate-tail-note">未进入当前前 10 或退出观察，仅表示正式观察顺序变化，不代表行业基本面结论。</p>
         </section>
 
         <section class="panel evidence-panel" aria-labelledby="evidenceTitle">
@@ -150,6 +151,7 @@
           </div>
           <div class="diagnostic-links" aria-label="原始数据链接">
             <a href="./data/evening_observation_summary.json">晚间总结</a>
+            <a href="./data/sector_observation_panel.json">行业量价面板</a>
             <a href="./data/market_penetration_brief.json">市场穿透 JSON</a>
             <a href="./data/observation_candidate_ledger.json">候选台账</a>
             <a href="./data/pool_observation_scores.json">观察分数</a>
@@ -165,7 +167,7 @@
     </main>
 
     <footer class="app-footer">
-      <span>Financial Ponds v0.10.75</span>
+      <span>Financial Ponds v0.10.76</span>
       <span>仅作结构观察 · 历史复盘样本仍在积累</span>
     </footer>
 

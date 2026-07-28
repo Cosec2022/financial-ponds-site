@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.75
+Version: v0.10.76
 Status: active
 
 Module IDs use this format:
@@ -20,7 +20,7 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-FLOW-01 | Capital Flow Engine | Convert observations into 31-slot A-share sector-flow review | working prototype | 64% | Keep provider flow `flow_ready` and expand coverage beyond representative ETFs |
 | FP-GEN-01 | General Pool Analysis | Analyze pools through one component contract with pool-specific input profiles | working prototype | 52% | Surface provider-mapped vs framework-only coverage in the frontend |
 | FP-GRAPH-01 | Influence Graph | Upstream, downstream, and peer influence factors | frontend prototype | 35% | Add backend edge state and confirmation history |
-| FP-PV-01 | Price-Volume Analysis | Relative strength, volume, breadth, confirmation | basic | 20% | Add trend, divergence, volume expansion, and persistence |
+| FP-PV-01 | Price-Volume Analysis | Relative strength, volume, breadth, confirmation | working prototype | 30% | Accumulate 20 real amount sessions and add source-backed constituent breadth |
 | FP-NEWS-01 | News Pressure Engine | News as pressure, catalyst, risk, expectation | basic / fallback | 30% | Add fixed real sources and source-quality labels |
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots, recover recent published history, and compare latest vs previous day | working prototype | 42% | Add explicit continuation/reversal labels |
@@ -32,7 +32,7 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-GATE-01 | Decision Gate Ledger | Explain why provider readiness does or does not unlock execution-language readiness | working prototype | 25% | Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers |
 | FP-EXPLAIN-01 | Index Explainability | Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns | working prototype | 25% | Expand formula registry as more UI indexes become clickable |
 | FP-OBS-01 | Observation Data Backbone | Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes | working prototype | 42% | Produce the first source-backed reviewed T+1/T+3 outcomes without replacing missing values |
-| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 74% | Validate Top 10, Chinese explanations, branding, and mobile layout across daily deployments |
+| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 80% | Validate quantitative rows, mini-series gaps, and mobile layout across daily deployments |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
 | FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 80% | Keep CI-order, history-recovery, and provider-coverage guards current |
@@ -76,6 +76,30 @@ Tests:
 6. FP-HIST-01 / FP-ROT-01: accumulate enough uninterrupted trading-day history for continuation/reversal labels.
 7. FP-ETF-01 / FP-DAILY-01: keep execution blocked until source, validation, and conflict gates are cleared.
 8. FP-DATA-01: add S&P 500 live inputs only after the A-share exact-date review path is stable.
+```
+
+## v0.10.76 Status Note
+
+```text
+Changed:
+- sector_observation_panel.json preserves the formal Top 10 order and adds four 20-session series contracts
+- the UI renders a dark one-row-per-sector panel instead of repeated long text and duplicate detail cards
+- score, score change, rank change, state change, status, and one short sector-specific conclusion are visible
+- deterministic states cover marginal strengthening, maintain, marginal weakening, price-only anomaly, insufficient evidence, and exit
+- one-status output triggers “当前模型区分度不足” rather than manufactured differentiation
+
+Fail-closed:
+- missing dates remain null and do not become zero-valued chart points
+- amount / 20-day mean is unavailable until 20 real amount observations exist
+- internal breadth rejects mock/model-direction substitutes and waits for a trusted constituent ratio
+- relative strength requires exact-date ETF and 510300 closes
+
+Unchanged:
+- model scores, published ordering, candidate thresholds, outcome history, and immutable snapshots
+
+Boundary:
+- observe_only
+- not a buy list, rise probability, allocation recommendation, or trading instruction
 ```
 
 ## v0.10.75 Status Note

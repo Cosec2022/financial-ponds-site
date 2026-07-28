@@ -219,6 +219,8 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-daily-outcome-label-ledger.mjs") > daily.indexOf("build-candidate-outcome-reviews.mjs"));
   assert.ok(daily.indexOf("build-longitudinal-coverage-report.mjs") > daily.indexOf("build-daily-outcome-label-ledger.mjs"));
   assert.ok(daily.indexOf("build-candidate-price-basis.mjs") < daily.indexOf("build-candidate-state-model.mjs"));
+  assert.ok(daily.indexOf("build-candidate-state-model.mjs") < daily.indexOf("build-sector-observation-panel.mjs"));
+  assert.ok(daily.indexOf("build-sector-observation-panel.mjs") < daily.indexOf("build-daily-longitudinal-archive.mjs"));
   assert.ok(daily.indexOf("build-candidate-state-model.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
   assert.ok(daily.indexOf("build-candidate-outcome-reviews.mjs") < daily.indexOf("build-candidate-review-analytics.mjs"));
   assert.ok(daily.indexOf("build-evening-observation-summary.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
@@ -227,7 +229,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.75 presentation preserves the v0.10.74 provider path and v0.10.73 archive repair", async () => {
+test("v0.10.76 quantitative panel preserves the v0.10.75 ordering, v0.10.74 provider path, and v0.10.73 archive repair", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage, ciRunner, archiveScript] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -239,10 +241,11 @@ test("v0.10.75 presentation preserves the v0.10.74 provider path and v0.10.73 ar
     readFile("tools/financial-pond-framework/providers/akshare_etf_bridge/archive_historical_market_inputs.py", "utf8")
   ]);
   assert.match(index, /Financial Ponds/);
-  assert.match(index, /v0\.10\.75/);
+  assert.match(index, /v0\.10\.76/);
   assert.match(index, /每日市场穿透/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.75");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.75");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.76");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.76");
+  assert.match(changelog, /v0\.10\.76/);
   assert.match(changelog, /v0\.10\.75/);
   assert.match(changelog, /v0\.10\.74/);
   assert.ok(ciRunner.indexOf("persist_daily_etf_history") > ciRunner.indexOf("akshare_etf_snapshot"));

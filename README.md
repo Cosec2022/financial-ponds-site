@@ -4,7 +4,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 
 ## Current status
 
-**Current package: v0.10.75.** The dashboard now publishes the model's real Top 10 structural observations in backend order, adds a Chinese human-readable explanation layer and switchable industry details, and introduces formal Financial Ponds logo, favicon, and mobile card assets. This presentation release does not change underlying model scores or ranking logic, never pads a short list, and remains `observe_only`: it is not a buy list, rise probability, or trading instruction. v0.10.73's cumulative-history preservation and v0.10.74's durable daily Provider-to-history persistence remain unchanged.
+**Current package: v0.10.76.** The industry observation surface is now a dark quantitative panel with one row per formally published sector, four fail-closed 20-session mini-series, score/rank/state deltas, and a short sector-specific conclusion. It preserves the model's Top 10 order and never rescales, reranks, pads, or replaces missing values with zero. Turnover activity remains unavailable until 20 real amount observations exist, and internal breadth remains unavailable until a source-backed constituent ratio exists. The release remains `observe_only`: it is not a buy list, rise probability, or trading instruction. v0.10.73 historical preservation, v0.10.74 Provider persistence, and v0.10.75 Top 10 ordering remain unchanged.
 
 - Site root shows a reference-first dashboard with general S&P 500 and A-share industry analysis.
 - The first screen starts with `FP-AUDIT-01` data reality audit, so model conclusions are read only after source reality is checked.
@@ -75,6 +75,7 @@ financial-pond/data/general_pool_analysis.json
 financial-pond/data/sector_flow_review.json
 financial-pond/data/sector_rotation_intelligence.json
 financial-pond/data/sector_rotation_history.json
+financial-pond/data/sector_observation_panel.json
 financial-pond/data/sector_module_review.json
 financial-pond/data/etf_decision_readiness.json
 financial-pond/data/data_reality_audit.json
