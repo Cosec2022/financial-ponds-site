@@ -4,7 +4,7 @@ Independent Cloudflare Worker site for `financial-ponds.coseclab.dev`.
 
 ## Current status
 
-**Current package: v0.10.76.** The industry observation surface is now a dark quantitative panel with one row per formally published sector, four fail-closed 20-session mini-series, score/rank/state deltas, and a short sector-specific conclusion. It preserves the model's Top 10 order and never rescales, reranks, pads, or replaces missing values with zero. Turnover activity remains unavailable until 20 real amount observations exist, and internal breadth remains unavailable until a source-backed constituent ratio exists. The release remains `observe_only`: it is not a buy list, rise probability, or trading instruction. v0.10.73 historical preservation, v0.10.74 Provider persistence, and v0.10.75 Top 10 ordering remain unchanged.
+**Current package: v0.10.77.** The 11 directly mapped sector ETFs and the 510300 benchmark proxy now each retain 60 real trading sessions through 2026-07-28. The quantitative panel has 20/20 real turnover samples and 20/20 exact-date benchmark alignment while preserving the formal Top 10 scores, order, and `observe_only` boundary. Missing, duplicate, future, non-trading, and polluted rows fail closed. Internal breadth remains unavailable with the explicit message `尚未接入可信成分股数据源`; mock/model breadth is rejected.
 
 - Site root shows a reference-first dashboard with general S&P 500 and A-share industry analysis.
 - The first screen starts with `FP-AUDIT-01` data reality audit, so model conclusions are read only after source reality is checked.

@@ -133,6 +133,11 @@ jobs:
           set -euo pipefail
           npm run fp:daily
 
+      - name: Validate cumulative market history quality
+        run: |
+          set -euo pipefail
+          npm run validate:history-quality
+
       - name: Build AI market penetration (display only)
         run: |
           set -euo pipefail

@@ -49,6 +49,11 @@ test("Financial Ponds workflow uses CI daily runner and publishes complete decis
   assert.ok(workflow.indexOf("npm run observation:snapshot") > workflow.indexOf("npm run index:explain"));
   assert.ok(workflow.lastIndexOf("npm run data:vault") > workflow.indexOf("npm run observation:snapshot"));
   assert.match(workflow, /npm run fp:daily/);
+  assert.match(workflow, /npm run validate:history-quality/);
+  assert.match(assetBuilder, /data\/market_history_quality\.json/);
+  assert.match(assetBuilder, /data\/sector_breadth_daily\.json/);
+  assert.match(dataValidator, /market_history_quality\.json/);
+  assert.match(dataValidator, /sector_breadth_daily\.json/);
   assert.equal(siteScripts["fp:research"], "node scripts/build-market-penetration-ai.mjs");
   assert.match(workflow, /OPENAI_API_KEY: \$\{\{ secrets\.OPENAI_API_KEY \}\}/);
   assert.match(workflow, /FP_MARKET_RESEARCH_MODEL/);
@@ -207,6 +212,9 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.match(daily, /build-evening-observation-summary\.mjs/);
   assert.match(daily, /build-candidate-price-basis\.mjs/);
   assert.match(daily, /build-candidate-state-model\.mjs/);
+  assert.match(daily, /build-sector-breadth\.mjs/);
+  assert.match(daily, /build-market-history-quality\.mjs --as-of "\$AS_OF" --strict/);
+  assert.ok(daily.indexOf("build-market-history-quality.mjs") < daily.indexOf("build-sector-observation-panel.mjs"));
   assert.match(daily, /build-candidate-outcome-reviews\.mjs/);
   assert.match(daily, /build-candidate-review-analytics\.mjs/);
   assert.ok(daily.indexOf("build-pool-instrument-map.mjs") < daily.indexOf("build-market-signal-channel.mjs"));
@@ -229,7 +237,7 @@ test("fp:daily builds market signals before coverage and persistence", async () 
   assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
 });
 
-test("v0.10.76 quantitative panel preserves the v0.10.75 ordering, v0.10.74 provider path, and v0.10.73 archive repair", async () => {
+test("v0.10.77 data completeness preserves the v0.10.75 ordering, v0.10.74 provider path, and v0.10.73 archive repair", async () => {
   const [index, app, changelog, modelDoc, sitePackage, frameworkPackage, ciRunner, archiveScript] = await Promise.all([
     readFile("financial-pond/index.html", "utf8"),
     readFile("financial-pond/app.js", "utf8"),
@@ -241,10 +249,11 @@ test("v0.10.76 quantitative panel preserves the v0.10.75 ordering, v0.10.74 prov
     readFile("tools/financial-pond-framework/providers/akshare_etf_bridge/archive_historical_market_inputs.py", "utf8")
   ]);
   assert.match(index, /Financial Ponds/);
-  assert.match(index, /v0\.10\.76/);
+  assert.match(index, /v0\.10\.77/);
   assert.match(index, /每日市场穿透/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.76");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.76");
+  assert.equal(JSON.parse(sitePackage).version, "0.10.77");
+  assert.equal(JSON.parse(frameworkPackage).version, "0.10.77");
+  assert.match(changelog, /v0\.10\.77/);
   assert.match(changelog, /v0\.10\.76/);
   assert.match(changelog, /v0\.10\.75/);
   assert.match(changelog, /v0\.10\.74/);

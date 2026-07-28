@@ -79,6 +79,7 @@ async function sectorOutput(fixture) {
 async function fullCandidateChain(tempRoot, fixture) {
   const root = path.join(tempRoot, fixture === null ? "unused" : fixture.rss_google_news_narratives.length ? "a" : "b");
   await cp(repoRoot, root, { recursive: true, filter: (source) => !source.includes("/.git") && !source.includes("/node_modules") && !source.includes("/dist") });
+  await constrainMarketHistoryToAsOf(root);
   const observationDir = path.join(root, "tools/financial-pond-framework/observations", asOf);
   await mkdir(observationDir, { recursive: true });
   await writeFile(path.join(observationDir, "news_observations.json"), `${JSON.stringify({ observations: allNarratives(fixture) }, null, 2)}\n`);
@@ -104,6 +105,18 @@ async function fullCandidateChain(tempRoot, fixture) {
   const names = ["pool_observation_scores.json", "evening_observation_summary.json", "observation_candidate_ledger.json", "candidate_state_model.json", "candidate_outcome_reviews.json", "candidate_due_review_verification.json", "candidate_review_history.json", "candidate_review_analytics.json"];
   const output = Object.fromEntries(await Promise.all(names.map(async (name) => [name, await json(path.join(root, "financial-pond/data", name))])));
   return canonicalModelOutput(output);
+}
+
+async function constrainMarketHistoryToAsOf(root) {
+  const etfPath = path.join(root, "tools/financial-pond-framework/data/provider_exports/a_share_etf_daily.csv");
+  const etfLines = (await readFile(etfPath, "utf8")).trimEnd().split("\n");
+  await writeFile(etfPath, `${etfLines.filter((line, index) => index === 0 || line.slice(0, 10) <= asOf).join("\n")}\n`);
+
+  const benchmarkPath = path.join(root, "tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json");
+  const benchmark = await json(benchmarkPath);
+  benchmark.rows = (benchmark.rows ?? []).filter((row) => (row.trade_date ?? row.date) <= asOf);
+  benchmark.cutoff_date = asOf;
+  await writeFile(benchmarkPath, `${JSON.stringify(benchmark, null, 2)}\n`);
 }
 
 function canonicalModelOutput(output) {

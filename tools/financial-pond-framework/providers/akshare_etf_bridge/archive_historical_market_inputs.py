@@ -61,7 +61,7 @@ def load_existing_series(root, as_of):
 def load_series(target): return read(target/"etf_ohlcv_series.json", {"rows":[]}).get("rows", [])
 def hydrate(root, rows, series=[]):
     path=root/"data"/"provider_exports"/"a_share_etf_daily.csv"; path.parent.mkdir(parents=True,exist_ok=True)
-    fields=["date","sector_id","sector_node_id","fund_code","fund_name","close","pct_change","amount","turnover","latest_share","previous_share","share_change","estimated_flow","source_provider","source_endpoint","provider_run_id","collected_at","open","high","low","volume","historical_input"]
+    fields=["date","trade_date","sector_id","sector_node_id","fund_code","fund_name","open","high","low","close","volume","amount","pct_change","turnover","latest_share","previous_share","share_change","estimated_flow","source_provider","source_endpoint","provider_run_id","collected_at","historical_input","backfill_source_provider","backfill_source_endpoint","retrieved_at","backfilled_at","cutoff_date"]
     with path.open("w",newline="",encoding="utf8") as f:
         w=csv.DictWriter(f,fieldnames=fields, lineterminator="\n"); w.writeheader()
         by_key={(r.get("date"),r.get("fund_code")):r for r in series}
@@ -69,6 +69,9 @@ def hydrate(root, rows, series=[]):
             if r.get("status")!="ok": continue
             previous=[x for x in by_key.values() if x.get("fund_code")==r["symbol"] and x.get("date","") < r["trade_date"] and x.get("close")]
             prev=max(previous,key=lambda x:x["date"],default=None); pct=((float(r["close"])/float(prev["close"])-1)*100) if prev else None
-            by_key[(r["trade_date"],r["symbol"])]= {"date":r["trade_date"],"sector_id":r.get("sector_id"),"sector_node_id":r.get("sector_node_id"),"fund_code":r["symbol"],"fund_name":r.get("fund_name_hint"),"close":r.get("close"),"pct_change":pct if pct is not None else "","amount":r.get("amount") or "","turnover":"","latest_share":"","previous_share":"","share_change":"","estimated_flow":"","source_provider":r.get("source_provider"),"source_endpoint":r.get("source_endpoint"),"provider_run_id":"historical_market_input","collected_at":r.get("fetched_at"),"open":r.get("open") or "","high":r.get("high") or "","low":r.get("low") or "","volume":r.get("volume") or "","historical_input":"true"}
+            key=(r["trade_date"],r["symbol"])
+            incoming={"date":r["trade_date"],"trade_date":r["trade_date"],"sector_id":r.get("sector_id"),"sector_node_id":r.get("sector_node_id"),"fund_code":r["symbol"],"fund_name":r.get("fund_name_hint"),"close":r.get("close"),"pct_change":pct if pct is not None else "","amount":r.get("amount") or "","turnover":"","latest_share":"","previous_share":"","share_change":"","estimated_flow":"","source_provider":r.get("source_provider"),"source_endpoint":r.get("source_endpoint"),"provider_run_id":"historical_market_input","collected_at":r.get("fetched_at"),"open":r.get("open") or "","high":r.get("high") or "","low":r.get("low") or "","volume":r.get("volume") or "","historical_input":"true"}
+            existing=by_key.get(key,{})
+            by_key[key]={field:(existing.get(field) if existing.get(field) not in (None,"") else incoming.get(field,"")) for field in fields}
         for row in sorted(by_key.values(),key=lambda x:(x.get("date",""),x.get("fund_code",""))): w.writerow({key:row.get(key,"") for key in fields})
 if __name__=="__main__": main()

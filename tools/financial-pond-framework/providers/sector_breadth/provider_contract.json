@@ -1,0 +1,35 @@
+{
+  "id": "sector_constituent_breadth_contract_v0_10_77",
+  "purpose": "Daily forward-only collection contract for traceable sector or ETF-basket constituents and real daily prices.",
+  "input_path": "data/provider_exports/sector_constituent_daily.json",
+  "output_path": "../../financial-pond/data/sector_breadth_daily.json",
+  "required_top_level_fields": [
+    "as_of",
+    "source_kind",
+    "constituent_source",
+    "constituent_as_of",
+    "composition_as_of",
+    "price_source",
+    "sectors"
+  ],
+  "source_kind_values": [
+    "official_sector_constituents",
+    "etf_constituent_basket"
+  ],
+  "required_constituent_fields": [
+    "instrument_code",
+    "trade_date",
+    "close",
+    "previous_close",
+    "ma20"
+  ],
+  "forbidden_source_patterns": [
+    "mock",
+    "fixture",
+    "model",
+    "manual"
+  ],
+  "history_policy": "forward_only_unless_point_in_time_composition_is explicitly archived",
+  "known_limitation": "Current constituent membership must not be used to silently reconstruct historical breadth. composition_as_of is mandatory.",
+  "unavailable_message": "尚未接入可信成分股数据源"
+}

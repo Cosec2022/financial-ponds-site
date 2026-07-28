@@ -248,7 +248,7 @@ function renderCandidates() {
     return;
   }
   const observed = panel?.window?.observed_date_count ?? 0;
-  countNote.textContent = `严格保持正式发布顺序 · 可验证交易日 ${observed}/${panel?.window?.target_trading_days ?? 20} · 缺失值不补零`;
+  countNote.textContent = `${panel?.data_quality_summary?.text ?? `可验证交易日 ${observed}/${panel?.window?.target_trading_days ?? 20}`} · 严格保持正式发布顺序 · 缺失值不补零`;
   differentiation.hidden = panel?.differentiation?.status !== "insufficient";
   differentiation.textContent = panel?.differentiation?.message ?? "";
 
@@ -324,9 +324,16 @@ function renderMiniSeries(metric = {}) {
     ? "—"
     : `${fmt(metric.latest)}${metric.unit ?? ""}`;
   if (metric.status !== "available" || usable.length < 2) {
+    const unavailableLabel = metric.display_status === "source_unavailable"
+      ? "尚未接入数据源"
+      : metric.display_status === "accumulating"
+        ? `积累中 ${usable.length}/${metric.required_points ?? 20}`
+        : metric.display_status === "missing_points"
+          ? "该日缺失"
+          : "数据不足";
     return `
       <span class="mini-series unavailable" title="${escapeHtml(metric.missing_reason ?? "数据不足")}">
-        <span class="mini-series-head"><strong>${escapeHtml(metric.label ?? "未知指标")}</strong><em>数据不足</em></span>
+        <span class="mini-series-head"><strong>${escapeHtml(metric.label ?? "未知指标")}</strong><em>${escapeHtml(unavailableLabel)}</em></span>
         <span class="mini-series-empty">空值保留 · ${usable.length}/${metric.required_points ?? 20}</span>
       </span>
     `;

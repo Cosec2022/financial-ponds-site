@@ -1,6 +1,6 @@
 # Module Plan
 
-Version: v0.10.76
+Version: v0.10.77
 Status: active
 
 Module IDs use this format:
@@ -16,15 +16,15 @@ Do not use pure numeric IDs such as `FP-00`.
 | Module ID | Module | Role | Status | Progress | Next |
 |---|---|---|---|---:|---|
 | FP-CORE-01 | Core Graph Engine | Market-agnostic graph, registry, scoring, snapshots | working | 70% | Keep core free of market-specific branches |
-| FP-DATA-01 | Hard Data Providers | AKShare ETF snapshot, A-share water level, provider adapters | working with fallback | 66% | Add valuation/fundamental real sources; S&P 500 provider second |
+| FP-DATA-01 | Hard Data Providers | AKShare ETF snapshot, A-share water level, provider adapters | working with fallback | 74% | Connect a trusted point-in-time constituent source; add valuation/fundamental real sources |
 | FP-FLOW-01 | Capital Flow Engine | Convert observations into 31-slot A-share sector-flow review | working prototype | 64% | Keep provider flow `flow_ready` and expand coverage beyond representative ETFs |
 | FP-GEN-01 | General Pool Analysis | Analyze pools through one component contract with pool-specific input profiles | working prototype | 52% | Surface provider-mapped vs framework-only coverage in the frontend |
 | FP-GRAPH-01 | Influence Graph | Upstream, downstream, and peer influence factors | frontend prototype | 35% | Add backend edge state and confirmation history |
-| FP-PV-01 | Price-Volume Analysis | Relative strength, volume, breadth, confirmation | working prototype | 30% | Accumulate 20 real amount sessions and add source-backed constituent breadth |
+| FP-PV-01 | Price-Volume Analysis | Relative strength, volume, breadth, confirmation | working prototype | 50% | Keep 20/20 turnover/alignment current and add source-backed constituent breadth |
 | FP-NEWS-01 | News Pressure Engine | News as pressure, catalyst, risk, expectation | basic / fallback | 30% | Add fixed real sources and source-quality labels |
 | FP-ROT-01 | Sector Rotation Intelligence | Leaders, laggards, clusters, switching paths, watch points | working prototype | 45% | Add multi-day continuation and reversal labels |
 | FP-HIST-01 | Sector Rotation History | Persist daily rotation snapshots, recover recent published history, and compare latest vs previous day | working prototype | 42% | Add explicit continuation/reversal labels |
-| FP-HIST-MKT-01 | Historical Market Replay | Persist verified daily ETF rows, preserve cumulative OHLCV inputs, and replay without future data | working prototype | 72% | Monitor committed daily-row continuity and recover only source-verifiable missing dates |
+| FP-HIST-MKT-01 | Historical Market Replay | Persist verified daily ETF rows, preserve cumulative OHLCV inputs, and replay without future data | working prototype | 86% | Monitor continuity after the 60-session verified baseline; recover only source-verifiable dates |
 | FP-ETF-01 | ETF Decision Readiness | Gate whether sector rankings may support ETF action language, with share-change flow diagnostics | working prototype | 42% | Current state is `watch_only`; unblock manual valuation/fundamental seeds, rotation visibility, and execution rules |
 | FP-DAILY-01 | Daily Sector Analysis | Combine flow, rotation, modules, ETF readiness, and decision tickets | working prototype | 40% | Add continuation/reversal labels after more history accumulates |
 | FP-ATTR-01 | Signal Attribution | Explain daily rankings through ETF flow, rotation, modules, graph scores, and conflict notes | working prototype | 35% | Add richer attribution weights and history-aware explanations |
@@ -32,11 +32,11 @@ Do not use pure numeric IDs such as `FP-00`.
 | FP-GATE-01 | Decision Gate Ledger | Explain why provider readiness does or does not unlock execution-language readiness | working prototype | 25% | Clear valuation/fundamental, data reality, conflict-review, and execution-language blockers |
 | FP-EXPLAIN-01 | Index Explainability | Explain displayed scores, ranks, readiness fields, gates, and maturity indexes with source/formula/input breakdowns | working prototype | 25% | Expand formula registry as more UI indexes become clickable |
 | FP-OBS-01 | Observation Data Backbone | Preserve daily observation files, pool vectors, signal matrix rows, review logs, and pending outcomes | working prototype | 42% | Produce the first source-backed reviewed T+1/T+3 outcomes without replacing missing values |
-| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 80% | Validate quantitative rows, mini-series gaps, and mobile layout across daily deployments |
+| FP-UI-01 | Frontend Dashboard | Explain model outputs and data boundaries | usable prototype | 82% | Keep mobile/desktop overflow and unavailable-source presentation under regression coverage |
 | FP-RPT-01 | Reports | Daily and weekly human-readable reports | basic | 25% | Add weekly report and proposal sections |
 | FP-GPT-01 | GPT Proposal Layer | Weekly keyword and graph proposals only | planned | 5% | Add proposal schema and disabled-by-default runner |
-| FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 80% | Keep CI-order, history-recovery, and provider-coverage guards current |
-| FP-MAINT-01 | Maintenance Protocol | Rules, update protocol, total plan, module plan | working | 82% | Keep version, plan, package time, commit, and data-through fields synchronized |
+| FP-TEST-01 | Tests and Validation | Guard contracts, pipeline, Worker assets | working | 84% | Keep CI-order, history-quality, Worker, and provider-coverage guards current |
+| FP-MAINT-01 | Maintenance Protocol | Rules, update protocol, total plan, module plan | working | 84% | Keep version, plan, package time, commit, and data-through fields synchronized |
 | FP-POOL-01 | Free Pond Expansion | Add arbitrary market, asset, sector, theme, or watchlist as a pond | started | 20% | Define pond template and creation checklist |
 
 ## Progress Labels
@@ -76,6 +76,29 @@ Tests:
 6. FP-HIST-01 / FP-ROT-01: accumulate enough uninterrupted trading-day history for continuation/reversal labels.
 7. FP-ETF-01 / FP-DAILY-01: keep execution blocked until source, validation, and conflict gates are cleared.
 8. FP-DATA-01: add S&P 500 live inputs only after the A-share exact-date review path is stable.
+```
+
+## v0.10.77 Status Note
+
+```text
+Changed:
+- 11 directly mapped ETFs and 510300 each retain 60 real trading sessions from 2026-04-30 through 2026-07-28
+- turnover activity is complete at 20/20 and exact-date benchmark alignment is complete at 20/20
+- cumulative history validation covers missing, duplicate, future, non-trading, polluted, and stale data
+- a trusted constituent-breadth contract exists for forward collection
+
+Fail-closed:
+- any duplicate, future, non-trading, or polluted bar is a hard failure
+- missing observations remain null and never become zero-valued curves
+- internal breadth remains unavailable as “尚未接入可信成分股数据源”
+- mock, fixture, model, manual, or incomplete-metadata breadth is rejected
+
+Unchanged:
+- formal Top 10 scores, rank order, candidate thresholds, outcome history, and immutable snapshots
+
+Boundary:
+- observe_only
+- not a buy list, rise probability, allocation recommendation, or trading instruction
 ```
 
 ## v0.10.76 Status Note

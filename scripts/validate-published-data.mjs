@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { validateMarketHistoryQuality } from "./lib/market-history-quality.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 
@@ -10,6 +11,8 @@ const requiredFiles = [
   ["sector_rotation_intelligence.json", (json) => json.module_id === "sector_rotation_intelligence_v0_10_5"],
   ["sector_rotation_history.json", (json) => json.module_id === "sector_rotation_history_v0_10_19"],
   ["sector_observation_panel.json", validateSectorObservationPanel],
+  ["market_history_quality.json", validateMarketHistoryQuality],
+  ["sector_breadth_daily.json", validateSectorBreadth],
   ["sector_module_review.json", (json) => json.module_id === "sector_module_review_v0_1"],
   ["etf_decision_readiness.json", (json) => json.status === "readiness_available" && Boolean(json.gates) && Boolean(json.gates.share_change_diagnostics)],
   ["data_reality_audit.json", (json) => json.status === "audit_available" && Array.isArray(json.layers)],
@@ -110,6 +113,27 @@ function validateSectorObservationPanel(json) {
     && Array.isArray(json.status_rules)
     && Boolean(json.differentiation?.status)
     && json.boundary_notes?.some((note) => note.includes("observe_only"));
+}
+
+function validateSectorBreadth(json) {
+  if (json?.module_id !== "sector_breadth_daily_v0_10_77") return false;
+  if (json.status === "unavailable") {
+    return json.reason === "尚未接入可信成分股数据源"
+      && Array.isArray(json.rows)
+      && json.rows.length === 0;
+  }
+  return json.status === "available"
+    && ["official_sector_constituents", "etf_constituent_basket"].includes(json.source_kind)
+    && Array.isArray(json.rows)
+    && json.rows.every((row) => (
+      row.constituent_source
+      && row.constituent_as_of
+      && row.composition_as_of
+      && row.price_source
+      && Number.isInteger(row.effective_count)
+      && Number.isInteger(row.total_count)
+      && row.effective_count <= row.total_count
+    ));
 }
 
 function validateMarketPenetrationBrief(json) {

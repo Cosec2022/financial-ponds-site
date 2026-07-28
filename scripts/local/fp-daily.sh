@@ -18,6 +18,8 @@ node scripts/build-daily-delta-report.mjs
 node scripts/build-evening-observation-summary.mjs
 node scripts/build-candidate-price-basis.mjs
 node scripts/build-candidate-state-model.mjs
+node scripts/build-sector-breadth.mjs --as-of "$AS_OF"
+node scripts/build-market-history-quality.mjs --as-of "$AS_OF" --strict
 node scripts/build-sector-observation-panel.mjs
 node scripts/build-daily-longitudinal-archive.mjs
 node scripts/build-candidate-outcome-reviews.mjs

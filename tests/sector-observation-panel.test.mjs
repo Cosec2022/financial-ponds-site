@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   SECTOR_OBSERVATION_STATUSES,
   buildSectorObservationPanel,
@@ -30,6 +31,17 @@ const etfRows = mappings.flatMap((mapping, sectorIndex) => dates.map((date, date
   amount: 1_000_000 + sectorIndex * 10_000 + dateIndex * 5_000
 })));
 const benchmarkRows = dates.map((date, index) => ({ date, symbol: "510300", close: 100 + index * 0.4 }));
+
+test("published v0.10.77 panel preserves the formal Top 10 order and scores exactly", async () => {
+  const [panel, summaryJson] = await Promise.all([
+    readFile(new URL("../financial-pond/data/sector_observation_panel.json", import.meta.url), "utf8").then(JSON.parse),
+    readFile(new URL("../financial-pond/data/evening_observation_summary.json", import.meta.url), "utf8").then(JSON.parse)
+  ]);
+  const formal = summaryJson.top_observation_pools.slice(0, 10);
+  assert.deepEqual(panel.rows.map((row) => row.pool_id), formal.map((row) => row.pool_id));
+  assert.deepEqual(panel.rows.map((row) => row.score), formal.map((row) => row.observation_score));
+  assert.ok(panel.rows.every((row) => row.boundary.includes("observe_only")));
+});
 
 test("panel preserves published order, emits four real-series contracts, and retains exits", () => {
   const panel = buildSectorObservationPanel({
@@ -74,10 +86,60 @@ test("missing inputs stay null and never become zero-valued curves", () => {
   });
   const row = panel.rows[0];
   assert.equal(row.series.turnover_activity.status, "insufficient_data");
+  assert.equal(row.series.turnover_activity.display_status, "accumulating");
+  assert.equal(row.series.turnover_activity.missing_reason, "积累中：2/20");
   assert.ok(row.series.turnover_activity.values.every((point) => point.value === null));
   assert.doesNotMatch(JSON.stringify(row.series.turnover_activity), /"value":0(?:[,}])/);
   assert.equal(row.series.internal_breadth.latest, null);
-  assert.equal(row.series.internal_breadth.missing_reason, "缺少来源可信的上涨成分股或站上20日均线比例");
+  assert.equal(row.series.internal_breadth.missing_reason, "尚未接入可信成分股数据源");
+});
+
+test("19 real amount samples stay unavailable while 20 samples publish the real mean ratio", () => {
+  const nineteen = etfRows
+    .filter((row) => row.fund_code === mappings[0].instrument_code)
+    .slice(0, 19);
+  const base = {
+    generatedAt: "2026-07-20T16:00:00.000Z",
+    summary: summary(dates.at(-1), [currentRows[0]]),
+    instrumentMap: { rows: [mappings[0]] },
+    benchmarkRows
+  };
+  const partial = buildSectorObservationPanel({
+    ...base,
+    asOf: dates[18],
+    summary: summary(dates[18], [currentRows[0]]),
+    etfRows: nineteen
+  });
+  assert.equal(partial.rows[0].series.turnover_activity.status, "insufficient_data");
+  assert.equal(partial.rows[0].series.turnover_activity.display_status, "accumulating");
+  assert.equal(partial.rows[0].series.turnover_activity.latest, null);
+  assert.match(partial.rows[0].series.turnover_activity.missing_reason, /19\/20/);
+
+  const complete = buildSectorObservationPanel({
+    ...base,
+    asOf: dates.at(-1),
+    etfRows: etfRows.filter((row) => row.fund_code === mappings[0].instrument_code)
+  });
+  assert.equal(complete.rows[0].series.turnover_activity.status, "available");
+  assert.equal(complete.rows[0].series.turnover_activity.available_points, 20);
+  assert.ok(Number.isFinite(complete.rows[0].series.turnover_activity.latest));
+});
+
+test("relative strength uses exact dates and fails closed on one-date benchmark misalignment", () => {
+  const panel = buildSectorObservationPanel({
+    asOf: dates.at(-1),
+    generatedAt: "2026-07-20T16:00:00.000Z",
+    summary: summary(dates.at(-1), [currentRows[0]]),
+    instrumentMap: { rows: [mappings[0]] },
+    etfRows: etfRows.filter((row) => row.fund_code === mappings[0].instrument_code),
+    benchmarkRows: benchmarkRows.filter((row) => row.date !== dates[7])
+  });
+  const relative = panel.rows[0].series.relative_strength;
+  assert.equal(relative.values[7].date, dates[7]);
+  assert.equal(relative.values[7].value, null);
+  assert.equal(relative.available_points, 19);
+  assert.equal(relative.status, "insufficient_data");
+  assert.equal(relative.display_status, "missing_points");
 });
 
 test("breadth accepts only explicit source-backed ratios and rejects mock scores", () => {

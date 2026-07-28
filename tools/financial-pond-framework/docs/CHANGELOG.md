@@ -1,5 +1,16 @@
 # Changelog
 
+## v0.10.77
+
+- retained 60 real trading sessions for all 11 directly mapped sector ETFs and the 510300 benchmark proxy, covering 2026-04-30 through 2026-07-28
+- added cumulative market-history quality reporting for missing, duplicate, future, non-trading, polluted, and stale observations
+- reached 20/20 real turnover samples and 20/20 exact-date ETF/510300 alignment for every directly mapped ETF
+- preserved the formal Top 10 scores, rank order, and `observe_only` boundary exactly
+- added a forward-only source contract for constituent breadth while keeping the current output unavailable with `尚未接入可信成分股数据源`
+- rejected mock, fixture, model, manual, incomplete-metadata, and silently reconstructed breadth inputs
+- added Python backfill regression coverage, framework/root/Worker tests, history-quality validation, and published-data guards
+- did not refetch, regenerate, or replace the verified checkpoint market history during release completion
+
 ## v0.10.76
 
 - replaced the repeated long-form Top 10 list and duplicate detail card with a dark one-row-per-sector quantitative panel
