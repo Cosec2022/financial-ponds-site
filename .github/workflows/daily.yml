@@ -191,7 +191,7 @@ jobs:
       - name: Commit explicit generated-data whitelist
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "4189822+github-actions[bot]@users.noreply.github.com"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add financial-pond/data/daily_manifest.json
           git add financial-pond/data/sector_assessment_daily.json
           git add financial-pond/data/entry_decision_daily.json

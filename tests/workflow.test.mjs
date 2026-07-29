@@ -43,7 +43,8 @@ test("GitHub workflow has one dependent stage chain and an explicit generated-da
   }
   assert.doesNotMatch(workflow, /git add \.|git add financial-pond\/data\s*$/m);
   assert.match(workflow, /git add financial-pond\/data\/daily_manifest\.json/);
-  assert.match(workflow, /4189822\+github-actions\[bot\]@users\.noreply\.github\.com/);
+  assert.match(workflow, /^\s+git config user\.email "41898282\+github-actions\[bot\]@users\.noreply\.github\.com"$/m);
+  assert.doesNotMatch(workflow, /4189822\+github-actions\[bot\]@users\.noreply\.github\.com/);
   assert.ok(workflow.indexOf("name: Validate before persistence") < workflow.indexOf("name: Persist and publish validated artifacts"));
   assert.ok(workflow.indexOf("name: Persist and publish validated artifacts") < workflow.indexOf("name: Deploy already validated publication"));
 });
