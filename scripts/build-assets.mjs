@@ -64,6 +64,10 @@ const files = [
   ["data/news_review.json", "application/json; charset=utf-8"],
   ["data/market_penetration_brief.json", "application/json; charset=utf-8"],
   ["data/pond_map.json", "application/json; charset=utf-8"],
+  ["data/daily_manifest.json", "application/json; charset=utf-8"],
+  ["data/sector_assessment_daily.json", "application/json; charset=utf-8"],
+  ["data/entry_decision_daily.json", "application/json; charset=utf-8"],
+  ["data/review_analytics.json", "application/json; charset=utf-8"],
 ];
 
 try {
