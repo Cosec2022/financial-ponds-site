@@ -41,8 +41,8 @@ jobs:
           git ls-files -s financial-pond/data financial-pond/history/market-inputs > "$RUNNER_TEMP/fp-published-before.txt"
       - name: Run offline pull-request contracts
         run: |
-          npm test
           npm run build
+          npm test
           npm run validate
           npm run validate:data
           npm run validate:history-quality

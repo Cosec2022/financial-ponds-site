@@ -60,6 +60,7 @@ test("pull-request checks are offline and cannot reach providers, Git persistenc
     "npm run validate:history-quality",
     "npm run fp:replay -- --as-of 2026-07-28"
   ]) assert.match(prJob, new RegExp(escapeRegExp(command)));
+  assert.ok(prJob.indexOf("npm run build") < prJob.indexOf("npm test"), "clean PR runners build Worker output before Worker tests");
   assert.match(prJob, /permissions:\n      contents: read/);
   assert.match(prJob, /git diff --exit-code -- financial-pond\/data financial-pond\/history\/market-inputs/g);
   assert.doesNotMatch(prJob, /fp:collect|provider|pip install|git (add|commit|push)|deploy|wrangler|CLOUDFLARE|secrets\./i);
