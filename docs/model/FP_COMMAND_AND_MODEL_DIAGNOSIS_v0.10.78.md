@@ -1,8 +1,8 @@
 # Financial Ponds command and model diagnosis
 
-**Baseline:** `origin/main` at `c2cf109`  
-**Diagnosed:** 2026-07-29 HKT  
-**Package version:** `0.10.77`  
+**Baseline:** `origin/main` at `c2cf109`
+**Diagnosed:** 2026-07-29 HKT
+**Package version:** `0.10.77`
 **Latest committed published date:** `2026-07-28`
 
 ## Executive diagnosis
