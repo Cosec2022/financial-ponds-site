@@ -4,229 +4,195 @@ on:
   workflow_dispatch:
     inputs:
       as_of:
-        description: "Historical business date (YYYY-MM-DD); blank uses Hong Kong today"
+        description: "Business date (YYYY-MM-DD); blank uses Hong Kong today"
         required: false
         type: string
-      replay_mode:
-        description: "live, historical_fetch, or offline_snapshot"
-        required: false
+      mode:
+        description: "Explicit collection mode"
+        required: true
         default: live
         type: choice
-        options: [live, historical_fetch, offline_snapshot]
+        options: [live, historical, offline]
   schedule:
-    # 16:45 Asia/Hong_Kong, after the A-share close and provider refresh window.
     - cron: "45 8 * * 1-5"
 
+env:
+  TZ: Asia/Hong_Kong
+
 jobs:
-  collect-build-deploy:
+  collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
-    permissions:
-      contents: write
-    env:
-      TZ: Asia/Hong_Kong
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      FP_MARKET_RESEARCH_MODEL: ${{ vars.FP_MARKET_RESEARCH_MODEL || 'gpt-5.6-terra' }}
-      FP_MARKET_RESEARCH_REASONING: ${{ vars.FP_MARKET_RESEARCH_REASONING || 'medium' }}
-
+    timeout-minutes: 25
+    outputs:
+      as_of: ${{ steps.context.outputs.as_of }}
+      mode: ${{ steps.context.outputs.mode }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 30
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: "22"
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.10"
-
-      - name: Install site dependencies
+      - run: npm ci
+      - name: Install provider dependencies
+        if: ${{ inputs.mode != 'offline' }}
+        run: python -m pip install -r tools/financial-pond-framework/providers/requirements.txt
+      - name: Resolve explicit run context
+        id: context
         run: |
-          set -euo pipefail
-          npm ci
-
-      - name: Install A-share provider dependencies
-        run: |
-          set -euo pipefail
-          python -m pip install --upgrade pip
-          python -m pip install -r tools/financial-pond-framework/providers/requirements.txt
-
-      - name: Set daily time context
-        run: |
-          set -euo pipefail
           AS_OF="${{ inputs.as_of }}"
           if [[ -z "$AS_OF" ]]; then AS_OF="$(TZ=Asia/Hong_Kong date +%F)"; fi
-          GENERATED_AT="$(TZ=UTC date +%Y-%m-%dT%H:%M:%SZ)"
+          MODE="${{ inputs.mode }}"
+          if [[ -z "$MODE" ]]; then MODE="live"; fi
           echo "AS_OF=$AS_OF" >> "$GITHUB_ENV"
-          echo "GENERATED_AT=$GENERATED_AT" >> "$GITHUB_ENV"
-          echo "REVIEW_NOW=${AS_OF}T16:00:00+08:00" >> "$GITHUB_ENV"
-
-      - name: Run Financial Ponds A-share daily cycle
-        working-directory: tools/financial-pond-framework
-        run: |
-          set -euo pipefail
-          npm test
-          npm run provider:akshare:doctor
-          npm run a-share:daily:ci -- --as-of "$AS_OF"
-          REPLAY_MODE="${{ inputs.replay_mode }}"
-          if [[ -z "$REPLAY_MODE" ]]; then REPLAY_MODE="live"; fi
-          case "$REPLAY_MODE" in
-            live)
-              python3 providers/akshare_etf_bridge/backfill_market_history.py \
-                --mode live \
-                --end-date "$AS_OF" \
-                --target-trade-days 60
-              ;;
-            historical_fetch)
-              python3 providers/akshare_etf_bridge/backfill_market_history.py \
-                --mode strict \
-                --end-date "$AS_OF" \
-                --target-trade-days 60
-              ;;
-            offline_snapshot)
-              echo "offline_snapshot: skip network market history refresh"
-              ;;
-            *)
-              echo "Unsupported replay_mode: $REPLAY_MODE" >&2
-              exit 2
-              ;;
-          esac
-          npm run pool:analysis -- --as-of "$AS_OF"
-          npm run data:vault -- --as-of "$AS_OF"
-          npm run data:audit -- --as-of "$AS_OF"
-          npm run daily:sector-analysis -- --as-of "$AS_OF"
-          npm run signal:attribution -- --as-of "$AS_OF"
-          npm run watchlist:state -- --as-of "$AS_OF"
-          npm run decision:gates -- --as-of "$AS_OF"
-          npm run project:maturity -- --as-of "$AS_OF"
-          npm run index:explain -- --as-of "$AS_OF"
-          npm run observation:snapshot -- --as-of "$AS_OF"
-          npm run data:vault -- --as-of "$AS_OF"
-          npm run export:web-data -- "$AS_OF"
-          cp web/data/dashboard.json ../../financial-pond/data/dashboard.json
-          cp "model_outputs/$AS_OF/general_pool_analysis.json" ../../financial-pond/data/general_pool_analysis.json
-          cp "model_outputs/$AS_OF/sector_flow_review.json" ../../financial-pond/data/sector_flow_review.json
-          cp "model_outputs/$AS_OF/sector_rotation_intelligence.json" ../../financial-pond/data/sector_rotation_intelligence.json
-          cp "model_outputs/$AS_OF/sector_rotation_history.json" ../../financial-pond/data/sector_rotation_history.json
-          cp "model_outputs/$AS_OF/sector_module_review.json" ../../financial-pond/data/sector_module_review.json
-          cp "model_outputs/$AS_OF/etf_decision_readiness.json" ../../financial-pond/data/etf_decision_readiness.json
-          cp "model_outputs/$AS_OF/data_reality_audit.json" ../../financial-pond/data/data_reality_audit.json
-          cp "model_outputs/$AS_OF/daily_sector_analysis.json" ../../financial-pond/data/daily_sector_analysis.json
-          cp "model_outputs/$AS_OF/module_maturity_audit.json" ../../financial-pond/data/module_maturity_audit.json
-          cp "model_outputs/$AS_OF/etf_flow_leaderboard.json" ../../financial-pond/data/etf_flow_leaderboard.json
-          cp "model_outputs/$AS_OF/sector_signal_attribution.json" ../../financial-pond/data/sector_signal_attribution.json
-          cp "model_outputs/$AS_OF/sector_watchlist_state.json" ../../financial-pond/data/sector_watchlist_state.json
-          cp "model_outputs/$AS_OF/decision_gate_ledger.json" ../../financial-pond/data/decision_gate_ledger.json
-          cp "model_outputs/$AS_OF/index_explainability.json" ../../financial-pond/data/index_explainability.json
-          cp "model_outputs/$AS_OF/observation_snapshot.json" ../../financial-pond/data/observation_snapshot.json
-          cp "model_outputs/$AS_OF/daily_data_vault.json" ../../financial-pond/data/daily_data_vault.json
-          cp "model_outputs/$AS_OF/news_review.json" ../../financial-pond/data/news_review.json
-
-      - name: Archive normalized market inputs
-        if: always()
-        working-directory: tools/financial-pond-framework
-        run: |
-          set -euo pipefail
-          if [[ "${{ inputs.replay_mode }}" == "offline_snapshot" ]]; then
-            npm run provider:history:archive -- --as-of "$AS_OF" --offline
-          elif [[ "${{ inputs.replay_mode }}" == "historical_fetch" ]]; then
-            npm run provider:history:archive -- --as-of "$AS_OF" --refresh-inputs --strict-exact-date
-          else
-            npm run provider:history:archive -- --as-of "$AS_OF"
-          fi
-
-      - name: Upload replayable market inputs
-        if: always()
-        uses: actions/upload-artifact@v4
+          echo "MODE=$MODE" >> "$GITHUB_ENV"
+          echo "as_of=$AS_OF" >> "$GITHUB_OUTPUT"
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+      - name: Collect once
+        run: npm run fp:collect -- --mode "$MODE" --as-of "$AS_OF"
+      - uses: actions/upload-artifact@v4
         with:
-          name: fp-market-inputs-${{ env.AS_OF }}
+          name: fp-inputs
           path: financial-pond/history/market-inputs/${{ env.AS_OF }}
-          if-no-files-found: warn
-          retention-days: 14
+          if-no-files-found: error
 
-      - name: Build daily persistence
-        run: |
-          set -euo pipefail
-          npm run fp:daily
-
-      - name: Validate cumulative market history quality
-        run: |
-          set -euo pipefail
-          npm run validate:history-quality
-
-      - name: Build AI market penetration (display only)
-        run: |
-          set -euo pipefail
-          npm run fp:research
-
-      - name: Build site and Worker
-        run: |
-          set -euo pipefail
-          npm run build:site
-
-      - name: Validate Worker artifact
-        run: |
-          set -euo pipefail
-          npm run validate
-
-      - name: Validate published data
-        run: |
-          set -euo pipefail
-          npm run validate:data
-
-      - name: Run tests
-        run: |
-          set -euo pipefail
-          npm test
-
-      - name: Upload derived Financial Ponds data
-        if: always()
-        uses: actions/upload-artifact@v4
+  model:
+    needs: collect
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          name: fp-derived-${{ env.AS_OF }}
+          node-version: "22"
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: fp-inputs
+          path: financial-pond/history/market-inputs/${{ needs.collect.outputs.as_of }}
+      - name: Resolve date
+        run: |
+          AS_OF="${{ needs.collect.outputs.as_of }}"
+          echo "AS_OF=$AS_OF" >> "$GITHUB_ENV"
+      - name: Deterministic model once
+        run: |
+          npm run fp:normalize -- --as-of "$AS_OF"
+          npm run fp:observe -- --as-of "$AS_OF"
+          npm run fp:assess -- --as-of "$AS_OF"
+          npm run fp:penetrate -- --as-of "$AS_OF"
+          npm run fp:decide -- --as-of "$AS_OF"
+          npm run fp:review -- --as-of "$AS_OF"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fp-model
+          path: .fp-work/${{ env.AS_OF }}
+          include-hidden-files: true
+          if-no-files-found: error
+
+  validate:
+    needs: [collect, model]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - name: Resolve date
+        run: |
+          AS_OF="${{ needs.collect.outputs.as_of }}"
+          echo "AS_OF=$AS_OF" >> "$GITHUB_ENV"
+      - uses: actions/download-artifact@v4
+        with:
+          name: fp-inputs
+          path: financial-pond/history/market-inputs/${{ env.AS_OF }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: fp-model
+          path: .fp-work/${{ env.AS_OF }}
+      - name: Validate before persistence
+        run: npm run fp:validate -- --as-of "$AS_OF"
+      - name: Test hard model and frontend contracts
+        run: npm test
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fp-validated
+          path: .fp-work/${{ env.AS_OF }}
+          include-hidden-files: true
+          if-no-files-found: error
+
+  persist:
+    needs: [collect, validate]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - name: Resolve date
+        run: |
+          AS_OF="${{ needs.collect.outputs.as_of }}"
+          echo "AS_OF=$AS_OF" >> "$GITHUB_ENV"
+      - uses: actions/download-artifact@v4
+        with:
+          name: fp-inputs
+          path: financial-pond/history/market-inputs/${{ env.AS_OF }}
+      - uses: actions/download-artifact@v4
+        with:
+          name: fp-validated
+          path: .fp-work/${{ env.AS_OF }}
+      - name: Persist and publish validated artifacts
+        run: |
+          npm run fp:persist -- --as-of "$AS_OF"
+          npm run fp:publish -- --as-of "$AS_OF"
+          npm run validate:data
+          npm run build
+          npm run validate
+      - name: Commit explicit generated-data whitelist
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "4189822+github-actions[bot]@users.noreply.github.com"
+          git add financial-pond/data/daily_manifest.json
+          git add financial-pond/data/sector_assessment_daily.json
+          git add financial-pond/data/entry_decision_daily.json
+          git add financial-pond/data/market_penetration_brief.json
+          git add financial-pond/data/review_analytics.json
+          git add "financial-pond/data/history/assessments/${AS_OF}.json"
+          git add "financial-pond/data/history/decisions/${AS_OF}.json"
+          git add "financial-pond/data/history/penetration/${AS_OF}.json"
+          git add "financial-pond/data/history/reviews/${AS_OF}.json"
+          git add "financial-pond/data/history/manifests/${AS_OF}.json"
+          git add "financial-pond/history/market-inputs/${AS_OF}"
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(data): update financial ponds official daily artifacts"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fp-published
           path: |
             financial-pond/data
-            reports/market-penetration/${{ env.AS_OF }}.md
-            tools/financial-pond-framework/model_outputs/${{ env.AS_OF }}
-          retention-days: 14
+            financial-pond/history/market-inputs/${{ env.AS_OF }}
 
-      - name: Persist published data
-        run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add financial-pond/data
-          if [[ -f "reports/market-penetration/${AS_OF}.md" ]]; then
-            git add "reports/market-penetration/${AS_OF}.md"
-          fi
-          git add tools/financial-pond-framework/data/provider_exports/*.csv
-          git add tools/financial-pond-framework/data/provider_exports/daily/*.json
-          if [[ -f tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json ]]; then
-            git add tools/financial-pond-framework/data/provider_exports/a_share_benchmark_daily.json
-          fi
-          git add tools/financial-pond-framework/model_outputs/provider_runs/akshare_etf_bridge_*.json
-          if compgen -G "tools/financial-pond-framework/model_outputs/provider_runs/a_share_benchmark_history_*.json" > /dev/null; then
-            git add tools/financial-pond-framework/model_outputs/provider_runs/a_share_benchmark_history_*.json
-          fi
-          git add tools/financial-pond-framework/model_outputs/provider_validation/akshare_etf_bridge_validation.json
-          git add tools/financial-pond-framework/model_outputs/provider_inspection/akshare_etf_bridge_inspection.json
-          git add tools/financial-pond-framework/model_outputs/provider_inspection/akshare_etf_bridge_inspection.md
-          if ! git diff --cached --quiet; then
-            git commit -m "chore(data): update financial ponds daily data"
-            git push
-          else
-            echo "No data changes to commit"
-          fi
-
-      - name: Deploy to Cloudflare
-        if: ${{ env.CLOUDFLARE_API_TOKEN != '' && env.CLOUDFLARE_ACCOUNT_ID != '' }}
-        run: |
-          set -euo pipefail
-          npx wrangler@4.102.0 deploy
+  deploy:
+    needs: persist
+    runs-on: ubuntu-latest
+    if: ${{ secrets.CLOUDFLARE_API_TOKEN != '' && secrets.CLOUDFLARE_ACCOUNT_ID != '' }}
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: fp-published
+          path: financial-pond
+      - name: Deploy already validated publication
+        run: npm run deploy

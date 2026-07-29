@@ -1,10 +1,15 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { validateMarketHistoryQuality } from "./lib/market-history-quality.mjs";
+import { validateOfficialArtifacts } from "./fp/lib/model.mjs";
 
 const root = resolve(import.meta.dirname, "..");
 
 const requiredFiles = [
+  ["daily_manifest.json", validateDailyManifest],
+  ["sector_assessment_daily.json", validateSectorAssessment],
+  ["entry_decision_daily.json", validateEntryDecision],
+  ["review_analytics.json", validateReviewAnalytics],
   ["dashboard.json", (json) => Boolean(json.entities)],
   ["general_pool_analysis.json", (json) => json.module_id === "general_pool_analysis_v0_10_11"],
   ["sector_flow_review.json", (json) => Boolean(json.data_availability?.mode) && Array.isArray(json.sector_reviews)],
@@ -137,6 +142,15 @@ function validateSectorBreadth(json) {
 }
 
 function validateMarketPenetrationBrief(json) {
+  if (json.schema_version === "market-penetration-v1") {
+    return Boolean(json.as_of)
+      && Boolean(json.model_version)
+      && Boolean(json.input_snapshot_id)
+      && json.display_contract?.affects_hard_model_fields === false
+      && Array.isArray(json.facts)
+      && Array.isArray(json.narratives)
+      && Array.isArray(json.thesis_evidence_delta);
+  }
   const shared = Boolean(json.as_of)
     && Boolean(json.generated_at)
     && Boolean(json.coverage_window)
@@ -173,6 +187,62 @@ function validateMarketPenetrationBrief(json) {
     && typeof json.evidence_summary?.market_ohlcv_count === "number"
     && typeof json.evidence_summary?.flow_available_count === "number"
     && validateOptionalAiResearch(json);
+}
+
+function validateDailyManifest(json) {
+  return json.schema_version === "fp-daily-v0.10.78"
+    && json.status === "validated"
+    && json.validation_status === "passed"
+    && Boolean(json.as_of)
+    && Boolean(json.model_version)
+    && Boolean(json.command_contract_version)
+    && Boolean(json.input_snapshot_id)
+    && ["live", "historical", "offline"].includes(json.mode)
+    && Array.isArray(json.degraded_channels)
+    && ["sector_assessment", "entry_decision", "market_penetration", "review_analytics"].every((key) => Boolean(json.artifacts?.[key]));
+}
+
+function validateSectorAssessment(json) {
+  const states = new Set(["confirmed_trend", "major_candidate", "watch_candidate", "cooling", "deteriorating", "conflict_review", "price_only", "insufficient", "avoid"]);
+  return json.schema_version === "sector-assessment-v1"
+    && json.artifact_role === "official_structural_source_of_truth"
+    && Array.isArray(json.rows)
+    && json.rows.length > 0
+    && new Set(json.rows.map((row) => row.pool_id)).size === json.rows.length
+    && json.rows.every((row) => states.has(row.structure_state)
+      && (row.direction_score === null || (row.direction_score >= -100 && row.direction_score <= 100))
+      && row.confirmation_score >= 0 && row.confirmation_score <= 100
+      && row.confirmation_coverage >= 0 && row.confirmation_coverage <= 1
+      && row.evidence_score >= 0 && row.evidence_score <= 100
+      && !("rank" in row)
+      && !("observation_score" in row));
+}
+
+function validateEntryDecision(json) {
+  const states = new Set(["ready_now", "probe_only", "wait_confirmation", "wait_pullback", "do_not_chase", "invalid"]);
+  const candidateEligible = (candidate) => !candidate || ["ready_now", "probe_only"].includes(candidate.entry_state);
+  return json.schema_version === "entry-decision-v1"
+    && json.artifact_role === "official_entry_decision_source_of_truth"
+    && json.boundary?.automated_execution === false
+    && typeof json.no_qualified_candidate === "boolean"
+    && candidateEligible(json.primary_entry_candidate)
+    && candidateEligible(json.secondary_entry_candidate)
+    && Array.isArray(json.rows)
+    && json.rows.every((row) => states.has(row.entry_state)
+      && Array.isArray(row.supporting_evidence)
+      && Array.isArray(row.contrary_evidence)
+      && Array.isArray(row.next_confirmation)
+      && Array.isArray(row.invalidation)
+      && !("rank" in row)
+      && !("observation_score" in row));
+}
+
+function validateReviewAnalytics(json) {
+  return json.schema_version === "review-analytics-v1"
+    && ["T+1", "T+3", "T+5", "T+20"].every((horizon) => json.review_horizons?.includes(horizon))
+    && ["pending", "reviewed", "unavailable", "skipped"].every((status) => json.allowed_statuses?.includes(status))
+    && json.exact_session_required === true
+    && json.latest_close_fallback === false;
 }
 
 
@@ -438,6 +508,19 @@ for (const [fileName, validate] of requiredFiles) {
   } catch (error) {
     failures.push(`${fileName}: ${error.message}`);
   }
+}
+
+try {
+  const manifest = JSON.parse(await readFile(resolve(root, "financial-pond", "data", "daily_manifest.json"), "utf8"));
+  const [assessment, decision, penetration, review] = await Promise.all([
+    readFile(resolve(root, "financial-pond", "data", manifest.artifacts.sector_assessment), "utf8").then(JSON.parse),
+    readFile(resolve(root, "financial-pond", "data", manifest.artifacts.entry_decision), "utf8").then(JSON.parse),
+    readFile(resolve(root, "financial-pond", "data", manifest.artifacts.market_penetration), "utf8").then(JSON.parse),
+    readFile(resolve(root, "financial-pond", "data", manifest.artifacts.review_analytics), "utf8").then(JSON.parse)
+  ]);
+  validateOfficialArtifacts({ manifest, assessment, decision, penetration, review });
+} catch (error) {
+  failures.push(`official publication bundle: ${error.message}`);
 }
 
 try {

@@ -1,173 +1,44 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
-import {
-  STRUCTURAL_OBSERVATION_LIMIT,
-  USER_VISIBLE_LABELS,
-  buildCoreBasis,
-  buildNextObservation,
-  describePublishedChange,
-  hasInternalEnglish,
-  structuralObservationRows,
-  visibleLabel
-} from "../financial-pond/structural-observation-contract.mjs";
 
-const requiredLabels = {
-  "Confirmed Trend": "趋势已确认",
-  "Major Candidate": "主线候选",
-  "Watch Candidate": "观察候选",
-  "Emerging Candidate": "新兴候选",
-  "Conflict Review": "信号冲突待确认",
-  Deteriorating: "状态转弱",
-  Avoid: "暂不关注",
-  pass: "通过",
-  blocked: "未通过",
-  pending: "等待确认",
-  high: "高",
-  medium: "中",
-  low: "低",
-  none: "无",
-  outward: "向相关板块扩散",
-  inward: "板块内部集中",
-  neutral: "暂无明显扩散",
-  insufficient_sample: "样本不足",
-  unavailable: "数据不可用",
-  reviewed: "已复盘"
-};
-
-test("Top 10 contract preserves published model order and never pads missing rows", () => {
-  const ranked = Array.from({ length: 12 }, (_, index) => ({
-    pool_id: `pool-${index + 1}`,
-    observation_score: 100 - index
-  }));
-  const selected = structuralObservationRows({ top_observation_pools: ranked });
-  assert.equal(STRUCTURAL_OBSERVATION_LIMIT, 10);
-  assert.deepEqual(selected.map((row) => row.pool_id), ranked.slice(0, 10).map((row) => row.pool_id));
-  assert.deepEqual(selected.map((row) => row.observation_score), ranked.slice(0, 10).map((row) => row.observation_score));
-
-  const short = structuralObservationRows({ top_observation_pools: ranked.slice(0, 4) });
-  assert.equal(short.length, 4);
-  assert.deepEqual(short, ranked.slice(0, 4));
-});
-
-test("human-readable explanations use real fields and fail closed when evidence is missing", () => {
-  const base = {
-    pool_id: "a_share_semiconductor",
-    flow_status: "estimated_from_source",
-    momentum_status: "derived_from_market",
-    liquidity_status: "derived_from_market",
-    direction: "outward",
-    risk_gate_status: "pass",
-    overheat_score: 52
-  };
-  const evidence = {
-    displayName: "半导体",
-    mapping: { mapping_status: "direct_etf" },
-    market: {
-      momentum_value: 2.35,
-      liquidity_status: "derived_from_market",
-      liquidity_direction: "above_median",
-      amount: 12_000_000
-    },
-    history: { observedSessions: 3 }
-  };
-  const basis = buildCoreBasis(base, evidence);
-  const watch = buildNextObservation(base, evidence);
-  assert.match(basis, /直接 ETF 映射/);
-  assert.match(basis, /3\/3 项核心观察数据可用/);
-  assert.match(basis, /\+2\.35%/);
-  assert.match(basis, /成交活跃度高于行业样本中位/);
-  assert.match(basis, /向相关板块扩散/);
-  assert.match(watch, /半导体/);
-  assert.match(watch, /成交额能否维持扩张/);
-  assert.equal(hasInternalEnglish(basis), false);
-  assert.equal(hasInternalEnglish(watch), false);
-
-  const missing = buildCoreBasis({
-    flow_status: "missing",
-    momentum_status: "missing",
-    liquidity_status: "missing",
-    direction: "neutral",
-    risk_gate_status: "insufficient_data"
-  }, {
-    mapping: { mapping_status: "unavailable" },
-    market: {},
-    history: { observedSessions: 0 }
-  });
-  assert.match(missing, /行业映射未完全确认/);
-  assert.match(missing, /0\/3 项核心观察数据可用/);
-  assert.match(missing, /成交额数据不足/);
-  assert.match(missing, /连续性样本不足/);
-  assert.doesNotMatch(missing, /direct_etf|unavailable|insufficient_data/);
-});
-
-test("status labels and published change language stay Chinese and evidence-bound", () => {
-  for (const [machine, label] of Object.entries(requiredLabels)) {
-    assert.equal(USER_VISIBLE_LABELS[machine], label);
-    assert.equal(visibleLabel(machine), label);
-  }
-  assert.equal(visibleLabel("unknown_internal_enum"), "暂未提供可读解释");
-  assert.equal(
-    describePublishedChange({ currentRank: 2, previousRank: 5, currentState: "Confirmed Trend", previousState: "Major Candidate" }),
-    "排名上升 3 位；状态升级。"
-  );
-  assert.equal(
-    describePublishedChange({ currentRank: 1, previousRank: null, currentState: "Confirmed Trend", previousState: null }),
-    "暂无足够历史数据比较排名变化。"
-  );
-});
-
-test("site implementation uses a fail-closed dark quantitative panel, mobile cards, sticky offset, and formal brand assets", async () => {
-  const [app, html, css, builder, stateModel, mark, favicon] = await Promise.all([
-    readFile(new URL("../financial-pond/app.js", import.meta.url), "utf8"),
-    readFile(new URL("../financial-pond/index.html", import.meta.url), "utf8"),
-    readFile(new URL("../financial-pond/styles.css", import.meta.url), "utf8"),
-    readFile(new URL("../scripts/build-evening-observation-summary.mjs", import.meta.url), "utf8"),
-    readFile(new URL("../scripts/build-candidate-state-model.mjs", import.meta.url), "utf8"),
-    readFile(new URL("../financial-pond/financial-ponds-mark.svg", import.meta.url), "utf8"),
-    readFile(new URL("../financial-pond/favicon.svg", import.meta.url), "utf8")
+test("official ETF guidance surface is readable, medium-term, and fail-closed", async () => {
+  const [app, html, css, manifest, decision] = await Promise.all([
+    readFile("financial-pond/app.js", "utf8"),
+    readFile("financial-pond/index.html", "utf8"),
+    readFile("financial-pond/styles.css", "utf8"),
+    readFile("financial-pond/data/daily_manifest.json", "utf8").then(JSON.parse),
+    readFile("financial-pond/data/entry_decision_daily.json", "utf8").then(JSON.parse)
   ]);
+  assert.match(html, /今日 ETF 买入指导/);
+  assert.match(html, /进入、等待与回避/);
+  assert.match(app, /支持证据/);
+  assert.match(app, /反对证据/);
+  assert.match(app, /下一确认/);
+  assert.match(app, /失效条件/);
+  assert.match(html, /10–20 个交易会话/);
+  assert.match(app, /今日指导不可用/);
+  assert.match(app, /页面拒绝显示旧结论/);
+  assert.match(app, /当前没有满足条件的 ETF 买入候选/);
+  assert.match(css, /\.guidance-card/);
+  assert.match(css, /@media \(max-width: 780px\)/);
+  assert.equal(manifest.status, "validated");
+  assert.equal(decision.boundary.automated_execution, false);
+  assert.equal(decision.rows.some((row) => "rank" in row || "observation_score" in row), false);
+  assert.equal(decision.no_qualified_candidate, decision.primary_entry_candidate === null && decision.secondary_entry_candidate === null);
+});
 
-  assert.match(html, /行业量价观察/);
-  assert.match(html, /成交额\/20日均值/);
-  assert.match(html, /缺失数据保留为空/);
-  assert.match(html, /financial-ponds-mark\.svg/);
-  assert.match(html, /favicon\.svg/);
-  assert.match(html, /apple-touch-icon\.png/);
-  assert.doesNotMatch(html, /Top 5 候选|observe only/);
-
-  assert.match(app, /structuralObservationRows\(state\.summary, state\.ledger\)/);
-  assert.match(app, /state\.selectedPoolId = button\.getAttribute/);
-  assert.match(app, /state\.selectedPoolId = panelRows\(\)\[0\]\?\.pool_id/);
-  assert.match(app, /renderMiniSeries\(row\.series\?\.price_strength\)/);
-  assert.match(app, /renderMiniSeries\(row\.series\?\.turnover_activity\)/);
-  assert.match(app, /renderMiniSeries\(row\.series\?\.relative_strength\)/);
-  assert.match(app, /renderMiniSeries\(row\.series\?\.internal_breadth\)/);
-  assert.match(app, /metric\.status !== "available"/);
-  assert.match(app, /积累中/);
-  assert.match(app, /尚未接入数据源/);
-  assert.match(app, /该日缺失/);
-  assert.match(app, /data_quality_summary/);
-  assert.doesNotMatch(app, /point\.value \?\? 0/);
-  for (const name of ["通信电子", "资源材料", "半导体", "AI计算机", "券商", "新能源车", "银行保险", "国防军工", "消费", "医药医疗"]) {
-    assert.match(app, new RegExp(name));
+test("formal rows provide non-empty decision explanations", async () => {
+  const decision = JSON.parse(await readFile("financial-pond/data/entry_decision_daily.json", "utf8"));
+  for (const row of decision.rows) {
+    assert.ok(row.thesis);
+    for (const key of ["supporting_evidence", "contrary_evidence", "next_confirmation", "invalidation"]) {
+      assert.ok(Array.isArray(row[key]) && row[key].length > 0, `${row.pool_id} ${key}`);
+    }
+    assert.ok(row.guidance_as_of);
+    assert.ok(row.valid_until);
+    assert.ok(row.review_due);
+    assert.ok(row.model_version);
+    assert.ok(row.input_snapshot_id);
   }
-  assert.doesNotMatch(app, /function rowsForToday\(\)[\s\S]{0,350}slice\(0,\s*5\)/);
-  assert.match(builder, /top_observation_pools: topPools/);
-  assert.doesNotMatch(builder, /top_observation_pools:\s*topPools\.slice\(0,\s*5\)/);
-  assert.doesNotMatch(stateModel, /STRUCTURAL_OBSERVATION_LIMIT/);
-  assert.match(stateModel, /recentTopSessions[\s\S]*?slice\(0,\s*5\)/);
-
-  assert.match(css, /\.sector-quant-row/);
-  assert.match(css, /background:\s*#07111f/);
-  assert.match(css, /\.quant-spark-grid/);
-  assert.match(css, /\.mini-series\.unavailable/);
-  assert.match(css, /@media \(max-width:\s*720px\)/);
-  assert.match(css, /\.sector-quant-row[\s\S]*grid-template-columns:\s*1fr/);
-  assert.match(css, /\.candidates-panel[\s\S]*scroll-margin-top:/);
-  assert.doesNotMatch(css, /\.candidate-table\s*\{\s*overflow-x:\s*auto/);
-  assert.match(mark, /^<svg/);
-  assert.doesNotMatch(mark, /<image\b|data:image\//);
-  assert.match(favicon, /^<svg/);
-  assert.doesNotMatch(favicon, /<text\b|<image\b|data:image\//);
 });

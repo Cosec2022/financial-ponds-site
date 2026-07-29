@@ -1,0 +1,29 @@
+{
+  "large_decline_high_activity": {
+    "base_daily_return": 0.004,
+    "last_daily_return": -0.2,
+    "recent_amount_multiplier": 2
+  },
+  "large_rise_without_confirmation": {
+    "base_daily_return": 0,
+    "last_daily_return": 0.12,
+    "recent_amount_multiplier": 0.6
+  },
+  "steady_medium_term_uptrend": {
+    "base_daily_return": 0.01,
+    "last_daily_return": 0.01,
+    "recent_amount_multiplier": 1.1
+  },
+  "strong_trend_with_overheat": {
+    "base_daily_return": 0.008,
+    "last_five_daily_return": 0.05,
+    "recent_amount_multiplier": 1.4
+  },
+  "breadth_unavailable": true,
+  "direct_flow_unavailable": true,
+  "duplicate_ids": ["a_share_ai_computer", "a_share_a_share_ai_computer"],
+  "no_eligible_candidate": true,
+  "stale_benchmark": true,
+  "equal_assessments": true,
+  "replay_mode": "offline"
+}

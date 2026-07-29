@@ -593,7 +593,9 @@ function normalizeReview(row) {
   return { ...row, ...(legacy[row.review_status] ?? {}) };
 }
 
-test("defines the rerunnable Financial Ponds daily persistence command", async () => {
+test("defines the explicit rerunnable Financial Ponds daily command", async () => {
   const packageJson = JSON.parse(await import("node:fs/promises").then((fs) => fs.readFile(new URL("../package.json", import.meta.url), "utf8")));
-  assert.equal(packageJson.scripts["fp:daily"], "bash scripts/local/fp-daily.sh");
+  assert.equal(packageJson.scripts["fp:daily"], "node scripts/fp/run-daily.mjs");
+  assert.equal(packageJson.scripts["fp:model"], "node scripts/fp/run-model.mjs");
+  assert.equal(packageJson.scripts["fp:publish"], "node scripts/fp/run-stage.mjs publish");
 });

@@ -19,6 +19,7 @@
     "fp:penetrate": "node scripts/fp/run-stage.mjs penetrate",
     "fp:decide": "node scripts/fp/run-stage.mjs decide",
     "fp:review": "node scripts/fp/run-stage.mjs review",
+    "fp:validate": "node scripts/fp/run-stage.mjs validate",
     "fp:persist": "node scripts/fp/run-stage.mjs persist",
     "fp:publish": "node scripts/fp/run-stage.mjs publish",
     "fp:model": "node scripts/fp/run-model.mjs",

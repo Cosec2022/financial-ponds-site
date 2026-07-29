@@ -2,283 +2,62 @@ import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
-test("Financial Ponds workflow uses CI daily runner and publishes complete decision data", async () => {
-  const [workflow, frameworkPackage, sitePackage, assetBuilder, dataValidator, outcomeEngine] = await Promise.all([
+test("official command contract separates collection, modeling, publication, Git, and deployment", async () => {
+  const [workflow, packageText, build, today, daily, model, assets] = await Promise.all([
     readFile(".github/workflows/daily.yml", "utf8"),
-    readFile("tools/financial-pond-framework/package.json", "utf8"),
     readFile("package.json", "utf8"),
-    readFile("scripts/build-assets.mjs", "utf8"),
-    readFile("scripts/validate-published-data.mjs", "utf8"),
-    readFile("scripts/build-candidate-outcome-reviews.mjs", "utf8")
+    readFile("scripts/build.sh", "utf8"),
+    readFile("scripts/fp/run-today.mjs", "utf8"),
+    readFile("scripts/fp/run-daily.mjs", "utf8"),
+    readFile("scripts/fp/run-model.mjs", "utf8"),
+    readFile("scripts/build-assets.mjs", "utf8")
   ]);
-  const scripts = JSON.parse(frameworkPackage).scripts;
-  const siteScripts = JSON.parse(sitePackage).scripts;
-
-  assert.equal(scripts["a-share:daily:ci"], "node src/tools/a_share_daily_ci.mjs");
-  assert.equal(scripts["news:review:ci"], "node src/tools/news_daily_review.mjs --ci");
-  assert.equal(scripts["pool:analysis"], "node src/tools/general_pool_analysis.mjs");
-  assert.equal(scripts["rotation:review"], "node src/tools/sector_rotation_intelligence.mjs");
-  assert.equal(scripts["rotation:history"], "node src/tools/sector_rotation_history.mjs");
-  assert.equal(scripts["module:review"], "node src/tools/sector_module_review.mjs");
-  assert.equal(scripts["etf:readiness"], "node src/tools/etf_decision_readiness.mjs");
-  assert.equal(scripts["signal:attribution"], "node src/tools/sector_signal_attribution.mjs");
-  assert.equal(scripts["watchlist:state"], "node src/tools/sector_watchlist_state.mjs");
-  assert.equal(scripts["decision:gates"], "node src/tools/decision_gate_ledger.mjs");
-  assert.equal(scripts["index:explain"], "node src/tools/index_explainability.mjs");
-  assert.equal(scripts["data:vault"], "node src/tools/daily_data_vault.mjs");
-  assert.equal(scripts["observation:snapshot"], "node src/tools/observation_snapshot.mjs");
-  assert.equal(scripts["data:audit"], "node src/tools/data_reality_audit.mjs");
-  assert.equal(scripts["daily:sector-analysis"], "node src/tools/daily_sector_analysis.mjs");
-  assert.equal(scripts["project:maturity"], "node src/tools/module_maturity_audit.mjs");
-  assert.equal(siteScripts["validate:data"], "node scripts/validate-published-data.mjs");
-  assert.match(workflow, /node-version: "22"/);
-  assert.match(workflow, /fetch-depth: 30/);
-  assert.match(workflow, /contents: write/);
-  assert.match(workflow, /npm ci/);
-  assert.doesNotMatch(workflow, /\bnpm install\b/);
-  assert.match(workflow, /npm run a-share:daily:ci -- --as-of "\$AS_OF"/);
-  assert.match(workflow, /backfill_market_history\.py[\s\\]*\n\s*--mode live[\s\\]*\n\s*--end-date "\$AS_OF"[\s\\]*\n\s*--target-trade-days 60/);
-  assert.match(workflow, /historical_fetch\)[\s\S]*backfill_market_history\.py[\s\\]*\n\s*--mode strict/);
-  assert.match(workflow, /offline_snapshot\)[\s\S]*skip network market history refresh/);
-  assert.match(workflow, /if \[\[ -z "\$REPLAY_MODE" \]\]; then REPLAY_MODE="live"; fi/);
-  assert.doesNotMatch(workflow, /npm run cycle -- "\$AS_OF"/);
-  assert.match(workflow, /npm run pool:analysis -- --as-of "\$AS_OF"/);
-  assert.ok(workflow.indexOf("npm run data:audit") > workflow.indexOf("npm run pool:analysis"));
-  assert.ok(workflow.indexOf("npm run daily:sector-analysis") > workflow.indexOf("npm run data:audit"));
-  assert.ok(workflow.indexOf("npm run signal:attribution") > workflow.indexOf("npm run daily:sector-analysis"));
-  assert.ok(workflow.indexOf("npm run watchlist:state") > workflow.indexOf("npm run signal:attribution"));
-  assert.ok(workflow.indexOf("npm run decision:gates") > workflow.indexOf("npm run watchlist:state"));
-  assert.ok(workflow.indexOf("npm run project:maturity") > workflow.indexOf("npm run decision:gates"));
-  assert.ok(workflow.indexOf("npm run index:explain") > workflow.indexOf("npm run project:maturity"));
-  assert.ok(workflow.indexOf("npm run observation:snapshot") > workflow.indexOf("npm run index:explain"));
-  assert.ok(workflow.lastIndexOf("npm run data:vault") > workflow.indexOf("npm run observation:snapshot"));
-  assert.match(workflow, /npm run fp:daily/);
-  assert.match(workflow, /npm run validate:history-quality/);
-  assert.match(assetBuilder, /data\/market_history_quality\.json/);
-  assert.match(assetBuilder, /data\/sector_breadth_daily\.json/);
-  assert.match(dataValidator, /market_history_quality\.json/);
-  assert.match(dataValidator, /sector_breadth_daily\.json/);
-  assert.equal(siteScripts["fp:research"], "node scripts/build-market-penetration-ai.mjs");
-  assert.match(workflow, /OPENAI_API_KEY: \$\{\{ secrets\.OPENAI_API_KEY \}\}/);
-  assert.match(workflow, /FP_MARKET_RESEARCH_MODEL/);
-  assert.match(workflow, /name: Build AI market penetration \(display only\)/);
-  assert.match(workflow, /npm run fp:research/);
-  assert.match(siteScripts["build:data"], /fp:daily/);
-  assert.equal(siteScripts["build:site"], "bash scripts/build-site.sh");
-  assert.match(workflow, /name: Set daily time context/);
-  assert.match(workflow, /TZ=Asia\/Hong_Kong date \+%F/);
-  assert.match(workflow, /GENERATED_AT=/);
-  assert.ok(workflow.indexOf("npm run fp:daily") < workflow.indexOf("npm run fp:research"));
-  assert.ok(workflow.indexOf("backfill_market_history.py") > workflow.indexOf("npm run a-share:daily:ci"));
-  assert.ok(workflow.indexOf("backfill_market_history.py") < workflow.indexOf("npm run fp:daily"));
-  assert.ok(workflow.indexOf("npm run fp:research") < workflow.indexOf("npm run build:site"));
-  assert.ok(workflow.indexOf("npm run validate:data") > workflow.indexOf("npm run build:site"));
-  assert.match(workflow, /name: Build site and Worker/);
-  assert.match(workflow, /name: Validate Worker artifact/);
-  assert.match(workflow, /name: Validate published data/);
-  assert.match(workflow, /name: Run tests/);
-  assert.doesNotMatch(workflow, /Build and test Worker/);
-  assert.doesNotMatch(workflow, /\|\| true/);
-  assert.match(workflow, /general_pool_analysis\.json/);
-  assert.match(workflow, /sector_rotation_intelligence\.json/);
-  assert.match(workflow, /sector_rotation_history\.json/);
-  assert.match(workflow, /sector_module_review\.json/);
-  assert.match(workflow, /etf_decision_readiness\.json/);
-  assert.match(workflow, /data_reality_audit\.json/);
-  assert.match(workflow, /daily_sector_analysis\.json/);
-  assert.match(workflow, /module_maturity_audit\.json/);
-  assert.match(workflow, /etf_flow_leaderboard\.json/);
-  assert.match(workflow, /sector_signal_attribution\.json/);
-  assert.match(workflow, /sector_watchlist_state\.json/);
-  assert.match(workflow, /decision_gate_ledger\.json/);
-  assert.match(workflow, /index_explainability\.json/);
-  assert.match(workflow, /observation_snapshot\.json/);
-  assert.match(workflow, /daily_data_vault\.json/);
-  assert.match(workflow, /Persist published data/);
-  assert.match(workflow, /git add financial-pond\/data/);
-  assert.match(workflow, /git add tools\/financial-pond-framework\/data\/provider_exports\/\*\.csv/);
-  assert.match(workflow, /git add tools\/financial-pond-framework\/data\/provider_exports\/daily\/\*\.json/);
-  assert.match(workflow, /a_share_benchmark_daily\.json/);
-  assert.match(workflow, /a_share_benchmark_history_/);
-  assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_runs\/akshare_etf_bridge_\*\.json/);
-  assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_validation\/akshare_etf_bridge_validation\.json/);
-  assert.match(workflow, /git add tools\/financial-pond-framework\/model_outputs\/provider_inspection\/akshare_etf_bridge_inspection\.json/);
-  assert.match(workflow, /npx wrangler@4\.102\.0 deploy/);
-  assert.match(workflow, /news_review\.json/);
-  assert.match(assetBuilder, /data\/sector_rotation_intelligence\.json/);
-  assert.match(assetBuilder, /data\/general_pool_analysis\.json/);
-  assert.match(assetBuilder, /data\/sector_rotation_history\.json/);
-  assert.match(assetBuilder, /data\/sector_module_review\.json/);
-  assert.match(assetBuilder, /data\/etf_decision_readiness\.json/);
-  assert.match(assetBuilder, /data\/data_reality_audit\.json/);
-  assert.match(assetBuilder, /data\/daily_sector_analysis\.json/);
-  assert.match(assetBuilder, /data\/module_maturity_audit\.json/);
-  assert.match(assetBuilder, /data\/sector_signal_attribution\.json/);
-  assert.match(assetBuilder, /data\/sector_watchlist_state\.json/);
-  assert.match(assetBuilder, /data\/decision_gate_ledger\.json/);
-  assert.match(assetBuilder, /data\/index_explainability\.json/);
-  assert.match(assetBuilder, /data\/observation_snapshot\.json/);
-  assert.match(assetBuilder, /data\/manual_review_log\.json/);
-  assert.match(assetBuilder, /data\/outcome_labels\.json/);
-  assert.match(assetBuilder, /data\/daily_data_vault\.json/);
-  assert.match(assetBuilder, /data\/market_signal_report\.json/);
-  assert.match(assetBuilder, /data\/pool_market_signals\.json/);
-  assert.match(assetBuilder, /data\/pool_instrument_map\.json/);
-  assert.match(assetBuilder, /data\/pool_mapping_report\.json/);
-  assert.match(assetBuilder, /data\/signal_quality_report\.json/);
-  assert.match(assetBuilder, /data\/pool_signal_quality\.json/);
-  assert.match(assetBuilder, /data\/evening_observation_summary\.json/);
-  assert.match(assetBuilder, /data\/pool_observation_scores\.json/);
-  assert.match(assetBuilder, /data\/evening_report\.md/);
-  assert.match(assetBuilder, /data\/observation_candidate_ledger\.json/);
-  assert.match(assetBuilder, /data\/score_calibration_report\.json/);
-  assert.match(assetBuilder, /data\/candidate_state_model\.json/);
-  assert.match(assetBuilder, /data\/candidate_review_schedule\.json/);
-  assert.match(assetBuilder, /data\/candidate_outcome_reviews\.json/);
-  assert.match(assetBuilder, /data\/outcome_review_report\.json/);
-  assert.match(assetBuilder, /data\/candidate_due_review_verification\.json/);
-  assert.match(assetBuilder, /data\/candidate_price_basis\.json/);
-  assert.match(assetBuilder, /data\/review_readiness_report\.json/);
-  assert.match(assetBuilder, /data\/candidate_review_history\.json/);
-  assert.match(assetBuilder, /data\/candidate_review_analytics\.json/);
-  assert.match(assetBuilder, /data\/history\/latest_observation_pointer\.json/);
-  assert.match(assetBuilder, /data\/daily_delta_report\.json/);
-  assert.match(assetBuilder, /data\/pool_delta_signals\.json/);
-  assert.match(assetBuilder, /data\/daily_delta_history\.json/);
-  assert.match(assetBuilder, /data\/news_review\.json/);
-  assert.match(assetBuilder, /data\/pond_map\.json/);
-  assert.match(dataValidator, /sector_module_review\.json/);
-  assert.match(dataValidator, /etf_decision_readiness\.json/);
-  assert.match(dataValidator, /data_reality_audit\.json/);
-  assert.match(dataValidator, /daily_sector_analysis\.json/);
-  assert.match(dataValidator, /module_maturity_audit\.json/);
-  assert.match(dataValidator, /sector_signal_attribution\.json/);
-  assert.match(dataValidator, /sector_watchlist_state\.json/);
-  assert.match(dataValidator, /decision_gate_ledger\.json/);
-  assert.match(dataValidator, /index_explainability\.json/);
-  assert.match(dataValidator, /observation_snapshot\.json/);
-  assert.match(dataValidator, /manual_review_log\.json/);
-  assert.match(dataValidator, /outcome_labels\.json/);
-  assert.match(dataValidator, /daily_data_vault\.json/);
-  assert.match(dataValidator, /market_signal_report\.json/);
-  assert.match(dataValidator, /pool_market_signals\.json/);
-  assert.match(dataValidator, /pool_instrument_map\.json/);
-  assert.match(dataValidator, /pool_mapping_report\.json/);
-  assert.match(dataValidator, /signal_quality_report\.json/);
-  assert.match(dataValidator, /pool_signal_quality\.json/);
-  assert.match(dataValidator, /evening_observation_summary\.json/);
-  assert.match(dataValidator, /pool_observation_scores\.json/);
-  assert.match(dataValidator, /evening_report\.md/);
-  assert.match(dataValidator, /observation_candidate_ledger\.json/);
-  assert.match(dataValidator, /score_calibration_report\.json/);
-  assert.match(dataValidator, /candidate_state_model\.json/);
-  assert.match(dataValidator, /candidate_review_schedule\.json/);
-  assert.match(dataValidator, /candidate_outcome_reviews\.json/);
-  assert.match(dataValidator, /outcome_review_report\.json/);
-  assert.match(dataValidator, /candidate_due_review_verification\.json/);
-  assert.match(dataValidator, /candidate_price_basis\.json/);
-  assert.match(dataValidator, /review_readiness_report\.json/);
-  assert.match(dataValidator, /candidate_review_history\.json/);
-  assert.match(dataValidator, /candidate_review_analytics\.json/);
-  assert.match(dataValidator, /history\/latest_observation_pointer\.json/);
-  assert.match(dataValidator, /daily_delta_report\.json/);
-  assert.match(dataValidator, /pool_delta_signals\.json/);
-  assert.match(dataValidator, /daily_delta_history\.json/);
-  assert.match(dataValidator, /Published Financial Ponds data complete/);
-  assert.match(outcomeEngine, /candidate_price_basis\.json/);
-  assert.match(outcomeEngine, /basis\.baseline_price/);
-  assert.match(outcomeEngine, /candidate_review_history\.json/);
-  assert.match(outcomeEngine, /candidate_due_review_verification\.json/);
-  assert.match(outcomeEngine, /missing_price/);
-  assert.match(outcomeEngine, /missing_benchmark/);
-  assert.match(outcomeEngine, /awaiting_eod_data/);
-  assert.match(outcomeEngine, /stale_data/);
-  assert.match(outcomeEngine, /invalid_baseline/);
-  assert.match(outcomeEngine, /classifyReview/);
-  assert.match(outcomeEngine, /benchmarkRow/);
-  assert.match(outcomeEngine, /diagnostic_note/);
-  assert.match(outcomeEngine, /unavailable_by_reason/);
-  assert.match(outcomeEngine, /pending_not_due/);
-  assert.match(outcomeEngine, /legacy_calendar_target_date/);
-  assert.match(outcomeEngine, /effective_review_date/);
-  assert.match(outcomeEngine, /preserveReviewedOutcomes/);
-  assert.match(outcomeEngine, /candidate_state/);
-  assert.match(outcomeEngine, /major_wave_score/);
-  assert.match(outcomeEngine, /risk_gate_status/);
-  assert.match(outcomeEngine, /benchmark_return/);
-  assert.doesNotMatch(outcomeEngine, /benchmark\.baseline_price\) \?\? benchmarkClose/);
-  assert.doesNotMatch(workflow, /npm run a-share:daily\s*$/m);
-});
-
-test("fp:daily builds market signals before coverage and persistence", async () => {
-  const daily = await readFile("scripts/local/fp-daily.sh", "utf8");
-  assert.match(daily, /build-market-signal-channel\.mjs/);
-  assert.match(daily, /build-pool-instrument-map\.mjs/);
-  assert.match(daily, /build-signal-quality-report\.mjs/);
-  assert.match(daily, /build-evening-observation-summary\.mjs/);
-  assert.match(daily, /build-candidate-price-basis\.mjs/);
-  assert.match(daily, /build-candidate-state-model\.mjs/);
-  assert.match(daily, /build-sector-breadth\.mjs/);
-  assert.match(daily, /build-market-history-quality\.mjs --as-of "\$AS_OF" --strict/);
-  assert.ok(daily.indexOf("build-market-history-quality.mjs") < daily.indexOf("build-sector-observation-panel.mjs"));
-  assert.match(daily, /build-candidate-outcome-reviews\.mjs/);
-  assert.match(daily, /build-candidate-review-analytics\.mjs/);
-  assert.ok(daily.indexOf("build-pool-instrument-map.mjs") < daily.indexOf("build-market-signal-channel.mjs"));
-  assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("build-signal-quality-report.mjs"));
-  assert.ok(daily.indexOf("build-signal-quality-report.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
-  assert.ok(daily.indexOf("build-daily-delta-report.mjs") < daily.indexOf("build-evening-observation-summary.mjs"));
-  assert.ok(daily.indexOf("build-evening-observation-summary.mjs") < daily.indexOf("build-candidate-price-basis.mjs"));
-  assert.ok(daily.indexOf("build-candidate-price-basis.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
-  assert.ok(daily.indexOf("build-daily-longitudinal-archive.mjs") > daily.indexOf("build-candidate-state-model.mjs"));
-  assert.ok(daily.indexOf("build-daily-outcome-label-ledger.mjs") > daily.indexOf("build-candidate-outcome-reviews.mjs"));
-  assert.ok(daily.indexOf("build-longitudinal-coverage-report.mjs") > daily.indexOf("build-daily-outcome-label-ledger.mjs"));
-  assert.ok(daily.indexOf("build-candidate-price-basis.mjs") < daily.indexOf("build-candidate-state-model.mjs"));
-  assert.ok(daily.indexOf("build-candidate-state-model.mjs") < daily.indexOf("build-sector-observation-panel.mjs"));
-  assert.ok(daily.indexOf("build-sector-observation-panel.mjs") < daily.indexOf("build-daily-longitudinal-archive.mjs"));
-  assert.ok(daily.indexOf("build-candidate-state-model.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
-  assert.ok(daily.indexOf("build-candidate-outcome-reviews.mjs") < daily.indexOf("build-candidate-review-analytics.mjs"));
-  assert.ok(daily.indexOf("build-evening-observation-summary.mjs") < daily.indexOf("build-candidate-outcome-reviews.mjs"));
-  assert.ok(daily.lastIndexOf("archive-observation-snapshot.mjs") > daily.indexOf("build-candidate-review-analytics.mjs"));
-  assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("build-data-coverage-report.mjs"));
-  assert.ok(daily.indexOf("build-market-signal-channel.mjs") < daily.indexOf("archive-observation-snapshot.mjs"));
-});
-
-test("v0.10.77 data completeness preserves the v0.10.75 ordering, v0.10.74 provider path, and v0.10.73 archive repair", async () => {
-  const [index, app, changelog, modelDoc, sitePackage, frameworkPackage, ciRunner, archiveScript] = await Promise.all([
-    readFile("financial-pond/index.html", "utf8"),
-    readFile("financial-pond/app.js", "utf8"),
-    readFile("tools/financial-pond-framework/docs/CHANGELOG.md", "utf8"),
-    readFile("docs/model/RIGHT_SIDE_MAJOR_WAVE_MODEL.md", "utf8"),
-    readFile("package.json", "utf8"),
-    readFile("tools/financial-pond-framework/package.json", "utf8"),
-    readFile("tools/financial-pond-framework/src/tools/a_share_daily_ci.mjs", "utf8"),
-    readFile("tools/financial-pond-framework/providers/akshare_etf_bridge/archive_historical_market_inputs.py", "utf8")
-  ]);
-  assert.match(index, /Financial Ponds/);
-  assert.match(index, /v0\.10\.77/);
-  assert.match(index, /每日市场穿透/);
-  assert.equal(JSON.parse(sitePackage).version, "0.10.77");
-  assert.equal(JSON.parse(frameworkPackage).version, "0.10.77");
-  assert.match(changelog, /v0\.10\.77/);
-  assert.match(changelog, /v0\.10\.76/);
-  assert.match(changelog, /v0\.10\.75/);
-  assert.match(changelog, /v0\.10\.74/);
-  assert.ok(ciRunner.indexOf("persist_daily_etf_history") > ciRunner.indexOf("akshare_etf_snapshot"));
-  assert.ok(ciRunner.indexOf("persist_daily_etf_history") < ciRunner.indexOf("akshare_to_flow"));
-  assert.match(archiveScript, /persist_daily_output/);
-  assert.match(changelog, /v0\.10\.73/);
-  assert.match(changelog, /v0\.10\.65/);
-  assert.match(modelDoc, /Version: v0\.10\.65/);
-  assert.match(app, /A股复盘基准代理/);
-  assert.match(app, /不代表完整 A 股市场/);
-  assert.match(app, /market_penetration_brief\.json/);
-  assert.match(app, /穿透已过期/);
-  assert.match(app, /可跟踪，不追高/);
-  assert.match(app, /AI联网研究/);
-  assert.match(app, /research_sources/);
-  assert.match(index, /briefModeBadge/);
-  assert.match(index, /researchSources/);
-  for (const reason of ["pending_not_due", "pending_market_open", "awaiting_eod_data", "stale_data", "missing_price", "missing_benchmark", "calendar_unknown", "invalid_baseline"]) {
-    assert.match(app, new RegExp(reason));
+  const scripts = JSON.parse(packageText).scripts;
+  for (const name of ["fp:collect", "fp:normalize", "fp:observe", "fp:assess", "fp:penetrate", "fp:decide", "fp:review", "fp:persist", "fp:publish", "fp:model", "fp:daily", "fp:replay", "fp:audit", "fp:today"]) {
+    assert.ok(scripts[name], `${name} is defined`);
   }
+  assert.equal(scripts.build, "bash scripts/build.sh");
+  assert.equal(scripts["build:site"], "bash scripts/build-site.sh");
+  assert.doesNotMatch(build, /fp-daily|fp:daily|collect|run-model/);
+  assert.doesNotMatch(today, /\bgit\b|deploy|wrangler|push|commit|pull/);
+  assert.doesNotMatch(model, /https?:|fetch\(|curl|provider:|python/);
+  assert.match(daily, /stage_counts/);
+  for (const stage of ["collect", "normalize", "observe", "assess", "penetrate", "decide", "review", "persist", "validate", "publish"]) {
+    assert.match(daily, new RegExp(`${stage}: 1`));
+  }
+  for (const artifact of ["daily_manifest.json", "sector_assessment_daily.json", "entry_decision_daily.json", "market_penetration_brief.json", "review_analytics.json"]) {
+    assert.match(assets, new RegExp(artifact.replace(".", "\\.")));
+  }
+});
+
+test("GitHub workflow has one dependent stage chain and an explicit generated-data whitelist", async () => {
+  const workflow = await readFile(".github/workflows/daily.yml", "utf8");
+  for (const job of ["collect:", "model:", "validate:", "persist:", "deploy:"]) assert.match(workflow, new RegExp(`^  ${job}`, "m"));
+  assert.match(workflow, /needs: collect/);
+  assert.match(workflow, /needs: \[collect, model\]/);
+  assert.match(workflow, /needs: \[collect, validate\]/);
+  assert.match(workflow, /needs: persist/);
+  assert.equal((workflow.match(/npm run fp:collect/g) ?? []).length, 1);
+  for (const stage of ["normalize", "observe", "assess", "penetrate", "decide", "review", "persist", "publish"]) {
+    assert.equal((workflow.match(new RegExp(`npm run fp:${stage}`, "g")) ?? []).length, 1, `${stage} occurs once`);
+  }
+  assert.doesNotMatch(workflow, /git add \.|git add financial-pond\/data\s*$/m);
+  assert.match(workflow, /git add financial-pond\/data\/daily_manifest\.json/);
+  assert.ok(workflow.indexOf("name: Validate before persistence") < workflow.indexOf("name: Persist and publish validated artifacts"));
+  assert.ok(workflow.indexOf("name: Persist and publish validated artifacts") < workflow.indexOf("name: Deploy already validated publication"));
+});
+
+test("frontend source reads and validates the manifest before official conclusions", async () => {
+  const [app, html] = await Promise.all([
+    readFile("financial-pond/app.js", "utf8"),
+    readFile("financial-pond/index.html", "utf8")
+  ]);
+  assert.ok(app.indexOf('readRequired("./data/daily_manifest.json")') < app.indexOf('readOfficial("entry_decision")'));
+  assert.match(app, /Mixed as_of dates rejected/);
+  assert.match(app, /Manifest does not declare/);
+  assert.match(app, /no_qualified_candidate/);
+  assert.doesNotMatch(app, /observation_score|rank_change|previous_rank/);
+  assert.match(html, /今日 ETF 买入指导/);
+  assert.match(html, /不生成可见序号或综合排名/);
+  assert.doesNotMatch(html, /第1名|第2名|综合分最高|Top 10/);
 });
