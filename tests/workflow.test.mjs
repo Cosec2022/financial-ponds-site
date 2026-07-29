@@ -32,7 +32,7 @@ test("official command contract separates collection, modeling, publication, Git
 
 test("GitHub workflow has one dependent stage chain and an explicit generated-data whitelist", async () => {
   const workflow = await readFile(".github/workflows/daily.yml", "utf8");
-  for (const job of ["collect:", "model:", "validate:", "persist:", "deploy:"]) assert.match(workflow, new RegExp(`^  ${job}`, "m"));
+  for (const job of ["pr_offline_validate:", "collect:", "model:", "validate:", "persist:", "deploy:"]) assert.match(workflow, new RegExp(`^  ${job}`, "m"));
   assert.match(workflow, /needs: collect/);
   assert.match(workflow, /needs: \[collect, model\]/);
   assert.match(workflow, /needs: \[collect, validate\]/);
@@ -43,8 +43,32 @@ test("GitHub workflow has one dependent stage chain and an explicit generated-da
   }
   assert.doesNotMatch(workflow, /git add \.|git add financial-pond\/data\s*$/m);
   assert.match(workflow, /git add financial-pond\/data\/daily_manifest\.json/);
+  assert.match(workflow, /4189822\+github-actions\[bot\]@users\.noreply\.github\.com/);
   assert.ok(workflow.indexOf("name: Validate before persistence") < workflow.indexOf("name: Persist and publish validated artifacts"));
   assert.ok(workflow.indexOf("name: Persist and publish validated artifacts") < workflow.indexOf("name: Deploy already validated publication"));
+});
+
+test("pull-request checks are offline and cannot reach providers, Git persistence, or deployment", async () => {
+  const workflow = await readFile(".github/workflows/daily.yml", "utf8");
+  assert.match(workflow, /^  pull_request:\n    branches: \[main\]/m);
+  const prJob = jobBlock(workflow, "pr_offline_validate");
+  for (const command of [
+    "npm test",
+    "npm run build",
+    "npm run validate",
+    "npm run validate:data",
+    "npm run validate:history-quality",
+    "npm run fp:replay -- --as-of 2026-07-28"
+  ]) assert.match(prJob, new RegExp(escapeRegExp(command)));
+  assert.match(prJob, /permissions:\n      contents: read/);
+  assert.match(prJob, /git diff --exit-code -- financial-pond\/data financial-pond\/history\/market-inputs/g);
+  assert.doesNotMatch(prJob, /fp:collect|provider|pip install|git (add|commit|push)|deploy|wrangler|CLOUDFLARE|secrets\./i);
+
+  for (const job of ["collect", "model", "validate", "persist", "deploy"]) {
+    assert.match(jobBlock(workflow, job), /if: \$\{\{ github\.event_name != 'pull_request' \}\}/);
+  }
+  assert.match(jobBlock(workflow, "collect"), /if: \$\{\{ github\.event_name == 'schedule' \|\| inputs\.mode != 'offline' \}\}/);
+  assert.match(jobBlock(workflow, "collect"), /if \[\[ -z "\$MODE" \]\]; then MODE="live"; fi/);
 });
 
 test("frontend source reads and validates the manifest before official conclusions", async () => {
@@ -61,3 +85,14 @@ test("frontend source reads and validates the manifest before official conclusio
   assert.match(html, /不生成可见序号或综合排名/);
   assert.doesNotMatch(html, /第1名|第2名|综合分最高|Top 10/);
 });
+
+function jobBlock(workflow, name) {
+  const start = workflow.indexOf(`  ${name}:`);
+  assert.notEqual(start, -1, `${name} job exists`);
+  const next = workflow.slice(start + 2).search(/\n  [a-zA-Z0-9_]+:\n/);
+  return next === -1 ? workflow.slice(start) : workflow.slice(start, start + 2 + next);
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
