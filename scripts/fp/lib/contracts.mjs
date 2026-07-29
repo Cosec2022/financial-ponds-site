@@ -1,6 +1,6 @@
-export const COMMAND_CONTRACT_VERSION = "fp-command-v0.10.78";
-export const MODEL_VERSION = "fp-structure-v0.10.78";
-export const SCHEMA_VERSION = "fp-daily-v0.10.78";
+export const COMMAND_CONTRACT_VERSION = "fp-command-v0.10.78.2";
+export const MODEL_VERSION = "fp-structure-v0.10.78.2";
+export const SCHEMA_VERSION = "fp-daily-v0.10.78.2";
 
 export const STRUCTURE_STATES = Object.freeze([
   "confirmed_trend",

@@ -1,9 +1,9 @@
 {
-  "schema_version": "fp-daily-v0.10.78",
+  "schema_version": "fp-daily-v0.10.78.2",
   "as_of": "2026-07-28",
-  "generated_at": "2026-07-29T09:48:43.644Z",
-  "model_version": "fp-structure-v0.10.78",
-  "command_contract_version": "fp-command-v0.10.78",
+  "generated_at": "2026-07-29T10:23:29.011Z",
+  "model_version": "fp-structure-v0.10.78.2",
+  "command_contract_version": "fp-command-v0.10.78.2",
   "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb",
   "mode": "offline",
   "status": "validated",
@@ -18,5 +18,5 @@
     "market_penetration": "market_penetration_brief.json",
     "review_analytics": "review_analytics.json"
   },
-  "published_at": "2026-07-29T09:48:43.648Z"
+  "published_at": "2026-07-29T10:23:29.139Z"
 }

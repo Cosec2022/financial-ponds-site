@@ -1,0 +1,33 @@
+{
+  "calendar": {
+    "calendar_version": "review-fixture-v1",
+    "timezone": "Asia/Shanghai",
+    "covered_date_range": {
+      "start": "2026-07-01",
+      "end": "2026-07-07"
+    },
+    "official_closure_dates": [],
+    "sessions": [
+      "2026-07-01",
+      "2026-07-02",
+      "2026-07-03",
+      "2026-07-06",
+      "2026-07-07"
+    ]
+  },
+  "signal_date": "2026-07-01",
+  "review_date": "2026-07-02",
+  "evaluation_date": "2026-07-03",
+  "pool_id": "a_share_fixture",
+  "etf_symbol": "510999",
+  "etf_prices": [
+    { "date": "2026-07-01", "fund_code": "510999", "close": 1.0 },
+    { "date": "2026-07-02", "fund_code": "510999", "close": 1.04 },
+    { "date": "2026-07-03", "fund_code": "510999", "close": 1.03 }
+  ],
+  "benchmark_prices": [
+    { "date": "2026-07-01", "symbol": "510300", "close": 1.0 },
+    { "date": "2026-07-02", "symbol": "510300", "close": 1.01 },
+    { "date": "2026-07-03", "symbol": "510300", "close": 1.02 }
+  ]
+}

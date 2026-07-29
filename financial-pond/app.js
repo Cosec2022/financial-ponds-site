@@ -144,6 +144,19 @@ function renderGroups() {
 
 function guidanceCard(row, label = null, expanded = false) {
   const limitations = row.data_limitations ?? [];
+  const failureMode = row.explanation_mode === "failure_recovery";
+  const explanationColumns = failureMode
+    ? `
+          ${evidenceList("当前失败闸门", row.current_failed_gates, "contrary")}
+          ${evidenceList("重获观察资格", row.watch_eligibility_requirements, "next")}
+          ${evidenceList("重获入场资格", row.entry_eligibility_requirements, "support")}
+        `
+    : `
+          ${evidenceList("支持证据", row.supporting_evidence, "support")}
+          ${evidenceList("反对证据", row.contrary_evidence, "contrary")}
+          ${evidenceList("下一确认", row.next_confirmation, "next")}
+          ${evidenceList("未来失效条件", row.invalidation, "invalid")}
+        `;
   return `
     <article class="guidance-card state-${escapeHtml(row.entry_state)}">
       <div class="guidance-card-head">
@@ -161,12 +174,9 @@ function guidanceCard(row, label = null, expanded = false) {
         ${metric("证据", `${format(row.evidence_score)} · ${evidenceLabel(row.evidence_level)}`)}
       </div>
       <details ${expanded ? "open" : ""}>
-        <summary>查看依据、反证与失效条件</summary>
+        <summary>${failureMode ? "查看当前失败与恢复条件" : "查看依据、反证与未来失效条件"}</summary>
         <div class="evidence-columns">
-          ${evidenceList("支持证据", row.supporting_evidence, "support")}
-          ${evidenceList("反对证据", row.contrary_evidence, "contrary")}
-          ${evidenceList("下一确认", row.next_confirmation, "next")}
-          ${evidenceList("失效条件", row.invalidation, "invalid")}
+          ${explanationColumns}
         </div>
         ${limitations.length ? `<p class="limitations"><strong>数据限制：</strong>${limitations.map(escapeHtml).join("；")}</p>` : ""}
       </details>
@@ -190,12 +200,14 @@ function renderUniverse() {
 
 function renderReview() {
   const legacy = review.preserved_legacy_review_summary ?? {};
+  const counts = review.status_counts ?? {};
   document.getElementById("reviewSummary").innerHTML = `
     <div class="review-metrics">
       ${metric("正式周期", review.review_horizons.join(" / "))}
-      ${metric("已保留复盘", format(legacy.reviewed_rows))}
-      ${metric("待复盘", format(legacy.pending_rows))}
-      ${metric("不可用", format(legacy.unavailable_rows))}
+      ${metric("新模型已复盘", format(counts.reviewed))}
+      ${metric("新模型待复盘", format(counts.pending))}
+      ${metric("新模型不可用", format((counts.unavailable ?? 0) + (counts.skipped ?? 0)))}
+      ${metric("已保留旧复盘", format(legacy.reviewed_rows))}
     </div>
     <p>复盘只使用精确交易会话价格，不使用最新收盘价替代。pending、reviewed、unavailable、skipped 保持独立。</p>
   `;

@@ -15,7 +15,10 @@ test("official ETF guidance surface is readable, medium-term, and fail-closed", 
   assert.match(app, /支持证据/);
   assert.match(app, /反对证据/);
   assert.match(app, /下一确认/);
-  assert.match(app, /失效条件/);
+  assert.match(app, /未来失效条件/);
+  assert.match(app, /当前失败闸门/);
+  assert.match(app, /重获观察资格/);
+  assert.match(app, /重获入场资格/);
   assert.match(html, /10–20 个交易会话/);
   assert.match(app, /今日指导不可用/);
   assert.match(app, /页面拒绝显示旧结论/);
@@ -32,8 +35,17 @@ test("formal rows provide non-empty decision explanations", async () => {
   const decision = JSON.parse(await readFile("financial-pond/data/entry_decision_daily.json", "utf8"));
   for (const row of decision.rows) {
     assert.ok(row.thesis);
-    for (const key of ["supporting_evidence", "contrary_evidence", "next_confirmation", "invalidation"]) {
-      assert.ok(Array.isArray(row[key]) && row[key].length > 0, `${row.pool_id} ${key}`);
+    if (row.explanation_mode === "failure_recovery") {
+      assert.ok(row.current_failure_reason);
+      for (const key of ["current_failed_gates", "watch_eligibility_requirements", "entry_eligibility_requirements"]) {
+        assert.ok(Array.isArray(row[key]) && row[key].length > 0, `${row.pool_id} ${key}`);
+      }
+      assert.deepEqual(row.next_confirmation, []);
+      assert.deepEqual(row.invalidation, []);
+    } else {
+      for (const key of ["supporting_evidence", "contrary_evidence", "next_confirmation", "invalidation"]) {
+        assert.ok(Array.isArray(row[key]) && row[key].length > 0, `${row.pool_id} ${key}`);
+      }
     }
     assert.ok(row.guidance_as_of);
     assert.ok(row.valid_until);

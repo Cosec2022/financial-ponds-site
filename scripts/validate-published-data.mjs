@@ -190,7 +190,7 @@ function validateMarketPenetrationBrief(json) {
 }
 
 function validateDailyManifest(json) {
-  return json.schema_version === "fp-daily-v0.10.78"
+  return json.schema_version === "fp-daily-v0.10.78.2"
     && json.status === "validated"
     && json.validation_status === "passed"
     && Boolean(json.as_of)
@@ -229,20 +229,35 @@ function validateEntryDecision(json) {
     && candidateEligible(json.secondary_entry_candidate)
     && Array.isArray(json.rows)
     && json.rows.every((row) => states.has(row.entry_state)
+      && ["candidate_monitoring", "failure_recovery"].includes(row.explanation_mode)
       && Array.isArray(row.supporting_evidence)
       && Array.isArray(row.contrary_evidence)
       && Array.isArray(row.next_confirmation)
       && Array.isArray(row.invalidation)
+      && Array.isArray(row.current_failed_gates)
+      && Array.isArray(row.watch_eligibility_requirements)
+      && Array.isArray(row.entry_eligibility_requirements)
+      && (row.explanation_mode !== "failure_recovery"
+        || (typeof row.current_failure_reason === "string"
+          && row.next_confirmation.length === 0
+          && row.invalidation.length === 0))
       && !("rank" in row)
       && !("observation_score" in row));
 }
 
 function validateReviewAnalytics(json) {
+  const rows = [...(json.structural_state_reviews ?? []), ...(json.entry_state_reviews ?? [])];
   return json.schema_version === "review-analytics-v1"
     && ["T+1", "T+3", "T+5", "T+20"].every((horizon) => json.review_horizons?.includes(horizon))
     && ["pending", "reviewed", "unavailable", "skipped"].every((status) => json.allowed_statuses?.includes(status))
     && json.exact_session_required === true
-    && json.latest_close_fallback === false;
+    && json.latest_close_fallback === false
+    && rows.length > 0
+    && rows.every((row) => ["pending", "reviewed", "unavailable", "skipped"].includes(row.review_status)
+      && row.signal_date
+      && row.pool_id
+      && outcomeHorizons.has(row.horizon)
+      && row.outcome_available === (row.review_status === "reviewed"));
 }
 
 

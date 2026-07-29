@@ -177,6 +177,13 @@ export function assessObservations(observations, previousAssessments = []) {
       observation.channels.direct_flow.value
     ]);
     const confirmationScore = turnoverScore;
+    const confirmationComponents = {
+      turnover_activity_ratio: turnoverRatio,
+      turnover_confirmation: turnoverScore,
+      confirmation_direction: direction === null ? null : direction >= 0 ? "positive" : "negative",
+      breadth: observation.channels.breadth.value,
+      direct_flow: observation.channels.direct_flow.value
+    };
     const evidenceScore = evidenceFrom(observation);
     const evidenceLevel = evidenceLevelFor(evidenceScore);
     const persistenceSessions = positivePersistence(observation.price_series, observation.benchmark_series);
@@ -201,7 +208,15 @@ export function assessObservations(observations, previousAssessments = []) {
       previous,
       exactDateValid
     });
-    const marginal = marginalChangeFor({ direction, metrics, previous, structureState, conflict });
+    const marginal = marginalChangeFor({
+      direction,
+      metrics,
+      confirmationScore,
+      confirmationComponents,
+      previous,
+      structureState,
+      conflict
+    });
     return {
       pool_id: observation.pool_id,
       etf_symbol: observation.etf_symbol,
@@ -211,13 +226,7 @@ export function assessObservations(observations, previousAssessments = []) {
       direction_components: metrics,
       confirmation_score: confirmationScore,
       confirmation_coverage: confirmationCoverage,
-      confirmation_components: {
-        turnover_activity_ratio: turnoverRatio,
-        turnover_confirmation: turnoverScore,
-        confirmation_direction: direction === null ? null : direction >= 0 ? "positive" : "negative",
-        breadth: observation.channels.breadth.value,
-        direct_flow: observation.channels.direct_flow.value
-      },
+      confirmation_components: confirmationComponents,
       evidence_score: evidenceScore,
       evidence_level: evidenceLevel,
       evidence_components: evidenceComponents(observation),
@@ -248,7 +257,7 @@ export function assessObservations(observations, previousAssessments = []) {
 export function decideEntries(assessment) {
   const rows = assessment.rows.map((row) => {
     const entryState = entryStateFor(row);
-    const invalidation = invalidationFor(row);
+    const stateAware = explanationFor(row, entryState);
     return {
       etf_symbol: row.etf_symbol,
       etf_name: row.etf_name,
@@ -269,13 +278,9 @@ export function decideEntries(assessment) {
       risk_overlays: row.risk_overlays,
       material_conflict: row.material_conflict,
       exact_date_valid: row.exact_date_valid,
-      thesis: thesisFor(row, entryState),
-      supporting_evidence: supportFor(row),
-      contrary_evidence: contraryFor(row),
-      next_confirmation: nextFor(row),
-      invalidation,
+      ...stateAware,
       data_limitations: row.data_limitations,
-      selection_dimensions: selectionDimensions(row, entryState, invalidation),
+      selection_dimensions: selectionDimensions(row, entryState, stateAware.invalidation),
       model_version: MODEL_VERSION,
       input_snapshot_id: assessment.input_snapshot_id
     };
@@ -408,18 +413,36 @@ function structureStateFor(input) {
   return directionScore < 0 ? "deteriorating" : "watch_candidate";
 }
 
-function marginalChangeFor({ direction, metrics, previous, structureState, conflict }) {
+function marginalChangeFor({
+  direction,
+  metrics,
+  confirmationScore,
+  confirmationComponents,
+  previous,
+  structureState,
+  conflict
+}) {
   if (direction === null) return { value: "insufficient", components: [] };
   if (structureState === "price_only") return { value: "price_only", components: [] };
   if (!previous) return { value: "unchanged", components: [] };
   const components = [
     deltaComponent("price_direction", metrics.price_direction, previous.direction_components?.price_direction),
     deltaComponent("relative_direction", metrics.relative_direction, previous.direction_components?.relative_direction),
-    deltaComponent("confirmation", null, null)
-  ].filter(Boolean);
-  const directionDelta = direction - previous.direction_score;
-  const improving = components.filter((item) => item.change > 0).length;
-  const deteriorating = components.filter((item) => item.change < 0).length;
+    deltaComponent("confirmation_score", confirmationScore, previous.confirmation_score),
+    deltaComponent(
+      "turnover_confirmation",
+      confirmationComponents.turnover_confirmation,
+      previous.confirmation_components?.turnover_confirmation
+    ),
+    deltaComponent("breadth", confirmationComponents.breadth, previous.confirmation_components?.breadth),
+    deltaComponent("direct_flow", confirmationComponents.direct_flow, previous.confirmation_components?.direct_flow)
+  ];
+  const directionDelta = previous.direction_score === null || previous.direction_score === undefined
+    ? null
+    : direction - previous.direction_score;
+  const improving = components.filter((item) => item.change !== null && item.change > 0).length;
+  const deteriorating = components.filter((item) => item.change !== null && item.change < 0).length;
+  if (directionDelta === null) return { value: "unchanged", components };
   if (directionDelta >= THRESHOLDS.direction.marginal_change && improving >= 2 && !conflict) return { value: "strengthening", components };
   if (directionDelta <= -THRESHOLDS.direction.marginal_change && deteriorating >= 2) return { value: "weakening", components };
   if (previous.structure_state !== structureState) {
@@ -488,13 +511,91 @@ function entryStateFor(row) {
   return "wait_confirmation";
 }
 
+function explanationFor(row, entryState) {
+  const failureMode = entryState === "invalid"
+    || ["deteriorating", "conflict_review", "price_only", "insufficient", "avoid"].includes(row.structure_state);
+  if (failureMode) {
+    const currentFailureReason = failureReasonFor(row);
+    return {
+      explanation_mode: "failure_recovery",
+      thesis: currentFailureReason,
+      supporting_evidence: [],
+      contrary_evidence: contraryFor(row),
+      next_confirmation: [],
+      invalidation: [],
+      current_failure_reason: currentFailureReason,
+      current_failed_gates: failedGatesFor(row),
+      watch_eligibility_requirements: watchRecoveryFor(row),
+      entry_eligibility_requirements: entryRecoveryFor(row)
+    };
+  }
+  return {
+    explanation_mode: "candidate_monitoring",
+    thesis: thesisFor(row, entryState),
+    supporting_evidence: supportFor(row),
+    contrary_evidence: contraryFor(row),
+    next_confirmation: nextFor(row),
+    invalidation: invalidationFor(row),
+    current_failure_reason: null,
+    current_failed_gates: [],
+    watch_eligibility_requirements: [],
+    entry_eligibility_requirements: []
+  };
+}
+
 function thesisFor(row, entryState) {
-  if (entryState === "invalid") return "当前结构或数据合同未通过，买入论点不成立。";
   if (entryState === "wait_pullback") return "中期结构保持正向，但短期延伸削弱当前入场质量。";
   if (entryState === "do_not_chase") return "短期过热使收益风险不对称，不宜追入。";
   if (entryState === "probe_only") return "中期方向可信且风险有界，但确认渠道不完整，只适合试探仓评估。";
   if (entryState === "ready_now") return "方向、确认、证据与风险闸门共同通过，可进入人工买入评估。";
   return "方向偏正但确认、覆盖或持续性尚不足，需要继续等待。";
+}
+
+function failureReasonFor(row) {
+  if (!row.exact_date_valid) return "精确日期合同未通过，当前结构和入场资格均不可用。";
+  if (row.structure_state === "deteriorating") {
+    return `签名方向已为负（${row.direction_score}）且结构正在恶化，当前买入资格已经失效。`;
+  }
+  if (row.structure_state === "conflict_review") return "价格方向与相对强度已出现实质冲突，当前结构不能进入候选观察。";
+  if (row.structure_state === "price_only") return "当前变动仅由短期价格推动，缺少中期方向与独立确认，不能视为有效结构。";
+  if (row.structure_state === "insufficient") return "硬数据或证据覆盖当前不足，无法形成可复核的结构判断。";
+  if (row.structure_state === "avoid") return "风险闸门当前阻断入场，结构即使偏正也不具备买入资格。";
+  return "当前结构未通过入场资格闸门。";
+}
+
+function failedGatesFor(row) {
+  const items = [];
+  if (!row.exact_date_valid) items.push("精确日期对齐失败。");
+  if (row.direction_score === null) items.push("签名方向不可用。");
+  else if (row.direction_score < THRESHOLDS.direction.watch) {
+    items.push(`签名方向${row.direction_score}低于观察资格阈值${THRESHOLDS.direction.watch}。`);
+  }
+  if (row.material_conflict) items.push("价格方向与相对强度存在实质冲突。");
+  if (row.structure_state === "price_only") items.push("中期价格方向与相对方向未形成共同确认。");
+  if (row.evidence_score < THRESHOLDS.evidence.insufficient) items.push("证据分低于最低可判断阈值。");
+  if (row.confirmation_score < THRESHOLDS.confirmation.entry) items.push("独立确认未达到入场阈值。");
+  if (row.risk_overlays.risk_gate !== "pass") items.push("风险闸门未通过。");
+  return items.length ? items : [`结构状态${row.structure_state}不具备入场资格。`];
+}
+
+function watchRecoveryFor(row) {
+  const items = [
+    `签名方向重新达到至少${THRESHOLDS.direction.watch}。`,
+    "价格方向与相对强度不再存在实质冲突。",
+    "精确日期、直接ETF映射与最低证据合同同时通过。"
+  ];
+  if (row.structure_state === "price_only") items.push("短期价格变动获得中期价格方向或相对强度确认。");
+  if (row.structure_state === "deteriorating") items.push("负向结构停止恶化并在后续正式会话转回非负。");
+  return items;
+}
+
+function entryRecoveryFor() {
+  return [
+    `结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。`,
+    `独立确认达到至少${THRESHOLDS.confirmation.entry}，并保留缺失渠道为null。`,
+    `证据达到至少${THRESHOLDS.evidence.entry}且风险闸门通过。`,
+    "在正式发布会话重新生成可测量的未来失效条件。"
+  ];
 }
 
 function supportFor(row) {
@@ -653,8 +754,14 @@ function limitationsFor(observation) {
 }
 
 function deltaComponent(name, current, previous) {
-  if (current === null || previous === null || current === undefined || previous === undefined) return null;
-  return { component: name, change: round(current - previous) };
+  const available = current !== null && previous !== null && current !== undefined && previous !== undefined;
+  return {
+    component: name,
+    current: current ?? null,
+    previous: previous ?? null,
+    change: available ? round(current - previous) : null,
+    available
+  };
 }
 
 function returns(values) {

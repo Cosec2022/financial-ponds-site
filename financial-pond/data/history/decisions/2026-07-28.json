@@ -1,8 +1,8 @@
 {
   "as_of": "2026-07-28",
-  "generated_at": "2026-07-29T09:48:43.639Z",
-  "model_version": "fp-structure-v0.10.78",
-  "command_contract_version": "fp-command-v0.10.78",
+  "generated_at": "2026-07-29T10:23:28.996Z",
+  "model_version": "fp-structure-v0.10.78.2",
+  "command_contract_version": "fp-command-v0.10.78.2",
   "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb",
   "schema_version": "entry-decision-v1",
   "artifact_role": "official_entry_decision_source_of_truth",
@@ -80,7 +80,7 @@
       "etf_name": "AI ETF candidate",
       "structure_state": "deteriorating",
       "entry_state": "invalid",
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
+      "thesis": "签名方向已为负（-44.5843）且结构正在恶化，当前买入资格已经失效。",
       "selection_dimensions": {
         "entry_quality": 0,
         "structural_persistence": 0,
@@ -89,7 +89,7 @@
         "distance_from_overheat": 4.1706,
         "invalidation_distance": 0.4457,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       }
     },
     {
@@ -98,7 +98,7 @@
       "etf_name": "券商ETF华宝",
       "structure_state": "conflict_review",
       "entry_state": "invalid",
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
+      "thesis": "价格方向与相对强度已出现实质冲突，当前结构不能进入候选观察。",
       "selection_dimensions": {
         "entry_quality": 0,
         "structural_persistence": 0,
@@ -107,7 +107,7 @@
         "distance_from_overheat": 3.7627,
         "invalidation_distance": 0,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       }
     },
     {
@@ -116,7 +116,7 @@
       "etf_name": "Communication ETF candidate",
       "structure_state": "deteriorating",
       "entry_state": "invalid",
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
+      "thesis": "签名方向已为负（-41.6577）且结构正在恶化，当前买入资格已经失效。",
       "selection_dimensions": {
         "entry_quality": 0,
         "structural_persistence": 0,
@@ -125,7 +125,7 @@
         "distance_from_overheat": 3.5048,
         "invalidation_distance": 0.1653,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       }
     },
     {
@@ -134,7 +134,7 @@
       "etf_name": "Defense ETF candidate",
       "structure_state": "deteriorating",
       "entry_state": "invalid",
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
+      "thesis": "签名方向已为负（-30.3605）且结构正在恶化，当前买入资格已经失效。",
       "selection_dimensions": {
         "entry_quality": 0,
         "structural_persistence": 0,
@@ -143,7 +143,7 @@
         "distance_from_overheat": 3.2481,
         "invalidation_distance": 3.6715,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       }
     },
     {
@@ -152,7 +152,7 @@
       "etf_name": "New energy vehicle ETF candidate",
       "structure_state": "deteriorating",
       "entry_state": "invalid",
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
+      "thesis": "签名方向已为负（-27.441）且结构正在恶化，当前买入资格已经失效。",
       "selection_dimensions": {
         "entry_quality": 0,
         "structural_persistence": 0,
@@ -161,7 +161,7 @@
         "distance_from_overheat": 3.0792,
         "invalidation_distance": 5.8586,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       }
     },
     {
@@ -170,7 +170,7 @@
       "etf_name": "房地产ETF南方",
       "structure_state": "conflict_review",
       "entry_state": "invalid",
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
+      "thesis": "价格方向与相对强度已出现实质冲突，当前结构不能进入候选观察。",
       "selection_dimensions": {
         "entry_quality": 0,
         "structural_persistence": 1,
@@ -179,7 +179,7 @@
         "distance_from_overheat": 2.7877,
         "invalidation_distance": 3.405,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       }
     },
     {
@@ -188,7 +188,7 @@
       "etf_name": "Non-ferrous metals ETF candidate",
       "structure_state": "price_only",
       "entry_state": "invalid",
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
+      "thesis": "当前变动仅由短期价格推动，缺少中期方向与独立确认，不能视为有效结构。",
       "selection_dimensions": {
         "entry_quality": 0,
         "structural_persistence": 0,
@@ -197,7 +197,7 @@
         "distance_from_overheat": 2.8475,
         "invalidation_distance": 7.6636,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       }
     },
     {
@@ -206,7 +206,7 @@
       "etf_name": "Semiconductor ETF candidate",
       "structure_state": "deteriorating",
       "entry_state": "invalid",
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
+      "thesis": "签名方向已为负（-38.3007）且结构正在恶化，当前买入资格已经失效。",
       "selection_dimensions": {
         "entry_quality": 0,
         "structural_persistence": 0,
@@ -215,7 +215,7 @@
         "distance_from_overheat": 3.3084,
         "invalidation_distance": 5.1,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       }
     }
   ],
@@ -270,25 +270,32 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
-      "supporting_evidence": [
-        "风险闸门通过。"
-      ],
+      "explanation_mode": "failure_recovery",
+      "thesis": "签名方向已为负（-44.5843）且结构正在恶化，当前买入资格已经失效。",
+      "supporting_evidence": [],
       "contrary_evidence": [
         "缺少来源可验证的内部扩散数据。",
         "缺少独立ETF份额流历史。",
         "近5日平均成交额低于自身20日均值，量能未确认。"
       ],
-      "next_confirmation": [
-        "近5日平均成交额回升至自身20日均值以上。",
-        "接入来源可验证的成分股扩散数据。",
-        "取得独立ETF份额流确认。",
-        "正向方向继续保持至至少3个观察会话。"
+      "next_confirmation": [],
+      "invalidation": [],
+      "current_failure_reason": "签名方向已为负（-44.5843）且结构正在恶化，当前买入资格已经失效。",
+      "current_failed_gates": [
+        "签名方向-44.5843低于观察资格阈值10。",
+        "独立确认未达到入场阈值。"
       ],
-      "invalidation": [
-        "direction_score跌破0。",
-        "20日相对沪深300超额持续转负。",
-        "代表ETF跌破近10会话低点（当前距离约0.4457%）。"
+      "watch_eligibility_requirements": [
+        "签名方向重新达到至少10。",
+        "价格方向与相对强度不再存在实质冲突。",
+        "精确日期、直接ETF映射与最低证据合同同时通过。",
+        "负向结构停止恶化并在后续正式会话转回非负。"
+      ],
+      "entry_eligibility_requirements": [
+        "结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。",
+        "独立确认达到至少50，并保留缺失渠道为null。",
+        "证据达到至少70且风险闸门通过。",
+        "在正式发布会话重新生成可测量的未来失效条件。"
       ],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -303,9 +310,9 @@
         "distance_from_overheat": 4.1706,
         "invalidation_distance": 0.4457,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -356,6 +363,7 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
+      "explanation_mode": "candidate_monitoring",
       "thesis": "方向偏正但确认、覆盖或持续性尚不足，需要继续等待。",
       "supporting_evidence": [
         "签名中期方向为正（81.6507）。",
@@ -378,6 +386,10 @@
         "20日相对沪深300超额持续转负。",
         "代表ETF跌破近10会话低点（当前距离约5.4334%）。"
       ],
+      "current_failure_reason": null,
+      "current_failed_gates": [],
+      "watch_eligibility_requirements": [],
+      "entry_eligibility_requirements": [],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
         "breadth: 尚未接入可信成分股数据源",
@@ -393,7 +405,7 @@
         "evidence_trust": 85,
         "measurable_invalidation": true
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -444,27 +456,33 @@
       },
       "material_conflict": true,
       "exact_date_valid": true,
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
-      "supporting_evidence": [
-        "20日相对沪深300超额为正（4.2323%）。",
-        "风险闸门通过。"
-      ],
+      "explanation_mode": "failure_recovery",
+      "thesis": "价格方向与相对强度已出现实质冲突，当前结构不能进入候选观察。",
+      "supporting_evidence": [],
       "contrary_evidence": [
         "缺少来源可验证的内部扩散数据。",
         "缺少独立ETF份额流历史。",
         "近5日平均成交额低于自身20日均值，量能未确认。",
         "价格方向与相对强度存在实质冲突。"
       ],
-      "next_confirmation": [
-        "近5日平均成交额回升至自身20日均值以上。",
-        "接入来源可验证的成分股扩散数据。",
-        "取得独立ETF份额流确认。",
-        "正向方向继续保持至至少3个观察会话。"
+      "next_confirmation": [],
+      "invalidation": [],
+      "current_failure_reason": "价格方向与相对强度已出现实质冲突，当前结构不能进入候选观察。",
+      "current_failed_gates": [
+        "签名方向-10.3637低于观察资格阈值10。",
+        "价格方向与相对强度存在实质冲突。",
+        "独立确认未达到入场阈值。"
       ],
-      "invalidation": [
-        "direction_score跌破0。",
-        "20日相对沪深300超额持续转负。",
-        "代表ETF跌破近10会话低点（当前距离约0%）。"
+      "watch_eligibility_requirements": [
+        "签名方向重新达到至少10。",
+        "价格方向与相对强度不再存在实质冲突。",
+        "精确日期、直接ETF映射与最低证据合同同时通过。"
+      ],
+      "entry_eligibility_requirements": [
+        "结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。",
+        "独立确认达到至少50，并保留缺失渠道为null。",
+        "证据达到至少70且风险闸门通过。",
+        "在正式发布会话重新生成可测量的未来失效条件。"
       ],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -479,9 +497,9 @@
         "distance_from_overheat": 3.7627,
         "invalidation_distance": 0,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -532,25 +550,32 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
-      "supporting_evidence": [
-        "风险闸门通过。"
-      ],
+      "explanation_mode": "failure_recovery",
+      "thesis": "签名方向已为负（-41.6577）且结构正在恶化，当前买入资格已经失效。",
+      "supporting_evidence": [],
       "contrary_evidence": [
         "缺少来源可验证的内部扩散数据。",
         "缺少独立ETF份额流历史。",
         "近5日平均成交额低于自身20日均值，量能未确认。"
       ],
-      "next_confirmation": [
-        "近5日平均成交额回升至自身20日均值以上。",
-        "接入来源可验证的成分股扩散数据。",
-        "取得独立ETF份额流确认。",
-        "正向方向继续保持至至少3个观察会话。"
+      "next_confirmation": [],
+      "invalidation": [],
+      "current_failure_reason": "签名方向已为负（-41.6577）且结构正在恶化，当前买入资格已经失效。",
+      "current_failed_gates": [
+        "签名方向-41.6577低于观察资格阈值10。",
+        "独立确认未达到入场阈值。"
       ],
-      "invalidation": [
-        "direction_score跌破0。",
-        "20日相对沪深300超额持续转负。",
-        "代表ETF跌破近10会话低点（当前距离约0.1653%）。"
+      "watch_eligibility_requirements": [
+        "签名方向重新达到至少10。",
+        "价格方向与相对强度不再存在实质冲突。",
+        "精确日期、直接ETF映射与最低证据合同同时通过。",
+        "负向结构停止恶化并在后续正式会话转回非负。"
+      ],
+      "entry_eligibility_requirements": [
+        "结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。",
+        "独立确认达到至少50，并保留缺失渠道为null。",
+        "证据达到至少70且风险闸门通过。",
+        "在正式发布会话重新生成可测量的未来失效条件。"
       ],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -565,9 +590,9 @@
         "distance_from_overheat": 3.5048,
         "invalidation_distance": 0.1653,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -618,6 +643,7 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
+      "explanation_mode": "candidate_monitoring",
       "thesis": "方向偏正但确认、覆盖或持续性尚不足，需要继续等待。",
       "supporting_evidence": [
         "签名中期方向为正（48.9585）。",
@@ -640,6 +666,10 @@
         "20日相对沪深300超额持续转负。",
         "代表ETF跌破近10会话低点（当前距离约7.0288%）。"
       ],
+      "current_failure_reason": null,
+      "current_failed_gates": [],
+      "watch_eligibility_requirements": [],
+      "entry_eligibility_requirements": [],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
         "breadth: 尚未接入可信成分股数据源",
@@ -655,7 +685,7 @@
         "evidence_trust": 85,
         "measurable_invalidation": true
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -706,25 +736,32 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
-      "supporting_evidence": [
-        "风险闸门通过。"
-      ],
+      "explanation_mode": "failure_recovery",
+      "thesis": "签名方向已为负（-30.3605）且结构正在恶化，当前买入资格已经失效。",
+      "supporting_evidence": [],
       "contrary_evidence": [
         "缺少来源可验证的内部扩散数据。",
         "缺少独立ETF份额流历史。",
         "近5日平均成交额低于自身20日均值，量能未确认。"
       ],
-      "next_confirmation": [
-        "近5日平均成交额回升至自身20日均值以上。",
-        "接入来源可验证的成分股扩散数据。",
-        "取得独立ETF份额流确认。",
-        "正向方向继续保持至至少3个观察会话。"
+      "next_confirmation": [],
+      "invalidation": [],
+      "current_failure_reason": "签名方向已为负（-30.3605）且结构正在恶化，当前买入资格已经失效。",
+      "current_failed_gates": [
+        "签名方向-30.3605低于观察资格阈值10。",
+        "独立确认未达到入场阈值。"
       ],
-      "invalidation": [
-        "direction_score跌破0。",
-        "20日相对沪深300超额持续转负。",
-        "代表ETF跌破近10会话低点（当前距离约3.6715%）。"
+      "watch_eligibility_requirements": [
+        "签名方向重新达到至少10。",
+        "价格方向与相对强度不再存在实质冲突。",
+        "精确日期、直接ETF映射与最低证据合同同时通过。",
+        "负向结构停止恶化并在后续正式会话转回非负。"
+      ],
+      "entry_eligibility_requirements": [
+        "结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。",
+        "独立确认达到至少50，并保留缺失渠道为null。",
+        "证据达到至少70且风险闸门通过。",
+        "在正式发布会话重新生成可测量的未来失效条件。"
       ],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -739,9 +776,9 @@
         "distance_from_overheat": 3.2481,
         "invalidation_distance": 3.6715,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -792,6 +829,7 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
+      "explanation_mode": "candidate_monitoring",
       "thesis": "方向偏正但确认、覆盖或持续性尚不足，需要继续等待。",
       "supporting_evidence": [
         "签名中期方向为正（18.372）。",
@@ -814,6 +852,10 @@
         "20日相对沪深300超额持续转负。",
         "代表ETF跌破近10会话低点（当前距离约1.9499%）。"
       ],
+      "current_failure_reason": null,
+      "current_failed_gates": [],
+      "watch_eligibility_requirements": [],
+      "entry_eligibility_requirements": [],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
         "breadth: 尚未接入可信成分股数据源",
@@ -829,7 +871,7 @@
         "evidence_trust": 85,
         "measurable_invalidation": true
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -880,25 +922,32 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
-      "supporting_evidence": [
-        "风险闸门通过。"
-      ],
+      "explanation_mode": "failure_recovery",
+      "thesis": "签名方向已为负（-27.441）且结构正在恶化，当前买入资格已经失效。",
+      "supporting_evidence": [],
       "contrary_evidence": [
         "缺少来源可验证的内部扩散数据。",
         "缺少独立ETF份额流历史。",
         "近5日平均成交额低于自身20日均值，量能未确认。"
       ],
-      "next_confirmation": [
-        "近5日平均成交额回升至自身20日均值以上。",
-        "接入来源可验证的成分股扩散数据。",
-        "取得独立ETF份额流确认。",
-        "正向方向继续保持至至少3个观察会话。"
+      "next_confirmation": [],
+      "invalidation": [],
+      "current_failure_reason": "签名方向已为负（-27.441）且结构正在恶化，当前买入资格已经失效。",
+      "current_failed_gates": [
+        "签名方向-27.441低于观察资格阈值10。",
+        "独立确认未达到入场阈值。"
       ],
-      "invalidation": [
-        "direction_score跌破0。",
-        "20日相对沪深300超额持续转负。",
-        "代表ETF跌破近10会话低点（当前距离约5.8586%）。"
+      "watch_eligibility_requirements": [
+        "签名方向重新达到至少10。",
+        "价格方向与相对强度不再存在实质冲突。",
+        "精确日期、直接ETF映射与最低证据合同同时通过。",
+        "负向结构停止恶化并在后续正式会话转回非负。"
+      ],
+      "entry_eligibility_requirements": [
+        "结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。",
+        "独立确认达到至少50，并保留缺失渠道为null。",
+        "证据达到至少70且风险闸门通过。",
+        "在正式发布会话重新生成可测量的未来失效条件。"
       ],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -913,9 +962,9 @@
         "distance_from_overheat": 3.0792,
         "invalidation_distance": 5.8586,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -966,28 +1015,32 @@
       },
       "material_conflict": true,
       "exact_date_valid": true,
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
-      "supporting_evidence": [
-        "签名中期方向为正（11.4238）。",
-        "20日相对沪深300超额为正（5.0723%）。",
-        "风险闸门通过。"
-      ],
+      "explanation_mode": "failure_recovery",
+      "thesis": "价格方向与相对强度已出现实质冲突，当前结构不能进入候选观察。",
+      "supporting_evidence": [],
       "contrary_evidence": [
         "缺少来源可验证的内部扩散数据。",
         "缺少独立ETF份额流历史。",
         "近5日平均成交额低于自身20日均值，量能未确认。",
         "价格方向与相对强度存在实质冲突。"
       ],
-      "next_confirmation": [
-        "近5日平均成交额回升至自身20日均值以上。",
-        "接入来源可验证的成分股扩散数据。",
-        "取得独立ETF份额流确认。",
-        "正向方向继续保持至至少3个观察会话。"
+      "next_confirmation": [],
+      "invalidation": [],
+      "current_failure_reason": "价格方向与相对强度已出现实质冲突，当前结构不能进入候选观察。",
+      "current_failed_gates": [
+        "价格方向与相对强度存在实质冲突。",
+        "独立确认未达到入场阈值。"
       ],
-      "invalidation": [
-        "direction_score跌破0。",
-        "20日相对沪深300超额持续转负。",
-        "代表ETF跌破近10会话低点（当前距离约3.405%）。"
+      "watch_eligibility_requirements": [
+        "签名方向重新达到至少10。",
+        "价格方向与相对强度不再存在实质冲突。",
+        "精确日期、直接ETF映射与最低证据合同同时通过。"
+      ],
+      "entry_eligibility_requirements": [
+        "结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。",
+        "独立确认达到至少50，并保留缺失渠道为null。",
+        "证据达到至少70且风险闸门通过。",
+        "在正式发布会话重新生成可测量的未来失效条件。"
       ],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -1002,9 +1055,9 @@
         "distance_from_overheat": 2.7877,
         "invalidation_distance": 3.405,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -1055,25 +1108,31 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
-      "supporting_evidence": [
-        "20日相对沪深300超额为正（0.9744%）。",
-        "近5日平均成交额为自身20日均值的1.1293倍。",
-        "风险闸门通过。"
-      ],
+      "explanation_mode": "failure_recovery",
+      "thesis": "当前变动仅由短期价格推动，缺少中期方向与独立确认，不能视为有效结构。",
+      "supporting_evidence": [],
       "contrary_evidence": [
         "缺少来源可验证的内部扩散数据。",
         "缺少独立ETF份额流历史。"
       ],
-      "next_confirmation": [
-        "接入来源可验证的成分股扩散数据。",
-        "取得独立ETF份额流确认。",
-        "正向方向继续保持至至少3个观察会话。"
+      "next_confirmation": [],
+      "invalidation": [],
+      "current_failure_reason": "当前变动仅由短期价格推动，缺少中期方向与独立确认，不能视为有效结构。",
+      "current_failed_gates": [
+        "签名方向-1.149低于观察资格阈值10。",
+        "中期价格方向与相对方向未形成共同确认。"
       ],
-      "invalidation": [
-        "direction_score跌破0。",
-        "20日相对沪深300超额持续转负。",
-        "代表ETF跌破近10会话低点（当前距离约7.6636%）。"
+      "watch_eligibility_requirements": [
+        "签名方向重新达到至少10。",
+        "价格方向与相对强度不再存在实质冲突。",
+        "精确日期、直接ETF映射与最低证据合同同时通过。",
+        "短期价格变动获得中期价格方向或相对强度确认。"
+      ],
+      "entry_eligibility_requirements": [
+        "结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。",
+        "独立确认达到至少50，并保留缺失渠道为null。",
+        "证据达到至少70且风险闸门通过。",
+        "在正式发布会话重新生成可测量的未来失效条件。"
       ],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -1088,9 +1147,9 @@
         "distance_from_overheat": 2.8475,
         "invalidation_distance": 7.6636,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     },
     {
@@ -1141,25 +1200,32 @@
       },
       "material_conflict": false,
       "exact_date_valid": true,
-      "thesis": "当前结构或数据合同未通过，买入论点不成立。",
-      "supporting_evidence": [
-        "风险闸门通过。"
-      ],
+      "explanation_mode": "failure_recovery",
+      "thesis": "签名方向已为负（-38.3007）且结构正在恶化，当前买入资格已经失效。",
+      "supporting_evidence": [],
       "contrary_evidence": [
         "缺少来源可验证的内部扩散数据。",
         "缺少独立ETF份额流历史。",
         "近5日平均成交额低于自身20日均值，量能未确认。"
       ],
-      "next_confirmation": [
-        "近5日平均成交额回升至自身20日均值以上。",
-        "接入来源可验证的成分股扩散数据。",
-        "取得独立ETF份额流确认。",
-        "正向方向继续保持至至少3个观察会话。"
+      "next_confirmation": [],
+      "invalidation": [],
+      "current_failure_reason": "签名方向已为负（-38.3007）且结构正在恶化，当前买入资格已经失效。",
+      "current_failed_gates": [
+        "签名方向-38.3007低于观察资格阈值10。",
+        "独立确认未达到入场阈值。"
       ],
-      "invalidation": [
-        "direction_score跌破0。",
-        "20日相对沪深300超额持续转负。",
-        "代表ETF跌破近10会话低点（当前距离约5.1%）。"
+      "watch_eligibility_requirements": [
+        "签名方向重新达到至少10。",
+        "价格方向与相对强度不再存在实质冲突。",
+        "精确日期、直接ETF映射与最低证据合同同时通过。",
+        "负向结构停止恶化并在后续正式会话转回非负。"
+      ],
+      "entry_eligibility_requirements": [
+        "结构恢复为major_candidate或confirmed_trend，且签名方向至少为30。",
+        "独立确认达到至少50，并保留缺失渠道为null。",
+        "证据达到至少70且风险闸门通过。",
+        "在正式发布会话重新生成可测量的未来失效条件。"
       ],
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -1174,9 +1240,9 @@
         "distance_from_overheat": 3.3084,
         "invalidation_distance": 5.1,
         "evidence_trust": 85,
-        "measurable_invalidation": true
+        "measurable_invalidation": false
       },
-      "model_version": "fp-structure-v0.10.78",
+      "model_version": "fp-structure-v0.10.78.2",
       "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb"
     }
   ]

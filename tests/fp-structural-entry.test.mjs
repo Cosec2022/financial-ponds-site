@@ -22,15 +22,63 @@ test("large fall lowers signed direction even when activity expands", () => {
   assert.ok(row.confirmation_score >= 70);
   assert.equal(row.confirmation_components.confirmation_direction, "negative");
   assert.equal(row.structure_state, "deteriorating");
-  assert.equal(decision.rows[0].entry_state, "invalid");
+  const entry = decision.rows[0];
+  assert.equal(entry.entry_state, "invalid");
+  assert.equal(entry.explanation_mode, "failure_recovery");
+  assert.match(entry.current_failure_reason, /已经失效/);
+  assert.equal(entry.invalidation.length, 0);
+  assert.equal(entry.next_confirmation.length, 0);
+  assert.doesNotMatch(JSON.stringify(entry), /direction_score跌破0|正向方向继续保持/);
 });
 
 test("large rise without medium-term, relative, or activity support is price-only, not confirmed", () => {
-  const { assessment } = runFixture(scenario(scenarios.large_rise_without_confirmation));
+  const { assessment, decision } = runFixture(scenario(scenarios.large_rise_without_confirmation));
   const row = assessment.rows[0];
   assert.equal(row.structure_state, "price_only");
   assert.ok(row.confirmation_score < 50);
   assert.notEqual(row.structure_state, "confirmed_trend");
+  assert.equal(decision.rows[0].explanation_mode, "failure_recovery");
+  assert.match(decision.rows[0].current_failure_reason, /仅由短期价格推动/);
+});
+
+test("conflict rows explain current failed gates and recovery requirements", () => {
+  const { assessment } = runFixture(scenario(scenarios.steady_medium_term_uptrend));
+  const row = {
+    ...assessment.rows[0],
+    structure_state: "conflict_review",
+    material_conflict: true
+  };
+  const entry = decideEntries({ ...assessment, rows: [row] }).rows[0];
+  assert.equal(entry.entry_state, "invalid");
+  assert.match(entry.current_failure_reason, /实质冲突/);
+  assert.ok(entry.current_failed_gates.some((item) => item.includes("实质冲突")));
+  assert.ok(entry.watch_eligibility_requirements.length > 0);
+});
+
+test("insufficient rows describe unavailable hard evidence rather than future invalidation", () => {
+  const { assessment } = runFixture(scenario(scenarios.steady_medium_term_uptrend));
+  const row = {
+    ...assessment.rows[0],
+    structure_state: "insufficient",
+    evidence_level: "insufficient",
+    evidence_score: 20
+  };
+  const entry = decideEntries({ ...assessment, rows: [row] }).rows[0];
+  assert.equal(entry.explanation_mode, "failure_recovery");
+  assert.match(entry.current_failure_reason, /数据或证据覆盖/);
+  assert.deepEqual(entry.invalidation, []);
+  assert.ok(entry.entry_eligibility_requirements.length > 0);
+});
+
+test("valid positive candidates retain thesis, evidence, confirmation, and future invalidation", () => {
+  const { decision } = runFixture(scenario(scenarios.strong_trend_with_overheat));
+  const entry = decision.rows[0];
+  assert.notEqual(entry.entry_state, "invalid");
+  assert.equal(entry.explanation_mode, "candidate_monitoring");
+  assert.ok(entry.supporting_evidence.length > 0);
+  assert.ok(entry.next_confirmation.length > 0);
+  assert.ok(entry.invalidation.length > 0);
+  assert.equal(entry.current_failure_reason, null);
 });
 
 test("evidence quality and narrative cannot raise signed direction", () => {
@@ -79,6 +127,76 @@ test("turnover below its own 20-session mean is not confirmed strength", () => {
   assert.ok(row.confirmation_components.turnover_activity_ratio < 1);
   assert.ok(row.confirmation_score < 50);
   assert.notEqual(row.structure_state, "confirmed_trend");
+});
+
+test("turnover confirmation persists as an independent marginal component", () => {
+  const input = fixtureInput(scenario(scenarios.strong_trend_with_overheat));
+  const observations = buildObservations(normalizeInputs(input));
+  const baseline = assessObservations(observations).rows[0];
+  const previous = {
+    ...baseline,
+    direction_score: baseline.direction_score - 15,
+    direction_components: {
+      ...baseline.direction_components,
+      price_direction: baseline.direction_components.price_direction - 20
+    },
+    confirmation_score: baseline.confirmation_score,
+    confirmation_components: {
+      ...baseline.confirmation_components,
+      turnover_confirmation: baseline.confirmation_components.turnover_confirmation - 35
+    }
+  };
+  const row = assessObservations(observations, [previous]).rows[0];
+  const turnover = row.marginal_components.find((item) => item.component === "turnover_confirmation");
+  assert.equal(turnover.available, true);
+  assert.equal(turnover.change, 35);
+  assert.equal(row.marginal_change, "strengthening");
+});
+
+test("missing breadth remains a missing marginal component and never counts as improvement", () => {
+  const input = fixtureInput(scenario(scenarios.strong_trend_with_overheat));
+  const observations = buildObservations(normalizeInputs(input));
+  const baseline = assessObservations(observations).rows[0];
+  const row = assessObservations(observations, [baseline]).rows[0];
+  const breadth = row.marginal_components.find((item) => item.component === "breadth");
+  assert.deepEqual(breadth, {
+    component: "breadth",
+    current: null,
+    previous: null,
+    change: null,
+    available: false
+  });
+});
+
+test("rank and display changes cannot affect marginal change", () => {
+  const input = fixtureInput(scenario(scenarios.strong_trend_with_overheat));
+  const observations = buildObservations(normalizeInputs(input));
+  const baseline = assessObservations(observations).rows[0];
+  const plain = assessObservations(observations, [baseline]).rows[0];
+  const decorated = assessObservations(observations, [{ ...baseline, rank: 1, display_order: 999 }]).rows[0];
+  assert.equal(decorated.marginal_change, plain.marginal_change);
+  assert.deepEqual(decorated.marginal_components, plain.marginal_components);
+});
+
+test("price and relative direction alone can satisfy the two-component marginal rule", () => {
+  const input = fixtureInput(scenario(scenarios.strong_trend_with_overheat));
+  const observations = buildObservations(normalizeInputs(input));
+  const baseline = assessObservations(observations).rows[0];
+  const previous = {
+    ...baseline,
+    direction_score: baseline.direction_score - 15,
+    direction_components: {
+      ...baseline.direction_components,
+      price_direction: baseline.direction_components.price_direction - 20,
+      relative_direction: baseline.direction_components.relative_direction - 20
+    }
+  };
+  const row = assessObservations(observations, [previous]).rows[0];
+  assert.equal(row.marginal_change, "strengthening");
+  assert.deepEqual(
+    row.marginal_components.filter((item) => item.change > 0).map((item) => item.component),
+    ["price_direction", "relative_direction"]
+  );
 });
 
 test("duplicate semantic identities fail before assessment", () => {
@@ -159,6 +277,10 @@ test("review migration preserves previously reviewed summary and exact-session s
   assert.deepEqual(review.review_horizons, ["T+1", "T+3", "T+5", "T+20"]);
   assert.deepEqual(review.allowed_statuses, ["pending", "reviewed", "unavailable", "skipped"]);
   assert.equal(review.latest_close_fallback, false);
+  assert.equal(review.structural_state_reviews.length, 44);
+  assert.equal(review.entry_state_reviews.length, 44);
+  assert.equal(review.status_counts.pending, 88);
+  assert.ok(review.structural_state_reviews.every((row) => row.baseline_structure_state));
 });
 
 function runFixture(fixture) {

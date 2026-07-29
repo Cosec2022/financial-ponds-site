@@ -24,6 +24,8 @@ import {
   normalizeInputs,
   validateOfficialArtifacts
 } from "./model.mjs";
+import { buildReviewAnalytics } from "./reviews.mjs";
+import { loadTradingCalendar } from "../../lib/trading-calendar.mjs";
 
 const OFFICIAL = Object.freeze({
   sector_assessment: "sector_assessment_daily.json",
@@ -172,7 +174,25 @@ export async function decide({ asOf }) {
 
 export async function review({ asOf }) {
   const normalized = await readJson(resolve(workDir(asOf), "normalized_market_inputs.json"));
+  const currentAssessment = await readJson(resolve(workDir(asOf), OFFICIAL.sector_assessment));
+  const currentDecision = await readJson(resolve(workDir(asOf), OFFICIAL.entry_decision));
+  const [assessmentHistory, decisionHistory, previousReviewArtifacts, calendar] = await Promise.all([
+    historicalArtifacts("assessments", asOf),
+    historicalArtifacts("decisions", asOf),
+    historicalArtifacts("reviews", asOf),
+    loadTradingCalendar()
+  ]);
   const legacy = await readOptionalJson(resolve(dataDir, "candidate_review_analytics.json"), {});
+  const built = buildReviewAnalytics({
+    asOf,
+    assessmentHistory: [...assessmentHistory, currentAssessment],
+    decisionHistory: [...decisionHistory, currentDecision],
+    calendar,
+    etfRows: normalized.etf_rows,
+    benchmarkRows: normalized.benchmark_rows,
+    previousStructuralReviews: previousReviewArtifacts.flatMap((artifact) => artifact.structural_state_reviews ?? []),
+    previousEntryReviews: previousReviewArtifacts.flatMap((artifact) => artifact.entry_state_reviews ?? [])
+  });
   const reviewArtifact = {
     schema_version: "review-analytics-v1",
     as_of: asOf,
@@ -191,11 +211,12 @@ export async function review({ asOf }) {
       unavailable_rows: legacy.unavailable_rows ?? 0,
       status: legacy.status ?? "unavailable"
     },
-    structural_state_reviews: [],
-    entry_state_reviews: [],
+    structural_state_reviews: built.structural_state_reviews,
+    entry_state_reviews: built.entry_state_reviews,
+    status_counts: built.status_counts,
     migration_limitations: [
       "Previously reviewed legacy outcomes are preserved in their existing ledger.",
-      "New structural/entry cohorts begin accumulating after this contract is published."
+      "New structural/entry cohorts use archived full-universe artifacts and exact A-share sessions."
     ]
   };
   await writeJson(resolve(workDir(asOf), OFFICIAL.review_analytics), reviewArtifact);
@@ -308,10 +329,27 @@ async function previousAssessmentRows(asOf) {
   }
 }
 
+async function historicalArtifacts(kind, asOf) {
+  const directory = resolve(dataDir, "history", kind);
+  try {
+    const files = (await readdir(directory))
+      .filter((name) => /^\d{4}-\d{2}-\d{2}\.json$/.test(name) && name.slice(0, 10) <= asOf)
+      .sort();
+    return Promise.all(files.map((name) => readJson(resolve(directory, name))));
+  } catch (error) {
+    if (error?.code === "ENOENT") return [];
+    throw error;
+  }
+}
+
 async function writeIdempotent(path, value) {
   const existing = await readOptionalJson(path, null);
   if (existing && stableHash(substantive(existing)) !== stableHash(substantive(value))) {
-    throw new Error(`Idempotence violation: ${path} already contains different substantive output`);
+    const contractRevision = existing.model_version !== value.model_version
+      || existing.command_contract_version !== value.command_contract_version;
+    if (!contractRevision) throw new Error(`Idempotence violation: ${path} already contains different substantive output`);
+    await writeJson(path, value);
+    return;
   }
   if (!existing) await writeJson(path, value);
 }
