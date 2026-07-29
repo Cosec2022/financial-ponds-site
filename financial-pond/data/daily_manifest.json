@@ -1,0 +1,22 @@
+{
+  "schema_version": "fp-daily-v0.10.78",
+  "as_of": "2026-07-28",
+  "generated_at": "2026-07-29T09:48:43.644Z",
+  "model_version": "fp-structure-v0.10.78",
+  "command_contract_version": "fp-command-v0.10.78",
+  "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb",
+  "mode": "offline",
+  "status": "validated",
+  "validation_status": "passed",
+  "degraded_channels": [
+    "breadth",
+    "direct_flow"
+  ],
+  "artifacts": {
+    "sector_assessment": "sector_assessment_daily.json",
+    "entry_decision": "entry_decision_daily.json",
+    "market_penetration": "market_penetration_brief.json",
+    "review_analytics": "review_analytics.json"
+  },
+  "published_at": "2026-07-29T09:48:43.648Z"
+}

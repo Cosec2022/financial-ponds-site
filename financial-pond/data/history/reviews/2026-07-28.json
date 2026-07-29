@@ -1,0 +1,35 @@
+{
+  "schema_version": "review-analytics-v1",
+  "as_of": "2026-07-28",
+  "generated_at": "2026-07-29T09:48:43.641Z",
+  "model_version": "fp-structure-v0.10.78",
+  "command_contract_version": "fp-command-v0.10.78",
+  "input_snapshot_id": "a-share-2026-07-28-9c12fcfa04fb",
+  "review_horizons": [
+    "T+1",
+    "T+3",
+    "T+5",
+    "T+20"
+  ],
+  "allowed_statuses": [
+    "pending",
+    "reviewed",
+    "unavailable",
+    "skipped"
+  ],
+  "exact_session_required": true,
+  "latest_close_fallback": false,
+  "preserved_legacy_review_summary": {
+    "source_as_of": "2026-07-28",
+    "reviewed_rows": 15,
+    "pending_rows": 40,
+    "unavailable_rows": 115,
+    "status": "analytics_available"
+  },
+  "structural_state_reviews": [],
+  "entry_state_reviews": [],
+  "migration_limitations": [
+    "Previously reviewed legacy outcomes are preserved in their existing ledger.",
+    "New structural/entry cohorts begin accumulating after this contract is published."
+  ]
+}
