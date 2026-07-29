@@ -10,18 +10,16 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(response.headers.get("content-type"), /text\/html/);
   const html = await response.text();
   assert.match(html, /Financial Ponds/);
-  assert.match(html, /v0\.10\.77/);
-  assert.match(html, /每日市场穿透/);
-  assert.match(html, /今晚市场结论/);
-  assert.match(html, /行业量价观察/);
-  assert.match(html, /近20个交易日/);
-  assert.match(html, /证据与复盘/);
-  assert.match(html, /高级诊断/);
-  assert.match(html, /板块状态地图/);
-  assert.match(html, /对A股的传导/);
-  assert.match(html, /明天看什么/);
-  assert.match(html, /仅作结构观察/);
-  assert.match(html, /高级诊断/);
+  assert.match(html, /v0\.10\.78/);
+  assert.match(html, /今日 ETF 买入指导/);
+  assert.match(html, /进入、等待与回避/);
+  assert.match(html, /代表性行业 ETF 结构评估/);
+  assert.match(html, /方向、确认、证据与入场状态独立呈现/);
+  assert.match(html, /精确会话复盘/);
+  assert.match(html, /中期 ETF 决策支持/);
+  assert.match(html, /人工确认/);
+  assert.match(html, /不自动执行/);
+  assert.doesNotMatch(html, /第1名|综合分最高|Top 10/);
   assert.doesNotMatch(html, /资金池塘图谱/);
 
   const [mark, logo, favicon, touchIcon, contract] = await Promise.all([
@@ -593,7 +591,9 @@ function normalizeReview(row) {
   return { ...row, ...(legacy[row.review_status] ?? {}) };
 }
 
-test("defines the rerunnable Financial Ponds daily persistence command", async () => {
+test("defines the explicit rerunnable Financial Ponds daily command", async () => {
   const packageJson = JSON.parse(await import("node:fs/promises").then((fs) => fs.readFile(new URL("../package.json", import.meta.url), "utf8")));
-  assert.equal(packageJson.scripts["fp:daily"], "bash scripts/local/fp-daily.sh");
+  assert.equal(packageJson.scripts["fp:daily"], "node scripts/fp/run-daily.mjs");
+  assert.equal(packageJson.scripts["fp:model"], "node scripts/fp/run-model.mjs");
+  assert.equal(packageJson.scripts["fp:publish"], "node scripts/fp/run-stage.mjs publish");
 });

@@ -88,6 +88,7 @@ async function fullCandidateChain(tempRoot, fixture) {
     path.join(root, "financial-pond/data/candidate_outcome_reviews.json"),
     `${JSON.stringify(historicalSnapshot.candidate_outcome_reviews, null, 2)}\n`
   );
+  await run("node", ["scripts/fp/run-daily.mjs", "--mode", "offline", "--as-of", asOf], root);
   await run("bash", ["scripts/local/fp-daily.sh", asOf], root);
   const persistenceFiles = [
     "financial-pond/data/history/daily/index.json",
