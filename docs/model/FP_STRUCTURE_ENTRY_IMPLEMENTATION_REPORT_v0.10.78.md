@@ -31,7 +31,7 @@ collect
   → publish
 ```
 
-The official daily command runs collect once, the deterministic model once, and publish once. Builds read published files only. Git persistence and deployment remain separate. GitHub Actions enforces dependent collect → model → validate → persist → deploy jobs.
+The official daily command runs collect once, the deterministic model once, and publish once. Builds read published files only. Git persistence and deployment remain separate. GitHub Actions enforces dependent collect → model → validate → persist → deploy jobs for scheduled/manual runs and a separate offline-only pull-request validation job.
 
 ## Command ownership
 
@@ -63,6 +63,17 @@ The official daily command runs collect once, the deterministic model once, and 
 | candidate/Top-10 history | full representative canonical universe in `history/assessments` and `history/decisions` |
 | `candidate_review_analytics.json` | preserved legacy summary plus `review_analytics.json` migration contract |
 
+## Pre-merge review follow-up
+
+The accepted v0.10.78 architecture received four contract corrections before merge. The hard-model and command revisions are now `fp-structure-v0.10.78.2` and `fp-command-v0.10.78.2`; the manifest schema revision is `fp-daily-v0.10.78.2`.
+
+- Pull requests into `main` run a read-only, offline job using committed inputs. It runs tests, build/Worker validation, published-data validation, history-quality validation, and the exact 2026-07-28 replay. Provider acquisition, Git persistence, secrets, push, and deployment are unreachable from the PR event.
+- Positive and waiting candidates keep thesis/support/contrary/next-confirmation/future-invalidation fields. Invalid, deteriorating, conflict, price-only, insufficient, and avoid rows instead publish the current failure, failed gates, watch-recovery requirements, and entry-recovery requirements. Already-triggered failures are not described as future invalidations.
+- Marginal change persists price-direction, relative-direction, confirmation-score, turnover-confirmation, breadth, and direct-flow component deltas. Missing breadth/direct flow remain unavailable with `change=null`; rank and display order are absent.
+- Structural and entry review rows are built from archived full-universe artifacts, the explicit A-share trading calendar, and exact ETF/benchmark closes at T+1/T+3/T+5/T+20. Reviewed outcomes are preserved idempotently.
+
+The first official 2026-07-28 cohort contains 44 structural plus 44 entry rows, all pending because no future exact-date input exists in the committed snapshot. Dedicated later-date fixtures demonstrate reviewed, unavailable, skipped, and preserved-reviewed outcomes.
+
 ## State examples
 
 - Large decline with high turnover: negative signed direction; turnover confirms weakness; structural state deteriorating; entry invalid.
@@ -84,20 +95,22 @@ The committed replay snapshot is `2026-07-28`, mode `offline`, with 11 represent
 
 ## Validation record
 
-- `npm test`: 63 tests passed after migration.
+- `node --test tests/fp-structural-entry.test.mjs tests/fp-review-builder.test.mjs tests/workflow.test.mjs`: 29 focused tests passed.
+- `npm test`: 74 tests passed, 0 failed.
 - `npm run validate:data`: 56 published-file contracts passed.
 - `npm run validate:history-quality`: strict OHLCVA/benchmark history passed; breadth remains explicitly unavailable.
 - `npm run build`: pure site/Worker build passed.
 - `npm run validate`: Worker ESM/fetch contract passed.
 - `npm run fp:replay -- --as-of 2026-07-28`: substantive decision match `true`.
 - Build-purity hash before/after: identical.
-- Browser runtime QA: manifest validated, official files loaded in manifest order, no console warnings/errors, no-candidate desktop and responsive layout rendered.
+- Ruby YAML parse of `.github/workflows/daily.yml`: valid.
+- Browser runtime QA: manifest validated; invalid rows rendered current failure and recovery requirements; the review panel rendered 88 pending rows; no console warnings/errors.
 
 ## Known limitations
 
 - Source-backed constituent breadth is unavailable.
 - Independent ETF share-flow history is unavailable.
 - The official universe intentionally uses the 11 directly represented ETF sectors in committed OHLCVA history; legacy broad/loose proxy expansions are not promoted into formal guidance.
-- New structural/entry review cohorts start with this model version; previously reviewed legacy outcomes remain preserved rather than rewritten.
+- The first new structural/entry cohort is pending until later exact-session ETF, benchmark, assessment, and decision artifacts exist; previously reviewed outcomes remain preserved rather than rewritten.
 - The offline publication date is the latest committed exact-date input, not the wall-clock date.
 - Live collection behavior is implemented but was not executed during development.
