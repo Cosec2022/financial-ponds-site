@@ -149,7 +149,9 @@ jobs:
       - name: Validate before persistence
         run: npm run fp:validate -- --as-of "$AS_OF"
       - name: Test hard model and frontend contracts
-        run: npm test
+        run: |
+          npm run build
+          npm test
       - uses: actions/upload-artifact@v4
         with:
           name: fp-validated

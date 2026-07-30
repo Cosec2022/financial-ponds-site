@@ -49,6 +49,20 @@ test("GitHub workflow has one dependent stage chain and an explicit generated-da
   assert.ok(workflow.indexOf("name: Persist and publish validated artifacts") < workflow.indexOf("name: Deploy already validated publication"));
 });
 
+test("scheduled validate rebuilds Worker output after restoring the real artifact workspace", async () => {
+  const workflow = await readFile(".github/workflows/daily.yml", "utf8");
+  const validateJob = jobBlock(workflow, "validate");
+  const inputPath = "financial-pond/history/market-inputs/${{ env.AS_OF }}";
+  const modelPath = ".fp-work/${{ env.AS_OF }}";
+  assert.match(validateJob, new RegExp(escapeRegExp(inputPath)));
+  assert.match(validateJob, new RegExp(escapeRegExp(modelPath)));
+  assert.ok(validateJob.indexOf(inputPath) < validateJob.indexOf("npm run build"));
+  assert.ok(validateJob.indexOf(modelPath) < validateJob.indexOf("npm run build"));
+  assert.ok(validateJob.indexOf("npm run fp:validate") < validateJob.indexOf("npm run build"));
+  assert.ok(validateJob.indexOf("npm run build") < validateJob.indexOf("npm test"));
+  assert.doesNotMatch(validateJob, /fp:collect|provider|pip install|git (add|commit|push)|deploy|wrangler/i);
+});
+
 test("pull-request checks are offline and cannot reach providers, Git persistence, or deployment", async () => {
   const workflow = await readFile(".github/workflows/daily.yml", "utf8");
   assert.match(workflow, /^  pull_request:\n    branches: \[main\]/m);
@@ -81,6 +95,9 @@ test("frontend source reads and validates the manifest before official conclusio
   assert.ok(app.indexOf('readRequired("./data/daily_manifest.json")') < app.indexOf('readOfficial("entry_decision")'));
   assert.match(app, /Mixed as_of dates rejected/);
   assert.match(app, /Manifest does not declare/);
+  assert.match(app, /evaluatePublicationFreshness/);
+  assert.match(app, /Bundle 同步/);
+  assert.match(app, /publicationFreshness\.state/);
   assert.match(app, /no_qualified_candidate/);
   assert.doesNotMatch(app, /observation_score|rank_change|previous_rank/);
   assert.match(html, /今日 ETF 买入指导/);
