@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { resolve } from "node:path";
 import { validateMarketHistoryQuality } from "./lib/market-history-quality.mjs";
+import { validatePenetrationDateAlignment } from "./lib/publication-date-alignment.mjs";
 import { validateOfficialArtifacts } from "./fp/lib/model.mjs";
 
 const root = resolve(import.meta.dirname, "..");
@@ -548,11 +549,12 @@ try {
 
 
 try {
-  const [pointer, brief] = await Promise.all([
+  const [pointer, brief, manifest] = await Promise.all([
     readFile(resolve(root, "financial-pond", "data", "history", "latest_observation_pointer.json"), "utf8").then(JSON.parse),
-    readFile(resolve(root, "financial-pond", "data", "market_penetration_brief.json"), "utf8").then(JSON.parse)
+    readFile(resolve(root, "financial-pond", "data", "market_penetration_brief.json"), "utf8").then(JSON.parse),
+    readFile(resolve(root, "financial-pond", "data", "daily_manifest.json"), "utf8").then(JSON.parse)
   ]);
-  if (brief.as_of !== pointer.latest_as_of) failures.push(`market_penetration_brief.json: as_of ${brief.as_of} does not match latest observation ${pointer.latest_as_of}`);
+  validatePenetrationDateAlignment({ brief, manifest, observationPointer: pointer });
 } catch (error) {
   failures.push(`market penetration freshness: ${error.message}`);
 }
