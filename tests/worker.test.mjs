@@ -22,12 +22,14 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.doesNotMatch(html, /第1名|综合分最高|Top 10/);
   assert.doesNotMatch(html, /资金池塘图谱/);
 
-  const [mark, logo, favicon, touchIcon, contract] = await Promise.all([
+  const [mark, logo, favicon, touchIcon, contract, freshness, calendar] = await Promise.all([
     worker.fetch(request("/financial-ponds-mark.svg"), {}),
     worker.fetch(request("/financial-ponds-logo.svg"), {}),
     worker.fetch(request("/favicon.svg"), {}),
     worker.fetch(request("/apple-touch-icon.png"), {}),
-    worker.fetch(request("/structural-observation-contract.mjs"), {})
+    worker.fetch(request("/structural-observation-contract.mjs"), {}),
+    worker.fetch(request("/publication-freshness.mjs"), {}),
+    worker.fetch(request("/data/a-share-trading-calendar.json"), {})
   ]);
   assert.equal(mark.status, 200);
   assert.match(mark.headers.get("content-type"), /image\/svg\+xml/);
@@ -37,6 +39,9 @@ test("serves the Financial Ponds clickable pond map at the site root", async () 
   assert.match(touchIcon.headers.get("content-type"), /image\/png/);
   assert.ok((await touchIcon.arrayBuffer()).byteLength > 1_000);
   assert.equal(contract.status, 200);
+  assert.equal(freshness.status, 200);
+  assert.equal(calendar.status, 200);
+  assert.equal((await calendar.json()).timezone, "Asia/Shanghai");
 });
 
 test("serves dashboard, general pool analysis, sector review, rotation data, module review, news review, and pond map JSON", async () => {

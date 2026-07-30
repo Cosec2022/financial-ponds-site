@@ -63,6 +63,18 @@ The official daily command runs collect once, the deterministic model once, and 
 | candidate/Top-10 history | full representative canonical universe in `history/assessments` and `history/decisions` |
 | `candidate_review_analytics.json` | preserved legacy summary plus `review_analytics.json` migration contract |
 
+The v0.10.78 publication validator routes date alignment by artifact schema. The
+official `market-penetration-v1` artifact follows `daily_manifest.json`, the
+publication source of truth. Pre-v0.10.78 legacy penetration artifacts remain
+aligned to `history/latest_observation_pointer.json`. Both paths require exact
+date equality; the migration does not permit stale fallback or mixed-date
+publication.
+
+Historical replay also resolves penetration narrative inputs from the immutable
+same-date penetration archive before consulting the mutable current publication.
+This preserves exact-date replay after later sessions are published; neither a
+newer current brief nor a stale fallback may influence an older replay.
+
 ## Pre-merge review follow-up
 
 The accepted v0.10.78 architecture received four contract corrections before merge. The hard-model and command revisions are now `fp-structure-v0.10.78.2` and `fp-command-v0.10.78.2`; the manifest schema revision is `fp-daily-v0.10.78.2`.

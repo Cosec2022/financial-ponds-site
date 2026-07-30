@@ -1,10 +1,10 @@
 {
   "schema_version": "fp-daily-v0.10.78.2",
-  "as_of": "2026-07-30",
-  "generated_at": "2026-07-30T15:33:14.782Z",
+  "as_of": "2026-07-29",
+  "generated_at": "2026-07-30T14:59:42.057Z",
   "model_version": "fp-structure-v0.10.78.2",
   "command_contract_version": "fp-command-v0.10.78.2",
-  "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+  "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
   "mode": "live",
   "status": "validated",
   "validation_status": "passed",
@@ -17,6 +17,5 @@
     "entry_decision": "entry_decision_daily.json",
     "market_penetration": "market_penetration_brief.json",
     "review_analytics": "review_analytics.json"
-  },
-  "published_at": "2026-07-30T15:35:12.414Z"
+  }
 }

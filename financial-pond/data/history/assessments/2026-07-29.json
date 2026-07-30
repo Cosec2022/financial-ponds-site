@@ -1,9 +1,9 @@
 {
-  "as_of": "2026-07-30",
-  "generated_at": "2026-07-30T15:32:57.638Z",
+  "as_of": "2026-07-29",
+  "generated_at": "2026-07-30T14:59:09.524Z",
   "model_version": "fp-structure-v0.10.78.2",
   "command_contract_version": "fp-command-v0.10.78.2",
-  "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+  "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
   "schema_version": "sector-assessment-v1",
   "artifact_role": "official_structural_source_of_truth",
   "rows": [
@@ -11,23 +11,23 @@
       "pool_id": "a_share_ai_computer",
       "etf_symbol": "159819",
       "etf_name": "人工智能ETF易方达",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": -56.3034,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": -57.5424,
       "direction_components": {
         "return_1": -7.3766,
         "return_5": -15.6139,
         "return_20": -23.2537,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": -12.2561,
-        "excess_return_20": -15.3905,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": -13.3474,
+        "excess_return_20": -16.4309,
         "daily_volatility": 4.0842,
         "risk_adjusted_return_5": -1.7097,
         "risk_adjusted_return_20": -1.2731,
-        "risk_adjusted_excess_5": -1.342,
-        "risk_adjusted_excess_20": -0.8426,
+        "risk_adjusted_excess_5": -1.4615,
+        "risk_adjusted_excess_20": -0.8996,
         "price_direction": -61.9309,
-        "relative_direction": -47.8622
+        "relative_direction": -50.9596
       },
       "confirmation_score": 10,
       "confirmation_coverage": 0.3333,
@@ -48,20 +48,20 @@
         "source_backed_breadth": 0
       },
       "structure_state": "deteriorating",
-      "marginal_change": "unchanged",
+      "marginal_change": "weakening",
       "marginal_components": [
         {
           "component": "price_direction",
           "current": -61.9309,
-          "previous": -61.9309,
-          "change": 0,
+          "previous": -51.4705,
+          "change": -10.4604,
           "available": true
         },
         {
           "component": "relative_direction",
-          "current": -47.8622,
-          "previous": -50.9596,
-          "change": 3.0974,
+          "current": -50.9596,
+          "previous": -34.2551,
+          "change": -16.7045,
           "available": true
         },
         {
@@ -93,7 +93,7 @@
           "available": false
         }
       ],
-      "direction_change": 1.239,
+      "direction_change": -12.9581,
       "persistence_sessions": 0,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -111,30 +111,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_bank_insurance",
       "etf_symbol": "512800",
       "etf_name": "银行ETF华宝",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": 87.0429,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": 86.4275,
       "direction_components": {
         "return_1": 3.0675,
         "return_5": 5.1314,
         "return_20": 13.9756,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": 8.4892,
-        "excess_return_20": 21.8387,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": 7.3979,
+        "excess_return_20": 20.7983,
         "daily_volatility": 1.2152,
         "risk_adjusted_return_5": 1.8884,
         "risk_adjusted_return_20": 2.5716,
-        "risk_adjusted_excess_5": 3.1241,
-        "risk_adjusted_excess_20": 4.0184,
+        "risk_adjusted_excess_5": 2.7225,
+        "risk_adjusted_excess_20": 3.827,
         "price_direction": 81.7474,
-        "relative_direction": 94.9861
+        "relative_direction": 93.4477
       },
       "confirmation_score": 35,
       "confirmation_coverage": 0.3333,
@@ -157,7 +157,7 @@
       "structure_state": "price_only",
       "marginal_change": "price_only",
       "marginal_components": [],
-      "direction_change": 0.6154,
+      "direction_change": 4.7768,
       "persistence_sessions": 10,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -175,30 +175,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_brokerage",
       "etf_symbol": "512000",
       "etf_name": "券商ETF华宝",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": -7.8519,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": -11.7616,
       "direction_components": {
         "return_1": 2.1236,
         "return_5": -0.5639,
         "return_20": -6.2057,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": 2.7939,
-        "excess_return_20": 1.6575,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": 1.7026,
+        "excess_return_20": 0.6171,
         "daily_volatility": 1.6647,
         "risk_adjusted_return_5": -0.1515,
         "risk_adjusted_return_20": -0.8335,
-        "risk_adjusted_excess_5": 0.7506,
-        "risk_adjusted_excess_20": 0.2226,
+        "risk_adjusted_excess_5": 0.4574,
+        "risk_adjusted_excess_20": 0.0829,
         "price_direction": -27.3241,
-        "relative_direction": 21.3563
+        "relative_direction": 11.5821
       },
       "confirmation_score": 10,
       "confirmation_coverage": 0.3333,
@@ -224,15 +224,15 @@
         {
           "component": "price_direction",
           "current": -27.3241,
-          "previous": -27.3241,
-          "change": 0,
+          "previous": -26.6477,
+          "change": -0.6764,
           "available": true
         },
         {
           "component": "relative_direction",
-          "current": 21.3563,
-          "previous": 11.5821,
-          "change": 9.7742,
+          "current": 11.5821,
+          "previous": 14.0624,
+          "change": -2.4803,
           "available": true
         },
         {
@@ -264,7 +264,7 @@
           "available": false
         }
       ],
-      "direction_change": 3.9097,
+      "direction_change": -1.3979,
       "persistence_sessions": 0,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -282,30 +282,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_communication_electronics",
       "etf_symbol": "515880",
       "etf_name": "通信ETF国泰",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": -44.4317,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": -44.8913,
       "direction_components": {
         "return_1": -8.4158,
         "return_5": -17.2876,
         "return_20": -67.695,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": -13.9298,
-        "excess_return_20": -59.8318,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": -15.0211,
+        "excess_return_20": -60.8723,
         "daily_volatility": 12.0399,
         "risk_adjusted_return_5": -0.6421,
         "risk_adjusted_return_20": -1.2572,
-        "risk_adjusted_excess_5": -0.5174,
-        "risk_adjusted_excess_20": -1.1112,
+        "risk_adjusted_excess_5": -0.5579,
+        "risk_adjusted_excess_20": -1.1305,
         "price_direction": -46.6511,
-        "relative_direction": -41.1026
+        "relative_direction": -42.2515
       },
       "confirmation_score": 10,
       "confirmation_coverage": 0.3333,
@@ -331,15 +331,15 @@
         {
           "component": "price_direction",
           "current": -46.6511,
-          "previous": -46.6511,
-          "change": 0,
+          "previous": -43.9174,
+          "change": -2.7337,
           "available": true
         },
         {
           "component": "relative_direction",
-          "current": -41.1026,
-          "previous": -42.2515,
-          "change": 1.1489,
+          "current": -42.2515,
+          "previous": -38.2681,
+          "change": -3.9834,
           "available": true
         },
         {
@@ -371,7 +371,7 @@
           "available": false
         }
       ],
-      "direction_change": 0.4596,
+      "direction_change": -3.2336,
       "persistence_sessions": 0,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -389,30 +389,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_consumer",
       "etf_symbol": "159928",
       "etf_name": "消费ETF汇添富",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": 63.1356,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": 61.5942,
       "direction_components": {
         "return_1": 4.3284,
         "return_5": 3.8633,
         "return_20": 10.9524,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": 7.2211,
-        "excess_return_20": 18.8155,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": 6.1298,
+        "excess_return_20": 17.7751,
         "daily_volatility": 1.8225,
         "risk_adjusted_return_5": 0.948,
         "risk_adjusted_return_20": 1.3438,
-        "risk_adjusted_excess_5": 1.7719,
-        "risk_adjusted_excess_20": 2.3085,
+        "risk_adjusted_excess_5": 1.5041,
+        "risk_adjusted_excess_20": 2.1808,
         "price_direction": 53.1852,
-        "relative_direction": 78.0612
+        "relative_direction": 74.2076
       },
       "confirmation_score": 35,
       "confirmation_coverage": 0.3333,
@@ -435,7 +435,7 @@
       "structure_state": "price_only",
       "marginal_change": "price_only",
       "marginal_components": [],
-      "direction_change": 1.5414,
+      "direction_change": 12.6357,
       "persistence_sessions": 10,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -453,30 +453,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_defense_military",
       "etf_symbol": "512660",
       "etf_name": "军工ETF国泰",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": -30.1084,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": -32.4397,
       "direction_components": {
         "return_1": 0,
         "return_5": -0.9234,
         "return_20": -16.8861,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": 2.4345,
-        "excess_return_20": -9.023,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": 1.3432,
+        "excess_return_20": -10.0634,
         "daily_volatility": 2.7912,
         "risk_adjusted_return_5": -0.1479,
         "risk_adjusted_return_20": -1.3528,
-        "risk_adjusted_excess_5": 0.3901,
-        "risk_adjusted_excess_20": -0.7228,
+        "risk_adjusted_excess_5": 0.2152,
+        "risk_adjusted_excess_20": -0.8062,
         "price_direction": -40.9837,
-        "relative_direction": -13.7955
+        "relative_direction": -19.6236
       },
       "confirmation_score": 35,
       "confirmation_coverage": 0.3333,
@@ -502,15 +502,15 @@
         {
           "component": "price_direction",
           "current": -40.9837,
-          "previous": -40.9837,
-          "change": 0,
+          "previous": -40.9951,
+          "change": 0.0114,
           "available": true
         },
         {
           "component": "relative_direction",
-          "current": -13.7955,
-          "previous": -19.6236,
-          "change": 5.8281,
+          "current": -19.6236,
+          "previous": -14.4086,
+          "change": -5.215,
           "available": true
         },
         {
@@ -542,7 +542,7 @@
           "available": false
         }
       ],
-      "direction_change": 2.3313,
+      "direction_change": -2.0792,
       "persistence_sessions": 0,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -560,30 +560,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_healthcare_pharma",
       "etf_symbol": "512010",
       "etf_name": "医药ETF易方达",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": 28.4953,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": 25.9413,
       "direction_components": {
         "return_1": 2.7322,
         "return_5": -0.2653,
         "return_20": 4.7354,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": 3.0926,
-        "excess_return_20": 12.5985,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": 2.0013,
+        "excess_return_20": 11.5581,
         "daily_volatility": 2.0488,
         "risk_adjusted_return_5": -0.0579,
         "risk_adjusted_return_20": 0.5168,
-        "risk_adjusted_excess_5": 0.675,
-        "risk_adjusted_excess_20": 1.375,
+        "risk_adjusted_excess_5": 0.4368,
+        "risk_adjusted_excess_20": 1.2614,
         "price_direction": 14.2489,
-        "relative_direction": 49.865
+        "relative_direction": 43.48
       },
       "confirmation_score": 10,
       "confirmation_coverage": 0.3333,
@@ -606,7 +606,7 @@
       "structure_state": "price_only",
       "marginal_change": "price_only",
       "marginal_components": [],
-      "direction_change": 2.554,
+      "direction_change": 7.5693,
       "persistence_sessions": 2,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -624,30 +624,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_new_energy_ev",
       "etf_symbol": "515030",
       "etf_name": "新能源车ETF华夏",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": -12.8723,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": -15.5051,
       "direction_components": {
         "return_1": 1.972,
         "return_5": 3.2861,
         "return_20": -14.3239,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": 6.6439,
-        "excess_return_20": -6.4607,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": 5.5526,
+        "excess_return_20": -7.5012,
         "daily_volatility": 2.5401,
         "risk_adjusted_return_5": 0.5785,
         "risk_adjusted_return_20": -1.2609,
-        "risk_adjusted_excess_5": 1.1697,
-        "risk_adjusted_excess_20": -0.5687,
+        "risk_adjusted_excess_5": 0.9776,
+        "risk_adjusted_excess_20": -0.6603,
         "price_direction": -25.6698,
-        "relative_direction": 6.3239
+        "relative_direction": -0.258
       },
       "confirmation_score": 35,
       "confirmation_coverage": 0.3333,
@@ -667,21 +667,21 @@
         "turnover_history": 15,
         "source_backed_breadth": 0
       },
-      "structure_state": "conflict_review",
-      "marginal_change": "state_downgrade",
+      "structure_state": "deteriorating",
+      "marginal_change": "strengthening",
       "marginal_components": [
         {
           "component": "price_direction",
           "current": -25.6698,
-          "previous": -25.6698,
-          "change": 0,
+          "previous": -39.5908,
+          "change": 13.921,
           "available": true
         },
         {
           "component": "relative_direction",
-          "current": 6.3239,
-          "previous": -0.258,
-          "change": 6.5819,
+          "current": -0.258,
+          "previous": -9.2162,
+          "change": 8.9582,
           "available": true
         },
         {
@@ -713,7 +713,7 @@
           "available": false
         }
       ],
-      "direction_change": 2.6328,
+      "direction_change": 11.9359,
       "persistence_sessions": 0,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -723,7 +723,7 @@
         "invalidation_distance_pct": 7.9461,
         "volatility_20_pct": 2.5401
       },
-      "material_conflict": true,
+      "material_conflict": false,
       "exact_date_valid": true,
       "data_limitations": [
         "direct_flow: independent ETF share-flow history unavailable",
@@ -731,30 +731,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_real_estate_infra",
       "etf_symbol": "512200",
       "etf_name": "房地产ETF南方",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": 12.1271,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": 8.8555,
       "direction_components": {
         "return_1": 1.7331,
         "return_5": 1.3817,
         "return_20": -3.2949,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": 4.7395,
-        "excess_return_20": 4.5683,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": 3.6482,
+        "excess_return_20": 3.5278,
         "daily_volatility": 1.8038,
         "risk_adjusted_return_5": 0.3426,
         "risk_adjusted_return_20": -0.4084,
-        "risk_adjusted_excess_5": 1.1751,
-        "risk_adjusted_excess_20": 0.5663,
+        "risk_adjusted_excess_5": 0.9045,
+        "risk_adjusted_excess_20": 0.4373,
         "price_direction": -5.397,
-        "relative_direction": 38.4133
+        "relative_direction": 30.2342
       },
       "confirmation_score": 35,
       "confirmation_coverage": 0.3333,
@@ -780,15 +780,15 @@
         {
           "component": "price_direction",
           "current": -5.397,
-          "previous": -5.397,
-          "change": 0,
+          "previous": -5.5776,
+          "change": 0.1806,
           "available": true
         },
         {
           "component": "relative_direction",
-          "current": 38.4133,
-          "previous": 30.2342,
-          "change": 8.1791,
+          "current": 30.2342,
+          "previous": 36.926,
+          "change": -6.6918,
           "available": true
         },
         {
@@ -820,8 +820,8 @@
           "available": false
         }
       ],
-      "direction_change": 3.2716,
-      "persistence_sessions": 2,
+      "direction_change": -2.5683,
+      "persistence_sessions": 0,
       "risk_overlays": {
         "risk_gate": "pass",
         "extension_z": 0.3426,
@@ -838,30 +838,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_resources_materials",
       "etf_symbol": "512400",
       "etf_name": "有色金属ETF南方",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": -4.5187,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": -6.6603,
       "direction_components": {
         "return_1": 1.0995,
         "return_5": -1.1878,
         "return_20": -5.4654,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": 2.17,
-        "excess_return_20": 2.3978,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": 1.0787,
+        "excess_return_20": 1.3574,
         "daily_volatility": 3.1023,
         "risk_adjusted_return_5": -0.1712,
         "risk_adjusted_return_20": -0.3939,
-        "risk_adjusted_excess_5": 0.3128,
-        "risk_adjusted_excess_20": 0.1728,
+        "risk_adjusted_excess_5": 0.1555,
+        "risk_adjusted_excess_20": 0.0978,
         "price_direction": -15.1257,
-        "relative_direction": 11.3918
+        "relative_direction": 6.0379
       },
       "confirmation_score": 70,
       "confirmation_coverage": 0.3333,
@@ -882,20 +882,20 @@
         "source_backed_breadth": 0
       },
       "structure_state": "deteriorating",
-      "marginal_change": "unchanged",
+      "marginal_change": "state_downgrade",
       "marginal_components": [
         {
           "component": "price_direction",
           "current": -15.1257,
-          "previous": -15.1257,
-          "change": 0,
+          "previous": -11.6644,
+          "change": -3.4613,
           "available": true
         },
         {
           "component": "relative_direction",
-          "current": 11.3918,
-          "previous": 6.0379,
-          "change": 5.3539,
+          "current": 6.0379,
+          "previous": 14.624,
+          "change": -8.5861,
           "available": true
         },
         {
@@ -927,7 +927,7 @@
           "available": false
         }
       ],
-      "direction_change": 2.1416,
+      "direction_change": -5.5113,
       "persistence_sessions": 0,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -945,30 +945,30 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     },
     {
       "pool_id": "a_share_semiconductor",
       "etf_symbol": "512480",
       "etf_name": "半导体ETF国联安",
-      "guidance_as_of": "2026-07-30",
-      "direction_score": -44.7535,
+      "guidance_as_of": "2026-07-29",
+      "direction_score": -45.2203,
       "direction_components": {
         "return_1": -8.8487,
         "return_5": -16.8403,
         "return_20": -67.4482,
-        "benchmark_return_5": -3.3578,
-        "benchmark_return_20": -7.8631,
-        "excess_return_5": -13.4825,
-        "excess_return_20": -59.585,
+        "benchmark_return_5": -2.2665,
+        "benchmark_return_20": -6.8227,
+        "excess_return_5": -14.5738,
+        "excess_return_20": -60.6255,
         "daily_volatility": 11.8217,
         "risk_adjusted_return_5": -0.6371,
         "risk_adjusted_return_20": -1.2758,
-        "risk_adjusted_excess_5": -0.51,
-        "risk_adjusted_excess_20": -1.1271,
+        "risk_adjusted_excess_5": -0.5513,
+        "risk_adjusted_excess_20": -1.1467,
         "price_direction": -47.0061,
-        "relative_direction": -41.3747
+        "relative_direction": -42.5415
       },
       "confirmation_score": 35,
       "confirmation_coverage": 0.3333,
@@ -994,15 +994,15 @@
         {
           "component": "price_direction",
           "current": -47.0061,
-          "previous": -47.0061,
-          "change": 0,
+          "previous": -40.676,
+          "change": -6.3301,
           "available": true
         },
         {
           "component": "relative_direction",
-          "current": -41.3747,
-          "previous": -42.5415,
-          "change": 1.1668,
+          "current": -42.5415,
+          "previous": -34.7378,
+          "change": -7.8037,
           "available": true
         },
         {
@@ -1034,7 +1034,7 @@
           "available": false
         }
       ],
-      "direction_change": 0.4668,
+      "direction_change": -6.9196,
       "persistence_sessions": 0,
       "risk_overlays": {
         "risk_gate": "pass",
@@ -1052,7 +1052,7 @@
         "news_policy_events: narrative is handled by penetration and cannot alter hard fields"
       ],
       "model_version": "fp-structure-v0.10.78.2",
-      "input_snapshot_id": "a-share-2026-07-30-e70388f6cbe4",
+      "input_snapshot_id": "a-share-2026-07-29-a1a269216cd1",
       "direction_formula": "direction_score = 0.60 * normalize(0.60 * risk_adjusted_return_20 + 0.40 * risk_adjusted_return_5) + 0.40 * normalize(0.60 * risk_adjusted_excess_20 + 0.40 * risk_adjusted_excess_5); normalize(x)=100*tanh(x/2)"
     }
   ]

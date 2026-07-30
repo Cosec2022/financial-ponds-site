@@ -1,3 +1,5 @@
+import { evaluatePublicationFreshness } from "./publication-freshness.mjs";
+
 const ENTRY_LABELS = Object.freeze({
   ready_now: "当前可进入买入评估",
   probe_only: "只适合试探仓",
@@ -32,9 +34,13 @@ let assessment;
 let decision;
 let penetration;
 let review;
+let tradingCalendar;
 
 async function init() {
-  manifest = await readRequired("./data/daily_manifest.json");
+  [manifest, tradingCalendar] = await Promise.all([
+    readRequired("./data/daily_manifest.json"),
+    readRequired("./data/a-share-trading-calendar.json")
+  ]);
   validateManifest(manifest);
 
   // Publication conclusions are intentionally loaded only after the manifest passes.
@@ -82,9 +88,17 @@ function validateBundle() {
 function render() {
   text("headerDataDate", manifest.as_of);
   text("headerMode", manifest.mode === "offline" ? "离线可复现" : "正式日更");
+  const bundleStatus = document.getElementById("headerBundleStatus");
+  bundleStatus.textContent = "Bundle 同步";
+  bundleStatus.className = "freshness-pill fresh";
+
+  const publicationFreshness = evaluatePublicationFreshness({
+    asOf: manifest.as_of,
+    calendar: tradingCalendar
+  });
   const freshness = document.getElementById("headerFreshness");
-  freshness.textContent = "清单已验证";
-  freshness.className = "freshness-pill fresh";
+  freshness.textContent = publicationFreshness.label;
+  freshness.className = `freshness-pill ${publicationFreshness.state === "unknown" ? "neutral" : publicationFreshness.state}`;
 
   const degraded = manifest.degraded_channels ?? [];
   document.getElementById("degradedChannels").innerHTML = degraded.length
@@ -266,6 +280,7 @@ function escapeHtml(value) {
 init().catch((error) => {
   console.error("Financial Ponds failed closed", error);
   document.body.classList.add("publication-error");
+  text("headerBundleStatus", "Bundle 校验失败");
   text("headerFreshness", "发布合同失败");
   text("guidanceHeadline", "今日指导不可用");
   text("guidanceSummary", "正式清单或同日数据未通过验证，页面拒绝显示旧结论。");
