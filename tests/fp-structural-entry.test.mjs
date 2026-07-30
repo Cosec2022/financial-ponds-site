@@ -271,17 +271,35 @@ test("same archived input reproduces substantive assessment and decision", () =>
   assert.equal(stableHash(substantive(first.decision)), stableHash(substantive(second.decision)));
 });
 
-test("review migration preserves previously reviewed summary and exact-session statuses", async () => {
+test("review migration preserves complete exact-session cohorts as published history accumulates", async () => {
   const review = JSON.parse(await readFile("financial-pond/data/review_analytics.json", "utf8"));
+  const assessment = JSON.parse(await readFile("financial-pond/data/sector_assessment_daily.json", "utf8"));
   assert.ok(review.preserved_legacy_review_summary.reviewed_rows >= 0);
   assert.deepEqual(review.review_horizons, ["T+1", "T+3", "T+5", "T+20"]);
   assert.deepEqual(review.allowed_statuses, ["pending", "reviewed", "unavailable", "skipped"]);
   assert.equal(review.latest_close_fallback, false);
-  assert.equal(review.structural_state_reviews.length, 44);
-  assert.equal(review.entry_state_reviews.length, 44);
-  assert.equal(review.status_counts.pending, 88);
+  assertCompleteReviewCohorts(review.structural_state_reviews, assessment.rows.length, review.review_horizons);
+  assertCompleteReviewCohorts(review.entry_state_reviews, assessment.rows.length, review.review_horizons);
+  assert.equal(
+    Object.values(review.status_counts).reduce((total, count) => total + count, 0),
+    review.structural_state_reviews.length + review.entry_state_reviews.length
+  );
   assert.ok(review.structural_state_reviews.every((row) => row.baseline_structure_state));
 });
+
+function assertCompleteReviewCohorts(rows, canonicalUniverseCount, horizons) {
+  const cohortCounts = new Map();
+  const uniqueKeys = new Set();
+  for (const row of rows) {
+    cohortCounts.set(row.signal_date, (cohortCounts.get(row.signal_date) ?? 0) + 1);
+    uniqueKeys.add(`${row.signal_date}:${row.pool_id}:${row.horizon}`);
+  }
+  assert.equal(uniqueKeys.size, rows.length);
+  assert.ok(cohortCounts.size >= 1);
+  for (const count of cohortCounts.values()) {
+    assert.equal(count, canonicalUniverseCount * horizons.length);
+  }
+}
 
 function runFixture(fixture) {
   const normalized = normalizeInputs(fixtureInput(fixture));
