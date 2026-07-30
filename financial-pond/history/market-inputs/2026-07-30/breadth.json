@@ -1,0 +1,18 @@
+{
+  "module_id": "sector_breadth_daily_v0_10_77",
+  "as_of": "2026-07-30",
+  "status": "unavailable",
+  "source_kind": null,
+  "display_label": "内部扩散",
+  "reason": "尚未接入可信成分股数据源",
+  "rows": [],
+  "required_metadata": [
+    "constituent_source",
+    "constituent_as_of",
+    "composition_as_of",
+    "price_source",
+    "effective_count",
+    "total_count"
+  ],
+  "boundary": "mock/model breadth rejected; forward collection contract ready"
+}
