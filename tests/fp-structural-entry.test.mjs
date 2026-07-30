@@ -11,6 +11,7 @@ import {
   validateOfficialArtifacts
 } from "../scripts/fp/lib/model.mjs";
 import { substantive, stableHash } from "../scripts/fp/lib/io.mjs";
+import { selectSameDatePenetrationSource } from "../scripts/fp/lib/stages.mjs";
 
 const scenarios = JSON.parse(await readFile(new URL("./fixtures/fp-model/scenarios.json", import.meta.url), "utf8"));
 
@@ -269,6 +270,20 @@ test("same archived input reproduces substantive assessment and decision", () =>
   const second = runFixture(fixture);
   assert.equal(stableHash(substantive(first.assessment)), stableHash(substantive(second.assessment)));
   assert.equal(stableHash(substantive(first.decision)), stableHash(substantive(second.decision)));
+});
+
+test("historical replay pins penetration to exact-date history instead of mutable current publication", () => {
+  const historical = { as_of: "2026-07-28", facts: ["archived"] };
+  const current = { as_of: "2026-07-30", facts: ["newer"] };
+  assert.equal(
+    selectSameDatePenetrationSource({ asOf: "2026-07-28", historical, current }),
+    historical
+  );
+  assert.equal(
+    selectSameDatePenetrationSource({ asOf: "2026-07-29", historical: null, current: { ...current, as_of: "2026-07-29" } }).as_of,
+    "2026-07-29"
+  );
+  assert.equal(selectSameDatePenetrationSource({ asOf: "2026-07-27", historical, current }), null);
 });
 
 test("review migration preserves complete exact-session cohorts as published history accumulates", async () => {

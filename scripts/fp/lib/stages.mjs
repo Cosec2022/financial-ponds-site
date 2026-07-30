@@ -131,8 +131,11 @@ export async function assess({ asOf }) {
 
 export async function penetrate({ asOf }) {
   const normalized = await readJson(resolve(workDir(asOf), "normalized_market_inputs.json"));
-  const legacy = await readOptionalJson(resolve(dataDir, "market_penetration_brief.json"), null);
-  const useLegacy = legacy?.as_of === asOf;
+  const [historical, current] = await Promise.all([
+    readOptionalJson(resolve(dataDir, "history", "penetration", `${asOf}.json`), null),
+    readOptionalJson(resolve(dataDir, "market_penetration_brief.json"), null)
+  ]);
+  const source = selectSameDatePenetrationSource({ asOf, historical, current });
   const penetration = {
     schema_version: "market-penetration-v1",
     as_of: asOf,
@@ -144,16 +147,22 @@ export async function penetrate({ asOf }) {
       mode: "display_only",
       affects_hard_model_fields: false
     },
-    facts: useLegacy ? (legacy.market_facts ?? legacy.verified_facts ?? []) : [],
-    narratives: useLegacy ? (legacy.media_narratives ?? legacy.why_market_moved ?? []) : [],
+    facts: source ? (source.facts ?? source.market_facts ?? source.verified_facts ?? []) : [],
+    narratives: source ? (source.narratives ?? source.media_narratives ?? source.why_market_moved ?? []) : [],
     thesis_evidence_delta: [],
     unresolved_events: [],
-    limitations: useLegacy
-      ? ["Legacy narrative retained for display only; it cannot alter structural or entry fields."]
+    limitations: source
+      ? (source.limitations ?? ["Legacy narrative retained for display only; it cannot alter structural or entry fields."])
       : ["No same-date committed penetration source was available; narrative remains empty."]
   };
   await writeJson(resolve(workDir(asOf), OFFICIAL.market_penetration), penetration);
   return penetration;
+}
+
+export function selectSameDatePenetrationSource({ asOf, historical, current }) {
+  if (historical?.as_of === asOf) return historical;
+  if (current?.as_of === asOf) return current;
+  return null;
 }
 
 export async function decide({ asOf }) {
