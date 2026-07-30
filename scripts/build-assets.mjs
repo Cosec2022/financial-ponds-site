@@ -6,6 +6,7 @@ const files = [
   ["index.html", "text/html; charset=utf-8"],
   ["styles.css", "text/css; charset=utf-8"],
   ["app.js", "text/javascript; charset=utf-8"],
+  ["publication-freshness.mjs", "text/javascript; charset=utf-8"],
   ["structural-observation-contract.mjs", "text/javascript; charset=utf-8"],
   ["financial-ponds-mark.svg", "image/svg+xml"],
   ["financial-ponds-logo.svg", "image/svg+xml"],
@@ -88,6 +89,11 @@ for (const [file, contentType] of files) {
     ...(binary ? { encoding: "base64" } : {})
   };
 }
+
+assets["data/a-share-trading-calendar.json"] = {
+  content_type: "application/json; charset=utf-8",
+  body: await readFile(resolve(root, "config", "a-share-trading-calendar.v2026-07.json"), "utf8")
+};
 
 await writeFile(
   resolve(root, "worker/assets.js"),
