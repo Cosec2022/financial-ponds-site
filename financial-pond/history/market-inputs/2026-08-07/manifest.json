@@ -1,0 +1,14 @@
+{
+  "schema_version": "fp-input-snapshot-v1",
+  "as_of": "2026-08-07",
+  "generated_at": "2026-08-07T09:43:39.407Z",
+  "mode": "live",
+  "input_snapshot_id": "a-share-2026-08-07-49529e896aba",
+  "files": [
+    "etf_ohlcva.json",
+    "benchmark_ohlcva.json",
+    "breadth.json"
+  ],
+  "source_reality": "provider_acquisition",
+  "replayable": true
+}
